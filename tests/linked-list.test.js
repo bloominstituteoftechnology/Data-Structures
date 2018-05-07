@@ -62,7 +62,6 @@ describe('LinkedList', () => {
   });
 
   it('should have a working "getMax" method', () => {
-    console.log(list);
     expect(list.getMax()).toBeNull();
     list.addToTail(10);
     expect(list.getMax()).toBe(10);

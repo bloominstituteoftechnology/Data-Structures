@@ -14,11 +14,11 @@ describe('Queue', () => {
     expect(Object.getPrototypeOf(queue).hasOwnProperty('length')).toBe(true);
   });
 
-  it('should return a size of 0 for an empty queue', () => {
-    expect(queue.size).toBe(0);
+  it('should return a length of 0 for an empty queue', () => {
+    expect(queue.length).toBe(0);
   });
 
-  it('should return the correct size after queuing items', () => {
+  it('should return the correct length after queuing items', () => {
     queue.enqueue(null);
     queue.enqueue(null);
     queue.enqueue(null);
@@ -29,18 +29,18 @@ describe('Queue', () => {
     queue.enqueue(null);
     queue.enqueue(null);
     queue.enqueue(null);
-    expect(queue.size).toBe(10);
+    expect(queue.length).toBe(10);
   });
 
   it('should return "null" when attempting to dequeue from an empty queue', () => {
     expect(queue.dequeue()).toBeNull();
   });
 
-  it('should return a size of 0 after attempting to dequeue more items than were queued', () => {
+  it('should return a length of 0 after attempting to dequeue more items than were queued', () => {
     queue.dequeue();
     queue.dequeue();
     queue.dequeue();
-    expect(queue.size).toBe(0);
+    expect(queue.length).toBe(0);
   });
 
   it('should dequeue and return the top item', () => {

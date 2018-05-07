@@ -9,19 +9,24 @@ class ListNode {
   /* Insert the given value as this node's
   `next` node */
   insertAfter(value) {
-
+    const newNode = {
+      value: value,
+    };
   }
 
   /* Insert the given value as the this node's
   `prev` node */
   insertBefore(value) {
-
+    const newNode = new ListNode({
+      value: value,
+      next: this,
+      prev: this.prev,
+    });
+    this.prev = newNode;
   }
 
   /* Delete this node */
-  delete() {
-
-  }
+  delete() {}
 }
 
 class DoublyLinkedList {
@@ -33,48 +38,41 @@ class DoublyLinkedList {
 
   /* Adds the given value as the new head
   node of the list */
-  addToHead(value) {
 
+  addToHead(value) {
+    const newNode = new ListNode(value, null, this.head);
+    if (!this.tail) {
+      this.tail = newNode;
+    }
+    this.head = newNode;
   }
 
   /* Remove the list's current head. The list's
   `head` pointer should point to the removed node's
   `next` node */
-  removeFromHead() {
-
-  }
+  removeFromHead() {}
 
   /* Adds the given value as the new tail
   node of the list */
-  addToTail(value) {
-
-  }
+  addToTail(value) {}
 
   /* Remove the list's current tail. The list's
   `tail` pointer should point to the removed node's
   `prev` node */
-  removeFromTail() {
-
-  }
+  removeFromTail() {}
 
   /* Move the given node to the front of the
   list. Update the list's `head` pointer
   accordingly */
-  moveToFront(node) {
-
-  }
+  moveToFront(node) {}
 
   /* Move the given node to the back of the
   list. Update the list's `tail` pointer 
   accordingly */
-  moveToBack(node) {
-
-  }
+  moveToBack(node) {}
 
   /* Delete the given node from the list */
-  delete(node) {
-
-  }
+  delete(node) {}
 }
 
 module.exports = DoublyLinkedList;

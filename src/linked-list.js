@@ -16,15 +16,16 @@ class LinkedList {
         };
 
         // check to see if head is null
-        if (!this.head) {
+        if (this.head === null) {
             this.head = newNode;
+            this.tail = newNode;
+        } else {
+            // change the old tail to point to our new node
+            this.tail.next = newNode;
+            //update `this.tail` to point to our new node
             this.tail = newNode;
         }
 
-        // change the old tail to point to our new node
-        this.tail.next = newNode;
-        //update `this.tail` to point to our new node
-        this.tail = newNode;
     }
 
     /* Remove the list's `head` value 

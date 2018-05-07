@@ -25,18 +25,18 @@ class LinkedList {
   The `head` pointer should be updated
   accordingly */
   removeHead() {
-    const removed = this.head
+    const { value } = this.head
     this.head = this.head.next
-    return removed.value
+    return value
   }
 
   /* Searches the list for the given value
   Returns true or false accordingly */
   contains(value) {
-    let tmp = this.head
-    while (tmp) {
-      if (tmp.value === value) return true
-      tmp = tmp.next
+    let { head } = this
+    while (head) {
+      if (head.value === value) return true
+      head = head.next
     }
     return false
   }
@@ -45,13 +45,12 @@ class LinkedList {
   of all the values in the list */
   getMax() {
     if (!this.head) return null
-    let maximal = this.head.value
-    let tmp = this.head
-    while (tmp) {
-      if (maximal < tmp.value) maximal = tmp.value
-      tmp = tmp.next
+    let { head, head: { value } } = this
+    while (head) {
+      if (value < head.value) value = head.value
+      head = head.next
     }
-    return maximal
+    return value
   }
 }
 

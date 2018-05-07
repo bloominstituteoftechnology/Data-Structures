@@ -1,22 +1,22 @@
-const Heap = require('../src/heap');
+const Heap = require("../src/heap");
 
 let heap;
 
-describe('Heap', () => {
+describe("Heap", () => {
   beforeEach(() => {
     heap = new Heap();
   });
 
-  it('should have methods named "insert", "delete", "getMax", "getSize", "bubbleUp", and "siftDown"', () => {
-    expect(typeof heap.insert).toBe('function');
-    expect(typeof heap.delete).toBe('function');
-    expect(typeof heap.getMax).toBe('function');
-    expect(typeof heap.getSize).toBe('function');
-    expect(typeof heap.bubbleUp).toBe('function');
-    expect(typeof heap.siftDown).toBe('function');
+  it.skip('should have methods named "insert", "delete", "getMax", "getSize", "bubbleUp", and "siftDown"', () => {
+    expect(typeof heap.insert).toBe("function");
+    expect(typeof heap.delete).toBe("function");
+    expect(typeof heap.getMax).toBe("function");
+    expect(typeof heap.getSize).toBe("function");
+    expect(typeof heap.bubbleUp).toBe("function");
+    expect(typeof heap.siftDown).toBe("function");
   });
 
-  it('should get the max value of the heap elements', () => {
+  it.skip("should get the max value of the heap elements", () => {
     heap.insert(6);
     heap.insert(8);
     heap.insert(10);
@@ -28,7 +28,7 @@ describe('Heap', () => {
     expect(heap.getMax()).toEqual(10);
   });
 
-  it('should properly get the new max after the old max is deleted', () => {
+  it.skip("should properly get the new max after the old max is deleted", () => {
     heap.insert(6);
     heap.insert(8);
     heap.insert(10);
@@ -42,7 +42,7 @@ describe('Heap', () => {
     expect(heap.getMax()).toEqual(9);
   });
 
-  it('should delete the elements from greatest to least', () => {
+  it.skip("should delete the elements from greatest to least", () => {
     heap.insert(6);
     heap.insert(7);
     heap.insert(5);

@@ -40,28 +40,23 @@ class LinkedList {
   /* Searches the list for the given value
   Returns true or false accordingly */
   contains(value) {
-    if (this.head === value) {
-      return true;
+    let currentNode = this.head;
+    let searchValue = value;
+
+    while (currentNode) {
+      if (currentNode.value === searchValue)
+        return true;
+      currentNode = currentNode.next;
     }
-    if (this.head !== null) {
-      return false;
-    }
-    return value;
+    return false;
   }
 
   /* Finds and returns the maximal value
   of all the values in the list */
   getMax() {
-    const currentNode = this.head;
-    if (currentNode === null) {
-      return 0;
-    }
-    let max = currentNode + value;
-    if (currentNode + value > max) {
-      return max;
-    }
-    return null;
+
   }
+
 }
 
 module.exports = LinkedList;

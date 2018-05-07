@@ -1,0 +1,62 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js test linked-list.test
+
+PATH: 
+  C:\Users\hrehman000\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\hrehman000\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files\nodejs;C:\Program Files (x86)\Yarn\bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit;C:\Program Files\Git\cmd;C:\Users\hrehman000\AppData\Local\Microsoft\WindowsApps;C:\Users\hrehman000\AppData\Roaming\npm;C:\Users\hrehman000\AppData\Local\GitHubDesktop\bin;C:\Users\hrehman000\AppData\Local\Yarn\bin;C:\Program Files\MongoDB\Server\3.6\bin;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\heroku\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  8.11.1
+
+Platform: 
+  win32 x64
+
+npm manifest: 
+  {
+    "name": "Data-Structures",
+    "version": "1.0.0",
+    "description": "LambdaSchool's Data Structures repository",
+    "main": "index.js",
+    "scripts": {
+      "test": "jest --verbose",
+      "test:watch": "npm test -- --watch"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/LambdaSchool/Data-Structures.git"
+    },
+    "author": "Sean Chen",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/LambdaSchool/Data-Structures/issues"
+    },
+    "homepage": "https://github.com/LambdaSchool/Data-Structures/#readme",
+    "devDependencies": {
+      "jest": "^22.4.3",
+      "regenerator-runtime": "^0.10.3"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: Command failed.
+  Exit code: 1
+  Command: C:\WINDOWS\system32\cmd.exe
+  Arguments: /d /s /c jest --verbose linked-list.test
+  Directory: D:\LambdaSchool\Data-Structures
+  Output:
+  
+      at ProcessTermError.MessageError (C:\Program Files (x86)\Yarn\lib\cli.js:186:110)
+      at new ProcessTermError (C:\Program Files (x86)\Yarn\lib\cli.js:226:113)
+      at ChildProcess.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:30281:17)
+      at emitTwo (events.js:126:13)
+      at ChildProcess.emit (events.js:214:7)
+      at maybeClose (internal/child_process.js:925:16)
+      at Process.ChildProcess._handle.onexit (internal/child_process.js:209:5)

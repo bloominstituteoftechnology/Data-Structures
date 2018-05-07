@@ -23,6 +23,9 @@ class Queue {
     if(this.storage.head === null){
       return null;
     }
+    if(this.storage.size === 0){
+      return null;
+    }
     return this.storage.removeHead();
 
   }
@@ -30,7 +33,7 @@ class Queue {
   /* Returns true if the queue contains no
   elements, false otherwise */
   isEmpty() {
-    if (this.storage.head !== null){
+    if (this.storage.head === null){
       return false;
     }
     else true;
@@ -38,7 +41,7 @@ class Queue {
 
   /* A getter method for the length of the queue */
   get length() {
-    this.storage.length;
+    return this.size;
   }
 }
 

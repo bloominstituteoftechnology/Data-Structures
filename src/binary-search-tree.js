@@ -85,14 +85,32 @@ class BinarySearchTree {
     }
 
   executeCb(this);
-
+    
   }
 
   /* Traverses the tree in a 'horizontal' fashion,
   from sibling to sibling. Executes the given callback
   on each visited tree node */
   breadthFirstForEach(cb) {
+    cb(this.value);
+    
+    function executeCb(curr) {
+      if (!curr.right && !curr.left)
+        return;
+      
+      if (curr.left)
+        cb(curr.left.value);
+      
+      if (curr.right)
+        cb(curr.right.value);
 
+      if (curr.left)
+        executeCb(curr.left);
+
+      if (curr.right)
+        executeCb(curr.right);
+    }
+    executeCb(this);
   }
 }
 

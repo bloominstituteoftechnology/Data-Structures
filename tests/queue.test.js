@@ -15,7 +15,7 @@ describe('Queue', () => {
   });
 
   it('should return a size of 0 for an empty queue', () => {
-    expect(queue.size).toBe(0);
+    expect(queue.length).toBe(0);
   });
 
   it('should return the correct size after queuing items', () => {
@@ -29,7 +29,7 @@ describe('Queue', () => {
     queue.enqueue(null);
     queue.enqueue(null);
     queue.enqueue(null);
-    expect(queue.size).toBe(10);
+    expect(queue.length).toBe(10);
   });
 
   it('should return "null" when attempting to dequeue from an empty queue', () => {
@@ -40,7 +40,7 @@ describe('Queue', () => {
     queue.dequeue();
     queue.dequeue();
     queue.dequeue();
-    expect(queue.size).toBe(0);
+    expect(queue.length).toBe(0);
   });
 
   it('should dequeue and return the top item', () => {

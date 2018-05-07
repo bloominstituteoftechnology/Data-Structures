@@ -8,18 +8,28 @@ class Queue {
   }
 
   /* Adds the given item to the queue */
-  enqueue(item) {}
+  enqueue(item) {
+    this.storage.addToTail(item);
+    return this.size++;
+  }
 
   /* Removes and returns the least recently
   added item from the queue */
-  dequeue() {}
+  dequeue() {
+    if (this.isEmpty()) return null;
+    return this.storage.removeHead();
+  }
 
   /* Returns true if the queue contains no
   elements, false otherwise */
-  isEmpty() {}
+  isEmpty() {
+    return this.storage.head === null;
+  }
 
   /* A getter method for the length of the queue */
-  get length() {}
+  get length() {
+    return this.size;
+  }
 }
 
 module.exports = Queue;

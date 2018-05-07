@@ -10,8 +10,28 @@ class BinarySearchTree {
   Make sure the rules of a binary search
   tree are being adhered to */
   insert(value) {
-
-  }
+    const node = new BinarySearchTree(value);
+    if (!this.root) {
+      this.root = node;
+    } else {
+      let current = this.root;
+      while (current !== null) {
+        if (node.value < current.value) {
+          if (!current.left) {
+            current.left = node;
+            break;
+          } current = current.left;
+        } else if (node.value > current.value) {
+          if (!current.right) {
+            current.right = node;
+            break;
+          } current = current.right;
+        } else {
+          break;
+        }
+      }
+    }
+  };
 
   /* Traverses the tree until either the
   target value has been found in the true

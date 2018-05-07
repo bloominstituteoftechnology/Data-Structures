@@ -16,17 +16,25 @@ class Queue {
   /* Removes and returns the least recently
   added item from the queue */
   dequeue() {
-    if (!this.storage.head) return null;
-    let myObj = this.storage.head;
-    while(myObj)
+    let myQ = this.storage.head;
+    if (!myQ) return null;
+    let dequeued = myQ;
+    myQ = myQ.next;
+    this.size--;
+    return dequeued.value;
   }
 
   /* Returns true if the queue contains no
   elements, false otherwise */
-  isEmpty() {}
+  isEmpty() {
+    if (this.size === 9) return true;
+    else return false;
+  }
 
   /* A getter method for the length of the queue */
-  get length() {}
+  get length() {
+    return this.size;
+  }
 }
 
 module.exports = Queue;

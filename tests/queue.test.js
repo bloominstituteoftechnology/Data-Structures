@@ -15,7 +15,7 @@ describe("Queue", () => {
   });
 
   it("should return a size of 0 for an empty queue", () => {
-    expect(queue.size).toBe(0);
+    expect(queue.length).toBe(0);
   });
 
   it("should return the correct size after queuing items", () => {
@@ -61,8 +61,11 @@ describe("Queue", () => {
     queue.enqueue("hi");
     queue.enqueue(null);
     queue.enqueue(77);
+    console.log(queue);
     expect(queue.dequeue()).toBe(true);
+    console.log(queue);
     expect(queue.dequeue()).toBe("hi");
+    console.log(queue);
     expect(queue.dequeue()).toBe(null);
     expect(queue.dequeue()).toBe(77);
   });

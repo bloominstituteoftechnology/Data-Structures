@@ -103,12 +103,22 @@ class DoublyLinkedList {
   list. Update the list's `tail` pointer 
   accordingly */
   moveToBack(node) {
-
+    if(node.prev){
+      node.prev.next = node.next;
+    }
+    else{
+      this.head = node.next;
+    }
+    node.next.prev = node.prev;
+    node.next = null;
+    node.prev = this.tail;
+    this.tail = node;
   }
 
   /* Delete the given node from the list */
   delete(node) {
-
+    node.prev.next = node.next;
+    node.next.prev = node.prev;
   }
 }
 module.exports = DoublyLinkedList;

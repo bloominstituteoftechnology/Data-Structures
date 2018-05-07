@@ -1,0 +1,61 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js test linked-list.js
+
+PATH: 
+  C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\UCRT\;C:\Program Files\Intel\UCRT\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\MongoDB\Server\3.6\bin;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files\Microsoft VS Code\bin;C:\Users\Brett\AppData\Local\GitHubDesktop\bin;C:\Users\Brett\AppData\Local\Yarn\bin;C:\Users\Brett\AppData\Roaming\npm;C:\Program Files\Heroku\bin;C:\Users\Brett\AppData\Local\hyper\app-2.0.0\resources\bin
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  9.11.1
+
+Platform: 
+  win32 x64
+
+npm manifest: 
+  {
+    "name": "Data-Structures",
+    "version": "1.0.0",
+    "description": "LambdaSchool's Data Structures repository",
+    "main": "index.js",
+    "scripts": {
+      "test": "jest --verbose",
+      "test:watch": "npm test -- --watch"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/LambdaSchool/Data-Structures.git"
+    },
+    "author": "Sean Chen",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/LambdaSchool/Data-Structures/issues"
+    },
+    "homepage": "https://github.com/LambdaSchool/Data-Structures/#readme",
+    "devDependencies": {
+      "jest": "^22.4.3",
+      "regenerator-runtime": "^0.10.3"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: Command failed.
+  Exit code: 1
+  Command: C:\Windows\system32\cmd.exe
+  Arguments: /d /s /c jest --verbose linked-list.js
+  Directory: C:\Code\Lambda Projects\Data-Structures
+  Output:
+  
+      at ProcessTermError.MessageError (C:\Program Files (x86)\Yarn\lib\cli.js:186:110)
+      at new ProcessTermError (C:\Program Files (x86)\Yarn\lib\cli.js:226:113)
+      at ChildProcess.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:30281:17)
+      at ChildProcess.emit (events.js:180:13)
+      at maybeClose (internal/child_process.js:936:16)
+      at Process.ChildProcess._handle.onexit (internal/child_process.js:220:5)

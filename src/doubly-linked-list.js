@@ -9,13 +9,26 @@ class ListNode {
   /* Insert the given value as this node's
   `next` node */
   insertAfter(value) {
+    let newNode = {
+      next: null,
+      prev: null
+    }
 
+    if(!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+      return;
+    }
+    this.tail.next = value;
+    this.tail = value;
   }
 
   /* Insert the given value as the this node's
   `prev` node */
   insertBefore(value) {
-
+    let prevVal = value;
+    prev = prevVal;
+    return this.prevVal;
   }
 
   /* Delete this node */

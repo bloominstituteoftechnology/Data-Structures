@@ -10,7 +10,20 @@ class BinarySearchTree {
   Make sure the rules of a binary search
   tree are being adhered to */
   insert(value) {
-
+    const newNode = new BinarySearchTree(value);
+    if (value < this.value) {
+      if (!this.left) {
+        this.left = newNode;
+      } else {
+        this.left.insert(value);
+      }
+    } else if (value > this.value) {
+      if (!this.right) {
+        this.right = newNode;
+      } else {
+        this.right.insert(value);
+      }
+    }
   }
 
   /* Traverses the tree until either the
@@ -18,27 +31,47 @@ class BinarySearchTree {
   or the entire tree has been searched.
   Returns true or false accordingly */
   contains(target) {
-
+    if (this.value === target) return true;
+  
+    if (this.left) {
+      if (this.left.contains(target)) return true;
+    }
+    if (this.right) {
+      if (this.right.contains(target)) return true;
+    }
+    return false;
   }
 
   /* Returns the maximum value in the tree 
   Should not remove the max value from the tree */
   getMax() {
-
+    
   }
 
   /* Traverses the tree in a 'vertical' fashion,
   from parent to child. Executes the given callback
   on each visited tree node */
   depthFirstForEach(cb) {
+    const arr = [this.value];
+    while (arr.length) {
+      const node = arr.shift();
 
+      arr.push(...node.children);
+      cb(node);
+    }
   }
 
   /* Traverses the tree in a 'horizontal' fashion,
   from sibling to sibling. Executes the given callback
   on each visited tree node */
   breadthFirstForEach(cb) {
+    const arr = [this.value];
+    while (arr.length) {
+      const node = arr.shift();
 
+      arr.push(...node.children);
+      cb(node);
+    }
   }
 }
 

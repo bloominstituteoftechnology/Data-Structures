@@ -8,25 +8,30 @@ class Heap {
   The heap should maintain the heap property 
   after insertion */
   insert(value) {
-
+    this.storage.push(value);
+    this.bubbleUp(this.getSize() - 1);
+    console.log("Bubbling: ", this.storage);
   }
 
   /* Remove the maximal value from the heap and
   return it. The heap should maintain the heap
   property after removing the maximal value */
   delete() {
-
+    console.log(this.storage);
+    let max = this.storage.shift();
+    this.siftDown(0);
+    return max;
   }
 
   /* Return the maximal value in the heap
   without removing it */
   getMax() {
-
+    return this.storage[0];
   }
 
   /* Return the size of the heap */
   getSize() {
-
+    return this.storage.length;
   }
 
   /* Moves the element at the specified index "up"
@@ -34,7 +39,14 @@ class Heap {
   parent value is less than the value located at
   the input index */
   bubbleUp(index) {
-
+    let parentIndex = Math.floor((index - 1) / 2);
+    if (this.storage[index] > this.storage[parentIndex]) {
+      [this.storage[parentIndex], this.storage[index]] = [
+        this.storage[index],
+        this.storage[parentIndex]
+      ];
+      this.bubbleUp(parentIndex);
+    }
   }
 
   /* Move the element at the specified index "down"
@@ -42,7 +54,20 @@ class Heap {
   child's value is greater than the value located at
   the input index */
   siftDown(index) {
-    
+    let leftIndex = 2 * index + 1;
+    let rightIndex = 2 * index + 2;
+    let childIndex =
+      this.storage[leftIndex] >= this.storage[rightIndex]
+        ? leftIndex
+        : rightIndex;
+    if (this.storage[index] < this.storage[childIndex]) {
+      [this.storage[index], this.storage[childIndex]] = [
+        this.storage[childIndex],
+        this.storage[index]
+      ];
+      console.log("Sifting! ", this.storage);
+      this.siftDown(childIndex);
+    }
   }
 }
 

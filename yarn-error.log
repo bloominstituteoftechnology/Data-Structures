@@ -1,8 +1,8 @@
 Arguments: 
-  /home/kaitlyn/.nvm/versions/node/v9.5.0/bin/node /usr/share/yarn/bin/yarn.js test tests/binary-search-tree.test.js
+  /home/kaitlyn/.nvm/versions/node/v9.5.0/bin/node /usr/share/yarn/bin/yarn.js test tests/heap.test.js
 
 PATH: 
-  /home/kaitlyn/bin:/home/kaitlyn/.rbenv/plugins/ruby-build/bin:/home/kaitlyn/.rbenv/shims:/home/kaitlyn/.rbenv/bin:/home/kaitlyn/.nvm/versions/node/v9.5.0/bin:/home/kaitlyn/bin:/home/kaitlyn/.rbenv/plugins/ruby-build/bin:/home/kaitlyn/.rbenv/shims:/home/kaitlyn/.rbenv/bin:/home/kaitlyn/bin:/home/kaitlyn/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/kaitlyn/.rvm/bin:/home/kaitlyn/.rvm/bin:/home/kaitlyn/.rvm/bin
+  /home/kaitlyn/bin:/home/kaitlyn/.rbenv/plugins/ruby-build/bin:/home/kaitlyn/.rbenv/shims:/home/kaitlyn/.rbenv/bin:/home/kaitlyn/.nvm/versions/node/v9.5.0/bin:/home/kaitlyn/bin:/home/kaitlyn/.local/bin:/home/kaitlyn/bin:/home/kaitlyn/.rbenv/plugins/ruby-build/bin:/home/kaitlyn/.rbenv/shims:/home/kaitlyn/.rbenv/bin:/home/kaitlyn/bin:/home/kaitlyn/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/kaitlyn/.rvm/bin:/home/kaitlyn/.rvm/bin:/home/kaitlyn/.rvm/bin:/home/kaitlyn/.rvm/bin
 
 Yarn version: 
   1.5.1
@@ -3218,7 +3218,7 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: sh
-  Arguments: -c jest --verbose tests/binary-search-tree.test.js
+  Arguments: -c jest --verbose tests/heap.test.js
   Directory: /home/kaitlyn/LambdaSchool/Data-Structures
   Output:
   

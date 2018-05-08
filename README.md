@@ -70,3 +70,5 @@ Topics:
 1. Set up your repository by running `npm install` in your root directory to install all necessary dependencies.
 
 2. Implement each data structure, starting with the linked list data structure. Run `npm test` to run the tests and check your progress. Get all the tests passing for each data structure. 
+
+"I put this in here just so I'd have something to do a pull request with." - Michael Scott 

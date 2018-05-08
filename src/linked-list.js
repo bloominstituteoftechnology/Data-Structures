@@ -104,8 +104,8 @@ class LinkedList {
 module.exports = LinkedList;
 
 // ========= myLL instance created ======== //
-var myLL = new LinkedList();
-console.log(myLL);
+// var myLL = new LinkedList();
+// console.log(myLL);
 
 // ======= addToTail Method ======= //
 // // CASE: No Elements in LL

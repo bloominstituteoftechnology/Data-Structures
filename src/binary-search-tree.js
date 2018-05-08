@@ -65,12 +65,33 @@ class BinarySearchTree {
 
   /* Returns the maximum value in the tree 
   Should not remove the max value from the tree */
-  getMax() {}
+  getMax() {
+    let largest = null;
+    // CASE #1: No elements in LL
+    console.log(this.value)
+    const findLargestValue = node => {
+      console.log(node)
+      if ((node) && (!node.right)) return node.value;
+      if ((node) && (node.right)) {
+        return findLargestValue(node.right)
+      }
+      
+    }
+    return findLargestValue(this)
+  }
 
   /* Traverses the tree in a 'vertical' fashion,
   from parent to child. Executes the given callback
   on each visited tree node */
-  depthFirstForEach(cb) {}
+  depthFirstForEach(cb) {
+    cb(this.value);
+    if (this.left) {
+      this.left.depthFirstForEach(cb);
+    }
+    if(this.right){
+      this.right.depthFirstForEach(cb);
+    }
+  }
 
   /* Traverses the tree in a 'horizontal' fashion,
   from sibling to sibling. Executes the given callback
@@ -102,3 +123,12 @@ console.log(myB.right);
 console.log(myB.right.value);
 // ====== contains() method ======= //
 console.log(myB.contains(71));
+// ====== getMax() method ======= //
+console.log(myB.getMax());
+// ====== depthFirstForEach() method ======= //
+console.log(myB)
+let array = []
+console.log(myB.depthFirstForEach(function bob(x) {array.push('Bello')}))
+// One 'Bello' for every value in the tree
+console.log(array)
+//

@@ -1,5 +1,5 @@
 Arguments: 
-  /home/kaitlyn/.nvm/versions/node/v9.5.0/bin/node /usr/share/yarn/bin/yarn.js test tests/doubly-linked-list.test.js
+  /home/kaitlyn/.nvm/versions/node/v9.5.0/bin/node /usr/share/yarn/bin/yarn.js test tests/queue.test.js
 
 PATH: 
   /home/kaitlyn/bin:/home/kaitlyn/.rbenv/plugins/ruby-build/bin:/home/kaitlyn/.rbenv/shims:/home/kaitlyn/.rbenv/bin:/home/kaitlyn/.nvm/versions/node/v9.5.0/bin:/home/kaitlyn/bin:/home/kaitlyn/.rbenv/plugins/ruby-build/bin:/home/kaitlyn/.rbenv/shims:/home/kaitlyn/.rbenv/bin:/home/kaitlyn/bin:/home/kaitlyn/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/kaitlyn/.rvm/bin:/home/kaitlyn/.rvm/bin:/home/kaitlyn/.rvm/bin
@@ -3218,7 +3218,7 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: sh
-  Arguments: -c jest --verbose tests/doubly-linked-list.test.js
+  Arguments: -c jest --verbose tests/queue.test.js
   Directory: /home/kaitlyn/LambdaSchool/Data-Structures
   Output:
   

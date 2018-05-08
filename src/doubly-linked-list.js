@@ -1,6 +1,6 @@
 class ListNode {
   /* Do not modify the constructor */
-  constructor (value, prev = null, next = null) {
+  constructor(value, prev = null, next = null) {
     this.value = value
     this.prev = prev
     this.next = next
@@ -8,33 +8,29 @@ class ListNode {
 
   /* Insert the given value as this node's
   `next` node */
-  insertAfter (value) {
+  insertAfter(value) {
     const newNode = {
-      value: value,
-      next: this.next
+      value: value
     }
-    this.next = newNode
   }
 
   /* Insert the given value as the this node's
   `prev` node */
-  insertBefore (value) {
-    const newNode = {
+  insertBefore(value) {
+    const newNode = new ListNode({
       value: value,
-      next: {
-        value: this.value,
-        next: next
-      }
-    }
+      next: this,
+      prev: this.prev
+    })
     this.prev = newNode
   }
   /* Delete this node */
-  delete () {}
+  delete() {}
 }
 
 class DoublyLinkedList {
   /* Do not modify the constructor */
-  constructor () {
+  constructor() {
     this.head = null
     this.tail = null
     this.length = 0
@@ -42,13 +38,10 @@ class DoublyLinkedList {
 
   /* Adds the given value as the new head
   node of the list */
-  addToHead (value) {
+  addToHead(value) {
     if (this.length < 0) this.length = 0
-    const newNode = {
-      value: value,
-      next: this.head,
-      prev: null
-    }
+
+    const newNode = new ListNode(value, null, this.head)
 
     if (this.length === 0) {
       this.head = newNode
@@ -69,7 +62,7 @@ class DoublyLinkedList {
   /* Remove the list's current head. The list's
   `head` pointer should point to the removed node's
   `next` node */
-  removeFromHead () {
+  removeFromHead() {
     let removed = null
     if (this.length < 0) this.length = 0
     if (this.length === 0) {
@@ -85,7 +78,7 @@ class DoublyLinkedList {
     } else {
       const newNode = {
         value: this.head.next.value,
-        next: this.head.next,
+        next: this.head.next.next,
         prev: null
       }
       removed = this.head.value
@@ -97,7 +90,7 @@ class DoublyLinkedList {
 
   /* Adds the given value as the new tail
   node of the list */
-  addToTail (value) {
+  addToTail(value) {
     if (this.length < 0) this.length = 0
     if (this.length === 0) {
       const newNode = {
@@ -132,7 +125,7 @@ class DoublyLinkedList {
   /* Remove the list's current tail. The list's
   `tail` pointer should point to the removed node's
   `prev` node */
-  removeFromTail () {
+  removeFromTail() {
     if (this.length < 0) this.length = 0
     let removed = null
     if (this.length === 0) {
@@ -160,18 +153,26 @@ class DoublyLinkedList {
   /* Move the given node to the front of the
   list. Update the list's `head` pointer
   accordingly */
-  moveToFront (node) {
-    this.head.prev = node
-    this.head = node
+  moveToFront(node) {
+    if (node.prev) node.prev.next = node.next
+    node.next ? (node.next.prev = node.prev) : (this.tail = node.prev)
+    this.addToHead(node.value, null, this.head)
   }
 
   /* Move the given node to the back of the
   list. Update the list's `tail` pointer
   accordingly */
-  moveToBack (node) {}
+  moveToBack(node) {
+    if (node.next) node.next.prev = node.prev
+    node.prev ? (node.prev.next = node.next) : (this.head = node.next)
+    this.addToTail(node.value, this.tail, null)
+  }
 
   /* Delete the given node from the list */
-  delete (node) {}
+  delete(node) {
+    node.prev ? (node.prev.next = node.next) : (this.head = node.next)
+    node.next ? (node.next.prev = node.prev) : (this.tail = node.prev)
+  }
 }
 
 module.exports = DoublyLinkedList

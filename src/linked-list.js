@@ -77,30 +77,25 @@ class LinkedList {
   of all the values in the list */
   getMax() {
     // CASE #1: No elements in LL
-    if (this.head === null)
-      return null;
-    let largest;
+    if (this.head === null) return null;
+    let largest = null;
     const findLargestValue = node => {
-      console.log(node.value);
-      
-      console.log(node.next)
-      // CASE #2: If only 1 element in LL, return that element's value.
-      if (node.next === null) return node.value;
-      // CASE #3: If more than 1 element in LL.
-      console.log(node.value);
-      console.log(node.next.value);
-      if(node.value <= largest) {
-        console.log(node.value)
-        console.log(node.next.value)
-        return findLargestValue(node.next)
+      // If largest has not been defined, then set it equal to node.value, otherwise, if this is not the
+      // first iteration, and largest IS defined, then this will be skipped.
+      if (largest === null) {
+        let largest = node.value;
       }
-      
+      // if we are at the last iteration, and node === null, then return the value for largest
+      if (!node) return largest;
+      // if the current node.value is less than or equal to largest AND node.next exists, then run the next value -- node.next
+      if (node.value <= largest && node.next) {
+        return findLargestValue(node.next);
+      }
       if (node.value > largest) {
-        largest = node.next.value;
+        largest = node.value;
         return findLargestValue(node.next);
       }
       return largest;
-      
     };
     return findLargestValue(this.head);
   }
@@ -164,15 +159,9 @@ console.log(myLL);
 // console.log(myLL.removeHead())
 
 // ====== getMax() method ====== //
-console.log(myLL);
-console.log(myLL.getMax());
-myLL.addToTail(1);
-myLL.addToTail(2);
-myLL.addToTail(3);
-myLL.addToTail(4);
-myLL.addToTail(5);
-myLL.addToTail(100);
-myLL.addToTail(7);
-myLL.addToTail(8);
-console.log(myLL.getMax());
-
+// console.log(myLL);
+// console.log(myLL.getMax());
+// myLL.addToTail(1);
+// myLL.addToTail(2);
+// myLL.addToTail(100);
+// console.log(myLL.getMax());

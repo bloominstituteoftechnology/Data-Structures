@@ -16,7 +16,9 @@ class Heap {
   return it. The heap should maintain the heap
   property after removing the maximal value */
   delete() {
-    
+    const removedMax = this.storage.shift();
+    this.siftDown(0);
+    return removedMax;
   }
 
   /* Return the maximal value in the heap
@@ -58,6 +60,22 @@ class Heap {
   siftDown(index) {
     const leftChildIndex = index * 2 + 1;
     const rightChildIndex = index * 2 + 2;
+    let greatestChildIndex;
+    if (this.storage[leftChildIndex] > this.storage[rightChildIndex])
+      greatestChildIndex = leftChildIndex;
+
+    if (this.storage[rightChildIndex] > this.storage[leftChildIndex])
+      greatestChildIndex = rightChildIndex;
+
+    if (
+      this.storage[index] < this.storage[leftChildIndex] ||
+      this.storage[index] < this.storage[rightChildIndex]
+    ) {
+      [this.storage[index], this.storage[greatestChildIndex]] = [
+        this.storage[greatestChildIndex],
+        this.storage[index],
+      ];
+    }
   }
 }
 

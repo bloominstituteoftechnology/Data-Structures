@@ -97,15 +97,46 @@ class DoublyLinkedList {
   /* Move the given node to the front of the
   list. Update the list's `head` pointer
   accordingly */
-  moveToFront(node) {}
+  moveToFront(node) {
+    if (this.head === this.tail) return;
+    let leftNode = node.prev || null;
+    let rightNode = node.next || null;
+    this.head.prev = node;
+    node.next = this.head;
+    node.prev = null;
+    this.head = node;
+    leftNode.next = rightNode;
+    if (rightNode) {
+      rightNode.prev = leftNode;
+    } else {
+      this.tail = leftNode;
+    }
+  }
 
   /* Move the given node to the back of the
   list. Update the list's `tail` pointer 
   accordingly */
-  moveToBack(node) {}
+  moveToBack(node) {
+    if (this.head === this.tail) return;
+    let leftNode = node.prev || null;
+    let rightNode = node.next || null;
+    node.prev = this.tail;
+    this.tail.next = node;
+    this.tail = node;
+    node.next = null;
+    rightNode.prev = leftNode;
+    if (leftNode) {
+      leftNode.next = rightNode;
+    } else {
+      this.head = rightNode;
+    }
+  }
 
   /* Delete the given node from the list */
-  delete(node) {}
+  delete(node) {
+    node.next.prev = node.prev;
+    node.prev.next = node.next;
+  }
 }
 
 module.exports = DoublyLinkedList;

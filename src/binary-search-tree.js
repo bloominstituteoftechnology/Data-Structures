@@ -45,19 +45,25 @@ class BinarySearchTree {
   /* Returns the maximum value in the tree 
   Should not remove the max value from the tree */
   getMax() {
-    
+    let max = this.value;
+    let node = this;
+    while (node.right) {
+      node = node.right;
+      max = node.value;
+    }
+    return max;
   }
 
   /* Traverses the tree in a 'vertical' fashion,
   from parent to child. Executes the given callback
   on each visited tree node */
   depthFirstForEach(cb) {
-    const arr = [this.value];
-    while (arr.length) {
-      const node = arr.shift();
-
-      arr.push(...node.children);
-      cb(node);
+    cb(this.value);
+    if (this.left) {
+      this.left.depthFirstForEach(cb);
+    }
+    if (this.right) {
+      this.right.depthFirstForEach(cb);
     }
   }
 
@@ -65,12 +71,17 @@ class BinarySearchTree {
   from sibling to sibling. Executes the given callback
   on each visited tree node */
   breadthFirstForEach(cb) {
-    const arr = [this.value];
-    while (arr.length) {
-      const node = arr.shift();
-
-      arr.push(...node.children);
-      cb(node);
+    const queue = [];
+    queue.push(this);
+    while (queue.length !== 0) {
+      const node = queue.shift();
+      if (node.left) {
+        queue.push(node.left);
+      }
+      if (node.right) {
+        queue.push(node.right);
+      }
+      cb(node.value);
     }
   }
 }

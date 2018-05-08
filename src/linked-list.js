@@ -9,13 +9,12 @@ class LinkedList {
   of the list. The `tail` pointer
   should be updated accordingly */
   addToTail(value) {
-    let newNode = {value : value};
-    if (this.head ) {
-      if(!this.tail){
+    let newNode = { value: value };
+    if (this.head) {
+      if (!this.tail) {
         this.head.nextNode = newNode;
         this.tail = newNode;
-      }else
-      this.tail.nextNode = newNode;
+      } else this.tail.nextNode = newNode;
       this.tail = newNode;
     } else {
       this.head = newNode;
@@ -29,7 +28,7 @@ class LinkedList {
   removeHead() {
     let retObj = this.head;
     // this.head = this.head.nextNode;
-    if(this.head.nextNode) this.head = this.head.nextNode;
+    if (this.head.nextNode) this.head = this.head.nextNode;
     else this.head = null;
     return retObj.value;
   }
@@ -37,14 +36,14 @@ class LinkedList {
   /* Searches the list for the given value
   Returns true or false accordingly */
   contains(value) {
-    if(this.head.value === value) return true;
+    if (this.head.value === value) return true;
     else {
       let curObj = this.head;
-      while(1){
-        if(curObj.value === value) return true;
-        else if(curObj.nextNode){
+      while (1) {
+        if (curObj.value === value) return true;
+        else if (curObj.nextNode) {
           curObj = curObj.nextNode;
-        }else return false;
+        } else return false;
       }
     }
   }
@@ -53,14 +52,14 @@ class LinkedList {
   of all the values in the list */
   getMax() {
     let max = 0;
-    if(this.head) max = this.head.value;
+    if (this.head) max = this.head.value;
     else return null;
     let curObj = null;
-    if(this.head.nextNode) curObj = this.head.nextNode;
+    if (this.head.nextNode) curObj = this.head.nextNode;
     else return max;
-    while(1){
-      if(curObj.value > max )max = curObj.value;
-      if(curObj.nextNode) curObj = curObj.nextNode;
+    while (1) {
+      if (curObj.value > max) max = curObj.value;
+      if (curObj.nextNode) curObj = curObj.nextNode;
       else return max;
     }
   }

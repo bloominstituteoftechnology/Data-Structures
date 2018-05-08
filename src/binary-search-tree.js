@@ -69,6 +69,22 @@ class BinarySearchTree {
   from parent to child. Executes the given callback
   on each visited tree node */
   depthFirstForEach(cb) {
+    let queue = [];
+    const travCb = (current) => {
+      cb(current.value);
+      if (current.right) {
+        queue.push(current.right);
+      }
+      if (current.left) {
+        return travCb(current.left)
+      }
+      if (!queue.length) return;
+      else {
+        travCb(queue.pop());
+      }
+
+    };
+    travCb(this);
 
   }
 

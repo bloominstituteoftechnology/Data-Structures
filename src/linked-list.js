@@ -11,9 +11,9 @@ class LinkedList {
   addToTail(value) {
     const newNode = {
       value: value,
-      next: null,
+      next: null
     };
-    if(!this.head) {
+    if (!this.head) {
       this.head = newNode;
       this.tail = newNode;
       return;
@@ -32,16 +32,16 @@ class LinkedList {
     // if(this.head.value === null){
     //   return this.head = null
     // }else return this.head.value
-    let initHead = this.head.value
-    this.head = this.head.next
-    return initHead
+    let initHead = this.head.value;
+    this.head = this.head.next;
+    return initHead;
   }
 
   /* Searches the list for the given value
   Returns true or false accordingly */
   contains(value) {
     let currentNode = this.head;
-    while(currentNode !== null) {
+    while (currentNode !== null) {
       if (currentNode.value === value) {
         return true;
       }
@@ -54,11 +54,13 @@ class LinkedList {
   of all the values in the list */
   getMax() {
     //if current node is less than next node, swap em
+    let acc = null;
     let currentNode = this.head;
-    let currentNodeValue = currentNode.value;
-    let max = currentNodeValue;
-    for (currentNodeValue)
+    while (currentNode !== null) {
+      if (currentNode.value > acc) acc = currentNode.value;
+      currentNode = currentNode.next;
+    }
+    return acc;
   }
 }
-
 module.exports = LinkedList;

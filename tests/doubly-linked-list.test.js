@@ -8,12 +8,24 @@ describe('DoublyLinkedList', () => {
   });
 
   it('should have the methods "addToHead", "addToTail", "removeFromHead", "removeFromTail", "delete", "moveToFront", and "moveToBack"', () => {
-    const hasAddToTail = Object.getPrototypeOf(list).hasOwnProperty('addToTail');
-    const hasAddToHead = Object.getPrototypeOf(list).hasOwnProperty('addToHead');
-    const hasRemoveFromHead = Object.getPrototypeOf(list).hasOwnProperty('removeFromHead');
-    const hasRemoveFromTail = Object.getPrototypeOf(list).hasOwnProperty('removeFromTail');
-    const hasMoveToFront = Object.getPrototypeOf(list).hasOwnProperty('moveToFront');
-    const hasMoveToBack = Object.getPrototypeOf(list).hasOwnProperty('moveToBack');
+    const hasAddToTail = Object.getPrototypeOf(list).hasOwnProperty(
+      'addToTail'
+    );
+    const hasAddToHead = Object.getPrototypeOf(list).hasOwnProperty(
+      'addToHead'
+    );
+    const hasRemoveFromHead = Object.getPrototypeOf(list).hasOwnProperty(
+      'removeFromHead'
+    );
+    const hasRemoveFromTail = Object.getPrototypeOf(list).hasOwnProperty(
+      'removeFromTail'
+    );
+    const hasMoveToFront = Object.getPrototypeOf(list).hasOwnProperty(
+      'moveToFront'
+    );
+    const hasMoveToBack = Object.getPrototypeOf(list).hasOwnProperty(
+      'moveToBack'
+    );
     const hasDelete = Object.getPrototypeOf(list).hasOwnProperty('delete');
     expect(hasAddToHead).toBe(true);
     expect(hasAddToTail).toBe(true);

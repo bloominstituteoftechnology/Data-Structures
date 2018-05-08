@@ -10,7 +10,7 @@ class Queue {
   /* Adds the given item to the queue */
   enqueue(item) {
     this.storage.addToTail(item);
-    return this.size++;
+    this.size++;
   }
 
   /* Removes and returns the least recently
@@ -18,6 +18,7 @@ class Queue {
   dequeue() {
     if (this.isEmpty()) return null;
     return this.storage.removeHead();
+    this.size--;
   }
 
   /* Returns true if the queue contains no

@@ -1,33 +1,35 @@
-const List = require('./linked-list');
+const List = require('./linked-list')
 
 class Queue {
   /* Do not modify the constructor */
-  constructor() {
-    this.size = 0;
-    this.storage = new List();
+  constructor () {
+    this.size = 0
+    this.storage = new List()
   }
 
   /* Adds the given item to the queue */
-  enqueue(item) {
-    
+  enqueue (item) {
+    this.storage.addToTail(item)
+    this.size++
   }
 
   /* Removes and returns the least recently
   added item from the queue */
-  dequeue() {
-
+  dequeue () {
+    return this.storage.removeHead()
+    this.size--
   }
 
   /* Returns true if the queue contains no
   elements, false otherwise */
-  isEmpty() {
-
+  isEmpty () {
+    return this.size === 0
   }
 
   /* A getter method for the length of the queue */
-  get length() {
-
+  get length () {
+    return this.size
   }
 }
 
-module.exports = Queue;
+module.exports = Queue

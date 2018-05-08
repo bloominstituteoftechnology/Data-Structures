@@ -53,18 +53,13 @@ class BinarySearchTree {
   /* Returns the maximum value in the tree 
   Should not remove the max value from the tree */
   getMax() {
-    // if (this.right == null) {
-    //   return this.value;
-    // } else {
-    //   return this.right;
-    // }
-    if (this.right == null)
-      // no need to search in LHS
-      return this.value;
-    else {
-      Math.max(this.value, this.right);
+    let max = this.value;
+    let node = this;
+    while (node.right) {
+      node = node.right;
+      max = node.value;
     }
-    return this.right;
+    return max;
   }
 
   /* Traverses the tree in a 'vertical' fashion,

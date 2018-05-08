@@ -46,7 +46,7 @@ describe('DoublyLinkedList', () => {
     expect(list.tail.value).toEqual(1);
   });
 
-  it.skip('should be able to add list nodes to the tail of the list', () => {
+  it('should be able to add list nodes to the tail of the list', () => {
     list.addToTail(100);
     list.addToTail(99);
     list.addToTail(98);
@@ -56,7 +56,7 @@ describe('DoublyLinkedList', () => {
     expect(list.tail.prev.prev.value).toEqual(100);
   });
 
-  it.skip('should be able to remove the head node of the list', () => {
+  it('should be able to remove the head node of the list', () => {
     list.addToHead(3);
     list.addToHead(39);
     expect(list.removeFromHead()).toEqual(39);
@@ -67,7 +67,7 @@ describe('DoublyLinkedList', () => {
     expect(list.removeFromHead()).toBeNull();
   });
 
-  it.skip('should be able to remove the tail node of the list', () => {
+  it('should be able to remove the tail node of the list', () => {
     list.addToTail(18);
     list.addToTail(109);
     expect(list.removeFromTail()).toEqual(109);
@@ -78,7 +78,7 @@ describe('DoublyLinkedList', () => {
     expect(list.removeFromTail()).toBeNull();
   });
 
-  it.skip('should be able to move an arbitrary node in the list to the front of the list', () => {
+  it('should be able to move an arbitrary node in the list to the front of the list', () => {
     list.addToTail(1);
     list.addToTail(10);
     list.addToTail(7);
@@ -93,7 +93,7 @@ describe('DoublyLinkedList', () => {
     expect(list.head.value).toEqual(10);
   });
 
-  it.skip('should be able to move an arbitrary node in the list to the back of the list', () => {
+  it('should be able to move an arbitrary node in the list to the back of the list', () => {
     list.addToHead(1);
     list.addToHead(40);
     list.addToHead(29);

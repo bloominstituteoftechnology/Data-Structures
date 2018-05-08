@@ -50,26 +50,53 @@ class DoublyLinkedList {
   /* Remove the list's current head. The list's
   `head` pointer should point to the removed node's
   `next` node */
-  removeFromHead() {}
+  removeFromHead() {
+    if (!this.head) return null;
+    const removedValue = this.head.value;
+    this.head = this.head.next;
+    // this.head.prev = null;
+    return removedValue;
+  }
 
   /* Adds the given value as the new tail
   node of the list */
-  addToTail(value) {}
+  addToTail(value) {
+    const newNode = new ListNode(value, this.tail, null);
+    if (!this.head) {
+      this.head = newNode;
+    }
+    this.tail = newNode;
+  }
 
   /* Remove the list's current tail. The list's
   `tail` pointer should point to the removed node's
   `prev` node */
-  removeFromTail() {}
+  removeFromTail() {
+    if (!this.tail) return null;
+    const removedValue = this.tail.value;
+    this.tail = this.tail.prev;
+    return removedValue;
+  }
 
   /* Move the given node to the front of the
   list. Update the list's `head` pointer
   accordingly */
-  moveToFront(node) {}
+  moveToFront(node) {
+    if (node.prev) node.prev.next = node.next;
+    node.next ? (node.next.prev = node.prev) : (this.tail = node.prev);
+    this.addToHead(node.value, null, this.head);
+  }
 
   /* Move the given node to the back of the
   list. Update the list's `tail` pointer 
   accordingly */
-  moveToBack(node) {}
+  moveToBack(node) {
+    console.log(JSON.stringify(node, null, 2), 'node');
+    if (node.next) node.next.prev = node.prev;
+    node.prev ? (node.prev.next = node.next) : (this.head = node.next);
+    this.addToTail(node.value, this.tail, null);
+    console.log(JSON.stringify(this.head, null, 2), 'head');
+  }
 
   /* Delete the given node from the list */
   delete(node) {}

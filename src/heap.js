@@ -7,7 +7,12 @@ class Heap {
     /* Insert the given value into the heap.
   The heap should maintain the heap property 
   after insertion */
-    insert(value) {}
+    insert(value) {
+        const newHeap = new Heap(value);
+        if (value > newHeap.storage) {
+            // console.log(value, "large");
+        }
+    }
 
     /* Remove the maximal value from the heap and
   return it. The heap should maintain the heap
@@ -22,7 +27,9 @@ class Heap {
     }
 
     /* Return the size of the heap */
-    getSize() {}
+    getSize() {
+        return this.storage.length;
+    }
 
     /* Moves the element at the specified index "up"
   the heap by swapping it with its parent if its
@@ -47,5 +54,10 @@ class Heap {
   the input index */
     siftDown(index) {}
 }
+
+const newHeap = new Heap(10);
+// newHeap.insert(10);
+
+console.log(newHeap);
 
 module.exports = Heap;

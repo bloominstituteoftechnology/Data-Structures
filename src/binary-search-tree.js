@@ -48,13 +48,11 @@ class BinarySearchTree {
   /* Returns the maximum value in the tree 
   Should not remove the max value from the tree */
   getMax() {
-    let max = this.value;
     let node = this;
     while (node.right) {
       node = node.right;
-      max = node.value;
     }
-    return max;
+    return node.value;
   }
 
   /* Traverses the tree in a 'vertical' fashion,

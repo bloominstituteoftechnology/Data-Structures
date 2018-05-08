@@ -9,20 +9,20 @@ class ListNode {
   /* Insert the given value as this node's
   `next` node */
   insertAfter(value) {
-    const newNode = {
-      value: value,
-    };
+    // const newNode = {
+    //   value: value,
+    // };
   }
 
   /* Insert the given value as the this node's
   `prev` node */
   insertBefore(value) {
-    const newNode = new ListNode({
-      value: value,
-      next: this,
-      prev: this.prev,
-    });
-    this.prev = newNode;
+    // const newNode = new ListNode({
+    //   value: value,
+    //   next: this,
+    //   prev: this.prev,
+    // });
+    // this.prev = newNode;
   }
 
   /* Delete this node */
@@ -40,11 +40,21 @@ class DoublyLinkedList {
   node of the list */
 
   addToHead(value) {
-    const newNode = new ListNode(value, null, this.head);
-    if (!this.tail) {
+    const newNode = new ListNode(value);
+    if (!this.head && !this.tail) {
+      this.head = newNode;
       this.tail = newNode;
     }
+    if (this.head === this.tail) {
+      this.tail.prev = newNode;
+      newNode.next = this.tail;
+    }
+    if (this.head) {
+      this.head.prev = newNode;
+      newNode.next = this.head;
+    }
     this.head = newNode;
+    console.log(this);
   }
 
   /* Remove the list's current head. The list's
@@ -61,9 +71,13 @@ class DoublyLinkedList {
   /* Adds the given value as the new tail
   node of the list */
   addToTail(value) {
-    const newNode = new ListNode(value, this.tail, null);
+    const newNode = new ListNode(value);
     if (!this.head) {
       this.head = newNode;
+    }
+    if (this.tail) {
+      this.tail.next = newNode;
+      newNode.prev = this.tail;
     }
     this.tail = newNode;
   }
@@ -91,15 +105,21 @@ class DoublyLinkedList {
   list. Update the list's `tail` pointer 
   accordingly */
   moveToBack(node) {
-    console.log(JSON.stringify(node, null, 2), 'node');
+    // console.log(JSON.stringify(node, null, 2), 'node');
+    if (!node.next) return null;
     if (node.next) node.next.prev = node.prev;
     node.prev ? (node.prev.next = node.next) : (this.head = node.next);
     this.addToTail(node.value, this.tail, null);
-    console.log(JSON.stringify(this.head, null, 2), 'head');
+    // console.log(JSON.stringify(this.head, null, 2), 'head');
   }
 
   /* Delete the given node from the list */
-  delete(node) {}
+  delete(node) {
+    const removedValue = node.value;
+    node.prev = node.next;
+    node.next = node.prev;
+    return removedValue;
+  }
 }
 
 module.exports = DoublyLinkedList;

@@ -89,6 +89,7 @@ describe('DoublyLinkedList', () => {
     expect(list.tail.value).toEqual(1);
     expect(list.head.value).toEqual(90);
     list.moveToBack(list.head);
+    console.log(list.tail)
     expect(list.tail.value).toEqual(90);
     expect(list.tail.prev.value).toEqual(1);
     list.moveToBack(list.head.next);

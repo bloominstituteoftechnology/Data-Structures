@@ -28,8 +28,6 @@ class ListNode {
     let nodeBefore = this.prev;
     let nodeAfter = this.next;
     
-    console.log('nodeBefore: ', nodeBefore);
-    console.log('nodeAfter: ', nodeAfter);
     // check if mid, head, or tail node
     if (nodeBefore && nodeAfter) {
       nodeAfter.prev = this.prev;
@@ -57,8 +55,6 @@ class DoublyLinkedList {
   addToHead(value) {
     let currentHead = this.head;
     let newHead = new ListNode(value);
-    // console.log('Current head: ', currentHead);
-    // console.log('New head: ', newHead);
     
     // check if this is first node
     if (!currentHead) {
@@ -71,8 +67,6 @@ class DoublyLinkedList {
       this.head = newHead;
       currentHead.prev = newHead;
       newHead.next = currentHead;
-
-      // console.log('Head: ', this.head);
   }
 
   /* Remove the list's current head. The list's

@@ -60,6 +60,7 @@ describe('BinarySearchTree', () => {
     binarySearchTree.insert(10);
     binarySearchTree.insert(9);
     binarySearchTree.insert(11);
+    console.log(binarySearchTree);
     binarySearchTree.breadthFirstForEach(foo);
     expect(array).toEqual([5, 3, 10, 4, 9, 11]);
   });

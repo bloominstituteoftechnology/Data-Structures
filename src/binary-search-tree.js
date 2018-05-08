@@ -65,12 +65,28 @@ class BinarySearchTree {
   /* Traverses the tree in a 'vertical' fashion,
   from parent to child. Executes the given callback
   on each visited tree node */
-  depthFirstForEach(cb) {}
+  depthFirstForEach(cb) {
+    let currentNode = this;
+    const traverse = node => {
+      cb(node.value);
+      node.left && traverse(node.left);
+      node.right && traverse(node.right);
+    };
+    traverse(currentNode);
+  }
 
   /* Traverses the tree in a 'horizontal' fashion,
   from sibling to sibling. Executes the given callback
   on each visited tree node */
-  breadthFirstForEach(cb) {}
+  breadthFirstForEach(cb) {
+    let currentNode = this;
+    let queue = [currentNode];
+    while ((currentNode = queue.shift())) {
+      cb(currentNode.value);
+      currentNode.left && queue.push(currentNode.left);
+      currentNode.right && queue.push(currentNode.right);
+    }
+  }
 }
 
 module.exports = BinarySearchTree;

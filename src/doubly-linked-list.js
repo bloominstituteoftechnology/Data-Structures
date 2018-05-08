@@ -84,22 +84,35 @@ class DoublyLinkedList {
   accordingly */
   moveToFront(node) {
     if (this.head === this.tail) return;
-
+    this.addToHead(node.value);
+    // console.log('\n\n\n---node:',node);
+    node.prev.next = node.next;
+    if (node.next)node.next.prev = node.prev;
+    else this.tail = node.prev;
   }
 
   /* Move the given node to the back of the
   list. Update the list's `tail` pointer 
   accordingly */
   moveToBack(node) {
-    console.log('\n\n\n---node:',node);
-    node.prev.next =node.next;
-    console.log('\n\n\n---this.prev.next', node.prev.next);
-    console.log('\n\nn\---this.next.prev', node.next.prev);
+    if (this.head === this.tail) return;
+    // this.head = node;
+    // // console.log('\n\n\n---node:',node);
+    // node.prev.next = node.next;
+    // if (node.next) node.next.prev = node.prev
+    // else return
+    // console.log('\n\n\n---this.prev.next', node.prev.next);
+    // console.log('\n\nn\---this.next.prev', node.next.prev);
+    if (node === this.head ) this.head = node.next;
+      if (node.prev) node.prev.insertAfter(node.next);
+      if (node.next) node.next.insertBefore(node.prev);
+      this.addToTail(node.value);
   }
 
   /* Delete the given node from the list */
   delete(node) {
-
+    node.prev.next = node.next;
+    node.next.prev = node.prev;
   }
 }
 

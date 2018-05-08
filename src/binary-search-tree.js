@@ -10,7 +10,25 @@ class BinarySearchTree {
   Make sure the rules of a binary search
   tree are being adhered to */
   insert(value) {
-
+    if(!this.value){
+      this.value = value;
+    }
+    else if(value < this.value){
+      if(!this.left){
+        this.left = new BinarySearchTree(value);
+      }
+      else{
+        this.left.insert(value);
+      }
+    }
+    else{
+      if(!this.right){
+        this.right = new BinarySearchTree(value);
+      }
+      else{
+        this.right.insert(value);
+      }
+    }
   }
 
   /* Traverses the tree until either the
@@ -18,13 +36,44 @@ class BinarySearchTree {
   or the entire tree has been searched.
   Returns true or false accordingly */
   contains(target) {
-
+    let current = this;
+    while(current.value){
+      if(current.value === target){
+        return true;
+      }
+      else if(target < current.value){
+        if(!current.left){
+          return false;
+        }
+        else{
+          current = this.left;
+        }
+      }
+      else{
+        if(!current.right){
+          return false;
+        }
+        else{
+          current = this.right;
+        }
+      }
+    }
   }
 
   /* Returns the maximum value in the tree 
   Should not remove the max value from the tree */
   getMax() {
-
+    if(this.value){
+      if(this.right){
+        return this.right.getMax();
+      }
+      else{
+        return this.value;
+      }
+    }
+    else{
+      return null;
+    }
   }
 
   /* Traverses the tree in a 'vertical' fashion,

@@ -9,7 +9,7 @@ class Heap {
   after insertion */
   insert(value) {
     const index = this.storage.push(value);
-    // this.bubbleUp(index);
+    
   }
 
   /* Remove the maximal value from the heap and

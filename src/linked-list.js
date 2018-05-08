@@ -4,6 +4,7 @@ class LinkedList {
     this.head = null;
     this.tail = null;
   }
+  //structure is like a nested obj
 
   /* Add the given value to the tail
   of the list. The `tail` pointer
@@ -53,17 +54,29 @@ class LinkedList {
 
   /* Finds and returns the maximal value
   of all the values in the list */
+  // getMax() {
+  //   let max = null;
+  //   let current = this.head;
+  //   while (current !== null) {
+  //     if (current.value > max) {
+  //       //compares max to each current value
+  //       max = current.value;
+  //       current = current.next; // sets current to the next value
+  //     } else {
+  //       current = current.next; // if current.value < max continue to next node
+  //     }
+  //   }
+  //   return max;
+  // }
   getMax() {
-    let max = null;
+    if (!this.head) return null;
+    let max = this.head.value;
     let current = this.head;
-    while (current !== null) {
+    while (current) {
       if (current.value > max) {
-        //compares max to each current value
         max = current.value;
-        current = current.next; // sets current to the next value
-      } else {
-        current = current.next; // if current.value < max continue to next node
       }
+      current = current.next;
     }
     return max;
   }

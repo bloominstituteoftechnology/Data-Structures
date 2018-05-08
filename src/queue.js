@@ -6,6 +6,7 @@ class Queue {
     this.size = 0;
     this.storage = new List();
   }
+  // basically a line first one in, first out
 
   /* Adds the given item to the queue */
   enqueue(item) {

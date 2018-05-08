@@ -5,6 +5,7 @@ class BinarySearchTree {
     this.left = null;
     this.right = null;
   }
+  // right side always greater then parent node
 
   /* Inserts the given value
   Make sure the rules of a binary search
@@ -34,7 +35,20 @@ class BinarySearchTree {
 
   /* Returns the maximum value in the tree 
   Should not remove the max value from the tree */
-  getMax() {}
+  getMax() {
+    if (!this) return null;
+
+    let max = this.value;
+    let current = this;
+
+    while (current) {
+      if (current.value > max) {
+        max = current.value;
+      }
+      current = current.right;
+    }
+    return max;
+  }
 
   /* Traverses the tree in a 'vertical' fashion,
   from parent to child. Executes the given callback

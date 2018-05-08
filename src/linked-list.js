@@ -59,7 +59,6 @@ class LinkedList {
     if(this.head.nextNode) curObj = this.head.nextNode;
     else return max;
     while(1){
-      console.log(curObj.value)
       if(curObj.value > max )max = curObj.value;
       if(curObj.nextNode) curObj = curObj.nextNode;
       else return max;

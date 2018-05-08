@@ -31,11 +31,7 @@ class Heap {
 
   /* Return the size of the heap */
   getSize() {
-    let count=0;
-    for (let i =0; i<this.storage.length; i++){
-      count = count++;
-    }
-    return count
+    return this.storage.length;
   }
 
   /* Moves the element at the specified index "up"

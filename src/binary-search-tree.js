@@ -57,7 +57,12 @@ class BinarySearchTree {
   Should not remove the max value from the tree */
   getMax() {
 
-
+    let current = this;
+    while (current) {
+      if (!current.right) break;
+      current = current.right;
+    }
+    return current.value;
   }
 
   /* Traverses the tree in a 'vertical' fashion,

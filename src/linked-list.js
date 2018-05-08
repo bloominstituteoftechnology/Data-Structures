@@ -1,5 +1,5 @@
 class LinkedList {
-  /* Do not modify the constructor */
+  /* Do not modify the constructor 🙅‍ */
   constructor() {
     this.head = null
     this.tail = null

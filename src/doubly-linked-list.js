@@ -1,5 +1,5 @@
 class ListNode {
-  /* Do not modify the constructor */
+  /* Do not modify the constructor 🙄 */
   constructor(value, prev = null, next = null) {
     this.value = value
     this.prev = prev
@@ -20,15 +20,14 @@ class ListNode {
 
   /* Delete this node */
   delete() {
-    this.prev = null
-    this.next = null
+    this.next.prev = this.prev
+    this.prev.next = this.next
   }
 }
 
 class DoublyLinkedList {
   /* Do not modify the constructor */
   constructor() {
-    this.size = 0
     this.head = null
     this.tail = null
   }
@@ -37,15 +36,14 @@ class DoublyLinkedList {
   node of the list */
   addToHead(value) {
     const node = new ListNode(value)
-    if (!this.head) {
+    if (this.head) {
+      this.head.prev = node
+      node.next = this.head
       this.head = node
-      this.tail = this.head
-      // this.size++
-      return
+    } else {
+      this.head = node
+      this.tail = node
     }
-    node.next = this.head
-    this.head = node
-    this.head.next.prev = this.head
   }
 
   /* Remove the list's current head. The list's
@@ -53,75 +51,114 @@ class DoublyLinkedList {
   `next` node */
   removeFromHead() {
     if (!this.head) return null
-    const removed = this.head.value
-    this.head = this.head.next
-    return removed
+
+    const { value } = this.head
+    if (this.head === this.tail) {
+      this.head = null
+      this.tail = null
+    } else {
+      this.head = this.head.next
+      this.head.prev = null
+    }
+    return value
   }
 
   /* Adds the given value as the new tail
   node of the list */
   addToTail(value) {
     const node = new ListNode(value)
-    if (!this.head) {
+    if (this.head) {
+      this.tail.next = node
+      node.prev = this.tail
+      this.tail = node
+    } else {
       this.head = node
       this.tail = node
-      this.size++
-      return
     }
-    this.tail.next = node
-    node.prev = this.tail
-    this.tail = node
-    this.size++
   }
 
   /* Remove the list's current tail. The list's
   `tail` pointer should point to the removed node's
   `prev` node */
   removeFromTail() {
-    let tmp = this.head
-    while (tmp) {
-      if (!tmp.next.next) {
-        const removed = tmp.next.value
-        tmp.next = null
-        this.tail = tmp
-        return removed
-      }
-      tmp = tmp.next
-    }
-  }
+    if (!this.tail) return null
 
-  /*
-  {
-    head: {
-      value: 18,
-      prev: null,
-      next: {
-        value: 109,
-        prev: {
-          value: 18
-        },
-        next: null
-      }
-    },
-    tail: {
-      value: 109
+    const { value } = this.tail
+    if (this.tail === this.head) {
+      this.head = null
+      this.tail = null
+    } else {
+      this.tail = this.tail.prev
+      this.tail.next = null
     }
+    return value
   }
-
-  */
 
   /* Move the given node to the front of the
   list. Update the list's `head` pointer
   accordingly */
-  moveToFront(node) {}
+  moveToFront(node) {
+    node.next
+      ? node.next.prev = node.prev
+      : this.tail = node.prev
+
+    node.prev.next = node.next
+    node.prev = null
+    node.next = this.head
+    this.head.prev = node
+    this.head = node
+  }
 
   /* Move the given node to the back of the
   list. Update the list's `tail` pointer 
   accordingly */
-  moveToBack(node) {}
+  moveToBack(node) {
+    let { head } = this
+    while (head) {
+      if (!head.next) {
+        head.next = node
+        break
+      }
+      head = head.next
+    }
+
+    node.prev
+      ? node.prev.next = node.next
+      : this.head = node.next
+
+    node.next.prev = node.prev
+    node.next = null
+    node.prev = this.tail
+
+    this.tail = node
+  }
 
   /* Delete the given node from the list */
-  delete(node) {}
+  delete(node) {
+    node.delete()
+  }
 }
+
+// const CircularJSON = require('circular-json')
+// const list = new DoublyLinkedList()
+
+// list.addToTail(2) // 2
+// list.addToTail(3) // 2 -> 3
+// list.addToHead(1) // 1 -> 2 -> 3
+// console.log(CircularJSON.stringify(list, null, '\t')) // 1 -> 2 -> 3
+// list.moveToFront(list.tail)
+// console.log(CircularJSON.stringify(list, null, '\t')) // 3 -> 1 -> 2
+// list.moveToFront(list.tail)
+// console.log(CircularJSON.stringify(list, null, '\t')) // 2 -> 3 -> 1
+// list.moveToBack(list.head)
+// console.log(CircularJSON.stringify(list, null, '\t')) // 3 -> 1 -> 2
+// list.moveToBack(list.head)
+// console.log(CircularJSON.stringify(list, null, '\t')) // 1 -> 2 -> 3
+// list.moveToFront(list.head.next)
+// console.log(CircularJSON.stringify(list, null, '\t')) // 2 -> 1 -> 3
+// list.moveToFront(list.tail)
+// list.removeFromHead()
+// list.removeFromHead()
+// list.removeFromTail()
 
 module.exports = DoublyLinkedList

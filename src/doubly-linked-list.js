@@ -172,6 +172,7 @@ class DoublyLinkedList {
   delete(node) {
     node.prev ? (node.prev.next = node.next) : (this.head = node.next)
     node.next ? (node.next.prev = node.prev) : (this.tail = node.prev)
+    this.length--
   }
 }
 

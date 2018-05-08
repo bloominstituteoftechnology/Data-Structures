@@ -3,6 +3,7 @@ class LinkedList {
   constructor() {
     this.head = null
     this.tail = null
+    this.length = 0
   }
 
   /* Add the given value to the tail
@@ -25,7 +26,7 @@ class LinkedList {
       currentNode.next = newNode
       this.tail = newNode
     }
-    this.length++ //?
+    this.length++
   }
 
   /* Remove the list's `head` value 

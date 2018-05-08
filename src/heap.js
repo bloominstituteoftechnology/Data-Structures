@@ -7,19 +7,34 @@ class Heap {
   /* Insert the given value into the heap.
   The heap should maintain the heap property 
   after insertion */
-  insert(value) {}
+  insert(value) {
+    if (this.storage.length === 0) {
+      this.storage.push(value);
+    } else {
+      this.storage.push(value);
+      this.bubbleUp(this.storage.length - 1);
+    }
+  }
 
   /* Remove the maximal value from the heap and
   return it. The heap should maintain the heap
   property after removing the maximal value */
-  delete() {}
+  delete() {
+    const removedMax = this.storage.shift();
+    this.siftDown(0);
+    return removedMax;
+  }
 
   /* Return the maximal value in the heap
   without removing it */
-  getMax() {}
+  getMax() {
+    return this.storage[0];
+  }
 
   /* Return the size of the heap */
-  getSize() {}
+  getSize() {
+    return this.storage.length;
+  }
 
   /* Moves the element at the specified index "up"
   the heap by swapping it with its parent if its
@@ -48,6 +63,22 @@ class Heap {
   siftDown(index) {
     const leftChildIndex = index * 2 + 1;
     const rightChildIndex = index * 2 + 2;
+    let greatestChildIndex;
+    if (this.storage[leftChildIndex] > this.storage[rightChildIndex])
+      greatestChildIndex = leftChildIndex;
+
+    if (this.storage[rightChildIndex] > this.storage[leftChildIndex])
+      greatestChildIndex = rightChildIndex;
+
+    if (
+      this.storage[index] < this.storage[leftChildIndex] ||
+      this.storage[index] < this.storage[rightChildIndex]
+    ) {
+      [this.storage[index], this.storage[greatestChildIndex]] = [
+        this.storage[greatestChildIndex],
+        this.storage[index],
+      ];
+    }
   }
 }
 

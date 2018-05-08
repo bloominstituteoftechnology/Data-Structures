@@ -80,14 +80,36 @@ class BinarySearchTree {
   from parent to child. Executes the given callback
   on each visited tree node */
   depthFirstForEach(cb) {
-
+    let s = [];
+    s.push(this);
+    let current = null;
+    while(s.length > 0){
+      current = s.pop();
+      cb(current.value);
+      if(current.right){
+        s.push(current.right);
+      }
+      if(current.left){
+        s.push(current.left);
+      }
+    }
   }
 
   /* Traverses the tree in a 'horizontal' fashion,
   from sibling to sibling. Executes the given callback
   on each visited tree node */
   breadthFirstForEach(cb) {
-
+    let q = [];
+    q.push(this);
+    let current = null;
+    while(q.length > 0){
+      current = q.shift();
+      if(current){
+        q.push(current.left);
+        q.push(current.right);
+        cb(current.value);
+      }
+    }
   }
 }
 

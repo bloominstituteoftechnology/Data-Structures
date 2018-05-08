@@ -39,9 +39,17 @@ class LinkedList {
   The `head` pointer should be updated
   accordingly */
   removeHead() {
-    const removeHead = this.head.value;
+    const value = this.head.value;
     this.head = this.head.next;
-    return removeHead;
+    if (this.head === null) {
+      return this.head = null;
+    } else if (this.head.next === null) {
+          const value = this.head.value;
+          this.head = null;
+          this.tail = null;
+          return value;
+        }
+        return value
   }
 
   /* Searches the list for the given value
@@ -57,17 +65,17 @@ class LinkedList {
   /* Finds and returns the maximal value
   of all the values in the list */
   getMax() {
+    let node = this.head;
     let max = null;
-    let current = this.head;
-
-    while (current) {
-      if (current.value > max) {
-        max = current.value;
+    while (node) {
+      if (node.value > max) {
+        max = node.value;
       }
-      current = current.next;
+      node = node.next;
     }
     return max;
-  }
+
 }
 
+}
 module.exports = LinkedList;

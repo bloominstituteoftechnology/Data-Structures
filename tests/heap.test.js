@@ -48,6 +48,7 @@ describe('Heap', () => {
     heap.insert(5);
     heap.insert(8);
     heap.insert(10);
+    console.log(heap.storage);
     heap.insert(1);
     heap.insert(2);
     heap.insert(5);

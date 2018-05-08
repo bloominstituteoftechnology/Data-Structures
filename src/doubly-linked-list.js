@@ -9,24 +9,13 @@ class ListNode {
   /* Insert the given value as this node's
   `next` node */
   insertAfter(value) {
-    // const newNode = new ListNode(value);
-    // newNode.next = this.next;
-    // newNode.prev = this;
-    // this.next = newNode;
-    // newNode.next.prev = newNode;
     this.next = new ListNode(value, this, this.next);
   }
 
   /* Insert the given value as the this node's
   `prev` node */
   insertBefore(value) {
-    // const newNode = new ListNode(value);
-    // newNode.next = this;
-    // newNode.prev = this.prev;
-    // this.prev = newNode;
-    // newNode.prev.next = newNode;
     this.prev = new ListNode(value, this.prev, this);
-    // newNode.prev.next = newNode;
   }
 
   /* Delete this node */
@@ -51,7 +40,7 @@ class DoublyLinkedList {
   /* Adds the given value as the new head
   node of the list */
   addToHead(value) {
-    if (this.head !== null) {
+    if (this.head !== null && this.tail !== null) {
       this.head.insertBefore(value);
       this.head = this.head.prev;
     } else {
@@ -65,15 +54,18 @@ class DoublyLinkedList {
   `next` node */
   removeFromHead() {
     if (this.head !== null) {
+      const headVal = this.head.value;
       this.head = this.head.next;
-      this.head.prev = null;
+      return headVal;
+    } else {
+      return null;
     }
   }
 
   /* Adds the given value as the new tail
   node of the list */
   addToTail(value) {
-    if (this.tail !== null) {
+    if (this.head !== null && this.tail !== null) {
       this.tail.insertAfter(value);
       this.tail = this.tail.next;
     } else {
@@ -87,25 +79,50 @@ class DoublyLinkedList {
   `prev` node */
   removeFromTail() {
     if (this.tail !== null) {
-      const currentTail = this.tail;
-      this.tail = currentTail.prev;
-      this.tail.next = null;
+      const tailVal = this.tail.value;
+      this.tail = this.tail.prev;
+      return tailVal;
+    } else {
+      return null;
     }
   }
 
   /* Move the given node to the front of the
   list. Update the list's `head` pointer
   accordingly */
-  moveToFront(node) {}
+  moveToFront(node) {
+    if (node.next) {
+      node.next.prev = node.prev;
+    } else {
+      this.tail = node.prev;
+    }
+    node.prev.next = node.next;
+    node.prev = null;
+    node.next = this.head;
+    this.head.prev = node;
+    this.head = node;
+  }
 
   /* Move the given node to the back of the
   list. Update the list's `tail` pointer 
   accordingly */
-  moveToBack(node) {}
+  moveToBack(node) {
+    if (node.prev) {
+      node.prev.next = node.next;
+    } else {
+      this.head = node.next;
+    }
+    node.next.prev = node.prev;
+    node.next = null;
+    node.prev = this.tail;
+    this.tail.next = node;
+    this.tail = node;
+  }
 
   /* Delete the given node from the list */
   delete(node) {
-    node.delete();
+    node.next.prev = node.prev;
+    node.prev.next = node.next;
   }
 }
 

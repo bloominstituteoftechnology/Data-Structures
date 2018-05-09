@@ -13,7 +13,7 @@ class LinkedList {
       value: value,
       next: null,
     };
-    if (!this.head) {
+    if (!this.tail) {
       this.head = newNode;
       this.tail = newNode;
       return;
@@ -26,6 +26,7 @@ class LinkedList {
   The `head` pointer should be updated
   accordingly */
   removeHead() {
+    if (!this.head) return;
     const head = this.head.value;
     this.head = this.head.next;
     return head;

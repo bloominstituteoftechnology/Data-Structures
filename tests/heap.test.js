@@ -74,8 +74,22 @@ describe('Heap', () => {
 
     heap.insert(10);
     heap.insert(12);
-    heap.delete();
+    heap.delete()
 
     expect(spy.called).toBe(true);
   });
-});
+
+  test('bubbleUp moves the value at the specified index up to its correct spot in the heap', () => {
+    heap.storage = [100, 19, 36, 17, 3, 25, 1, 2, 7, 20];
+    heap.bubbleUp(9);
+
+    expect(heap.storage).toEqual([100, 20, 36, 17, 19, 25, 1, 2, 7, 3]);
+  });
+
+  test('siftDown moves the element at the specified index down to its correct spot in the heap', () => {
+    heap.storage = [7, 19, 36, 17, 3, 25, 1, 2];
+    heap.siftDown(0);
+
+    expect(heap.storage).toEqual([36, 19, 25, 17, 3, 7, 1, 2]);
+  });
+})

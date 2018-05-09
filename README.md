@@ -49,15 +49,15 @@ Topics:
 ## Tasks
 1. Set up your repository by running `npm install` in your root directory to install all necessary dependencies.
 
-2. Implement each data structure, starting with the linked list data structure. Run `npm test` to run the tests and check your progress. Get all the tests passing for each data structure. 
+2. Implement each data structure, starting with the linked list data structure. Run `npm test <filename>.test.js` to run the tests for that data structure and check your progress. Get all the tests passing for each data structure. 
 
 ## Stretch Goals
-1. Add these two additional methods to your Binary Search Tree class: 
+1. Add the following two methods to your Binary Search Tree class. Uncomment the last two tests in the `tests/binary-search-tree.test.js` file in order to test that your methods are working correctly.
 
    * `depthFirstForEach(cb)` receives a callback function as a parameter. This method iterates over the binary search tree in [depth-first](https://en.wikipedia.org/wiki/Depth-first_search) order, applying the supplied callback function to each tree element in turn. 
    * `breadthFirstForEach(cb)` receives a callback function as a parameter. This method iterates over the binary search tree in [breadth-first](https://en.wikipedia.org/wiki/Breadth-first_search) order, applying the supplied callback function to each tree element in turn.
 
-2. Implement a [doubly-linked list](https://en.wikipedia.org/wiki/Doubly_linked_list) class that adheres to the following specification:
+2. Implement a [doubly-linked list](https://en.wikipedia.org/wiki/Doubly_linked_list) class that adheres to the following specification. Uncomment the tests in the `tests/doubly-linked-list.test.js` file in order to test your solution.
 
    * Consists of a `DoublyLinkedList` class and a `ListNode` class.
    * The `ListNode` class has the methods `insertAfter`, `insertBefore`, and `delete`.

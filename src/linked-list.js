@@ -12,15 +12,15 @@ should be updated accordingly */
     // use value to create new node
     const newNode = {
       next: null,
-      value: value,
+      value,
     };
 
     // check to see if head is null
-    if (this.head === null) {
+    if (this.tail === null) {
       this.head = newNode;
       this.tail = newNode;
+      return;
     }
-
     // change the old tail to point to our new node
     this.tail.next = newNode;
     //update `this.tail` to point to our new node
@@ -52,14 +52,14 @@ accordingly */
   /* Finds and returns the maximal value
 of all the values in the list */
   getMax() {
-    // let max = null;
-    // let currentNode = this.head;
-    // // if (this.head === null) return null;
-    // while (currentNode) {
-    //   if (currentNode.value > max) max = currentNode.value;
-    //   currentNode = currentNode.next;
-    // }
-    // return max;
+    let max = null;
+    let currentNode = this.head;
+    // if (this.head === null) return null;
+    while (currentNode) {
+      if (currentNode.value > max) max = currentNode.value;
+      currentNode = currentNode.next;
+    }
+    return max;
   }
 }
 

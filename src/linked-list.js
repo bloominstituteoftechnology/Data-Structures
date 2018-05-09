@@ -46,7 +46,16 @@ class LinkedList {
 
   /* Finds and returns the maximal value
   of all the values in the list */
-  getMax() {}
+  getMax() {
+    let max = null;
+    while (this.head) {
+      if (this.head.value > max) {
+        max = this.head.value;
+        this.head = this.head.next;
+      }
+    }
+    return max;
+  }
 }
 
 module.exports = LinkedList;

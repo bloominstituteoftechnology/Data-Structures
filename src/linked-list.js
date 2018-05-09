@@ -9,18 +9,15 @@ class LinkedList {
   of the list. The `tail` pointer
   should be updated accordingly */
   addToTail(value) {
-    // take the value and create a new node from it
     const newNode = {
       value: value,
       next: null
     };
-    // check if head is null
     if (!this.head) {
       this.head = newNode;
       this.tail = newNode;
       return;
     }
-    // change the old tail to point to our new node
     this.tail.next = newNode;
     this.tail = newNode;
   }
@@ -29,48 +26,62 @@ class LinkedList {
   The `head` pointer should be updated
   accordingly */
   removeHead() {
-    if (this.length === 0) {
-      return undefined;
+    if (this.head === null) return;
+    if (this.head.next === null) {
+      const head = this.head;
+      this.head = null;
+      this.tail = null;
+      return head.value;
     }
     const value = this.head.value;
     this.head = this.head.next;
-    this.length--;
-
     return value;
   }
 
   /* Searches the list for the given value
   Returns true or false accordingly */
   contains(value) {
-    let thisNode = this.head;
+    // Recursive solution
+    if (this.head === null) return false;
+    // const searchLinkedList = (node) => {
+    //   // base cases are:
+    //   // 1. we find the value
+    //   // 2. node.next is null
+    //   if (node.value === value) return true;
+    //   if (node.next === null) return false;
+    //   // call searchLinkedList recursively
+    //   // with the next node in the list
+    //   return searchLinkedList(node.next);
+    // };
+    // // call our recursive function on the head node
+    // // to kick it off
+    // return searchLinkedList(this.head);
 
-    while (thisNode) {
-      if (thisNode.value === value) {
+    // Iterative solution
+    let current = this.head;
+    while (current) {
+      if (current.value === value) {
         return true;
       }
-      thisNode = thisNode.next;
+      current = current.next;
     }
-
     return false;
   }
 
   /* Finds and returns the maximal value
   of all the values in the list */
   getMax() {
-    if (!this.head) {
-      return null;
-    }
-    let max = 0;
-    let head = this.head;
+    if (!this.head) return null;
+    let max = this.head.value;
+    let current = this.head;
 
-    while (head) {
-      if (max < head.value) {
-        max = head.value;
+    while (current) {
+      if (current.value > max) {
+        max = current.value;
       }
-      head = head.next;
+      current = current.next;
     }
+
     return max;
   }
 }
-
-module.exports = LinkedList;

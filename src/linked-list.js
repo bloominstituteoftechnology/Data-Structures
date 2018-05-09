@@ -27,6 +27,7 @@ class LinkedList {
   The `head` pointer should be updated
   accordingly */
   removeHead() {
+    if (!this.head) return null;
     const removeThis = { ...this.head };
     this.head = this.head.next;
     return removeThis.value;

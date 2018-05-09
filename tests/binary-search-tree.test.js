@@ -55,7 +55,7 @@ describe('BinarySearchTree', () => {
     expect(binarySearchTree.getMax()).toBe(300);
   });
 
-  it.skip('should execute a callback on every value in a tree using "depthFirstForEach" in the correct order', () => {
+  it('should execute a callback on every value in a tree using "depthFirstForEach" in the correct order', () => {
     const array = [];
     const foo = value => array.push(value);
     binarySearchTree.insert(2);
@@ -66,7 +66,7 @@ describe('BinarySearchTree', () => {
     expect(array).toEqual([5, 2, 3, 7, 9]);
   });
 
-  it.skip('should execute a callback on every value in the tree using "breadthFirstForEach" in the correct order', () => {
+  it('should execute a callback on every value in the tree using "breadthFirstForEach" in the correct order', () => {
     const array = [];
     const foo = value => array.push(value);
     binarySearchTree.insert(3);

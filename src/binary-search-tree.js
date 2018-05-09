@@ -10,13 +10,13 @@ class BinarySearchTree {
   Make sure the rules of a binary search
   tree are being adhered to */
   insert(value) {
-    const newNode = {
-      value: value,
-      right: null,
-      left: null,
-    };
+    // {
+    //   value: value,
+    //   right: null,
+    //   left: null,
+    // };
     // console.log(this.value, 'this.value');
-
+    const newNode = new BinarySearchTree(value);
     const check = node => {
       if (value >= node.value) {
         node.right ? check(node.right) : (node.right = newNode);
@@ -58,12 +58,29 @@ class BinarySearchTree {
   /* Traverses the tree in a 'vertical' fashion,
   from parent to child. Executes the given callback
   on each visited tree node */
-  depthFirstForEach(cb) {}
+  depthFirstForEach(cb) {
+    cb(this.value);
+    if (this.left) {
+      this.left.depthFirstForEach(cb);
+    }
+    if (this.right) {
+      this.right.depthFirstForEach(cb);
+    }
+  }
 
   /* Traverses the tree in a 'horizontal' fashion,
   from sibling to sibling. Executes the given callback
   on each visited tree node */
-  breadthFirstForEach(cb) {}
+  breadthFirstForEach(cb) {
+    const q = [];
+    q.push(this);
+    while (q.length > 0) {
+      const node = q.shift();
+      if (node.left) q.push(node.left);
+      if (node.right) q.push(node.right);
+      cb(node.value);
+    }
+  }
 }
 
 module.exports = BinarySearchTree;

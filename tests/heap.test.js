@@ -74,7 +74,7 @@ describe('Heap', () => {
 
     heap.insert(10);
     heap.insert(12);
-    heap.delete()
+    heap.delete();
 
     expect(spy.called).toBe(true);
   });

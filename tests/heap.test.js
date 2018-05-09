@@ -1,3 +1,4 @@
+const sinon = require('sinon');
 const Heap = require('../src/heap');
 
 let heap;
@@ -58,5 +59,23 @@ describe('Heap', () => {
     }
 
     expect(descendingOrder).toEqual([10, 8, 7, 6, 5, 5, 2, 1]);
+  });
+
+  test('insert method calls the bubbleUp method', () => {
+    const spy = sinon.spy(heap, 'bubbleUp');
+
+    heap.insert(0);
+
+    expect(spy.called).toBe(true);
+  });
+
+  test('delete method calls the siftDown method when heap has two or more elements', () => {
+    const spy = sinon.spy(heap, 'siftDown');
+
+    heap.insert(10);
+    heap.insert(12);
+    heap.delete();
+
+    expect(spy.called).toBe(true);
   });
 });

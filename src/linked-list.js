@@ -27,29 +27,68 @@ class LinkedList {
   The `head` pointer should be updated
   accordingly */
   // every node in a linked list has a value and a next property
+  // removeHead() {
+  //   const removed = this.head;
+  //   this.head = this.head.next;
+  //   return removed.value;
+  // }
+
   removeHead() {
-    const removed = this.head;
+    if (!this.head) return;
+    if (!this.head.next) {
+      const head = this.head;
+      this.head = null;
+      this.tail = null;
+      return head.value;
+    }
+    const value = this.head.value;
     this.head = this.head.next;
-    return removed.value;
+    return value;
   }
 
   /* Searches the list for the given value
   Returns true or false accordingly */
+  // contains(value) {
+  //   let found = false;
+  //   let current = this.head;
+  //   // check each node to see if it equals value
+  //   // last node in linked list is always null
+  //   while (current !== null) {
+  //     if (current.value === value) {
+  //       found = true;
+  //       // current = current.next; // breaks the while loop after you found it
+  //       current = null;
+  //     } else {
+  //       current = current.next;
+  //     }
+  //   }
+  //   return found;
+  // }
+
   contains(value) {
-    let found = false;
-    let current = this.head;
-    // check each node to see if it equals value
-    // last node in linked list is always null
-    while (current !== null) {
-      if (current.value === value) {
-        found = true;
-        // current = current.next; // breaks the while loop after you found it
-        current = null;
-      } else {
-        current = current.next;
-      }
-    }
-    return found;
+    //Recursive
+    if (!this.head) return false;
+    const searchLinkedList = (node) => {
+      // base cases are
+      // 1. we find the value
+      // 2. node.next is null
+
+      if (node.value === value) return true;
+      if (!node.next) return false;
+      // call searchLinkedList recursively w/ next node in list
+      return searchLinkedList(node.next);
+    };
+    return searchLinkedList(this.head);
+
+    //Iterative
+    // let current = this.head;
+    // while (current) {
+    //   if (current.value === value) {
+    //     return true;
+    //   }
+    //   current = current.next;
+    // }
+    // return false;
   }
 
   /* Finds and returns the maximal value

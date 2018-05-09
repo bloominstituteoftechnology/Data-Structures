@@ -16,6 +16,7 @@ class BinarySearchTree {
       if (!this.left) {
         this.left = newNode;
       } else {
+        // recursively call insert
         this.left.insert(value);
       }
     } else if (value >= this.value) {

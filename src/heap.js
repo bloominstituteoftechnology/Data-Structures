@@ -63,8 +63,11 @@ class Heap {
   child's value is greater than the value located at
   the input index */
   siftDown(index) {
+    // grabs the values 2 children
     const leftChildIndex = index * 2 + 1;
     const rightChildIndex = index * 2 + 2;
+    // figure out the largest child
+    let maxChild;
   }
 }
 

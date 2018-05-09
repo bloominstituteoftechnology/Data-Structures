@@ -8,13 +8,22 @@ class ListNode {
 
   /* Insert the given value as this node's `next` node */
   insertAfter(value) {
-    this.next = value;
+    const currentNode = this.next;
+    this.next = new ListNode(value, this, currentNextNode);
+    if (currentNextNode) {
+      currentNextNode.prev = this.next;
+    }
   }
 
   /* Insert the given value as the this node's
   `prev` node */
   insertBefore(value) {
-    this.prev = value;
+    // this.prev = value;
+    const currentPrevNode = this.prev;
+    this.prev = new ListNode(value, currentPrevNode, this);
+    if (currentPrevNode) {
+      currentPrevNode.next = this.prev;
+    }
   }
 
   /* Delete this node */
@@ -59,7 +68,7 @@ class DoublyLinkedList {
     }
     const currentHead = this.head;
     this.head = this.head.next;
-
+    // if there is an exisiting head nullify the prev becauce obvs the head prev is always null 
     if (this.head) {
       this.head.prev = null;
     }

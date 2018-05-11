@@ -8,9 +8,13 @@ class ListNode {
 
   /* Insert the given value as this node's `next` node */
   insertAfter(value) {
-    const currentNode = this.next;
-    this.next = new ListNode(value, this, currentNextNode);
-    if (currentNextNode) {
+    // go to 52:15 to see a visual explanation in seasn cs8 data struc lec
+    // this squeezing in a node between the two nodes we have initially. So picture Two nodes.
+    const currentNextNode = this.next; // Intially, this is point at our second node 
+    // this is changing which node we're pointing too. Which is obvz the new one we're inserting
+    this.next = new ListNode(value, this, currentNextNode); // new 3RD node we're inserting 
+    // Now we're changing the 2ND node's pointer to point to our new node that has just been inserted
+    if (currentNextNode) { // since our new node's next is pointing to "CurrentNextNode" we will have bidrectional communication.
       currentNextNode.prev = this.next;
     }
   }
@@ -18,7 +22,6 @@ class ListNode {
   /* Insert the given value as the this node's
   `prev` node */
   insertBefore(value) {
-    // this.prev = value;
     const currentPrevNode = this.prev;
     this.prev = new ListNode(value, currentPrevNode, this);
     if (currentPrevNode) {
@@ -27,8 +30,8 @@ class ListNode {
   }
 
   /* Delete this node */
-  delete() {
-    if (this.prev) {
+  delete() {// this.prev is an enitre node reference. Same goes for this.next
+    if (this.prev) { // this.prev.next is replacing the previous node with 
       this.prev.next = this.next;
     }
     if (this.next) {
@@ -63,14 +66,12 @@ class DoublyLinkedList {
   `head` pointer should point to the removed node's
   `next` node */
   removeFromHead() {
-    if (!this.head) {
-      return null;
-    }
+    if (!this.head) return null;
     const currentHead = this.head;
     this.head = this.head.next;
-    // if there is an exisiting head nullify the prev becauce obvs the head prev is always null 
+
     if (this.head) {
-      this.head.prev = null;
+      this.head.prev = null; // head can't have a previous
     }
     return currentHead.value;
   }
@@ -83,9 +84,8 @@ class DoublyLinkedList {
       this.head = newNode;
     }
     if (this.tail) {
-      this.tail.next = null;
+      this.tail.next = newNode;
     }
-    
     this.tail = newNode;
   }
 
@@ -94,12 +94,13 @@ class DoublyLinkedList {
   `prev` node */
   removeFromTail() {
     if (!this.tail) return null;
-    
     const currentTail = this.tail;
     this.tail = this.tail.prev;
 
-    if (this.tail)this.tail.next = null;
-    
+    if (this.tail) {
+      this.tail.next = null;
+    }
+
     return currentTail.value;
   }
 

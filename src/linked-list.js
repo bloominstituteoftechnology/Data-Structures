@@ -1,6 +1,6 @@
 class LinkedList {
   /* Do not modify the constructor */
-  constructor() {
+  constructor () {
     this.head = null
     this.tail = null
     this.length = 0
@@ -9,7 +9,7 @@ class LinkedList {
   /* Add the given value to the tail
   of the list. The `tail` pointer
   should be updated accordingly */
-  addToTail(value) {
+  addToTail (value) {
     const newNode = {
       value: value,
       next: null
@@ -32,7 +32,7 @@ class LinkedList {
   /* Remove the list's `head` value 
   The `head` pointer should be updated
   accordingly */
-  removeHead() {
+  removeHead () {
     let headValue = null
     if (!this.head) {
       return headValue
@@ -45,7 +45,7 @@ class LinkedList {
 
   /* Searches the list for the given value
   Returns true or false accordingly */
-  contains(value) {
+  contains (value) {
     if (this.head.value === value) return true
     let currentNode = this.head
     while (currentNode.next) {
@@ -57,7 +57,7 @@ class LinkedList {
 
   /* Finds and returns the maximal value
   of all the values in the list */
-  getMax() {
+  getMax () {
     if (!this.head) return null
     let max = this.head.value
     let currentNode = this.head
@@ -69,4 +69,4 @@ class LinkedList {
   }
 }
 
-module.exports = LinkedList
+j

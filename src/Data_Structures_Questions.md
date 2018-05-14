@@ -32,19 +32,15 @@ For each of the methods associated with each data structure, classify it based o
 
 ## Heap
 
-1. What is the runtime complexity of your `heapsort` function?
+1. What is the runtime complexity of `bubbleUp`?
 
-2. What is the space complexity of the `heapsort` function? Recall that your implementation should return a new array with the sorted data. What would be the space complexity if your function instead altered the input array?
+2. What is the runtime complexity of `siftDown`?
 
-3. What is the runtime complexity of `bubbleUp`?
+3. What is the runtime complexity of `insert`?
 
-4. What is the runtime complexity of `siftDown`?
+4. What is the runtime complexity of `delete`?
 
-5. What is the runtime complexity of `insert`?
-
-6. What is the runtime complexity of `delete`?
-
-7. What is the runtime complexity of `getMax`?
+5. What is the runtime complexity of `getMax`?
 
 ## [Stretch Goal] Doubly Linked List
 

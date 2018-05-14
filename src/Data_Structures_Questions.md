@@ -30,10 +30,6 @@ For each of the methods associated with each data structure, classify it based o
 
 3. What is the runtime complexity of `getMax`? 
 
-4. What is the runtime complexity of `depthFirstForEach`?
-
-5. What is the runtime complexity of `breadthFirstForEach`?
-
 ## Heap
 
 1. What is the runtime complexity of your `heapsort` function?

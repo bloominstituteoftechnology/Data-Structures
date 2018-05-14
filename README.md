@@ -34,7 +34,7 @@ Topics:
 ![Image of Queue](https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Data_Queue.svg/600px-Data_Queue.svg.png)
 
 ### Binary Search Trees
-* Should have the methods `insert`, `contains`, `getMax`, `depthFirstForEach`, and `breadthFirstForEach`.
+* Should have the methods `insert`, `contains`, `getMax`.
   * `insert` adds the input value to the binary search tree, adhering to the rules of the ordering of elements in a binary search tree.
   * `contains` searches the binary search tree for the input value, returning a boolean indicating whether the value exists in the tree or not.
   * `getMax` returns the maximum value in the binary search tree.
@@ -54,12 +54,7 @@ Topics:
 ![Image of a Heap in Array form](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Heap-as-array.svg/603px-Heap-as-array.svg.png)
 
 ## Stretch Goals
-1. Add the following two methods to your Binary Search Tree class. Uncomment the last two tests in the `tests/binary-search-tree.test.js` file in order to test that your methods are working correctly.
-
-   * `depthFirstForEach(cb)` receives a callback function as a parameter. This method iterates over the binary search tree in [depth-first](https://en.wikipedia.org/wiki/Depth-first_search) order, applying the supplied callback function to each tree element in turn. 
-   * `breadthFirstForEach(cb)` receives a callback function as a parameter. This method iterates over the binary search tree in [breadth-first](https://en.wikipedia.org/wiki/Breadth-first_search) order, applying the supplied callback function to each tree element in turn.
-
-2. Implement a [doubly-linked list](https://en.wikipedia.org/wiki/Doubly_linked_list) class that adheres to the following specification. Uncomment the tests in the `tests/doubly-linked-list.test.js` file in order to test your solution.
+1. Implement a [doubly-linked list](https://en.wikipedia.org/wiki/Doubly_linked_list) class that adheres to the following specification. Uncomment the tests in the `tests/doubly-linked-list.test.js` file in order to test your solution.
 
    * Consists of a `DoublyLinkedList` class and a `ListNode` class.
    * The `ListNode` class has the methods `insertAfter`, `insertBefore`, and `delete`.

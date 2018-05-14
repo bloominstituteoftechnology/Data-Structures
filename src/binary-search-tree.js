@@ -26,20 +26,6 @@ class BinarySearchTree {
   getMax() {
 
   }
-
-  /* Traverses the tree in a 'vertical' fashion,
-  from parent to child. Executes the given callback
-  on each visited tree node */
-  depthFirstForEach(cb) {
-
-  }
-
-  /* Traverses the tree in a 'horizontal' fashion,
-  from sibling to sibling. Executes the given callback
-  on each visited tree node */
-  breadthFirstForEach(cb) {
-
-  }
 }
 
 module.exports = BinarySearchTree;

@@ -7,6 +7,13 @@ Topics:
  * Binary Search Trees
  * Heaps
 
+## Tasks
+1. Set up your repository by running `npm install` in your root directory to install all necessary dependencies.
+
+2. Implement each data structure, starting with the linked list data structure. Run `npm test <filename>.test.js` to run the tests for that data structure and check your progress. Get all the tests passing for each data structure.
+
+3. Open up the `Data_Structures_Questions.md` file, which asks you to evaluate the runtime complexity of each of the methods you implemented for each data structure. Add your answers to each of the questions in the file.
+
 ### Linked Lists
  * Should have the methods: `addToTail`, `removeHead`, `contains`, and `getMax`.
    * `addToTail` replaces the tail with a new value that is passed in.
@@ -45,11 +52,6 @@ Topics:
 ![Image of a Heap in Tree form](https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Max-Heap.svg/501px-Max-Heap.svg.png)
 
 ![Image of a Heap in Array form](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Heap-as-array.svg/603px-Heap-as-array.svg.png)
-
-## Tasks
-1. Set up your repository by running `npm install` in your root directory to install all necessary dependencies.
-
-2. Implement each data structure, starting with the linked list data structure. Run `npm test <filename>.test.js` to run the tests for that data structure and check your progress. Get all the tests passing for each data structure. 
 
 ## Stretch Goals
 1. Add the following two methods to your Binary Search Tree class. Uncomment the last two tests in the `tests/binary-search-tree.test.js` file in order to test that your methods are working correctly.

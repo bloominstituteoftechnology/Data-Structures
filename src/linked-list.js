@@ -65,7 +65,19 @@ class LinkedList {
 
   /* Finds and returns the maximal value
   of all the values in the list */
-  getMax() {}
+  getMax() {
+    let values = [];
+    let current = this.head;
+
+    // collect all values in the list
+    while (current) {
+      values.push(current.value);
+
+      current = current.next;
+    }
+
+    return values.length === 0 ? null : Math.max(...values);
+  }
 }
 
 module.exports = LinkedList;

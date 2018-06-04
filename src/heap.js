@@ -42,7 +42,9 @@ class Heap {
   child's value is greater than the value located at
   the input index */
   siftDown(index) {
-    
+    // grab the two children indecies that correspoind with the index
+    const leftChildIndex = index * 2 + 1;
+    const rightChildIndex = index * 2 + 2
   }
 }
 

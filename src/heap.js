@@ -18,10 +18,15 @@ class Heap {
   property after removing the maximal value */
   delete() {
     console.log(this.storage);
-    let maxVal = this.storage[0];
-    this.storage.shift();
-    this.siftDown(0);
-    return maxVal;
+
+    if (this.storage[0] >= this.storage[1] && this.storage[2]) {
+      let maxVal = this.storage[0];
+      this.storage.shift();
+      this.siftDown(0);
+      return maxVal;
+    } else {
+      this.siftDown(0);
+    }
   }
 
   /* Return the maximal value in the heap
@@ -64,28 +69,37 @@ class Heap {
     let left = Math.floor(2 * index + 1);
     let right = Math.floor(2 * index + 2);
     let swapper = null;
+    console.log(this.storage);
+    console.log("index value:", this.storage[index]);
+    console.log("left:", left);
+    console.log("right:", right);
 
-    while (index < this.storage.length - 1) {
-      if (this.storage[left] > this.storage[index]) {
-        console.log("swapping left!");
-        swapper = this.storage[index];
-        this.storage[index] = this.storage[left];
-        this.storage[left] = swapper;
-        index = left;
-        left = Math.floor((index - 1) / 2);
-        right = Math.floor(2 * index + 2);
-      } else if (this.storage[right] > this.storage[index]) {
-        console.log("swapping right!");
-        swapper = this.storage[index];
-        this.storage[index] = this.storage[right];
-        this.storage[right] = swapper;
-        index = right;
-        left = Math.floor((index - 1) / 2);
-        right = Math.floor(2 * index + 2);
-      } else {
-        break;
-      }
+    // while (right < this.storage.length - 1) {
+    if (this.storage[left] > this.storage[index]) {
+      console.log("swapping left!");
+      swapper = this.storage[index];
+      this.storage[index] = this.storage[left];
+      this.storage[left] = swapper;
+      // index = left;
+      // left = Math.floor((index - 1) / 2);
+      // right = Math.floor(2 * index + 2);
+      console.log("after change:", this.storage);
     }
+    if (this.storage[right] > this.storage[index]) {
+      console.log("swapping right!");
+      swapper = this.storage[index];
+      this.storage[index] = this.storage[right];
+      this.storage[right] = swapper;
+      // index = right;
+      // left = Math.floor((index - 1) / 2);
+      // right = Math.floor(2 * index + 2);
+    }
+    // else {
+    //   console.log("skipping");
+    //   // index = 0;
+    //   // break;
+    // }
+    // }
   }
 }
 

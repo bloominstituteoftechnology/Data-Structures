@@ -10,7 +10,13 @@ class BinarySearchTree {
   Make sure the rules of a binary search
   tree are being adhered to */
   insert(value) {
-
+    if (value > this.value) {
+      if (!this.right) this.right = new BinarySearchTree(value);
+      else this.right.insert(value)
+    } else {
+      if (!this.left) this.left = new BinarySearchTree(value);
+      else this.left.insert(value)
+    }
   }
 
   /* Traverses the tree until either the

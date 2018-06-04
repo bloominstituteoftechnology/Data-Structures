@@ -38,7 +38,7 @@ class BinarySearchTree {
   /* Returns the maximum value in the tree 
   Should not remove the max value from the tree */
   getMax() {
-
+    return this.right === null ? this.value : this.right.getMax();
   }
 }
 

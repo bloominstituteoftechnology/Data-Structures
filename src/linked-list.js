@@ -9,7 +9,12 @@ class LinkedList {
   of the list. The `tail` pointer
   should be updated accordingly */
   addToTail(value) {
-
+    //should be at the end of the list
+    const newNode = {
+      value: value,
+      next: null
+    };
+    
   }
 
   /* Remove the list's `head` value 

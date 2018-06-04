@@ -9,13 +9,14 @@ class Queue {
 
   /* Adds the given item to the queue */
   enqueue(item) {
-    
+    this.storage.addToTail(item);
+    this.size += 1;
   }
 
   /* Removes and returns the least recently
   added item from the queue */
   dequeue() {
-
+    return this.storage.removeHead;
   }
 
   /* Returns true if the queue contains no
@@ -26,7 +27,7 @@ class Queue {
 
   /* A getter method for the length of the queue */
   get length() {
-
+    return this.size;
   }
 }
 

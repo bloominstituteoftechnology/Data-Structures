@@ -45,8 +45,9 @@ class LinkedList {
     let highestValue = 0;
     let current = this.head;
     while (current !== null) {
-      if (current.value >= highestValue) highestValue = current.value;
-    } 
+      if (current.value > highestValue) highestValue = current.value;
+      current = current.next;
+    }
     return highestValue;
   }
 }

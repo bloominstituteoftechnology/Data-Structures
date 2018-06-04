@@ -9,7 +9,20 @@ class LinkedList {
   of the list. The `tail` pointer
   should be updated accordingly */
   addToTail(value) {
+    const node = {
+      value: value,
+      next: null
+    }
 
+    if (this.head === null) {
+      this.head = node;
+      this.list = [ node ];
+    } else {
+      this.list[this.list.length - 1].next = node;
+      this.list.push(node);
+    }
+
+    this.tail = node;
   }
 
   /* Remove the list's `head` value 
@@ -28,7 +41,7 @@ class LinkedList {
   /* Finds and returns the maximal value
   of all the values in the list */
   getMax() {
-    
+
   }
 }
 

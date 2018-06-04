@@ -14,7 +14,16 @@ class LinkedList {
       value: value,
       next: null
     };
-    
+    //check if node isn't null
+    if(!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+      return;
+    }
+    //changes the previous tail to point towards the new node (i hope)
+    this.tail.next = newNode;
+    //updates this.tail to point to new node
+    this.tail = newNode;
   }
 
   /* Remove the list's `head` value 

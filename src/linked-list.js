@@ -25,7 +25,12 @@ class LinkedList {
   /* Remove the list's `head` value 
   The `head` pointer should be updated
   accordingly */
-  removeHead() {}
+  removeHead(value) {
+    let toBeRemoved = this.head;
+    let currentNode = this.head;
+
+    return toBeRemoved.value;
+  }
 
   /* Searches the list for the given value
   Returns true or false accordingly */

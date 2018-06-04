@@ -27,7 +27,7 @@ class LinkedList {
   accordingly */
   removeHead(value) {
     let toBeRemoved = this.head;
-    let currentNode = this.head;
+    this.head = toBeRemoved.next
 
     return toBeRemoved.value;
   }

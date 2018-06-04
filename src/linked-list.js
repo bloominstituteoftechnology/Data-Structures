@@ -9,14 +9,27 @@ class LinkedList {
   of the list. The `tail` pointer
   should be updated accordingly */
   addToTail(value) {
-
+    const tailNode = {
+      value,
+      next: null
+    }
+    
+    if(this.head === null) {
+      this.head = tailNode
+      this.tail = tailNode;
+    }
+    
+    this.tail.next = tailNode;
+    this.tail = tailNode;
   }
 
   /* Remove the list's `head` value 
   The `head` pointer should be updated
   accordingly */
   removeHead() {
-
+    const value = this.head.value;
+    this.head = this.head.next;
+    return value
   }
 
   /* Searches the list for the given value

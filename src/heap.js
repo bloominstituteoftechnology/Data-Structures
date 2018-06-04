@@ -57,7 +57,19 @@ class Heap {
   child's value is greater than the value located at
   the input index */
   siftDown(index) {
-    
+    const parent = this.storage[index];
+    const childLeft = this.storage[index * 2 + 1];
+    const childRight = this.storage[index * 2 + 2];
+    const largestChild = childLeft >= childRight ? childLeft : childRight;
+    if (largestChild > parent) {
+      if (childLeft === largestChild) {
+        this.storage[index * 2 + 1] = parent;
+        this.storage[index] = childLeft;
+      } else {
+        this.storage[index * 2 + 2] = parent;
+        this.storage[index] = childRight;
+      }
+    }
   }
 }
 

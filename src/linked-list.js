@@ -1,3 +1,10 @@
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
 class LinkedList {
   /* Do not modify the constructor */
   constructor() {
@@ -9,27 +16,37 @@ class LinkedList {
   of the list. The `tail` pointer
   should be updated accordingly */
   addToTail(value) {
+    let node = new Node(value);
+    let current;
+    // update tail to be the new node
+    this.tail = node;
+    // if list is empty then value is the head
+    if (this.head === null) {
+      this.head = node;
+    } else {
+      // list is not empty
+      // go to the end and add the value
+      current = this.head;
 
+      while (current.next) {
+        current = current.next;
+      }
+      current.next = node;
+    }
   }
 
   /* Remove the list's `head` value 
   The `head` pointer should be updated
   accordingly */
-  removeHead() {
-
-  }
+  removeHead() {}
 
   /* Searches the list for the given value
   Returns true or false accordingly */
-  contains(value) {
-
-  }
+  contains(value) {}
 
   /* Finds and returns the maximal value
   of all the values in the list */
-  getMax() {
-    
-  }
+  getMax() {}
 }
 
 module.exports = LinkedList;

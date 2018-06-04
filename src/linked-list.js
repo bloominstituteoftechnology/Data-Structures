@@ -9,26 +9,55 @@ class LinkedList {
   of the list. The `tail` pointer
   should be updated accordingly */
   addToTail(value) {
-
+    const node = {
+      value: value,
+      next: null
+    };
+    if (this.head === null) {
+      this.head = node;
+      this.tail = node;
+      return;
+    }
+    this.tail.next = node;
+    this.tail = node;
   }
 
   /* Remove the list's `head` value 
   The `head` pointer should be updated
   accordingly */
   removeHead() {
-
+    const removedHead = this.head;
+    this.head = this.head.next;
+    return removedHead.value;
   }
 
   /* Searches the list for the given value
   Returns true or false accordingly */
   contains(value) {
-
+    function checkObject(node) {
+      if (node.value === value) {
+        return true;
+      } else if (node.next === null) {
+        return false;
+      } else {
+        return checkObject(node.next);
+      }
+    }
+    return checkObject(this.head);
   }
 
   /* Finds and returns the maximal value
   of all the values in the list */
   getMax() {
-    
+    let biggest = null;
+    let node = this.head;
+    while (node) {
+      if (biggest < node.value) {
+        biggest = node.value;
+      }
+      node = node.next;
+    }
+    return biggest;
   }
 }
 

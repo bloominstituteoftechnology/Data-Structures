@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --verbose",
-    "test:watch": "npm test -- --watch"
+    "test:watch": "npm test -- --watchAll"
   },
   "repository": {
     "type": "git",

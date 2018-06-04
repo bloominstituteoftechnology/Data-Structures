@@ -31,7 +31,7 @@ class Queue {
   /* Returns true if the queue contains no
   elements, false otherwise */
   isEmpty() {
-
+    return this.storage.head === null;
   }
 
   /* A getter method for the length of the queue */

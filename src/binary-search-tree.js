@@ -10,6 +10,12 @@ class BinarySearchTree {
   Make sure the rules of a binary search
   tree are being adhered to */
   insert(value) {
+    const bst = new BinarySearchTree(value)
+    if (value > this.value){
+      if(!this.left){
+        
+      }
+    }
 
   }
 

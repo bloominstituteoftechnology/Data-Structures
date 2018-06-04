@@ -10,14 +10,14 @@ class LinkedList {
   should be updated accordingly */
 
   addToTail(value) {
-    newNode = {
+    const newNode = {
       value: value,
       next: null
     };
 
     if (!this.head) {
-      this.head = this.newNode;
-      this.tail = this.newNode;
+      this.head = newNode;
+      this.tail = newNode;
       return;
     }
 
@@ -30,17 +30,36 @@ class LinkedList {
   accordingly */
   removeHead() {
     let currentNode = this.head;
-    this.head = currentNode.next
-    return currentNode.value
+    this.head = currentNode.next;
+    return currentNode.value;
   }
 
   /* Searches the list for the given value
   Returns true or false accordingly */
-  contains(value) {}
+  contains(value) {
+    let currentNode = this.head;
+    while (currentNode) {
+      if (currentNode.value === value) {
+        return true;
+      }
+      currentNode = currentNode.next;
+    }
+    return false;
+  }
 
   /* Finds and returns the maximal value
   of all the values in the list */
-  getMax() {}
+  getMax() {
+    let max = 0
+    let currentNode = this.head;
+    while (currentNode) {
+      if (currentNode.value > max) {
+        max = currentNode.value; 
+      }
+      currentNode = currentNode.next;
+    }
+    return  max === 0? null : max;
+  }
 }
 
 module.exports = LinkedList;

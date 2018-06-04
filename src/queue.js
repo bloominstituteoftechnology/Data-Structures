@@ -21,11 +21,23 @@ class Queue {
 
   /* Removes and returns the least recently
   added item from the queue */
-  dequeue() {}
+  dequeue() {
+    if (this.isEmpty()) {
+      return null;
+    } else {
+      return this.storage.head.value;
+    }
+  }
 
   /* Returns true if the queue contains no
   elements, false otherwise */
-  isEmpty() {}
+  isEmpty() {
+    if (this.size === 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   /* A getter method for the length of the queue */
   get length() {

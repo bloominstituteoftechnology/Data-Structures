@@ -20,7 +20,10 @@ class Heap {
   return it. The heap should maintain the heap
   property after removing the maximal value */
   delete() {
-
+    const max = this.getMax();
+    this.storage.shift();
+    this.siftDown(0);
+    return max;
   }
 
   /* Return the maximal value in the heap

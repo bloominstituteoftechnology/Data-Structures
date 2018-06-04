@@ -34,7 +34,7 @@ class Heap {
 
   /* Return the size of the heap */
   getSize() {
-
+    return this.storage.length;
   }
 
   /* Moves the element at the specified index "up"

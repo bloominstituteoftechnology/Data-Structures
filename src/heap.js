@@ -42,7 +42,14 @@ class Heap {
   parent value is less than the value located at
   the input index */
   bubbleUp(index) {
+    const parent = this.storage[Math.floor((index - 2) / 2)];
+    const child = this.storage[index - 1];
 
+    if (child > parent) {
+      this.storage[Math.floor((index - 2) / 2)] = child;
+      this.storage[index - 1] = parent;
+      return this.bubbleUp(Math.floor((index - 2) / 2));
+    }
   }
 
   /* Move the element at the specified index "down"

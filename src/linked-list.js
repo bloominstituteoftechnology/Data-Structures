@@ -26,15 +26,35 @@ class LinkedList {
   /* Remove the list's `head` value 
   The `head` pointer should be updated
   accordingly */
-  removeHead() {}
+  removeHead() {
+    let removed = this.head;
+    this.head = removed.next;
+    return removed.value;
+  }
 
   /* Searches the list for the given value
   Returns true or false accordingly */
-  contains(value) {}
+  contains(value) {
+    let current = this.head;
+    while (current) {
+      if (current.value === value) return true;
+      current = current.next;
+    }
+    return false;
+  }
 
   /* Finds and returns the maximal value
   of all the values in the list */
-  getMax() {}
+  getMax() {
+    let max = null;
+    while (this.head !== null) {
+      if (max < this.head.value) {
+        max = this.head.value;
+        this.head = this.head.next;
+      }
+    }
+    return max;
+  }
 }
 
 module.exports = LinkedList;

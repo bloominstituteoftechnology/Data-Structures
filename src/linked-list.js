@@ -38,7 +38,13 @@ class LinkedList {
   /* Remove the list's `head` value 
   The `head` pointer should be updated
   accordingly */
-  removeHead() {}
+  removeHead() {
+    // current head's value that will be removed
+    let removed = this.head.value;
+    // current head is changed to the next node
+    this.head = this.head.next;
+    return removed;
+  }
 
   /* Searches the list for the given value
   Returns true or false accordingly */

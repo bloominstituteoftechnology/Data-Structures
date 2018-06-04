@@ -3,7 +3,7 @@
   your Linked List implementation to construct
   the Queue.
 */
-const List = require('./linked-list');
+const List = require("./linked-list");
 
 class Queue {
   /* Do not modify the constructor */
@@ -14,24 +14,22 @@ class Queue {
 
   /* Adds the given item to the queue */
   enqueue(item) {
-    
+    this.storage.addToTail(item);
+    this.size++;
+    return this.size;
   }
 
   /* Removes and returns the least recently
   added item from the queue */
-  dequeue() {
-
-  }
+  dequeue() {}
 
   /* Returns true if the queue contains no
   elements, false otherwise */
-  isEmpty() {
-
-  }
+  isEmpty() {}
 
   /* A getter method for the length of the queue */
   get length() {
-
+    return this.size;
   }
 }
 

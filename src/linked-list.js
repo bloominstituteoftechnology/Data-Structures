@@ -48,7 +48,10 @@ class LinkedList {
   /* Finds and returns the maximal value
   of all the values in the list */
   getMax() {
-
+    if (this.list) {
+      const listVals = this.list.map(node => node.value);
+      return Math.max(...listVals);
+    } else return null;
   }
 }
 

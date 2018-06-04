@@ -24,7 +24,15 @@ class BinarySearchTree {
   or the entire tree has been searched.
   Returns true or false accordingly */
   contains(target) {
-
+    if (target > this.value) {
+      if (this.right.value === target) return true;
+      if (this.right.right === null && this.right.left === null) return false;
+      else return this.right.contains(target);
+    } else {
+      if (this.left.value === target) return true;
+      if (this.left.right === null && this.left.left === null) return false;
+      else return this.left.contains(target);
+    }
   }
 
   /* Returns the maximum value in the tree 

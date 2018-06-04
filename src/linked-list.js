@@ -9,14 +9,18 @@ class LinkedList {
   of the list. The `tail` pointer
   should be updated accordingly */
   addToTail(value) {
-
+    const newNode = {
+      value,
+      next: null
+    }
+    this.tail = newNode;
   }
 
   /* Remove the list's `head` value 
   The `head` pointer should be updated
   accordingly */
   removeHead() {
-
+    this.head.value = null;
   }
 
   /* Searches the list for the given value

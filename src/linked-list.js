@@ -41,7 +41,8 @@ class LinkedList {
   /* Searches the list for the given value
   Returns true or false accordingly */
   contains(value) {
-
+    const listVals = this.list.map(node => node.value);
+    return listVals.includes(value);
   }
 
   /* Finds and returns the maximal value

@@ -34,7 +34,15 @@ class LinkedList {
 
   /* Searches the list for the given value
   Returns true or false accordingly */
-  contains(value) {}
+  contains(value) {
+    let currentNode = this.head;
+
+    while (currentNode) {
+      if (currentNode.value === value) return true;
+      currentNode = currentNode.next;
+    }
+    return false;
+  }
 
   /* Finds and returns the maximal value
   of all the values in the list */

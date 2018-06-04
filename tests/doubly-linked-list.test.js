@@ -2,7 +2,7 @@ const DoublyLinkedList = require('../src/doubly-linked-list');
 
 let list;
 
-describe('DoublyLinkedList', () => {
+describe.skip('DoublyLinkedList', () => {
   // beforeEach(() => {
   //   list = new DoublyLinkedList();
   // });

@@ -27,31 +27,43 @@ class LinkedList {
   The `head` pointer should be updated
   accordingly */
   removeHead() {
-    if (this.length === 0) {
-      return undefined;
-  }
-
-    const value = this.head.value;
-    if(this.head.next === null) {
-      return this.head.value;
-    }
+    const head = this.head.value;
     this.head = this.head.next;
-    this.length--;
-      
-    return value;
+    return head;
   }
 
   /* Searches the list for the given value
   Returns true or false accordingly */
   contains(value) {
 
+    let node = this.head;
+    while (node) {
+      if (node.value === value) {
+        return true;
+      } else {
+        node = node.next;
+      }
+    }
+    return false;
   }
 
   /* Finds and returns the maximal value
   of all the values in the list */
   getMax() {
-    
-  }
-}
+    if (!this.head) {
+      return null;
+    }
+    let node = this.head;
+    let max = this.head.value;
+    while (node) {
+      if (node.value > max) {
+        max = node.value;
+      }
+      node = node.next;
+    }
+    return max;
 
+  }
+
+}
 module.exports = LinkedList;

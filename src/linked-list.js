@@ -27,7 +27,18 @@ class LinkedList {
   The `head` pointer should be updated
   accordingly */
   removeHead() {
-    
+    if (this.length === 0) {
+      return undefined;
+  }
+
+    const value = this.head.value;
+    if(this.head.next === null) {
+      return this.head.value;
+    }
+    this.head = this.head.next;
+    this.length--;
+      
+    return value;
   }
 
   /* Searches the list for the given value

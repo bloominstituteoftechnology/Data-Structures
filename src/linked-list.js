@@ -26,7 +26,9 @@ class LinkedList {
   The `head` pointer should be updated
   accordingly */
   removeHead() {
-
+    let initHead = this.head.value;
+    this.head = this.head.next;
+    return initHead;
   }
 
   /* Searches the list for the given value

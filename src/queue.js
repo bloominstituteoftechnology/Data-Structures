@@ -25,7 +25,7 @@ class Queue {
     if (this.isEmpty()) {
       return null;
     } else {
-      return this.storage.head.value;
+      return this.storage.removeHead();
     }
   }
 

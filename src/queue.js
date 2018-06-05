@@ -34,7 +34,7 @@ class Queue {
 
   /* A getter method for the length of the queue */
   get length() {
-
+    return this.size;
   }
 }
 

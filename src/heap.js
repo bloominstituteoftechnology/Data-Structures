@@ -22,7 +22,7 @@ class Heap {
   /* Return the maximal value in the heap
   without removing it */
   getMax() {
-
+    return Math.max(...this.storage);
   }
 
   /* Return the size of the heap */

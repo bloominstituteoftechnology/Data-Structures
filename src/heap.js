@@ -50,13 +50,15 @@ class Heap {
     const arr = this.storage;
     const leftIdx = index * 2 + 1;
     const rightIdx = index * 2 + 2;
+    let maxIdx;
 
-    if (arr[rightIdx] && arr[rightIdx] > arr[index]) {
-      [arr[rightIdx], arr[index]] = [arr[index], arr[rightIdx]];
-      this.siftDown(rightIdx);
-    } else if (arr[leftIdx] && arr[leftIdx] > arr[index]) {
-      [arr[leftIdx], arr[index]] = [arr[index], arr[leftIdx]];
-      this.siftDown(leftIdx);
+    if (!arr[leftIdx]) maxIdx = rightIdx;
+    else if (!arr[rightIdx]) maxIdx = leftIdx;
+    else maxIdx = arr[leftIdx] > arr[rightIdx] ? leftIdx : rightIdx;
+
+    if (arr[index] < arr[maxIdx]) {
+      [arr[maxIdx], arr[index]] = [arr[index], arr[maxIdx]];
+      this.siftDown(maxIdx);
     }
   }
 }

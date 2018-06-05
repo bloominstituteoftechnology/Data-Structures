@@ -8,6 +8,7 @@ describe("BinarySearchTree", () => {
   });
 
   it('should have methods named "insert", "contains", "getMax", "depthFirstForEach", and "breadthFirstForEach"', () => {
+
     expect(
       Object.getPrototypeOf(binarySearchTree).hasOwnProperty("insert")
     ).toBe(true);

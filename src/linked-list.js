@@ -19,7 +19,7 @@ class LinkedList {
 
     this.tail.next = node;
     this.tail = node;
-    return
+    return;
   }
 
   /* Remove the list's `head` value 
@@ -27,12 +27,14 @@ class LinkedList {
   accordingly */
   removeHead() {
     const head = this.head;
+
     if (this.head.next === this.tail) {
       this.head = this.tail
       this.tail = null
     } else {
       this.head = this.head.next
     }
+
     return head.value;
   }
 

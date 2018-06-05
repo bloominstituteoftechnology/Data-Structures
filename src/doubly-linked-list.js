@@ -9,7 +9,8 @@ class ListNode {
   /* Insert the given value as this node's
   `next` node */
   insertAfter(value) {
-
+    this.next = value;
+    return this
   }
 
   /* Insert the given value as the this node's

@@ -25,7 +25,6 @@ class DoublyLinkedList {
     let current = new ListNode(value);
     current.next = this.head;
     this.head.prev = current;
-    this.head.prev = current;
     this.head = current;
   }
 
@@ -34,9 +33,9 @@ class DoublyLinkedList {
   `next` node */
   removeFromHead() {
     if (!this.head) return null;
-    let store = this.head.value;
+    const store = this.head.value;
     this.head = this.head.next;
-    // this.head.prev = null;
+    if (this.head) this.head.prev = null;
     return store;
   }
 
@@ -58,7 +57,7 @@ class DoublyLinkedList {
   `prev` node */
   removeFromTail() {
     if (!this.tail) return null;
-    let store = this.tail.value;
+    const store = this.tail.value;
     if (this.head === this.tail) {
       this.tail = null;
       this.head = null;
@@ -66,7 +65,6 @@ class DoublyLinkedList {
     }
     this.tail = this.tail.prev;
     this.tail.next = null;
-    console.log(store);
     return store;
   }
 
@@ -80,9 +78,8 @@ class DoublyLinkedList {
     } else if (node.prev) {
       node.prev.next = null;
       this.tail = node.prev;
-    } else if (node.next) {
-      node.next.prev = null;
-      this.head = node.next;
+    } else {
+      return;
     }
     this.addToHead(node.value);
   }
@@ -94,13 +91,10 @@ class DoublyLinkedList {
     if (node.next && node.prev) {
       node.next.prev = node.prev;
       node.prev.next = node.next;
-    } else if (node.prev) {
-      node.prev.next = null;
-      this.tail = node.prev;
     } else if (node.next) {
       node.next.prev = null;
       this.head = node.next;
-    }
+    } else return;
     this.addToTail(node.value);
   }
 

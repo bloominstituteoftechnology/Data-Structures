@@ -23,12 +23,12 @@ class Queue {
   /* Returns true if the queue contains no
   elements, false otherwise */
   isEmpty() {
-
+    return this.size < 1;
   }
 
   /* A getter method for the length of the queue */
   get length() {
-
+    return thise.size;
   }
 }
 

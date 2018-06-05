@@ -38,4 +38,28 @@ describe('BinarySearchTree', () => {
     binarySearchTree.insert(3);
     expect(binarySearchTree.getMax()).toBe(300);
   });
+
+  /* Stretch Goal tests */
+  // it('should execute a callback on every value in a tree using "depthFirstForEach" in the correct order', () => {
+  //   const array = [];
+  //   const foo = value => ((array.push(value)));
+  //   binarySearchTree.insert(2);
+  //   binarySearchTree.insert(3);
+  //   binarySearchTree.insert(7);
+  //   binarySearchTree.insert(9);
+  //   binarySearchTree.depthFirstForEach(foo);
+  //   expect(array).toEqual([5, 2, 3, 7, 9]);
+  // });
+
+  // it('should execute a callback on every value in the tree using "breadthFirstForEach" in the correct order', () => {
+  //   const array = [];
+  //   const foo = value => ((array.push(value)));
+  //   binarySearchTree.insert(3);
+  //   binarySearchTree.insert(4);
+  //   binarySearchTree.insert(10);
+  //   binarySearchTree.insert(9);
+  //   binarySearchTree.insert(11);
+  //   binarySearchTree.breadthFirstForEach(foo);
+  //   expect(array).toEqual([5, 3, 10, 4, 9, 11]);
+  // });
 });

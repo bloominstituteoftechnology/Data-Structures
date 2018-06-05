@@ -30,6 +30,10 @@ For each of the methods associated with each data structure, classify it based o
 
 3. What is the runtime complexity of `getMax`? 
 
+4. [Stretch Goal] What is the runtime complexity of `depthFirstForEach`?
+
+5. [Stretch Goal] What is the runtime complexity of `breadthFirstForEach`?
+
 ## Heap
 
 1. What is the runtime complexity of `bubbleUp`?

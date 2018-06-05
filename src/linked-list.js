@@ -25,7 +25,11 @@ class LinkedList {
   /* Remove the list's `head` value 
   The `head` pointer should be updated
   accordingly */
-  removeHead() {}
+  removeHead() {
+    const oldHead = this.head
+    this.head = this.head.next || null
+    return oldHead.value
+  }
 
   /* Searches the list for the given value
   Returns true or false accordingly */

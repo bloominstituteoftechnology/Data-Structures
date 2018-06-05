@@ -9,41 +9,78 @@ class LinkedList {
   of the list. The `tail` pointer
   should be updated accordingly */
   addToTail(value) {
-    let node = {
-      value: value,
-      next: null
+    const newNode = {
+      next: null,
+      value: value
+    };
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      this.tail.next = newNode;
+      this.tail = newNode;
     }
-    if (this.head === null) {
-      this.head = node;
-      this.head.next = this.tail;
-    }
-    this.tail = node;
   }
 
   /* Remove the list's `head` value 
   The `head` pointer should be updated
   accordingly */
   removeHead() {
-      if (!this.head) return null;
-      let value = this.head;
+      if (!this.head) return;
+      if (!this.head.next) {
+        const value = this.head.value;
+        this.head = null;
+        this.tail = null;
+        return head.value;
+      }
+      const value = this.head.value;
       this.head = this.head.next;
-      
-      if (this.head) this.head.prev = null;
-      else this.tail = null;
-      
       return value;
     }
 
   /* Searches the list for the given value
   Returns true or false accordingly */
-  contains(value) {
+  
+  //iterative soln.
 
-  }
+  // contains(value) {
+  //   if (!this.head) return false;
+  //   let current = this.head;
+  //   while (current) {
+  //     if (current.value === value) {
+  //       return true;
+  //     }
+  //     current = current.next;
+  //     }
+  //     return false;
+  //   }
+
+  //recursive soln.
+
+  contains(value) {
+    if (!this.head) return false;
+    const recurse = (node) => {
+      if (node.value === value) return true;
+      if(!node.next) return false;
+      return recurse(node.next);
+      };
+      return recurse(this.head);
+    }
 
   /* Finds and returns the maximal value
   of all the values in the list */
   getMax() {
+    if (!this.head) return null;
+    let max = this.head.value;
+    let current = this.head;
 
+    while (current) {
+      if (current.value > max) {
+        max = current.value;
+      }
+      current = current.next
+    }
+    return max;
   }
 }
 

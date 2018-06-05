@@ -42,7 +42,22 @@ class Heap {
   child's value is greater than the value located at
   the input index */
   siftDown(index) {
-    
+    let leftChildIndex = index*2+1;
+    let rightChildIndex = index*2+2;
+    let maxChildIndex;
+
+    if(this.storage[leftChildIndex] && this.storage[rightChildIndex]) {
+      maxChildIndex = this.storage[leftChildIndex] > this.storage[rightChildIndex] ? leftChildIndex: rightChildIndex;
+    }else if (this.storage[leftChildIndex]) {
+      maxChildIndex = leftChildIndex;
+    } else if (this.storage [rightChildIndex]) {
+      maxChildIndex = rightChildIndex;
+    }
+
+    if(this.storage[index] < this.storage[maxChildIndex]) {
+      [this.storage[maxChildIndex], this.storage[index]] = [this.storage[index], this.storage[maxChildIndex]];
+      this.siftDown(maxChildIndex);
+    }
   }
 }
 

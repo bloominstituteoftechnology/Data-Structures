@@ -15,10 +15,25 @@ class BinarySearchTree {
       left: null,
       right: null
     };
-    if (value < this.value) {
-      this.left = node;
-    } else if (value > this.value) {
-      this.right = node;
+
+    let currentNode = this;
+
+    while (currentNode) {
+      if (value < currentNode.value) {
+        if (currentNode.left === null) {
+          currentNode.left = node;
+          break;
+        } else {
+          currentNode = currentNode.left;
+        }
+      } else if (value > currentNode.value) {
+        if (currentNode.right === null) {
+          currentNode.right = node;
+          break;
+        } else {
+          currentNode = currentNode.right;
+        }
+      }
     }
   }
 
@@ -26,11 +41,31 @@ class BinarySearchTree {
   target value has been found in the true
   or the entire tree has been searched.
   Returns true or false accordingly */
-  contains(target) {}
+  contains(target) {
+    let currentNode = this;
+
+    while (currentNode) {
+      if (target < currentNode.value) {
+        currentNode = currentNode.left;
+      } else if (target > currentNode.value) {
+        currentNode = currentNode.right;
+      } else if (target === currentNode.value) {
+        return true;
+      }
+    }
+    return false;
+  }
 
   /* Returns the maximum value in the tree 
   Should not remove the max value from the tree */
-  getMax() {}
+  getMax() {
+    let currentNode = this;
+
+    while (currentNode.right !== null) {
+      currentNode = currentNode.right;
+    }
+    return currentNode.value;
+  }
 }
 
 module.exports = BinarySearchTree;

@@ -10,6 +10,22 @@ class BinarySearchTree {
   Make sure the rules of a binary search
   tree are being adhered to */
   insert(value) {
+    const node = new BinarySearchTree(value);
+
+    if(value > this.value) {
+      if(!this.right) {
+        this.right = node;
+      }
+      this.right.insert(value);
+    }
+
+    if(value < this.value) {
+      if(!this.left) {
+        this.left = node;
+      }
+
+      this.left.insert(value);
+    }
 
   }
 
@@ -18,6 +34,20 @@ class BinarySearchTree {
   or the entire tree has been searched.
   Returns true or false accordingly */
   contains(target) {
+    let node = this;
+
+    while(node) {
+      if(target === node.value) {
+        return true;
+      }
+      if(target > node.value) {
+        node = node.right;
+      }
+      else {
+        node = node.left
+      }
+    }
+    return false;
 
   }
 

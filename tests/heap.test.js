@@ -38,6 +38,7 @@ describe("Heap", () => {
     heap.insert(9);
     heap.insert(9);
     heap.insert(5);
+    console.log(heap);
 
     heap.delete();
     expect(heap.getMax()).toEqual(9);

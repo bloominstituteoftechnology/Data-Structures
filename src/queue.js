@@ -34,6 +34,9 @@ class Queue {
   /* Removes and returns the least recently
   added item from the queue */
   dequeue() {
+    // alternatively, you can import and use removeHead() 
+    // function from linked-list.js
+
     if (this.isEmpty() == true) {
       return null;
     } else if (this.isEmpty != true) {

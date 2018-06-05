@@ -54,21 +54,26 @@ Topics:
 ![Image of a Heap in Array form](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Heap-as-array.svg/603px-Heap-as-array.svg.png)
 
 ## Stretch Goals
-1. Implement a [doubly-linked list](https://en.wikipedia.org/wiki/Doubly_linked_list) class that adheres to the following specification. Uncomment the tests in the `tests/doubly-linked-list.test.js` file in order to test your solution.
+1. Implement two additional methods on the Binary Search Tree class:
 
-   * Consists of a `DoublyLinkedList` class and a `ListNode` class.
-   * The `ListNode` class has the methods `insertAfter`, `insertBefore`, and `delete`.
-     * `insertAfter` inserts a new node with the input value _after_  the calling node.
-     * `insertBefore` inserts a new node with the input value _before_ the calling node.
-     * `delete` should remove the calling node from the list (think about what that means).
+  * `depthFirstForEach(cb)` receives a callback function as a parameter. This method iterates over the binary search tree in [depth-first](https://en.wikipedia.org/wiki/Depth-first_search) order, applying the supplied callback function to each tree element in turn. 
+  * `breadthFirstForEach(cb)` receives a callback function as a parameter. This method iterates over the binary search tree in [breadth-first](https://en.wikipedia.org/wiki/Breadth-first_search) order, applying the supplied callback function to each tree element in turn.
 
-   * The `DoublyLinkedList` class, like the `LinkedList` class, holds references to the `head` of the list as well as the `tail`; it has the methods `addToHead`, `removeFromHead`, `addToTail`, `removeFromTail`, `moveToFront`, `moveToBack`, and `delete`
-     * `addToHead` creates a new node with the input value and adds the new node as the new head of the list.
-     * `addToTail` creates a new node with the input value and adds the new node as the new tail of the list.
-     * `removeFromHead` removes the current head of the list; the current head's next node should be designated as the new head.
-     * `removeFromTail` removes the current tail of the list; the current tail's previous node should be designated as the new tail.
-     * `moveToFront` receives a node and moves that node (if it exists in the list) to the front of the list as the new head.
-     * `moveToBack`receives a node and moves that node (if it exists in the list) to the back of the list as the new tail.
-     * `delete` receives a node as input and deletes that node from the list.
+2. Implement a [doubly-linked list](https://en.wikipedia.org/wiki/Doubly_linked_list) class that adheres to the following specification. Uncomment the tests in the `tests/doubly-linked-list.test.js` file in order to test your solution.
+
+  * Consists of a `DoublyLinkedList` class and a `ListNode` class.
+  * The `ListNode` class has the methods `insertAfter`, `insertBefore`, and `delete`.
+    * `insertAfter` inserts a new node with the input value _after_  the calling node.
+    * `insertBefore` inserts a new node with the input value _before_ the calling node.
+    * `delete` should remove the calling node from the list (think about what that means).
+
+  * The `DoublyLinkedList` class, like the `LinkedList` class, holds references to the `head` of the list as well as the `tail`; it has the methods `addToHead`, `removeFromHead`, `addToTail`, `removeFromTail`, `moveToFront`, `moveToBack`, and `delete`
+    * `addToHead` creates a new node with the input value and adds the new node as the new head of the list.
+    * `addToTail` creates a new node with the input value and adds the new node as the new tail of the list.
+    * `removeFromHead` removes the current head of the list; the current head's next node should be designated as the new head.
+    * `removeFromTail` removes the current tail of the list; the current tail's previous node should be designated as the new tail.
+    * `moveToFront` receives a node and moves that node (if it exists in the list) to the front of the list as the new head.
+    * `moveToBack`receives a node and moves that node (if it exists in the list) to the back of the list as the new tail.
+    * `delete` receives a node as input and deletes that node from the list.
 
 ![Image of Doubly Linked List](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Doubly-linked-list.svg/610px-Doubly-linked-list.svg.png)

@@ -42,7 +42,26 @@ class Heap {
   child's value is greater than the value located at
   the input index */
   siftDown(index) {
-    
+    //grab the two indices that correspond with this index
+    const leftChildIndex = index * 2 + 1;
+    const rightChildIndex = index * 2 + 2;
+    //figure out the larger child
+    let maxChild;
+
+    if(this.storage[leftChildIndex] && this.storage[rightChildIndex]) {
+      maxChildIndex = this.storage[leftChildIndex] > this.storage[rightChildIndex] ?
+    } else if (this.storage[leftChildIndex]) {
+      maxChildIndex = leftChildIndex;
+    } else if (this.storage[rightChildIndex]) {
+      maxChildIndex = rightChildIndex;
+    }
+
+    //check to see if we need to swap our current value with the vallue
+    //located at maxChildIndex
+    if (this.storage[index] < this.storage[maxChildIndex]) {
+    //swap them      
+    [this.storage[maxChildIndex], this.storage[index]] = [this.storage[index], this]
+  }
   }
 }
 

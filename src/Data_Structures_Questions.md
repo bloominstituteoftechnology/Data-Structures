@@ -3,7 +3,7 @@ For each of the methods associated with each data structure, classify it based o
 ## Linked List
 
 1. What is the runtime complexity of `addToTail`?
-  
+                    <!-- O(n) -->
     a. What if our list implementation didn't have a reference to the tail of the list in its constructor? What would be the runtime of the `addToTail` method?
 
 2. What is the runtime complexity of `removeHead`?
@@ -15,7 +15,7 @@ For each of the methods associated with each data structure, classify it based o
 ## Queue
 
 1. What is the runtime complexity of `enqueue`?
-
+        <!-- O(1) -->
 2. What is the runtime complexity of `dequeue`?
 
 3. What is the runtime complexity of `isEmpty`?

@@ -13,6 +13,7 @@ class LinkedList {
       value: value,
       next: null
     };
+
     if (this.head === null) {
       this.head = node;
       this.tail = node;
@@ -27,6 +28,7 @@ class LinkedList {
   accordingly */
   removeHead() {
     let oldHead = this.head;
+
     this.head = oldHead.next;
     return oldHead.value;
   }
@@ -35,8 +37,9 @@ class LinkedList {
   Returns true or false accordingly */
   contains(value) {
     let testedNode = this.head;
-    while (testedNode === !null) {
-      if (testedNode.value === value) {
+
+    while (testedNode !== null) {
+      if (testedNode.value == value) {
         return true;
       } else {
         testedNode = testedNode.next;
@@ -47,7 +50,18 @@ class LinkedList {
 
   /* Finds and returns the maximal value
   of all the values in the list */
-  getMax() {}
+  getMax() {
+    let max = null;
+    let testedNode = this.head;
+
+    while (testedNode !== null) {
+      if (testedNode.value > max) {
+        max = testedNode.value;
+      }
+      testedNode = testedNode.next;
+    }
+    return max;
+  }
 }
 
 module.exports = LinkedList;

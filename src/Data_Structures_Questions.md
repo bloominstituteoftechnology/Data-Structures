@@ -1,4 +1,4 @@
-For each of the methods associated with each data structure, classify it based on its runtime, using Big O notation.
+For each of the methods associated with each data structure, classify it based on its worst-case runtime, using Big O notation.
 
 ## Linked List
 
@@ -29,6 +29,10 @@ For each of the methods associated with each data structure, classify it based o
 2. What is the runtime complexity of `contains`?
 
 3. What is the runtime complexity of `getMax`? 
+
+4. [Stretch Goal] What is the runtime complexity of `depthFirstForEach`?
+
+5. [Stretch Goal] What is the runtime complexity of `breadthFirstForEach`?
 
 ## Heap
 

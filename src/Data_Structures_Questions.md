@@ -1,4 +1,4 @@
-For each of the methods associated with each data structure, classify it based on its runtime, using Big O notation.
+For each of the methods associated with each data structure, classify it based on its worst-case runtime, using Big O notation.
 
 ## Linked List
 

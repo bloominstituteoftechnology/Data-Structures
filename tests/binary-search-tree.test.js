@@ -24,7 +24,6 @@ describe("BinarySearchTree", () => {
     binarySearchTree.insert(3);
     binarySearchTree.insert(7);
     binarySearchTree.insert(6);
-    console.log(binarySearchTree);
     expect(binarySearchTree.left.right.value).toBe(3);
     expect(binarySearchTree.right.left.value).toBe(6);
   });

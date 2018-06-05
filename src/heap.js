@@ -8,21 +8,22 @@ class Heap {
   The heap should maintain the heap property 
   after insertion */
   insert(value) {
-    if (this.storage.length === 0) {
-      this.storage.push(value);
-    } else {
-      this.storage.push(value);
-      this.bubbleUp(this.storage.length - 1);
-    }
+    const index = this.storage.push(value) - 1;
+    this.bubbleUp(index);
   }
 
   /* Remove the maximal value from the heap and
   return it. The heap should maintain the heap
   property after removing the maximal value */
   delete() {
-    const removedMax = this.storage.shift();
+    if (!this.storage.length) return null;
+    if (this.storage.length === 1) {
+      return this.storage.pop();
+    }
+    const max = this.storage[0];
+    this.storage[0] = this.storage.pop();
     this.siftDown(0);
-    return removedMax;
+    return max;
   }
 
   /* Return the maximal value in the heap
@@ -42,11 +43,14 @@ class Heap {
   the input index */
   bubbleUp(index) {
     const parentIndex = Math.floor((index - 1) / 2);
+    // check if index should be shifted up according to parentIndex value
     if (this.storage[parentIndex] < this.storage[index]) {
+      // swap index and parent index
       [this.storage[parentIndex], this.storage[index]] = [
         this.storage[index],
-        this.storage[parentIndex]
+        this.storage[parentIndex],
       ];
+      // recursively call bubbleUp again to continue shifting index up the heap if needed
       this.bubbleUp(parentIndex);
     }
   }
@@ -58,21 +62,16 @@ class Heap {
   siftDown(index) {
     const leftChildIndex = index * 2 + 1;
     const rightChildIndex = index * 2 + 2;
-    let greatestChildIndex;
-    if (this.storage[leftChildIndex] > this.storage[rightChildIndex])
-      greatestChildIndex = leftChildIndex;
-
-    if (this.storage[rightChildIndex] > this.storage[leftChildIndex])
-      greatestChildIndex = rightChildIndex;
-
-    if (
-      this.storage[index] < this.storage[leftChildIndex] ||
-      this.storage[index] < this.storage[rightChildIndex]
-    ) {
-      [this.storage[index], this.storage[greatestChildIndex]] = [
-        this.storage[greatestChildIndex],
-        this.storage[index],
-      ];
+    let maxChild;
+    if (this.storage[leftChildIndex]) {
+      if (!this.storage[rightChildIndex]) {
+        maxChild = leftChildIndex;
+      } else if (this.storage[rightChildIndex]) {
+        maxChild = this.storage[leftChildIndex] > this.storage[rightChildIndex] ? leftChildIndex : rightChildIndex;
+      }
+      if(this.storage[index] < this.storage[maxChild]) {
+        [this.storage[maxChild], this.storage[index]] = [this.storage[index], this.storage[maxChild]];
+      }
     }
   }
 }

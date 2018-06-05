@@ -203,7 +203,14 @@ class DoublyLinkedList {
 
   /* Delete the given node from the list */
   delete(node) {
-    if (node === this.tail && this.tail.prev === this.head) {
+    if (!node) return;
+    if (node === this.head && this.tail === null) {
+      this.head = null;
+    } else if (node === this.head && !this.head.next.next) {
+      this.head = this.tail;
+      this.head.prev = null;
+      this.tail = null;
+    } else if (node === this.tail && this.tail.prev === this.head) {
       this.tail = null;
       this.head.next = null;
     } else if (node !== this.tail && node !== this.head) {
@@ -214,10 +221,9 @@ class DoublyLinkedList {
       this.tail = this.tail.prev;
     } else if (node === this.tail && this.head.next === this.tail) {
       this.tail = null;
-    } else if (node === this.head && !this.head.next.next) {
-      this.head = this.tail;
-      this.head.prev = null;
+    } else if (node === this.tail && this.tail.prev === this.head) {
       this.tail = null;
+      this.head.next = null;
     } else if (node === this.head) {
       node.next.prev = null;
       this.head = node.next;

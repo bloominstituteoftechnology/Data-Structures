@@ -59,6 +59,7 @@ describe('LinkedList', () => {
     list.addToTail(4);
     list.removeHead();
     expect(list.contains(1)).toBe(false);
+    expect(list.contains(4)).toBe(true);
   });
 
   it('should have a working "getMax" method', () => {

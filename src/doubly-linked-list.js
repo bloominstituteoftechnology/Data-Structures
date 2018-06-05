@@ -151,12 +151,55 @@ class DoublyLinkedList {
   /* Move the given node to the front of the
   list. Update the list's `head` pointer
   accordingly */
-  moveToFront(node) {}
+  moveToFront(node) {
+    if (node === this.head || !node) {
+      return;
+    }
+    const replaceHead = {
+      value: node.value,
+      prev: null,
+      next: this.head
+    };
+    if (node.next) {
+      node.next.prev = node.next.prev.prev;
+    }
+    if (node.prev) {
+      node.prev.next = node.prev.next.next;
+    }
+    this.head.prev = replaceHead;
+    this.head = replaceHead;
+    if (node === this.tail) {
+      this.tail = this.tail.prev;
+    }
+  }
 
   /* Move the given node to the back of the
   list. Update the list's `tail` pointer 
   accordingly */
-  moveToBack(node) {}
+  moveToBack(node) {
+    if (node === this.tail || !node) {
+      return;
+    }
+    if (node === this.head && !this.tail) {
+      return;
+    }
+    const replaceTail = {
+      value: node.value,
+      prev: this.tail,
+      next: null
+    };
+    if (node.next) {
+      node.next.prev = node.next.prev.prev;
+    }
+    if (node.prev) {
+      node.prev.next = node.prev.next.next;
+    }
+    this.tail.next = replaceTail;
+    this.tail = replaceTail;
+    if (node === this.head) {
+      this.head = this.head.next;
+    }
+  }
 
   /* Delete the given node from the list */
   delete(node) {}

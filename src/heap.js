@@ -8,24 +8,25 @@ class Heap {
   The heap should maintain the heap property 
   after insertion */
   insert(value) {
-
+    this.storage.push(value);
+    this.bubbleUp(this.storage.length - 1);
   }
 
   /* Remove the maximal value from the heap and
   return it. The heap should maintain the heap
   property after removing the maximal value */
   delete() {
-
+   
   }
 
   /* Return the maximal value in the heap
   without removing it */
-  getMax() {
+  getMax() { 
 
   }
 
   /* Return the size of the heap */
-  getSize() {
+  getSize() { 
 
   }
 
@@ -42,7 +43,7 @@ class Heap {
   child's value is greater than the value located at
   the input index */
   siftDown(index) {
-    
+
   }
 }
 

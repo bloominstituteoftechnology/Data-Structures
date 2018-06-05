@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js test linked-list.test.js
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js test queue.test.js
 
 PATH: 
   C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\2940c\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files\nodejs;C:\Program Files (x86)\Yarn\bin;C:\Users\2940c\AppData\Roaming\npm;%AppData%\npm\node_modules;C:\Program Files\Git\cmd;C:\Program Files\MongoDB\Server\3.6\bin;C:\Program Files\Microsoft VS Code\bin;C:\Users\2940c\AppData\Roaming\npm;C:\Users\2940c\AppData\Roaming\npm\node_modules;C:\Program Files\Heroku\bin
@@ -3254,7 +3254,7 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: C:\WINDOWS\system32\cmd.exe
-  Arguments: /d /s /c jest --verbose linked-list.test.js
+  Arguments: /d /s /c jest --verbose queue.test.js
   Directory: C:\Users\2940c\Desktop\Lambda\Data-Structures
   Output:
   

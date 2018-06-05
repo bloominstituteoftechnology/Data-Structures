@@ -33,36 +33,37 @@ For each of the methods associated with each data structure, classify it based o
 
 ## Heap
 
-1. What is the runtime complexity of `bubbleUp`?
+1. What is the runtime complexity of `bubbleUp`? O(log(n))
 
-2. What is the runtime complexity of `siftDown`?
+2. What is the runtime complexity of `siftDown`? O(log(n))
 
-3. What is the runtime complexity of `insert`?
+3. What is the runtime complexity of `insert`? O(log(n))
 
-4. What is the runtime complexity of `delete`?
+4. What is the runtime complexity of `delete`?  O(log(n))
 
-5. What is the runtime complexity of `getMax`?
+5. What is the runtime complexity of `getMax`? O(1) is the first item 
 
 ## [Stretch Goal] Doubly Linked List
 
-1. What is the runtime complexity of `ListNode.insertAfter`?
+1. What is the runtime complexity of `ListNode.insertAfter`? O(1)
 
-2. What is the runtime complexity of `ListNode.insertBefore`?
+2. What is the runtime complexity of `ListNode.insertBefore`? O(1)
 
-3. What is the runtime complexity of `ListNode.delete`?
+3. What is the runtime complexity of `ListNode.delete`? O(1)
 
-4. What is the runtime complexity of `DoublyLinkedList.addToHead`?
+4. What is the runtime complexity of `DoublyLinkedList.addToHead`? O(1)
 
-5. What is the runtime complexity of `DoublyLinkedList.removeFromHead`?
+5. What is the runtime complexity of `DoublyLinkedList.removeFromHead`? O(1)
 
-6. What is the runtime complexity of `DoublyLinkedList.addToTail`?
+6. What is the runtime complexity of `DoublyLinkedList.addToTail`? O(1)
 
-7. What is the runtime complexity of `DoublyLinkedList.removeFromTail`?
+7. What is the runtime complexity of `DoublyLinkedList.removeFromTail`? O(1)
 
-8. What is the runtime complexity of `DoublyLinkedList.moveToFront`?
+8. What is the runtime complexity of `DoublyLinkedList.moveToFront`? O(1)
 
-9. What is the runtime complexity of `DoublyLinkedList.moveToBack`?
+9. What is the runtime complexity of `DoublyLinkedList.moveToBack`? O(1)
 
-10. What is the runtime complexity of `DoublyLinkedList.delete`?
+10. What is the runtime complexity of `DoublyLinkedList.delete`? O(1)
 
     a. Compare the runtime of the doubly linked list's `delete` method with the worst-case runtime of the `Array.splice` method. Which method generally performs better?
+    Deleting from an array could cause the array to be recreated. So it would be better to use linked list

@@ -36,7 +36,7 @@ describe('Queue', () => {
     expect(queue.dequeue()).toBeNull();
   });
 
-  it('should return a size of 0 after attempting to dequeue more items than were queued', () => {
+  it('return true if size of the queue  is o and false it it is  not ', () => {
     queue.dequeue();
     queue.dequeue();
     queue.dequeue();

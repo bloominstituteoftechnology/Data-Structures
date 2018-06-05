@@ -4,8 +4,7 @@
   "description": "LambdaSchool's Data Structures repository",
   "main": "index.js",
   "scripts": {
-    "test": "jest --verbose",
-    "test:watch": "npm test -- --watch"
+    "test": "jest --watch --verbose"
   },
   "repository": {
     "type": "git",

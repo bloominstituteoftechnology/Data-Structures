@@ -63,14 +63,31 @@ class DoublyLinkedList {
   `head` pointer should point to the removed node's
   `next` node */
   removeFromHead() {
-    const result = this.head.value;
-    const newHead = {
-      value: this.head.next.value,
-      prev: null,
-      next: this.head.next.next
-    };
-    this.head = newHead;
-    return result;
+    if (!this.tail && !this.head) {
+      return null;
+    } else if (!this.tail && this.head) {
+      const result = this.head.value;
+      this.head = null;
+      return result;
+    } else if (this.head && this.tail) {
+      const result = this.head.value;
+      if (this.head.next === this.tail) {
+        this.tail.prev = null;
+        this.head = this.tail;
+        this.tail = null;
+        return result;
+      }
+      const newHead = {
+        value: this.head.next.value,
+        prev: null,
+        next: this.head.next.next
+      };
+      this.head = newHead;
+      if (this.head.next) {
+        this.head.next.prev = newHead;
+      }
+      return result;
+    }
   }
 
   /* Adds the given value as the new tail
@@ -81,6 +98,16 @@ class DoublyLinkedList {
       prev: this.tail,
       next: null
     };
+    if (!this.head) {
+      this.head = newNode;
+      return;
+    }
+    if (this.head && !this.tail) {
+      this.tail = newNode;
+      this.tail.prev = this.head;
+      this.head.next = this.tail;
+      return;
+    }
     if (!this.head && this.tail) {
       this.head = this.tail;
       this.head.next = newNode;
@@ -95,14 +122,30 @@ class DoublyLinkedList {
   `tail` pointer should point to the removed node's
   `prev` node */
   removeFromTail() {
-    const result = this.tail.value;
-    const newTail = {
-      value: this.tail.prev.value,
-      prev: this.tail.prev.prev,
-      next: null
-    };
-    this.tail = newTail;
-    return result;
+    if (!this.tail && !this.head) {
+      return null;
+    } else if (this.head && !this.tail) {
+      const result = this.head.value;
+      this.head = null;
+      return result;
+    } else if (this.head && this.tail) {
+      const result = this.tail.value;
+      if (this.tail.prev === this.head) {
+        this.head.next = null;
+        this.tail = null;
+        return result;
+      }
+      const newTail = {
+        value: this.tail.prev.value,
+        prev: this.tail.prev.prev,
+        next: null
+      };
+      this.tail = newTail;
+      if (this.tail.prev) {
+        this.tail.prev.next = newTail;
+      }
+      return result;
+    }
   }
 
   /* Move the given node to the front of the

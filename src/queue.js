@@ -20,13 +20,21 @@ class Queue {
     if(this.size === 0) {
       return null
     }
-    this.storage.tail === null;
-
+    this.size--
+    let temp = this.storage.head;
+    this.storage.removeHead();
+    return temp.value
   }
 
   /* Returns true if the queue contains no
   elements, false otherwise */
   isEmpty() {
+
+    if(this.size === 0) {
+      return true
+    }
+
+    return false;
 
   }
 

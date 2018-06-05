@@ -9,7 +9,7 @@ class Queue {
 
   /* Adds the given item to the queue */
   enqueue(item) {
-    this.size += 1;
+    this.size++;
     this.storage.addToTail(item);
     return this.storage.tail.value;
   }
@@ -18,7 +18,7 @@ class Queue {
   added item from the queue */
   dequeue() {
     if (!this.size > 0) return null;
-    this.size -= 1;
+    this.size--;
     const head = this.storage.head;
     this.storage.removeHead();
     return head.value;

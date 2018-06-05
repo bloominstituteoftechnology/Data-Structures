@@ -26,6 +26,12 @@ class LinkedList {
   The `head` pointer should be updated
   accordingly */
   removeHead() {
+    if (!this.head) return null;
+    if (!this.head.next) {
+      const value = this.head.value;
+      this.head = null;
+      return value;
+    }
     const removedHead = this.head;
     this.head = this.head.next;
     return removedHead.value;
@@ -34,6 +40,26 @@ class LinkedList {
   /* Searches the list for the given value
   Returns true or false accordingly */
   contains(value) {
+    if (!this.head) return false;
+
+    // iterative solution
+    // let current = this.head;
+    // while(current){
+    //   if(current.value === value){
+    //     return true;
+    //   }
+    //   current = current.next
+    // }
+    // return false;
+
+    //recursive solution
+    // const recurse = (node) => {
+    //   if(node.value ===value ) return true;
+    //   if(!node.next) return false;
+    //   return recurse(node.next);
+    // }
+    // return recurse(this.head);
+
     function checkObject(node) {
       if (node.value === value) {
         return true;

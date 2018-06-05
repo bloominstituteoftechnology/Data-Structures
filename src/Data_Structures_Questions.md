@@ -41,21 +41,21 @@ For each of the methods associated with each data structure, classify it based o
     O(log n)
 
 3.  What is the runtime complexity of `getMax`?
-    O(log n) (or is it O(n)? Not sure.)
+    O(log n) (if it is a binary balanced search tree, which it is in this case, then it is O(log n), otherwise O(n))
 
 ## Heap
 
 1.  What is the runtime complexity of `bubbleUp`?
-    O(n)
+    O(log n)
 
 2.  What is the runtime complexity of `siftDown`?
-    O(n)
+    O(log n)
 
 3.  What is the runtime complexity of `insert`?
-    O(n)
+    O(log n)
 
 4.  What is the runtime complexity of `delete`?
-    O(n)
+    O(log n)
 
 5.  What is the runtime complexity of `getMax`?
     O(1)

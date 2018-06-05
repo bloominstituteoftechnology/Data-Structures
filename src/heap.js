@@ -9,7 +9,7 @@ class Heap {
   after insertion */
   insert(value) {
     this.storage.push(value);
-    const index = this.storage.indexOf(value);
+    const index = this.storage.length - 1;
     this.bubbleUp(index);
   }
 
@@ -17,6 +17,11 @@ class Heap {
   return it. The heap should maintain the heap
   property after removing the maximal value */
   delete() {
+    if (!this.storage.length) return null;
+    if (this.storage.length === 1) {
+      return this.storage.pop();
+    }
+    // apparently using shift instead of pop is bad
     const biggest = this.storage[0];
     this.storage.shift();
     this.siftDown(0);
@@ -40,15 +45,25 @@ class Heap {
   the input index */
   bubbleUp(index) {
     const parentIndex = Math.floor((index - 1) / 2);
+    // array destructuring from solution lecture
     if (this.storage[parentIndex] < this.storage[index]) {
-      const tempVal = this.storage[parentIndex];
-      this.storage[parentIndex] = this.storage[index];
-      this.storage[index] = tempVal;
-    }
-    const grandparentIndex = Math.floor((parentIndex - 1) / 2);
-    if (this.storage[grandparentIndex] < this.storage[parentIndex]) {
+      [this.storage[parentIndex], this.storage[index]] = [
+        this.storage[index],
+        this.storage[parentIndex]
+      ];
       this.bubbleUp(parentIndex);
     }
+    // my solucione ==================================================
+    // const parentIndex = Math.floor((index - 1) / 2);
+    // if (this.storage[parentIndex] < this.storage[index]) {
+    //   const tempVal = this.storage[parentIndex];
+    //   this.storage[parentIndex] = this.storage[index];
+    //   this.storage[index] = tempVal;
+    // }
+    // const grandparentIndex = Math.floor((parentIndex - 1) / 2);
+    // if (this.storage[grandparentIndex] < this.storage[parentIndex]) {
+    //   this.bubbleUp(parentIndex);
+    // }
   }
 
   /* Move the element at the specified index "down"

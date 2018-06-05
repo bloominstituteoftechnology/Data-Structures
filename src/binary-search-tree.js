@@ -53,6 +53,14 @@ class BinarySearchTree {
   /* Returns the maximum value in the tree 
   Should not remove the max value from the tree */
   getMax() {
+    if (!this) return null;
+    // Recursive
+    // if(!this.right){
+    //   return this.value
+    // }
+    // return this.right.getMax();
+
+    // Iterative (I wrote it)
     let currentNode = this;
     while (currentNode.right) {
       currentNode = currentNode.right;

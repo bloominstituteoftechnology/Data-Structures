@@ -11,8 +11,8 @@ class LinkedList {
   addToTail(value) {
     const newNode = { value: value, next: null };
 
-    if (this.head == null) this.head = newNode;
-    if (this.tail != null) this.tail.next = newNode;
+    if (this.head === null) this.head = newNode;
+    if (this.tail !== null) this.tail.next = newNode;
     this.tail = newNode;
   }
 

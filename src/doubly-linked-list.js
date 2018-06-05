@@ -112,19 +112,48 @@ class DoublyLinkedList {
     list. Update the list's `head` pointer
     accordingly */
     moveToFront(node) {
-
+        if (node === this.tail) {
+            this.tail = node.prev;
+        }
+        if (node.prev) {
+            node.prev.insertAfter(node.next);
+        }
+        if (node.next) {
+            node.next.insertBefore(node.prev);
+        }
+        this.addToHead(node.value);
     }
 
     /* Move the given node to the back of the
     list. Update the list's `tail` pointer
     accordingly */
     moveToBack(node) {
-
+        if (node === this.head ) {
+            this.head = node.next;
+        }
+        if (node.prev) {
+            node.prev.insertAfter(node.next);
+        }
+        if (node.next) {
+            node.next.insertBefore(node.prev);
+        }
+        this.addToTail(node.value);
     }
 
     /* Delete the given node from the list */
     delete(node) {
-
+        if(node === this.tail) {
+            this.tail = node.prev;
+        }
+        if(node === this.head) {
+            this.head = node.next;
+        }
+        if(node.prev) {
+            node.prev.insertAfter(node.next);
+        }
+        if(node.next) {
+            node.next.insertBefore(node.prev);
+        }
     }
 }
 

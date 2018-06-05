@@ -37,7 +37,11 @@ class BinarySearchTree {
 
   /* Returns the maximum value in the tree 
   Should not remove the max value from the tree */
-  getMax() {}
+  getMax() {
+    if (this.right === null && this.left === null) return this.value;
+    else if (this.right) return this.right.getMax();
+    else if (this.left.value > this.value) return this.left.getMax();
+  }
 }
 
 module.exports = BinarySearchTree;

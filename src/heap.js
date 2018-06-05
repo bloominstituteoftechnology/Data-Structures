@@ -44,7 +44,25 @@ class Heap {
   siftDown(index) {
     // grab the two children indecies that correspoind with the index
     const leftChildIndex = index * 2 + 1;
-    const rightChildIndex = index * 2 + 2
+    const rightChildIndex = index * 2 + 2;
+    // figure out which is larger:
+    // check if values exist at both indecies
+    const bigKidIndex;
+    if (this.storage[leftChildIndex] && this.storage[rightChildIndex]) {
+      bigKidIndex = this.storage[leftChildIndex] > this.storage[rightChildIndex] ? leftChildIndex : rightChildIndex;
+    } else if (this.storage[leftChildIndex]) {
+      bigKidIndex = leftChildIndex;
+    } else if (this.storage[rightChildIndex]) {
+      bigKidIndex = rightChildIndex;
+    }
+    
+    // check to see if we need to swap current value with value located
+    // at bigKidIndex
+    if (this.storage[index] < this.storage[bigKidIndex]) {
+      // swap 'em
+      [this.storage[bigKidIndex, this.storage[index]] = [this.storage[index]], [this.storage[index]]];
+      this.siftDown(bigKidIndex);
+    }
   }
 }
 

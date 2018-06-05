@@ -10,36 +10,26 @@ class LinkedList {
   should be updated accordingly */
   addToTail(value) {
 
-    const newNode = {
-      value: value,
-      next: null,
-    };
-    if(!this.head) {
-      this.head = newNode;
-      this.tail = newNode;
-      return;
-    }
-    this.tail.next = newNode;
+    const newNode = { value: value, next: null };
+
+    if (this.head === null) this.head = newNode;
+    if (this.tail !== null) this.tail.next = newNode;
     this.tail = newNode;
   }
 
   removeHead() {
-
-    const newHead = this.head;
-    this.head = this.newHead.next;
-    return newHead.value;
-
+    const head = this.head;
+    this.head = this.head.next;
+    return head.value;
   }
 
   /* Searches the list for the given value
   Returns true or false accordingly */
   contains(value) {
-    let currentNode = this.head;
-    while(currentNode !== null) {
-      if (currentNode.value === value) {
-        return true;
-      }
-      currentNode = currentNode.next;
+    let current = this.head;
+    while (current) {
+      if (current.value === value) return true;
+      current = current.next;
     }
     return false;
   }
@@ -47,9 +37,15 @@ class LinkedList {
   /* Finds and returns the maximal value
   of all the values in the list */
   getMax() {
-    let currentNode = this.head;
-    let currentNodeValue = currentNode.value;
-    let max = currentNodeValue;
+    if (!this.head) return null;
+
+    let current = this.head;
+    let max = current.value;
+    while (current) {
+      if (current.value > max) max = current.value;
+      current = current.next;
+    }
+    return max;
   }
 }
 

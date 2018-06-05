@@ -11,7 +11,7 @@ class LinkedList {
   addToTail(value) {
 
       const newNode = {
-          value,
+          value: value,
           next: null
       };
 
@@ -30,30 +30,51 @@ class LinkedList {
   The `head` pointer should be updated
   accordingly */
   removeHead() {
-      const currentHead = this.head;
-      this.head = currentHead.next;
-      return currentHead.value;
+      if(!this.head) return;
+      if(!this.head.next) {
+          const value = this.head.value; 
+          this.head = null 
+          this.tail = null; 
+          return value;
+      }
+
+      const value = this.head.value;
+      this.head = this.head.next;
+      return value;
   }
 
   /* Searches the list for the given value
   Returns true or false accordingly */
   contains(value) {
+      if(!this.head) return false;
       let currentNode = this.head;
+    //   while(currentNode) {
+    //       if(currentNode.value === value) return true;
+    //       currentNode = currentNode.next;
+    //   }
+    //   return false;
 
-      while(currentNode) {
-          if(currentNode.value === value) return true;
-          currentNode = currentNode.next;
-      }
-      return false;
+    //recursive solution
+    
+    const recurse = (node) => {
+        if(node.value === value) return true;
+        if(!node.next) return false;
+        return recurse(node.next)
+    }
+    return recurse(currentNode); 
   }
 
   /* Finds and returns the maximal value
   of all the values in the list */
   getMax() {
-      let max = null;
+    if(!this.head) return null;
+      
+      let max = this.head.value;
       let currentNode = this.head;
+
       while(currentNode) {
           if( currentNode.value > max) max = currentNode.value;
+
           currentNode = currentNode.next;
       }
       return max;

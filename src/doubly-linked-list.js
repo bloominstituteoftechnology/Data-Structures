@@ -37,7 +37,7 @@ class DoublyLinkedList {
     addToHead(value) {
 
         if(!this.head) {
-            const newNode = ListNode(value, null, null);
+            const newNode = new ListNode(value, null, null);
             this.head = newNode;
             this.tail = newNode;
         }
@@ -54,12 +54,35 @@ class DoublyLinkedList {
     `next` node */
     removeFromHead() {
 
+        if(!this.head) {
+            return null;
+        }
+        else {
+            const currentHead = this.head;
+            this.head = currentHead.next;
+
+            if(this.head) {
+                this.head.insertBefore(null);
+            }
+
+            currentHead.delete();
+            return currentHead.value;
+        }
     }
 
     /* Adds the given value as the new tail
     node of the list */
     addToTail(value) {
 
+        const newTail = new ListNode(value, this.tail, null);
+        if (!this.head) {
+            this.head = newTail;
+            this.tail = newTail;
+        }
+        else {
+            this.tail.insertAfter(newTail);
+            this.tail = newTail;
+        }
     }
 
     /* Remove the list's current tail. The list's
@@ -67,6 +90,22 @@ class DoublyLinkedList {
     `prev` node */
     removeFromTail() {
 
+        if(!this.tail) {
+            return null;
+        }
+
+        if(!this.tail.prev) {
+            const value = this.tail.value;
+            this.tail = null;
+            this.head = null;
+            return value;
+        }
+
+        const currentTail = this.tail;
+        this.tail = currentTail.prev;
+        this.tail.insertAfter(null);
+        currentTail.delete();
+        return currentTail.value;
     }
 
     /* Move the given node to the front of the

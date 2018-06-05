@@ -10,7 +10,22 @@ class BinarySearchTree {
   Make sure the rules of a binary search
   tree are being adhered to */
   insert(value) {
-
+    const node = this;
+    const newNode = new BinarySearchTree(value);
+    if ( value < node.value ) {
+      if ( !node.left ) {
+        node.left = newNode;
+      } else {
+        node.left.insert(value);
+      }
+    }
+    if ( value > node.value ) {
+      if ( !node.right ) {
+        node.right = newNode;
+      } else {
+        node.right.insert(value);
+      }
+    }
   }
 
   /* Traverses the tree until either the
@@ -18,13 +33,24 @@ class BinarySearchTree {
   or the entire tree has been searched.
   Returns true or false accordingly */
   contains(target) {
-
+    const node = this;
+    if (node.value === target)
+      return true;
+    if (node.left && node.left.contains(target)) 
+      return true;
+    if (node.right && node.right.contains(target)) 
+      return true;
+    return false;
   }
 
   /* Returns the maximum value in the tree 
   Should not remove the max value from the tree */
   getMax() {
-
+    const node = this;
+    if (node.right === null) 
+      return node.value;
+    else if (node.right) 
+      return node.right.getMax();
   }
 }
 

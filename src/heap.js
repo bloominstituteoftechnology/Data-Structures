@@ -42,13 +42,13 @@ class Heap {
   parent value is less than the value located at
   the input index */
   bubbleUp(index) {
-    const parentIndex = Math.floor((index - 2) / 2);
+    const parentIndex = Math.floor((index - 1) / 2);
     const parent = this.storage[parentIndex];
-    const child = this.storage[index - 1];
+    const child = this.storage[index];
     if (child > parent) {
       this.storage[parentIndex] = child;
-      this.storage[index - 1] = parent;
-      return this.bubbleUp(parentIndex);
+      this.storage[index] = parent;
+      this.bubbleUp(parentIndex);
     }
   }
 
@@ -65,9 +65,11 @@ class Heap {
       if (leftChild === largestChild) {
         this.storage[index * 2 + 1] = parent;
         this.storage[index] = leftChild;
+        this.siftDown(index * 2 + 1);
       } else {
         this.storage[index * 2 + 2] = parent;
         this.storage[index] = rightChild;
+        this.siftDown(index * 2 + 2);
       }
     }
   }

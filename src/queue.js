@@ -1,4 +1,10 @@
-const List = require("./linked-list");
+/* 
+  For your Queue implementation, you'll use 
+  your Linked List implementation to construct
+  the Queue.
+*/
+const List = require('./linked-list');
+
 
 class Queue {
   /* Do not modify the constructor */

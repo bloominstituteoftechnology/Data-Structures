@@ -17,16 +17,6 @@ describe("BinarySearchTree", () => {
     expect(
       Object.getPrototypeOf(binarySearchTree).hasOwnProperty("getMax")
     ).toBe(true);
-    expect(
-      Object.getPrototypeOf(binarySearchTree).hasOwnProperty(
-        "depthFirstForEach"
-      )
-    ).toBe(true);
-    expect(
-      Object.getPrototypeOf(binarySearchTree).hasOwnProperty(
-        "breadthFirstForEach"
-      )
-    ).toBe(true);
   });
 
   it("should insert values at the correct location in the tree", () => {

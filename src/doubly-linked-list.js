@@ -49,8 +49,14 @@ class DoublyLinkedList {
       prev: null,
       next: this.head
     };
+    if (!this.tail && this.head) {
+      this.tail = this.head;
+      this.tail.prev = newNode;
+    }
+    if (this.head) {
+      this.head.prev = newNode;
+    }
     this.head = newNode;
-    if (!this.tail) this.tail = newNode;
   }
 
   /* Remove the list's current head. The list's
@@ -58,7 +64,12 @@ class DoublyLinkedList {
   `next` node */
   removeFromHead() {
     const result = this.head.value;
-    this.head = this.head.next;
+    const newHead = {
+      value: this.head.next.value,
+      prev: null,
+      next: this.head.next.next
+    };
+    this.head = newHead;
     return result;
   }
 
@@ -70,9 +81,14 @@ class DoublyLinkedList {
       prev: this.tail,
       next: null
     };
-    if (!this.tail) newNode.prev = this.head;
+    if (!this.head && this.tail) {
+      this.head = this.tail;
+      this.head.next = newNode;
+    }
+    if (this.tail) {
+      this.tail.next = newNode;
+    }
     this.tail = newNode;
-    if (!this.head) this.head = newNode;
   }
 
   /* Remove the list's current tail. The list's
@@ -80,7 +96,12 @@ class DoublyLinkedList {
   `prev` node */
   removeFromTail() {
     const result = this.tail.value;
-    this.tail = this.tail.prev;
+    const newTail = {
+      value: this.tail.prev.value,
+      prev: this.tail.prev.prev,
+      next: null
+    };
+    this.tail = newTail;
     return result;
   }
 

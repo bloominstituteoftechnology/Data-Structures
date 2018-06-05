@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js test queue.test.js
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js test heap.test.js
 
 PATH: 
   C:\Users\Velius\bin;C:\RailsInstaller\mingw64\bin;C:\RailsInstaller\usr\local\bin;C:\RailsInstaller\usr\bin;C:\RailsInstaller\usr\bin;C:\RailsInstaller\mingw64\bin;C:\RailsInstaller\usr\bin;C:\Users\Velius\bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\PC Connectivity Solution;C:\Program Files\ImageMagick-6.9.0-Q16;D:\Program Files\ImageMagick-6.9.0-Q16;C:\Ruby21\bin;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Intel\iCLS Client;C:\Program Files\Intel\iCLS Client;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Heroku\bin;C:\Program Files (x86)\git\cmd;C:\Program Files (x86)\GnuWin32\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\Exact Audio Copy;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\Skype\Phone;C:\RailsInstaller\cmd;C:\Program Files (x86)\Yarn\bin;C:\Program Files\nodejs;D:\Program Files\MongoDB\Server\3.6\bin;C:\Program Files\Microsoft VS Code\bin;C:\WINDOWS\System32\OpenSSH;D:\Program Files\MongoDB\Server\3.6\bin;C:\Program Files\Heroku\bin;C:\Users\Velius\AppData\Local\Microsoft\WindowsApps;C:\RailsInstaller\usr\bin\vendor_perl;C:\RailsInstaller\usr\bin\core_perl
@@ -3254,7 +3254,7 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: C:\WINDOWS\system32\cmd.exe
-  Arguments: /d /s /c jest --verbose queue.test.js
+  Arguments: /d /s /c jest --verbose heap.test.js
   Directory: D:\LambdaSchool\CS9\CS\Data-Structures
   Output:
   

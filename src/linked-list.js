@@ -27,7 +27,7 @@ class LinkedList {
   accordingly */
   removeHead(value) {
     let toBeRemoved = this.head;
-    this.head = toBeRemoved.next
+    this.head = toBeRemoved.next;
 
     return toBeRemoved.value;
   }
@@ -46,7 +46,18 @@ class LinkedList {
 
   /* Finds and returns the maximal value
   of all the values in the list */
-  getMax() {}
+  getMax() {
+    let currentNode = this.head;
+    let max = null;
+
+    while (currentNode) {
+      if (max < currentNode.value) {
+        max = currentNode.value;
+      }
+      currentNode = currentNode.next;
+    }
+    return max;
+  }
 }
 
 module.exports = LinkedList;

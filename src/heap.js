@@ -55,20 +55,19 @@ class Heap {
     const leftChildIndex = index * 2 + 1;
     const rightChildIndex = index * 2 + 2;
     let greatestChildIndex;
-    if (this.storage[leftChildIndex] > this.storage[rightChildIndex])
+    if (this.storage[leftChildIndex] && this.storage[rightChildIndex]) {
+      greatestChildIndex = this.storage[leftChildIndex] > this.storage[rightChildIndex] ? leftChildIndex : rightChildIndex; 
+
+    } else if (this.storage[leftChildIndex]){
       greatestChildIndex = leftChildIndex;
-
-    if (this.storage[rightChildIndex] > this.storage[leftChildIndex])
+    } else if (this.storage[rightChildIndex]){
       greatestChildIndex = rightChildIndex;
-
-    if (
-      this.storage[index] < this.storage[leftChildIndex] ||
-      this.storage[index] < this.storage[rightChildIndex]
-    ) {
-      [this.storage[index], this.storage[greatestChildIndex]] = [
-        this.storage[greatestChildIndex],
-        this.storage[index],
-      ];
+    }
+    if (this.storage[index] < this.storage[greatestChildIndex]) {
+    //swap them
+        [this.storage[greatestChildIndex], this.storage[index]] = [this.storage[index], this.storage[greatestChildIndex]];   
+        // recursively call siftdown to keep moving element down tree
+        this.siftDown(greatestChildIndex);
     }
   }
 }

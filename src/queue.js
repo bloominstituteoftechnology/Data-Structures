@@ -30,12 +30,22 @@ class Queue {
     }
   }
 
+  //Instructor Solve
+  // dequeue() {
+  //   const value = this.storage.removeHead();
+  //   if (!value) return null;
+        // this.size--;
+        // return value;
+  // }
+
+  //--------------------------------------------------
   /* Returns true if the queue contains no
   elements, false otherwise */
   isEmpty() {
     return this.size;
   }
 
+  //--------------------------------------------------
   /* A getter method for the length of the queue */
   get length() {
     return this.size;

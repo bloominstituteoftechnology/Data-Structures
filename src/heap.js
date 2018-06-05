@@ -17,6 +17,13 @@ class Heap {
     }
   }
 
+  //Instructor Solve: 
+  // insert(value) {
+  //   const index = this.storage.push(value) -1;
+  //   this.bubbleUp(index);
+  // }
+
+  //----------------------------------------------------
   /* Remove the maximal value from the heap and
   return it. The heap should maintain the heap
   property after removing the maximal value */
@@ -26,17 +33,34 @@ class Heap {
     return maxValue;
   }
 
+  //Instructor Solve:
+  // delete() {
+  //   if (!this.storage.length) return null;
+  //   if (this.storage.length === 1) {
+  //     return this.storage.pop(); //pop removes last element
+  //   }
+  //   const max = this.storage[0];
+  //   //remove the element with the highest index
+  //   //assign it to this.storage[0]
+  //   this.storage[0] = this.storage.pop();
+  //   this.siftDown(0);
+  //   return max;
+  // }
+
+  //----------------------------------------------------
   /* Return the maximal value in the heap
   without removing it */
   getMax() {
     return this.storage[0];
   }
 
+  //----------------------------------------------------
   /* Return the size of the heap */
   getSize() {
     return this.storage.length;
   }
 
+  //----------------------------------------------------
   /* Moves the element at the specified index "up"
   the heap by swapping it with its parent if its
   parent value is less than the value located at
@@ -49,6 +73,16 @@ class Heap {
     }
   }
 
+  //Instructor Solve: 
+  // bubbleUp(index) {
+  //   const parentIndex = Math.floor((index - 1) / 2);
+  //   if (this.storage[parentIndex] < this.storage[index]) {
+  //     [this.storage[parentIndex], this.storage[index]] = [this.storage[index], this.storage[parentIndex]];
+  //     this.bubbleUp(parentIndex);
+  //   }
+  // }
+
+  //-----------------------------------------------------
   /* Move the element at the specified index "down"
   the heap by swapping it with its larger child if its
   child's value is greater than the value located at

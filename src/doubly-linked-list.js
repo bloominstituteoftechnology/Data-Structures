@@ -9,18 +9,20 @@ class ListNode {
   /* Insert the given value as this node's
   `next` node */
   insertAfter(value) {
+    this.next = value;
 
   }
 
   /* Insert the given value as the this node's
   `prev` node */
   insertBefore(value) {
-
+    this.prev = value;
   }
 
   /* Delete this node */
   delete() {
-
+    this.head = null; 
+    this.tail = null; 
   }
 }
 

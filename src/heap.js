@@ -37,11 +37,11 @@ class Heap {
   parent value is less than the value located at
   the input index */
   bubbleUp(i) {
-    const parent = () => Math.floor((i - 1) / 2)
-    let p = parent()
-    while (i > 0 && this.storage[i] > this.storage[p]) {
-      [this.storage[i], this.storage[p]] = [this.storage[p], this.storage[i]]
-      i = p, p = parent()
+    const parentIndex = () => Math.floor((i - 1) / 2)
+    let parent = parentIndex()
+    while (i > 0 && this.storage[i] > this.storage[parent]) {
+      this.swapNodes(i, parent)
+      i = parent, parent = parentIndex()
     }
   }
 
@@ -50,19 +50,27 @@ class Heap {
   child's value is greater than the value located at
   the input index */
   siftDown(i) {
-    const left = () => 2 * i + 1
-    const right = () => 2 * i + 2
-    let l = left(), r = right()
-    while (this.storage[l] || this.storage[r]) {
-      let swap = this.storage[l] > this.storage[r]
-        ? l
-        : r
+    const leftIndex = () => 2 * i + 1
+    const rightIndex = () => 2 * i + 2
+    let left = leftIndex(), right = rightIndex()
+    while (this.storage[left] || this.storage[right]) {
+      let swap = this.storage[left] > this.storage[right]
+        ? left
+        : right
       
       if (this.storage[i] < this.storage[swap]) {
-        [this.storage[i], this.storage[swap]] = [this.storage[swap], this.storage[i]]
-      } else return
-      i = swap, l = left(), r = right()
+        this.swapNodes(i, swap)
+      } else {
+        return
+      }
+      i = swap, left = leftIndex(), right = rightIndex()
     }
+  }
+
+  swapNodes(i, j) {
+    const temp = this.storage[i]
+    this.storage[i] = this.storage[j]
+    this.storage[j] = temp
   }
 }
 

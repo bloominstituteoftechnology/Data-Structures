@@ -44,6 +44,8 @@ class BinarySearchTree {
     else if (this.right) return this.right.getMax();
     else if (this.left.value > this.value) return this.left.getMax();
   }
+
+  
 }
 
 module.exports = BinarySearchTree;

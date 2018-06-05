@@ -9,7 +9,7 @@ class ListNode {
   /* Insert the given value as this node's
   `next` node */
   insertAfter(value) {
-    const node = new ListNode(value, this.next)
+    const node = new ListNode(value, this)
     if (this.next) {
       node.next = this.next
     }
@@ -19,7 +19,7 @@ class ListNode {
   /* Insert the given value as the this node's
   `prev` node */
   insertBefore(value) {
-    const node = new ListNode(value, null, this.next)
+    const node = new ListNode(value, null, this)
     if (this.prev) {
       node.prev = this.prev
     }
@@ -42,14 +42,15 @@ class DoublyLinkedList {
   /* Adds the given value as the new head
   node of the list */
   addToHead(value) {
-    const node = new ListNode(value)
     if (this.head) {
-      node.next = this.head
-      this.head.prev = node
+      this.head.insertBefore(value)
+      this.head = this.head.prev
+    } else {
+      this.head = new ListNode(value)
     }
-    this.head = node
+
     if (!this.tail) {
-      this.tail = node
+      this.tail = this.head
     }
   }
 
@@ -62,20 +63,22 @@ class DoublyLinkedList {
     }
     const value = this.head.value
     this.head = this.head.next
+    if (this.head) {
+      this.head.prev = null
+    }
     return value
   }
 
   /* Adds the given value as the new tail
   node of the list */
   addToTail(value) {
-    const node = new ListNode(value, this.tail)
-    if (this.tail) {
-      this.tail.next = node
-    }
     if (!this.head) {
-      this.head = node
+      this.head = new ListNode(value)
+      this.tail = this.head
+    } else if (this.tail) {
+      this.tail.insertAfter(value)
+      this.tail = this.tail.next
     }
-    this.tail = node
   }
 
   /* Remove the list's current tail. The list's

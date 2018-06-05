@@ -65,10 +65,11 @@ class LinkedList {
   /* Finds and returns the maximal value
   of all the values in the list */
   getMax() {
-    let max = this.tail;
-    while (this.head.next != null) {
+    let max = null;
+    while (this.head) {
+      if (this.head.value > max) max = this.head.value;
+      if (this.head.value < this.tail.value) max = this.tail.value;
       this.head = this.head.next;
-      if (this.tail.value > max) max = this.tail.value;
     }
     return max;
     

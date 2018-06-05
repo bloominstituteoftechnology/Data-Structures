@@ -202,7 +202,27 @@ class DoublyLinkedList {
   }
 
   /* Delete the given node from the list */
-  delete(node) {}
+  delete(node) {
+    if (node === this.tail && this.tail.prev === this.head) {
+      this.tail = null;
+      this.head.next = null;
+    } else if (node !== this.tail && node !== this.head) {
+      node.next.prev = node.prev;
+      node.prev.next = node.next;
+    } else if (node === this.tail) {
+      this.tail.prev.next = null;
+      this.tail = this.tail.prev;
+    } else if (node === this.tail && this.head.next === this.tail) {
+      this.tail = null;
+    } else if (node === this.head && !this.head.next.next) {
+      this.head = this.tail;
+      this.head.prev = null;
+      this.tail = null;
+    } else if (node === this.head) {
+      node.next.prev = null;
+      this.head = node.next;
+    }
+  }
 }
 
 module.exports = DoublyLinkedList;

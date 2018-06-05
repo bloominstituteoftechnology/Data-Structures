@@ -24,7 +24,7 @@ class Queue {
   /* Returns true if the queue contains no
   elements, false otherwise */
   isEmpty() { 
-    return this.size; 
+    return this.size === 0;
   }
 
   /* A getter method for the length of the queue */

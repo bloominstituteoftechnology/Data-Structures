@@ -54,8 +54,20 @@ class BinarySearchTree {
   /* Returns the maximum value in the tree 
   Should not remove the max value from the tree */
   getMax() {
-
+    let node = this;
+      let max = node.value;
+       while(node) {
+         if(node.value > max ) {
+           max = node.value;
+         } else {
+           node = node.right;
+         }
+       }
+       return max;
   }
+
+
+
 }
 
 module.exports = BinarySearchTree;

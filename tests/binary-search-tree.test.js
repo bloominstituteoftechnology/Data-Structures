@@ -7,7 +7,7 @@ describe('BinarySearchTree', () => {
     binarySearchTree = new BinarySearchTree(5);
   });
 
-  it('should have methods named "insert", "contains", "getMax", "depthFirstForEach", and "breadthFirstForEach"', () => {
+  it('should have methods named "insert", "contains", "getMax"', () => {
     expect(Object.getPrototypeOf(binarySearchTree).hasOwnProperty('insert')).toBe(true);
     expect(Object.getPrototypeOf(binarySearchTree).hasOwnProperty('contains')).toBe(true);
     expect(Object.getPrototypeOf(binarySearchTree).hasOwnProperty('getMax')).toBe(true);

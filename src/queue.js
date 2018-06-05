@@ -14,6 +14,7 @@ class Queue {
 
   /* Adds the given item to the queue */
   enqueue(item) {
+    this.Queue(item);
     
   }
 

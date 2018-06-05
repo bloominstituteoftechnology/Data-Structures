@@ -9,7 +9,7 @@ class ListNode {
   /* Insert the given value as this node's
   `next` node */
   insertAfter(value) {
-    const node = new newNode(value, this.next)
+    const node = new ListNode(value, this.next)
     if (this.next) {
       node.next = this.next
     }
@@ -19,7 +19,7 @@ class ListNode {
   /* Insert the given value as the this node's
   `prev` node */
   insertBefore(value) {
-    const node = new newNode(value, null, this.next)
+    const node = new ListNode(value, null, this.next)
     if (this.prev) {
       node.prev = this.prev
     }

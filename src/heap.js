@@ -8,29 +8,23 @@ class Heap {
   The heap should maintain the heap property 
   after insertion */
   insert(value) {
-    if (value > this.getMax()) this.storage.unshift.value;
-    else {
-      this.storage.push(value);
-      let index = this.getSize();
-      this.bubbleUp(index);
-    }
+    this.storage.push(value)
+    this.bubbleUp(this.getSize() - 1)
   }
 
   /* Remove the maximal value from the heap and
   return it. The heap should maintain the heap
   property after removing the maximal value */
   delete() {
-    const max = this.getMax();
-    this.storage.shift();
-    this.siftDown(0);
-    return max;
-
+    let max = this.storage.shift()
+    this.siftDown(0)
+    return max
   }
 
   /* Return the maximal value in the heap
   without removing it */
   getMax() {
-    return this.storage[0];
+    return this.storage[0]
   }
 
   /* Return the size of the heap */
@@ -43,12 +37,11 @@ class Heap {
   parent value is less than the value located at
   the input index */
   bubbleUp(index) {
-    const pelement = this.storage[Math.floor((index - 2) / 2)];
-    const celement = this.storage[index -1];
-    if (celement > pelement) {
-      this.storage[Math.floor((index - 2) / 2)] = celement;
-      this.storage[index - 1] = pelement;
-      return this.bubbleUp(Math.floor((index - 2) / 2));
+    const parent = () => Math.floor((index - 1) / 2)
+    let p = parent()
+    while (index > 0 && this.storage[index] > this.storage[p]) {
+      [this.storage[index], this.storage[p]] = [this.storage[p], this.storage[index]]
+      index = p, p = parent()
     }
   }
 
@@ -57,18 +50,18 @@ class Heap {
   child's value is greater than the value located at
   the input index */
   siftDown(index) {
-    const pelement = this.storage[index];
-    const cleft = this.storage[index * 2 + 1];
-    const cright = this.storage[index * 2 + 2];
-    const largest = cleft >= cright ? cleft : cright;
-    if (largest > pelement) {
-      if (cleft === largest) {
-        this.storage[index * 2 + 1] = pelement;
-        this.storage[index] = clefft;
-      } else {
-        this.storage[index * 2 + 2] = pelement;
-        this.storage[index] = cright;
-      }
+    const left = () => 2 * index + 1
+    const right = () => 2 * index + 2
+    let l = left(), r = right()
+    while (this.storage[l] || this.storage[r]) {
+      let swap = this.storage[l] > this.storage[r]
+        ? l
+        : r
+      
+      if (this.storage[index] < this.storage[swap]) {
+        [this.storage[index], this.storage[swap]] = [this.storage[swap], this.storage[index]]
+      } else return
+      index = swap, l = left(), r = right()
     }
   }
 }

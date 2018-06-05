@@ -20,12 +20,8 @@ class Heap {
   return it. The heap should maintain the heap
   property after removing the maximal value */
   delete() {
-    let result = this.storage[0];
-    let end = this.storage.pop();
-    if (this.storage.length > 0) {
-      this.storage[0] = end;
-      this.siftDown(0);
-    }
+    let result = this.storage.shift();
+    this.siftDown(0)
     return result
 
   }

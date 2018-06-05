@@ -30,19 +30,29 @@ class LinkedList {
   The `head` pointer should be updated
   accordingly */
   removeHead() {
-
+    //targets the head of the link
+    const linkedHead = this.head.value;
+    //changes head to the next head
+    this.head = this.head.next;
+    return linkedHead;
   }
 
   /* Searches the list for the given value
   Returns true or false accordingly */
   contains(value) {
-
+    let linkedNode = this.head;
+    while (linkedNode) {
+      if (linkedNode.value === value) {
+        return true;
+      }
+      linkedNode = linkedNode.next;
+    }
+    return false;
   }
 
   /* Finds and returns the maximal value
   of all the values in the list */
   getMax() {
-    
   }
 }
 

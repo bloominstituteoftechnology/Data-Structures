@@ -9,18 +9,18 @@ class ListNode {
   /* Insert the given value as this node's
   `next` node */
   insertAfter(value) {
-
+    
   }
 
   /* Insert the given value as the this node's
   `prev` node */
   insertBefore(value) {
-
+    
   }
 
   /* Delete this node */
   delete() {
-
+    
   }
 }
 

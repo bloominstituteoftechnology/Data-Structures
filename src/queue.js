@@ -14,7 +14,9 @@ class Queue {
 
   /* Adds the given item to the queue */
   enqueue(item) {
-    
+ 
+   this.storage = item;
+   this.size++;
   }
 
   /* Removes and returns the least recently
@@ -31,7 +33,7 @@ class Queue {
 
   /* A getter method for the length of the queue */
   get length() {
-
+    this.size;
   }
 }
 

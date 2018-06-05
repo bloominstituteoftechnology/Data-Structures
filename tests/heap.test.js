@@ -92,4 +92,4 @@ describe('Heap', () => {
 
     expect(heap.storage).toEqual([36, 19, 25, 17, 3, 7, 1, 2]);
   });
-})
+});

@@ -8,25 +8,34 @@ class Heap {
   The heap should maintain the heap property 
   after insertion */
   insert(value) {
-
+    const index = this.storage.push(value) -1;
+    this.bubbleUp(index);
   }
 
   /* Remove the maximal value from the heap and
   return it. The heap should maintain the heap
   property after removing the maximal value */
   delete() {
-
+    if (!this.storage.length) return null;
+    if (this.storage.length === 1) {
+      return this.storage.pop();
+    }
+    const max = this.storage[0];
+    //remove the element with the highest index
+    this.storage[0] = this.storage.pop();
+    this.siftDown(0);
+    return max;
   }
 
   /* Return the maximal value in the heap
   without removing it */
   getMax() {
-
+    return this.storage[0];
   }
 
   /* Return the size of the heap */
   getSize() {
-
+    return this.storage.length;
   }
 
   /* Moves the element at the specified index "up"
@@ -34,7 +43,11 @@ class Heap {
   parent value is less than the value located at
   the input index */
   bubbleUp(index) {
-
+    const parentIndex = Math.floor((index - 1) /2);
+    if (this.storage[parentIndex] < this.storage[index]) {
+      [this.storage[parentIndex], this.storage[index]] = [this.storage[index], ]//is not complete
+      this.bubbleUp(parentIndex);
+    }
   }
 
   /* Move the element at the specified index "down"
@@ -49,7 +62,7 @@ class Heap {
     let maxChild;
 
     if(this.storage[leftChildIndex] && this.storage[rightChildIndex]) {
-      maxChildIndex = this.storage[leftChildIndex] > this.storage[rightChildIndex] ?
+      maxChildIndex = this.storage[leftChildIndex] > this.storage[rightChildIndex] ? leftChildIndex : rightChildIndex
     } else if (this.storage[leftChildIndex]) {
       maxChildIndex = leftChildIndex;
     } else if (this.storage[rightChildIndex]) {
@@ -61,6 +74,7 @@ class Heap {
     if (this.storage[index] < this.storage[maxChildIndex]) {
     //swap them      
     [this.storage[maxChildIndex], this.storage[index]] = [this.storage[index], this]
+      this.siftDown(maxChildIndex);
   }
   }
 }

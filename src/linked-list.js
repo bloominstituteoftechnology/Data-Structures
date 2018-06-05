@@ -9,7 +9,6 @@ class LinkedList {
   of the list. The `tail` pointer
   should be updated accordingly */
   addToTail(value) {
-    let prevNode;
     const newNode = {
       value,
       next: null
@@ -73,3 +72,10 @@ class LinkedList {
 }
 
 module.exports = LinkedList;
+
+const list = new LinkedList();
+list.addToTail(1);
+list.addToTail(2);
+list.addToTail(5);
+list.addToTail(10);
+console.log(list); 

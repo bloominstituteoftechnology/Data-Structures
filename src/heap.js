@@ -37,11 +37,11 @@ class Heap {
   parent value is less than the value located at
   the input index */
   bubbleUp(index) {
-    const parent = () => Math.floor((index - 1) / 2);
-    let p = parent();
-    while(i > 0 && this.storage[i] > this.storage[p]) {
-      [this.storage[i], this.storage[p]] = [this.storage[p], this.storage[i]];
-      i = p, p = parent();
+    const parentNode = () => Math.floor((index - 1) / 2);
+    let parent = parentNode();
+    while(index > 0 && this.storage[index] > this.storage[parent]) {
+      [this.storage[index], this.storage[parent]] = [this.storage[parent], this.storage[index]];
+      index = parent, parent = parentNode();
     }
   }
 
@@ -57,6 +57,7 @@ class Heap {
     while (this.storage[left] || this.storage[right]) {
       let child = this.storage[left] > this.storage[right] ? left : right;
       if (this.storage[index] < this.storage[child]) [this.storage[index], this.storage[child]] = [this.storage[child], this.storage[index]];
+      else return;
       index = child, left = leftChild(), right = rightChild();
     }
   }

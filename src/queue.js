@@ -19,13 +19,14 @@ class Queue {
     if (this.size) {
       this.size--;
       return this.storage.removeHead();
-    } else return null;
+    }
+    return null;
   }
 
   /* Returns true if the queue contains no
   elements, false otherwise */
   isEmpty() {
-    return this.size ? true : false;
+    return this.size == 0;
   }
 
   /* A getter method for the length of the queue */

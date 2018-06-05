@@ -23,21 +23,23 @@ class Heap {
 
   /* Return the maximal value in the heap
   without removing it */
-  getMax() { 
-    
-  }
+  getMax() { return Math.max(...this.storage) }
 
   /* Return the size of the heap */
-  getSize() { 
-
-  }
+  getSize() { return this.storage.length }
 
   /* Moves the element at the specified index "up"
   the heap by swapping it with its parent if its
   parent value is less than the value located at
   the input index */
   bubbleUp(index) {
+    const arr = this.storage;
+    const parentIdx = Math.floor((index - 1) / 2);
 
+    if (arr[index] > arr[parentIdx]) {
+      [arr[index], arr[parentIdx]] = [arr[parentIdx], arr[index]];
+      this.bubbleUp(parentIdx);
+    }
   }
 
   /* Move the element at the specified index "down"

@@ -3,32 +3,43 @@ For each of the methods associated with each data structure, classify it based o
 ## Linked List
 
 1. What is the runtime complexity of `addToTail`?
-  
-    a. What if our list implementation didn't have a reference to the tail of the list in its constructor? What would be the runtime of the `addToTail` method?
+  O(1)
+
+    a. What if our list implementation didn't have a reference to the tail of the list in its constructor? What would be the runtime of the `addToTail` method? O(n)
 
 2. What is the runtime complexity of `removeHead`?
+    O(1)
 
 3. What is the runtime complexity of `contains`?
+    O(n) (traverse)
 
 4. What is the runtime complexity of `getMax`?
+    O(n) (traverse entire list to get max value)
 
 ## Queue
 
 1. What is the runtime complexity of `enqueue`?
+    O(1)
 
 2. What is the runtime complexity of `dequeue`?
+    O(n)
 
 3. What is the runtime complexity of `isEmpty`?
+    O(1)
 
 4. What is the runtime complexity of `length`?
+    O(1)
 
 ## Binary Search Tree
 
 1. What is the runtime complexity of `insert`? 
+    O(log n) 
 
 2. What is the runtime complexity of `contains`?
+    O(log n) (checking at every tier)
 
 3. What is the runtime complexity of `getMax`? 
+    O(log n)
 
 4. [Stretch Goal] What is the runtime complexity of `depthFirstForEach`?
 
@@ -37,14 +48,20 @@ For each of the methods associated with each data structure, classify it based o
 ## Heap
 
 1. What is the runtime complexity of `bubbleUp`?
+    O(log n)
 
 2. What is the runtime complexity of `siftDown`?
+    O(log n) 
+    (hopping left or right at every tier; cutting off slots of the tree as sifting root down)
 
 3. What is the runtime complexity of `insert`?
+    O(log n)
 
 4. What is the runtime complexity of `delete`?
+    O(log n)
 
 5. What is the runtime complexity of `getMax`?
+    O(log n)
 
 ## [Stretch Goal] Doubly Linked List
 

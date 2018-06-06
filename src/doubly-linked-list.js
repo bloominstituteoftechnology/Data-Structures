@@ -1,38 +1,35 @@
-// class ListNode {
-//   /* Do not modify the constructor */
-//   constructor(value, prev = null, next = null) {
-//     this.value = value;
-//     this.prev = prev;
-//     this.next = next;
-//   }
+class ListNode {
+  /* Do not modify the constructor */
+  constructor(value, prev = null, next = null) {
+    this.value = value;
+    this.prev = prev;
+    this.next = next;
+  }
 
-//   /* Insert the given value as this node's
-//   `next` node */
-//   insertAfter(value) {
-//     const newNode = {
-//       value: value,
-//       prev: this,
-//       next: this.next
-//     }
-//     this.next = newNode;
-//   }
+  /* Insert the given value as this node's
+  `next` node */
+  insertAfter(value) {
+    this.next = value;
+    this.next.prev = this;
+  }
 
-//   /* Insert the given value as the this node's
-//   `prev` node */
-//   insertBefore(value) {
-//     const newNode = {
-//       value: value,
-//       prev: this.prev,
-//       next: this
-//     }
-//     this.next = newNode;
-//   }
+  /* Insert the given value as the this node's
+  `prev` node */
+  insertBefore(value) {
+    this.prev = value;
+    this.prev.next = this;
+  }
 
-//   /* Delete this node */
-//   delete() {
-
-//   }
-// }
+  /* Delete this node */
+  delete() {
+    if (this.next) {
+      this.next.prev = this.prev;
+    }
+    if (this.prev) {
+      this.prev.next = this.next;
+    }
+  }
+}
 
 class DoublyLinkedList {
   /* Do not modify the constructor */
@@ -44,17 +41,12 @@ class DoublyLinkedList {
   /* Adds the given value as the new head
   node of the list */
   addToHead(value) {
-    const newNode = {
-      value: value,
-      prev: null,
-      next: this.head
-    };
+    const newNode = new ListNode(value, null, this.head);
     if (!this.tail && this.head) {
       this.tail = this.head;
-      this.tail.prev = newNode;
     }
     if (this.head) {
-      this.head.prev = newNode;
+      newNode.insertAfter(this.head);
     }
     this.head = newNode;
   }

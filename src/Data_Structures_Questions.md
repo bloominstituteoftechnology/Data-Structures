@@ -2,33 +2,33 @@ For each of the methods associated with each data structure, classify it based o
 
 ## Linked List
 
-1. What is the runtime complexity of `addToTail`?
+1. What is the runtime complexity of `addToTail`?  O(logn)
   
-    a. What if our list implementation didn't have a reference to the tail of the list in its constructor? What would be the runtime of the `addToTail` method?
+    a. What if our list implementation didn't have a reference to the tail of the list in its constructor? What would be the runtime of the `addToTail` method? O(n)
 
-2. What is the runtime complexity of `removeHead`?
+2. What is the runtime complexity of `removeHead`?  O(logn)
 
-3. What is the runtime complexity of `contains`?
+3. What is the runtime complexity of `contains`?  O(n)
 
-4. What is the runtime complexity of `getMax`?
+4. What is the runtime complexity of `getMax`?  O(n)
 
 ## Queue
 
-1. What is the runtime complexity of `enqueue`?
+1. What is the runtime complexity of `enqueue`?  O(logn)
 
-2. What is the runtime complexity of `dequeue`?
+2. What is the runtime complexity of `dequeue`?  O(logn)
 
-3. What is the runtime complexity of `isEmpty`?
+3. What is the runtime complexity of `isEmpty`?  O(1)
 
-4. What is the runtime complexity of `length`?
+4. What is the runtime complexity of `length`?  O(1)
 
 ## Binary Search Tree
 
-1. What is the runtime complexity of `insert`? 
+1. What is the runtime complexity of `insert`?  O(logn)
 
-2. What is the runtime complexity of `contains`?
+2. What is the runtime complexity of `contains`?  O(logn)
 
-3. What is the runtime complexity of `getMax`? 
+3. What is the runtime complexity of `getMax`?  O(logn)
 
 4. [Stretch Goal] What is the runtime complexity of `depthFirstForEach`?
 
@@ -36,15 +36,15 @@ For each of the methods associated with each data structure, classify it based o
 
 ## Heap
 
-1. What is the runtime complexity of `bubbleUp`?
+1. What is the runtime complexity of `bubbleUp`?  O(logn)
 
-2. What is the runtime complexity of `siftDown`?
+2. What is the runtime complexity of `siftDown`?  O(logn)
 
-3. What is the runtime complexity of `insert`?
+3. What is the runtime complexity of `insert`?  O(logn)
 
-4. What is the runtime complexity of `delete`?
+4. What is the runtime complexity of `delete`?  O(logn)
 
-5. What is the runtime complexity of `getMax`?
+5. What is the runtime complexity of `getMax`?  O(1)
 
 ## [Stretch Goal] Doubly Linked List
 

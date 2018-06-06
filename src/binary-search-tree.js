@@ -10,7 +10,7 @@ class BinarySearchTree {
   Make sure the rules of a binary search
   tree are being adhered to */
   insert(value) {
-
+    
   }
 
   /* Traverses the tree until either the

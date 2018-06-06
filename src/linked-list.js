@@ -10,16 +10,15 @@ class LinkedList {
   should be updated accordingly */
   addToTail(value) {
     const node = {
-      value,
-      next: null
+      next: null,
+      value
     }
-    if (this.tail) {
-      this.tail.next = node
-      this.tail = this.tail.next
-    } else {
-      this.tail = node
+    if (!this.head) {
       this.head = node
+    } else if (this.tail != null) {
+      this.tail.next = node
     }
+    this.tail = node
   }
 
   /* Remove the list's `head` value 
@@ -34,12 +33,14 @@ class LinkedList {
   /* Searches the list for the given value
   Returns true or false accordingly */
   contains(value) {
-    const compare = (node, val) => {
-      if (!node || !node.next) return false
-      if (node.value === val) return true
-      return compare(node.next, val)
+    let cur = this.head
+    while (cur) {
+      if (cur.value === value) {
+        return true
+      }
+      cur = cur.next
     }
-    return compare(this.head, value)
+    return false
   }
 
   /* Finds and returns the maximal value

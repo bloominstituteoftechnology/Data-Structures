@@ -25,6 +25,9 @@ class LinkedList {
       next: this.head
     }
     this.head = newNode;
+    if (!this.tail) {
+      this.tail = newNode
+    }
   }
 
   ///////////////////////////////////////////////////

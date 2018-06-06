@@ -13,7 +13,7 @@ class Heap {
     }
     else {
       this.storage.push(value);
-      let index = this.getSize();
+      let index = this.getSize() - 1;
       this.bubbleUp(index);
     }
 
@@ -23,6 +23,10 @@ class Heap {
   return it. The heap should maintain the heap
   property after removing the maximal value */
   delete() {
+    if (!this.storage.length) return null;
+    if (this.storage.length === 1) {
+      return this.storage.shift();
+    };
     const max = this.getMax();
     this.storage.shift();
     this.siftDown(0);
@@ -46,15 +50,15 @@ class Heap {
   parent value is less than the value located at
   the input index */
   bubbleUp(index) {
-    const parent = this.storage[Math.floor((index - 1) / 2)];
-    const child = this.storage[index];
-
-    if (child > parent) {
-      this.storage[Math.floor((index - 1) / 2)] = child;
-      this.storage[index] = parent;
-      return this.bubbleUp(Math.floor((index - 1) / 2));
+    const parentIndex = Math.floor((index - 1) / 2);
+    // check to see if the value at this index needs to be shifted up
+    if (this.storage[parentIndex] < this.storage[index]) {
+      // swap the values at index and parentIndex
+      [this.storage[parentIndex], this.storage[index]] = [this.storage[index], this.storage[parentIndex]];
+      // recursively call bubbleUp again in case we need to continue shifting
+      // the value up the heap
+      this.bubbleUp(parentIndex);
     }
-
   }
 
   /* Move the element at the specified index "down"

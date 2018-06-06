@@ -38,15 +38,15 @@ For each of the methods associated with each data structure, classify it based o
 ## Heap
 
 1. What is the runtime complexity of `bubbleUp`?
-
+- O(log n)
 2. What is the runtime complexity of `siftDown`?
-
+- O(log n)
 3. What is the runtime complexity of `insert`?
-
+- O(log n)
 4. What is the runtime complexity of `delete`?
-
+- O(log n)
 5. What is the runtime complexity of `getMax`?
-
+- O(1)
 ## [Stretch Goal] Doubly Linked List
 
 1. What is the runtime complexity of `ListNode.insertAfter`?

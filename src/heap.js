@@ -59,8 +59,8 @@ class Heap {
   siftDown(index) {
     // const leftChildIndex = index * 2 + 1;
     // const rightChildIndex = index * 2 + 2;
-
     // let maxChildIndex;
+    
     // if (this.storage[leftChildIndex] && this.storage[rightChildIndex]) {
     //   maxChildIndex = this.storage[leftChildIndex] > this.storage[rightChildIndex]
     // } else if (this.storage[leftChildIndex]) {

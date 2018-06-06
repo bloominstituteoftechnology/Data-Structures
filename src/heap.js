@@ -8,7 +8,8 @@ class Heap {
   The heap should maintain the heap property 
   after insertion */
   insert(value) {
-
+    this.storage.push(value);
+    this.bubbleUp(value);
   }
 
   /* Remove the maximal value from the heap and
@@ -21,7 +22,7 @@ class Heap {
   /* Return the maximal value in the heap
   without removing it */
   getMax() {
-
+    return Math.max(...this.storage);
   }
 
   /* Return the size of the heap */

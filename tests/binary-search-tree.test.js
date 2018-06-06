@@ -1,8 +1,8 @@
-const BinarySearchTree = require('../src/binary-search-tree');
+const BinarySearchTree = require("../src/binary-search-tree");
 
 let binarySearchTree;
 
-describe('BinarySearchTree', () => {
+describe("BinarySearchTree", () => {
   beforeEach(() => {
     binarySearchTree = new BinarySearchTree(5);
   });
@@ -13,7 +13,7 @@ describe('BinarySearchTree', () => {
     expect(Object.getPrototypeOf(binarySearchTree).hasOwnProperty('getMax')).toBe(true);
   });
 
-  it('should insert values at the correct location in the tree', () => {
+  it("should insert values at the correct location in the tree", () => {
     binarySearchTree.insert(2);
     binarySearchTree.insert(3);
     binarySearchTree.insert(7);
@@ -30,7 +30,7 @@ describe('BinarySearchTree', () => {
     expect(binarySearchTree.contains(8)).toBe(false);
   });
 
-  it('should fetch the correct maximum value', () => {
+  it("should fetch the correct maximum value", () => {
     expect(binarySearchTree.getMax()).toBe(5);
     binarySearchTree.insert(30);
     expect(binarySearchTree.getMax()).toBe(30);

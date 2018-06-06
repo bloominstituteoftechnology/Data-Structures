@@ -14,7 +14,7 @@ class Queue {
 
   /* Adds the given item to the queue */
   enqueue(item) {
-    
+    this.storage.addToTail(item);
   }
 
   /* Removes and returns the least recently
@@ -26,7 +26,8 @@ class Queue {
   /* Returns true if the queue contains no
   elements, false otherwise */
   isEmpty() {
-
+    if(this.size === 0) return true;
+    else return false;
   }
 
   /* A getter method for the length of the queue */

@@ -55,89 +55,53 @@ class DoublyLinkedList {
   `head` pointer should point to the removed node's
   `next` node */
   removeFromHead() {
-    if (!this.tail && !this.head) {
-      return null;
-    } else if (!this.tail && this.head) {
+    if (this.head) {
       const result = this.head.value;
-      this.head = null;
+      this.head.delete();
+      this.head = this.head.next;
       return result;
-    } else if (this.head && this.tail) {
-      const result = this.head.value;
-      if (this.head.next === this.tail) {
-        this.tail.prev = null;
-        this.head = this.tail;
-        this.tail = null;
-        return result;
-      }
-      const newHead = {
-        value: this.head.next.value,
-        prev: null,
-        next: this.head.next.next
-      };
-      this.head = newHead;
-      if (this.head.next) {
-        this.head.next.prev = newHead;
-      }
-      return result;
-    }
+    } else return null;
   }
 
   /* Adds the given value as the new tail
   node of the list */
   addToTail(value) {
-    const newNode = {
-      value: value,
-      prev: this.tail,
-      next: null
-    };
-    if (!this.head) {
+    const newNode = new ListNode(value, this.tail, null);
+    if (!this.head && !this.tail) {
       this.head = newNode;
       return;
     }
-    if (this.head && !this.tail) {
-      this.tail = newNode;
-      this.tail.prev = this.head;
-      this.head.next = this.tail;
-      return;
-    }
-    if (!this.head && this.tail) {
-      this.head = this.tail;
-      this.head.next = newNode;
-    }
     if (this.tail) {
-      this.tail.next = newNode;
+      newNode.insertBefore(this.tail);
     }
     this.tail = newNode;
+    if (!this.head) {
+      this.head = newNode;
+    }
+    if (!this.head.next && !this.tail.prev) {
+      this.tail.prev = this.head;
+      this.head.next = this.tail;
+    }
   }
 
   /* Remove the list's current tail. The list's
   `tail` pointer should point to the removed node's
   `prev` node */
   removeFromTail() {
-    if (!this.tail && !this.head) {
-      return null;
-    } else if (this.head && !this.tail) {
+    if (this.tail) {
+      const result = this.tail.value;
+      this.tail.delete();
+      this.tail = this.tail.prev;
+      if (this.tail === this.head) {
+        this.tail = null;
+      }
+      return result;
+    } else if (this.head) {
       const result = this.head.value;
+      this.head.delete();
       this.head = null;
       return result;
-    } else if (this.head && this.tail) {
-      const result = this.tail.value;
-      if (this.tail.prev === this.head) {
-        this.head.next = null;
-        this.tail = null;
-        return result;
-      }
-      const newTail = {
-        value: this.tail.prev.value,
-        prev: this.tail.prev.prev,
-        next: null
-      };
-      this.tail = newTail;
-      if (this.tail.prev) {
-        this.tail.prev.next = newTail;
-      }
-      return result;
-    }
+    } else return null;
   }
 
   /* Move the given node to the front of the

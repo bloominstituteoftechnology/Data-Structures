@@ -35,12 +35,28 @@ class DoublyLinkedList {
   node of the list */
   addToHead(value) {
 
+      // const newNode = { value };
+      // newNode.next = this.head;
+      // this.head = newNode;
+      // this.length++;
+      // return this;
+
   }
 
   /* Remove the list's current head. The list's
   `head` pointer should point to the removed node's
   `next` node */
   removeFromHead() {
+
+    // if (this.length === 0) {
+    //     return undefined;
+    // }
+        
+    // const value = this.head.value;
+    // this.head = this.head.next;
+    // this.length--;
+        
+    // return value;
 
   }
 

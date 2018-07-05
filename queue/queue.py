@@ -9,8 +9,5 @@ class Queue:
   def dequeue(self):
     pass
 
-  def isEmpty(self):
-    pass
-
   def len(self):
     pass

@@ -8,14 +8,14 @@ class Heap:
   def delete(self):
     pass
 
-  def getMax(self):
+  def get_max(self):
     pass
 
-  def getSize(self):
+  def get_size(self):
     pass
 
-  def bubbleUp(self, index):
+  def _bubble_up(self, index):
     pass
 
-  def siftDown(self, index):
+  def _sift_down(self, index):
     pass

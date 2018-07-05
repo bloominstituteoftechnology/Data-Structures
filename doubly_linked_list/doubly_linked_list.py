@@ -4,10 +4,10 @@ class ListNode:
     self.prev = prev
     self.next = next
 
-  def insertAfter(self, value):
+  def insert_after(self, value):
     pass
 
-  def insertBefore(self, value):
+  def insert_before(self, value):
     pass
 
   def delete(self):
@@ -18,22 +18,22 @@ class DoublyLinkedList:
     self.head = None
     self.tail = None
 
-  def addToHead(self, value):
+  def add_to_head(self, value):
     pass
 
-  def removeFromHead(self):
+  def remove_from_head(self):
     pass
 
-  def addToTail(self, value):
+  def add_to_tail(self, value):
     pass
 
-  def removeFromTail(self):
+  def remove_from_tail(self):
     pass
 
-  def moveToFront(self, node):
+  def move_to_front(self, node):
     pass
 
-  def moveToBack(self, node):
+  def move_to_end(self, node):
     pass
 
   def delete(self, node):

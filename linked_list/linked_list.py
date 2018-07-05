@@ -3,14 +3,14 @@ class LinkedList:
     self.head = None
     self.tail = None
 
-  def addToTail(self, value):
+  def add_to_tail(self, value):
     pass
 
-  def removeHead(self):
+  def remove_head(self):
     pass
 
   def contains(self):
     pass
 
-  def getMax(self):
+  def get_max(self):
     pass

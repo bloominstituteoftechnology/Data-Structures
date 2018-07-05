@@ -10,5 +10,5 @@ class BinarySearchTree:
   def contains(self, target):
     pass
 
-  def getMax(self):
+  def get_max(self):
     pass

@@ -5,17 +5,17 @@ from linked_list import LinkedList
 
 class Queue:
   def __init__(self):
-    self.item = []
+    self.size = 0
+    self.storage = LinkedList()
 
   def enqueue(self, item):
-    self.item.insert(0, item)
+    self.storage.add_to_tail(item)
+    self.size += 1
   
   def dequeue(self):
-    queue = self.item
-      if queue == 0:
-        print("Theres nothing there")
-      else:
-        return self.item.pop()
+    if self.storage.head != None:
+      self.size -= 1
+    return self.storage.remove_head()
 
   def len(self):
-    return len(self.item)
+    return self.size

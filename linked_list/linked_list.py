@@ -29,16 +29,21 @@ class LinkedList:
       self.tail = new_node
       return
     last = self.head
-    while last:
+    while last.next_node:
       last = last.next_node
-    last = new_node
-    self.tail = last
+    last.next_node = new_node
+    self.tail = last.next_node
 
   def remove_head(self):
     pass
 
   def contains(self, target):
-    pass
+    current = self.head
+    while current:
+      if current.get_value() == target:
+        return True
+      current = current.next_node
+    return False
 
   def get_max(self):
     pass

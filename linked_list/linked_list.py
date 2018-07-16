@@ -18,17 +18,26 @@ class Node:
     self.next_node = new_next
 
 class LinkedList:
-  def contains(self, target):
+  def __init__(self):
     self.head = None
     self.tail = None
 
   def add_to_tail(self, value):
-    pass
+    val = Node(value)
+    if self.head == None: 
+        self.head = val
+        self.tail = val
+    else:
+      self.tail.set_next(val)
+      self.tail = val
+      # self.tail.set_next(None)
+    return val
+
 
   def remove_head(self):
     pass
-
-  def contains(self):
+  
+  def contains(self, value):
     pass
 
   def get_max(self):

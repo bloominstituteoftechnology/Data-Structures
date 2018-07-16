@@ -21,9 +21,12 @@ class LinkedList:
   def __init__(self):
     self.head = None
     self.tail = None
+    self.max = None
 
   def add_to_tail(self, value):
     node = Node(value)
+    self.max = value if not self.max or value > self.max else self.max
+
     if not self.head and not self.tail:
         self.head = node
         self.tail = node
@@ -52,4 +55,4 @@ class LinkedList:
     return False
 
   def get_max(self):
-    pass
+    return self.max

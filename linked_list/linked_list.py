@@ -37,16 +37,15 @@ class LinkedList:
     def remove_head(self):
         removed = self.head
         self.head = self.head.get_next()
-        return removed
+        return removed.get_value()
 
     def contains(self, value):
         nextValue = self.head
-        while (next != None):
-            if next.get_value == value:
+        while (nextValue != None):
+            if nextValue.get_value() == value:
                 return True
             else:
-                nextValue = nextValue.get_next
-
+                nextValue = nextValue.get_next()
         return False
 
     def get_max(self):

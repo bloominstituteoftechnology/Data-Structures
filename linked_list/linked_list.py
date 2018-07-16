@@ -40,7 +40,14 @@ class LinkedList:
       print(f'The next value is {self.tail.value}.')
   
   def remove_head(self):
-    pass
+    print('Self head value', self.head.value)
+    print('Self head next node.', self.head.next_node)
+
+    self.head.value = self.head.next_node.value
+    self.head.set_next(self.head.next_node.next_node)  
+
+    print('New head value', self.head.value)
+    print('New head next node', self.head.next_node)
 
   def contains(self):
     pass
@@ -61,3 +68,5 @@ a.add_to_tail(9)
 a.add_to_tail(10)
 a.add_to_tail(11)
 a.add_to_tail(12)
+
+a.remove_head()

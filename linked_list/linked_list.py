@@ -18,7 +18,7 @@ class Node:
     self.next_node = new_next
 
 class LinkedList:
-  def __init__(self):
+  def contains(self, target):
     self.head = None
     self.tail = None
 

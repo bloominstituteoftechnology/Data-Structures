@@ -40,8 +40,6 @@ class LinkedList:
       self.tail.set_next(new_node)
       # and set new tail node to be new_node
       self.tail = new_node
-    # returns new_node's value
-    return new_node
 
   def remove_head(self):
     if self.head == None:

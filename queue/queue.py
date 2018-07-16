@@ -10,11 +10,10 @@ class Queue:
     self.storage = LinkedList()
 
   def enqueue(self, item):
-    # when adding new item to storage it adds one to size
-    # we add 1 first because add_to_tail() will break us out of this function when it returns
-    self.size += 1
     # adds another value to the tail of storage
     self.storage.add_to_tail(item)
+    # when adding new item to storage it adds one to size
+    self.size += 1
   
   def dequeue(self):
     # sets remove_value to the value of remove_head()

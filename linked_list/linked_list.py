@@ -8,6 +8,7 @@ class Node:
     self.value = value
     self.next_node = next_node
 
+
   def get_value(self):
     return self.value
 
@@ -23,7 +24,20 @@ class LinkedList:
     self.tail = None
 
   def add_to_tail(self, value):
-    pass
+        if not self.head:
+              n = Node(value)
+              self.head = n
+              return
+        else:
+            n = self.head
+
+            while n.next != None:
+                n = n.next
+                
+            new_node = Node(value)
+            n.next = new_node;
+            return   
+    
 
   def remove_head(self):
     pass

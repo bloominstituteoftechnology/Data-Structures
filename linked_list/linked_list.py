@@ -18,14 +18,20 @@ class Node:
     self.next_node = new_next
 
 class LinkedList:
-  def contains(self, target):
+  def contains(self, value):
     self.head = None
     self.tail = None
 
   def add_to_tail(self, value): # add a new node to the end
     new_node = Node(value)
-    new_node.set_next(self.tail)
-    self.tail = new_node
+    if self.head == None:
+      self.head = new_node
+      return 
+    last = self.head
+    while (last.next):
+      last = last.next
+      
+    last.next = new_node
     
 
   def remove_head(self): # Gets rid of the head node and returns the new head node

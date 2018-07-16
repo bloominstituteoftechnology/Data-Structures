@@ -40,7 +40,22 @@ class LinkedList:
         self.tail = newNode
 
     def remove_head(self):
-        pass
+        if(self.head == None):
+            return None
+
+        # get a copy of the head
+        head = self.head
+
+        # check if the nex node is None
+        if(head.next == None):
+            this.head = None
+            this.tail = None
+        else:
+            # assign the next node as the new head
+            this.head = head.next
+
+        # return the value if you want
+        return head.value
 
     def contains(self):
         pass

@@ -24,25 +24,19 @@ class LinkedList:
 
   def add_to_tail(self, value): 
     if self.head == None: 
-      current_node = Node(value)
+      head = Node(value)
+    elif self.head.next_node == None:
+      head.set_next(value)
+      current_node = Node(head.get_next())
+    elif current_node.next_node == None: 
+      current_node.set_next(value)
+      current_node = Node(current_node.get_next())
 
-    while current_node.next_node == None: 
-        answer = int(input(f'Enter next node for {current_node.value} or type "quit": '))
-        while True: 
-          if answer == 'quit': 
-            next_value = current_node.value
-            break 
-          # elif : 
-          #   print('Invalid response. Please enter a number.')
-          #   answer = input(f'Enter next node for {current_node.value} or type "quit": ')
-          #   continue 
+      
+         
           
-          current_node.set_next(int(answer))
-          print('current_node.get_next', current_node.get_next)
-          next_value = current_node.get_next
-          break
-    
-    return next_value
+          
+
 
   def remove_head(self):
     pass

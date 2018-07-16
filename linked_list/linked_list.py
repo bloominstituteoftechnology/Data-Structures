@@ -23,6 +23,7 @@ class LinkedList:
     self.tail = None
 
   def add_to_tail(self, value):
+    # first commit
     pass
 
   def remove_head(self):

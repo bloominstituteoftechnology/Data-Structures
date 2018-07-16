@@ -23,20 +23,28 @@ class LinkedList:
     self.tail = None
 
   def add_to_tail(self, value):
-    new_node = Node(value)
+    # new_node = Node(value)
     
-    if self.head is None:
-      self.head = new_node
-      self.tail = new_node
-      return
+    # if self.head is None:
+    #   self.head = new_node
+    #   self.tail = new_node
+    #   return
     
-    last = self.head
+    # last = self.head
     
-    while last.next_node:
-      last = last.next_node
+    # while last.next_node:
+    #   last = last.next_node
     
-    last.next_node = new_node
-    self.tail = last.next_node
+    # last.next_node = new_node
+    # self.tail = last.next_node
+    last = Node(value)
+    if self.head == None:
+      self.head = last
+    else:
+      self.tail.set_next(last)
+    
+    self.tail = last
+    
 
   def remove_head(self):
     if self.head is None:
@@ -56,17 +64,28 @@ class LinkedList:
       
     return False
 
-  def get_max(self):
-    last = self.head
-    maxV = None
+  # def get_max(self):
+  #   last = self.head
+  #   maxV = None
     
-    while last:
-      if maxV is None:
-        maxV = last.value
-      else:
-        maxV = max(last.value, maxV)
-      last = last.next_node
+  #   while last:
+  #     if maxV is None:
+  #       maxV = last.value
+  #     else:
+  #       maxV = max(last.value, maxV)
+  #     last = last.next_node
       
-    return maxV
+  #   return maxV
+  
+  def get_max(self):
+    if self.head == None:
+      return None
+    currentNode = self.head
+    biggest = self.head.value
+    while currentNode != None:
+      if currentNode.value > biggest:
+        biggest = currentNode.value
+      currentNode = currentNode.next_node
+    return biggest
     
     

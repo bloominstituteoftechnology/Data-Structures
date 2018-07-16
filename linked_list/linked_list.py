@@ -1,3 +1,4 @@
+from .linked_list import LinkedList
 """
 Class that represents a single linked
 list node that holds a single value
@@ -24,12 +25,16 @@ class LinkedList:
 
   def add_to_tail(self, value):
     pass
+    #if node points to next then add to tail with .append? .insert?
 
   def remove_head(self):
     pass
+    #if node is in index 0 it is the head
 
   def contains(self, value):
     pass
+    #iterate through lists and if index === self then return
 
   def get_max(self):
     pass
+    #iterate through lists and use math.max

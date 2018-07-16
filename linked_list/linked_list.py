@@ -4,8 +4,6 @@ list node that holds a single value
 and a reference to the next node in the list
 """
 
-# Write code here
-
 class Node:
   def __init__(self, value=None, next_node=None):
     self.value = value
@@ -26,10 +24,13 @@ class LinkedList:
     self.tail = None
 
   def add_to_tail(self, value):
-    pass
+    self.value = value
+    self.next_node = None
 
   def remove_head(self):
-    pass
+    headNode = self.head.value
+    self.head = self.head.next_node
+    return headNode
 
   def contains(self):
     pass

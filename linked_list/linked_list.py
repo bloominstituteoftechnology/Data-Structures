@@ -23,13 +23,55 @@ class LinkedList:
     self.tail = None
 
   def add_to_tail(self, value):
-    pass
+    new_node = Node(value)
+    if self.head == None:
+      self.head = new_node
+      self.tail = new_node
+    else:
+      self.tail.next_node = new_node 
+      self.tail = new_node
 
   def remove_head(self):
-    pass
+    if self.head == None:
+      return None
 
-  def contains(self):
-    pass
+    # if the head is none this line will not run 
+    curr_head = self.head
+    if curr_head.next_node == None:
+      self.head = None
+      self.tail = None
+    else: 
+      self.head = curr_head.next_node
+    return curr_head.value
+   
+
+  def contains(self, target):
+      current = self.head
+
+      while current is not None:
+          if current.value == target:
+              return True
+          current = current.next_node
+      return False
+      
+     
+
+
 
   def get_max(self):
     pass
+
+
+# lis = LinkedList()
+# lis.add_to_tail(2)
+# lis.add_to_tail(5)
+# lis.add_to_tail(10)
+# lis.add_to_tail(51)
+# lis.add_to_tail(110)
+# print(lis.contains(1))
+# curr = lis.head 
+#print(curr.get_next().value)
+# while(curr.get_value() is not None):
+#   print("found -", curr.get_value())
+#   curr = curr.set_next(curr.next_node)
+# print("finally frre")

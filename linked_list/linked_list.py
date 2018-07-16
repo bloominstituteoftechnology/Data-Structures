@@ -26,11 +26,23 @@ class LinkedList:
     new_node = Node(value)
     new_node.set_next(self.tail)
     self.tail = new_node
-    pass
     
 
   def remove_head(self): # Gets rid of the head node and returns the new head node
-    pass
+    prev = None
+    curr = self.head
+    while curr:
+      if curr.getData() == value:
+        if prev: 
+          prev.setNextNode(curr.getNextNode())
+        else:
+          self.head = curr.getNextNode()
+        return curr
+      
+      prev = curr
+      curr = curr.getNextNode()
+    
+    return False
 
   def contains(self): #See if linked list contains a certain value
     pass

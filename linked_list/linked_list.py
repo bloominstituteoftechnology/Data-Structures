@@ -35,6 +35,7 @@ class LinkedList:
     self.tail = nn
 
   def remove_head(self):
+    #print("shv", self.head.value)
     if self.head != None:
       prev_head = self.head
       self.head = self.head.next_node
@@ -43,7 +44,23 @@ class LinkedList:
     
 
   def contains(self, value):
-    pass
+    current = self.head
+    found = False
+    while current is not None and not found:
+        if current.get_value() == value:
+            found = True
+        else:
+            current = current.get_next()
+
+    return found
 
   def get_max(self):
-    pass
+    if self.head == None:
+      return None
+    largest = self.head.value
+    current = self.head
+    while current != None:
+      if current.value > largest:
+        largest = current.value
+      current = current.next_node
+    return largest

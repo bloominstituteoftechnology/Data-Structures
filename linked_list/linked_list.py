@@ -23,21 +23,22 @@ class LinkedList:
     self.tail = None
 
   def add_to_tail(self, value): 
+    new_node = Node(1)
     if self.head == None: 
-      head = Node(value)
+      self.head = Node(value)
+      self.tail = self.head
+      print(f'The head is equal to {self.tail.value}.')
     elif self.head.next_node == None:
-      head.set_next(value)
-      current_node = Node(head.get_next())
-    elif current_node.next_node == None: 
-      current_node.set_next(value)
-      current_node = Node(current_node.get_next())
-
-      
-         
-          
-          
-
-
+      new_node = Node(value)
+      self.head.set_next(new_node)
+      self.tail = new_node
+      print(f'The next value after the head is equal to {self.tail.value}.')
+    elif new_node.next_node == None: 
+      new_node.set_next(Node(value))
+      new_node = Node(new_node.get_next().value)
+      self.tail = new_node
+      print(f'The next value is {self.tail.value}.')
+  
   def remove_head(self):
     pass
 
@@ -48,5 +49,15 @@ class LinkedList:
     pass
 
 a = LinkedList()
-b = a.add_to_tail(1)
-print(b)
+a.add_to_tail(1)
+a.add_to_tail(2)
+a.add_to_tail(3)
+a.add_to_tail(4)
+a.add_to_tail(5)
+a.add_to_tail(6)
+a.add_to_tail(7)
+a.add_to_tail(8)
+a.add_to_tail(9)
+a.add_to_tail(10)
+a.add_to_tail(11)
+a.add_to_tail(12)

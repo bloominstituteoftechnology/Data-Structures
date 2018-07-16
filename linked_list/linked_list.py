@@ -22,8 +22,27 @@ class LinkedList:
     self.head = None
     self.tail = None
 
-  def add_to_tail(self, value):
-    pass
+  def add_to_tail(self, value): 
+    if self.head == None: 
+      current_node = Node(value)
+
+    while current_node.next_node == None: 
+        answer = int(input(f'Enter next node for {current_node.value} or type "quit": '))
+        while True: 
+          if answer == 'quit': 
+            next_value = current_node.value
+            break 
+          # elif : 
+          #   print('Invalid response. Please enter a number.')
+          #   answer = input(f'Enter next node for {current_node.value} or type "quit": ')
+          #   continue 
+          
+          current_node.set_next(int(answer))
+          print('current_node.get_next', current_node.get_next)
+          next_value = current_node.get_next
+          break
+    
+    return next_value
 
   def remove_head(self):
     pass
@@ -33,3 +52,7 @@ class LinkedList:
 
   def get_max(self):
     pass
+
+a = LinkedList()
+b = a.add_to_tail(1)
+print(b)

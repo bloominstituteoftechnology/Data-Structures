@@ -28,7 +28,7 @@ class LinkedList:
   def remove_head(self):
     pass
 
-  def contains(self):
+  def contains(self, target):
     pass
 
   def get_max(self):

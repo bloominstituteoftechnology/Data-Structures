@@ -40,7 +40,7 @@ class LinkedList:
           del current.data
           current = prev 
  
-  def contains(self):
+  def contains(self, value):
     if self.head == None:
         return False
     else:

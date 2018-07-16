@@ -23,8 +23,20 @@ class LinkedList:
     self.tail = None
 
   def add_to_tail(self, value):
-    # first commit
-    pass
+    new_node = Node(value)
+    
+    if self.head is None:
+        self.head = new_node
+        self.tail = new_node
+        return
+    
+    last = self.head
+    
+    while last:
+       last = last.next_node
+    
+    last =  new_node
+    self.tail = last
 
   def remove_head(self):
     pass

@@ -18,37 +18,31 @@ class Node:
     self.next_node = new_next
 
 class LinkedList:
-  def contains(self, value):
+  def __init__(self):
     self.head = None
     self.tail = None
 
   def add_to_tail(self, value): # add a new node to the end
     new_node = Node(value)
-    if self.head == None:
-      self.head = new_node
-      return 
-    last = self.head
-    while (last.next):
-      last = last.next
-      
-    last.next = new_node
+    if self.tail == None: # Checking to see if Tail is empty
+      if self.head == None: # checking if Head is empty
+        self.head = new_node # setting head to the newly created node
+      else:
+        self.head.next_node = new_node #the next (the tail) will become the new node
+    else:
+      self.tail.next_node = new_node #the new node becomes the tail if tail is empty
+    self.tail = new_node #points to newly added tail
     
 
   def remove_head(self): # Gets rid of the head node and returns the new head node
-    prev = None
-    curr = self.head
-    while curr:
-      if curr.getData() == value:
-        if prev: 
-          prev.setNextNode(curr.getNextNode())
-        else:
-          self.head = curr.getNextNode()
-        return curr
-      
-      prev = curr
-      curr = curr.getNextNode()
-    
-    return False
+    curr = self.head #grabbing the current head
+    new_head = curr.next_node #grabbing the next node
+     #checking to see if there is a head
+    if curr: #When there is a head
+      self.head = new_head #setting the second node to new head
+      return curr.value 
+    else: #if there is no head
+      return False #reurn false
 
   def contains(self): #See if linked list contains a certain value
     pass

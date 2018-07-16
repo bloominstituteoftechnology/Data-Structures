@@ -25,22 +25,26 @@ class LinkedList:
   def add_to_tail(self, value):
     #append
     #self.tail.next_node = Node(value)
+    val = Node(value)
     if self.head == None:
-        self.head = Node(value)
+        self.head = val
     else:
-        self.tail.set_next(Node(value))
+        self.tail.set_next(val)
         
-    self.tail = Node(value)
+    self.tail = val
     
   def remove_head(self):
     #if head exsits
     #remove it from linked list
     #change self.head to the next one "b"
-    head = self.head 
+     
     if self.head != None:
+        head = self.head.get_value()
+        #if self.head.get_next() != None:
         self.head = self.head.get_next()
-        return head.get_value()
-    
+        return head
+    else:
+        return None
   def contains(self, value):
     # get the input value and
     # check the input value with all the values of the linked list
@@ -64,15 +68,22 @@ class LinkedList:
     while container != None:
         if container.get_value() == value:
             return True
-        else:
-            container = container.get_next()
+        container = container.get_next()
         
     return False
     
     
 
   def get_max(self):
-    pass
+    if self.head == None:
+      return None
+    currentNode = self.head
+    biggest = self.head.value
+    while currentNode != None:
+      if currentNode.value > biggest:
+        biggest = currentNode.value
+      currentNode = currentNode.next_node
+    return biggest
 '''
 nodeA = Node('a')
 list = LinkedList()

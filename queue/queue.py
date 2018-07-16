@@ -8,10 +8,18 @@ class Queue:
     self.storage = LinkedList()
 
   def enqueue(self, item):
+    if data not in self.size:
+      self.size.insert(0, item)
+      return True
+    return False
     pass
   
-  def dequeue(self):
-    pass
+  def desize(self):
+    if len(self.size) > 0:
+      return self.size.pop()
+  return ("size Empty!")
+pass
 
   def len(self):
+    return len(self.size)
     pass

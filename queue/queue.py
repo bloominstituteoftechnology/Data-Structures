@@ -1,8 +1,6 @@
 import sys
 from linked_list import LinkedList
 
-sys.path.append("../linked_list")
-
 
 class Queue:
     def __init__(self):

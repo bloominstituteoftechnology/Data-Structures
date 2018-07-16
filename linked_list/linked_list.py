@@ -44,8 +44,16 @@ class LinkedList:
     else:
       return None
 
-  def contains(self):
-    pass
+  def contains(self, value):
+    contain = False
+    pointer = self.head
+    
+    while pointer != None:
+      if pointer == value:
+        contain = True
+      pointer = pointer.next_node
+
+    return contain
 
   def get_max(self):
     pass

@@ -28,7 +28,6 @@ class LinkedList:
     newNode = Node(value)
     if self.head == None:
       self.head = newNode
-      self.head.next_node = newNode
     else: self.tail.next_node = newNode
     self.tail = newNode
 
@@ -52,22 +51,15 @@ class LinkedList:
       if currentNode.value == value:
         return True
       currentNode = currentNode.next_node
+    return False
 
   def get_max(self):
     if self.head == None:
       return None
     currentNode = self.head
     biggest = self.head.value
-    while currentNode:
+    while currentNode != None:
       if currentNode.value > biggest:
         biggest = currentNode.value
       currentNode = currentNode.next_node
     return biggest
-
-# nodeA = Node('a')
-
-# list = LinkedList()
-
-# list.add_to_tail(nodeA)
-
-# pprint(vars(list.tail))

@@ -22,8 +22,6 @@ class Node:
   def set_next(self, new_next):
     self.next_node = new_next
 
-
-
 class LinkedList:
   def __init__(self):
     self.head = None
@@ -36,7 +34,6 @@ class LinkedList:
     else:
       self.tail.set_next(new_node)
     self.tail = new_node
-
 
   def remove_head(self):
     if self.head == None: return None
@@ -57,6 +54,7 @@ class LinkedList:
       if current_node.get_value() == value: return True
 
 
+
   def get_max(self):
     # run a loop through the list
     current_node = self.head
@@ -72,9 +70,3 @@ class LinkedList:
       else: 
         max_node = prev_node
     return max_node
-
-    
-    #return max value
-
-
-    pass

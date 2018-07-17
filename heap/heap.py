@@ -37,7 +37,6 @@ class Heap:
             index = index * 2 + 1
           else: return self.storage[index]
 
-
   def get_size(self): 
     return
 

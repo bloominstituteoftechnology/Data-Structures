@@ -13,43 +13,32 @@ class Heap:
     self._bubble_up(len(self.storage) - 1)
 
   def delete(self):
-    max = self.storage[1]
     if len(self.storage) == 1:
       return None
-    
-    
-    self.storage[1] = self.storage[len(self.storage) - 1]
-    self.storage.pop()
+    max = self.storage[1]
+
+    self.storage[1] = self.storage[self.size]
     self.size -= 1
+    self.storage.pop()
     self._sift_down(1)
     return max
 
   def get_max(self):
-    index = 1 * 2 + 1
-    if self.size <= 3:
-      return self.storage[1]
-    if self.storage[index] > self.storage[1]:
-      while True:
-        if index > self.size:
-          return self.storage[math.floor(index / 2)]
-        else:
-          if self.storage[index * 2 + 1] > self.storage[index]:
-            index = index * 2 + 1
-          else:
-            return self.storage[index]
-    else: 
-      return self.storage[1]
-
+    return self.storage[1]
+  
   def get_size(self):
     return self.size
 
   def _bubble_up(self, index):
-    parent = math.floor(index / 2)
-    if self.storage[index] > self.storage[parent] and self.storage[parent] != 0:
-      temp = self.storage[index]
-      self.storage[index] = self.storage[parent]
-      self.storage[parent] = temp
-      self._bubble_up(parent)
+    while index // 2 > 0:
+
+      if self.storage[index] > self.storage[index // 2] and self.storage[index // 2]:
+        # swap them around via array destructuring:
+        self.storage[index // 2], self.storage[index] = self.storage[index], self.storage[index // 2]
+      else:
+        # break out if element has reached the correct spot
+        break
+      index = index //2
 
 
   def _sift_down(self, index):

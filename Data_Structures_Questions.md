@@ -3,43 +3,44 @@ For each of the methods associated with each data structure, classify it based o
 ## Linked List
 
 1.  What is the runtime complexity of `add_to_tail`?
-    Constant time because the size of the value has no impact on the instantiation of the class, checking for a boolean is a constant time operation, and variable assignment is a constant time operation.
+    Constant time (O(1)) because the size of the value has no impact on the instantiation of the class, checking for a boolean is a constant time operation, and variable assignment is a constant time operation.
 
-    a. What if our list implementation didn't have a reference to the tail of the list in its constructor? What would be the runtime of the `add_to_tail` method?
+    a. What if our list implementation didn't have a reference to the tail of the list in its constructor? What would be the runtime of the `add_to_tail` method? O(n)
 
-2.  What is the runtime complexity of `remove_head`?
+2.  What is the runtime complexity of `remove_head`? o(1)
 
-3.  What is the runtime complexity of `contains`?
+3.  What is the runtime complexity of `contains`? O(n)
 
-4.  What is the runtime complexity of `get_max`?
+4.  What is the runtime complexity of `get_max`? O(n)
 
 ## Queue
 
-1.  What is the runtime complexity of `enqueue`?
+1.  What is the runtime complexity of `enqueue`? O(1)
 
-2.  What is the runtime complexity of `dequeue`?
+2.  What is the runtime complexity of `dequeue`? O(1)
 
-3.  What is the runtime complexity of `len`?
+3.  What is the runtime complexity of `len`? O(1)
 
 ## Binary Search Tree
 
-1.  What is the runtime complexity of `insert`?
+1.  What is the runtime complexity of `insert`? O(log n)
 
-2.  What is the runtime complexity of `contains`?
+2.  What is the runtime complexity of `contains`? O (log n)
 
 3.  What is the runtime complexity of `get_max`?
+    The runtime complexity would be O(n) as worst case and O(log n) for best case
 
 ## Heap
 
-1.  What is the runtime complexity of `_bubble_up`?
+1.  What is the runtime complexity of `_bubble_up`? O(log n)
 
-2.  What is the runtime complexity of `_sift_down`?
+2.  What is the runtime complexity of `_sift_down`? O (log n)
 
-3.  What is the runtime complexity of `insert`?
+3.  What is the runtime complexity of `insert`? O (log n)
 
-4.  What is the runtime complexity of `delete`?
+4.  What is the runtime complexity of `delete`? O (log n)
 
-5.  What is the runtime complexity of `get_max`?
+5.  What is the runtime complexity of `get_max`? O(1)
 
 ## [Stretch Goal] Doubly Linked List
 

@@ -9,22 +9,45 @@ class Heap:
 
   def insert(self, value):
     self.storage.append(value)
-    self._bubble_up(len(self.storage) - 1)
+    self.size = self.size + 1
+    self._bubble_up(self.size)
 
   def delete(self):
-    pass
+    deleted_value = self.storage.pop(0)
+    self.size -= 1
+    self._sift_down(0)
+    return deleted_value
 
   def get_max(self):
-    pass
+    return self.storage[0]
 
   def get_size(self):
-    pass
+    return self.size
 
   def _bubble_up(self, index):
-    while self.storage[index] > self.storage[math.floor(index / 2)]:
-      temp = self.storage[math.floor(index / 2)]
-      self.storage[math.floor(index / 2)] = self.storage[index]
-      self.storage[index] = temp
+    while index > 0:
+      if self.storage[index] > self.storage[index // 2]:
+         tmp = self.storage[index // 2]
+         self.storage[index // 2] = self.storage[index]
+         self.storage[index] = tmp
+      index = index // 2
 
   def _sift_down(self, index):
-    pass
+    if len(self.storage) > 1:
+      for i, val in enumerate(self.storage):
+        if self.storage[index] < val:
+          temp = self.storage[index]
+          self.storage[index] = val
+          self.storage[i] = temp
+
+c = Heap()
+print(c.storage)
+print(c.size)
+c.insert(1)
+print(c.storage)
+c.insert(4)
+c.insert(5)
+c.insert(3)
+print(c.storage)
+c.delete()
+print(c.storage)

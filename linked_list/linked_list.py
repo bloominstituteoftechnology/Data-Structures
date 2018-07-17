@@ -33,6 +33,7 @@ class LinkedList:
     return self.head
   
   def remove_head(self):
+
       current = self.head
       while current:
           prev = current.next 
@@ -50,6 +51,12 @@ class LinkedList:
                 return True
             x = x.next
         return False
+=======
+    pass
+
+  def contains(self, value):
+    pass
+
 
   def get_max(self):
     max_ = self.head[0]

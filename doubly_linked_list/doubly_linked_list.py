@@ -63,6 +63,7 @@ class DoublyLinkedList:
         return value
 
     # def move_to_front(self, node):
+        # iterations = 1
     #     current = self.head
     #     while current:
     #         if current.value == node.value:
@@ -72,27 +73,37 @@ class DoublyLinkedList:
     #             return self.head.value
     #         else:
     #             current = current.next
+        # print('iterations', iterations)
     #     return False
 
     def move_to_front(self, node):
+        iterations = 1
         head = self.head
         headValue = head.value
         tail = self.tail
         tailValue = tail.value
-        while head.value != tailValue and tail.value != headValue:
+        if head == tail:
+            if headValue == node:
+                return head.value
+            return False
+        while head.prev != tail.next or iterations == 1:
             if headValue == node.value:
                 self.head.insert_before(node.value)
                 head.delete()
                 self.head = self.head.prev
+                print('iterations', iterations)
                 return self.head.value
             if tailValue == node.value:
                 self.head.insert_before(node.value)
                 tail.delete()
                 self.head = self.head.prev
+                print('iterations', iterations)
                 return self.head.value
             else:
                 head = head.next
                 tail = tail.prev
+            iterations += 1
+        print('iterations', iterations)
         return False
 
     # def move_to_end(self, node):

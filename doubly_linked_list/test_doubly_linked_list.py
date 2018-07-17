@@ -76,4 +76,8 @@ class DoublyLinkedListTests(unittest.TestCase):
     self.assertEqual(self.dll.head.next.value, 1)
 
 if __name__ == '__main__':
+<<<<<<< HEAD
   unittest.main()
+=======
+  unittest.main()
+>>>>>>> 009b2189bcd2902a3392c78c3c876c416c8f8f5f

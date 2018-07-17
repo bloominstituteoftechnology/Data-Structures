@@ -30,9 +30,15 @@ class ListNode:
 
 
 class DoublyLinkedList:
+<<<<<<< HEAD
     def __init__(self, node=None):
         self.head = node
         self.tail = node
+=======
+  def __init__(self, node=None):
+    self.head = node
+    self.tail = node
+>>>>>>> 009b2189bcd2902a3392c78c3c876c416c8f8f5f
 
     def add_to_head(self, value):
         if self.head:

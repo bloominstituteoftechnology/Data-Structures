@@ -32,7 +32,6 @@ class LinkedList:
       self.tail = val
     return val
 
-
   def remove_head(self):
     if self.head == None:
       return None

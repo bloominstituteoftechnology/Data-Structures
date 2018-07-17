@@ -53,6 +53,7 @@ class LinkedList:
     return removed_head
 
   def contains(self, value):
+
     # sets the current node to the current head's value
     current_node = self.head
     if current_node == None:

@@ -6,9 +6,13 @@ class ListNode:
 
     def insert_after(self, value):
         self.next = ListNode(value, self, self.next)
+        if self.next.next:
+            self.next.next.prev = self.next
 
     def insert_before(self, value):
         self.prev = ListNode(value, self.prev, self)
+        if self.prev.prev:
+            self.prev.prev.next = self.prev
 
     def delete(self):
         if self.next:

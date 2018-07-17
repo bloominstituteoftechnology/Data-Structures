@@ -34,4 +34,3 @@ class BinarySearchTree:
     left = self.value if self.left is None else self.left.get_max()
     right = self.value if self.right is None else self.right.get_max()
     return max([self.value, left, right])
-

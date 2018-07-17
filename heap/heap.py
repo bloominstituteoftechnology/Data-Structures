@@ -51,4 +51,3 @@ class Heap:
     if self.storage[child_index] > self.storage[index]:
       self.swap(index, child_index)
       self._sift_down(child_index)
-

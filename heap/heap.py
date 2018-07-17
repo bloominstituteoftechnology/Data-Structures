@@ -15,7 +15,7 @@ class Heap:
     return self.storage[0]
 
   def get_size(self):
-    pass
+    return len(self.storage)
 
   def _bubble_up(self, index):
     parent_index = math.floor((index-1)/2)

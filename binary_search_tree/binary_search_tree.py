@@ -3,12 +3,35 @@ class BinarySearchTree:
     self.value = value
     self.left = None
     self.right = None
+    self.head = None
 
   def insert(self, value):
-    pass
+    if self.value:
+      if value < self.value:
+        if self.left is None:
+          self.left = BinarySearchTree(value)
+        else: self.left.insert(value)
+      elif value > self.value:
+        if self.right is None:
+          self.right = BinarySearchTree(value)
+        else: 
+          self.right.insert(value)
+    else:
+      self.value = value
 
   def contains(self, target):
-    pass
+    if target < self.value:
+      if self.left is None:
+        return None
+      return self.left.contains(target)
+    elif target > self.value:
+      if self.right is None:
+        return None
+      return self.right.contains(target)
+    else:
+      return self
 
   def get_max(self):
     pass
+
+

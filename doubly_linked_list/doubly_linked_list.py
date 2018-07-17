@@ -73,26 +73,14 @@ class DoublyLinkedList:
     return ret
 
   def move_to_front(self, node):
-    cur = self.head
-    while cur is not None:
-      if cur.value == node.value:
-        break
-      cur = cur.next
-
-    if cur is not None:
-      self.delete(cur)
-    self.add_to_head(node.value)
+    val = node.value
+    self.delete(node)
+    self.add_to_head(val)
 
   def move_to_end(self, node):
-    cur = self.head
-    while cur is not None:
-      if cur.value == node.value:
-        break
-      cur = cur.next
-
-    if cur is not None:
-      self.delete(cur)
-    self.add_to_tail(node.value)
+    val = node.value
+    self.delete(node)
+    self.add_to_tail(val)
 
   def delete(self, node):
     node.delete()

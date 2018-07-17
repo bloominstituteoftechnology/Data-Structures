@@ -30,7 +30,7 @@ class LinkedList:
   def add_to_tail(self, value):
     # sets value of node to new_node
     new_node = Node(value)
-    if self.head == None:
+    if not self.head:
       # initializes head node's value if none
       self.head = new_node
       # initializes tail node's value to be the same as head while only 1 node exists
@@ -42,7 +42,7 @@ class LinkedList:
       self.tail = new_node
 
   def remove_head(self):
-    if self.head == None:
+    if not self.head:
       # if there is no head to remove, we return None
       return None
     # if there is a head we set removed_head to equal the current heads value

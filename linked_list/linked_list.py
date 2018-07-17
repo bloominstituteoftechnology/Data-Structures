@@ -26,34 +26,35 @@ class LinkedList:
         self.tail = None
 
     def add_to_tail(self, value):
-        newNode = Node(value, self.tail)
+        newNode = Node(value)
         # check if there is a head
-        if(self.head == None):
+        if not self.head:
             # no head, so also no tail, make them both equal to new node
             self.head = newNode
             self.tail = newNode
-            return
-        # otherwise,
-        # update the next pointer on the current tail,
-        self.tail.next = newNode
-        # make the new node the tail
-        self.tail = newNode
+        else:
+            # otherwise,
+            # update the next pointer on the current tail,
+            self.tail.next_node = newNode
+            # make the new node the tail
+            self.tail = newNode
 
     def remove_head(self):
-        if(self.head == None):
+        # check if there is no head
+        if not self.head:
             return None
 
         # get a copy of the head
         head = self.head
 
         # check if the nex node is None
-        if(head.next == None):
+        if not head.next_node:
             self.head = None
             self.tail = None
         else:
             # assign the next node as the new head
-            self.head = head.next
-
+            self.head = head.next_node
+            
         # return the value if you want
         return head.value
 
@@ -77,9 +78,7 @@ class LinkedList:
         max = current.value
 
         while(current is not None):
-            print(current.value)
             if(current.value > max):
                 max = current.value
             current = current.next_node
-
         return max

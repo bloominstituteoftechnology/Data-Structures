@@ -34,7 +34,24 @@ class LinkedList:
 
     
   def remove_head(self):
-    pass
+    #check if there is no head
+    if not self.head:
+      return None
+    #if head has no next, then there is only one element
+    if not self.head.next_node:
+      #store a reference to the current head
+      head=self.head
+      #delete the head reference
+      self.head=None
+      #point the tail to None
+      self.tail=None
+      return head.value
+    else:
+      #the list has more than 1 element
+      value=self.head.value
+      self.head=self.head.next_node
+      return value
+      
 
   def contains(self):
     pass

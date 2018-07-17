@@ -31,10 +31,10 @@ class LinkedListTests(unittest.TestCase):
     self.assertFalse(self.list.contains(20))
 
     # at this point list should be empty, as we have removed the 2 elements we added
-    self.list.add_to_tail(10) # new list should have 1 element (with both head and tail pointing to it)
+    self.list.add_to_tail(10) # new list should have 1 element after this (with both head and tail pointing to it)
     self.assertEqual(self.list.remove_head(), 10) # remove the newly added element again (resulting in an empty list again)
-    self.assertIsNone(self.list.head) # head should be None
-    self.assertIsNone(self.list.tail) # tail should be None
+    self.assertIsNone(self.list.head)
+    self.assertIsNone(self.list.tail)
     self.assertIsNone(self.list.remove_head())
 
   def test_get_max(self):

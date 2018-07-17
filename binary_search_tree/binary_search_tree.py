@@ -14,10 +14,9 @@ class BinarySearchTree:
         self.left = None
         self.right = None
 
-"""
-Insert method to create nodes
-param value is data object to insert
-"""
+
+#Insert method to create nodes
+#param value is data object to insert
     def insert(self, value):
         if self.value:
             if value < self.value:
@@ -32,18 +31,17 @@ param value is data object to insert
                    self.right.insert(value)
         else:
             self.value = value
-"""
-First, compare the value passed in with the node - > or <?
-If <, check the left node. If nothing is there, congratulations, you have a new left node!
-If something is there, insert the new value.
-Same with the right. If nothing is there, then you have a new right node.
-If something is there, insert the new value.
-Ignore new value if equal to current one
 
-Contains: Method to look for specific nodes in the tree
-param target is data object (value) we will compare with nodes
-looking for a match
-"""
+# First, compare the value passed in with the node - > or <?
+# If <, check the left node. If nothing is there, congratulations, you have a new left node!
+# If something is there, insert the new value.
+# Same with the right. If nothing is there, then you have a new right node.
+# If something is there, insert the new value.
+# Ignore new value if equal to current one
+
+# Contains: Method to look for specific nodes in the tree
+# param target is data object (value) we will compare with nodes
+# looking for a match
 
     def contains(self, target):
         if target == self.value:
@@ -53,23 +51,21 @@ looking for a match
                 break
             else:
                 return self.find(target, node.left)
-        elif target > self.value
+        elif target > self.value:
             if self.right is None:
                 break
             else:
                 return self.find(target, node.right)
         else:
             print(int(self.value) + ' is present')
-"""
-This is similar to the above where we compare the target with the node value and then look down each subtree
+# This is similar to the above where we compare the target with the node value and then look down each subtree
 
-I guess get_max means we're supposed to return the largest value in the tree???
-"""
+# I guess get_max means we're supposed to return the largest value in the tree???
 
     def get_max(self):
-    if self is none or self.left is None:
-        return self
-    current = self
+        if self is none or self.left is None:
+            return self
+        current = self
         while current:
             if not current.right:
                 return current

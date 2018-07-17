@@ -13,11 +13,10 @@ class BinarySearchTree:
       return self.right
     
     if value < self.value:
-      node_val = self.left
+      self.left.insert(value)
     else:
-      node_val = self.right
-    
-    node_val.insert(value)
+      self.right.insert(value)
+
 
   def contains(self, target):
     if target == self.value:

@@ -17,7 +17,7 @@ class ListNode:
         self.prev.next = self.next
     if self.next:
         self.next.prev = self.prev
-        
+
     self.prev = None
     self.next = None
     return self.value
@@ -42,7 +42,10 @@ class DoublyLinkedList:
     self.tail = self.tail.next
 
   def remove_from_tail(self):
-    pass
+    new_tail = self.tail.prev
+    removed_node = self.tail.delete()
+    self.tail = new_tail
+    return removed_node
 
   def move_to_front(self, node):
     pass

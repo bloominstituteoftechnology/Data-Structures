@@ -6,7 +6,9 @@ class Heap:
     self.size = 0
 
   def insert(self, value):
-    pass
+    self.storage.append(value)
+    self.size += 1
+    
 
   def delete(self):
     pass

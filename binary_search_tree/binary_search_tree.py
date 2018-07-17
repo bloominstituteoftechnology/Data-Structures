@@ -34,4 +34,9 @@ class BinarySearchTree:
     return node_val.contains(target)
 
   def get_max(self):
-    pass
+    if not self.right:
+      right = self.value
+    else:
+      right = self.right.get_max()
+    
+    return max(self.value, right)

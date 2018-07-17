@@ -68,4 +68,5 @@ class DoublyLinkedList:
     self.tail = node
 
   def delete(self, node):
-    pass
+    removed_node = node.delete()
+    return removed_node

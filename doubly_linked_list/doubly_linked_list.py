@@ -58,7 +58,14 @@ class DoublyLinkedList:
     self.head = node
 
   def move_to_end(self, node):
-    pass
+    if self.head == node:
+        self.head = node.next
+    
+    node.next.prev = node.prev
+    node.next = None
+    node.prev = self.tail
+    self.tail.next = node
+    self.tail = node
 
   def delete(self, node):
     pass

@@ -30,8 +30,9 @@ class LinkedList:
       self.tail = newNode
       return
     else:
-      self.head.set_next(newNode)
+      self.tail.set_next(newNode)
       self.tail = newNode
+    
 
   def remove_head(self):
     if self.head == None:
@@ -51,7 +52,7 @@ class LinkedList:
         elif node.next_node == None:
           return False
         else:
-          find_value(node.next_node)
+          return find_value(node.next_node)
       return find_value(self.head)
 
 
@@ -59,15 +60,13 @@ class LinkedList:
     if self.head == None:
       return
     else:
-      def find_max(node):
-        temp = 0
+      temp = 0
+      def find_max(node, temp):
         if node == None:
-          return
-        elif node.next_node == None:
           return temp
         elif node.value > temp:
           temp = node.value
-          find_max(node.next_node)
-      return find_max(self.head)
-
-
+          return find_max(node.next_node, temp)
+        else:
+          return find_max(node.next_node, temp)
+      return find_max(self.head, temp)

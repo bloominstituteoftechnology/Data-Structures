@@ -12,7 +12,7 @@ class ListNode:
     new_node = ListNode(value, self.prev, self)
     self.prev = new_node
 
-  def delete(self):
+  def delete(self): # arr.splice(index, 1) O(1) --> arr of 10 elemnets 
     if not self.next:
       self.prev.next = None
     elif not self.prev:
@@ -44,7 +44,6 @@ class DoublyLinkedList:
     value = self.head.value
     self.head = self.head.next
     self.head.prev = None
-    #self.head.insert_before(None)
     return value
 
   def add_to_tail(self, value):
@@ -60,20 +59,7 @@ class DoublyLinkedList:
     value = self.tail.value
     self.tail = self.tail.prev
     self.tail.next = None
-    #self.tail.insert_after(None)
     return value
-
-  # def move_to_front(self, node):
-  #   current = self.head
-  #   while current:
-  #     if current.value == node.value:
-  #       self.head.insert_before(node.value)
-  #       current.delete()
-  #       self.head = self.head.prev
-  #       return self.head.value
-  #     else:
-  #         current = current.next
-  #   return False
 
   def move_to_front(self, node):
     head = self.head

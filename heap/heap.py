@@ -9,11 +9,15 @@ class Heap:
 
   def insert(self, value):
     self.storage.append(value)
-    self._bubble_up(len(self.storage) - 1)
     self.size += 1
+    self._bubble_up(len(self.storage) - 1)
 
   def delete(self):
     max = self.storage[1]
+    if len(self.storage) == 1:
+      return None
+    
+    
     self.storage[1] = self.storage[len(self.storage) - 1]
     self.storage.pop()
     self.size -= 1

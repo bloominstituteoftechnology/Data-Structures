@@ -30,6 +30,8 @@ class LinkedListTests(unittest.TestCase):
         self.assertFalse(self.list.contains(10))
         self.assertEqual(self.list.remove_head(), 20)
         self.assertFalse(self.list.contains(20))
+        self.assertEqual(self.list.head, None)
+        self.assertEqual(self.list.tail, None)
         self.assertIsNone(self.list.remove_head())
 
     def test_get_max(self):

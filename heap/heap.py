@@ -25,7 +25,7 @@ class Heap:
     def _bubble_up(self, index):
         parent_index = self._get_parent_index(index)
 
-        while index != 0 and self.storage[parent_index] < self.storage[index]:
+        while index and self.storage[parent_index] < self.storage[index]:
             self._swap(index, parent_index)
             index = parent_index
             parent_index = self._get_parent_index(index)

@@ -31,12 +31,12 @@ class LinkedList:
       self.head = self.tail
 
   def remove_head(self):
-    if self.head == None:
-      return None
-    else:
+    if self.head is not None:
       removed_head = self.head.value
       self.head = self.head.next_node
       return removed_head
+    else:
+      return None
 
   def contains(self, value):
     current = self.head

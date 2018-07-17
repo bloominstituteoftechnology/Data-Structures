@@ -11,15 +11,8 @@ class Heap:
         self._bubble_up(index)
 
     def delete(self):
-        # swap root with last node
-        root = self.storage[0]
-        self.storage[0] = self.storage[self.get_size() - 1]
-        self.storage[self.get_size() - 1] = root
-
-        # pop off last node
+        self._swap(0, self.get_size() - 1)
         max = self.storage.pop(self.get_size() - 1)
-
-        # sift down
         self._sift_down(0)
         return max
 
@@ -30,35 +23,29 @@ class Heap:
         return len(self.storage)
 
     def _bubble_up(self, index):
-        parent_index = math.floor((index-1)/2)
+        parent_index = self._get_parent_index(index)
 
         while index != 0 and self.storage[parent_index] < self.storage[index]:
-            parent = self.storage[parent_index]
-            self.storage[parent_index] = self.storage[index]
-            self.storage[index] = parent
+            self._swap(index, parent_index)
             index = parent_index
-            parent_index = math.floor((index-1)/2)
+            parent_index = self._get_parent_index(index)
 
     def _sift_down(self, index):
         left_index = self._get_left_index(index)
         right_index = self._get_right_index(index)
 
         while left_index and self.storage[index] < self.storage[left_index]:
-            parent = self.storage[index]
-            
             if self.storage[left_index] > self.storage[right_index]:
-                self.storage[index] = self.storage[left_index]
-                self.storage[left_index] = parent
+                self._swap(index, left_index)
                 left_index = self._get_left_index(left_index)
             else:
-                self.storage[index] = self.storage[right_index]
-                self.storage[right_index] = parent
+                self._swap(index, right_index)
                 left_index = self._get_left_index(left_index)
                 
             right_index = left_index + 1 if left_index else None
 
     def _get_parent_index(self, index):
-        pass
+        return math.floor((index-1)/2)
 
     def _get_left_index(self, index):
         left_index = (2*index) + 1
@@ -67,3 +54,8 @@ class Heap:
     def _get_right_index(self, index):
         right_index = (2*index) + 2
         return right_index if right_index < self.get_size() else None
+    
+    def _swap(self, src_index, dst_index):
+        src = self.storage[src_index]
+        self.storage[src_index] = self.storage[dst_index]
+        self.storage[dst_index] = src

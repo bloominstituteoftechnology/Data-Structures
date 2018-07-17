@@ -2,43 +2,43 @@ For each of the methods associated with each data structure, classify it based o
 
 ## Linked List
 
-1. What is the runtime complexity of `add_to_tail`?
+1. What is the runtime complexity of `add_to_tail`? -- constant
   
-    a. What if our list implementation didn't have a reference to the tail of the list in its constructor? What would be the runtime of the `add_to_tail` method?
+    a. What if our list implementation didn't have a reference to the tail of the list in its constructor? What would be the runtime of the `add_to_tail` method? -- linear
 
-2. What is the runtime complexity of `remove_head`?
+2. What is the runtime complexity of `remove_head`? -- constant
 
-3. What is the runtime complexity of `contains`?
+3. What is the runtime complexity of `contains`? -- linear
 
-4. What is the runtime complexity of `get_max`?
+4. What is the runtime complexity of `get_max`? -- linear
 
 ## Queue
 
-1. What is the runtime complexity of `enqueue`?
+1. What is the runtime complexity of `enqueue`? -- constant
 
-2. What is the runtime complexity of `dequeue`?
+2. What is the runtime complexity of `dequeue`? -- constant
 
-3. What is the runtime complexity of `len`?
+3. What is the runtime complexity of `len`? -- constant
 
 ## Binary Search Tree
 
-1. What is the runtime complexity of `insert`? 
+1. What is the runtime complexity of `insert`? -- logarithmic
 
-2. What is the runtime complexity of `contains`?
+2. What is the runtime complexity of `contains`? -- logarithmic
 
-3. What is the runtime complexity of `get_max`? 
+3. What is the runtime complexity of `get_max`? -- linear
 
 ## Heap
 
-1. What is the runtime complexity of `_bubble_up`?
+1. What is the runtime complexity of `_bubble_up`? -- linear
 
-2. What is the runtime complexity of `_sift_down`?
+2. What is the runtime complexity of `_sift_down`? -- linear
 
-3. What is the runtime complexity of `insert`?
+3. What is the runtime complexity of `insert`? -- linear
 
-4. What is the runtime complexity of `delete`?
+4. What is the runtime complexity of `delete`? -- linear
 
-5. What is the runtime complexity of `get_max`?
+5. What is the runtime complexity of `get_max`? -- constant
 
 ## [Stretch Goal] Doubly Linked List
 

@@ -44,6 +44,7 @@ class LinkedList:
 
     return old_head.value
 
+
   def contains(self, value):
     cur = self.head
     while cur is not None:

@@ -7,10 +7,8 @@ class Heap:
 
   def insert(self, value):
     self.storage.append(value)
-    if self.get_size() > 1:
-        index = self.get_size() - 1
-        while index:
-            index = self._bubble_up(index)
+    index = 0 if self.get_size() == 0 else self.get_size() - 1
+    self._bubble_up(index)
 
   def delete(self):
     # swap root with last node
@@ -37,16 +35,12 @@ class Heap:
 
   def _bubble_up(self, index):
     parent_index = math.floor((index-1)/2)
-    parent = self.storage[parent_index]
-    child = self.storage[index]
 
-    if parent < child:
-        self.storage[parent_index] = child
+    while self.storage[parent_index] < self.storage[index]:
+        parent = self.storage[parent_index]
+        self.storage[parent_index] = self.storage[index]
         self.storage[index] = parent
-        self.storage[parent_index] = child
-        return parent_index
-    
-    return False
+        parent_index = math.floor((parent_index-1)/2)
 
   def _sift_down(self, index):
     left_child_index = (2*index) + 1
@@ -64,4 +58,4 @@ class Heap:
         self.storage[index] = right_child
         return right_child_index
     
-    return False
+    return None

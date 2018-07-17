@@ -26,34 +26,61 @@ class LinkedList:
         self.tail = None
 
     def add_to_tail(self, value):
-        self.tail = Node(value)
+        new_tail = Node(value)
+        old_tail = self.tail
+        
+        if self.tail:
+            self.tail.next_node = new_tail
+        else:
+            self.head = new_tail
+
+        self.tail = new_tail
 
     def remove_head(self):
+        if not self.head:
+            return None
+        
         head = self.head
-        self.head = None
+        self.head = head.next_node
 
-        return head
+        return head.value
 
     def contains(self, value):
-        pass
+        if not self.head:
+            return None
 
+        current_node = self.head
+        found = False
+
+        while not found:
+            if current_node == None:
+                return False
+            
+            if value == current_node.value:
+                return True
+            else:
+                if not current_node.next_node:
+                    return False
+                    
+                current_node = current_node.next_node
+                continue
+
+            if not current_node.next_node:
+                return False
+            
     def get_max(self):
-        pass
+        if not self.head:
+            return None
 
+        max_value = self.head.value
+        current_node = self.head
 
-nodeA = Node('a') # current head
-nodeB = Node('b')
-nodeC = Node('c') # current tail
+        while current_node:
+            if max_value < current_node.value:
+                max_value = current_node.value
 
-nodeA.next = nodeB
-nodeB.next = nodeC
+            if not current_node.next_node:
+                return max_value
 
-list = LinkedList()
-
-list.head = nodeA
-list.add_to_tail(nodeC)
-
-print(list.head) # prints 'a'
-print(list.tail.value) # prints '<__main__.Node object at 0x7f84ce7cba20>'
-
-print(list.remove_head().value)
+            current_node = current_node.next_node
+        

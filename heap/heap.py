@@ -20,11 +20,11 @@ class Heap:
 
   def delete(self):
     if self.size > 0:
-      self.size -= 1
       maxval = self.get_max()
-      self.storage[1] = -100
-      self._sift_down(1)
+      self.storage[1] = self.storage[self.size]
       del self.storage[-1]
+      self.size -= 1
+      self._sift_down(1)
 
       return maxval
 

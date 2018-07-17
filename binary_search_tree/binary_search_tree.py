@@ -27,10 +27,5 @@ class BinarySearchTree:
     return chosen.contains(target)
 
   def get_max(self):
-    # one can do something like this:
-    # max([self.value, self.value if self.left is None else self.left.get_max(), self.value if self.right is None else self.right.get_max()])
-    # but don't do the above – if someone is reading this, please don't – 'other humans have to absorb what we write'
-
-    left = self.value if self.left is None else self.left.get_max()
     right = self.value if self.right is None else self.right.get_max()
-    return max([self.value, left, right])
+    return max(self.value, right)

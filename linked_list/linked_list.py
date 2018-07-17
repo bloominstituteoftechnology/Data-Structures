@@ -24,8 +24,7 @@ class LinkedList:
 
   def add_to_tail(self, value):
     if self.tail is None:
-      self.tail = Node(value)
-      self.head = self.tail
+      self.tail = self.head = Node(value)
       return
 
     new_node = Node(value)

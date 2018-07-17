@@ -11,6 +11,9 @@ class Heap:
     self._bubble_up(self.size)
 
   def delete(self):
+    if self.size == 0:
+      return None
+
     top = self.storage[1]
     last = self.storage.pop()
     self.size -= 1
@@ -28,9 +31,9 @@ class Heap:
     return self.size
 
   def swap(self, index1, index2):
-    val1 = self.storage[index1]
+    val = self.storage[index1]
     self.storage[index1] = self.storage[index2]
-    self.storage[index2] = val1
+    self.storage[index2] = val
 
   def _bubble_up(self, index):
     parent_index = index//2

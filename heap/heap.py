@@ -28,10 +28,44 @@ class Heap:
     return self.storage[1]
 
   def get_size(self):
-    pass
+    return self.size
 
   def _bubble_up(self, index):
-    pass
+    parent_index = index // 2
+
+    if parent_index >= 1 and self.storage[index] > self.storage[parent_index]:
+      container = self.storage[index]
+      self.storage[index] = self.storage[parent_index]
+      self.storage[parent_index] = container
+      self._bubble_up(parent_index)
 
   def _sift_down(self, index):
-    pass
+    left = 2 * (index + 1)
+    right = 2 * (index + 2)
+
+    if self.size == 2:
+      if self.storage[1] < self.storage[2]:
+        container = self.storage[1]
+        self.storage[1] = self.storage[2]
+        self.storage[2] = container
+
+    if left > self.size - 1 and right > self.size - 1:
+      return
+    tail = self.storage[index]
+
+    if tail < self.storage[left] and self.storage[right] >= self.storage[left]:
+      container = tail
+      self.storage[index] = self.storage[right]
+      self.storage[right] = container
+      self._sift_down(right)
+    elif tail < self.storage[left] and self.storage[right] < self.storage[left]:
+      container = tail
+      self.storage[index] = self.storage[left]
+      self.storage[left] = container
+      self._sift_down(left)
+
+    if right > self.size and tail < self.storage[left]:
+      container = tail
+      self.storage[index] = self.storage[left]
+      self.storage[left] = container
+      self._sift_down(left)

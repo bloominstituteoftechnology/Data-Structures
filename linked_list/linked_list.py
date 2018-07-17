@@ -50,8 +50,7 @@ class LinkedList(Node): #properties are head and tail
   def contains(self, value): #similar to includes in .js
       # linked_list = LinkedList(self)
       pass
-    
-
+  
   def get_max(self): #get max value in entire list
     max_value = self.head
     if self.head == self.tail:
@@ -62,3 +61,4 @@ class LinkedList(Node): #properties are head and tail
       max_value = self.head
     else:
         return max_value
+

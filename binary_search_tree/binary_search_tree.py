@@ -45,4 +45,15 @@ class BinarySearchTree:
 
 
   def get_max(self):
-    pass
+    if not self: return None 
+
+    max = self.value 
+    current = self  
+
+    while(current):
+      if current.value > max: 
+        max = current.value 
+
+      current = current.right 
+    
+    return max 

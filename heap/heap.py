@@ -11,10 +11,21 @@ class Heap:
     self._bubble_up(self.size)
 
   def delete(self):
-    pass
+    if self.size == 0:
+      return None
+    elif self.size == 1:
+      self.size -= 1
+      return self.storage.pop()
+    else:
+      new_node = self.storage.pop()
+      old_node = self.storage[1]
+      self.storage[1]= new_node
+      self.size -= 1
+      self._sift_down(1)
+      return old_node
 
   def get_max(self):
-    pass
+    return self.storage[1]
 
   def get_size(self):
     pass

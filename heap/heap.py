@@ -1,8 +1,8 @@
+import math
+
 class Heap:
   def __init__(self):
-    # storage starts with an unused 0 to make 
-    # integer division simpler later on
-    self.storage = [0]
+    self.storage = []
     self.size = 0
 
   def insert(self, value):
@@ -18,7 +18,13 @@ class Heap:
     pass
 
   def _bubble_up(self, index):
-    pass
+    parent_index = math.floor((index-1)/2)
+    parent = self.storage[parent_index]
+    child = self.storage[index]
+
+    if parent < child:
+        self.storage[parent_index] = child
+        self.storage[index] = parent
 
   def _sift_down(self, index):
     pass

@@ -4,69 +4,66 @@ list node that holds a single value
 and a reference to the next node in the list
 """
 class Node: #represents a single node
-    def __init__(self, value=None, next_node=None): #value and next_node   default point to None
-    self.value = value #linked list value that's stored inside node
-    self.next_node = next_node #next node in linked list. if no other node in list then it will point to None.
+    def __init__(self, value, next_node=None): 
+        #value and next_node   
+        #value is the data and next_node is the address to that points to next_node
+
+        self.value = value #linked list value that's stored inside node
+        self.next_node = next_node #next node in linked list. if no other node in list then it will point to None.
 
     def get_value(self): #gets value of node
-    return self.value
+        return self.value
+    def set_value(self, val):
+        self.value = val
 
     def get_next(self): #gets value of next_node
-    return self.next_node
+        return self.next_node
 
-    def set_next(self, new_next): #sets next_node to new_next
-    self.next_node = new_next
+    def set_next(self, val): #sets next_node to new_next
+        self.next_node = val
 
 class LinkedList(): #properties are head and tail
-    def __init__(self):
-    self.head = None
-    self.tail = None
+    def __init__(self, head = None):
+        '''
+        create singly-linked list
+        Takes O(1) time because we are just assigning stuff
+        '''
+        self.head = None
+        self.tail = None
+        
 
-    def add_to_tail(self, value): #replaces the tail with a new value that is passed on    
+    def add_to_tail(self, value):   #this is OK
+        
+        '''
+        replaces the tail with a new value that is passed on
+        Takes O(n) time because it depends on the amount of input is linear.
+        
+        '''
         new_node = Node(value) #new instance of node class
         if not self.head: #if the list is empty:
-            self.head = new_node #both self.head and self.tail will be assigned new node
+            self.head = new_node  #self.head and self.tail is assigned as the new node
             self.tail = new_node
-        elif self.head == self.tail:  #if self.tail and self.head are the same:
-            self.tail.next_node = new_node #self.tail.next_node is another node instance of new node
-            self.tail = new_node
-    def remove_head(self): #removes and returns the head node
-        # self.head = self.next_node
-        if not self.head:
-            return None
-        elif not self.head.next_node:
-            head = self.head
-            self.head = None
-            self.tail = None
-        return head.value
         else:
-            value = self.head.value
-            self.head = self.head.next_node
-        return value
+            current = self.head #the current node is self.head
+            while current.next_node: #while there is a next node
+                current.next_node = new_node #the current next node is the new node
+            self.tail = new_node #after exiting while loop, we know there is no next_node,
+            #therefore self.tail is the new_node
+        return self.tail
+
+
+    def remove_head(self): #removes and returns the head node
+        if not self.head: #returns None when list is empty
+            return None
+        
+        pass
+        
+            
 
 
     def contains(self, value): #similar to includes in .js
-        # check to see if list is empty
-        if not self.head:
-            return None
-        pointer = self.head
-        while pointer:
-            if pointer.value == value:
-                return True
-            else:
-                pointer = pointer.next_node
-
-        return False
+        pass
 
     def get_max(self): #get max value in entire list
-        if not self.head:
-        return None
-            max_value = self.head.value
-            pointer = self.head.get_next()
-        while pointer:
-            if pointer.value > max_value:
-                max_value = pointer.value
-            else:
-                pointer = pointer.next_node
-        return max_value
+        pass
 

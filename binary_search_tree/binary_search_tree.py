@@ -3,37 +3,41 @@ class BinarySearchTree:
         self.value = value
         self.left = None
         self.right = None
+        
     
+            
     def insert(self, value):
-        if self is not None and value is not None:
-            if value < self.value:
-                self.left = self.__init__(value)
+        val = BinarySearchTree(value)
+        if value < self.value:
+            if not self.left:
+                self.left = val
+                #attaching a new node here
             else:
-                self.right = self.__init__(value)
+                self.left.insert(value)
+        else:
+            if not self.right:
+                self.right = val
+            else:
+                self.right.insert(value)
         
     def contains(self, target):
-        '''
-        while self.value is None:  
-            if self is not None and target is not None:
-                pointer = self
-                if target < pointer.value:
-                    pointer = self.left
-                elif target > pointer.value:
-                    pointer = self.right
-                else:
-                    return True
+        pointer = self
+        while pointer:
+            if target == pointer.value:
+                print("nacho bc")
+                return True
+            elif target < pointer.value:
+                pointer = pointer.left
+            else:
+                pointer = pointer.right
+
         return False
-        '''
-        pass
+        
     def get_max(self):
-        '''
-        while self.value != None:  
-            if self is not None:
-                pointer = self
-                if pointer.value < self.right.value:
-                    pointer = self.right
-                else:
-                    return pointer.value
-        return None
-        '''
-        pass
+        pointer = self
+        while pointer.right: 
+            print("xoo")
+            print(self.value)
+            pointer = pointer.right
+        
+        return pointer.value

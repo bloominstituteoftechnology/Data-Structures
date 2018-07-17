@@ -2,63 +2,65 @@ For each of the methods associated with each data structure, classify it based o
 
 ## Linked List
 
-1. What is the runtime complexity of `add_to_tail`?
-  
+1.  What is the runtime complexity of `add_to_tail`?
+    O(1)
     a. What if our list implementation didn't have a reference to the tail of the list in its constructor? What would be the runtime of the `add_to_tail` method?
-
-2. What is the runtime complexity of `remove_head`?
-
-3. What is the runtime complexity of `contains`?
-
-4. What is the runtime complexity of `get_max`?
+    O(n)
+2.  What is the runtime complexity of `remove_head`?
+    O(n)
+3.  What is the runtime complexity of `contains`?
+    O(n)
+4.  What is the runtime complexity of `get_max`?
+    O(n)
 
 ## Queue
 
-1. What is the runtime complexity of `enqueue`?
-
-2. What is the runtime complexity of `dequeue`?
-
-3. What is the runtime complexity of `len`?
+1.  What is the runtime complexity of `enqueue`?
+    O(1)
+2.  What is the runtime complexity of `dequeue`?
+    O(1)
+3.  What is the runtime complexity of `len`?
+    O(1)
 
 ## Binary Search Tree
 
-1. What is the runtime complexity of `insert`? 
+1.  What is the runtime complexity of `insert`?
 
-2. What is the runtime complexity of `contains`?
+2.  What is the runtime complexity of `contains`?
 
-3. What is the runtime complexity of `get_max`? 
+3.  What is the runtime complexity of `get_max`?
 
 ## Heap
 
-1. What is the runtime complexity of `_bubble_up`?
+1.  What is the runtime complexity of `_bubble_up`?
 
-2. What is the runtime complexity of `_sift_down`?
+2.  What is the runtime complexity of `_sift_down`?
 
-3. What is the runtime complexity of `insert`?
+3.  What is the runtime complexity of `insert`?
 
-4. What is the runtime complexity of `delete`?
+4.  What is the runtime complexity of `delete`?
 
-5. What is the runtime complexity of `get_max`?
+5.  What is the runtime complexity of `get_max`?
 
 ## [Stretch Goal] Doubly Linked List
 
-1. What is the runtime complexity of `ListNode.insert_after`?
+1.  What is the runtime complexity of `ListNode.insert_after`?
 
-2. What is the runtime complexity of `ListNode.insert_before`?
+2.  What is the runtime complexity of `ListNode.insert_before`?
 
-3. What is the runtime complexity of `ListNode.delete`?
+3.  What is the runtime complexity of `ListNode.delete`?
 
-4. What is the runtime complexity of `DoublyLinkedList.add_to_head`?
+4.  What is the runtime complexity of `DoublyLinkedList.add_to_head`?
 
-5. What is the runtime complexity of `DoublyLinkedList.remove_from_head`?
+5.  What is the runtime complexity of `DoublyLinkedList.remove_from_head`?
 
-6. What is the runtime complexity of `DoublyLinkedList.add_to_tail`?
+6.  What is the runtime complexity of `DoublyLinkedList.add_to_tail`?
 
-7. What is the runtime complexity of `DoublyLinkedList.remove_from_tail`?
+7.  What is the runtime complexity of `DoublyLinkedList.remove_from_tail`?
 
-8. What is the runtime complexity of `DoublyLinkedList.move_to_front`?
+8.  What is the runtime complexity of `DoublyLinkedList.move_to_front`?
 
-9. What is the runtime complexity of `DoublyLinkedList.move_to_end`?
+9.  What is the runtime complexity of `DoublyLinkedList.move_to_end`?
 
 10. What is the runtime complexity of `DoublyLinkedList.delete`?
 

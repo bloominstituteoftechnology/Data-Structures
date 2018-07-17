@@ -19,7 +19,19 @@ class BinarySearchTree:
 
 
   def contains(self, target):
-   pass
+    current = self.value
+    if target == current:
+      return True
+    elif target > current:
+      if self.right:
+        return self.right.contains(target)
+      else:
+        return False
+    else:
+      if self.left:
+        return self.left.contains(target)
+      else:
+        return False
 
 
   def get_max(self):

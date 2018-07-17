@@ -43,7 +43,7 @@ class LinkedList:
       return None
 
   def contains(self, value):
-    pass
+   
 
   def get_max(self):
     pass

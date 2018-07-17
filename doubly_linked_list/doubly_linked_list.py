@@ -48,7 +48,14 @@ class DoublyLinkedList:
     return removed_node
 
   def move_to_front(self, node):
-    pass
+    if self.tail == node:
+        self.tail = node.prev
+
+    node.prev.next = node.next
+    node.prev = None
+    node.next = self.head
+    self.head.prev = node
+    self.head = node
 
   def move_to_end(self, node):
     pass

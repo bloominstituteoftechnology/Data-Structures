@@ -39,15 +39,3 @@ class Heap:
           temp = self.storage[index]
           self.storage[index] = val
           self.storage[i] = temp
-
-c = Heap()
-print(c.storage)
-print(c.size)
-c.insert(1)
-print(c.storage)
-c.insert(4)
-c.insert(5)
-c.insert(3)
-print(c.storage)
-c.delete()
-print(c.storage)

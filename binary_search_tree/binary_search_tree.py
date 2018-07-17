@@ -22,7 +22,15 @@ class BinarySearchTree:
                 return
 
   def contains(self, target):
-    pass
+    parent = self
+    while parent:
+        if target < parent.value:
+            parent = parent.left
+        elif target == parent.value:
+            return True
+        else:
+            parent = parent.right
+    return False
 
   def get_max(self):
     parent = self

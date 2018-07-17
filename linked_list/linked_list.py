@@ -32,6 +32,7 @@ class LinkedList:
       self.tail = new_node
     return new_node
 
+
   def remove_head(self):
     if self.head == None: return None
     removed_head = self.head.get_value()

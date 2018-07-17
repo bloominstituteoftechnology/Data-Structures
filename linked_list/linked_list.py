@@ -24,7 +24,7 @@ class LinkedList:
 
   def add_to_tail(self, value):
     new_node = Node(value)
-    if self.head is None:
+    if self.head is None: 
       self.head = new_node
       self.tail = new_node
       return
@@ -34,8 +34,40 @@ class LinkedList:
     last.next_node = new_node
     self.tail = last.next_node
 
+    # '''
+    # Sean's solution code
+    # '''
+    # new_node = Node(value)
+    # # check to see if the list has a head
+    # if not self.head:
+    #   self.head = new_node
+    #   # don't forget the tail
+    #   self.tail = new_node
+    # else:
+    #   # we have a non-empty list
+    #   # setting the last node's 'next' to the new node
+    #   self.tail.next_node = new_node
+    #   # update the linked list's 'tail' refrence
+    #   self.tail = new_node
+
   def remove_head(self):
-    pass
+    # first check if there is no head
+    if not self.head:
+      return None
+    # if head has no 'next', then we have a single element
+    if not self.head.next_node:
+      # take a reference to the current head
+      head = self.head
+      # delete the list's head refrence
+      self.head = None
+      # also make sure the tail points to none
+      self.tail = None
+      return head.value
+    else:
+      # we have multiple elements in our list
+      value = self.head.value
+      self.head = self.head.next_node
+      return value
 
   def contains(self, target):
     current = self.head
@@ -45,5 +77,31 @@ class LinkedList:
       current = current.next_node
     return False
 
+    # '''
+    # Sean's code
+    # '''
+    # # check to see if our list is empty
+    # if not self.head:
+    #   return None
+    # # assign current node to a variable
+    # current = self.head
+    # # iterate over list
+    # while current:
+    #   if current.value == value: # if using this code, change 'target' to 'value' on line 72
+    #     return True
+    #   # move on to next node
+    #   # do ^ by updating 'current'
+    #   current = current.get_next()
+    # return False
+
   def get_max(self):
-    pass
+    if not self.head:
+      return None
+    max_value = self.head.value
+    # set current to head's next
+    current = self.head.get_next()
+    while current:
+      if current.value > max_value:
+        max_value = current.value
+      current = current.next_node
+    return max_value

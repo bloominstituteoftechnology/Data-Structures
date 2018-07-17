@@ -39,26 +39,58 @@ class LinkedList:
 
     def add_to_tail(self, value):
         new_node = Node(value)
-        new_node.set_next(self.tail)
-        self.tail = new_node
+        if self.head == None:
+            self.head = new_node
+            self.tail = new_node
+            return
+        else:
+            self.tail.set_next(new_node)
+            self.tail = new_node
 
     def remove_head(self):
+        if self.head != None:
+            old_head = self.head
+            self.head = self.head.next_node
+            return old_head.value
+        else:
+            return None
 
-        pass
+    def contains(self, i):
+        if self.head == None:
+            return False
+        else:
 
-    def contains(self):
-        pass
+            def search_list(node):
+                if node.value == i:
+                    return True
+                elif node.next_node == None:
+                    return False
+                else:
+                    return search_list(node.next_node)
+
+            return search_list(self.head)
 
     def get_max(self):
-        if self.next_node is None:
-            return self.value
+        if self.head == None:
+            return
         else:
-            return max(self.value, get_max(self.next_node))
+            temp = 0
 
-    def size(self):
-        current = self.head
-        count = 0
-        while current:
-            count += 1
-            current = current.next_node
-        return count
+            def find_max(node, temp):
+                if node == None:
+                    return temp
+                elif node.value > temp:
+                    temp = node.value
+                    return find_max(node.next_node, temp)
+                else:
+                    return find_max(node.next_node, temp)
+
+            return find_max(self.head, temp)
+
+    # def size(self):
+    #     current = self.head
+    #     count = 0
+    #     while current:
+    #         count += 1
+    #         current = current.next_node
+    #     return count

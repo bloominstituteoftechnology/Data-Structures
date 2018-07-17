@@ -55,11 +55,19 @@ class LinkedList:
       return False
       
      
-
-
-
   def get_max(self):
-    pass
+    current = self.head
+    if current == None:
+      return None
+    current_max = current.get_value()
+   
+    while current.get_next() is not None:
+      current = current.get_next()
+      current_val = current.get_value()
+      if current_max < current_val:
+        current_max = current_val
+        return current_max
+    return current_max
 
 
 # lis = LinkedList()

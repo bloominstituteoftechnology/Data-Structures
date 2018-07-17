@@ -4,7 +4,7 @@ list node that holds a single value
 and a reference to the next node in the list
 """
 class Node: #represents a single node
-    def __init__(self, value, next_node=None): 
+    def __init__(self, value=None, next_node=None): 
         #value and next_node   
         #value is the data and next_node is the address to that points to next_node
 
@@ -13,14 +13,12 @@ class Node: #represents a single node
 
     def get_value(self): #gets value of node
         return self.value
-    def set_value(self, val):
-        self.value = val
 
     def get_next(self): #gets value of next_node
         return self.next_node
 
-    def set_next(self, val): #sets next_node to new_next
-        self.next_node = val
+    def set_next(self, new_next): #sets next_node to new_next
+        self.next_node = new_next
 
 class LinkedList(): #properties are head and tail
     def __init__(self, head = None):
@@ -52,17 +50,18 @@ class LinkedList(): #properties are head and tail
         return self.tail
 
 
-    def remove_head(self): #removes and returns the head node
-        if not self.head: #returns None when list is empty
-            return None
+    def remove_head(self): 
         
-        pass
-        
-            
 
 
-    def contains(self, value): #similar to includes in .js
-        pass
+    def contains(self, value): 
+        current = self.head #current node is self.head
+        next_node = current.get_next()
+        while current: #while node exists:
+            if current.get_value() == value: #if get.value() == value
+                return True
+            current = next_node #go to the next node
+        return False
 
     def get_max(self): #get max value in entire list
         pass

@@ -4,6 +4,7 @@ class BinarySearchTree:
     self.left = None
     self.right = None
 
+  #TODO: Try to solve with recursion
   def insert(self, value):
     bst_node = BinarySearchTree(value)
     parent = self

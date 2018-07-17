@@ -1,6 +1,9 @@
 import math
 
 class Heap:
+    #TODO: Utilize size property -- this is never updated during insert/delete
+    #TODO: Utilize python's built in method for list swapping
+    #TODO: Can refactor sift down further
     def __init__(self):
         self.storage = []
         self.size = 0

@@ -6,37 +6,69 @@ class ListNode:
 
   def insert_after(self, value):
     self.next = ListNode(value, self, self.next)
+    return self.next
 
   def insert_before(self, value):
     self.prev = ListNode(value, self.prev, self)
+    return self.prev
 
   def delete(self):
-    self.prev.next = self.next
-    self.next.prev = self.prev
+    if self.prev:
+      self.prev.next = self.next
+    if self.next:
+      self.next.prev = self.prev
+    return self.value
 
 
 class DoublyLinkedList:
-  def __init__(self):
-    self.head = None
-    self.tail = None
+  def __init__(self, node=None):
+    self.head = node
+    self.tail = node
 
   def add_to_head(self, value):
-    pass
+    new_node = ListNode(value, None, self.head)
 
+    if not self.head:
+      self.tail = new_node
+    else:
+      self.head.prev = new_node
+    
+    self.head = new_node
+    
   def remove_from_head(self):
-    pass
+    if not self.head: return None
+
+    next_node = self.head.next
+    retval = self.head.delete()
+    self.head = next_node
+      
+    return retval
 
   def add_to_tail(self, value):
-    pass
+    if not self.tail:
+      new_node = ListNode(value)
+      self.head = new_node
+      self.tail = new_node
+    else:
+      self.tail = self.tail.insert_after(value)
+
 
   def remove_from_tail(self):
-    pass
+    if not self.tail:
+      return None
+    else:
+      prev_node = self.tail.prev
+      if prev_node:
+        prev_node.next = None
+      return self.tail.delete()
 
   def move_to_front(self, node):
-    pass
+    self.add_to_head(node.value)
+    return node.delete()
 
   def move_to_end(self, node):
-    pass
+    self.add_to_tail(node.value)
+    return node.delete()
 
   def delete(self, node):
-    pass
+    return node.delete()

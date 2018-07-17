@@ -29,8 +29,7 @@ class BinarySearchTree:
 
   def get_max(self):
     max_value = self.value
-    right = self.right
-    while right is not None:
-      max_value = right.value
-      right = right.right
+    while self.right is not None:
+      max_value = self.right.value
+      self.right = self.right.right
     return max_value

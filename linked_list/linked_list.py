@@ -31,7 +31,7 @@ class LinkedList:
         self.head = node
         self.tail = node
     else:
-        self.tail.next_node = node
+        self.tail.set_next(node)
         self.tail = node
 
   def remove_head(self):
@@ -40,7 +40,7 @@ class LinkedList:
         self.head = None
         self.tail = None
     else:
-        self.head = self.head.next_node
+        self.head = self.head.get_next()
     return head
 
   def contains(self, value):
@@ -48,7 +48,7 @@ class LinkedList:
     while current_node:
         if current_node.get_value() == value:
             return True
-        current_node = current_node.next_node
+        current_node = current_node.get_next()
     return False
 
   def get_max(self):

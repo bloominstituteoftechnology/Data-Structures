@@ -8,7 +8,7 @@ class ListNode:
     self.next = ListNode(value, self, self.next)
 
   def insert_before(self, value):
-    self.prev = ListNode(value, None, self)
+    self.prev = ListNode(value, self.prev, self)
 
   def delete(self):
     self.prev.next = self.next

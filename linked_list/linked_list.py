@@ -27,11 +27,8 @@ class LinkedList:
     node = Node(value)
     self.max = value if not self.max or value > self.max else self.max
 
-    if not self.head and not self.tail:
+    if not self.head:
         self.head = node
-        self.tail = node
-    elif self.head == self.tail:
-        self.head.next_node = node
         self.tail = node
     else:
         self.tail.next_node = node

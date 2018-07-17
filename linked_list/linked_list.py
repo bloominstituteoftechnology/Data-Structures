@@ -17,48 +17,64 @@ class Node: #represents a single node
   def set_next(self, new_next): #sets next_node to new_next
     self.next_node = new_next
 
-class LinkedList(Node): #properties are head and tail
+class LinkedList(): #properties are head and tail
   def __init__(self):
     self.head = None
     self.tail = None
-    super().__init__(value = None, next_node = None)
 
   def add_to_tail(self, value): #replaces the tail with a new value that is passed on    
-      node = Node(value) #new instance of node class
-      if self.head == None: #if the list is empty:
-        self.head = node #both self.head and self.tail will be assigned node
-        self.tail = node
+      new_node = Node(value) #new instance of node class
+      if not self.head: #if the list is empty:
+        self.head = new_node #both self.head and self.tail will be assigned new node
+        self.tail = new_node
       elif self.head == self.tail:  #if self.tail and self.head are the same:
-        self.tail = node #self.tail is the node instance
-        self.head.next_node = node #self.head.next_node is another node instance
-    
+        self.tail.next_node = new_node #self.tail.next_node is another node instance of new node
+        self.tail = new_node
   def remove_head(self): #removes and returns the head node
       # self.head = self.next_node
-      if self.head == None:
+      if not self.head:
         return None
-      elif self.head == self.tail:
-        done = self.head
+      elif not self.head.next_node:
+        head = self.head
         self.head = None
         self.tail = None
-        return done.value
+        return head.value
       else:
-        done = self.head
+        value = self.head.value
         self.head = self.head.next_node
-        return done.value
+        return value
       
 
   def contains(self, value): #similar to includes in .js
-      # linked_list = LinkedList(self)
-      pass
-    
+      # check to see if list is empty
+      if not self.head:
+        return None
+      pointer = self.head
+      while pointer:
+        if pointer.value == value:
+          return True
+        else:
+          pointer = pointer.next_node
+      
+      return False
 
+<<<<<<< HEAD
   def get_max(self): #get max value in entire list
-    max_value = self.head
-    if self.head == self.tail:
-      max_value = self.head
-    elif self.head == None:
-      max_value = None
-    elif self.head > max_value:
-      max_value = self.head
-    else:
-        return max_value
+      if not self.head:
+        return None
+      max_value = self.head.value
+      pointer = self.head.get_next()
+      while pointer:
+        if pointer.value > max_value:
+          max_value = pointer.value
+        else:
+          pointer = pointer.next_node
+      return max_value
+      
+=======
+  def contains(self, value):
+    pass
+
+  def get_max(self):
+    pass
+>>>>>>> f1923a145d435024809791b767a552924cfaada7

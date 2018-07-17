@@ -17,7 +17,7 @@ class ListNode:
         self.prev.next = self.next
     if self.next:
         self.next.prev = self.prev
-        
+
     self.prev = None
     self.next = None
 
@@ -27,7 +27,7 @@ class DoublyLinkedList:
     self.tail = node
 
   def add_to_head(self, value):
-    pass
+    self.head.insert_before(value)
 
   def remove_from_head(self):
     pass

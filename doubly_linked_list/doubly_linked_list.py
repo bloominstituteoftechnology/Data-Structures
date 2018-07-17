@@ -33,7 +33,7 @@ class DoublyLinkedList:
     pass
 
   def add_to_tail(self, value):
-    pass
+    self.tail.insert_after(value)
 
   def remove_from_tail(self):
     pass

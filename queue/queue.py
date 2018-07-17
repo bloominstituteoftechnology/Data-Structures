@@ -5,13 +5,17 @@ from linked_list import LinkedList
 class Queue:
   def __init__(self):
     self.size = 0
-    self.storage = LinkedList()
+    self.storage = []
 
   def enqueue(self, item):
-    pass
+    self.storage.append(item)
+    self.size += 1
   
   def dequeue(self):
-    pass
+    if self.size == 0: 
+      return None  
+    self.size -= 1
+    return self.storage.pop(0)
 
   def len(self):
-    pass
+    return self.size

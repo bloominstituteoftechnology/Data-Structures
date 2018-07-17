@@ -16,12 +16,13 @@ class Heap:
         elif self.size == 1:
             self.size -= 1
             return self.storage.pop()
-        new_root = self.storage.pop()
-        old_root = self.storage[1]
-        self.storage[1] = new_root
-        self.size -= 1
-        self._sift_down(1)
-        return old_root
+        else:
+            new_root = self.storage.pop()
+            old_root = self.storage[1]
+            self.storage[1] = new_root
+            self.size -= 1
+            self._sift_down(1)
+            return old_root
 
     def get_max(self):
         return self.storage[1]

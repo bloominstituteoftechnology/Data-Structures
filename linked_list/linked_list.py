@@ -33,25 +33,9 @@ class LinkedList:
     new_node = Node(value)
     if self.head == None:
       self.head = new_node
-    if self.tail != None:
-      self.tail = new_node
-      self.tail.set_next(new_node)
-    self.tail = new_node
-
-####
-class LinkedList:
-  def __init__(self):
-    self.head = None
-    self.tail = None
-
-  def add_to_tail(self, value):
-    new_node = Node(value)
-    if self.head == None: 
-      self.head = new_node
     else:
       self.tail.set_next(new_node)
     self.tail = new_node
-####
 
 
   def remove_head(self):

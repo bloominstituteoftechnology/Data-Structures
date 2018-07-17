@@ -24,43 +24,55 @@ class LinkedList:
 
   def add_to_tail(self, value):
     nn = Node(value)
-    if self.tail == None:
-      if self.head == None:
-        self.head = nn
-      else:
-        self.head.next_node = nn
+    if not self.head:
+      self.head = nn
+      self.tail = nn
     else:
       self.tail.next_node = nn
-      
-    self.tail = nn
+      self.tail = nn
 
   def remove_head(self):
     #print("shv", self.head.value)
-    if self.head != None:
-      prev_head = self.head
+    if not self.head:
+      return None
+
+    if not self.head.next_node:
+      head = self.head
+      self.head = None
+      self.tail = None
+      return head.value
+    else: 
+      value = self.head.value
       self.head = self.head.next_node
-      return prev_head.value
-    return None
+      return value
     
 
   def contains(self, value):
-    current = self.head
-    found = False
-    while current is not None and not found:
-        if current.get_value() == value:
-            found = True
-        else:
-            current = current.get_next()
-
-    return found
-
-  def get_max(self):
-    if self.head == None:
+    #check if list empty
+    if not self.head:
       return None
-    largest = self.head.value
+    # assign the current node to variable
     current = self.head
-    while current != None:
-      if current.value > largest:
-        largest = current.value
+    # iter through list
+    while current:
+      if current.value == value:
+        return True
+      #move on to next list node
+      #by updating current
+      current = current.get_next()
+      # if we have gotten here then
+      #the node we are looking for doesnt exist
+    return False
+#O(1n)
+  def get_max(self):
+    if not self.head:
+      return None
+    max_value = self.head.value
+    #set current to heads' next
+    current = self.head.get_next()
+    while current: 
+      if current.value > max_value:
+        #update max_value
+        max_value = current.value
       current = current.next_node
-    return largest
+    return max_value

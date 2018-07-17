@@ -5,16 +5,16 @@ class BinarySearchTree:
     self.right = None
 
   def insert(self, value):
-    item = {
-      "value": value,
-      "left": None,
-      "right": None
-    }
+    #if value >= self.value:
+     # if self.right == None:
+      #  self.right = BinarySearchTree(value)
+      #else:
+        #self.right.insert(value)
     if value > self.value and self.right == None:
-      self.right = item
+      self.right = BinarySearchTree(value)
       return
     elif value < self.value and self.left == None:
-      self.left = item
+      self.left = BinarySearchTree(value)
       return
     if value < self.value:
       y = self.left
@@ -22,17 +22,18 @@ class BinarySearchTree:
       y = self.right
 
     while True:
-      if value > y["value"] and y["right"] == None:
-        y["right"] = item
+      if value > y.value and y.right == None:
+        y.right = BinarySearchTree(value)
         return
-      elif value < y["value"] and y["left"]== None:
-        y["left"] = item
+      elif value < y.value and y.left== None:
+        y.left = BinarySearchTree(value)
         return
       else:
-        if value < y["value"]:
-          y = y["left"]
-        if value > y["value"]:
-          y = y["right"]
+        if value < y.value:
+          y = y.left
+        if value > y.value:
+          y = y.right
+
 
   def contains(self, target):
     if self.value != target and self.right == None and self.left == None:
@@ -44,16 +45,16 @@ class BinarySearchTree:
       y = self.left
 
     while True:
-      if target == y['value']:
+      if target == y.value:
         return True
-      elif target > y['value'] and y['right'] == None:
+      elif target > y.value and y.right == None:
         return False
-      elif target < y['value'] and y['left'] == None:
+      elif target < y.value and y.left == None:
         return False
-      if target > y['value']:
-        y = y['right']
-      if target < y['value']:
-        y = y['left']
+      if target > y.value:
+        y = y.right
+      if target < y.value:
+        y = y.left
       
 
   def get_max(self):
@@ -63,10 +64,10 @@ class BinarySearchTree:
       return self.value
     max = self.value
     while True:
-      if y['value'] > max:
-        max = y['value']
-      if y['right'] == None:
+      if y.value > max:
+        max = y.value
+      if y.right == None:
         return max
       else:
-        y = y['right']
+        y = y.right
       

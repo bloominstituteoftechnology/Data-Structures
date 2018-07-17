@@ -26,24 +26,24 @@ class LinkedList:
 
   def add_to_tail(self, value):
     newNode = Node(value)
-    if self.head == None:
+    if not self.head:
       self.head = newNode
     else: self.tail.next_node = newNode
     self.tail = newNode
 
   def remove_head(self):
-    if self.head == None:
+    if not self.head:
       return None
+    # elif not self.head.next_node:
+    #   old_head = self.head
+    #   self.head = self.head.next_node
+    #   self.tail = None
+    #   return old_head
+    #  Use this if it is a circle linked list???
     else:
       old_head = self.head 
       self.head = self.head.next_node
       return old_head.value
-
-    # if self.head != None:
-    #   old_head = self.head 
-    #   self.head = self.head.next_node
-    #   return old_head.value
-    # return None
 
   def contains(self, value):
     currentNode = self.head
@@ -54,11 +54,11 @@ class LinkedList:
     return False
 
   def get_max(self):
-    if self.head == None:
+    if not self.head:
       return None
-    currentNode = self.head
+    currentNode = self.head.get_next()
     biggest = self.head.value
-    while currentNode != None:
+    while currentNode:
       if currentNode.value > biggest:
         biggest = currentNode.value
       currentNode = currentNode.next_node

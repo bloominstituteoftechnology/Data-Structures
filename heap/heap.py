@@ -15,7 +15,7 @@ class Heap:
         # parent = self.storage[parentIndex]
         self._bubble_up(valueIndex)
 
-        print('\n', self.storage, '\n\n\n\n')
+        # print('\n', self.storage, '\n\n\n\n')
 
     def delete(self):
         pass
@@ -24,19 +24,25 @@ class Heap:
         pass
 
     def get_size(self):
-        pass
+        return self.size
 
     def _bubble_up(self, index):
         currentvalue = self.storage[index]
         parentIndex = index // 2
         parent = self.storage[parentIndex]
-        while currentvalue > parent and parentIndex != 0:
-            self.storage[index // 2] = currentvalue
-            self.storage[index] = parent
-            index = parentIndex
-            currentvalue = self.storage[index]
-            parentIndex = index // 2
-            parent = self.storage[parentIndex]
+
+        # OPTION 1
+        # while currentvalue > parent and parentIndex != 0:
+        #     self.storage[index // 2] = currentvalue
+        #     self.storage[index] = parent
+        #     index = parentIndex
+        #     currentvalue = self.storage[index]
+        #     parentIndex = index // 2
+        #     parent = self.storage[parentIndex]
+
+        # OPTION 2
+        if currentvalue > parent and parentIndex != 0:
+            self._bubble_up(parentIndex)
 
     def _sift_down(self, index):
         pass

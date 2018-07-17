@@ -46,6 +46,7 @@ class LinkedList:
                     self.head = self.head.next_node
                     return value
 
+
     def contains(self, target):
         if head == None:
             return False

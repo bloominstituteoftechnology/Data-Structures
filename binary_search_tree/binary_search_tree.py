@@ -5,10 +5,13 @@ class BinarySearchTree:
         self.right = None
 
     def insert(self, value):
-        pass
+        if value > self.value:
+          # assign to right
+        else:
+          # assign to left
 
     def contains(self, target):
-        pass
+        # recursively search for target
 
     def get_max(self):
-        pass
+        # search numbers on the right

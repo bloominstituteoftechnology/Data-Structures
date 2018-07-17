@@ -4,13 +4,24 @@ For each of the methods associated with each data structure, classify it based o
 
 1. What is the runtime complexity of `add_to_tail`?
   
+    O(1); Constant
+  
     a. What if our list implementation didn't have a reference to the tail of the list in its constructor? What would be the runtime of the `add_to_tail` method?
+
+      O(n); Linear
 
 2. What is the runtime complexity of `remove_head`?
 
+    O(1); Constant
+
 3. What is the runtime complexity of `contains`?
 
+    O(n); Linear
+
 4. What is the runtime complexity of `get_max`?
+
+    - If function searches for the max value each time it is called: O(n); Linear
+    - If the max value is updated each time a node is added to the list: O(1); Constant
 
 ## Queue
 

@@ -25,4 +25,7 @@ class BinarySearchTree:
     pass
 
   def get_max(self):
-    pass
+    parent = self
+    while parent.right:
+        parent = parent.right
+    return parent.value

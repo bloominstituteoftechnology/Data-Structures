@@ -30,7 +30,9 @@ class DoublyLinkedList:
     self.head.insert_before(value)
 
   def remove_from_head(self):
-    pass
+    new_head = self.head.next
+    self.head.delete()
+    self.head = new_head
 
   def add_to_tail(self, value):
     self.tail.insert_after(value)

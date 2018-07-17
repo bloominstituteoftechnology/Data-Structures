@@ -15,9 +15,13 @@ class Queue:
 
   def len(self):
     count = 0
-    while self.storage.head != None:
+    if self.size <= 0: return 0
+
+    while self.storage.head.get_next() != None:
       count += 1
-      self.storage.head.get_next()
-    return count
-    
+      current = self.storage.head.get_next()
+      if current == None:
+        return count
+      else:
+        return False
     

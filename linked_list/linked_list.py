@@ -49,6 +49,7 @@ class LinkedList:
             return head
         # if there is no head, return None
         else:
+            self.tail = None
             return None
 
     def contains(self, target):

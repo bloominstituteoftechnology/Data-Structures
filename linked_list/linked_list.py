@@ -49,6 +49,7 @@ class LinkedList:
     if self.head:
       i = self.head
 
+<<<<<<< HEAD
       while i:
         if i.value == value:
           return True
@@ -58,6 +59,10 @@ class LinkedList:
 
     else:
       return False
+=======
+  def contains(self, value):
+    pass
+>>>>>>> upstream/master
 
   def get_max(self):
     if self.head:

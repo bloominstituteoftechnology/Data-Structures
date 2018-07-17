@@ -18,6 +18,7 @@ class BinarySearchTree:
       else:
        self.right.insert(value)
 
+
   def contains(self, value):
     root = self.value
     
@@ -35,10 +36,17 @@ class BinarySearchTree:
         return self.right.contains(value)
 
 
-      
-
-     
+  def get_max(self):
+    if self.right == None:
+      return self.value
+    
+    else:
+      right_node = self.right
+      max_value = self.value
+      while right_node:
+        max_value = right_node.value
+        right_node = right_node.right
+        print(max_value)
+      return max_value
        
 
-  def get_max(self):
-    pass

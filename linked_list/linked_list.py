@@ -25,42 +25,50 @@ class LinkedList:
     self.tail = None
 
   def add_to_tail(self, value):
+    new_node = Node(value)
     if(self.head == None): 
-      self.tail = Node(value)
-      self.head = self.tail
-    elif(self.head == self.tail):
-      self.head.set_next(Node(value))
-      self.tail = self.head.get_next()
+      self.tail = new_node
+      self.head = new_node
     else:
-      cur_node = self.head.get_next()
-
-      while(cur_node.getnext() != None):
-
-        cur_node = cur_node.get_next()
-
-      cur_node.set_next(Node(value))
-      self.tail = cur_node.get_next()
-
+      self.tail.next_node = new_node
+      self.tail = new_node
 
   def remove_head(self):
-    self.head = self.head.get_next()
+    if not self.head:
+      return None
+    if not self.head.next_node:
+
+      head = self.head
+      self.head = None
+      self.tail = None
+      return head.value
+
+    else:
+      value = self.head.value
+      self.head = self.head.next_node
+      return value
 
   def contains(self, value):
+
+    if not self.head:
+      return None
     cur_node = self.head
 
-    while(cur_node.get_next() != None):
-      if(cur_node.get_value == value):
-        return True
-      else:
-        cur_node = cur_node.get_next()
+    while(cur_node):
+
+      if(cur_node.value == value): return True
+      else: cur_node = cur_node.next_node
 
   def get_max(self):
-    max = inf
+    if not self.head:
+      return None
     cur_node = self.head
-
-    while(cur_node.get_next() != None):
-      if(cur_node.get_value > max):
-        max = cur_node.get_value()
+    max = cur_node.value
+    while(cur_node):
+      if(cur_node.value > max):
+        max = cur_node.value
         cur_node = cur_node.get_next()
       else:
         cur_node = cur_node.get_next()
+
+    return max

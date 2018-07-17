@@ -31,7 +31,7 @@ class Heap:
 
     def _bubble_up(self, index):
         parent_index = index // 2
-        if self.storage[index] > self.storage[parent_index] and parent_index > 0:
+        if parent_index >= 1 and self.storage[index] > self.storage[parent_index]:
             stored_value = self.storage[index]
             self.storage[index] = self.storage[parent_index]
             self.storage[parent_index] = stored_value

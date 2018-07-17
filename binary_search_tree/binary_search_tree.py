@@ -5,7 +5,18 @@ class BinarySearchTree:
     self.right = None
 
   def insert(self, value):
-    pass
+    if self.value is None:
+      return None
+    elif value < self.value:
+      if self.left is None:
+        self.left = BinarySearchTree(value)
+      else:
+        self.left.insert(value)
+    else:
+      if self.right is None:
+        self.right = BinarySearchTree(value)
+      else:
+        self.right.insert(value)     
 
   def contains(self, target):
     pass

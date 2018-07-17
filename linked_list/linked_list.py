@@ -23,7 +23,19 @@ class LinkedList:
     self.tail = None
 
   def add_to_tail(self, value):
-    pass
+    new_node = Node(value)    
+
+    if self.head is None:
+      self.head = new_node
+      return
+
+    last = self.head
+
+    while (last.next):
+      last = last.next 
+    
+    last.next = new_node
+
 
   def remove_head(self):
     pass

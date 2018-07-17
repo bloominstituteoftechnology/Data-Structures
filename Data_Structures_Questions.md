@@ -39,11 +39,17 @@ For each of the methods associated with each data structure, classify it based o
 
 ## Binary Search Tree
 
-1. What is the runtime complexity of `insert`? 
+1. What is the runtime complexity of `insert`?
+
+    O(log n); Logarithmic
 
 2. What is the runtime complexity of `contains`?
 
+    O(log n); Logarithmic
+
 3. What is the runtime complexity of `get_max`? 
+
+    O(log n); Logarithmic
 
 ## Heap
 

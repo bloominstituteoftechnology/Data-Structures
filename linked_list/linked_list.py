@@ -49,7 +49,6 @@ class LinkedList:
     def contains(self, target):
         if head == None:
             return False
-            result = self.head
             while(result):
                 if result.value == target:
                     return result

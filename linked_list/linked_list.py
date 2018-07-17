@@ -38,7 +38,7 @@ class LinkedList:
     # last.next_node = new_node
     # self.tail = last.next_node
     last = Node(value)
-    if self.head == None:
+    if not self.head:
       self.head = last
     else:
       self.tail.set_next(last)
@@ -49,6 +49,12 @@ class LinkedList:
   def remove_head(self):
     if self.head is None:
       return None
+      
+    # if not self.head.next_node: (Sean's solution: to use for linked list with 1 node only)
+    #   head = self.head
+    #   self.head = None
+    #   self.tail = None
+    #   return head.value
       
     removeNode = self.head.value
     self.head = self.head.next_node
@@ -64,28 +70,20 @@ class LinkedList:
       
     return False
 
-  # def get_max(self):
-  #   last = self.head
-  #   maxV = None
-    
-  #   while last:
-  #     if maxV is None:
-  #       maxV = last.value
-  #     else:
-  #       maxV = max(last.value, maxV)
-  #     last = last.next_node
-      
-  #   return maxV
-  
   def get_max(self):
-    if self.head == None:
+    if not self.head:
       return None
-    currentNode = self.head
-    biggest = self.head.value
-    while currentNode != None:
-      if currentNode.value > biggest:
-        biggest = currentNode.value
-      currentNode = currentNode.next_node
-    return biggest
+      
+    last = self.head
+    maxV = None
+    
+    while last:
+      if maxV is None:
+        maxV = last.value
+      else:
+        maxV = max(last.value, maxV)
+      last = last.next_node
+      
+    return maxV
     
     

@@ -19,8 +19,8 @@ class BinarySearchTree:
     else:
       self.value = value
               
-  def contains(self, target):
-      if target < self.value:
+  def contains(self, value):
+      if value < self.value:
             if self.left is None:
                   return None
             return self.left.contains(value)

@@ -50,6 +50,11 @@ class Heap:
       self.swap(left, index)
       self._sift_down(left)
       return
+    
+    print("*********")
+    print(left)
+    print(right)
+    print(self.size)
       
     # detect sift to left or right
     if self.storage[left] <= self.storage[right]:

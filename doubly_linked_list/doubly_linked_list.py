@@ -11,7 +11,8 @@ class ListNode:
     self.prev = ListNode(value, None, self)
 
   def delete(self):
-    pass
+    self.prev.next = self.next
+    self.next.prev = self.prev
 
 class DoublyLinkedList:
   def __init__(self):

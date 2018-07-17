@@ -21,33 +21,61 @@ class LinkedList:
   def __init__(self):
     self.head = None
     self.tail = None
+    self.new_node = None 
+    self.middle_node_count = 1
+    self.linked_list = {
+      'head': {
+        'value': None,
+        'next': None
+      }, 
+      'tail': {
+        'value': None, 
+        'next': None 
+      }
+    }
 
   def add_to_tail(self, value): 
-    new_node = Node(1)
     if self.head == None: 
       self.head = Node(value)
+      self.linked_list['head']['value'] = self.head.value
+      self.linked_list['head']['next'] = self.head.next_node
       self.tail = self.head
-      print(f'The head is equal to {self.tail.value}.')
+      self.linked_list['tail']['value'] = self.tail.value 
+      self.linked_list['tail']['next'] = self.tail.next_node
+      print(f'The head is equal to {self.head.value}.')
+      print(f'The first tail is equal to {self.tail.value}.')
     elif self.head.next_node == None:
-      new_node = Node(value)
-      self.head.set_next(new_node)
-      self.tail = new_node
+      self.head.set_next(Node(value))
+      self.new_node = Node(self.head.get_next().value)
+      self.linked_list['Middle_Node{}'.format(self.middle_node_count)] = {'value': self.new_node.value, 'next': None}
+      self.linked_list['head']['next'] = self.linked_list['Middle_Node{}'.format(self.middle_node_count)]
+      self.tail = self.new_node
+      self.linked_list['tail']['value'] = self.tail.value
+      self.linked_list['tail']['next'] = self.tail.next_node
       print(f'The next value after the head is equal to {self.tail.value}.')
-    elif new_node.next_node == None: 
-      new_node.set_next(Node(value))
-      new_node = Node(new_node.get_next().value)
-      self.tail = new_node
+    elif self.new_node != None:  
+      if self.new_node.next_node == None: 
+        self.new_node.set_next(Node(value))
+        self.new_node = Node(self.new_node.get_next().value)
+        self.linked_list['Middle_Node{}'.format(self.middle_node_count+1)] = {'value': self.new_node.value, 'next': None}
+        self.linked_list['Middle_Node{}'.format(self.middle_node_count)]['next'] = self.linked_list['Middle_Node{}'.format(self.middle_node_count+1)]
+        self.middle_node_count += 1 
+        self.tail = self.new_node
+        self.linked_list['tail']['value'] = self.tail.value
+        self.linked_list['tail']['next'] = self.tail.next_node
       print(f'The next value is {self.tail.value}.')
   
   def remove_head(self):
-    print('Self head value', self.head.value)
-    print('Self head next node.', self.head.next_node)
+    pass
+    # print('Self head value', self.head.value)
+    # print('Self head next node.', self.head.next_node)
 
-    self.head.value = self.head.next_node.value
-    self.head.set_next(self.head.next_node.next_node)  
+    # self.head.value = self.head.next_node.value
+    # print(self.head.next_node.next_node); 
+    # self.head.set_next(self.head.next_node.next_node)  
 
-    print('New head value', self.head.value)
-    print('New head next node', self.head.next_node)
+    # print('New head value', self.head.value)
+    # print('New head next node', self.head.next_node)
 
   def contains(self):
     pass
@@ -69,4 +97,3 @@ a.add_to_tail(10)
 a.add_to_tail(11)
 a.add_to_tail(12)
 
-a.remove_head()

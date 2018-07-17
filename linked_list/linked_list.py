@@ -23,12 +23,13 @@ class LinkedList:
     self.tail = None
 
   def add_to_tail(self, value):
-    new_node = node(value)
-    cur = self.head
-
-    while cur.next != None:
-      cur = cur.next
-    cur.next = new_node
+    new_node = Node(value)
+    if not self.head:
+      self.head = new_node
+      self.tail = new_node
+    else:
+      self.tail.next_node = new_node
+      self.tail = new_node
   
   # STRETCH
   # Adding a function for finding length
@@ -50,10 +51,35 @@ class LinkedList:
     print (elems)
 
   def remove_head(self):
-    pass
+    if not self.head:
+      return None
+    if not self.head.next_node:
+      head = self.head
+      self.head = None
+      self.tail = None
+      return head.value
+    else:
+      value = self.head.value
+      self.head = self.head.next_node
+      return value
 
   def contains(self, value):
-    pass
+    if not self.head:
+      return None
+    current = self.head
+    while current: 
+      if current.value == value:
+        return True
+      current = current.get_next()
+    return False
 
   def get_max(self):
-    pass
+    if not self.head:
+      return None
+    max_value = self.head.value
+    current = self.head.get_next()
+    while current:
+      if current.value > max_value:
+        max_value = current.value
+      current = current.next_node
+    return max_value

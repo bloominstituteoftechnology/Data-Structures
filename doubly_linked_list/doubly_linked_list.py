@@ -14,9 +14,9 @@ class ListNode:
     pass
 
 class DoublyLinkedList:
-  def __init__(self):
-    self.head = None
-    self.tail = None
+  def __init__(self, node=None):
+    self.head = node
+    self.tail = node
 
   def add_to_head(self, value):
     pass

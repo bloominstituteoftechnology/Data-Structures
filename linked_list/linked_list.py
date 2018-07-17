@@ -56,4 +56,12 @@ class LinkedList:
                 return True
 
     def get_max(self):
-        pass
+        if not self.head:
+            return None
+        highest_value = self.head.value
+        current = self.head.next_node
+        while current != None:
+            if current.value > highest_value:
+                highest_value = current.value
+            current = current.next_node
+        return highest_value

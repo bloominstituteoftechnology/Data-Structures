@@ -34,10 +34,22 @@ class LinkedList:
 
 
   def remove_head(self):
-    pass
+    if self.head != None:
+      head = self.head.value
+      self.head = self.head.next_node
+      return head
+    else:
+      return None
 
   def contains(self, value):
-    pass
+    curr = self.head
+    while curr != None:
+      if curr.value == value: 
+        return True
+      else:
+        curr = curr.next_node
+    return False
+
 
   def get_max(self):
     pass

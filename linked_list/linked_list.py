@@ -3,6 +3,7 @@ Class that represents a single linked
 list node that holds a single value
 and a reference to the next node in the list
 """
+
 class Node:
   def __init__(self, value=None, next_node=None):
     self.value = value
@@ -21,67 +22,55 @@ class LinkedList:
   def __init__(self):
     self.head = None
     self.tail = None
-    self.new_node = None 
-    self.middle_node_count = 1
-    self.linked_list = {
-      'head': {
-        'value': None,
-        'next': None
-      }, 
-      'tail': {
-        'value': None, 
-        'next': None 
-      }
-    }
 
   def add_to_tail(self, value): 
-    if self.head == None: 
-      self.head = Node(value)
-      self.linked_list['head']['value'] = self.head.value
-      self.linked_list['head']['next'] = self.head.next_node
-      self.tail = self.head
-      self.linked_list['tail']['value'] = self.tail.value 
-      self.linked_list['tail']['next'] = self.tail.next_node
-      print(f'The head is equal to {self.head.value}.')
-      print(f'The first tail is equal to {self.tail.value}.')
-    elif self.head.next_node == None:
-      self.head.set_next(Node(value))
-      self.new_node = Node(self.head.get_next().value)
-      self.linked_list['Middle_Node{}'.format(self.middle_node_count)] = {'value': self.new_node.value, 'next': None}
-      self.linked_list['head']['next'] = self.linked_list['Middle_Node{}'.format(self.middle_node_count)]
-      self.tail = self.new_node
-      self.linked_list['tail']['value'] = self.tail.value
-      self.linked_list['tail']['next'] = self.tail.next_node
-      print(f'The next value after the head is equal to {self.tail.value}.')
-    elif self.new_node != None:  
-      if self.new_node.next_node == None: 
-        self.new_node.set_next(Node(value))
-        self.new_node = Node(self.new_node.get_next().value)
-        self.linked_list['Middle_Node{}'.format(self.middle_node_count+1)] = {'value': self.new_node.value, 'next': None}
-        self.linked_list['Middle_Node{}'.format(self.middle_node_count)]['next'] = self.linked_list['Middle_Node{}'.format(self.middle_node_count+1)]
-        self.middle_node_count += 1 
-        self.tail = self.new_node
-        self.linked_list['tail']['value'] = self.tail.value
-        self.linked_list['tail']['next'] = self.tail.next_node
-      print(f'The next value is {self.tail.value}.')
-  
+    new_node = Node(value)
+    # Check to see if the list has a head
+    if not self.head: 
+      self.head = new_node 
+      # Don't forget the tail 
+      self.tail = new_node 
+    else: 
+      # We have a non-empty list 
+      # Setting the last node's 'next' to the new node 
+      self.tail.next_node = new_node
+      # Update the linked list's 'tail' reference 
+      self.tail = new_node 
+
   def remove_head(self):
-    pass
-    # print('Self head value', self.head.value)
-    # print('Self head next node.', self.head.next_node)
+    # first check if there is no head 
+    if not self.head: 
+      return None
+    if not self.head.next_node: 
+      head = self.head 
+      self.head = None 
+      self.tail = None 
+      return head. value 
+    else: 
+      value = self.head.value
+      self.head = self.head.next_node
+      return value 
 
-    # self.head.value = self.head.next_node.value
-    # print(self.head.next_node.next_node); 
-    # self.head.set_next(self.head.next_node.next_node)  
-
-    # print('New head value', self.head.value)
-    # print('New head next node', self.head.next_node)
-
-  def contains(self):
-    pass
+  def contains(self, value):
+    if not self.head: 
+      return None
+    current = self.head
+    while current: 
+      if current.value == value: 
+        return True
+      current = current.next_node
+    return False 
 
   def get_max(self):
-    pass
+    if not self.head: 
+      return None 
+    max_value = self.head.value 
+    current = self.head.get_next() 
+    while current: 
+      if max_value < current.value: 
+        max_value = current.value 
+      current = current.next_node
+    return max_value
 
 a = LinkedList()
 a.add_to_tail(1)

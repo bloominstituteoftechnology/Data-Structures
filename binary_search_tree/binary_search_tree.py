@@ -5,34 +5,29 @@ class BinarySearchTree:
     self.right = None
 
   def insert(self, value):
-    #if value >= self.value:
-     # if self.right == None:
-      #  self.right = BinarySearchTree(value)
-      #else:
-        #self.right.insert(value)
-    if value > self.value and self.right == None:
+    if value > self.value and not self.right:
       self.right = BinarySearchTree(value)
       return
     elif value < self.value and self.left == None:
       self.left = BinarySearchTree(value)
       return
     if value < self.value:
-      y = self.left
+      current = self.left
     if value > self.value:
-      y = self.right
+      current = self.right
 
     while True:
-      if value > y.value and y.right == None:
-        y.right = BinarySearchTree(value)
+      if value > current.value and current.right == None:
+        current.right = BinarySearchTree(value)
         return
-      elif value < y.value and y.left== None:
-        y.left = BinarySearchTree(value)
+      elif value < current.value and current.left== None:
+        current.left = BinarySearchTree(value)
         return
       else:
-        if value < y.value:
-          y = y.left
-        if value > y.value:
-          y = y.right
+        if value < current.value:
+          current = current.left
+        if value > current.value:
+          current = current.right
 
 
   def contains(self, target):

@@ -1,31 +1,31 @@
 class Node:
     def __init__(self, value=None, next_node=None):
-        self.value = value
-        self.next_node = next_node
+      self.value = value
+      self.next_node = next_node
 
     def get_value(self):
-        return self.value
+      return self.value
 
     def get_next(self):
-        return self.next_node
+      return self.next_node
 
     def set_next(self, new_next):
-        self.next_node = new_next
+      self.next_node = new_next
 
 
 class LinkedList:
     def __init__(self):
-        self.head = None
-        self.tail = None
+      self.head = None
+      self.tail = None
 
     def add_to_tail(self, value):
-        new_node = Node(value)
-        if self.tail == None:  # if tail doesn't exist..probably head doesn't exist also but wise to check explicitly
-            if self.head == None:
-                self.head = new_node
-            else:
-                self.tail.next_node = new_node
-                self.tail = new_node
+      new_node = Node(value)
+      if self.tail == None:  # if tail doesn't exist..probably head doesn't exist also but wise to check explicitly
+        if self.head == None:
+          self.head = new_node
+      else:
+        self.tail.next_node = new_node
+      self.tail = new_node
     # # Create new node
     #   newNode = Node(value)
     #   # if it is the head is exists, if it does not that means the node added is the only element
@@ -38,31 +38,41 @@ class LinkedList:
     #       self.tail = newNode
 
     def remove_head(self):
-        if head == None:
-            if tail == None:
-                return False
-                if self.head.next_node != None:
-                    head = self.head
-                    self.head = self.head.next_node
-                    return value
+      if self.head == None:
+        return None
+      # if self.head.next_node != None:
+      head = self.head
+      self.head = self.head.next_node
+      return head.value
 
-    def contains(self, target):
-        if head == None:
-            return False
-            while(result):
-                if result.value == target:
-                    return result
-                else:
-                    result = result.next_node
-                    return result
+    def contains(self, value):
+      result = self.head
+      if self.head == None:
+        return False
+      while(result != None):
+        if result.value == value:
+          return True
+        else:
+          result = result.next_node
+      return False
+
+    # def contains(self, value):
+    #   curr = self.head
+    #   while curr != None:
+    #     if curr.value == value:
+    #       return True
+    #     curr = curr.next_node
+    #   return False
+
+
 
     def get_max(self):
-        if self.head == None:
-            return False
-            maxVal = self.head.value
-            current = this.head
-            while(current):
-                if current.value > maxVal:
-                    maxVal = current.value
-                    current = current.next
-                    return maxVal
+      if self.head == None:
+        return None
+      maxVal = self.head.value
+      current = self.head.get_next()
+      while(current):
+        if current.value > maxVal:
+          maxVal = current.value
+        current = current.next_node
+      return maxVal

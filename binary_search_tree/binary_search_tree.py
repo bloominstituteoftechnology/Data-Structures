@@ -19,9 +19,6 @@ class BinarySearchTree:
     else:
       self.value = value
           
-        
-
-
 
   def contains(self, target):
     pass

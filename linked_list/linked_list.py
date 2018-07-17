@@ -38,14 +38,11 @@ class LinkedList:
 
   def contains(self, value):
     current_node = self.head
-  
-    if current_node == None: return False
-    if current_node.get_value() == value: return True
 
-    while current_node.get_next() != None:
-      current_node = current_node.get_next()
+    while current_node:
       if current_node.get_value() == value: return True
-
+      current_node = current_node.get_next()
+    
     return False
 
   def get_max(self):

@@ -29,7 +29,7 @@ class BinarySearchTree:
     pass
 
   def get_max(self, value):
-    current = self
-    while current.right:
-      current = current.right
-    return current.value
+    if not self:
+      return None
+    if not self.right:
+      return self.value

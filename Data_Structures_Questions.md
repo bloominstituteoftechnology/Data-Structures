@@ -26,17 +26,17 @@ For each of the methods associated with each data structure, classify it based o
 
 2. What is the runtime complexity of `contains`? -- logarithmic
 
-3. What is the runtime complexity of `get_max`? -- linear
+3. What is the runtime complexity of `get_max`? -- logarithmic
 
 ## Heap
 
-1. What is the runtime complexity of `_bubble_up`? -- linear
+1. What is the runtime complexity of `_bubble_up`? -- logarithmic
 
-2. What is the runtime complexity of `_sift_down`? -- linear
+2. What is the runtime complexity of `_sift_down`? -- logarithmic
 
-3. What is the runtime complexity of `insert`? -- linear
+3. What is the runtime complexity of `insert`? -- logarithmic
 
-4. What is the runtime complexity of `delete`? -- linear
+4. What is the runtime complexity of `delete`? -- logarithmic
 
 5. What is the runtime complexity of `get_max`? -- constant
 

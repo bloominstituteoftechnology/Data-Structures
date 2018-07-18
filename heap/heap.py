@@ -8,15 +8,9 @@ class Heap:
   def insert(self, value):
     # self.storage = [0, 1, 2, 3]
     # self.size = 3
-    if self.size > 0:
-      self.size += 1
-      self.storage.append(value)
-      self._bubble_up(self.size)
-
-    else:
-      self.size += 1
-      self.storage.append(value)
-      self._bubble_up(self.size)
+    self.size += 1
+    self.storage.append(value)
+    self._bubble_up(self.size)
 
   def delete(self):
     if self.size > 0:
@@ -54,7 +48,7 @@ class Heap:
     right_child_index = 2 * index + 1
     if right_child_index > self.size:
       if left_child_index > self.size:
-        return 'done'
+        pass
       else:
         left_child = self.storage[left_child_index]
         parent = self.storage[index]
@@ -63,8 +57,6 @@ class Heap:
           self.storage[left_child_index] = self.storage[index]
           self.storage[index] = temp
           self._sift_down(left_child_index)
-        else:
-          return 'done'
 
     else:
       left_child = self.storage[left_child_index]
@@ -78,5 +70,3 @@ class Heap:
         self.storage[larger_child_index] = self.storage[index]
         self.storage[index] = temp
         self._sift_down(larger_child_index)
-      else:
-        return 'done'

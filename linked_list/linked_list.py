@@ -37,6 +37,8 @@ class LinkedList:
     if self.head != None:
       old_head = self.head
       self.head = self.head.next_node
+      if self.head == None:
+        self.tail = None
       return old_head.value
     return None
 
@@ -46,8 +48,6 @@ class LinkedList:
       if curr.value == value:
         return True
       curr = curr.next_node
-      if curr == None:
-        self.tail = None
     return False
 
   def get_max(self):

@@ -61,9 +61,12 @@ class BinarySearchTree:
     return False
 
 
-  # def get_max(self):
-  #   max_value = self.value    
-
-  #   while self.right is not None:
-  #     max_value = self.right.value
-  #   return max_value
+  def get_max(self):
+    # if tree is empty
+    if not self:
+      return None
+    # check to see if we have a right child
+    if not self.right:
+      return self.value
+    # if we still have more children to the right
+    return self.right.get_max()

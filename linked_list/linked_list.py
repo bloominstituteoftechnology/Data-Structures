@@ -36,14 +36,16 @@ class LinkedList:
 
 
   def remove_head(self):
-    # my version
+
+    '''
+    # my version which is failed after the test got some update
     old_head = self.head
     if old_head != None:
       self.head = old_head.next_node
       return old_head.value
     return None
-
     '''
+
     #Sean's solution
     if not self.head:
       return None
@@ -60,7 +62,7 @@ class LinkedList:
       value = self.head.value
       self.head = self.head.next_node
       return value
-      '''
+      
 
 
   def contains(self, value):

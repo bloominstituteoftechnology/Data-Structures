@@ -42,27 +42,53 @@ class LinkedList(): #properties are head and tail
             self.head = new_node  #self.head and self.tail is assigned as the new node
             self.tail = new_node
         else:
-            current = self.head #the current node is self.head
-            while current.next_node: #while there is a next node
-                current.next_node = new_node #the current next node is the new node
-            self.tail = new_node #after exiting while loop, we know there is no next_node,
-            #therefore self.tail is the new_node
+            self.tail.next_node = new_node
+            self.tail = new_node
+            
         return self.tail
 
 
     def remove_head(self): 
+        if not self.head: #if no items in list
+            return None
+        #if head has no next
+        if not self.head.next_node:
+            #take a reference to curr head
+            head = self.head
+            #delete the list's head reference
+            self.head = None
+            # also make sure the tail points to None
+            self.tail = None
+            return head.value
+        else:
+            # we have multiple elements in our list
+            value = self.head.value
+            self.head = self.head.next_node
+            return value
         
 
 
     def contains(self, value): 
+        #check to see if list is empty:
+        if not self.head:
+            return None
+        
         current = self.head #current node is self.head
-        next_node = current.get_next()
         while current: #while node exists:
-            if current.get_value() == value: #if get.value() == value
+            if current.value == value: #if get.value() == value
                 return True
-            current = next_node #go to the next node
+            current = current.next_node #go to the next node
+        #if we get here, we've not found the value so return false
         return False
 
     def get_max(self): #get max value in entire list
-        pass
+        if not self.head: # if no items in list:
+            return None
+        max_value = self.head.value #max_value is self.head.value for now
+        current = self.head.get_next()
+        while current:
+            if current.value > max_value:
+                max_value = current.value
+            current = current.get_next()
+        return max_value
 

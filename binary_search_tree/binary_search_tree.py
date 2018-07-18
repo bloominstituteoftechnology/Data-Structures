@@ -42,17 +42,12 @@ class BinarySearchTree:
                 current = current.left
 
     def get_max(self):
-        max_value = self.value
-        current = self
-        next_node = self.right
+        current_node = self
+        next_node = current_node.right
 
-        while current:
-            if not current.right:
-                print(current.value)
-                return max_value
-
-            if current.value > max_value:
-                print(f"{current.value} is greater than {max_value}")
-                return current.value
+        while current_node:
+            if not next_node:
+                return current_node.value
             
-            current = next_node
+            current_node = next_node
+            next_node = current_node.right

@@ -5,7 +5,7 @@ class BinarySearchTree:
     self.right = None
 
   def insert(self, value):
-    if value > self.value:
+    if value >= self.value:
       if not self.right:
         self.right = BinarySearchTree(value)
       else:

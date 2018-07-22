@@ -11,14 +11,14 @@ class Heap:
     # increment the size 
     self.size += 1
     # call the bubble_up helper method to put this value in a valid spot in the heap
-    self.bubble_up(self.size) 
+    self._bubble_up(self.size) 
 
   def delete(self):
     # store our max value in a variable so we can return it later
     retval = self.storage[1]
     # replace the first storage element with the last element in the heap
     self.storage[1] = self.storage[self.size]
-    self.size += 1
+    self.size -= 1
     # remove the last element from the heap
     self.storage.pop() 
     # call _sift_down to move the element at index 1 down to a valid spot in the heap
@@ -46,7 +46,7 @@ class Heap:
       index = index // 2
 
   def _sift_down(self, index):
-    # keep sifting the element at the given index down the heap until it reaches a valid
+    # keep sifting the element at the given index down the heap until it reaches a valid spot
     while (index * 2) <= self.size: 
       # figure out which child is larger 
       mc = self._max_child(index)
@@ -59,7 +59,7 @@ class Heap:
       # update our index value 
       index = mc 
 
-  def _max_child(index): 
+  def _max_child(self, index): 
     if index * 2 + 1 > self.size: 
       return index * 2
     else: 

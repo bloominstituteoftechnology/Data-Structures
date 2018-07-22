@@ -34,14 +34,11 @@ class LinkedList:
   def remove_head(self):
     if not self.head:
       return None
-    # elif not self.head.next_node:
-    #   old_head = self.head
-    #   self.head = self.head.next_node
-    #   self.tail = None
-    #   return old_head
-    #  Use this if it is a circle linked list???
+
     else:
-      old_head = self.head 
+      old_head = self.head
+      if not self.head.next_node:
+        self.tail = None
       self.head = self.head.next_node
       return old_head.value
 

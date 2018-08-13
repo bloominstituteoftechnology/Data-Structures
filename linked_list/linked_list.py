@@ -1,3 +1,5 @@
+from pprint import pprint
+
 """
 Class that represents a single linked
 list node that holds a single value
@@ -23,13 +25,38 @@ class LinkedList:
     self.tail = None
 
   def add_to_tail(self, value):
-    pass
+    newNode = Node(value)
+    if not self.head:
+      self.head = newNode
+    else: self.tail.next_node = newNode
+    self.tail = newNode
 
   def remove_head(self):
-    pass
+    if not self.head:
+      return None
+
+    else:
+      old_head = self.head
+      if not self.head.next_node:
+        self.tail = None
+      self.head = self.head.next_node
+      return old_head.value
 
   def contains(self, value):
-    pass
+    currentNode = self.head
+    while currentNode:
+      if currentNode.value == value:
+        return True
+      currentNode = currentNode.next_node
+    return False
 
   def get_max(self):
-    pass
+    if not self.head:
+      return None
+    currentNode = self.head.get_next()
+    biggest = self.head.value
+    while currentNode:
+      if currentNode.value > biggest:
+        biggest = currentNode.value
+      currentNode = currentNode.next_node
+    return biggest

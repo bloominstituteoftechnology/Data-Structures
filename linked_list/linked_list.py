@@ -67,6 +67,7 @@ class LinkedList:
           current_node.next_node = None
           self.tail = current_node
           return node_to_delete.value
+        current_node = current_node.next_node
 
   def contains(self, value):
     current_node = self.head
@@ -89,15 +90,15 @@ class LinkedList:
           current_node = current_node.next_node
         return max
 
-# linked_list = LinkedList()
-# linked_list.add_to_tail(10)
-# linked_list.add_to_tail(20)
+linked_list = LinkedList()
+linked_list.add_to_tail(10)
+linked_list.add_to_tail(20)
 
-# values = linked_list.get_values()
-# print(values)
-# linked_list.remove_tail()
-# new_values = linked_list.get_values()
-# print(new_values)
+values = linked_list.get_values()
+print(values)
+linked_list.remove_tail()
+new_values = linked_list.get_values()
+print(new_values)
 # contains_twenty = linked_list.contains(20)
 # print(contains_twenty)
 # max = linked_list.get_max()

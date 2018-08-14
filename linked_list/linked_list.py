@@ -52,7 +52,21 @@ class LinkedList:
       node_to_delete.next_node = None
       return node_to_delete.value
 
-      
+  def remove_tail(self):
+    node_to_delete = self.tail
+    current_node = self.head
+    if not self.tail:
+      return None
+    elif self.tail == self.head:
+      self.tail = None
+      self.head = None
+      return node_to_delete.value
+    else:
+      while current_node.next_node:
+        if current_node.next_node == self.tail:
+          current_node.next_node = None
+          self.tail = current_node
+          return node_to_delete.value
 
   def contains(self, value):
     current_node = self.head
@@ -75,13 +89,16 @@ class LinkedList:
           current_node = current_node.next_node
         return max
 
-linked_list = LinkedList()
-linked_list.add_to_tail(10)
-linked_list.add_to_tail(20)
+# linked_list = LinkedList()
+# linked_list.add_to_tail(10)
+# linked_list.add_to_tail(20)
 
-values = linked_list.get_values()
-print(values)
-contains_twenty = linked_list.contains(20)
-print(contains_twenty)
-max = linked_list.get_max()
-print(max)
+# values = linked_list.get_values()
+# print(values)
+# linked_list.remove_tail()
+# new_values = linked_list.get_values()
+# print(new_values)
+# contains_twenty = linked_list.contains(20)
+# print(contains_twenty)
+# max = linked_list.get_max()
+# print(max)

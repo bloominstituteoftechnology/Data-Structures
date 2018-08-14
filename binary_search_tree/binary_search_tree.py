@@ -18,7 +18,21 @@ class BinarySearchTree:
         self.left.insert(value)
 
   def contains(self, target):
-    pass
+    if self.value == target:
+      return True
+    elif target >= self.value:
+      if not self.right:
+        return False
+      else:
+        # so I had to return or else the 
+        # boolean would've been lost in the ether
+        # of the recursive call...fucking cool
+        return self.right.contains(target)
+    else:
+      if not self.left:
+        return False
+      else:
+        return self.left.contains(target)
 
   def get_max(self):
     pass
@@ -28,4 +42,7 @@ tree = BinarySearchTree(8)
 tree.insert(10)
 print(tree.value)
 print(tree.right.value)
+print("Tree contains 8: ", tree.contains(8))
+print("Tree contains 10: ", tree.contains(10))
+print("Tree contains 33: ", tree.contains(33))
 

@@ -22,7 +22,7 @@ class LinkedList:
     self.head = None
     self.tail = None
 
-  def display_values(self):
+  def get_values(self):
     current_node = self.head
     values = []
     while current_node:
@@ -46,22 +46,42 @@ class LinkedList:
     elif self.tail == self.head:
         self.tail = None
         self.head = None
-        return node_to_delete
+        return node_to_delete.value
     else:
-      node_to_delete.next = None
       self.head = self.head.next_node
-    
+      node_to_delete.next_node = None
+      return node_to_delete.value
+
       
 
   def contains(self, value):
-    pass
+    current_node = self.head
+    found = False
+    while current_node:
+        if current_node.value == value:
+          found = True
+        current_node = current_node.next_node
+    return found
 
   def get_max(self):
-    pass
+      if not self.head:
+        return None
+      else:
+        current_node = self.head
+        max = current_node.value
+        while current_node:
+          if current_node.value > max:
+            max = current_node.value
+          current_node = current_node.next_node
+        return max
 
 linked_list = LinkedList()
 linked_list.add_to_tail(10)
 linked_list.add_to_tail(20)
 
-values = linked_list.display_values()
+values = linked_list.get_values()
 print(values)
+contains_twenty = linked_list.contains(20)
+print(contains_twenty)
+max = linked_list.get_max()
+print(max)

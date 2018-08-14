@@ -5,10 +5,16 @@ class BinarySearchTree:
     self.right = None
 
   def insert(self, value):
-    pass
+    new_node = BinarySearchTree(value)
+    
 
   def contains(self, target):
     pass
 
   def get_max(self):
     pass
+
+
+tree = BinarySearchTree(8)
+
+print(tree.value, tree.left, tree.right)

@@ -1,3 +1,7 @@
+import sys
+sys.path.append('../queue')
+from queue import Queue
+
 """
 Class that represents a single linked
 list node that holds a single value
@@ -90,15 +94,34 @@ class LinkedList:
           current_node = current_node.next_node
         return max
 
+  def make_reversed_version(self):
+    reversed_node_values = []
+    if self.head:
+      current_node = self.head
+      while current_node:
+        reversed_node_values.insert(0, current_node.value)
+        current_node = current_node.next_node
+      reversed_list = LinkedList()
+      for i in range(len(reversed_node_values)):
+        reversed_list.add_to_tail(reversed_node_values[i])
+      return reversed_list
+    else:
+      return "Cannot reverse an empty list!"
+
+
 linked_list = LinkedList()
 linked_list.add_to_tail(10)
 linked_list.add_to_tail(20)
 
 values = linked_list.get_values()
 print(values)
-linked_list.remove_tail()
-new_values = linked_list.get_values()
-print(new_values)
+reversed_linked_list = linked_list.make_reversed_version()
+print(reversed_linked_list)
+print(reversed_linked_list.head.value, reversed_linked_list.tail.value)
+print(reversed_linked_list.get_values())
+# linked_list.remove_tail()
+# new_values = linked_list.get_values()
+# print(new_values)
 # contains_twenty = linked_list.contains(20)
 # print(contains_twenty)
 # max = linked_list.get_max()

@@ -6,7 +6,16 @@ class BinarySearchTree:
 
   def insert(self, value):
     new_node = BinarySearchTree(value)
-    
+    if new_node.value >= self.value:
+      if not self.right:
+        self.right = new_node
+      else:
+        self.right.insert(value)
+    else:
+      if not self.left:
+        self.left = new_node
+      else:
+        self.left.insert(value)
 
   def contains(self, target):
     pass
@@ -16,5 +25,7 @@ class BinarySearchTree:
 
 
 tree = BinarySearchTree(8)
+tree.insert(10)
+print(tree.value)
+print(tree.right.value)
 
-print(tree.value, tree.left, tree.right)

@@ -18,11 +18,25 @@ class DoublyLinkedList:
     self.head = node
     self.tail = node
 
+  def __iter__(self):
+    current_node = self.head
+    while current_node:
+      yield current_node
+      current_node = current_node.next
+
   def add_to_head(self, value):
-    pass
+    new_node = ListNode(value)
+    if not self.head:
+      self.head = new_node
+    else:
+      new_node.next = self.head
+      self.head.previous = new_node
+      self.head = new_node
 
   def remove_from_head(self):
-    pass
+    if not self.head:
+      return None
+    
 
   def add_to_tail(self, value):
     pass
@@ -38,3 +52,9 @@ class DoublyLinkedList:
 
   def delete(self, node):
     pass
+
+
+# dll = DoublyLinkedList()
+# dll.add_to_head(10)
+# print(dll.head.value)
+# dll.add_to_head(20)

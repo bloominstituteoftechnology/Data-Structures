@@ -24,9 +24,6 @@ class BinarySearchTree:
       if not self.right:
         return False
       else:
-        # so I had to return or else the 
-        # boolean would've been lost in the ether
-        # of the recursive call...fucking cool
         return self.right.contains(target)
     else:
       if not self.left:
@@ -35,7 +32,11 @@ class BinarySearchTree:
         return self.left.contains(target)
 
   def get_max(self):
-    pass
+    while self.right != None:
+      self = self.right
+    return self.value
+    
+    
 
 
 tree = BinarySearchTree(8)

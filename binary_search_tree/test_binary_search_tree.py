@@ -23,6 +23,7 @@ class BinarySearchTreeTests(unittest.TestCase):
   def test_get_max(self):
     self.assertEqual(self.bst.get_max(), 5)
     self.bst.insert(30)
+    self.assertEqual(self.bst.right.value, 30)
     self.assertEqual(self.bst.get_max(), 30)
     self.bst.insert(300)
     self.bst.insert(3)

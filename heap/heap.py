@@ -1,3 +1,5 @@
+from math import floor
+
 class Heap:
   def __init__(self):
     # storage starts with an unused 0 to make 
@@ -10,6 +12,14 @@ class Heap:
     self.__bubble_up(self.size+1)
     self.size += 1
     
+  def left_child_index(parent_i):
+    return current_i * 2
+
+  def right_child_index(parent_i):
+    return (current_i * 2) + 1
+
+  def parent_index(child_index):
+     return floor(child_index / 2)
 
   def delete(self):
     pass

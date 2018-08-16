@@ -6,7 +6,10 @@ class Heap:
     self.size = 0
 
   def insert(self, value):
-    pass
+    self.storage.append(value)
+    self.__bubble_up(self.size+1)
+    self.size += 1
+    
 
   def delete(self):
     pass
@@ -18,7 +21,11 @@ class Heap:
     pass
 
   def _bubble_up(self, index):
-    pass
+      if self.storate[index] < self.storage[(cieling(index-1)/2)]:
+        return
+      else:
+
 
   def _sift_down(self, index):
+    
     pass

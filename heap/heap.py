@@ -2,7 +2,7 @@ class Heap:
   def __init__(self):
     # storage starts with an unused 0 to make 
     # integer division simpler later on
-    self.storage = [0]
+    self.storage = []
     self.size = 0
 
   def insert(self, value):

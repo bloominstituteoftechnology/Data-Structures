@@ -15,7 +15,6 @@ class HeapTests(unittest.TestCase):
     self.heap.insert(9)
     self.heap.insert(9)
     self.heap.insert(5)
-    self.heap.storage
     self.assertEqual(self.heap.get_max(), 10)
 
   def test_get_max_after_delete(self):

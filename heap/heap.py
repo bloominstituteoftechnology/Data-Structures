@@ -5,29 +5,13 @@ class Heap:
     # storage starts with an unused 0 to make 
     # integer division simpler later on
     self.storage = [0]
-    self.size = len(self.storage) - 1
- 
-  # def _left_child_value(i):
-  #   if i > last_index:
-  #     return None
-  #   else:
-  #     return self.storage[i*2]
+    self.size = 0
 
-  # def _right_child_value(i):
-  #   if i > last_index:
-  #     return None
-  #   else:
-  #     return self.storage[(i*2) + 1]
-
-  # def _parent_value(i):
-  #   if i == 0:
-  #     return None
-  #   else:
-  #     return self.storage[i // 2]
 
   def insert(self, value):
     self.storage.append(value)
-    
+    self.size += 1
+    self._bubble_up(self.size)
     
   def delete(self):
     pass
@@ -39,23 +23,26 @@ class Heap:
     return self.size
 
   def _bubble_up(self, index):
-  
-    current_value = self.storage[index]
-    parent_value = current_value // 2
+      current_index = index
+      
+      
+      while current_index != 1:
+        if self.storage[current_index] > self.storage[current_index // 2]:
+          self.storage[current_index], self.storage[current_index // 2] = self.storage[current_index // 2], self.storage[current_index]
+        current_index = current_index // 2
+      return self.storage[current_index]
 
-    while current_value != self.storage[1]:
-      if parent_value <= current_value:
-        parent_value, current_value = current_value, parent_value
-      current_value = parent_value
-    return current_value
-
-  def _sift_down_(self):
+  def _sift_down_(self, index):
     pass
 
 
 my_heap = Heap()
-
-my_heap.insert(42)
-my_heap.insert(33)
-my_heap.insert(100)
+entries  = [20, 13, 9, 8, 5, 3, 7, 6, 2, 1]
+for i in range(len(entries)):
+  my_heap.insert(entries[i])
 print(my_heap.storage)
+heap = Heap()
+more_entries = [6, 7, 5, 8, 10, 1, 2, 5]
+for i in range(len(more_entries)):
+  heap.insert(more_entries[i])
+print(heap.storage)

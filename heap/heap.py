@@ -1,3 +1,11 @@
+import math
+
+def swap( arr, a, b ):
+  temp = arr[a]
+  arr[a] = arr[b]
+  arr[b] = temp
+  return arr
+
 class Heap:
   def __init__(self):
     # storage starts with an unused 0 to make 
@@ -6,22 +14,25 @@ class Heap:
     self.size = 0
 
   def insert(self, value):
-    self.storage.append(value)
+    # add to array
+    self.storage.append( value )
+    # bubble up
+    self._bubble_up( self.size + 1 )
+    # update size
     self.size += 1
-    self._bubble_up(self.size)
 
   def delete(self):
-    if self.size == 0:
-      return None
-    first_val = self.storage[1]
-    last_val = self.storage.pop()
+    # SAVE VALUE to return
+    val = self.storage[1]
+    # swap first and last element
+    self.storage[1] = self.storage[self.size]
+    self.storage.pop()
+    # update size
     self.size -= 1
-    if self.size == 0:
-      return first_val
-
-    self.storage[1] = last_val
+    # sift down
     self._sift_down(1)
-    return first_val
+    # return val
+    return val
 
   def get_max(self):
     return self.storage[1]
@@ -30,30 +41,39 @@ class Heap:
     return self.size
 
   def _bubble_up(self, index):
-    parent_index = index // 2
-    if parent_index >= 1 and self.storage[index] > self.storage[parent_index]:
-      stored_value = self.storage[index]
-      self.storage[index] = self.storage[parent_index]
-      self.storage[parent_index] = stored_value
-      self._bubble_up(parent_index)
+    # if node smaller than parent
+    if index <= 1 or self.storage[index] <= self.storage[(math.floor(index/2))]:
+      return None
+    # while node > it's parent
+    else:
+      # swap parent & value @ index
+      temp = self.storage[index]
+      self.storage[index] = self.storage[(math.floor(index/2))]
+      self.storage[(math.floor(index/2))] = temp
+      # recursive call
+      return self._bubble_up((math.floor(index/2)))
 
   def _sift_down(self, index):
-    if 2*index > self.size: 
-      left_index = index
-    else:
-      left_index = 2*index
-    if 2*index+1 > self.size:
-      right_index = index
-    else:
-      right_index = 2*index+1
-    if self.storage[left_index] > self.storage[right_index]:
-      child_index = left_index
-    else:
-      child_index = right_index
-    if child_index == index:
-      return
-    if self.storage[child_index] > self.storage[index]:
-      stored_value = self.storage[index]
-      self.storage[index] = self.storage[child_index]
-      self.storage[child_index] = stored_value
-      self._sift_down(child_index)
+    # Compare the new root with its children; if they are in the correct place return None
+    print( self.storage )
+    left = 2*index
+    right = 2*index+1
+    print( str(index) + " " + str(left) + " " + str(right) )
+    # bounds check
+    if left <= self.size:
+      if self.storage[left] > self.storage[index]:
+        # bounds check
+        if right <= self.size:
+          if self.storage[right] > self.storage[index]:
+            # sift down with max child
+            if self.storage[right] > self.storage[left]:
+              self.storage = swap( self.storage, index, right )
+              return self._sift_down( right )
+            # no right child, sift down left
+            else:
+              self.storage = swap( self.storage, index, left )
+              return self._sift_down( left )
+        self.storage = swap( self.storage, index, left )
+        return self._sift_down( left )
+    return None
+  

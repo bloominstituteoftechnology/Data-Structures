@@ -47,7 +47,7 @@ class LinkedList:
             # delete the list's head reference
             self.head = None
             # also point tail to None
-            self.tail = None
+            self.tail - None
             return head.value   
         else:
             # we have multiple values in our list
@@ -85,5 +85,4 @@ class LinkedList:
                 max_value = current.value
             current = current.next_node
         return max_value
-
 

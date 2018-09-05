@@ -32,21 +32,20 @@ class LinkedList:
         node = Node(value)
         if self.head is None:
             self.head = node
-            self.tail = node
+            self.tail = self.head
 
         elif self.head.get_next is None:
             self.head.set_next(node)
-            self.tail = node
+            self.tail = self.head.get_next()
         else:
             self.tail.set_next(node)
-            self.tail = node
+            self.tail = self.tail.get_next()
 
     def remove_head(self):
         if self.head is not None:
             temp = self.head
             if self.head == self.tail:
                 self.tail = None
-                
             self.head = self.head.get_next()
             return temp.get_value()
         else:

@@ -7,11 +7,6 @@ Topics:
  * Binary Search Trees
  * Heaps
 
-## Before you Start
-One of the most prevalent problems that students encounter when trying to implement data structures is attempting to jump in and start writing code without fully understanding how the method/function they're trying to implement works in different cases, with different inputs, etc. 
-
-For this reason, you're being provided with a `pseudocode.md` file for scratch space so that you can write out pseudocode or just enumerate the steps your implementation is going to perform. From there, implementing the method just entails the task of translating your enumerated steps into code. While it isn't _required_ for you to use the provided scratch space, it is highly encouraged that you either write out the steps of your code, or draw out a diagram that makes clear what the steps are, as this is a good habit to get yourself into. Coming up with and spelling out all the steps your code is going to take is easier when you don't also have to worry about thinking about the code itself.
-
 ## Tasks
 1. Implement each data structure, starting with the linked list data structure. Make sure you're in the approriate directory, then run `python3 test_[NAME OF DATA STRUCTURE].py` to run the tests for that data structure and check your progress. Get all the tests passing for each data structure.
 

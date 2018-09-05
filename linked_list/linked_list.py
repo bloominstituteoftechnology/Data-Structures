@@ -45,11 +45,30 @@ class LinkedList:
 		pass
 
 	def contains(self, value):
-		pass
-		# if self.head.get_value = value:
-		# 	return True
-		# else:
-		# 	self.head.next_node.
+
+		#Check the head/tail for the value
+		if self.head.get_value() == value or self.tail.get_value() == value:
+			return True
+		
+		#Else while through the rest of the link checking each value
+		else:
+			#assume it's not found, init the contains var
+			contains = False
+
+			#Reference to the head as a starting point
+			node = self.head
+			
+			#While we're not at the tail:
+			while node.next_node != None:
+
+				# Is the value here?	
+				if node.get_value() == value:
+					contains = True 
+				
+				#Set the next node (note making this an else, makes it an infinite loop!!!!!)
+				node = node.get_next()
+
+			return contains
 
 	def get_max(self):
 		pass
@@ -67,8 +86,11 @@ list.add_to_tail(9)
 print(list.head.get_value())
 print(list.head.get_next().get_value())
 
-print('\n append a -34')
+print('\n append a -34, and print them all out')
 list.add_to_tail(-34)
 print(list.head.get_value())
 print(list.head.get_next().get_value())
 print(list.head.get_next().get_next().get_value())
+
+print('\n check if it has 10')
+print(list.contains(9))

@@ -43,16 +43,11 @@ class LinkedList:
     while current and found is False:
       if Node.get_value(current) == value:
         found = True
-      # if current[Node.get_value] == value:
-      #   found = True
       else: 
         current = Node.get_next(current)
-    # else:
-    #   current = current[Node.get_next()]
     if current== None:
       raise ValueError("Value not in list")
     return current
-    pass
 
   def get_max(self):
     pass

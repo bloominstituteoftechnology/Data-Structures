@@ -22,6 +22,7 @@ class LinkedListTests(unittest.TestCase):
     self.assertTrue(self.list.contains(2))
     self.assertFalse(self.list.contains(1000))
 
+
   def test_remove_head(self):
     self.list.add_to_tail(10)
     self.list.add_to_tail(20)
@@ -44,6 +45,5 @@ class LinkedListTests(unittest.TestCase):
     self.assertEqual(self.list.get_max(), 100)
     self.list.add_to_tail(101)
     self.assertEqual(self.list.get_max(), 101)
-
 if __name__ == '__main__':
   unittest.main()

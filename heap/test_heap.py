@@ -47,16 +47,36 @@ class HeapTests(unittest.TestCase):
     self.assertEqual(descending_order, [10, 8, 7, 6, 5, 5, 2, 1])
 
   def test_bubble_up_was_called(self):
-    self.heap._bubble_up = MagicMock()
+    # self.heap._bubble_up = MagicMock()
+
     self.heap.insert(5)
-    self.assertTrue(self.heap._bubble_up.called)
+    self.heap.insert(4)
+    self.heap.insert(7)
+    self.heap.insert(1)
+    self.heap.insert(9)
+    self.heap.insert(8)
+    self.heap._bubble_up(6)
+    self.assertEqual(self.heap.storage[3], 8)
+
+    # self.heap._bubble_up()
+    # self.assertTrue(self.heap._bubble_up.called)
 
   def test_sift_down_was_called(self):
-    self.heap._sift_down = MagicMock()
-    self.heap.insert(10)
-    self.heap.insert(11)
-    self.heap.delete()
-    self.assertTrue(self.heap._sift_down.called)
+    self.heap.insert(5)
+    self.heap.insert(4)
+    self.heap.insert(7)
+    self.heap.insert(1)
+    self.heap.insert(9)
+    self.heap.insert(8)
+    print(self.heap.storage)
+    self.heap._sift_down(3)
+    print(self.heap.storage)
+      
+    # self.heap._sift_down = MagicMock()
+    # self.heap.insert(10)
+    # self.heap.insert(11)
+    # self.heap.delete()
+    # self.assertTrue(self.heap._sift_down.called)
 
 if __name__ == '__main__':
   unittest.main()

@@ -32,17 +32,8 @@ class BinarySearchTree:
                 return False
 
     def get_max(self):
-        pass
-
-
-bst = BinarySearchTree(5)
-# print(bst.contains(5))
-bst.insert(7)
-print(bst.contains(7))
-# print(bst.right.value)
-# bst.insert(8)
-# print(bst.right.right.value)
-# bst.insert(7)
-# bst.insert(6)
-# bst.left.right.value  # 3
-# bst.right.left.value  # 6
+        max = self.value
+        if self.right:
+            if self.right.value > max:
+                return self.right.get_max()
+        return max

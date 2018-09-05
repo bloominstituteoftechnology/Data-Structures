@@ -42,12 +42,31 @@ class LinkedList:
 			self.tail = node
 
 	def remove_head(self):
-		pass
+		#Check if there's no nodes in the list
+		if self.head == None:
+			return None		
+		
+		#Check if there's only node in the list, if so reset to init
+		if self.head.get_next() == None:
+			rm_hd_val = self.head.get_value()
+			self.head = None
+			self.tail = None
+			return rm_hd_val
+		
+		#Else there's more than 1, so remove and replace as usual
+		elif self.head != None:
+			rm_head_val = self.head.get_value()
+			new_head = self.head.get_next()
+			self.head = new_head
+			return rm_head_val
+		
 
 	def contains(self, value):
+		if self.head == None or self.tail == None:
+			return False
 
 		#Check the head/tail for the value
-		if self.head.get_value() == value or self.tail.get_value() == value:
+		elif self.head.get_value() == value or self.tail.get_value() == value:
 			return True
 		
 		#Else while through the rest of the link checking each value

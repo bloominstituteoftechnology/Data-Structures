@@ -22,17 +22,35 @@ class LinkedList:
     self.head = None
     self.tail = None
 
+  # def add_to_tail(self, value):
+  #   current = self.head
+  #   found = False
+  #   while current and found is False:
+  #     if Node.get_next(current) == None:
+  #       found = True
+  #       Node.set_next(current, value)
+  #       return True
+  #     else:
+  #       current = Node.get_next(current)
+  #     if current == None:
+  #       print('error')
+  #     return self.tail 
+
   def add_to_tail(self, value):
     current = self.head
     found = False
-    while found is False:
+    while current and found is False:
       if Node.get_next(current) == None:
         found = True
-        Node.set_next(self.tail)
+        
+        self.tail = current.set_next(value)
+        # self.tail = current.set_next(value)
       else:
         current = Node.get_next(current)
-      return self.tail 
-    pass
+    return self.tail
+        # print(current.get_next().value)
+        # print(self.head.value, self.tail.value)
+
 
   def remove_head(self):
     pass
@@ -52,10 +70,19 @@ class LinkedList:
   def get_max(self):
     pass
 
+node2 = Node(34)
+node1 = Node(13, node2)
+# # print(node1.get_next())
+# # print(node1.value)
 
-node1 = Node(13)
-# print(node1.value)
 
 list1 = LinkedList()
-# print(list1.head)
-# print(list1.tail)
+
+# list1.add_to_tail(node2)
+# print(list1.head.value)
+# print(list1.tail.value)
+
+#To add an element to the head of a list, we create a new node, set its element
+#to the new element, set its next link to refer to the current head, and then set 
+#the list's head to point to the new node. 
+

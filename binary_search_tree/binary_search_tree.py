@@ -6,7 +6,6 @@ class BinarySearchTree:
 
   def insert(self, value):
     newTreeNode = BinarySearchTree(value)
-    # From the root go to the left side of the tree
     while True:
       if self.left == None and self.value >= newTreeNode.value:
         self.left = newTreeNode

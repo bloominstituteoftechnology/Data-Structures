@@ -43,11 +43,13 @@ class LinkedList:
       return headVal
 
   def contains(self, value):
+    if self.head == None:
+      return False
     node = self.head
     while True:
       if node.get_value() == value:
         return True
-      if node.get_value() == None:
+      if node.next_node == None:
         return False
       node = node.get_next()
 

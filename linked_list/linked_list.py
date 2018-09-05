@@ -33,3 +33,22 @@ class LinkedList:
 
   def get_max(self):
     pass
+
+  def remove_head(self):
+    pass
+
+  def contains(self, value):
+    pass
+
+  def get_max(self):
+    pass
+  
+  def print_values(self):
+    node = self.head
+    print(node.get_value())
+    while True:
+      node = node.get_next()
+      print(node.get_value())
+      if(node.get_next() == None):
+        break
+

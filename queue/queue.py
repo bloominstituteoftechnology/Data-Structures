@@ -2,16 +2,23 @@ import sys
 sys.path.append('../linked_list')
 from linked_list import LinkedList
 
+
 class Queue:
-  def __init__(self):
-    self.size = 0
-    self.storage = LinkedList()
+    def __init__(self):
+        self.size = 0
+        self.storage = LinkedList()
 
-  def enqueue(self, item):
-    pass
-  
-  def dequeue(self):
-    pass
+    def enqueue(self, item):
+        self.storage.add_to_tail(item)
+        self.size += 1
 
-  def len(self):
-    pass
+    def dequeue(self):
+        first = self.storage.remove_head()
+        if first == None:
+            pass
+        else:
+            self.size -= 1
+            return first
+
+    def len(self):
+        return self.size

@@ -22,14 +22,51 @@ class LinkedList:
     self.head = None
     self.tail = None
 
-  def add_to_tail(self, value):
-    pass
-
+  def add_to_tail(self, value): 
+    new_node = Node(1)
+    if self.head == None: 
+      self.head = Node(value)
+      self.tail = self.head
+      print(f'The head is equal to {self.tail.value}.')
+    elif self.head.next_node == None:
+      new_node = Node(value)
+      self.head.set_next(new_node)
+      self.tail = new_node
+      print(f'The next value after the head is equal to {self.tail.value}.')
+    elif new_node.next_node == None: 
+      new_node.set_next(Node(value))
+      new_node = Node(new_node.get_next().value)
+      self.tail = new_node
+      print(f'The next value is {self.tail.value}.')
+  
   def remove_head(self):
-    pass
+    print('Self head value', self.head.value)
+    print('Self head next node.', self.head.next_node)
+
+    self.head.value = self.head.next_node.value
+    self.head.set_next(self.head.next_node.next_node)  
+
+    print('New head value', self.head.value)
+    print('New head next node', self.head.next_node)
 
   def contains(self, value):
     pass
 
   def get_max(self):
     pass
+
+a = LinkedList()
+a.add_to_tail(1)
+a.add_to_tail(2)
+a.add_to_tail(3)
+a.add_to_tail(4)
+a.add_to_tail(5)
+a.add_to_tail(6)
+a.add_to_tail(7)
+a.add_to_tail(8)
+a.add_to_tail(9)
+a.add_to_tail(10)
+a.add_to_tail(11)
+a.add_to_tail(12)
+
+a.remove_head()

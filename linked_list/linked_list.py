@@ -23,29 +23,30 @@ class LinkedList:
     self.tail = None
 
   def add_to_tail(self, value):
-    # Check if first node
+    new_node = Node(value)
     if not self.head:
-      self.head = self.tail = Node(value, None)
+        self.head = new_node
+        self.tail = new_node
     else:
-      newNode = Node(value, None)
-      self.tail.set_next(newNode)
-      self.tail = newNode
+        self.tail.next_node = new_node
+        self.tail = new_node
 
   def remove_head(self):
     # Check if no items
-    if not self.head:
-      return None
-    else:
+    if self.head:
       # Check if only one item in list, and unlink tail
       if self.head == self.tail:
         self.tail = None
-      kill_node = self.head
+      value = self.head.get_value()
       self.head = self.head.get_next()
-      return kill_node.get_value()
+      return value
+    else:
+      return None
+
 
   def contains(self, value):
     node = self.head
-    while node is not None:
+    while node != None:
       if node.get_value() == value:
         return True
       else:
@@ -53,13 +54,14 @@ class LinkedList:
     return False
 
   def get_max(self):
-    # Check if no nodes
-    if not self.head:
+    if self.head:
+      max_val = self.head.get_value()
+      node = self.head
+      while node != None:
+        if node.get_value() > max_val:
+          max_val = node.get_value()
+        node = node.get_next()
+      return max_val
+    else: # Check if no nodes
       return None
-    max_val = self.head.get_value()
-    node = self.head
-    while node is not None:
-      if node.get_value() > max_val:
-        max_val = node.get_value()
-      node = node.get_next()
-    return max_val
+

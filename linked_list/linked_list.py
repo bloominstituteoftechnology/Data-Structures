@@ -32,16 +32,7 @@ class LinkedList:
       self.tail = self.tail.get_next()
 
   def remove_head(self):
-    pass
-
-  def contains(self, value):
-    pass
-
-  def get_max(self):
-    pass
-
-  def remove_head(self):
-    pass
+    self.head = self.head.get_next()
 
   def contains(self, value):
     pass

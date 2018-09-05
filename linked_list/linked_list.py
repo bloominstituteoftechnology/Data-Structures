@@ -43,6 +43,20 @@ class LinkedList:
 			current_tail.set_next(node)
 			self.tail = node
 
+	def add_to_head(self,value):
+		node = Node(value)		
+
+		#If empty, the head is empty, set the head and tail to new node
+		if self.head == None:
+			self.head = node
+			self.tail = node
+		
+		#Else if 1 node, aka head.next_node is None, set a new head
+		else:
+			old_head = self.head
+			self.head = node
+			self.head.set_next(old_head)
+		
 	def remove_head(self):
 		#Check if there's no nodes in the list
 		if self.head == None:
@@ -61,7 +75,7 @@ class LinkedList:
 			new_head = self.head.get_next()
 			self.head = new_head
 			return rm_head_val
-		
+
 
 	def contains(self, value):
 		if self.head == None or self.tail == None:

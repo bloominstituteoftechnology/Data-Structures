@@ -1,5 +1,8 @@
 import sys
+
+# sys.path.append('C://Users//Vimal//Documents//LambdaSchool//Data-Structures//linked_list')
 sys.path.append('../linked_list')
+
 from linked_list import LinkedList
 
 class Queue:
@@ -8,10 +11,13 @@ class Queue:
     self.storage = LinkedList()
 
   def enqueue(self, item):
-    pass
+    self.storage.add_to_head(item)
+    self.size += 1
   
   def dequeue(self):
-    pass
+    self.size -= 1
 
   def len(self):
-    pass
+    return self.size
+
+

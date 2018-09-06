@@ -27,9 +27,11 @@ class LinkedList:
     if self.head == None:
       self.head = NewNode
       self.tail = self.head
+      return
     else:
       self.tail.set_next(NewNode)
       self.tail = NewNode
+      return
   
   def remove_head(self):
     if self.head:

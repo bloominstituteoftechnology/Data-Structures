@@ -36,7 +36,7 @@ class LinkedList:
 
   def remove_head(self):
     if self.head == None:
-      # print('There is no head to remove.')
+      print('There is no head to remove.')
       self.tail = None
       return None
     elif self.head.get_next() == None:
@@ -49,44 +49,40 @@ class LinkedList:
       self.head = self.head.get_next()
       return oldHead.value
 
-  
   def contains(self,value):
     currentNode = self.head
     foundNode = False
     while currentNode and foundNode is False:
       if currentNode.get_value() == value:
         foundNode = True
-        # print(f'Linked list contains value {value}')
+        print(f'Linked list contains value {value}')
         return True
       else:
         currentNode = currentNode.get_next()
     if currentNode == None:
-      # print(f'Linked list does not contain a value of {value}')
+      print(f'Linked list does not contain a value of {value}')
       return False
-
+      
   def get_max(self):
-    currentNode = self.head
-    if currentNode == None:
-      return None
-    elif currentNode.get_next() == None:
-      # maximum = currentNode.get_value()
-      maximum = currentNode.value
-      return maximum
-    else:
-      while currentNode.get_next().get_value != None:
-        if currentNode.get_value() > currentNode.get_next().get_value():
-        # if currentNode.value > currentNode.get_next().get_value():
+      currentNode = self.head
+      if currentNode == None:
+        return None
+      if currentNode.get_next() == None:
+        # return currentNode.get_value()
+        maximum = currentNode.get_value()
+      # while currentNode.get_next():
+      while currentNode.get_value is not None:
+        # if currentNode.get_value() > currentNode.get_next().get_value():
+        if currentNode.get_value() > maximum:
           maximum = currentNode.get_value()
-          # maximum = currentNode.value
-        # else:
-        if currentNode.get_value() <= currentNode.get_next().get_value():
-          maximum = currentNode.get_next().get_value()
-          # maximum = currentNode.get_next().value
+        else:
+          # maximum = currentNode.get_next().get_value()
           currentNode = currentNode.get_next()
-        if currentNode.get_next() == None:
       return maximum
 
 
+
+  
 
 
 # ######ATTEMPT 2 tests

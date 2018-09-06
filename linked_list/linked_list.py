@@ -28,10 +28,8 @@ class Node:
 # print(Node.get_value(Node.get_next(node2)))
 
 # node3.set_next(node4)
-
 # print(Node.get_value(Node.get_next(node3)))
 
-#At this point I've confirmed that instantiating a node works, and that all the Node methods work. 
 
 
 class LinkedList:
@@ -49,7 +47,6 @@ class LinkedList:
       newNode.set_next(None)
       self.tail.set_next(newNode)
       self.tail = newNode
-    # pass 
 
   def remove_head(self):
     if self.head == None:
@@ -74,21 +71,35 @@ class LinkedList:
     currentNode = self.head
     while currentNode.get_next():
       if currentNode.get_value() > currentNode.get_next().get_value():
-        max = currentNode.getValue()
+        maximum = currentNode.getValue()
       else:
-        max = currentNode.get_next().get_value()
+        maximum = currentNode.get_next().get_value()
         currentNode = currentNode.get_next()
-    return (max)
-    # pass
+    return maximum
 
+
+# node4 = Node(798)
+# node3 = Node(757)
+# node2 = Node(364)
+# node1 = Node(133)
 
 
 # list1 = LinkedList()
 # list1.add_to_tail(node1)
+# # print(list1.tail.value)
 # list1.add_to_tail(node2)
+# # print(list1.tail.value)
 # list1.add_to_tail(node3)
+# # print(list1.tail.value)
 
+# # list1.remove_head()
 # # print(list1.head.value)
+# # list1.remove_head()
+# # print(list1.head.value)
+
+# print(list1.get_max())
+# print(list1.contains(133))
+
 
 # # print(list1.contains(134))
 # # print(list1.contains(133))

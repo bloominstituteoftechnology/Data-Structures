@@ -9,29 +9,23 @@ class BinarySearchTree:
 
   def insert(self, value):
     
-    # This method is only used for the get_max method
-    self.set_max_value(value)
-
     newTreeNode = BinarySearchTree(value)
     while True:
       if self.left == None and self.value >= newTreeNode.value:
         self.left = newTreeNode
-        return
+        return True
       
       if self.right == None and self.value < newTreeNode.value:
         self.right = newTreeNode
-        return
+        return True
       if self.value >= newTreeNode.value:
         self = self.left
       else:
         self = self.right
   
-  def set_max_value(self, value):
-    if value > self.max:
-      self.max = value
 
   def contains(self, target):
-    while True:
+    while self:
       if self.value == target:
         return True
       
@@ -48,7 +42,13 @@ class BinarySearchTree:
         self = self.right
       
   def get_max(self):
-    return self.max
+    maxValue = self.value
+    while self:
+      if self.value > maxValue:
+        maxValue = self.value
+      self = self.right
+    return maxValue
+  
 
 if __name__ == '__main__':
   tree = BinarySearchTree(5)

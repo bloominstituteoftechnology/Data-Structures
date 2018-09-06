@@ -20,7 +20,8 @@ class Node:
 class LinkedList:
     def __init__(self):
         self.head = None
-        self.tail = None    
+        self.tail = None  
+
     def add_to_tail(self, value):
         new_node = Node(value)
         if self.head:
@@ -29,10 +30,14 @@ class LinkedList:
         else:
             self.head = new_node
             self.tail = new_node     
-        #new_node.set_next(None)
-        #self.tail = new_node    
+        
     def remove_head(self):
-        pass
+        if self.head:
+            if self.tail is self.head:
+                self.tail = None
+            old_head = self.head
+            self.head = self.head.get_next()
+            return old_head.value
 
     def contains(self, value):
       pass

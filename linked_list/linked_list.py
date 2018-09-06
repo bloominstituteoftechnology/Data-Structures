@@ -18,9 +18,9 @@ class Node:
     self.next_node = new_next
 
 # node4 = Node(798)
-node3 = Node(757)
-node2 = Node(364)
-node1 = Node(133)
+# node3 = Node(757)
+# node2 = Node(364)
+# node1 = Node(133)
 # # print(node2.value)
 # # print(node2.next_node.value)
 
@@ -71,18 +71,30 @@ class LinkedList:
       return 'Value not in list.'
 
   def get_max(self):
-    pass
+    currentNode = self.head
+    while currentNode.get_next():
+      if currentNode.get_value() > currentNode.get_next().get_value():
+        max = currentNode.getValue()
+      else:
+        max = currentNode.get_next().get_value()
+        currentNode = currentNode.get_next()
+    return (max)
+    # pass
 
 
 
-list1 = LinkedList()
-list1.add_to_tail(node1)
-list1.add_to_tail(node2)
+# list1 = LinkedList()
+# list1.add_to_tail(node1)
+# list1.add_to_tail(node2)
+# list1.add_to_tail(node3)
 
-print(list1.head.value)
+# # print(list1.head.value)
 
-print(list1.contains(134))
-print(list1.contains(133))
+# # print(list1.contains(134))
+# # print(list1.contains(133))
+
+# print(list1.get_max())
+
 
 #To add an element to the head of a list, we create a new node, set its element
 #to the new element, set its next link to refer to the current head, and then set 

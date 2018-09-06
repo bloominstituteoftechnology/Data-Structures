@@ -17,6 +17,20 @@ class HeapTests(unittest.TestCase):
     self.heap.insert(5)
     self.assertEqual(self.heap.get_max(), 10)
 
+  def test_insert_works(self):
+    self.heap.insert(6)
+    self.assertListEqual(self.heap.storage, [6])
+    self.heap.insert(8)
+    self.assertListEqual(self.heap.storage, [8,6])
+    self.heap.insert(10)
+    self.assertListEqual(self.heap.storage, [10,6,8])
+    self.heap.insert(2)
+    self.assertListEqual(self.heap.storage, [10,6,8,2])
+    self.heap.insert(15)
+    self.assertEqual(self.heap.get_max(), 15)
+    self.assertListEqual(self.heap.storage, [15,10,8,2,6])
+
+
   def test_get_max_after_delete(self):
     self.heap.insert(6)
     self.heap.insert(8)

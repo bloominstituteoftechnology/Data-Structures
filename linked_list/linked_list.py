@@ -64,25 +64,27 @@ class LinkedList:
       # print(f'Linked list does not contain a value of {value}')
       return False
 
-  # def get_max(self):
-  #   currentNode = self.head
-  #   if currentNode == None:
-  #     return None
-  #   if currentNode.get_next() == None:
-  #     # maximum = currentNode.get_value()
-  #     maximum = currentNode.value
-  #     return maximum
-  #   else:
-  #     while currentNode.get_next():
-  #       # if currentNode.get_value() > currentNode.get_next().get_value():
-  #       if currentNode.value > currentNode.get_next().value:
-  #         # maximum = currentNode.getValue()
-  #         maximum = currentNode.value
-  #       else:
-  #         # maximum = currentNode.get_next().get_value()
-  #         maximum = currentNode.get_next().value
-  #         currentNode = currentNode.get_next()
-  #     return maximum
+  def get_max(self):
+    currentNode = self.head
+    if currentNode == None:
+      return None
+    elif currentNode.get_next() == None:
+      # maximum = currentNode.get_value()
+      maximum = currentNode.value
+      return maximum
+    else:
+      while currentNode.get_next().get_value != None:
+        if currentNode.get_value() > currentNode.get_next().get_value():
+        # if currentNode.value > currentNode.get_next().get_value():
+          maximum = currentNode.get_value()
+          # maximum = currentNode.value
+        # else:
+        if currentNode.get_value() <= currentNode.get_next().get_value():
+          maximum = currentNode.get_next().get_value()
+          # maximum = currentNode.get_next().value
+          currentNode = currentNode.get_next()
+        if currentNode.get_next() == None:
+      return maximum
 
 
 

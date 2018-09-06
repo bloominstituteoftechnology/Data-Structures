@@ -5,7 +5,6 @@ class BinarySearchTree:
     self.right = None
 
   def insert(self, value):
-    # `insert` adds the input value to the binary search tree, adhering to the rules of the ordering of elements in a binary search tree.
     if value < self.value:
       if self.left is None:
         self.left = BinarySearchTree(value)
@@ -18,9 +17,27 @@ class BinarySearchTree:
         self.right.insert(value)
 
   def contains(self, target):
-    # `contains` searches the binary search tree for the input value, returning a boolean indicating whether the value exists in the tree or not.
-    pass
+    current = self
+
+    while current.value is not target:
+      if current is not None:
+        if target < current.value:
+          current = current.left
+        else:
+          current = current.right
+      
+      if current is None:
+        return False
+
+    return True
 
   def get_max(self):
-    # `get_max` returns the maximum value in the binary search tree.
-    pass
+    current = self
+    current_max = current.value
+
+    while current is not None:
+      if current.value >= current_max:
+        current_max = current.value
+        current = current.right
+        
+    return current_max

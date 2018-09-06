@@ -46,7 +46,6 @@ class LinkedList:
       else:
         index = index.get_next()
 
-
   def get_max(self):
     index = self.head
     if index == None:

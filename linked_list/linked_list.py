@@ -42,9 +42,12 @@ class LinkedList:
   def remove_head(self):
     if self.head is not None:
       old_head = self.head
+      if self.head == self.tail:
+        self.tail = None
       self.head = self.head.get_next()
-      self.tail = None
       return old_head.value
+    else:
+      return None
 
   def contains(self, value):
     current = self.head

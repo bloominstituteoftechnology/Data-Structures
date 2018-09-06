@@ -21,12 +21,21 @@ class Heap:
 
       childIndex = parentIndex
       parentIndex = self._bubble_up(childIndex)
+      
+      if childIndex == 1 and parentIndex == 0 and self.storage[childIndex] > self.storage[parentIndex]:
+        tempChild = self.storage[childIndex]
+        self.storage[childIndex] = self.storage[parentIndex]
+        self.storage[parentIndex] = tempChild
+        return
       if childIndex or parentIndex < 0:
         return
+        
 
 
   def delete(self):
-    pass
+    poppedVal = self.storage.pop()
+    self.storage[0] = poppedVal
+    
 
   def get_max(self):
     return self.storage[0]
@@ -47,3 +56,12 @@ class Heap:
     else:
       childIndex = 2 * index + 1
     return childIndex
+
+if __name__ == '__main__':
+  heap = Heap()
+  heap.insert(100)
+  heap.insert(19)
+  heap.insert(36)
+  heap.insert(25)
+
+  print(heap.storage)

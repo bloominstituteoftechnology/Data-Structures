@@ -45,3 +45,9 @@ class BinarySearchTree:
     if not self.right:
         return self.value
     return self.right.get_max()
+
+    # *** V2 ***
+    # current = root
+    # while current.right:
+    #     current = current.right
+    # return current.value

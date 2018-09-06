@@ -7,8 +7,8 @@ class Heap:
     self._bubble_up(len(self.storage)-1)
 
   def delete(self):
-    rv = self.storage[1]
-    self.storage[1] = self.storage[len(self.storage)-1]
+    rv = self.storage[0]
+    self.storage[0] = self.storage[len(self.storage)-1]
     self.storage.pop()
     self._sift_down(1)
     return rv
@@ -29,7 +29,7 @@ class Heap:
 
   def get_min(self, index):
     #find minchild
-    if index * 2 + 1 > len(self.storage):
+    if index * 2 + 1 > len(self.storage)-1:
       return index * 2
     else:
       if self.storage[index * 2] < self.storage[index * 2 + 1]:
@@ -38,10 +38,10 @@ class Heap:
         return index * 2 + 1
 
   def _sift_down(self, index):
-    while (i * 2) <= len(self.storage):
-      mc = self.get_min(i)
+    while (index * 2) <= len(self.storage)-1:
+      mc = self.get_min(index)
       if self.storage[index] > self.storage[mc]:
         tmp = self.storage[index]
-        self.storage[i] = self.storage[mc]
+        self.storage[index] = self.storage[mc]
         self.storage[mc] = tmp
-      i = mc
+      index = mc

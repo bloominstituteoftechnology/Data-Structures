@@ -12,10 +12,12 @@ class Heap:
     pass
 
   def get_size(self):
-    pass
+    return len(self.storage)
 
   def _bubble_up(self, index):
-    pass
+    parent = floor((index - 1)/2)
+    if self.storage[index] > parent:
+      parent = self.storage[index]
 
   def _sift_down(self, index):
     pass

@@ -56,18 +56,30 @@ class LinkedList:
     elif self.head:
       self.head = self.head.get_next()
     pass
+  
+  def contains(self,value):
+    currentNode = self.head
+    foundNode = False
+    while currentNode and foundNode is False:
+      if currentNode.get_value == value:
+        foundNode = True
+        return f'Linked list contains value {currentNode.get_value}'
+      else:
+        currentNode = currentNode.get_next
+    if currentNode == None:
+      return 'Value not in list.'
 
-  def contains(self, value):
-    current = self.head
-    found = False
-    while current and found is False:
-      if Node.get_value(current) == value:
-        found = True
-      else: 
-        current = Node.get_next(current)
-    if current== None:
-      raise ValueError("Value not in list")
-    return current
+  # def contains(self, value):
+  #   current = self.head
+  #   found = False
+  #   while current and found is False:
+  #     if Node.get_value(current) == value:
+  #       found = True
+  #     else: 
+  #       current = Node.get_next(current)
+  #   if current== None:
+  #     raise ValueError("Value not in list")
+  #   return current
 
   def get_max(self):
     pass
@@ -81,12 +93,12 @@ list1.add_to_tail(node2)
 # print(list1.head.value, list1.tail.value)
 # print(Node.get_value(list1.head.value))
 # print(Node.get_value(list1.tail.value))
-print(list1.head.value.value)
-print(list1.tail.value.value)
+# print(list1.head.value.value)
+# print(list1.tail.value.value)
 
-list1.contains(364)
+print(list1.contains(133))
 
-
+print(Node.get_value(node2))
 
 #To add an element to the head of a list, we create a new node, set its element
 #to the new element, set its next link to refer to the current head, and then set 

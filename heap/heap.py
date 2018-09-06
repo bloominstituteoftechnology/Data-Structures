@@ -20,4 +20,10 @@ class Heap:
     return parentIndex
 
   def _sift_down(self, index):
-    pass
+    # Finds the child index of the parent
+    childIndex = 0
+    if index % 2 == 0:
+      childIndex = 2 * index + 2
+    else:
+      childIndex = 2 * index + 1
+    return childIndex

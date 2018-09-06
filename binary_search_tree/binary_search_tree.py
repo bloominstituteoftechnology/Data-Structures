@@ -1,11 +1,14 @@
 class BinarySearchTree:
   def __init__(self, value):
+    #current Node value
     self.value = value
     self.left = None
     self.right = None
 
   def insert(self, value):
+    #check if value is greater than current value, then go right, else go left
     if value >= self.value:
+      #if there's node on the right, then assign new Node to right
       if (not self.right):
         self.right = BinarySearchTree(value)
       else:

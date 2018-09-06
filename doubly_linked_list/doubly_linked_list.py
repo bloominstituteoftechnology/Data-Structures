@@ -11,8 +11,10 @@ class ListNode:
       self.prev = ListNode(value, self.prev, self)
 
   def delete(self):
-    self.prev.next = self.next
-    self.next.prev = self.prev 
+    if self.prev != None:
+      self.prev.next = self.next
+    if self.next != None:
+      self.next.prev = self.prev
 
 class DoublyLinkedList:
   def __init__(self, node=None):
@@ -52,13 +54,18 @@ class DoublyLinkedList:
         return currentTail.value
     else:
         return None
-    pass
 
-  def move_to_front(self, node):
-    pass
+  def move_to_front(self, node): #1 -> 2 -> 3 -> 4 -> 5
+    if self.tail == node:
+      value = self.tail.value
+      self.tail.delete()
+      self.add_to_head(value)
 
   def move_to_end(self, node):
-    pass
+    if self.head == node:
+      value = self.head.value
+      self.head.delete()
+      self.add_to_tail(value)
 
   def delete(self, node):
     pass

@@ -7,16 +7,18 @@ class ListNode:
 # Insert the given value as this node's
 #   `next` node
   def insert_after(self, value):
-    if self.next: self.next.prev = value
-    value.next = self.next
-    self.next = value
+    newNode = ListNode(value)
+    if self.next: self.next.prev = newNode
+    newNode.next = self.next
+    self.next = newNode
 
 # Insert the given value as the this node's
 #   `prev` node
   def insert_before(self, value):
-    if self.prev: self.prev.next = value
-    value.prev = self.prev
-    self.prev = value
+    newNode = ListNode(value)
+    if self.prev: self.prev.next = newNode
+    newNode.prev = self.prev
+    self.prev = newNode
 
 # Delete this node (returns this node)
   def delete(self):

@@ -3,7 +3,27 @@ class Heap:
     self.storage = []
 
   def insert(self, value):
-    pass
+    if len(self.storage) == 0:
+      self.storage.append(value)
+      return
+    
+    self.storage.append(value)
+
+    childIndex = len(self.storage) - 1
+    parentIndex = self._bubble_up(childIndex)
+
+    while self.storage[childIndex] > self.storage[parentIndex]:
+      
+      tempChild = self.storage[childIndex]
+      self.storage[childIndex] = self.storage[parentIndex]
+
+      self.storage[parentIndex] = tempChild
+
+      childIndex = parentIndex
+      parentIndex = self._bubble_up(childIndex)
+      if childIndex or parentIndex < 0:
+        return
+
 
   def delete(self):
     pass

@@ -5,6 +5,7 @@ class Heap:
   def insert(self, value):
     self.storage.append(value)
     self._bubble_up(len(self.storage)-1)
+    #self._sift_down(0)
 
   def delete(self):
     rv = self.storage[0]
@@ -20,7 +21,7 @@ class Heap:
     return len(self.storage)
 
   def _bubble_up(self, index):
-    while index // 2 > 0 and index <= len(self.storage):
+    while index // 2 >= 0:
       if self.storage[index] < self.storage[(index+1) // 2]:
         tmp = self.storage[(index+1) // 2]
         self.storage[(index+1) // 2] = self.storage[index]

@@ -57,13 +57,13 @@ class LinkedList:
           else: return False
 
   def get_max(self):
-    max = 0
-    if self.head: max = self.head.value
+    maxValue = 0
+    if self.head: maxValue = self.head.value
     else: return None
     curObj = None
     if self.head.next_node: curObj = self.head.next_node
-    else: return max
+    else: return maxValue
     while 1:
-      if curObj.value > max: max = curObj.value
+      if curObj.value > maxValue: maxValue = curObj.value
       if curObj.next_node: curObj = curObj.next_node
-      else: return max
+      else: return maxValue

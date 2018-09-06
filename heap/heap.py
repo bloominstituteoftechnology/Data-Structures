@@ -15,7 +15,9 @@ class Heap:
     pass
 
   def _bubble_up(self, index):
-    pass
+    # Finds parent index of the child
+    parentIndex = (index - 1) // 2
+    return parentIndex
 
   def _sift_down(self, index):
     pass

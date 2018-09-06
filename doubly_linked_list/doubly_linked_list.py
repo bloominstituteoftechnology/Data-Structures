@@ -58,6 +58,7 @@ class DoublyLinkedList:
                 self.head = self.head.next
                 self.head.prev = None
                 return temp.value
+        else: return None
 
     def add_to_tail(self, value):
         ln = ListNode(value)
@@ -75,6 +76,7 @@ class DoublyLinkedList:
                 self.tail = self.tail.prev
                 self.tail.next = None
                 return temp.value
+        else: return None
 
     def move_to_front(self, node):
         search = self.head
@@ -92,6 +94,7 @@ class DoublyLinkedList:
                 search.next.prev = search.prev
             self.add_to_head(search.value)
             search = None
+        else: return None
 
     def move_to_end(self, node):
         search = self.head
@@ -109,6 +112,7 @@ class DoublyLinkedList:
                 search.next.prev = search.prev
             self.add_to_tail(search.value)
             search = None
+        else: return None
 
     def delete(self, node):
         search = self.head
@@ -120,3 +124,5 @@ class DoublyLinkedList:
                 search = search.next
         if found is True:
             search.delete()
+        else: return None
+        

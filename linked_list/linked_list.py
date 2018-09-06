@@ -40,7 +40,22 @@ class LinkedList:
             return old_head.value
 
     def contains(self, value):
-      pass
+        current = self.head
+        found = False
+        while current and not found:
+            if current.get_value() == value:
+                found = True
+            else:
+                current = current.get_next()
+        return found        
 
     def get_max(self):
-      pass
+        current = self.head
+        largest = current.get_value()
+        while current:
+            value = current.get_value()
+            if largest < value:
+                largest = value
+            current = current.get_next()
+        return largest
+

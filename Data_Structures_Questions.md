@@ -40,9 +40,15 @@ a. What if our list implementation didn't have a reference to the tail of the li
 
 1. What is the runtime complexity of `insert`?
 
+`O(log n)`
+
 2. What is the runtime complexity of `contains`?
 
+`O(log n)`
+
 3. What is the runtime complexity of `get_max`?
+
+`O(log n)`
 
 ## Heap
 

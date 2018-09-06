@@ -27,17 +27,16 @@ class LinkedList:
     if self.head is None:
       self.head = new_node
       self.tail = new_node
-      return
     else:
       self.tail.set_next(new_node)
       self.tail = new_node
-      return
 
   def remove_head(self):
     if self.head:
+      if self.head is self.tail:
+        self.tail = None
       cur_head = self.head
       self.head = self.head.get_next()
-      self.tail = None
       return cur_head.value
 
   def contains(self, value):

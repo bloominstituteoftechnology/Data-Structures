@@ -41,13 +41,12 @@ class BinarySearchTree:
     if self.value == target:
       return True
     if self.value > target: 
-      if self.left == None:
-        return False
-      return self.left.contains(target)
+      if self.left != None:
+        return self.left.contains(target)
     if self.value < target: 
-      if self.right == None:
-        return False
-      return self.right.contains(target)
+      if self.right != None:
+        return self.right.contains(target)
+    return False
 
     # ********** Iterative Solution ***********
     # current_tree = self

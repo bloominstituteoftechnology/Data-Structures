@@ -44,7 +44,17 @@ class BinarySearchTree:
                 return self.left.contains(target)
 
     def get_max(self):
+        # Recursive
         if self.right == None:
             return self.value
         else:
             return self.right.get_max()
+
+
+        #Interative:
+        # curr = self
+            
+        # if curr:
+        #     curr = curr.right
+
+        # return curr.value

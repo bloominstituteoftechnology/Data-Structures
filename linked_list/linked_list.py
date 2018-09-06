@@ -50,12 +50,13 @@ class LinkedList:
         return found        
 
     def get_max(self):
-        current = self.head
-        largest = current.get_value()
-        while current:
-            value = current.get_value()
-            if largest < value:
-                largest = value
-            current = current.get_next()
-        return largest
+        if self.head:
+            current = self.head
+            largest = current.get_value()
+            while current:
+                value = current.get_value()
+                if largest < value:
+                    largest = value
+                current = current.get_next()
+            return largest
 

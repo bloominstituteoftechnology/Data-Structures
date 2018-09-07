@@ -30,6 +30,7 @@ class HeapTests(unittest.TestCase):
     self.assertEqual(self.heap.get_max(), 9)
 
   def test_delete_elements_in_order(self):
+
     self.heap.insert(6)
     self.heap.insert(7)
     self.heap.insert(5)

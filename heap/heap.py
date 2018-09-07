@@ -4,13 +4,13 @@ class Heap:
 
   def insert(self, value):
     self.storage.append(value)
-    self._bubble_up(self.get_size() - 1)
+    self._bubble_up(len(self.storage) - 1)
 
   def delete(self):
     value = self.storage[0]
-    self.storage[0] = self.storage[self.get_size() - 1]
-    self._sift_down(0)
+    self.storage[0] = self.storage[-1]
     self.storage.pop()
+    self._sift_down(0)
     return value
 
   def get_max(self):
@@ -20,19 +20,21 @@ class Heap:
     return len(self.storage)
 
   def _bubble_up(self, index):
-    parent_i = (index - 1) // 2
-    while self.storage[index] > self.storage[parent_i]:
-      self.storage[parent_i], self.storage[index] = self.storage[index], self.storage[parent_i]
-      parent_i = parent_i // 2
-
+    while (index - 1) // 2 >= 0:
+      if self.storage[index] > self.storage[(index - 1) // 2]:
+        self.storage[(index - 1) // 2], self.storage[index] = self.storage[index], self.storage[(index - 1) // 2]
+      index = (index - 1) // 2
+  
   def _sift_down(self, index):
-    while index * 2 <= self.get_size():
-      left_i = 2 * index + 1
-      right_i = left_i + 1
-      if self.storage[index] < self.storage[right_i]:
-        self.storage[index], self.storage[right_i] = self.storage[right_i], self.storage[index]
-        index = right_i
-      elif self.storage[index] < self.storage[left_i]:
-        self.storage[index], self.storage[left_i] = self.storage[left_i], self.storage[index]
-        index = left_i
+    while index * 2 + 1 <= len(self.storage) - 1:
+      mc = self._max_child(index)
+      if self.storage[index] < self.storage[mc]:
+        self.storage[index], self.storage[mc] = self.storage[mc], self.storage[index]
+      index = mc
+
+  def _max_child(self, index):
+    if index * 2 + 2 > len(self.storage) - 1:
+      return index * 2 + 1
+    else:
+      return index * 2 + 1 if self.storage[index * 2 + 1] > self.storage[index * 2 + 2] else index * 2 + 2
       

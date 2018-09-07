@@ -39,4 +39,4 @@ class Heap:
     if index * 2 + 2 > len(self.storage) - 1:
       return index * 2 + 1
     else:
-      return index * 2 + 1 if self.storage[index * 2 + 1] > self.storage[index * 2 + 2]
+      return index * 2 + 1 if self.storage[index * 2 + 1] > self.storage[index * 2 + 2] else index * 2 + 2

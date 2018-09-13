@@ -7,13 +7,13 @@ class BinarySearchTree:
   def insert(self, value):
     tree = BinarySearchTree(value)
     if value< self.value:
-      if self.left==None:
+      if not self.left:
         self.left== tree
       else:
         self.left.insert(value)
     
-    elif value >=self.value:
-      if self.right== None:
+    elif value >= self.value:
+      if not self.right:
         self.right= tree
       else:
         self.right.insert(value)

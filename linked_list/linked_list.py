@@ -65,25 +65,17 @@ class LinkedList:
       
   def get_max(self):
       currentNode = self.head
+      maximum = currentNode
       if currentNode == None:
         return None
       if currentNode.get_next() == None:
-        # return currentNode.get_value()
         maximum = currentNode.get_value()
-      # while currentNode.get_next():
-      while currentNode.get_value is not None:
-        # if currentNode.get_value() > currentNode.get_next().get_value():
+      while currentNode.get_value() is not None:
         if currentNode.get_value() > maximum:
           maximum = currentNode.get_value()
         else:
-          # maximum = currentNode.get_next().get_value()
           currentNode = currentNode.get_next()
       return maximum
-
-
-
-  
-
 
 # ######ATTEMPT 2 tests
 # list1 = LinkedList()
@@ -92,7 +84,10 @@ class LinkedList:
 # list1.add_to_tail(20)
 # list1.add_to_tail(30)
 # list1.add_to_tail(40)
+# print(list1.remove_head())
 # print(list1.get_max())
+
+
 # print(list1.contains(20))
 # print(list1.head.value)
 # list1.remove_head()

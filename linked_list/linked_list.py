@@ -36,18 +36,38 @@ class LinkedList:
         value = self.head.get_value()
         if self.head.get_next() != None:
           self.head = self.head.get_next()
-      else:
-        self.head = None
-        self.tail = None
-
-      return value
+        else:
+          self.head = None
+          self.tail = None
+        return value
   
-def contains(self, value):
-  node_value = Node(value)
-  while node_value > 0:
-    last_value = node_value
-    last_value.get_next()
-    pass
+  def contains(self, value):
+    node_value = self.head
+    while node_value: 
+      if node_value.get_value() == value:
+        return True
+      elif node_value.get_next() == None:
+        return False
+      node_value = node_value.get_next()
+  
+  def get_max(self):
+    if self.head == None:
+      return None
+    node_value = self.head
+    max_value = node_value.get_value()
+    
+    while node_value != None:
+      if node_value.get_value() > max_value:
+        max_value = node_value.get_value()
+      else:
+        node_value = node_value.get_next()
+    return max_value
 
-def get_max(self):
-    pass
+
+
+list1= LinkedList()
+list1.add_to_tail(10)
+list1.add_to_tail(20)
+list1.add_to_tail(24)
+#print(list1.tail.get_value())
+print(list1.get_max())

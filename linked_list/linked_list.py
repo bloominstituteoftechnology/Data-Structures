@@ -63,11 +63,6 @@ class LinkedList:
         node = node.next_node
     return False
 
-    # node = self.head
-    # while(node != None)
-    # if node.get_value() == value:
-    #     return Truenode = node.get_next()
-    #     return False
         
 
   def get_max(self):

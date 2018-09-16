@@ -3,7 +3,6 @@ Class that represents a single linked
 list node that holds a single value
 and a reference to the next node in the list
 """
-import math
 
 
 class Node:
@@ -28,37 +27,44 @@ class LinkedList:
 
     def add_to_tail(self, value):
         node = Node(value)
-        if not self.head:
-            self.head = node
+        if self.head:
+            self.tail.set_next(node)
             self.tail = node
         else:
-            self.tail.set_next(node)
+            self.head = node
             self.tail = node
 
     def remove_head(self):
         if self.head:
             head = self.head
-            self.head = self.head.get_next()
-            self.tail = None
+            if self.head.next_node:
+                self.head = self.head.next_node
+            else:
+                self.head = None
+                self.tail = None
             return head.value
+        else:
+            return None
 
     def contains(self, value):
-        first_node = self.head
-        while first_node != None:
-            if first_node.value == value:
+        current = self.head
+        while current:
+            if current.value == value:
                 return True
             else:
-                first_node = first_node.next_node
-        return False
+                current = current.next_node
+        return None
 
     def get_max(self):
-        first_node = self.head
-        max_value = float("-inf")
-        if first_node == None:
+        if self.head:
+            current = self.head
+            max_value = current.value
+            while current:
+                if current.value > max_value:
+                    max_value = current.value
+                    current = current.next_node
+                else:
+                    current = current.next_node
+            return max_value
+        else:
             return None
-        while first_node != None:
-            if first_node.value > max_value:
-                max_value = first_node.value
-            else:
-                first_node = first_node.next_node
-        return max_value

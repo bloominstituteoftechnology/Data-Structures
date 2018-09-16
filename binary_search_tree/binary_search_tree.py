@@ -6,7 +6,7 @@ class BinarySearchTree:
 
     def insert(self, value):
         newTree = BinarySearchTree(value)
-        if self.value > value:
+        if value < self.value:
             if not self.left:
                 self.left = newTree
             else:
@@ -18,23 +18,28 @@ class BinarySearchTree:
                 self.right.insert(value)
 
     def contains(self, target):
-        if target == self.value:
+        print('self.value is: {}'.format(self.value))
+        print('self.target is: {}'.format(target))
+        if self.value == target:
             return True
+        if target < self.value:
+            if self.left:
+                return self.left.contains(target)
+            else:
+                return False
         if target > self.value:
             if self.right:
                 return self.right.contains(target)
-        else:
-            if self.left:
-                return self.left.contains(target)
-        return False
+            else:
+                return False
 
     def get_max(self):
-        if self.right:
-            return self.right.get_max()
-        else:
+        if not self.right:
             return self.value
-        # Non recursive method
-        """ max_value = self.value
+        else:
+            return self.right.get_max()
+        """ Non-recursive:
+            max_value = self.value
             current = self
             while current:
                 if current.value > max-value:

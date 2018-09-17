@@ -156,6 +156,18 @@ class DoublyLinkedList {
 
   /* Delete the given node from the list */
   delete(node) {
+    const leftChildIndex = index * 2 + 1;
+    const rightChildIndex = index * 2 + 2;
+
+    let maxChild;
+
+    if (this.storage[leftChildIndex]) {
+      if (!this.storage[rightChildIndex]) {
+        maxChild = leftChildIndex;
+      } else if (this.storage[rightChildIndex]) {
+        maxChild = this.storage[leftChildIndex] > this.storage[rightChildIndex] ? 
+      }
+    }
 
   }
 }

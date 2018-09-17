@@ -16,16 +16,19 @@ class Block:
     self.timestamp = timestamp
     # The data this Block holds
     self.data = data
+
   """
   Repr method that returns the Block represented as a string
   """
   def __repr__(self):
     return "Block(" + str(self.index) + "," + str(self.hash) + "," + str(self.previous_hash) + "," + str(self.timestamp) + "," + str(self.data)
+
   """
   Method to validate that this Block has the appropriate structure
   """
   def is_valid_block_structure(self):
     return isinstance(self.index, int) and isinstance(self.hash, str) and isinstance(self.previous_hash, str) and isinstance(self.timestamp, int) and isinstance(self.data, str)
+
 
 """
 A class representing a Chain of Blocks
@@ -35,33 +38,39 @@ class Chain:
     # All the Blocks in the chain are stored in a list
     # The Blocks list is initialized with the genesis Block, which has no `previous_hash`
     self.blocks = [Block(0, '816534932c2b7154836da6afc367695e6337db8a921823784c14378abed4f7d7', None, 1465154705, 'my genesis block!!')]
+
   """
   Method to get the length of the Chain
   """
   def __len__(self):
     return len(self.blocks)
+
   """
   Add a Block to the Chain after validating it
   """
   def add_block(self, new_block):
     if self.is_valid_new_block(new_block):
       self.chain.append(new_block)
+
   """
   Return the last Block in the Chain
   """
   def get_latest_block(self):
     return self.blocks[-1]
+
   """
   Method to calculate the hash of all a Block's data
   """
   def calculate_hash(self, index, previous_hash, timestamp, block_data):
     # Use the hashlib library to generate a sha256 hash of all the Block's data
     return hashlib.sha256(index + previous_hash + timestamp + block_data)
+
   """
   Method to calculate the hash of a given Block
   """
   def calculate_hash_for_block(self, new_block):
     return self.calculate_hash(new_block.index, new_block.previous_hash, new_block.timestamp, new_block.data)
+
   """
   Method to generate a new Block given the data the Block is going to store
   """
@@ -71,6 +80,7 @@ class Chain:
     next_timestamp = int(round(time.time() * 1000))
     next_hash = self.calculate_hash(next_index, previous_block.hash, next_timestamp, block_data)
     return Block(next_index, next_hash, previous_block.hash, next_timestamp, block_data)
+
   """
   Method to validate a new Block against the latest Block in the Chain
   """
@@ -88,6 +98,7 @@ class Chain:
       print('hashes do not match')
       return False
     return True
+
   """
   Method to validate each Block in an entire Chain
   """
@@ -103,6 +114,7 @@ class Chain:
         print('block ' + i + ' in new chain is not valid')
         return False
     return True
+    
   """
   Method to replace the current Chain with a longer valid Chain
   """

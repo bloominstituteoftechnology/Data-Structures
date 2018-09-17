@@ -71,5 +71,3 @@ class Chain:
       self.blocks = new_blocks
     else:
       print('Received blockchain is invalid')
-
-  

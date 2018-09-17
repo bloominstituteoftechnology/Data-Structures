@@ -29,14 +29,17 @@ class Chain:
   def get_latest_block(self):
     return self.blocks[-1]
 
+  def calculate_hash(self, index, previous_hash, timestamp, block_data):
+    return hashlib.sha256(index + previous_hash + timestamp + block_data)
+
   def calculate_hash_for_block(self, new_block):
-    return hashlib.sha256(new_block.index + new_block.previous_hash + new_block.timestamp + new_block.data).hexdigest()
+    return self.calculate_hash(new_block.index, new_block.previous_hash, new_block.timestamp, new_block.data)
 
   def generate_next_block(self, block_data):
     previous_block = self.get_latest_block()
     next_index = previous_block.index + 1
     next_timestamp = int(round(time.time() * 1000))
-    next_hash = self.calculate_hash_for_block(next_index, previous_block.hash, next_timestamp, block_data)
+    next_hash = self.calculate_hash(next_index, previous_block.hash, next_timestamp, block_data)
     return Block(next_index, next_hash, previous_block.hash, next_timestamp, block_data)
 
   def is_valid_new_block(self, new_block, previous_block):

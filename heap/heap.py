@@ -83,22 +83,20 @@ class Heap:
 
   def _sift_down(self, index):
 
-    while (2*index+2) < len(self.storage)-1:
+    while (2*index+1) < len(self.storage)-1:
       value = self.storage[index]
-      left_child = self.storage[(2*index)+1]
-      right_child = self.storage[(2*index)+2]
+      max_child = self._max_child(index)
 
-      if value < left_child:
-        if right_child>left_child:
-          self.storage[index] = right_child
+      if value < max_child:
+          self.storage[index] = max_child
           self.storage[(2*index)+2] = value
-        
-        if left_child>right_child:
-          self.storage[index] = left_child
-          self.storage[(2*index)+1] = value
-        
-        index = 2*index + 1
-        
+
+      index = 2*index + 1
+    
+  def _max_child(self,index):
+    left_child = self.storage[(2*index)+1]
+    right_child = self.storage[(2*index)+2]
+    return left_child if left_child>right_child else right_child
 
 
 

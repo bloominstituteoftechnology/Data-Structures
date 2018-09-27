@@ -39,10 +39,10 @@ class BinarySearchTree:
 
 
 
-# root = BinarySearchTree(5)
+root = BinarySearchTree(5)
 
 
-# root.insert(10)
+root.insert(10)
 # root.insert(4)
 # root.insert(3)
 # root.insert(39)
@@ -50,5 +50,5 @@ class BinarySearchTree:
 # root.insert(60)
 # root.insert(47)
 
-# print(root.contains(47))
-# print(root.get_max())
+print(root.contains(47))
+print(root.get_max())

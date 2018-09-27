@@ -6,8 +6,29 @@ class BinarySearchTree:
     self.right = None
 
   def insert(self, value):
+    #if the root node exists
+    if self.value:
+      #if the value to insert is less than the root node
+      if value < self.value:
+        #if the left node of the root BST is None
+        #the left node of the root BST is set to BST(value)
+        if self.left = None:
+          self.left = BinarySearchTree(value)
+        #else use insert method to insert new node on self.left, which is a bst in its own right.
+        else:
+          self.left.insert(value)
+      #if value to insert greater than root
+      if value > self.value:
+        #if the root's self.right bst is none
+        #the root's self.right bst is now BST(value)
+        if self.right = None:
+          self.right = BinarySearchTree(value)
+        #else, use insert method to insert value on self.right, which is a bst in its own right.
+        else:
+          self.right.insert(value)
+    else:
+      self.value =value
 
-    pass
 
   def contains(self, target):
     pass
@@ -19,6 +40,19 @@ class BinarySearchTree:
 
 bst1 = BinarySearchTree(5)
 print(bst1.value)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -24,3 +24,5 @@ This is how blockchains maintain the integrity of the entire chain. If any block
 ## What's Not in this Implementation (Yet)
 
 Currently, this toy blockchain implementation is not capable of performing any [mining](https://en.bitcoin.it/wiki/Mining), as there is no [proof-of-work](https://en.wikipedia.org/wiki/Proof-of-work_system) problem to solve (yet). That will be the next step to implement as part of this data structure. 
+
+And also tests..

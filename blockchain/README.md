@@ -20,3 +20,7 @@ Each block has a hash constructed in part from the previous hash. In other words
 ![alt text](./block_structure.png)
 
 This is how blockchains maintain the integrity of the entire chain. If any block in the middle of the chain has its contents updated, every other block in the chain after the updated block will need to be updated accordingly, otherwise their hashes will no longer be valid. This is why blockchains are great for maintaining a sequence of transactions in a distributed fashion, among other use cases.
+
+## What's Not in this Implementation (Yet)
+
+Currently, this toy blockchain implementation is not capable of performing any [mining](https://en.bitcoin.it/wiki/Mining), as there is no [proof-of-work](https://en.wikipedia.org/wiki/Proof-of-work_system) problem to solve (yet). That will be the next step to implement as part of this data structure. 

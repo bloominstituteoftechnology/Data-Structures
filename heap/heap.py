@@ -1,12 +1,16 @@
+import heapq
+
 class Heap:
   def __init__(self):
     self.storage = []
+    heapq.heapify(self.storage)
 
   def insert(self, value):
-    self.storage.append(value)
+    heapq.heappush(self.storage, value)
 
   def delete(self):
-    pass
+    return heapq.heappop(self.storage)
+
 
   def get_max(self):
     pass

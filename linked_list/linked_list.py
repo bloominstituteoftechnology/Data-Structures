@@ -28,11 +28,13 @@ class LinkedList:
             self.head = new_node
             self.tail = new_node
         else:
-            self.tail.next = Node(value)
-            self.tail = self.tail.next
+            self.tail.next_node = Node(value)
+            self.tail = self.tail.next_node
 
     def remove_head(self):
+        temp = self.head
         self.head = self.head.next_node
+        return temp.value
 
     def contains(self, value):
         temp = self.head

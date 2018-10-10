@@ -23,8 +23,6 @@ class BinarySearchTree:
       if self.left == None:
         return False
       else:
-        # Note to self:
-        # Don't forget that return!
         return self.left.contains(target)
     elif target >= self.value:
       if self.right == None:
@@ -45,9 +43,9 @@ def main():
   print('Contains 7? ',my_bst.contains(7))
   """
   This is where I found out that if you want 
-  your function to give you a result, you have 
-  to tell it to give it to you.
+  your to give you a result, you have to tell
+  it to give it to you.
   """
-
+  
 if __name__ == '__main__':
   main()

@@ -35,12 +35,11 @@ class LinkedList:
 
   def remove_head(self):
     """
-    
     set the head to the next node
-
-
     """
-    pass
+    
+    next_in_line = self.head.get_next()
+    self.head = next_in_line 
 
   def contains(self, value):
     pass

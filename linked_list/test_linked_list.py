@@ -44,6 +44,7 @@ class LinkedListTests(unittest.TestCase):
     self.assertEqual(self.list.get_max(), 100)
     self.list.add_to_tail(101)
     self.assertEqual(self.list.get_max(), 101)
+  print("ALL TEST PASSED")
 
 if __name__ == '__main__':
   unittest.main()

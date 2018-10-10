@@ -5,15 +5,13 @@ class ListNode:
     self.next = next
 
   def insert_after(self, value):
-    self.next = ListNode(value, self, self.next)
+    pass
 
   def insert_before(self, value):
-    self.prev = ListNode(value, self.prev, self)
+    pass
 
   def delete(self):
-    self.prev.next = self.next
-    self.next.prev = self.prev
-
+    pass
 
 class DoublyLinkedList:
   def __init__(self):

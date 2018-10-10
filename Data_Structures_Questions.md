@@ -90,3 +90,18 @@ For each of the methods associated with each data structure, classify it based o
 10. What is the runtime complexity of `DoublyLinkedList.delete`?
 
     a. Compare the runtime of the doubly linked list's `delete` method with the worst-case runtime of the JS `Array.splice` method. Which method generally performs better?
+    
+#### Answers
+1. O(1)
+2. O(1)
+3. O(1)
+4. O(1)
+5. O(1)
+6. O(1)
+7. O(1)
+8. O(n), operation itself is O(1), finding node is O(n)
+9. O(n), operation itself is O(1), finding node is O(n)
+10. O(n), operation itself is O(1), finding node is O(n) 
+    
+    a. Splice worst case is O(n), splice generally performs better compared to my implementation, since we have to traverse the linked list for the element to delete
+ 

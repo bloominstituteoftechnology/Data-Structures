@@ -3,14 +3,25 @@ For each of the methods associated with each data structure, classify it based o
 ## Linked List
 
 1. What is the runtime complexity of `add_to_tail`?
-  
+
+    O(c) - nothing changes based on the input
+
     a. What if our list implementation didn't have a reference to the tail of the list in its constructor? What would be the runtime of the `add_to_tail` method?
+
+    Without a reference to the tail, it would require traversing the list to get to the last node which would increase it to o(n), as it would increase as the list got larger
 
 2. What is the runtime complexity of `remove_head`?
 
+  O(c), there is no input to change how the code will execute, and the length of
+  the list will not change anything
+
 3. What is the runtime complexity of `contains`?
 
+  O(n), as the list increases, the more evaluations the code might have to perform
+
 4. What is the runtime complexity of `get_max`?
+
+  O(n), same as contains
 
 ## Queue
 
@@ -22,11 +33,11 @@ For each of the methods associated with each data structure, classify it based o
 
 ## Binary Search Tree
 
-1. What is the runtime complexity of `insert`? 
+1. What is the runtime complexity of `insert`?
 
 2. What is the runtime complexity of `contains`?
 
-3. What is the runtime complexity of `get_max`? 
+3. What is the runtime complexity of `get_max`?
 
 ## Heap
 

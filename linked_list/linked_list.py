@@ -51,15 +51,24 @@ class LinkedList:
 		return self.contains(li.get_next(), value)
 
 	def get_max(self):
-		pass
+		curr_node = self.head
+		max = curr_node.get_value()
+		while(curr_node.get_next() != None):
+			next_node = curr_node.get_next()
+			if(next_node.get_value() > max):
+				max = next_node.get_value()
+			curr_node = next_node
+			next_node = curr_node.get_next()
+		return max
 
 
 firstLinkedListEver = LinkedList()
-# erik = Node('Erik')
-# amon = Node('Amon')
-firstLinkedListEver.add_to_tail('GOP')
-firstLinkedListEver.add_to_tail('erik')
-firstLinkedListEver.add_to_tail('amon')
-firstLinkedListEver.remove_head()
-firstLinkedListEver.contains(firstLinkedListEver.head, 'erik')
-
+firstLinkedListEver.add_to_tail(99)
+firstLinkedListEver.add_to_tail(10)
+firstLinkedListEver.add_to_tail(3)
+firstLinkedListEver.add_to_tail(66)
+firstLinkedListEver.add_to_tail(3)
+firstLinkedListEver.add_to_tail(34)
+# firstLinkedListEver.remove_head()
+firstLinkedListEver.contains(firstLinkedListEver.head, 66)
+print(f"max: {firstLinkedListEver.get_max()}")

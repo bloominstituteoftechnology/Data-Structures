@@ -41,9 +41,15 @@ For each of the methods associated with each data structure, classify it based o
 
 1. What is the runtime complexity of `insert`?
 
+  O(log(n)), it isn't required to evaluate every node in the tree, only the ones
+  it needs to traverse the tree to get to the needed spot
+
 2. What is the runtime complexity of `contains`?
 
+  O(log(n)), same as insert
+
 3. What is the runtime complexity of `get_max`?
+  O(log(n)), same as previous two questions
 
 ## Heap
 

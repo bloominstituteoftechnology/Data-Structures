@@ -27,6 +27,7 @@ class LinkedList:
       new_node=Node(value)
       self.head=new_node
       self.tail=new_node
+      self.head.set_next(self.tail)
     else:
       new_node=Node(value)
       self.tail.set_next(new_node)
@@ -36,6 +37,15 @@ class LinkedList:
     pass
 
   def contains(self, value):
+    element=self.head
+    while True:
+      if element.get_value()!=value and element.get_next()==None:
+        return False
+      elif element.get_value()==value:
+        return True
+      else:
+        element=element.get_next()
+
     pass
 
   def get_max(self):

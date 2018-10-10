@@ -30,10 +30,11 @@ class LinkedList:
         if self.head is None:
             self.head = new_node
         last = self.head
-        while (last.next_node):
+        if last.next_node:
             last = last.next_node
         last.next_node = new_node
-
+        self.tail = new_node
+        
     def remove_head(self):
         node_to_remove = self.head
         if node_to_remove is not None:

@@ -3,7 +3,8 @@ For each of the methods associated with each data structure, classify it based o
 ## Linked List
 
 1. What is the runtime complexity of `add_to_tail`?
-  
+    It is O(n) complexity, because we have to traverse all n nodes of the list to get to the tail and insert the new node.
+
     a. What if our list implementation didn't have a reference to the tail of the list in its constructor? What would be the runtime of the `add_to_tail` method?
 
 2. What is the runtime complexity of `remove_head`?

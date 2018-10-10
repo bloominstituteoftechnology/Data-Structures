@@ -23,13 +23,33 @@ class LinkedList:
     self.tail = None
 
   def add_to_tail(self, value):
-    pass
+    new_node = Node(value)
+    new_node.set_next(self.tail)
+    self.tail = new_node
 
   def remove_head(self):
-    pass
+    #define the current head
+    current = self.head
+    removed = None
+    #set the next node as the new head
+    if current is None:
+      raise ValueError("Nothing to remove")
+    else:
+      removed.set_next(current.get_next())
 
   def contains(self, value):
-    pass
+    current = self.head
+    found = False
+    while current and found is False:
+      if current.get_value() == value:
+        found = True
+      else:
+        current = current.get_next()
+    if current is None:
+      raise ValueError("List does not contain value")
+    return current
 
   def get_max(self):
-    pass
+    current = self.head
+    return max(current.get_value(), current.get_next())
+    

@@ -34,20 +34,25 @@ class LinkedList:
     else:
       self.head = self.head.get_next()
 
-  def contains(self, value):
-    L = LinkedList
-    if self.head != 0:
-      for key, val in LinkedList:
-        if val == value:
-          return True
-        else: 
-          return False
-    else:
-      return None
+  def contains(self, value, node="start"):
+    # L = LinkedList
+    node = self.head if node == "start" else node
 
-  def get_max(self):
-    # need reference point 
-    max = self.head
-    for key, value in LinkedList:
-      if value > max:
-        max = value
+    if node != None:
+      node_value = node.get_value()
+      if node_value == value:
+        return True
+      else:
+        next_node = node.get_next()
+
+        return self.contains(value, next_node)
+      # if get_naxt 
+    else:
+      return False
+
+  # def get_max(self):
+  #   # need reference point 
+  #   max = self.head
+  #   for key, value in LinkedList:
+  #     if value > max:
+  #       max = value

@@ -23,24 +23,21 @@ class LinkedList:
     self.tail = None
 
   def add_to_tail(self, value):
-   
-    # print(self.head.value, '-- self.head After')
-
-    if self.head == None:
-      print('no head')
-      # self.tail.next_node = None
-    else:  
-      print('no tail')
-      print(self.tail, '-- self.tail OG')
-      print(self.head, '-- self.tail OG')
       new_node = Node(value)
-      new_node.set_next(self.tail)
-      print(new_node.get_value(), '-- new_node value')
-      self.tail = new_node
-      print(self.tail.value, '-- self.tail After')
-    pass
+      if self.head == None:
+        self.head = new_node
+        self.tail = new_node
+        self.head.set_next(self.tail)
+      else:  
+        self.tail = new_node
+      pass
 
   def remove_head(self):
+    print(self.head.value)
+    nextt = self.head.get_next()
+    print(nextt.value)
+    print(self.head.value)
+    print(self.tail.value)
     pass
 
   def contains(self, value):
@@ -48,3 +45,23 @@ class LinkedList:
 
   def get_max(self):
     pass
+
+#notes for refrence
+  # def add_to_tail(self, value):
+  #     # print(self.tail, '-- self.tail A')
+  #     # print(self.head, '-- self.head A')
+  #     new_node = Node(value)
+  #     # print(new_node.get_value(), '-- new_node value')
+  #     if self.head == None:
+  #       # print('no head', new_node)
+  #       self.head = new_node
+  #       # print(self.head, '-- self.head B')
+  #       # print(self.head.value, '-- self.head C')
+  #       self.tail = new_node
+  #       # print(self.tail.value, '-- self.tail.value B')
+  #       self.head.set_next(self.tail)
+  #       # print(self.head.get_next(), '-- self.head D')
+  #     else:  
+  #       self.tail = new_node
+  #       # print(self.tail.value, '-- self.tail B')
+  #     pass

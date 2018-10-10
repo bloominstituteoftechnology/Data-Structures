@@ -27,10 +27,24 @@ class LinkedList:
     new_node.set_next(self.head)
     self.head = new_node
 
-  def remove_head(self):
-    pass
+  def remove_head(self, value):
+    current = self.head
+    previous = None
+    found = False
+    while current and found is False:
+        if current.get_value() == value:
+            found = True
+        else:
+            previous = current
+            current = current.get_next()
+    if current is None:
+        raise ValueError("Data not in list")
+    if previous is None:
+        self.head = current.get_next()
+    else:
+        previous.set_next(current.get_next())
 
-  def contains(self, value)::
+  def contains(self, value):
     current = self.head
     found = False
     while current and found is False:
@@ -43,4 +57,7 @@ class LinkedList:
     return current
 
   def get_max(self):
-    pass
+        current = self
+    while current.right is not None:
+      current = current.right
+    return current

@@ -32,4 +32,8 @@ class BinarySearchTree:
             print(str(self.value)+ ' is found')
 
   def get_max(self):
-    pass
+    current = self
+    while current.right is not None:
+      current = current.right
+    return current
+    

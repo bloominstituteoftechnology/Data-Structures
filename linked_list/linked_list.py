@@ -23,10 +23,20 @@ class LinkedList:
     self.tail = None
 
   def add_to_tail(self, value):
-    pass
+    #create a node
+    node=Node(value)
+
+    #check if head is empty, means empty linked list, hence head and tail will be same
+
+    if self.head==None:
+        self.head=node
+        self.tail=node
+    else:
+        self.tail=node    
+
 
   def remove_head(self):
-    pass
+    pass        
 
   def contains(self, value):
     pass

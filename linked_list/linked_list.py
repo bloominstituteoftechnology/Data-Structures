@@ -25,12 +25,21 @@ class LinkedList:
 
 	def add_to_tail(self, value):
 		node = Node(value)
+		print(f"node: {node.get_value()}")
 		node.set_next(None)
+		if(self.tail == None and self.head == None):
+			self.tail = node
+			self.head = node
 		self.tail.set_next(node)
 		self.tail = node
 		pass
 
 	def remove_head(self):
+		if(self.head == None):
+			return
+		new_head = self.head.get_next()
+		self.head = new_head
+		print(f"new head: {self.head.get_value()}")
 		pass
 
 	def contains(self, value):
@@ -42,6 +51,10 @@ class LinkedList:
 
 
 firstLinkedListEver = LinkedList()
-erik = Node('Erik')
-firstLinkedListEver.add_to_tail(erik)
-firstLinkedListEver.contains('Erik')
+# erik = Node('Erik')
+# amon = Node('Amon')
+firstLinkedListEver.add_to_tail('GOP')
+firstLinkedListEver.add_to_tail('erik')
+firstLinkedListEver.add_to_tail('amon')
+firstLinkedListEver.remove_head()
+

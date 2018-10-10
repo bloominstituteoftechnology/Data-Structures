@@ -23,9 +23,23 @@ class LinkedList:
     self.tail = None
 
   def add_to_tail(self, value):
-    pass
+    """Create a new node 
+       Assign it's next reference to None
+       Set the next reference of the tail to point to this new node.
+       then update the tail reference itself to this new node. 
+    """
+    new_node = Node(value)
+    new_node.set_next(None)
+    self.tail.set_next(new_node)
+    self.tail = new_node
 
   def remove_head(self):
+    """
+    
+    set the head to the next node
+
+
+    """
     pass
 
   def contains(self, value):

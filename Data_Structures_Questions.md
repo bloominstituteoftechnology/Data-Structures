@@ -15,11 +15,11 @@ For each of the methods associated with each data structure, classify it based o
 ## Queue
 
 1. What is the runtime complexity of `enqueue`?
-
+    O(c)
 2. What is the runtime complexity of `dequeue`?
-
+    O(c)
 3. What is the runtime complexity of `len`?
-
+    O(n)
 ## Binary Search Tree
 
 1. What is the runtime complexity of `insert`? 

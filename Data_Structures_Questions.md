@@ -12,6 +12,17 @@ For each of the methods associated with each data structure, classify it based o
 
 4. What is the runtime complexity of `get_max`?
 
+#### Answers
+
+1. `add_to_tail` has a runtime of O(1), because we have a reference to our tail.
+     
+     a. If we didn't have a pointer to our tail, the operation itself costs O(1), but we would have to traverse to the tail, which would cost O(n).
+
+2. `remove_head` has a runtime complexity of O(1).
+
+3. `contains` has a worst case runtime complexity of O(n) e.g. when not in list.
+
+4. `get_max` has a run time complexity of O(n), because we have to traverse all nodes to get the max. We could do something similar to the max_stack we implemented earlier, to trade space complexity for a get_max runtime of O(1), since we have reference to the tail.
 ## Queue
 
 1. What is the runtime complexity of `enqueue`?
@@ -20,6 +31,14 @@ For each of the methods associated with each data structure, classify it based o
 
 3. What is the runtime complexity of `len`?
 
+#### Answers
+
+1. `enqueue` has a runtime complexity of O(1). This is possible due to us having a pointer to the tail in our linked list.
+
+2. `dequeue` has a runtime complexity of O(1).
+
+3. `len` has a run time complexity of O(1), because we're using memory to keep track of the size.
+
 ## Binary Search Tree
 
 1. What is the runtime complexity of `insert`? 
@@ -27,6 +46,14 @@ For each of the methods associated with each data structure, classify it based o
 2. What is the runtime complexity of `contains`?
 
 3. What is the runtime complexity of `get_max`? 
+
+#### Answers
+
+1. `insert` has an average runtime complexity of O(log n). However, there can be a bad implemented tree, which can cause a worst case O(n) time complexity.
+
+2. `contains` follows the same reasoning as insert, average O(log n), worst case O(n)
+
+3. `get_max` also follows the same reasoning, average O(log n), worst case O(n) e.g. when root is min of whole tree, and nodes only have children on the right
 
 ## Heap
 

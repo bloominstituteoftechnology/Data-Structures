@@ -42,9 +42,13 @@ class LinkedList:
 		print(f"new head: {self.head.get_value()}")
 		pass
 
-	def contains(self, value):
-
-		pass
+	def contains(self, li, value):
+		if(li.get_next() ==  None):
+			return False
+		if(li.get_value() == value):
+			print(f"found it: {value}")
+			return True
+		return self.contains(li.get_next(), value)
 
 	def get_max(self):
 		pass
@@ -57,4 +61,5 @@ firstLinkedListEver.add_to_tail('GOP')
 firstLinkedListEver.add_to_tail('erik')
 firstLinkedListEver.add_to_tail('amon')
 firstLinkedListEver.remove_head()
+firstLinkedListEver.contains(firstLinkedListEver.head, 'erik')
 

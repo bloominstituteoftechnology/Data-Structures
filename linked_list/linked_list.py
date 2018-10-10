@@ -31,7 +31,7 @@ class LinkedList:
       self.tail = new_node
       return
     else:
-      self.tail.set_next(new_node)
+      self.tail.set_next(new_node) 
       self.tail = new_node
       return
 
@@ -49,6 +49,8 @@ class LinkedList:
         if current.get_value() == value:
           return True
         current = current.get_next()
+      else:
+        return False
 
   def get_max(self):
     if self.head:

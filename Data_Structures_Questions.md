@@ -27,9 +27,15 @@ For each of the methods associated with each data structure, classify it based o
 
 1. What is the runtime complexity of `enqueue`?
 
+  O(c), it uses linked list's add_to_tail, only adding a constant change for recording size
+
 2. What is the runtime complexity of `dequeue`?
 
+  O(c), same as above
+
 3. What is the runtime complexity of `len`?
+
+  O(c), only returns a stored value
 
 ## Binary Search Tree
 

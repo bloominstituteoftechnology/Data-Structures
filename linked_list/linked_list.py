@@ -25,6 +25,7 @@ class LinkedList:
   def add_to_tail(self, value):
     pass
 
+
   def remove_head(self):
     pass
 

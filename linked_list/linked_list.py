@@ -46,13 +46,13 @@ class LinkedList:
     lastNode.next_node = Node(value)
 
   def remove_head(self):
-    pass
-    # original_head = self.head.value
-    # x = original_head
+    original_head = self.head
+    x = original_head
+    
+    self.head = self.head.get_next()
+    original_head = None
 
-    # self.head = self.head.next_node
-    # original_head = None
-    # return x
+    return x.get_value()
 
   def contains(self, value):
     search = self.head

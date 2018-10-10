@@ -3,6 +3,8 @@ Class that represents a single linked
 list node that holds a single value
 and a reference to the next node in the list
 """
+import math
+
 class Node:
   def __init__(self, value=None, next_node=None):
     self.value = value
@@ -34,10 +36,26 @@ class LinkedList:
       return
 
   def remove_head(self):
-    pass
+    if self.head:
+      current_head = self.head
+      self.head = self.head.get_next()
+      self.tail = None
+      return current_head.value
 
   def contains(self, value):
-    pass
+    if self.head:
+      current = self.head
+      while current is not None:
+        if current.get_value() == value:
+          return True
+        current = current.get_next()
 
   def get_max(self):
-    pass
+    if self.head:
+      current = self.head
+      max = math.inf * -1
+      while current is not None:
+        if current.get_value() > max:
+          max = current.value
+        current = current.get_next()
+      return max

@@ -69,3 +69,4 @@ class LinkedList:
       current_head = current_head.next_node
     return max_value
   
+   

@@ -10,7 +10,7 @@ class Queue:
   def enqueue(self, item):
     if item == None:
       return 0
-    elif self.size == 0:
+    elif self.storage.get_length == 0:
       return 0
     self.storage.add_to_tail(item)
     
@@ -18,4 +18,9 @@ class Queue:
     pass
 
   def len(self):
-    pass
+    count = 0
+    counter = self.storage.head
+    while counter:
+      count += 1
+      counter = counter.get_next()
+    return count    

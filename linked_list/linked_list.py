@@ -17,10 +17,20 @@ class Node:
   def set_next(self, new_next):
     self.next_node = new_next
 
+
+
 class LinkedList:
   def __init__(self):
     self.head = None
     self.tail = None
+  
+  def get_length(self):
+    count = 0
+    counter = self.head
+    while counter:
+      count += 1
+      counter = counter.get_next()
+    return count    
 
   def add_to_tail(self, value):
     # self.tail.next_node = self.tail
@@ -55,7 +65,7 @@ class LinkedList:
   def get_max(self):
     if self.head == None:
       return None
-      
+
     maxElement = int(self.head.value)
     search = self.head
     while search: 

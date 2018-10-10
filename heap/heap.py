@@ -6,14 +6,14 @@ class Heap:
     heapq.heapify(self.storage)
 
   def insert(self, value):
-    heapq.heappush(self.storage, value)
+    return heapq.heappush(self.storage, value)
 
   def delete(self):
     return heapq.heappop(self.storage)
 
 
   def get_max(self):
-    pass
+    return heapq._heapify_max(self.storage)
 
   def get_size(self):
     pass

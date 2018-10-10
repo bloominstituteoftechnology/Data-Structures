@@ -2,8 +2,7 @@ from math import floor
 
 class Heap:
   def __init__(self):
-    # storage starts with an unused 0 to make 
-    # integer division simpler later on
+    # storage starts with an unused 0 to make integer division simpler later on
     self.storage = [0]
     self.size = 0
 

@@ -1,3 +1,4 @@
+import math 
 """
 Class that represents a single linked
 list node that holds a single value
@@ -27,22 +28,47 @@ class LinkedList:
        Assign it's next reference to None
        Set the next reference of the tail to point to this new node.
        then update the tail reference itself to this new node. 
+       error messages will occur without an inital check for the head and tail
+       if the head and tail is none that means the linkedlist is empyt so the first item has to be both the head and the tail. 
     """
-    new_node = Node(value)
+    new_node = Node(value) 
     new_node.set_next(None)
-    self.tail.set_next(new_node)
-    self.tail = new_node
+    if self.head is None and self.tail is None:
+      self.head = new_node
+      self.tail = new_node
+    else:
+      self.tail.set_next(new_node)
+      self.tail = new_node
+    
 
   def remove_head(self):
     """
-    set the head to the next node
+    set the head to the next node 
+    error messages will occur without an inital check for the head. 
     """
-    
-    next_in_line = self.head.get_next()
-    self.head = next_in_line 
+    if self.head is not None:
+      next_in_line = self.head.get_next()
+      self.head = next_in_line 
+    else:
+      print("There is no head")
 
   def contains(self, value):
-    pass
+    current = self.head 
+    while True:
+      if value == current.get_value():
+        print ("Its in here")
+        return True 
+      current = current.get_next()
+      if current is None:
+        return False 
+        break 
 
   def get_max(self):
-    pass
+    max_value = math.inf * -1
+    current = self.head
+    while True: 
+      if current.get_value() > max_value:
+        max_value = current.get_value()
+      current = current.get_next()
+      if current is None:
+        return max_value

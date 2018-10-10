@@ -8,6 +8,8 @@ gives you the option of creating bounded queues with a max_size.
 prevents queue "overflow" and "underflow" by keeping track of size. 
 """
 
+
+
 class Queue:
     def __init__(self, max_size=None):  # Allows for bounded queues.
         self.size = 0

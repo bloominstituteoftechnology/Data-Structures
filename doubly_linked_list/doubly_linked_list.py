@@ -5,13 +5,32 @@ class ListNode:
     self.next = next
 
   def insert_after(self, value):
-    pass
+    node = ListNode(value)
+    if self.next == None:
+      self.next = node
+      node.prev = self
+    else:
+      node.next = self.next
+      node.prev = self
+      self.next.prev = node
+      self.next = node
 
   def insert_before(self, value):
-    pass
+    node = ListNode(value)
+    if self.prev == None:
+      self.prev = node
+      node.next = self
+    else:
+      node.prev = self.prev
+      node.next = self
+      self.prev.next = node
+      self.prev = node
 
   def delete(self):
-    pass
+    self.next.prev = self.prev
+    self.prev.next = self.next
+    self.next = None
+    self.prev = None
 
 class DoublyLinkedList:
   def __init__(self, node=None):
@@ -19,8 +38,10 @@ class DoublyLinkedList:
     self.tail = node
 
   def add_to_head(self, value):
-    pass
-
+    self.head.insert_before(value)
+    if self.head.next == None:
+      self.tail = self.head
+    self.head = self.head.prev
   def remove_from_head(self):
     pass
 

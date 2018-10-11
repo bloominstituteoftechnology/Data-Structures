@@ -9,28 +9,31 @@ class Heap:
     # increase the size
     self.size += 1
     # use the bubble up function to position the new value in the correct node
+    self._bubble_up(self.size-1) # self.size should be equivalent to the last index
 
   def delete(self):
     # store a reference to the first heap element
+    result = self.storage[0]
     # set the value of the first heap element to the value of the last heap element
+    self.storage[0] = self.storage[self.size-1]
     # pop from the heap's storage array to remove the last heap element
-    # loop:
-      # have the new first heap element check its two children using the formulas
-      # if either of the element's children are larger, swap the heap value of the parent node with the value of the larger child's value vie their respective indices
-    # continue loop until the element is in a spot where neither of its children are larder than it or it has reached a position where it has no children
-    
     if self.size > 0:
       self.size -= 1
-    return self.storage.pop()
+    self.storage.pop()
+    # loop:
+      # have the new first heap element check its two children using the formulas
+      # if either of the element's children are larger, swap the heap value of the parent node with the value of the larger child's value via their respective indices
+    # continue loop until the element is in a spot where neither of its children are larder than it or it has reached a position where it has no children
+    
+    # can maybe use _shift_down function here
  
   def get_max(self):
     # the maximum should always be the root element - first on the list
-    max_val = self.storage[0]
-    return max_val
+    return(self.storage[0])
 
   def get_size(self):
-
-    pass
+    # the size property of Heap should increment 
+    return(self.size)
 
   def _bubble_up(self, index):
     # index is the index of the element that will be moving up the heap

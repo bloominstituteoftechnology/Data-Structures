@@ -1,6 +1,3 @@
-from math import floor
-
-
 class Heap:
     def __init__(self):
         self.storage = []
@@ -31,7 +28,7 @@ class Heap:
         return self.size
 
     def _bubble_up(self, index):
-        p_index = floor((index-1) / 2)
+        p_index = (index-1) // 2
 
         if p_index >= 0 and self.storage[index] > self.storage[p_index]:
             self.storage[p_index], self.storage[index] = (

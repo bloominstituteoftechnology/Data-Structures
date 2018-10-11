@@ -18,7 +18,7 @@ class Heap:
     self.size += 1 
    
     self._bubble_up(self.size -1) # to pass test bubble_up should always be called. 
-    
+
 
   def delete(self):
     """To delete I think what needs to happen is  i take the right most item. I believe this ccould be done easily with a pop()
@@ -57,14 +57,12 @@ class Heap:
     Like if i get to the end of the list go a head and just keep it there but i guess the while loop condition would take care of 
     that aspect. 
     """
-    while index < self.size-1:
+    while ((2*index) + 1) < self.size-1:
         if self.storage[(2*index) + 1] > self.storage[index]: 
             self.storage[(2*index) + 1], self.storage[index] = self.storage[index], self.storage[(2*index) + 1]
             #destructuring assignment 
-            #index = (2*index)+ 1
         elif self.storage[(2*index) + 2] > self.storage[index]:
             self.storage[(2*index) + 2], self.storage[index] = self.storage[index], self.storage[(2*index) + 2]
             #destructuring assignment 
-            #index = (2*index)+ 2
         index = (2*index)+ 1
     #similar but the cases are different change the formula plug checking higher priority and which two they need to swap with

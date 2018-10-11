@@ -21,15 +21,17 @@ class LinkedList:
   def __init__(self):
     self.head = None
     self.tail = None
-    self.list = None
-    
-  def add_to_tail(self, value):
-    if self.head is None:
-      self.head = Node(value)
-    else:
-      self.tail = self.value
-    pass
 
+  def add_to_tail(self, value):
+    newNode = Node
+    newNode.value = Node(value)
+
+    if self.head is None:
+      self.head = newNode.value
+    else:
+      self.next_node = newNode.value
+    self.tail = newNode.value
+      
   def remove_head(self):
     pass
 

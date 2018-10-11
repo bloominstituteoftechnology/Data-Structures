@@ -26,10 +26,11 @@ class Heap:
     """
     self.size -= 1
     popped = self.storage.pop()
-    self.storage[0] = popped
-    self._sift_down(0) # should always been the 0 index no variable needed. 
+    if self.size > 0:
+        self.storage[0] = popped
+        self._sift_down(0) # should always been the 0 index no variable needed. 
 
-    pass
+    
 
   def get_max(self):
     return self.storage[0]

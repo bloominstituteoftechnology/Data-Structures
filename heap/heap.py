@@ -27,16 +27,18 @@ class Heap:
   def _sift_down(self, index):
     left_child = (2*index) + 1
     right_child = (2*index) + 2
-    print(self.storage)
-    print(self.storage[left_child], self.storage[right_child])
-    print(len(self.storage))
-    # if left_child > self.get_size() or right_child > self.get_size():
-    if self.storage[left_child] < self.storage[right_child]:
-      child = right_child
-    else:
-      child = left_child
-    print(self.storage[child], self.storage[index])
-    if self.storage[child] > self.storage[index]:
-      self.storage[child], self.storage[index] = self.storage[index], self.storage[child]
-      return self._sift_down(child)
+    if left_child < self.get_size() and right_child < self.get_size():
+      if self.storage[left_child] < self.storage[right_child]:
+        child = right_child
+      else:
+        child = left_child
+      if self.storage[child] > self.storage[index] and child < self.get_size():
+        self.storage[child], self.storage[index] = self.storage[index], self.storage[child]
+        return self._sift_down(child)
+    # if left_child < self.get_size() and self.storage[left_child] > self.storage[index]:
+    #   self.storage[left_child], self.storage[index] = self.storage[index], self.storage[left_child]
+    #   self._sift_down(left_child)
+    # if right_child < self.get_size() and self.storage[right_child] > self.storage[index]:
+    #   self.storage[right_child], self.storage[index] = self.storage[index], self.storage[right_child]
+    #   self._sift_down(right_child)
 

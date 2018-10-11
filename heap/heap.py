@@ -1,3 +1,6 @@
+# References:
+# http://interactivepython.org/courselib/static/pythonds/Trees/BinaryHeapImplementation.html
+
 class Heap:
   def __init__(self):
     self.storage = []
@@ -24,8 +27,10 @@ class Heap:
       # have the new first heap element check its two children using the formulas
       # if either of the element's children are larger, swap the heap value of the parent node with the value of the larger child's value via their respective indices
     # continue loop until the element is in a spot where neither of its children are larder than it or it has reached a position where it has no children
-    
     # can maybe use _shift_down function here
+    self._shift_down(0)
+    # return result
+    return result
  
   def get_max(self):
     # the maximum should always be the root element - first on the list
@@ -48,9 +53,20 @@ class Heap:
 
   def _sift_down(self, index):
     # index is the index of the element that will be moving down the heap
+    while (index*2) <= self.size:
+      smallest = self.minChild(index)
     # keep moving element down the list until it reaches a valid place
     # check both child values 
       # plug index into both left and right child formulas and get values
       # check if one or both child values are of higher priority
       # swap chosen child value with candidate value
+
+  def minChild(self, index):
+    if (i*2+2) > (self.size-1):
+      return index*2+1
+    else:
+      if self.storage[index*2+1] < self.storage[index*2+2]:
+        return index*2+1
+      else:
+        return index*2+2
 

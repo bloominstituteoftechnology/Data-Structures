@@ -28,24 +28,34 @@ class LinkedList:
       self.head = new_node
       self.tail = new_node
     else:
-      self.tail = new_node
-      self.head.set_next(self.tail)
-      self.tail.set_next(None)
+      self.tail.set_next(new_node)
+      # self.tail.set_next(None)
+    self.tail = new_node
 
   def remove_head(self):
-    after_head = self.head.next_node
     curr_head = self.head
     if self.head:
-      self.head = None
-      return after_head
+      self.head = self.head.get_next()
+      self.tail = None
+      return curr_head.value
 
   def contains(self, value):
     test_node = self.head
-    while test_node is not None:
-      if test_node.value == value:
+    # if self.head:
+    while test_node:
+      if test_node.get_value() == value:
         return True
-      test_node = test_node.get_next()
+      else:
+        test_node = test_node.get_next()
     return False
 
   def get_max(self):
-    pass
+    if self.head is None:
+      return None
+    biggest = self.head.value
+    current = self.head.get_next()
+    while current:
+      if current.value > biggest:
+        biggest = current.value
+      current = current.next_node
+    return biggest

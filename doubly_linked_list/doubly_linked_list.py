@@ -18,7 +18,17 @@ class ListNode:
       node.prev=self.value
 
   def insert_before(self, value):
-    pass
+    node=ListNode(value)
+    if self.value==None and self.prev==None:  #checking for empty list 
+      self.prev=node
+    elif self.next==None: #checking if current node is the tail or last node
+      node.prev=self.prev
+      node.next=self.value
+      self.prev=node
+    else:                 #checking if the node lies between 2 other nodes
+      node.prev=self.prev
+      node.next=self.value
+      self.prev=node
 
   def delete(self):
     pass

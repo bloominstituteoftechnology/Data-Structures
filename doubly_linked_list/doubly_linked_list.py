@@ -21,6 +21,9 @@ class ListNode:
 
     def set_next(self, new_next):
         self.next = new_next
+    
+    def get_prev(self):
+        return self.prev
 
     def set_prev(self, new_prev):
         self.prev = new_prev

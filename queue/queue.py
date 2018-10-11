@@ -1,4 +1,5 @@
 import sys
+print (sys.path.append)
 sys.path.append('../linked_list')
 from linked_list import LinkedList
 

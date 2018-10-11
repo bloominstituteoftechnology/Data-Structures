@@ -1,9 +1,2 @@
 https://github.com/LambdaSchool/Data-Structures/pull/210
 
-* Completed LinkedList MVP
-
-* Will work on Queue and BinarySearchTree
-
-* I'm walking away from the lectures feeling very loose on the concepts.  This is material is incredibly important to me, so I'm ultimately left feeling disappointed.  One of ways the lectures are lacking is that visualization of concepts.  I suggest better/more concrete diagrams, text we can read, more examples, etc.  Another big reason for the ambiguity, is that lectures feel rushed and "last-minute".
-
-Regarding last night's After-Hours, I was rather disappointed.  I was eager to have questions answered, see problems/examples worked through, etc.  However, on top of not being able to hear Kelly, someone from our own cohort might as well have hosted the session.  Given the AH's topic, I think someone who has a very firm grasp of the topic should have been hosting.  No offense to Kelly.  Thank you for hearing me out!

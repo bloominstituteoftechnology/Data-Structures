@@ -128,4 +128,11 @@ class DoublyLinkedList:
         so left connection and right connection just needs to be 
         connected. 
         """
-        pass
+        #I believe this is similar to the functions move only we won't be reconnecting the node.
+        node_next = node.get_next() 
+        node_prev = node.get_prev()
+        #  1 2 3    node = 2    
+        # now we have to connect 1 and 3 
+        node_prev.set_next(node_next)
+        node_next.set_prev(node_prev)
+        

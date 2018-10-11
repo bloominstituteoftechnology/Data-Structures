@@ -11,7 +11,16 @@ class ListNode:
         pass
 
     def delete(self):
-        pass
+        current = self 
+        next_node = current.get_next()
+        prev_node = current.get_prev()
+        #   1 2  3   delete 2  
+        # set up  1 and 3   
+        prev_node.set_next(next_node)
+        next_node.set_prev(prev_node)
+        self.value = None  #should delete it. 
+        # maybe  del self maybe after removing the connect cannot access
+        # it any more. 
 
     def get_value(self):
         return self.value
@@ -135,4 +144,4 @@ class DoublyLinkedList:
         # now we have to connect 1 and 3 
         node_prev.set_next(node_next)
         node_next.set_prev(node_prev)
-        
+

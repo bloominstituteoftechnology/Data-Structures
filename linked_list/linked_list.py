@@ -35,7 +35,7 @@ class LinkedList:
     else:
       self.tail.set_next(new_node)
     # self.tail.set_next(new_node)
-    self.tail = new_node
+      self.tail = new_node
     print('value added to tail', self.tail.get_value())
 
   def remove_head(self):

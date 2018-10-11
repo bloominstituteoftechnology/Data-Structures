@@ -66,12 +66,11 @@ class LinkedList:
         max = None
         if self.head is not None:
             current = self.head
-            if self.head is not None and self.head == self.tail:
+            if self.head == self.tail:
                 max = self.head.get_value()
             else:
                 while current:
                     if max is None or current.get_value() > max:
                         max = current.get_value()
-                    else:
-                        current = current.get_next()
+                    current = current.get_next()
         return max

@@ -78,5 +78,3 @@ class LinkedList:
       return self.get_max(next_node, maxNode)
     else:
       return maxNode
-
-    

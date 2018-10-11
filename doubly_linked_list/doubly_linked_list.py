@@ -45,6 +45,7 @@ class DoublyLinkedList:
           self.head = new_node #making the head change
 
     def remove_from_head(self):
+        node_to_remove = self
         if self.head == None:
             return self.head
         else:
@@ -70,12 +71,33 @@ class DoublyLinkedList:
             self.tail = new_node
 
     def remove_from_tail(self):
+        node_to_remove = self
         previous_node = self.tail.get_prev()
         previous_node.set_next(None)# cutting the link off from the current tail.
         self.tail = previous_node  # making the change. 
+        
 
     def move_to_front(self, node):
-        pass
+        current_head = self.head # grab the current head
+        traveling_node_next = node.get_next()
+        traveling_node_prev = node.get_prev()
+        #What this is doing is allowing for a new connection to be set up
+        #I can then connect these to nodes together to keep the chain. 
+        # 1  2   3 
+        # we are grabing 2   
+        # 1   3  
+        # we now need 1 and 3 to be connected. 
+        traveling_node_prev.set_next(traveling_node_next) #1>>3next
+        traveling_node_next.set_prev(traveling_node_prev) # 1<<3previous
+        #connected   1 >><<3 
+        #now set the node up to the front. 
+        self.head = node 
+        node.set_next(current_head) # connect so  1 2 3 4 5 take 4 
+        # we already connected 3 and 5 on lines 90 and 91. 
+        # now take the 4 and connect it 4 >> to 1(what was the head)
+        current_head.set_prev(node)
+        #now connect   what was the head to the new head   4 <<< 1 
+
 
     def move_to_end(self, node):
         pass

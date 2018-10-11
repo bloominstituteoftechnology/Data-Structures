@@ -80,6 +80,9 @@ For each of the methods associated with each data structure, classify it based o
 
 ## [Stretch Goal] Doubly Linked List
 
+Answer to 1-10:
+  O(c), none of the methods are affected by the size of the list or input
+
 1. What is the runtime complexity of `ListNode.insert_after`?
 
 2. What is the runtime complexity of `ListNode.insert_before`?
@@ -101,3 +104,6 @@ For each of the methods associated with each data structure, classify it based o
 10. What is the runtime complexity of `DoublyLinkedList.delete`?
 
     a. Compare the runtime of the doubly linked list's `delete` method with the worst-case runtime of the JS `Array.splice` method. Which method generally performs better?
+
+        Array.splice would be O(n) as it increases the larger the requested array section
+      is. Whereas DLL's delete does not change based on list size or input.

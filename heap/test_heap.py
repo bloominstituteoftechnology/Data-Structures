@@ -38,11 +38,14 @@ class HeapTests(unittest.TestCase):
     self.heap.insert(1)
     self.heap.insert(2)
     self.heap.insert(5)
-
     descending_order = []
 
     while self.heap.get_size() > 0:
-      descending_order.append(self.heap.delete())
+      # print(f"size: {self.heap.get_size()}")
+      # print(self.heap.storage)
+      deleted_node = self.heap.delete()
+      descending_order.append(deleted_node)
+      # print(deleted_node)
 
     self.assertEqual(descending_order, [10, 8, 7, 6, 5, 5, 2, 1])
 

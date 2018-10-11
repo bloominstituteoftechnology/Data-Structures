@@ -22,6 +22,7 @@ class LinkedList:
 	def __init__(self):
 		self.head = None
 		self.tail = None
+		self.size = 0
 
 	def add_to_tail(self, value):
 		node = Node(value)
@@ -32,12 +33,25 @@ class LinkedList:
 			self.head = node
 		self.tail.set_next(node)
 		self.tail = node
+		print("how many times calling increment???????")
+		self.increment_size()
+		print(f"size:::::::: {self.get_size()}")
+
+	def increment_size(self):
+		self.size += 1
+
+	def decrement_size(self):
+		self.size -= 1
+
+	def get_size(self):
+		return self.size
 
 	def remove_head(self):
 		if(self.head == None):
 			return
 		new_head = self.head.get_next()
 		self.head = new_head
+		self.decrement_size()
 
 	def contains(self, li, value):
 		if(li.get_next() ==  None):
@@ -58,14 +72,3 @@ class LinkedList:
 			next_node = curr_node.get_next()
 		return max
 
-
-firstLinkedListEver = LinkedList()
-firstLinkedListEver.add_to_tail(99)
-firstLinkedListEver.add_to_tail(10)
-firstLinkedListEver.add_to_tail(3)
-firstLinkedListEver.add_to_tail(66)
-firstLinkedListEver.add_to_tail(3)
-firstLinkedListEver.add_to_tail(34)
-# firstLinkedListEver.remove_head()
-firstLinkedListEver.contains(firstLinkedListEver.head, 66)
-print(f"max: {firstLinkedListEver.get_max()}")

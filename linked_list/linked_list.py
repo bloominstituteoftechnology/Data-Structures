@@ -32,15 +32,12 @@ class LinkedList:
 			self.head = node
 		self.tail.set_next(node)
 		self.tail = node
-		pass
 
 	def remove_head(self):
 		if(self.head == None):
 			return
 		new_head = self.head.get_next()
 		self.head = new_head
-		print(f"new head: {self.head.get_value()}")
-		pass
 
 	def contains(self, li, value):
 		if(li.get_next() ==  None):

@@ -7,16 +7,18 @@ class BinarySearchTree:
   def insert(self, value):
     element=self
     while True:
-      if value<element.value and element.left==None:
-        element.left=BinarySearchTree(value)
-        break
-      elif value>element.value and element.right==None:
-        element.right=BinarySearchTree(value)
-        break
-      elif value<element.value:
-        element=element.left
-      else:
-        element=element.right
+      if value<element.value:
+        if element.left==None:
+          element.left=BinarySearchTree(value)
+          break
+        else:
+          element=element.left
+      else: 
+        if element.right==None:
+          element.right=BinarySearchTree(value)
+          break
+        else:
+          element=element.right
 
 
   def contains(self, target):
@@ -29,7 +31,7 @@ class BinarySearchTree:
            element=element.left
         else:
           return False
-      elif target>element.value:
+      else:
         if element.right is not None:
           element=element.right
         else:

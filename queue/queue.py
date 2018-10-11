@@ -24,5 +24,4 @@ class Queue:
           node=node.get_next()
           length+=1
         elif node.get_next()==None:
-          break
-      return length
+          return length

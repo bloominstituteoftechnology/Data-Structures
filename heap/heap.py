@@ -44,6 +44,7 @@ class Heap:
     while (index -1) // 2 >= 0:
         if self.storage[(index -1)// 2] < self.storage[index]:
             self.storage [index], self.storage[(index-1)//2] = self.storage[(index - 1)//2], self.storage[index]
+            #destructuring assignment 
             #update the index to the parents so taht we continue moving up the heap 
         index = (index -1) // 2 
 
@@ -57,9 +58,11 @@ class Heap:
     """
     while index < self.size:
         if self.storage[(2*index) + 1] > self.storage[index]: 
-            self.storage[(2*index) + 1], self.stoarage[index] = self.storage[index], self.storage[(2*index) + 1]
+            self.storage[(2*index) + 1], self.storage[index] = self.storage[index], self.storage[(2*index) + 1]
+            #destructuring assignment 
             index = (2*index)+ 1
         elif self.storage[(2*index) + 2] > self.storage[index]:
-            self.storage[(2*index) + 2], self.stoarage[index] = self.storage[index], self.storage[(2*index) + 2]
+            self.storage[(2*index) + 2], self.storage[index] = self.storage[index], self.storage[(2*index) + 2]
+            #destructuring assignment 
             index = (2*index)+ 2
     #similar but the cases are different change the formula plug checking higher priority and which two they need to swap with

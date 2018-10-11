@@ -33,36 +33,52 @@ class LinkedList:
         self.tail = new_node
         # assigns the new node 
         self.tail.set_next(None)
-        print(self.tail.value)
+        # print(self.tail.value)
       pass  
 
 
   def remove_head(self):
-    print(self.head.value)
-    nextt = self.head.get_next()
-    print(nextt.value)
-    print(self.head.value)
-    print(self.tail.value)
+    print("------------remove--------")
+    # print(self.head.value)
+  
+    print('yo')
+    if self.head == None:
+      return None# just added this and havnt debugged
+    else: 
+      old = self.head.value
+      nextt = self.head.get_next()
+      if nextt == None:
+        self.head = None 
+        self.tail = None
+        return old
+      else: 
+        print(nextt.value, "nextt")
+        self.head = nextt
+        print(self.head.value)
+        # print(self.tail.value
+        print(old)
+        if old == None:
+          return None
+        else: 
+          return old
     pass
 
   def contains(self, value):
     print("----------contains--------")
-    print(self.head.value)
-
-    if self.head.value == value:
-      return True
-    elif self.head.get_next() == value:
-      return True 
-    else: 
-      x = self.head.get_next()
-      while x != None: 
-        print(x.value)
-        if x.value == value:
-          return True
-        else: 
-          x = x.get_next()
-      # after a while 
+    print(self.head)
+    if self.head == None:
       return False
+    else:
+      if self.head.value == value:
+        return True
+      else: 
+        x = self.head.get_next()
+        while x != None: 
+          if x.value == value:
+            return True
+          else: 
+            x = x.get_next()
+        return False
     pass
 
   def get_max(self):

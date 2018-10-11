@@ -8,14 +8,16 @@ class Heap:
     print(self.storage)
 
   def delete(self):
+    old = self.get_max()
     self.storage.remove(self.get_max())
     self._bubble_up(len(self.storage)-1)
+    return old
 
   def get_max(self):
     return self.storage[0]
 
   def get_size(self):
-    pass
+    return len(self.storage)
 
   def _bubble_up(self, index):
     #index is the index of the element that will bemoving up the heap 

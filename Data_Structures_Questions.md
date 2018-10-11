@@ -55,13 +55,28 @@ For each of the methods associated with each data structure, classify it based o
 
 1. What is the runtime complexity of `_bubble_up`?
 
+  O(log n), recursively calls itself until it reaches the highest
+  potential spot, but increasing size of heap only increases certain
+  chains
+
 2. What is the runtime complexity of `_sift_down`?
+
+  O(log n), same as `_bubble_up` but in the opposite direction,
+  down the tree as far as it can go
 
 3. What is the runtime complexity of `insert`?
 
+  O(log n), uses `_bubble_up` under the hood, but only adds constant
+  additions that aren't considered in complexity
+
 4. What is the runtime complexity of `delete`?
 
+  O(log n), uses `_shift_down` under the hood, similar to above, only adds
+  additions that don't go into complexity consideration
+
 5. What is the runtime complexity of `get_max`?
+
+  O(c), returns a saved value
 
 ## [Stretch Goal] Doubly Linked List
 

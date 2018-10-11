@@ -41,9 +41,18 @@ class BinarySearchTree:
 		else:
 			return False
 
+	def getMax(self):
+		if(self.root.hasRightChild() == False):
+			return self.root.value
+		else:
+			return self.maxHelper(curr_node)
 
-	def get_max(self):
-		pass
+	def maxHelper(self, curr_node):
+		if(curr_node.hasRightChild() == False):
+			return curr_node.value
+		else:
+			self.maxHelper(curr_node.getRightChild())
+
 
 class TreeNode:
 	def __init__(self,value,left=None,right=None, parent=None):

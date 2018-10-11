@@ -32,10 +32,7 @@ class LinkedList:
 			self.tail = node
 			self.head = node
 		self.tail.set_next(node)
-		self.tail = node
-		print("how many times calling increment???????")
 		self.increment_size()
-		print(f"size:::::::: {self.get_size()}")
 
 	def increment_size(self):
 		self.size += 1

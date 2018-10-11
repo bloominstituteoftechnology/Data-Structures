@@ -90,6 +90,8 @@ class LinkedList {
   }
 }
 
+module.exports = LinkedList;
+
 const myList = new LinkedList();
 //TEST: adding to tail
 // myList.addToTail(1);

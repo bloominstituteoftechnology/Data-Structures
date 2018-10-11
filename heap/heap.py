@@ -25,11 +25,12 @@ class Heap:
        I now can set a varaible to equal the return of the pop.   I know can  self.storage[0] = popped  then call the  _sift_down()
     """
     self.size -= 1
+    removed = self.storage[0]
     popped = self.storage.pop()
     if self.size > 0:
         self.storage[0] = popped
         self._sift_down(0) # should always been the 0 index no variable needed. 
-
+    return removed
     
 
   def get_max(self):

@@ -49,10 +49,17 @@ class DoublyLinkedList:
     return chopped_off_tail.value
 
   def move_to_front(self, node):
-    pass
+    current_head=self.head
+    self.delete(node)
+    self.head.prev=node
+    self.head=node
+    self.head.next=current_head
 
   def move_to_end(self, node):
-    pass
+    self.delete(node)
+    self.tail.next=node
+    node.prev=self.tail
+    self.tail=node
 
   def delete(self, node):
     node.delete()

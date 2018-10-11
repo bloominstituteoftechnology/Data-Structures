@@ -24,9 +24,11 @@ class LinkedList:
 
   def add_to_tail(self, value):
     node = Node(value)
+
     if self.head == None:
       self.head = node
       self.tail = node
+
     else:
       self.tail.set_next(node)
       self.tail = node
@@ -34,9 +36,9 @@ class LinkedList:
   def remove_head(self):
     if self.head == None:
       return self.head
+
     else:
       temp = self.head.get_value()
-      # self.head = temp
       self.head = self.head.get_next()
       if self.head == None:
         self.tail = None
@@ -44,8 +46,10 @@ class LinkedList:
 
   def contains(self, value):
     current = self.head
+
     if self.head is None:
       return False
+
     else:
       while current != None:
         if current.get_value() == value:
@@ -55,7 +59,6 @@ class LinkedList:
           return False
 
         else:
-          # current = self.head.get_next()
           current = current.get_next()
 
   def get_max(self):
@@ -65,6 +68,7 @@ class LinkedList:
     if current == None:
       self.tail = None
       return None
+      
     else:
       while current != None:
         if current.get_value() > max_value:

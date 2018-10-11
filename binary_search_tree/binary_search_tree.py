@@ -28,7 +28,7 @@ class BinarySearchTree:
         elif self.right == None:
             return False
         else:
-            return self.right.contains(target)
+           return self.right.contains(target)
 
   def get_max(self):
      # If there is no right value, then you know that number is the max

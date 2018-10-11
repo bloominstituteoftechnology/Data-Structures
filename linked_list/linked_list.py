@@ -41,13 +41,30 @@ class LinkedList:
 
     def remove_head(self):
         pass
-# if self.head = true then
-# removed_head= LinkedList.head
-# LinkedList.head.remove()
-# return removed_head
+
+        # self.head and next
+# if self.head = true
+# new_head= self.head.next_node
+# self.head.remove()
+# return self.head=new_head
+# self.length -=1
 
     def contains(self, value):
-        pass
+        current = self.head
+        if current == value:
+            return True
+        elif current:
+            current = current.next_node
+        else:
+            return False
 
     def get_max(self):
-        pass
+        current = self.head
+        total = self.head.value
+        if current >= total:
+            total = current
+            current = current.next_node
+        elif current:
+            current = current.next_node
+        else:
+            return total

@@ -17,6 +17,7 @@ class Node:
     def set_next(self, new_next):
         self.next_node = new_next
 
+
 class LinkedList:
     def __init__(self):
         self.head = None
@@ -36,7 +37,6 @@ class LinkedList:
         if temp is None:
             return None
         elif temp == self.tail:
-            temp = self.head
             self.head = None
             self.tail = None
             return temp.value

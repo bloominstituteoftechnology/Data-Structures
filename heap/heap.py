@@ -55,11 +55,11 @@ class Heap:
     # index is the index of the element that will be moving down the heap
     while (index*2) <= self.size:
       smallest = self.minChild(index)
-    # keep moving element down the list until it reaches a valid place
-    # check both child values 
-      # plug index into both left and right child formulas and get values
-      # check if one or both child values are of higher priority
-      # swap chosen child value with candidate value
+      if self.storage[index] > self.storage[smallest]:
+        result = self.storage[index]
+        self.storage[index] = self.storage[smallest]
+        self.storage[index] = result
+      index = smallest  
 
   def minChild(self, index):
     if (i*2+2) > (self.size-1):

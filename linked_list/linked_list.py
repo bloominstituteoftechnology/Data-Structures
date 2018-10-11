@@ -30,13 +30,13 @@ class LinkedList:
 
     elif self.tail and self.head:
       old_tail = self.tail
-      old_tail.set_next(Node(value))
+      old_tail.set_next(node)
     self.tail = node
 
   def remove_head(self):
     if self.head is None:
       return None
-    elif self.head.next_node is None:
+    elif self.head.get_next() is None:
       current = self.head
       self.head = None
       self.tail = None
@@ -49,33 +49,21 @@ class LinkedList:
 
 
   def contains(self, value):
-    result = False
-    if self.head is not None:
-      def node_contains(node):
-        val = node.value
-        if val == value:
-          result = True
-          return result
-        if result == True:
-          return True
-        elif node.next_node is None:
-          return False
+    result = self.head
+    while result is not None:
+        if result.get_value() == value:
+            return True
         else:
-          result = node_contains(node.next_node)
-        node_contains(self.head)
-    return result
+            result = result.get_next()
+    return False
 
   def get_max(self):
-    maxx = None
-
-    def maxx_func(node):
-      if node.next_node is not None and node.next_node.value > maxx.value:
-        maxx = node.next_node
-      elif node.next_node is not None:
-        maxx_func(node.next_node)
-      else:
-        return None
-    if self.head:
-      maxx = self.head
-      maxx_func(maxx)
-    return maxx.value or maxx
+    max_node = None
+    current = self.head
+    if current is not None:
+         max_node = current.get_value()
+    while current is not None:
+        if current.get_value() > max_node:
+             max_node = current.get_value()
+        current = current.get_next()
+    return max_node

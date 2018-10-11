@@ -12,8 +12,10 @@ class Node:
 
 
 class BinarySearchTree:
-  def __init__(self, root):
+  def __init__(self, root, left=None, right=None):
     self.root = Node(root)
+    self.left = left
+    self.right = right
 
   def insert(self, new_value):
     root = self.root
@@ -28,7 +30,7 @@ class BinarySearchTree:
         root.set_next_left(Node(new_value))
       return
 
-    return insert(root)
+    return self.insert(root)
     
  
   def contains(self, target):
@@ -40,13 +42,13 @@ class BinarySearchTree:
       if search.next_left == target:
         return True
       search = search.next_left
-      contains(target)
     
     while search.next_right:
       if search == target:
         return True
       search = search.next_right
-      contains(target)
+    
+    return self.contains(target)
     
 
   def get_max(self):

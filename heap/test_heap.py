@@ -58,8 +58,5 @@ class HeapTests(unittest.TestCase):
     self.heap.delete()
     self.assertTrue(self.heap._sift_down.called)
 
-  
-  
-
 if __name__ == '__main__':
   unittest.main()

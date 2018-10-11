@@ -38,13 +38,13 @@ class DoublyLinkedList:
     self.tail = node
 
   def add_to_head(self, value):
-    new_node = ListNode(value)
     if self.head == None:
-      new_node = self.head
+      new_node = ListNode(value)
+      self.head = new_node
+      self.tail = new_node
     else:
-      self.head.prev = new_node
-      new_node.next = self.head
-      new_node.prev = None
+      self.head.insert_before(value)
+      self.head = self.head.prev
 
   def remove_from_head(self):
     pass

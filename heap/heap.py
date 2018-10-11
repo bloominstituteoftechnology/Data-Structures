@@ -58,13 +58,19 @@ class Heap:
     the child as a parent.   left 2i + 1   right 2i+2  I also would think I need to check if these items actually exist. 
     Like if i get to the end of the list go a head and just keep it there but i guess the while loop condition would take care of 
     that aspect. 
+
+    So after not passing the test it would appear that I am not doing a comparison for if 
+    the items on the same level or greater than each other. 
     """
     while ((2*index) + 1) < self.size-1:
-        if self.storage[(2*index) + 1] > self.storage[index]: 
-            self.storage[(2*index) + 1], self.storage[index] = self.storage[index], self.storage[(2*index) + 1]
-            #destructuring assignment 
-        elif self.storage[(2*index) + 2] > self.storage[index]:
-            self.storage[(2*index) + 2], self.storage[index] = self.storage[index], self.storage[(2*index) + 2]
-            #destructuring assignment 
+        if self.storage[((2*index) + 1)] >= self.storage[((2*index) + 2)]:
+            if self.storage[(2*index) + 1] > self.storage[index]: 
+                self.storage[(2*index) + 1], self.storage[index] = self.storage[index], self.storage[(2*index) + 1]
+                #destructuring assignment 
+        else:
+            if self.storage[(2*index) + 2] > self.storage[index]:
+                self.storage[(2*index) + 2], self.storage[index] = self.storage[index], self.storage[(2*index) + 2]
+                #destructuring assignment 
         index = (2*index)+ 1
+    self._bubble_up(index)
     #similar but the cases are different change the formula plug checking higher priority and which two they need to swap with

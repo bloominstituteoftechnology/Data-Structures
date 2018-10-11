@@ -1,3 +1,17 @@
+"""
+I want to check if a root has been set. If there is no root then I should be able to set the value to the root.   from there  I want to   check all new values 
+if  the new value is less than the root we then move left if it is greater move right.   
+
+to me looking at this some recursion maybe neccessary.   because not only is there a check for if there is a right but we are also checking for if there is another item 
+
+so   8 == root       6 comes along     check if 8 already has a child to the left  if it doesn't set it.    if it does  now we need to compare that item to make the decision to 
+go left or right.   This would be repeated until the newest item becomes a leaf meaning it has no children.  
+
+I have some functions to use for this maybe too many.   But defintely enough     returning True or false   and moving accordingly.   
+
+Off hand I want to do something like   self.root == None   then   create a TreeNode and set it to root. 
+"""
+
 class TreeNode:
     def __init__(self, key, value, left=None, right=None, parent=None, root=None):
         self.key = key
@@ -41,8 +55,8 @@ class BinarySearchTree:
     def insert(self, value):
         # need to check if there is a root, if there isn't set the first item as the root.
         if self.root == None:
-            pass
-
+            pass 
+    
     def contains(self, target):
         """ 
         So a check for has_max_children should go first. At this point if True there is a left and a right. 

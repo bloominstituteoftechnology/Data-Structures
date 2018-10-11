@@ -13,6 +13,7 @@ For each of the methods associated with each data structure, classify it based o
 3. What is the runtime complexity of `contains`?
 
 4. What is the runtime complexity of `get_max`?
+    
 
 ## Queue
 

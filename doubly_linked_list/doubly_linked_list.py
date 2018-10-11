@@ -31,7 +31,15 @@ class ListNode:
       self.prev=node
 
   def delete(self):
-    pass
+    if self.value==None and self.prev==None:  #checking for empty list 
+      self.value=None
+    elif self.next==None:  #checking if current node is the tail or last node
+      self.prev.next=None
+      self.value=None
+    else:                   #checking if the node lies between 2 other nodes
+      self.next.prev=self.prev
+      self.prev.next=self.next
+      self.value=None
 
 class DoublyLinkedList:
   def __init__(self, node=None):

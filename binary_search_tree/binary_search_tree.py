@@ -12,15 +12,16 @@ I have some functions to use for this maybe too many.   But defintely enough    
 Off hand I want to do something like   self.root == None   then   create a TreeNode and set it to root. 
 """
 
+
 class TreeNode:
     def __init__(self, key, value, left=None, right=None, parent=None, root=None):
-        self.key = key
-        self.value = value
+        self.key = key or value 
         self.left = left
         self.right = right
         self.parent = parent
         self.root = root
-    #End of Initializing 
+    # End of Initializing
+
     def hasLeft(self):
         return self.left
 
@@ -45,18 +46,79 @@ class TreeNode:
     def has_max_children(self):
         return self.right and self.left
 
+    def __iter__(self):  # if it is desired to iterate over the entire tree.
+        if self:
+            if self.hasLeft():
+                for elem in self.left:
+                    # this will pause and allow to use the next() function to  go back to where we left off in the code.
+                    yield elem
+            yield self.key
+            if self.hasRight():
+                for elem in self.rightChild:
+                    # this will pause and allow to use the next() function to  go back to where we left off in the code.
+                    yield elem
+
+    def replaceNodeData(self, key, value, left, right):
+        self.key = key
+        self.value = value
+        self.left = lc
+        self.right = right
+        if self.hasLeft():
+            self.left.parent = self
+        if self.hasRight():
+            self.right.parent = self
+
+# def _setitem__(self, k,v):
+#     self.put(k,v)
+
+# def _getitem__(self,key):
+#     return self.get(key)
+
+# def __contains__(self,key):
+#     if self.__contains(key,self.root):
+#         return True
+#     else:
+#         return False
+
+
+#
 
 class BinarySearchTree:
     def __init__(self, value):
-        self.value = value
-        self.left = None
-        self.right = None
+        self.root = None
+        self.size = 0
 
     def insert(self, value):
         # need to check if there is a root, if there isn't set the first item as the root.
-        if self.root == None:
-            pass 
-    
+        if self.root:
+            self.__insert( value, self.root)
+        else:
+            self.root = TreeNode(value)
+        self.size += 1
+
+    def __insert(self, key, currentNode):
+        # this is a helper function
+        # This is where we are checking to see if we are going to go left or right. If this is true we go left.
+        if key < currentNode.key:
+
+            if currentNode.hasLeft():  # Returns True or False depending on if there is a left Child already
+                # ^The line above is also the base case  the recursive lines are working to get to this line where it wil come back false.
+                # This is recursion because there is a left already we know need to check if we need to go left or right of it.
+                self._insert(key, currentNode.left)
+            else:  # There is no left for the current node and we are headed left.
+                # Creation of a new TreeNode because we have reached a leafy area.
+                currentNode.left = TreeNode(key, parent=currentNode)
+        else:  # key is greater than currentNode.key so we will head to the right of it.
+            if currentNode.hasRight():  # returns True or False depending on if there is a right Child already
+              # ^The line above is also the base case  the recursive lines are working to get to this line where it wil come back false.
+                # This is recursion because there is a left already we know need to check if we need to go left or right of it.
+                self.__insert(key, currentNode.right)
+            else:  # there is no right and we are headed right.
+                # Creation of a new TreeNode because we have reached a leafy area.
+                currentNode.right = TreeNode(key, parent=currentNode)
+        # Each time we add a new node we should reach a leafy area meaning a area where the node has no children.
+        # It may at a time become a parent but for now it is just a child.
+
     def contains(self, target):
         """ 
         So a check for has_max_children should go first. At this point if True there is a left and a right. 
@@ -66,13 +128,39 @@ class BinarySearchTree:
         Not sure if all data will be sorted but  there is the opprotunity to at least implement some kind of sorting myself on the insert. 
 
         """
-        pass
+        if self.root:  # Checking to make sure there is a
+            result = self.__contains(target, self.root)
+            if result:
+                return result.value
+            else:
+                return None
+        else:
+            # if no root is set we have no searching to do there is nothing in the tree.
+            return None
+
+    def __contains(self, key, currentNode):
+        if not currentNode:
+            return None
+        elif currentNode.key == key:  # found it!
+            return currentNode  # this is what we are working towards finding the target
+        elif key < currentNode.key:
+            # recursion we are working towards line 118 or 120
+            return self.__contains(key, currentNode.left)
+            # 120 if target is in the in the tree and 118 if the traget is not in the tree
+        else:
+            # recursion we are working towards line 118 or 120
+            return self.__contains(key, currentNode.right)
+            # 120 if target is in the in the tree and 118 if the traget is not in the tree
 
     def get_max(self):
+        """No input Output will be the max  either a value or None if tree is empty.  """
         current = self
-        while current.hasRight():
+        while current.hasRight():  # This is the belief that the max has to be to the right. If you can't go right either in the begining or any more
+            # if current has a right this line will be set  and will keep going from line 129 to 130 until there are no more rights.
             current = current.right
+        # this line returns   as soon there is no more rights.  breaking out of the loop.
         return current
 
-    
-       
+    def __iter__(self):
+        # allows you to iterate through the binary search tree.
+        return self.root.__iter__()

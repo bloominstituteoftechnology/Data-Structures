@@ -20,7 +20,20 @@ class BinarySearchTree:
 
 
   def contains(self, target):
-    pass
+    element=self
+    while True:
+      if element.value==target:
+        return True
+      elif target<element.value:
+        if element.left is not None:
+           element=element.left
+        else:
+          return False
+      elif target>element.value:
+        if element.right is not None:
+          element=element.right
+        else:
+          return False
 
   def get_max(self):
     pass

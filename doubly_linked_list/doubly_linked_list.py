@@ -100,7 +100,15 @@ class DoublyLinkedList:
 
 
     def move_to_end(self, node):
-        pass
+        #very similar to  move_to_front only in reverse
+        current_tail = self.tail
+        traveling_node_next = node.get_next()
+        traveling_node_prev = node.get_prev()
+        # 1 2 3 4 5 6  
+        #  3 is being moved to the end 
+        # current_tail = 6  node = 3 
+        # traveling_node_prev = 2 
+        #traveling_node_next 
 
     def delete(self, node):
         """ just have to link out the node

@@ -44,7 +44,8 @@ class LinkedList:
       
 
   def contains(self, value):
- 
+  
+  
 
   def get_max(self):
     

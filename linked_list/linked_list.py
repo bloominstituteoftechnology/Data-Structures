@@ -29,15 +29,15 @@ class LinkedList:
     def add_to_tail(self, value):
         # creates a new node and assign it as the head of the list since length is 0
         # when run again would assign next on previous item and set default next to none
-        newNode = Node(self, value)
+        newNode = Node(value)
         if self.head == None:
             self.head = newNode
             self.tail = self.head
             self.length += 1
         else:
             self.tail.next_node = newNode
-            self.length += 1
             self.tail = newNode
+            self.length += 1
 
     def remove_head(self):
         pass
@@ -48,10 +48,13 @@ class LinkedList:
 # self.head.remove()
 # return self.head=new_head
 # self.length -=1
+# if self.length === 0:
+# self.head = None
+# self.tail=None
 
     def contains(self, value):
         current = self.head
-        if current == value:
+        if current.value == value:
             return True
         elif current:
             current = current.next_node
@@ -61,8 +64,8 @@ class LinkedList:
     def get_max(self):
         current = self.head
         total = self.head.value
-        if current >= total:
-            total = current
+        if current.value >= total:
+            total = current.value
             current = current.next_node
         elif current:
             current = current.next_node

@@ -3,10 +3,11 @@ For each of the methods associated with each data structure, classify it based o
 ## Linked List
 
 1. What is the runtime complexity of `add_to_tail`?
-  
+  O(1)
     a. What if our list implementation didn't have a reference to the tail of the list in its constructor? What would be the runtime of the `add_to_tail` method?
 
 2. What is the runtime complexity of `remove_head`?
+    O(1)
 
 3. What is the runtime complexity of `contains`?
 
@@ -15,8 +16,10 @@ For each of the methods associated with each data structure, classify it based o
 ## Queue
 
 1. What is the runtime complexity of `enqueue`?
+    O(1)
 
 2. What is the runtime complexity of `dequeue`?
+    O(1)
 
 3. What is the runtime complexity of `len`?
 

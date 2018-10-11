@@ -35,11 +35,41 @@ class LinkedList:
     if self.head == None:
       return self.head
     else:
-      self.head = None
-      return self.head
+      temp = self.head.get_value()
+      # self.head = temp
+      self.head = self.head.get_next()
+      if self.head == None:
+        self.tail = None
+      return temp
 
   def contains(self, value):
-    pass
+    current = self.head
+    if self.head is None:
+      return False
+    else:
+      while current != None:
+        if current.get_value() == value:
+          return True
+
+        elif current is None:
+          return False
+
+        else:
+          # current = self.head.get_next()
+          current = current.get_next()
 
   def get_max(self):
-    pass
+    max_value = 0
+    current = self.head
+    
+    if current == None:
+      self.tail = None
+      return None
+    else:
+      while current != None:
+        if current.get_value() > max_value:
+          max_value = current.get_value()
+        else:
+          current = current.get_next()
+
+    return max_value

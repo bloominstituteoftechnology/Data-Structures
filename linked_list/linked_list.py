@@ -48,34 +48,34 @@ class LinkedList:
         print(headprev)
         return headprev
 
-  def contains(self, value):
-    current = self.head
-    match = False
-    if current is None:
-      return False
-    elif current.get_value() == value:
-      return True
-    else:
-      while match == False:
-        if current.get_next() == None:
-          return False
-        else:
-          current = current.get_next()
-          if current.get_value() == value:
-            match = True
-            return True
-
-  # def contains(self, value, current="koolkats"):
-  #   if current == "koolkats":
-  #     current = self.head
-  #   if current.get_value() == None:
+  # def contains(self, value):
+  #   current = self.head
+  #   match = False
+  #   if current is None:
   #     return False
-  #   elif current.get_next().get_value() == None and current.get_value() != value:
-  #     return False
-  #   elif current.get_value() != value:
-  #     return contains(value, current.get_next())
-  #   else:
+  #   elif current.get_value() == value:
   #     return True
+  #   else:
+  #     while match == False:
+  #       if current.get_next() == None:
+  #         return False
+  #       else:
+  #         current = current.get_next()
+  #         if current.get_value() == value:
+  #           match = True
+  #           return True
+
+  def contains(self, value, current="koolkats"):
+    if current == "koolkats":
+      current = self.head
+    if current == None:
+      return False
+    elif current.get_next() == None and current.get_value() != value:
+      return False
+    elif current.get_value() != value:
+      return self.contains(value, current.get_next())
+    else:
+      return True
 
   def get_max(self):
     if self.head is None:

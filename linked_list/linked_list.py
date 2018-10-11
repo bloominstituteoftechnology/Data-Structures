@@ -33,17 +33,13 @@ class LinkedList:
         self.tail = new_node
         # assigns the new node 
         self.tail.set_next(None)
-        # print(self.tail.value)
       pass  
 
 
   def remove_head(self):
-    print("------------remove--------")
-    # print(self.head.value)
-  
-    print('yo')
+    # print("------------remove--------")
     if self.head == None:
-      return None# just added this and havnt debugged
+      return None
     else: 
       old = self.head.value
       nextt = self.head.get_next()
@@ -52,11 +48,7 @@ class LinkedList:
         self.tail = None
         return old
       else: 
-        print(nextt.value, "nextt")
         self.head = nextt
-        print(self.head.value)
-        # print(self.tail.value
-        print(old)
         if old == None:
           return None
         else: 
@@ -64,8 +56,7 @@ class LinkedList:
     pass
 
   def contains(self, value):
-    print("----------contains--------")
-    print(self.head)
+    # print("----------contains--------")
     if self.head == None:
       return False
     else:
@@ -82,6 +73,19 @@ class LinkedList:
     pass
 
   def get_max(self):
+    print("----------get_max--------")
+    if self.head == None:
+      return None
+    else:   
+      global maxx
+      maxx = 0 
+      x = self.head
+      while x!= None:
+        if x.value > maxx:
+          maxx = x.value 
+        else: 
+          x = x.get_next()
+      return maxx
     pass
 
 # notes

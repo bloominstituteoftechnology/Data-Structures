@@ -70,7 +70,9 @@ class DoublyLinkedList:
             self.tail = new_node
 
     def remove_from_tail(self):
-        pass
+        previous_node = self.tail.get_prev()
+        previous_node.set_next(None)# cutting the link off from the current tail.
+        self.tail = previous_node  # making the change. 
 
     def move_to_front(self, node):
         pass

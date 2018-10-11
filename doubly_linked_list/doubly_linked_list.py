@@ -108,7 +108,19 @@ class DoublyLinkedList:
         #  3 is being moved to the end 
         # current_tail = 6  node = 3 
         # traveling_node_prev = 2 
-        #traveling_node_next 
+        #traveling_node_next  = 4 
+        traveling_node_prev.set_next(traveling_node_next) #2>>4next
+        traveling_node_next.set_prev(traveling_node_prev) # 2<<4previous
+        #connected   2 >><<4
+        #now set the node up to the end. 
+        self.tail = node 
+        node.set_prev(current_tail) # connect so 1 2 3 4 5 6 take 3
+        # we already connected 2 to 4 on lines 112 and 113 
+        # now take the 3 and connect it to <<< the 6(what was the tail)
+        current_tail.set_next(node)
+        # now connect what was the tail to the new tail 6>>>3 
+
+
 
     def delete(self, node):
         """ just have to link out the node

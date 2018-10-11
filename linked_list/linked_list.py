@@ -23,15 +23,24 @@ class LinkedList:
     self.tail = None
 
   def add_to_tail(self, value):
+    # wrap value in a node instance
+    # check if there is no head
+      # if no head => head and tail = new_node
+    # set current tail's next reference to the new node
+    # update the list tail reference to the new node
     new_node = Node(value, None)
     if self.head == None:
       self.head = new_node
       self.tail = new_node
-    elif self.tail != None:
+    else:
       self.tail.set_next(new_node)
       self.tail = new_node
 
   def remove_head(self):
+    # check if there is no head
+      # if no head => return None
+    # check if head node has a next node
+    #
     if self.head == None:
       return None
     else:
@@ -45,6 +54,7 @@ class LinkedList:
         return removed_node
 
   def contains(self, value):
+    # if no head return false
     current = self.head
     if current == None:
       return False
@@ -60,7 +70,7 @@ class LinkedList:
       return None
     else:
       max_value = self.head.value
-      current = self.head
+      current = self.head.get_next()
       while current != None:
         if current.value > max_value:
           max_value = current.value

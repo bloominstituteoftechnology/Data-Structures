@@ -26,8 +26,6 @@ class HeapTests(unittest.TestCase):
     self.heap.insert(9)
     self.heap.insert(9)
     self.heap.insert(5)
-    self.heap.insert(12)
-    self.assertEqual(self.heap.get_max(), 12)
     self.heap.delete()
     self.assertEqual(self.heap.get_max(), 9)
 

@@ -59,5 +59,5 @@ class Heap:
     if index * 2 + 1 > self.size:
       return index * 2
     else:
-      # getting shild with the highest value
+      # getting child with the highest value
       return index * 2 if self.storage[index * 2] > self.storage[index * 2 + 1] else index * 2 + 1

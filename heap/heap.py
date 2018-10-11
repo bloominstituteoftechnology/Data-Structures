@@ -43,10 +43,23 @@ class Heap:
     """ check if the elements parent's value is less than the current value """
     while (index -1) // 2 >= 0:
         if self.storage[(index -1)// 2] < self.storage[index]:
-            self.sotriage [index], self.storage[(index-1)//2] = self.storage[(index - 1)//2], self.storage[index]
+            self.storage [index], self.storage[(index-1)//2] = self.storage[(index - 1)//2], self.storage[index]
             #update the index to the parents so taht we continue moving up the heap 
         index = (index -1) // 2 
 
   def _sift_down(self, index):
-    pass
+    """ 
+    here the plan of attack is a while loop  where   instead of while greater than zero (sense I am starting here) I want to 
+    do something until the current size is reached.  while index < self.size.   from here I want to use the formla to access
+    the child as a parent.   left 2i + 1   right 2i+2  I also would think I need to check if these items actually exist. 
+    Like if i get to the end of the list go a head and just keep it there but i guess the while loop condition would take care of 
+    that aspect. 
+    """
+    while index < self.size:
+        if self.storage[(2*index) + 1] > self.storage[index]: 
+            self.storage[(2*index) + 1], self.stoarage[index] = self.storage[index], self.storage[(2*index) + 1]
+            index = (2*index)+ 1
+        elif self.storage[(2*index) + 2] > self.storage[index]:
+            self.storage[(2*index) + 2], self.stoarage[index] = self.storage[index], self.storage[(2*index) + 2]
+            index = (2*index)+ 2
     #similar but the cases are different change the formula plug checking higher priority and which two they need to swap with

@@ -33,17 +33,23 @@ class Heap:
         break
 
   def _sift_down(self, index):
-    length=self.get_size()-1
-    while int((index+1)*2)<length:
-      if self.storage[2*index+1]>self.storage[index]:
-        placeholder=self.storage[2*index+1]
-        self.storage[2*index+1]=self.storage[index]
-        self.storage[index]=placeholder
-        index=2*index+1
-      elif self.storage[2*index+2]>self.storage[index]:
-        placeholder=self.storage[2*index+2]
-        self.storage[2*index+2]=self.storage[index]
-        self.storage[index]=placeholder
-        index=2*index+2
+    length=self.get_size()
+    while ((index+1)*2)<length:
+      if self.storage[2*index+1]>=self.storage[2*index+2]:
+        if self.storage[2*index+1]>self.storage[index]:
+          placeholder=self.storage[2*index+1]
+          self.storage[2*index+1]=self.storage[index]
+          self.storage[index]=placeholder
+          index=2*index+1
+        else:
+          break
+      elif self.storage[2*index+2]>self.storage[2*index+1]:
+        if self.storage[2*index+2]>self.storage[index]:
+          placeholder=self.storage[2*index+2]
+          self.storage[2*index+2]=self.storage[index]
+          self.storage[index]=placeholder
+          index=2*index+2
+        else:
+          break
       else:
         break

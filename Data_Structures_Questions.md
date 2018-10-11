@@ -67,6 +67,18 @@ For each of the methods associated with each data structure, classify it based o
 
 5. What is the runtime complexity of `get_max`?
 
+#### Answers
+
+1. O(log n)
+
+2. O(log n)
+
+3. O(log n), insert itself is on average O(1), but the dependency on bubble up makes it O(log n)
+
+4. O(log n), delete itself is O(1), but the dependency on sift down makes it O(log n)
+
+5. O(1)
+
 ## [Stretch Goal] Doubly Linked List
 
 1. What is the runtime complexity of `ListNode.insert_after`?

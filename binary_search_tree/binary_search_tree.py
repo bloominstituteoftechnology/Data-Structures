@@ -15,7 +15,6 @@ class BinarySearchTree:
   def __init__(self, root):
     self.root = Node(root)
 
-
   def insert(self, new_value):
     root = self.root
 
@@ -33,7 +32,22 @@ class BinarySearchTree:
     
  
   def contains(self, target):
-    pass
+    search = self.root
+    if search == target:
+      return True
+
+    while search.next_left:
+      if search.next_left == target:
+        return True
+      search = search.next_left
+      contains(target)
+    
+    while search.next_right:
+      if search == target:
+        return True
+      search = search.next_right
+      contains(target)
+    
 
   def get_max(self):
     pass

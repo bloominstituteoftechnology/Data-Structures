@@ -18,19 +18,23 @@ class BinarySearchTree:
     self.right = right
 
   def insert(self, new_value):
-    root = self.root
-
+    
     while new_value > root.value:
       if root.next_right is None:
         root.set_next_right(Node(new_value))
-      return
+        return
+      else: 
+        root = root.next_right
+        return self.insert(new_value, root)
     
     while new_value < root.value:
       if root.next_left is None:
         root.set_next_left(Node(new_value))
-      return
+        return
+      else: 
+        root = root.next_left
+        return self.insert(new_value, root)  
 
-    return self.insert(root)
     
  
   def contains(self, target):

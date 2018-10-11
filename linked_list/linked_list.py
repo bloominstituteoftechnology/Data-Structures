@@ -29,7 +29,7 @@ class LinkedList:
       self.tail = new_node
     elif self.tail and self.head:
       prev_tail = self.tail
-      prev_tail.set_next(new_node(value))
+      prev_tail.set_next(value)
     self.tail = new_node
 
   def remove_head(self):

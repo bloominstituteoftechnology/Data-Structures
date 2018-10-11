@@ -8,13 +8,13 @@ class BinarySearchTree:
     element=self
     while True:
       if value<element.value:
-        if element.left==None:
+        if element.left is None:
           element.left=BinarySearchTree(value)
           break
         else:
           element=element.left
       else: 
-        if element.right==None:
+        if element.right is None:
           element.right=BinarySearchTree(value)
           break
         else:

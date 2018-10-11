@@ -41,15 +41,11 @@ class Heap:
           self.storage[2*index+1]=self.storage[index]
           self.storage[index]=placeholder
           index=2*index+1
-        else:
-          break
       elif self.storage[2*index+2]>self.storage[2*index+1]:
         if self.storage[2*index+2]>self.storage[index]:
           placeholder=self.storage[2*index+2]
           self.storage[2*index+2]=self.storage[index]
           self.storage[index]=placeholder
           index=2*index+2
-        else:
-          break
       else:
         break

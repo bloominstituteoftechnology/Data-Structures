@@ -39,13 +39,14 @@ class LinkedList:
         store = self.head
         # base case:
         if store is None:
-            return "Noting to remove"
+            return None
         # If there is only one element in the list.
         elif store == self.tail:
             store = self.head
             self.head = None
             self.tail = None
-            return store
+            # need to return the value
+            return store.value
         else:
             self.head = self.head.next
             return store.value

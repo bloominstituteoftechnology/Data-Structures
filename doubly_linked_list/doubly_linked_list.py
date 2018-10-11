@@ -37,7 +37,7 @@ class ListNode:
       self.prev.next=None
       self.value=None
     elif self.prev==None:#checking if the node to be deleted is head
-      self.val=None
+      self.value=None
       self.next=None  
     else:                   #checking if the node lies between 2 other nodes
       self.next.prev=self.prev
@@ -50,22 +50,28 @@ class DoublyLinkedList:
     self.tail = node
 
   def add_to_head(self, value):
-    self.head.insert_before(value)
+    node=ListNode(value)
+    if self.head==None:
+       self.head=node
+    else:   
+      currentHead=self.head.value
+      self.head=node
+      self.head.insert_after(currentHead)
 
   def remove_from_head(self):
-    self.head.delete()
+    pass
 
   def add_to_tail(self, value):
-    self.tail.insert_after(value)
+    pass
 
   def remove_from_tail(self):
-    self.tail.delete()
+    pass
 
   def move_to_front(self, node):
-    
+    pass
 
   def move_to_end(self, node):
     pass
 
   def delete(self, node):
-    
+    pass

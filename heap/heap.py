@@ -26,4 +26,16 @@ class Heap:
         index=(index-1)//2 #update the index to parent's index to keep moving up
 
   def _sift_down(self, index):
-    pass
+      while (2*index+2) >=0 and <=len(self.storage):
+          left_index=2*index+1
+          right_index=2*index+2
+
+          if self.storage[left_index] > self.storage[index]:
+              #swap values
+              self.storage[index], self.storage[left_index]=self.storage[left_index], self.storage[index]
+              index=left_index
+          else self.storage[right_index] > self.storage[index]:
+              #swap values
+              self.storage[index], self.storage[right_index]=self.storage[right_index], self.storage[index]
+              index=right_index
+        

@@ -32,7 +32,7 @@ class LinkedList:
       self.tail = new_node
 
     else:
-    # Settin last node 'next' to new node
+    # Setting last node 'next' to new node
       self.tail.next_node = new_node
     # and now need to update the tail reference
       self.tail = new_node

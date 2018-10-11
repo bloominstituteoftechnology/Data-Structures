@@ -3,7 +3,8 @@ class Heap:
     self.storage = []
 
   def insert(self, value):
-    pass
+    self.storage.append(value)
+    self._bubble_up(len(self.storage)-1)
 
   def delete(self):
     pass
@@ -15,7 +16,10 @@ class Heap:
     pass
 
   def _bubble_up(self, index):
+    # index is the index of the element that will be moving up the heap
+    # keep bubbling the element at the given index up the heap until reaches a valid spot
     while (index - 1) // 2 >= 0:
+      # check to see if the element's parent's value is less than the current value
       if self.storage[(index - 1) // 2] < self.storage[index]:
         # swap the values
         self.storage[index], self.storage[(index - 1) // 2] = self.storage[(index - 1) // 2], self.storage[index]

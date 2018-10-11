@@ -28,10 +28,12 @@ class LinkedList:
       self.head = node
       self.tail = node
 
-    elif self.tail and self.head:
+    elif self.tail is not None and self.head is not None:
       old_tail = self.tail
       old_tail.set_next(node)
-    self.tail = node
+      self.tail = node
+    else:
+      self.tail = node
 
   def remove_head(self):
     if self.head is None:
@@ -43,7 +45,8 @@ class LinkedList:
       return current.value
     else:
       current = self.head
-      self.head = current.next_node
+      next = current.next_node
+      self.head = next
       current.next_node = None
       return current.value
 

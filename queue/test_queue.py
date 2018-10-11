@@ -10,8 +10,11 @@ class QueueTests(unittest.TestCase):
 
   def test_len_returns_correct_length_after_enqueue(self):
     self.assertEqual(self.q.len(), 0)
+    print('13')
     self.q.enqueue(2)
+    print('15')
     self.assertEqual(self.q.len(), 1)
+    print('17')
     self.q.enqueue(4)
     self.assertEqual(self.q.len(), 2)
     self.q.enqueue(6)
@@ -23,22 +26,22 @@ class QueueTests(unittest.TestCase):
     self.q.enqueue(18)
     self.assertEqual(self.q.len(), 9)
   
-  def test_empty_dequeue(self):
-    self.assertIsNone(self.q.dequeue())
-    self.assertEqual(self.q.len(), 0)
+  # def test_empty_dequeue(self):
+  #   self.assertIsNone(self.q.dequeue())
+  #   self.assertEqual(self.q.len(), 0)
 
-  def test_dequeue_respects_order(self):
-    self.q.enqueue(100)
-    self.q.enqueue(101)
-    self.q.enqueue(105)
-    self.assertEqual(self.q.dequeue(), 100)
-    self.assertEqual(self.q.len(), 2)
-    self.assertEqual(self.q.dequeue(), 101)
-    self.assertEqual(self.q.len(), 1)
-    self.assertEqual(self.q.dequeue(), 105)
-    self.assertEqual(self.q.len(), 0)
-    self.assertIsNone(self.q.dequeue())
-    self.assertEqual(self.q.len(), 0)
+  # def test_dequeue_respects_order(self):
+  #   self.q.enqueue(100)
+  #   self.q.enqueue(101)
+  #   self.q.enqueue(105)
+  #   self.assertEqual(self.q.dequeue(), 100)
+  #   self.assertEqual(self.q.len(), 2)
+  #   self.assertEqual(self.q.dequeue(), 101)
+  #   self.assertEqual(self.q.len(), 1)
+  #   self.assertEqual(self.q.dequeue(), 105)
+  #   self.assertEqual(self.q.len(), 0)
+  #   self.assertIsNone(self.q.dequeue())
+  #   self.assertEqual(self.q.len(), 0)
 
 if __name__ == '__main__':
   unittest.main()

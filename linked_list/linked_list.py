@@ -4,6 +4,8 @@ list node that holds a single value
 and a reference to the next node in the list
 """
 
+import math
+
 
 class Node:
     def __init__(self, value=None, next_node=None):
@@ -29,32 +31,37 @@ class LinkedList:
         new_node = Node(value)
         if self.head is None:
             self.head = new_node
-        last = self.head
-        if last.next_node:
-            last = last.next_node
-        last.next_node = new_node
-        self.tail = new_node
-        
+            self.tail = new_node
+        else:
+            self.tail.set_next(new_node)
+            self.tail = new_node
+
     def remove_head(self):
         node_to_remove = self.head
-        if node_to_remove is not None:
-            self.head = node_to_remove.next_node
-            node_to_remove = None
-            return self.head
+        if node_to_remove is None:
+            return None
+        elif node_to_remove == self.tail:
+            self.head = None
+            self.tail = None
+            return node_to_remove.get_value()
+        else:
+            self.head = self.head.get_next()
+            return node_to_remove.get_value()
 
     def contains(self, value):
         current_node = self.head
         while current_node is not None:
-            if current_node.value == value:
+            if current_node.get_value() == value:
                 return True
-            current_node = current_node.next_node
+            current_node = current_node.get_next()
         return False
 
     def get_max(self):
-        max_value = 0
-        current_node = self.head
-        while current_node is not None:
-            if current_node.value > max_value:
-                max_value = current_node.value
-            current_node = current_node.next_node
-        return max_value
+        if self.head:
+            current_node = self.head
+            max_value = math.inf * -1
+            while current_node is not None:
+                if current_node.get_value() > max_value:
+                    max_value = current_node.get_value()
+                current_node = current_node.get_next()
+            return max_value        

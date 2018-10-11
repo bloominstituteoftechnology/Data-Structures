@@ -4,15 +4,6 @@ class Node:
     self.next_left = next_left
     self.next_right = next_right
   
-  def get_value(self):
-    return self.value
-  
-  def get_next_left(self):
-    return self.next_left
-  
-  def get_next_right(self):
-    return self.next_right
-  
   def set_next_right(self, new_next_right):
     self.next_right = new_next_right 
 
@@ -23,19 +14,18 @@ class Node:
 class BinarySearchTree:
   def __init__(self, root):
     self.root = Node(root)
-    self.left = None
-    self.right = None
+
 
   def insert(self, new_value):
     root = self.root
 
     while new_value > root.value:
-      if root.get_next_right() is None:
+      if root.next_right is None:
         root.set_next_right(Node(new_value))
       return
     
     while new_value < root.value:
-      if root.get_next_left() is None:
+      if root.next_left is None:
         root.set_next_left(Node(new_value))
       return
 

@@ -73,3 +73,4 @@ class LinkedList:
     while (node):
       yield node
       node = node.next_node
+      

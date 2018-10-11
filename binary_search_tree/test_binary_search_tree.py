@@ -7,17 +7,11 @@ class BinarySearchTreeTests(unittest.TestCase):
 
   def test_insert(self):
     self.bst.insert(2)
-    print('-----new test --------')
     self.bst.insert(3)
-    print('-----new test --------')
     self.bst.insert(7)
-    print('-----new test --------')
     self.bst.insert(6)
-    print('-----new test --------')
     self.assertEqual(self.bst.left.right.value, 3)
-    print('-----new test --------')
     self.assertEqual(self.bst.right.left.value, 6)
-    print('-----new test --------')
 
   # def test_contains(self):
   #   self.bst.insert(2)

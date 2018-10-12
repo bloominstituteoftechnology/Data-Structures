@@ -4,29 +4,27 @@ class Heap:
     self.storage = []
 
   def insert(self, value):
-    heap = self.storage
-    heap.append(value)
-    parent = math.floor((heap.index(value)-1)/2)
-    while heap[parent] < value:
+    self.storage.append(value)
+    parent = math.floor((self.storage.index(value)-1)/2)
+    if self.storage[parent] < value:
       return self._bubble_up(parent)
 
   def delete(self):
-    heap = self.storage
-    toDelete = heap[0]
-    if len(heap) > 1:
-      heap[0] = heap[-1]
-      del heap[-1]
-      if len(heap) == 1:
+    toDelete = self.storage[0]
+    if len(self.storage) > 1:
+      self.storage[0] = self.storage[-1]
+      del self.storage[-1]
+      if len(self.storage) == 1:
         return toDelete
-      elif len(heap) == 2:
-        if heap[0] < heap[1]:
-          replace = heap[0]
-          heap[0] = heap[1]
-          heap[1] = replace
-      elif heap[0] < heap[1] or heap[0] < heap[2]:
+      elif len(self.storage) == 2:
+        if self.storage[0] < self.storage[1]:
+          replace = self.storage[0]
+          self.storage[0] = self.storage[1]
+          self.storage[1] = replace
+      elif self.storage[0] < self.storage[1] or self.storage[0] < self.storage[2]:
         self._sift_down(0)
     else:
-      heap = []
+      self.storage = []
     return toDelete
 
   def get_max(self):
@@ -36,33 +34,56 @@ class Heap:
     return len(self.storage)
 
   def _bubble_up(self, index):
-    heap = self.storage
-    oldParent = heap[index]
-    if (2 * index) + 2 > heap.index(heap[-1]):
-      heap[index] = heap[(2 * index) + 1]
-      heap[(2 * index) + 1] = oldParent
-    elif heap[(2 * index) + 1] > heap[(2 * index) + 2]:
-      heap[index] = heap[(2 * index) + 1]
-      heap[(2 * index) + 1] = oldParent
-    else:
-      heap[index] = heap[(2 * index) + 2]
-      heap[(2 * index) + 2] = oldParent 
+    oldParent = self.storage[index]
+    if (2 * index) + 2 > len(self.storage)-1:
+      self.storage[index] = self.storage[(2 * index) + 1]
+      self.storage[(2 * index) + 1] = oldParent
+      if index > 0:
+        newParent = math.floor((index-1)/2)
+        if self.storage[newParent] < self.storage[index]:
+          return self._bubble_up(newParent)
+    elif self.storage[(2 * index) + 1] > self.storage[(2 * index) + 2]:
+      self.storage[index] = self.storage[(2 * index) + 1]
+      self.storage[(2 * index) + 1] = oldParent 
+      if index > 0:
+        newParent = math.floor((index-1)/2)
+        if self.storage[newParent] < self.storage[index]:
+          return self._bubble_up(newParent)
+    elif self.storage[(2 * index) + 2] > self.storage[(2 * index) + 1]:
+      self.storage[index] = self.storage[(2 * index) + 2]
+      self.storage[(2 * index) + 2] = oldParent
+      if index > 0:
+        newParent = math.floor((index-1)/2)
+        if self.storage[newParent] < self.storage[index]:
+          return self._bubble_up(newParent)
+    
+
+
+
+
+
+
+
 
   def _sift_down(self, index):
-    heap = self.storage
-    oldParent = heap[index]
-    if heap[(2 * index) + 2] == IndexError:
-      heap[index] = heap[(2 * index) + 1]
-      heap[(2 * index) + 1] = oldParent
-    elif heap[(2 * index) + 1] > heap[(2 * index) + 2]:
-      heap[index] = heap[(2 * index) + 1]
-      heap[(2 * index) + 1] = oldParent
+    self.storage = self.storage
+    oldParent = self.storage[index]
+    if (2 * index) + 2 > len(self.storage)-1:
+      self.storage[index] = self.storage[(2 * index) + 1]
+      self.storage[(2 * index) + 1] = oldParent
+    elif self.storage[(2 * index) + 1] > self.storage[(2 * index) + 2]:
+      self.storage[index] = self.storage[(2 * index) + 1]
+      self.storage[(2 * index) + 1] = oldParent
       newindex = (2 * index) + 1
-      if (2 * newindex) + 1 < len(heap) and heap[(2 * newindex) + 1] > heap[newindex] or (2 * newindex) + 2 < len(heap) and heap[(2 * newindex) + 2] > heap[newindex]:
+      if (2 * newindex) + 1 < len(self.storage) - 1 and self.storage[(2 * newindex) + 1] > self.storage[newindex] or (2 * newindex) + 2 < len(self.storage) - 1 and self.storage[(2 * newindex) + 2] > self.storage[newindex]:
         return self._sift_down(newindex)
-    elif heap[(2 * index) + 1] < heap[(2 * index) + 2]:
-      heap[index] = heap[(2 * index) + 2]
-      heap[(2 * index) + 2] = oldParent
+    elif self.storage[(2 * index) + 1] < self.storage[(2 * index) + 2]:
+      self.storage[index] = self.storage[(2 * index) + 2]
+      self.storage[(2 * index) + 2] = oldParent
       newindex = (2 * index) + 2
-      if (2 * newindex) + 1 < len(heap) and heap[(2 * newindex) + 1] > heap[newindex] or (2 * newindex) + 2 < len(heap) and heap[(2 * newindex) + 2] > heap[newindex]:
+      if (2 * newindex) + 1 < len(self.storage) - 1 and self.storage[(2 * newindex) + 1] > self.storage[newindex] or (2 * newindex) + 2 < len(self.storage) - 1 and self.storage[(2 * newindex) + 2] > self.storage[newindex]:
         return self._sift_down(newindex)
+
+
+
+

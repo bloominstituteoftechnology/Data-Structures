@@ -46,14 +46,14 @@ const myQueue = new Queue();
 // console.log('0:', myQueue.length());
 
 //TEST dequeue respects order
-myQueue.enqueue(100);
-myQueue.enqueue(101);
-myQueue.enqueue(105);
-console.log('100:', myQueue.dequeue());
-console.log('2:', myQueue.length());
-console.log('101:', myQueue.dequeue());
-console.log('1:', myQueue.length());
-console.log('105:', myQueue.dequeue());
-console.log('0:', myQueue.length());
-console.log('null:', myQueue.dequeue());
-console.log('0:', myQueue.length());
+// myQueue.enqueue(100);
+// myQueue.enqueue(101);
+// myQueue.enqueue(105);
+// console.log('100:', myQueue.dequeue());
+// console.log('2:', myQueue.length());
+// console.log('101:', myQueue.dequeue());
+// console.log('1:', myQueue.length());
+// console.log('105:', myQueue.dequeue());
+// console.log('0:', myQueue.length());
+// console.log('null:', myQueue.dequeue());
+// console.log('0:', myQueue.length());

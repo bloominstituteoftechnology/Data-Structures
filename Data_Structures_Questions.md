@@ -4,21 +4,38 @@ For each of the methods associated with each data structure, classify it based o
 
 1. What is the runtime complexity of `add_to_tail`?
   
+  add to tail has complexity O(1) since only one operation is needed in order to insert a new value on the tail. 
+
     a. What if our list implementation didn't have a reference to the tail of the list in its constructor? What would be the runtime of the `add_to_tail` method?
+
+    Without a reference to the tail, the complexity would become O(n) since each item in the list would be checked by the function in order to add the new tail. 
 
 2. What is the runtime complexity of `remove_head`?
 
+    Although there are several conditional cases in the function, I believe each of them is O(1) so the overal complexity would reduce to O(1).
+
 3. What is the runtime complexity of `contains`?
 
+    This function would have complexity O(n) since each item in the list needs to be checked making the number of elements equal to the number of operations. 
+
 4. What is the runtime complexity of `get_max`?
+
+    The get_max function also has O(n) complexity since it involves checking every item.
 
 ## Queue
 
 1. What is the runtime complexity of `enqueue`?
 
+    enqueue has complexity O(1) since only one operation is performed regarless of the number of elements in the list
+
 2. What is the runtime complexity of `dequeue`?
 
+    dequeue has complexity O(1) since only one operation is performed regarless of the number of elements in the list
+
+
 3. What is the runtime complexity of `len`?
+
+    the len function is only finding a stored value and therefore has complexity O(1)
 
 ## Binary Search Tree
 
@@ -27,6 +44,8 @@ For each of the methods associated with each data structure, classify it based o
 2. What is the runtime complexity of `contains`?
 
 3. What is the runtime complexity of `get_max`? 
+
+    I believe that each of the functions in the binary search tree have complexity log(n).  This is because they all involve comparisons where after each comparision the number of remaining elements is reduced. 
 
 ## Heap
 

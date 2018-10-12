@@ -28,18 +28,24 @@ class LinkedList:
         self.tail = None
 
     def add_to_tail(self, value):
+        # wrap it in a node instance
         new_node = Node(value)
+        # check if there's no head
         if self.head is None:
             self.head = new_node
             self.tail = new_node
         else:
+            # set the current tail's next reference to the new node
             self.tail.set_next(new_node)
+            # update the List's tail reference
             self.tail = new_node
 
     def remove_head(self):
         node_to_remove = self.head
+        # check to see if there is a head
         if node_to_remove is None:
             return None
+            # check if the head node has a next node
         elif node_to_remove == self.tail:
             self.head = None
             self.tail = None
@@ -49,10 +55,14 @@ class LinkedList:
             return node_to_remove.get_value()
 
     def contains(self, value):
+        # get reference to current node
         current_node = self.head
+        # walk along the list so long as curent node is a node
         while current_node is not None:
+            # return true if the current value we're looking for matches our target
             if current_node.get_value() == value:
                 return True
+                # update our current reference
             current_node = current_node.get_next()
         return False
 

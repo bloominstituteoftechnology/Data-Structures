@@ -15,7 +15,7 @@ Topics:
 ### Linked Lists
  * Should have the methods: `add_to_tail`, `remove_head`, `contains`, and `get_max`.
    * `add_to_tail` replaces the tail with a new value that is passed in.
-   * `remove_head` removes and returns the head node.
+   * `remove_head` removes and returns the head node VALUE.
    * `contains` should search through the linked list and return true if a matching value is found.
    * `get_max` returns the maximum value in the linked list. 
  * The `head` property is a reference to the first node and the `tail` property is a reference to the last node. Build your nodes with objects.

@@ -2,7 +2,11 @@
 Class that represents a single linked
 list node that holds a single value
 and a reference to the next node in the list
+
+Change for Pull Request
 """
+import math
+
 class Node:
   def __init__(self, value=None, next_node=None):
     self.value = value
@@ -23,13 +27,53 @@ class LinkedList:
     self.tail = None
 
   def add_to_tail(self, value):
-    pass
+    new_node = Node(value)
+
+    if not self.head:
+      self.head = new_node
+      self.tail = new_node
+    else:
+      self.tail.set_next(new_node)
+    # self.tail.set_next(new_node)
+    self.tail = new_node
 
   def remove_head(self):
-    pass
+    """
+    `remove_head` removes and returns the head node
+    ---
+    # placeholder for the next after head so we have access to it
+
+    # self.head = None
+    # self.head = placeholder
+    self.head = self.head.get_next  
+    """
+    deletedHeadValue = self.head.get_value() if self.head else None
+    # print('self.head.get_next', self.head.get_next())
+    self.head = self.head.get_next() if self.head else None
+    if self.head == None:
+      self.tail = None
+    return deletedHeadValue
+
 
   def contains(self, value):
-    pass
+
+    node = self.head
+    while node:
+      if node.get_value() == value:
+        return True
+      else:
+        node = node.get_next()        
+    
+    return False
+
 
   def get_max(self):
-    pass
+    node = self.head
+    linked_listMax = -math.inf
+    while node:
+      if node.get_value() > linked_listMax:
+        linked_listMax = node.get_value()
+      else:
+        node = node.get_next()        
+    
+    return linked_listMax if linked_listMax != -math.inf else None

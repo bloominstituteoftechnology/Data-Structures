@@ -5,10 +5,34 @@ class ListNode:
         self.next = next
 
     def insert_after(self, value):
-        pass
+        """This makes me think about some sort of while loop. where we are searching
+        for the actual value at that point we can break the link and set up a new,
+        connection
+        1   3    5      6     9   10   and i have a new value 7
+        i want to set the 7  after the 6. 
+
+        """
+        new_node = ListNode(value)
+        current = self 
+        next_node = current.get_next()
+
+        prev_node = current.get_prev() 
+        new_node.set_prev(current)#current node becomes the previous for new node
+        new_node.set_next(next_node) # next node is now next for the new node
+
+
+        # some way go find the value. 
+
+        
 
     def insert_before(self, value):
-        pass
+        current = self 
+        next_node = current.get_next()
+        prev_node = current.get_prev()
+
+        new_node = ListNode(value) # create new node 
+        new_node.set_next(current)
+        new_node.set_prev(prev_node)
 
     def delete(self):
         current = self 
@@ -80,10 +104,11 @@ class DoublyLinkedList:
             self.tail = new_node
 
     def remove_from_tail(self):
-        node_to_remove = self
+        node_to_remove = self.tail 
         previous_node = self.tail.get_prev()
         previous_node.set_next(None)# cutting the link off from the current tail.
         self.tail = previous_node  # making the change. 
+        return node_to_remove.get_value()
         
 
     def move_to_front(self, node):
@@ -96,8 +121,10 @@ class DoublyLinkedList:
         # we are grabing 2   
         # 1   3  
         # we now need 1 and 3 to be connected. 
-        traveling_node_prev.set_next(traveling_node_next) #1>>3next
-        traveling_node_next.set_prev(traveling_node_prev) # 1<<3previous
+        if traveling_node_next is not None:
+            traveling_node_prev.set_next(traveling_node_next) #1>>3next
+        if traveling_node_prev is not None:
+            traveling_node_next.set_prev(traveling_node_prev) # 1<<3previous
         #connected   1 >><<3 
         #now set the node up to the front. 
         self.head = node 
@@ -118,8 +145,10 @@ class DoublyLinkedList:
         # current_tail = 6  node = 3 
         # traveling_node_prev = 2 
         #traveling_node_next  = 4 
-        traveling_node_prev.set_next(traveling_node_next) #2>>4next
-        traveling_node_next.set_prev(traveling_node_prev) # 2<<4previous
+        if traveling_node_next is not None:
+            traveling_node_prev.set_next(traveling_node_next) #2>>4next
+        if traveling_node_prev is not None:
+            traveling_node_next.set_prev(traveling_node_prev) # 2<<4previous
         #connected   2 >><<4
         #now set the node up to the end. 
         self.tail = node 

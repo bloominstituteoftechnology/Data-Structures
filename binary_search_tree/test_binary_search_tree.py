@@ -13,6 +13,7 @@ class BinarySearchTreeTests(unittest.TestCase):
     self.assertEqual(self.bst.left.right.value, 3)
     self.assertEqual(self.bst.right.left.value, 6)
 
+
   def test_contains(self):
     self.bst.insert(2)
     self.bst.insert(3)

@@ -9,17 +9,12 @@ class Queue:
 
   def enqueue(self, item):
     self.storage.add_to_tail(item)
+    self.size += 1
   
   def dequeue(self):
+    if self.size > 0:
+      self.size -= 1
     return self.storage.remove_head()
 
   def len(self):
-    length = 0
-    curr_node = self.storage.head
-    if curr_node:
-      while(curr_node.next_node):
-        length += 1
-        curr_node = curr_node.next_node
-      if curr_node.next_node is None:
-        length += 1
-    return length
+    return self.size

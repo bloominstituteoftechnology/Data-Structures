@@ -5,13 +5,22 @@ class ListNode:
     self.next = next
 
   def insert_after(self, value):
-    pass
+    new_node=ListNode(value)
+    new_node.prev=self
+    new_node.next=self.next
+    self.next=new_node
 
   def insert_before(self, value):
-    pass
+    new_node=ListNode(value)
+    new_node.prev=self.prev
+    new_node.next=self
+    self.prev=new_node
 
   def delete(self):
-    pass
+    if self.prev is not None:
+      self.prev.next=self.next
+    if self.next is not None:
+      self.next.prev=self.prev
 
 class DoublyLinkedList:
   def __init__(self, node=None):
@@ -19,22 +28,38 @@ class DoublyLinkedList:
     self.tail = node
 
   def add_to_head(self, value):
-    pass
+    self.head.insert_before(value)
+    self.head=self.head.prev
 
   def remove_from_head(self):
-    pass
-
+    new_head=self.head.next
+    decapitated_head=self.head
+    self.delete(self.head)
+    self.head=new_head
+    return decapitated_head.value
+    
   def add_to_tail(self, value):
-    pass
+    self.tail.insert_after(value)
+    self.tail=self.tail.next
 
   def remove_from_tail(self):
-    pass
+    chopped_off_tail=self.tail
+    self.tail=self.tail.prev
+    self.delete(self.tail.next)
+    return chopped_off_tail.value
 
   def move_to_front(self, node):
-    pass
+    current_head=self.head
+    self.delete(node)
+    self.head.prev=node
+    self.head=node
+    self.head.next=current_head
 
   def move_to_end(self, node):
-    pass
+    self.delete(node)
+    self.tail.next=node
+    node.prev=self.tail
+    self.tail=node
 
   def delete(self, node):
-    pass
+    node.delete()

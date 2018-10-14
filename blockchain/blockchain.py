@@ -2,7 +2,7 @@ import time
 import hashlib
 
 """
-A class representing a single Block in a Blockchain
+A class representing a single Block in a BlockChain
 """
 class Block:
   def __init__(self, index, hash, previous_hash, timestamp, data):
@@ -31,29 +31,30 @@ class Block:
 
 
 """
-A class representing a Chain of Blocks
+A class representing a chain of Blocks
 """
-class Chain:
+class BlockChain:
   def __init__(self):
     # All the Blocks in the chain are stored in a list
     # The Blocks list is initialized with the genesis Block, which has no `previous_hash`
-    self.blocks = [Block(0, '816534932c2b7154836da6afc367695e6337db8a921823784c14378abed4f7d7', None, 1465154705, 'my genesis block!!')]
+    self.blocks = [Block(0, hashlib.sha256(str(round(time.time() * 1000)).encode('utf-8') + b"The Genesis block"), None, int(round(time.time() * 1000)), "The Genesis block")]
 
   """
-  Method to get the length of the Chain
+  Method to get the length of the BlockChain
   """
   def __len__(self):
     return len(self.blocks)
 
   """
-  Add a Block to the Chain after validating it
+  Add a Block to the BlockChain after validating it
   """
   def add_block(self, new_block):
-    if self.is_valid_new_block(new_block):
-      self.chain.append(new_block)
+    # Check the new block against the latest block in the chain before adding it
+    if self.is_valid_new_block(new_block, self.blocks[-1]):
+      self.blocks.append(new_block)
 
   """
-  Return the last Block in the Chain
+  Return the last Block in the BlockChain
   """
   def get_latest_block(self):
     return self.blocks[-1]
@@ -63,7 +64,8 @@ class Chain:
   """
   def calculate_hash(self, index, previous_hash, timestamp, block_data):
     # Use the hashlib library to generate a sha256 hash of all the Block's data
-    return hashlib.sha256(index + previous_hash + timestamp + block_data)
+    input_str = (str(index) + previous_hash + str(timestamp) + block_data).encode('utf-8')
+    return hashlib.sha256(input_str)
 
   """
   Method to calculate the hash of a given Block
@@ -82,7 +84,7 @@ class Chain:
     return Block(next_index, next_hash, previous_block.hash, next_timestamp, block_data)
 
   """
-  Method to validate a new Block against the latest Block in the Chain
+  Method to validate a new Block against the latest Block in the BlockChain
   """
   def is_valid_new_block(self, new_block, previous_block):
     if not new_block.is_valid_block_structure():
@@ -100,27 +102,32 @@ class Chain:
     return True
 
   """
-  Method to validate each Block in an entire Chain
+  Method to validate the Genesis block
+  """
+  def is_valid_genesis(self, genesis_block):
+    return repr(genesis_block) == repr(self.blocks[0])
+
+  """
+  Method to validate each Block in an entire BlockChain
   """
   def is_valid_chain(self, new_chain):
-    # Lambda function to validate just the genesis Block
-    is_valid_genesis = lambda block: repr(block) == repr(self.blocks[0])
-    if not is_valid_genesis(new_chain[0]):
-      print('invalid genesis block')
+    # First validate the Genesis block
+    if not self.is_valid_genesis(new_chain[0]):
+      print('invalid Genesis block')
       return False
     # Validate each Block in the Chain
     for i in range(1, len(new_chain)):
       if not self.is_valid_new_block(new_chain[i], new_chain[i-1]):
-        print('block ' + i + ' in new chain is not valid')
+        print('block ' + i + ' in new BlockChain is not valid')
         return False
     return True
     
   """
-  Method to replace the current Chain with a longer valid Chain
+  Method to replace the current BlockChain with a longer valid BlockChain
   """
   def replace_chain(self, new_blocks):
     if self.is_valid_chain(new_blocks) and len(new_blocks) > len(self.blocks):
       print('Received blockchain is valid. Replacing current blockchain with received chain.')
       self.blocks = new_blocks
     else:
-      print('Received blockchain is invalid')
+      print('Received BlockChain is invalid')

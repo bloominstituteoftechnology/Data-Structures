@@ -3,16 +3,23 @@ class Heap:
         self.storage = []
 
     def insert(self, value):
-        pass
+        self.storage.append(value)
+        self._bubble_up(len(self.storage)-1)
 
     def delete(self):
-        pass
+        retval = self.storage[0]
+        # replace the first storage element with the last elementin the storage array
+        self.storage[0] = self.storage[len(self.storage) - 1]
+        # remove the last element in the heap
+        self.storage.pop()
+        self._sift_down(0)
+        return retval
 
     def get_max(self):
-        pass
+        return self.storage[0]
 
     def get_size(self):
-        pass
+        return len(self.storage)
 
     def _bubble_up(self, index):
       # index is the index of the element that will be moving up the heap

@@ -27,8 +27,22 @@ class Block:
   Method to validate that this Block has the appropriate structure
   """
   def is_valid_block_structure(self):
-    return isinstance(self.index, int) and isinstance(self.hash, str) and isinstance(self.previous_hash, str) and isinstance(self.timestamp, int) and isinstance(self.data, str)
-
+    if not isinstance(self.index, int):
+      print("block has invalid index")
+      return False
+    if not isinstance(self.hash, str):
+      print("block has invalid hash")
+      return False
+    if not isinstance(self.previous_hash, str):
+      print("block has invalid previous_hash")
+      return False
+    if not isinstance(self.timestamp, int):
+      print("block has invalid timestamp")
+      return False
+    if not isinstance(self.data, str):
+      print("block has invalid data")
+      return False
+    return True
 
 """
 A class representing a chain of Blocks
@@ -37,7 +51,7 @@ class BlockChain:
   def __init__(self):
     # All the Blocks in the chain are stored in a list
     # The Blocks list is initialized with the genesis Block, which has no `previous_hash`
-    self.blocks = [Block(0, hashlib.sha256(str(round(time.time() * 1000)).encode('utf-8') + b"The Genesis block"), None, int(round(time.time() * 1000)), "The Genesis block")]
+    self.blocks = [Block(0, hashlib.sha256(str(round(time.time() * 1000) + "The Genesis block").encode('utf-8')), None, int(round(time.time() * 1000)), "The Genesis block")]
 
   """
   Method to get the length of the BlockChain
@@ -58,6 +72,15 @@ class BlockChain:
   """
   def get_latest_block(self):
     return self.blocks[-1]
+
+  """
+  Get the Block with the specified index
+  """
+  def get_block(self, index):
+    try:
+      return self.blocks[index]
+    except KeyError:
+      return None
 
   """
   Method to calculate the hash of all a Block's data

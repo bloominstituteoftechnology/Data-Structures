@@ -7,15 +7,15 @@ A class representing a single Block in a BlockChain
 class Block:
   def __init__(self, index, hash, previous_hash, timestamp, data):
     # The index of this Block in the Chain
-    self.index = index
+    self.index = int(index)
     # The hash of all this Block's data, including the previous Block's hash
-    self.hash = hash
+    self.hash = str(hash)
     # The hash for the previous Block in the Chain
-    self.previous_hash = previous_hash
+    self.previous_hash = str(previous_hash)
     # The timestamp of when this Block was created
-    self.timestamp = timestamp
+    self.timestamp = int(timestamp)
     # The data this Block holds
-    self.data = data
+    self.data = str(data)
 
   """
   Repr method that returns the Block represented as a string
@@ -23,26 +23,6 @@ class Block:
   def __repr__(self):
     return "Block(" + str(self.index) + "," + str(self.hash) + "," + str(self.previous_hash) + "," + str(self.timestamp) + "," + str(self.data)
 
-  """
-  Method to validate that this Block has the appropriate structure
-  """
-  def is_valid_block_structure(self):
-    if not isinstance(self.index, int):
-      print("block has invalid index")
-      return False
-    if not isinstance(self.hash, str):
-      print("block has invalid hash")
-      return False
-    if not isinstance(self.previous_hash, str):
-      print("block has invalid previous_hash")
-      return False
-    if not isinstance(self.timestamp, int):
-      print("block has invalid timestamp")
-      return False
-    if not isinstance(self.data, str):
-      print("block has invalid data")
-      return False
-    return True
 
 """
 A class representing a chain of Blocks
@@ -51,7 +31,7 @@ class BlockChain:
   def __init__(self):
     # All the Blocks in the chain are stored in a list
     # The Blocks list is initialized with the genesis Block, which has no `previous_hash`
-    self.blocks = [Block(0, hashlib.sha256(str(round(time.time() * 1000) + "The Genesis block").encode('utf-8')), None, int(round(time.time() * 1000)), "The Genesis block")]
+    self.blocks = [Block(0, hashlib.sha256((str(round(time.time() * 1000)) + "The Genesis block").encode('utf-8')).hexdigest(), None, int(round(time.time() * 1000)), "The Genesis block")]
 
   """
   Method to get the length of the BlockChain
@@ -87,8 +67,8 @@ class BlockChain:
   """
   def calculate_hash(self, index, previous_hash, timestamp, block_data):
     # Use the hashlib library to generate a sha256 hash of all the Block's data
-    input_str = (str(index) + previous_hash + str(timestamp) + block_data).encode('utf-8')
-    return hashlib.sha256(input_str)
+    input_bytes = (str(index) + previous_hash + str(timestamp) + block_data).encode('utf-8')
+    return hashlib.sha256(input_bytes).hexdigest()
 
   """
   Method to calculate the hash of a given Block
@@ -110,9 +90,6 @@ class BlockChain:
   Method to validate a new Block against the latest Block in the BlockChain
   """
   def is_valid_new_block(self, new_block, previous_block):
-    if not new_block.is_valid_block_structure():
-      print('invalid block structure')
-      return False
     if previous_block.index + 1 != new_block.index:
       print('invalid index')
       return False
@@ -120,7 +97,7 @@ class BlockChain:
       print('invalid previous hash')
       return False
     if self.calculate_hash_for_block(new_block) != new_block.hash:
-      print('hashes do not match')
+      print('hashes do not match: ' + self.calculate_hash_for_block(new_block) + ', ' + new_block.hash)
       return False
     return True
 

@@ -14,37 +14,29 @@ class ListNode:
         """
         new_node = ListNode(value)
         current = self 
-        next_node = current.get_next()
+        next_node = current.next
 
-        prev_node = current.get_prev() 
+        prev_node = current.prev 
         new_node.set_prev(current)#current node becomes the previous for new node
         new_node.set_next(next_node) # next node is now next for the new node
-
+        current.next = new_node
 
         # some way go find the value. 
 
         
 
     def insert_before(self, value):
-        current = self 
-        next_node = current.get_next()
-        prev_node = current.get_prev()
-
+        
         new_node = ListNode(value) # create new node 
-        new_node.set_next(current)
-        new_node.set_prev(prev_node)
+        new_node.prev = self.prev
+        new_node.next = self
+        self.prev = new_node 
 
     def delete(self):
-        current = self 
-        next_node = current.get_next()
-        prev_node = current.get_prev()
-        #   1 2  3   delete 2  
-        # set up  1 and 3   
-        prev_node.set_next(next_node)
-        next_node.set_prev(prev_node)
-        self.value = None  #should delete it. 
-        # maybe  del self maybe after removing the connect cannot access
-        # it any more. 
+        if self.prev is not None:
+            self.prev.next = self.next
+        if self.next is not None:
+            self.next.prev = self.prev
 
     def get_value(self):
         return self.value
@@ -112,51 +104,55 @@ class DoublyLinkedList:
         
 
     def move_to_front(self, node):
-        current_head = self.head # grab the current head
-        traveling_node_next = node.get_next()
-        traveling_node_prev = node.get_prev()
-        #What this is doing is allowing for a new connection to be set up
-        #I can then connect these to nodes together to keep the chain. 
-        # 1  2   3 
-        # we are grabing 2   
-        # 1   3  
-        # we now need 1 and 3 to be connected. 
-        if traveling_node_next is not None:
-            traveling_node_prev.set_next(traveling_node_next) #1>>3next
-        if traveling_node_prev is not None:
-            traveling_node_next.set_prev(traveling_node_prev) # 1<<3previous
-        #connected   1 >><<3 
-        #now set the node up to the front. 
-        self.head = node 
-        node.set_next(current_head) # connect so  1 2 3 4 5 take 4 
-        # we already connected 3 and 5 on lines 90 and 91. 
-        # now take the 4 and connect it 4 >> to 1(what was the head)
-        current_head.set_prev(node)
-        #now connect   what was the head to the new head   4 <<< 1 
+        # current_head = self.head # grab the current head
+        # traveling_node_next = node.get_next()
+        # traveling_node_prev = node.get_prev()
+        # #What this is doing is allowing for a new connection to be set up
+        # #I can then connect these to nodes together to keep the chain. 
+        # # 1  2   3 
+        # # we are grabing 2   
+        # # 1   3  
+        # # we now need 1 and 3 to be connected. 
+        # if traveling_node_next:
+        #     traveling_node_prev.set_next(traveling_node_next) #1>>3next
+        # if traveling_node_prev:
+        #     traveling_node_next.set_prev(traveling_node_prev) # 1<<3previous
+        # #connected   1 >><<3 
+        # #now set the node up to the front. 
+        # self.head = node 
+        # node.set_next(current_head) # connect so  1 2 3 4 5 take 4 
+        # # we already connected 3 and 5 on lines 90 and 91. 
+        # # now take the 4 and connect it 4 >> to 1(what was the head)
+        # current_head.set_prev(node)
+        # #now connect   what was the head to the new head   4 <<< 1 
+        node.delete
+        self.add_to_head(node.value)
 
 
     def move_to_end(self, node):
-        #very similar to  move_to_front only in reverse
-        current_tail = self.tail
-        traveling_node_next = node.get_next()
-        traveling_node_prev = node.get_prev()
-        # 1 2 3 4 5 6  
-        #  3 is being moved to the end 
-        # current_tail = 6  node = 3 
-        # traveling_node_prev = 2 
-        #traveling_node_next  = 4 
-        if traveling_node_next is not None:
-            traveling_node_prev.set_next(traveling_node_next) #2>>4next
-        if traveling_node_prev is not None:
-            traveling_node_next.set_prev(traveling_node_prev) # 2<<4previous
-        #connected   2 >><<4
-        #now set the node up to the end. 
-        self.tail = node 
-        node.set_prev(current_tail) # connect so 1 2 3 4 5 6 take 3
-        # we already connected 2 to 4 on lines 112 and 113 
-        # now take the 3 and connect it to <<< the 6(what was the tail)
-        current_tail.set_next(node)
-        # now connect what was the tail to the new tail 6>>>3 
+        # #very similar to  move_to_front only in reverse
+        # current_tail = self.tail
+        # traveling_node_next = node.get_next()
+        # traveling_node_prev = node.get_prev()
+        # # 1 2 3 4 5 6  
+        # #  3 is being moved to the end 
+        # # current_tail = 6  node = 3 
+        # # traveling_node_prev = 2 
+        # #traveling_node_next  = 4 
+        # if traveling_node_next :
+        #     traveling_node_prev.set_next(traveling_node_next) #2>>4next
+        # if traveling_node_prev:
+        #     traveling_node_next.set_prev(traveling_node_prev) # 2<<4previous
+        # #connected   2 >><<4
+        # #now set the node up to the end. 
+        # self.tail = node 
+        # node.set_prev(current_tail) # connect so 1 2 3 4 5 6 take 3
+        # # we already connected 2 to 4 on lines 112 and 113 
+        # # now take the 3 and connect it to <<< the 6(what was the tail)
+        # current_tail.set_next(node)
+        # # now connect what was the tail to the new tail 6>>>3 
+        node.delete()
+        self.add_to_tail(node.value)
 
 
 

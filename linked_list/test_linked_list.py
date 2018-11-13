@@ -6,14 +6,17 @@ class LinkedListTests(unittest.TestCase):
     self.list = LinkedList()
 
   def test_add_to_tail(self):
+    # print('TEST ADD TO TAIL')
     self.list.add_to_tail(1)
     self.assertEqual(self.list.tail.value, 1)
     self.assertEqual(self.list.head.value, 1)
     self.list.add_to_tail(2)
     self.assertEqual(self.list.tail.value, 2)
     self.assertEqual(self.list.head.value, 1)
+    
 
   def test_contains(self):
+    # print('TEST CONTAINS')
     self.list.add_to_tail(1)
     self.list.add_to_tail(2)
     self.list.add_to_tail(5)
@@ -23,6 +26,7 @@ class LinkedListTests(unittest.TestCase):
     self.assertFalse(self.list.contains(1000))
 
   def test_remove_head(self):
+    # print('TEST REMOVE HEAD')
     self.list.add_to_tail(10)
     self.list.add_to_tail(20)
     self.assertEqual(self.list.remove_head(), 10)

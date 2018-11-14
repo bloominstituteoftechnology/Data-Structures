@@ -23,10 +23,16 @@ class LinkedList:
     self.tail = None
 
   def add_to_tail(self, value):
-    pass
+    new_node = Node(value)
+    if self.head is None:
+      self.head=new_node
+      self.tail=new_node
+    else:
+      self.tail.set_next(new_node)
+      self.tail=new_node
 
   def remove_head(self):
-    pass
+    
 
   def contains(self, value):
     pass

@@ -34,14 +34,33 @@ class LinkedList:
 
     else:
       # if it is not a empty list, then add value as the tail of the list
-      self.tail.next = value
-
+      # self.tail.next = value
+      self.tail.set_next(value)
     self.tail = value
 
     return
 
   def remove_head(self):
-    pass
+    if self.head:
+      # if the next node from the head is empty
+      if self.head.get_next() == None:
+        # set temp_head to current head
+        temp_head = self.head
+        # set both the current head and current tail to be empty
+        self.head = None
+        self.tail = None
+        # then return the temporary head
+        return temp_head.get_value()
+      else:
+        # else set the temporary head to the current head
+        temp_head = self.head
+        # set the current head to the next node
+        self.head = self.head.get_next()
+        # return the temporary head
+        return temp_head.get_value()
+    else:
+      # else return None
+      return None
 
   def contains(self, value):
     pass

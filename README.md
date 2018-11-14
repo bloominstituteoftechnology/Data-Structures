@@ -1,7 +1,6 @@
 # Data Structures 
 
 Topics:
-
  * Linked Lists
  * Queues
  * Binary Search Trees

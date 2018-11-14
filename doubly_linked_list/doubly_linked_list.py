@@ -39,11 +39,24 @@ class LinkedList:
             current_node = current_node.get_next()
         return count
 
+    def search(self, data):
+        # O(n)
+        current_node = self.head
+        found = False
+        while current_node is not None and found is False:
+            if current_node.get_data() == data:
+                found = True
+            else:
+                current_node = current_node.get_next()
+            if current_node is None:
+                raise ValueError("Node not found")
+        return current_node
 
 
 ll = LinkedList()
 ll.insert("Brian")
 ll.insert("Shawn")
 ll.insert("Doris")
+print(ll)
 print(ll.size())
-
+print(ll.search('Doris'))

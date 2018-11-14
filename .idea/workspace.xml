@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2f0edb7-63ac-462a-9651-93aa009a030c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/R_User_Library.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/doubly_linked_list/doubly_linked_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/doubly_linked_list/doubly_linked_list.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doubly_linked_list/test_doubly_linked_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/doubly_linked_list/test_doubly_linked_list.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,12 +30,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="1932" />
+          <entry key="py" value="2329" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="1932" />
+          <entry key="Python" value="2329" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -49,13 +46,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/doubly_linked_list/doubly_linked_list.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="912">
-              <caret line="38" column="35" selection-start-line="38" selection-start-column="35" selection-end-line="38" selection-end-column="35" />
+            <state relative-caret-position="341">
+              <caret line="42" column="14" selection-start-line="42" selection-start-column="14" selection-end-line="42" selection-end-column="14" />
               <folding>
-                <marker date="1542234353132" expanded="true" signature="11:16" ph="..." />
-                <marker date="1542234353132" expanded="true" signature="146:200" ph="..." />
-                <marker date="1542234353132" expanded="true" signature="418:866" ph="..." />
-                <marker date="1542234353132" expanded="true" signature="502:538" ph="..." />
+                <marker date="1542235046224" expanded="true" signature="11:16" ph="..." />
+                <marker date="1542235046224" expanded="true" signature="146:200" ph="..." />
+                <marker date="1542235046224" expanded="true" signature="418:1321" ph="..." />
+                <marker date="1542235046224" expanded="true" signature="502:538" ph="..." />
               </folding>
             </state>
           </provider>
@@ -212,11 +209,11 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
       <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Terminal" weight="0.329927" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30729926" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30656934" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -244,13 +241,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/doubly_linked_list/doubly_linked_list.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="912">
-          <caret line="38" column="35" selection-start-line="38" selection-start-column="35" selection-end-line="38" selection-end-column="35" />
+        <state relative-caret-position="341">
+          <caret line="42" column="14" selection-start-line="42" selection-start-column="14" selection-end-line="42" selection-end-column="14" />
           <folding>
-            <marker date="1542234353132" expanded="true" signature="11:16" ph="..." />
-            <marker date="1542234353132" expanded="true" signature="146:200" ph="..." />
-            <marker date="1542234353132" expanded="true" signature="418:866" ph="..." />
-            <marker date="1542234353132" expanded="true" signature="502:538" ph="..." />
+            <marker date="1542235046224" expanded="true" signature="11:16" ph="..." />
+            <marker date="1542235046224" expanded="true" signature="146:200" ph="..." />
+            <marker date="1542235046224" expanded="true" signature="418:1321" ph="..." />
+            <marker date="1542235046224" expanded="true" signature="502:538" ph="..." />
           </folding>
         </state>
       </provider>

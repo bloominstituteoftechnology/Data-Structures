@@ -9,6 +9,7 @@ class ListNode:
     # else, set the value of next to current node's next
     # and prev to current node and set the next node's prev
     # to value and current node's next to value
+    value = ListNode(value)
     if self.next is None:
       self.next = value
       value.prev = self
@@ -23,6 +24,7 @@ class ListNode:
     # else, set the value of prev to current node's prev
     # and next to current node and set the prev node's next
     # to value and current node's prev to value
+    value = ListNode(value)
     if self.prev is None:
       self.prev = value
       value.next = self
@@ -55,7 +57,16 @@ class DoublyLinkedList:
     self.tail = node
 
   def add_to_head(self, value):
-    pass
+    # insert the node before head
+    self.head.insert_before(value)
+
+    # if the head doens't contain a node after it,
+    # set the tail to the head
+    if self.head.next == None:
+      self.tail = self.head
+
+    # set head to the prev node on head
+    self.head = self.head.prev
 
   def remove_from_head(self):
     pass

@@ -1,0 +1,45 @@
+________________Data Structures_____________
+
+Linked List, Queue, Binary Search Tree, Heap
+
+Linked List:
+    used to store lists of values, differnece between array and linklist is the LL stores 
+    values in nodes, each node is connected by a reference.
+    array = [1,2,3,4,5] :a block of memeory
+    LinkList 1 -> 2 -> 3 -> 4 -> 5 -> N :nodes connected by reference
+            head      value     tail  None :there should be only 1 node that points to None
+    code example:
+    class LinkedList:
+        self.head = head_node
+        self.tail = tail_node
+
+    Linked List are One Way Streets, no refernceing previous nodes only moving forward
+    How to insert new values: new node points to None, old tail now refernces new node.
+    Lookup: inserting new values, iterating over Linked List, delete or remove items
+    Pros:
+    Easier to insert into and delete from the middle of a linked list compared to an array(why is this the case?)
+    We can keep adding elements to Linked Lists as much as we want, unlike arrays with a static amount of allocated memory
+    Cons:
+    Linked lists are not as cache friendly since cashes typically optimized for contigous memory accesses
+    Linked lists do not need to be allocated with a static amount of momory up front
+
+Queue:
+    Waiting in line- that is what a queue is. You have to wait for everyone in front of you to go first
+    Added elements go to the back, then just move on up. 
+    First In First Out (FIFO)
+    code example:
+    class Queue:
+        self.size = 0
+        self.storage = storage_data_structure
+
+        size is so we know how long our queue is
+        storage is the container
+    Pros:
+    Queues are simple and intuitive to use and implement
+    They can be used to serialize data coming in from multiple sources, but they are joined in a common purpose
+    (like people going to a bank, they went there to get money, but one person will be going to buy a house
+        while another is just getting a sandwhich, while a psycho is just going to burn the money lol)
+    Cons:
+    They are not general-purpose at all
+
+Binary Serach Tree:

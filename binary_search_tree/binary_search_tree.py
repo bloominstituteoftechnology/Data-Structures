@@ -12,3 +12,5 @@ class BinarySearchTree:
 
   def get_max(self):
     pass
+
+# im so sick

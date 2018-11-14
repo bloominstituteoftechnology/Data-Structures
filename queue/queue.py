@@ -12,9 +12,28 @@ class Queue:
     self.storage.add_to_tail(item)
   
   def dequeue(self):
-    # TODO: add some logic here
-    self.storage.remove_head()
+    # if there is no node in the storage
+    if self.storage.head == None:
+      # return none to the caller
+      return None
+    else:
+      # otherwise take the previous head from storage and remove it
+      previous_head = self.storage.head.value
+      self.storage.remove_head()
+    # return the previous head to the caller
+    return previous_head
 
   def len(self):
     # TODO: do some length / size setting in this method with some logic after a coffee break
     return self.size
+
+# some debug tests
+q = Queue()
+
+q.enqueue(2)
+q.enqueue(4)
+q.enqueue(100)
+q.enqueue(1)
+
+print(q.storage.get_max())
+print(q.dequeue())

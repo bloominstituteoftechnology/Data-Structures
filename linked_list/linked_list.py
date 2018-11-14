@@ -47,11 +47,11 @@ class LinkedList:
       
 
   def contains(self, value):
-      current_node=self.head
-      while current_node is not None:
-        if current_node.get_val() == value:
+      temp=self.head
+      while temp:
+        if temp.value == value:
           return True
-        current_node= current_node.get_next()
+        temp=temp.next_node
       return False
     
 

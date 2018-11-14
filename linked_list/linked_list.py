@@ -23,22 +23,26 @@ class LinkedList:
     self.tail = None
 
   def add_to_tail(self, value):
+    node = Node(value)
     if not self.head:
-      self.head = Node(value)
-      self.tail = self.head
+      self.head = node
+      self.tail = node
       return
     else:
       if self.head == self.tail:
-        print ('this happened once')
-        self.head.set_next(Node(value))
+        self.head.set_next(node)
       else:
-        self.tail.set_next(Node(value))
-    self.tail = Node(value)
+        self.tail.set_next(node)
+    self.tail = node
 
   def remove_head(self):
     if self.head:
+      old_head = self.head
       new_head = self.head.get_next()
       self.head = new_head
+      return old_head.value
+    else:
+      return None
 
   def contains(self, value):
     node_checked = self.head

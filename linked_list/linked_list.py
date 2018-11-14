@@ -39,9 +39,9 @@ class LinkedList:
     # if none, set head and tal to the new node
     # else, set next tail node to new node and
     # tail to new node
-    if head_node == None:
+    if head_node is None:
       self.head = new_node
-    if tail_node == None:
+    if tail_node is None:
       self.tail = new_node
     else:
       tail_node.set_next(new_node)
@@ -49,36 +49,36 @@ class LinkedList:
     
 
   def remove_head(self):
-    pass
+    # Check if head is none, if so, return none
+    if self.head is None:
+      return None
+
+    # set the head's current value
+    value = self.head.get_value()
+
+    # set the head to the next node
+    self.head = self.head.get_next()
+
+    # if head is none, set tail to none as well
+    if self.head is None:
+      self.tail = None
+
+    # return the heads value
+    return value
+
 
   def contains(self, value):
     # set current node to head
     cur_node = self.head
 
-    # for returning if true or false
-    does_contain = False
-
-    # check if head contains the value
-    if cur_node.value == value:
-      does_contain = True
-
-    # continue to loop if the node does have
-    # a next node and check it's value
-    while cur_node.next_node != None:
-      cur_node = cur_node.next_node
-      cur_value = cur_node.value
-      if cur_value == value:
-        does_contain = True
-    
-    return does_contain
+    # while current node exists,
+    # compare the values and return true if they are equal
+    while cur_node:
+      if cur_node.get_value() is value:
+        return True
+      cur_node = cur_node.get_next()
+    return False
 
 
   def get_max(self):
     pass
-
-
-nlist = LinkedList()
-nlist.add_to_tail(1)
-nlist.add_to_tail(2)
-nlist.add_to_tail(5)
-nlist.add_to_tail(10)

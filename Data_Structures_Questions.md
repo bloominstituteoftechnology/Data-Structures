@@ -25,10 +25,13 @@ In case of having no pointer, the runtime is O(n) --we have to traverse to the t
 ## Binary Search Tree
 
 1. What is the runtime complexity of `insert`? 
+O(log n) in avarage if this is a "good" implemented tree, if not, it could bee O(n)
 
 2. What is the runtime complexity of `contains`?
+Best runtime is O(log n), worst is O(n)
 
 3. What is the runtime complexity of `get_max`? 
+O(log n)-the best  runtime
 
 ## Heap
 

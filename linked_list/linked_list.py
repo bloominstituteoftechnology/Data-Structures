@@ -81,4 +81,11 @@ class LinkedList:
 
 
   def get_max(self):
-    pass
+    values = []
+    cur_node = self.head
+
+    while cur_node:
+      values.append(cur_node.get_value())
+      cur_node = cur_node.get_next()
+    
+    return max(values)

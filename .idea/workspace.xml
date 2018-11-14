@@ -30,12 +30,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="2329" />
+          <entry key="py" value="2962" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="2329" />
+          <entry key="Python" value="2962" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -46,13 +46,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/doubly_linked_list/doubly_linked_list.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="42" column="14" selection-start-line="42" selection-start-column="14" selection-end-line="42" selection-end-column="14" />
+            <state relative-caret-position="487">
+              <caret line="69" column="59" selection-start-line="69" selection-start-column="59" selection-end-line="70" selection-end-column="56" />
               <folding>
-                <marker date="1542235046224" expanded="true" signature="11:16" ph="..." />
-                <marker date="1542235046224" expanded="true" signature="146:200" ph="..." />
-                <marker date="1542235046224" expanded="true" signature="418:1321" ph="..." />
-                <marker date="1542235046224" expanded="true" signature="502:538" ph="..." />
+                <marker date="1542235853635" expanded="true" signature="11:16" ph="..." />
+                <marker date="1542235853635" expanded="true" signature="146:200" ph="..." />
+                <marker date="1542235853635" expanded="true" signature="418:1969" ph="..." />
+                <marker date="1542235853635" expanded="true" signature="502:538" ph="..." />
               </folding>
             </state>
           </provider>
@@ -241,13 +241,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/doubly_linked_list/doubly_linked_list.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="42" column="14" selection-start-line="42" selection-start-column="14" selection-end-line="42" selection-end-column="14" />
+        <state relative-caret-position="487">
+          <caret line="69" column="59" selection-start-line="69" selection-start-column="59" selection-end-line="70" selection-end-column="56" />
           <folding>
-            <marker date="1542235046224" expanded="true" signature="11:16" ph="..." />
-            <marker date="1542235046224" expanded="true" signature="146:200" ph="..." />
-            <marker date="1542235046224" expanded="true" signature="418:1321" ph="..." />
-            <marker date="1542235046224" expanded="true" signature="502:538" ph="..." />
+            <marker date="1542235853635" expanded="true" signature="11:16" ph="..." />
+            <marker date="1542235853635" expanded="true" signature="146:200" ph="..." />
+            <marker date="1542235853635" expanded="true" signature="418:1969" ph="..." />
+            <marker date="1542235853635" expanded="true" signature="502:538" ph="..." />
           </folding>
         </state>
       </provider>

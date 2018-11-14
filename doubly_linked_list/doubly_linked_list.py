@@ -1,40 +1,49 @@
-class ListNode:
-  def __init__(self, value, prev=None, next=None):
-    self.value = value
-    self.prev = prev
-    self.next = next
+class Node:
+    def __init__(self, data=None, next_node=None):
+        self.data = data
+        self.next_node = next_node
 
-  def insert_after(self, value):
-    pass
+    def __str__(self):
+        return f"{self.data}, {self.next_node}"
 
-  def insert_before(self, value):
-    pass
+    def get_data(self):
+        return self.data
 
-  def delete(self):
-    pass
+    def get_next(self):
+        return self.next_node
 
-class DoublyLinkedList:
-  def __init__(self, node=None):
-    self.head = node
-    self.tail = node
+    def set_next(self, value):
+        if type(value) == Node:
+            self.next_node = value
 
-  def add_to_head(self, value):
-    pass
 
-  def remove_from_head(self):
-    pass
+class LinkedList:
+    def __init__(self, head=None):
+        self.head = head
 
-  def add_to_tail(self, value):
-    pass
+    def __str__(self):
+        return f"{self.head}"
 
-  def remove_from_tail(self):
-    pass
+    def insert(self, data):
+        # O(1)
+        new_node = Node(data)
+        new_node.set_next(self.head)
+        self.head = new_node
 
-  def move_to_front(self, node):
-    pass
+    def size(self):
+        current_node = self.head
+        count = 0
+        # O(n)
+        while current_node is not None:
+            count += 1
+            current_node = current_node.get_next()
+        return count
 
-  def move_to_end(self, node):
-    pass
 
-  def delete(self, node):
-    pass
+
+ll = LinkedList()
+ll.insert("Brian")
+ll.insert("Shawn")
+ll.insert("Doris")
+print(ll.size())
+

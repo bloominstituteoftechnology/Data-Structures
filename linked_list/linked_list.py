@@ -25,15 +25,30 @@ class LinkedList:
   def add_to_tail(self, value):
     if not self.head:
       self.head = Node(value)
+      self.tail = self.head
+      return
     else:
-      self.tail.set_next(Node(value))
+      if self.head == self.tail:
+        print ('this happened once')
+        self.head.set_next(Node(value))
+      else:
+        self.tail.set_next(Node(value))
     self.tail = Node(value)
 
   def remove_head(self):
-    pass
+    if self.head:
+      new_head = self.head.get_next()
+      self.head = new_head
 
   def contains(self, value):
-    pass
+    node_checked = self.head
+    while node_checked != None:
+      if node_checked.get_value() == value:
+        return True
+      else:
+        node_checked = node_checked.get_next()
+    return False
+
 
   def get_max(self):
     pass

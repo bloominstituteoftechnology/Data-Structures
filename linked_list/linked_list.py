@@ -23,42 +23,56 @@ class LinkedList:
     self.tail = None
 
   def add_to_tail(self, value):
-    if self.head = None:
-        self.head = value
-        self.tail = value
+    if self.head == None:
+        self.head = Node(value)
+        self.tail = Node(value)
     else:
-        self.tail.set_next = value
-        self.tail = value
+        new_tail = Node(value)
+        self.tail.set_next(new_tail)
+        self.tail = new_tail
 
   def remove_head(self):
     if self.head == None:
         return
+    elif self.head.next_node == None:
+        head_to_return = self.head
+        self.head = None
+        #print(head_to_return.get_value())
+        return head_to_return.get_value()
     else:
         next_head = self.head.next_node
         head_to_return = self.head
         self.head = next_head
-        return head_to_return
+        #print(head_to_return.get_value())
+        return head_to_return.get_value()
 
   def contains(self, value):
-    presently_searching_node = self.head
+    if self.head:
+        presently_searching_node = self.head
+    else:
+        return
     while presently_searching_node != self.tail:
-        if presently_searching_node == value:
+        #print(presently_searching_node.get_value())
+        if presently_searching_node.get_value() == value:
             return true
         else:
-            presently_searching_node = presently_searching_node.get_next
-    if presently_searching_node == value:
+            presently_searching_node = presently_searching_node.get_next()
+    if presently_searching_node.get_value() == value:
         return true
     else:
         return false
 
   def get_max(self):
     current_max = -9999999999
-    presently_searching_node = self.head
+    if self.head:
+        presently_searching_node = self.head
+    else:
+        return
     while presently_searching_node != self.tail:
-        if presently_searching_node.get_value > current_max:
-            current_max = presently_searching_node.get_value
+        if presently_searching_node.get_value() > current_max:
+            current_max = presently_searching_node.get_value()
         else:
-            presently_searching_node = presently_searching_node.get_next
-    if presently_searching_node > current_max:
-        current_max = presently_searching_node.get_value
+            presently_searching_node = presently_searching_node.get_next()
+    if presently_searching_node.get_value() > current_max:
+        current_max = presently_searching_node.get_value()
     return current_max

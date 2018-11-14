@@ -81,11 +81,49 @@ class LinkedList:
 
 
   def get_max(self):
-    values = []
+    # set the current node
     cur_node = self.head
 
-    while cur_node:
-      values.append(cur_node.get_value())
-      cur_node = cur_node.get_next()
+    # check if the node exists, if not return none
+    if cur_node is None:
+      return None
     
-    return max(values)
+    # set the max value to the default first node
+    max_value = cur_node.get_value()
+
+    # continue while current node exists
+    while cur_node:
+
+      # check if the next node exists, if not, return max val
+      if cur_node.get_next() is None:
+        return max_value
+      
+      # set next node and next node's value and compare
+      next_node = cur_node.get_next()
+      next_value = next_node.get_value()
+      if max_value < next_value:
+        max_value = next_value
+
+      # set current node to the next node and repeat
+      cur_node = cur_node.get_next()
+
+    return max_value
+
+    # The one below was my first approach, but I also decided
+    # to take another approach as show above. 
+    # This bottom approach looks cleaner
+    # and uses the built in function max, the other
+    # checks each value manually
+
+    # values = []
+    # cur_node = self.head
+
+    # if cur_node is None:
+    #   return None
+
+    # while cur_node:
+    #   values.append(cur_node.get_value())
+    #   cur_node = cur_node.get_next()
+    
+    # max_val = max(values)
+    # return max_val

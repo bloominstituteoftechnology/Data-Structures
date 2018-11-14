@@ -40,6 +40,8 @@ class LinkedList:
       old_head = self.head
       new_head = self.head.get_next()
       self.head = new_head
+      if old_head == self.tail:
+        self.tail = new_head
       return old_head.value
     else:
       return None

@@ -26,8 +26,8 @@ class LinkedList:
     output = ""
     marker = self.head
     while marker:
-      output += (f"{marker.get_value()} -> ")
-      marker = marker.get_next()
+      output += (f"{marker.value} -> ")
+      marker = marker.next_node
     output += "None"
     return output
 
@@ -35,7 +35,7 @@ class LinkedList:
     new = Node(value, None)
     # if there is a tail, then set its next_node to the new node
     if self.tail:
-      self.tail.set_next(new)
+      self.tail.next_node = new
     self.tail = new
     # if there is no head, then set the head to the new node
     if not self.head:
@@ -47,8 +47,8 @@ class LinkedList:
       return None
 
     old_head = self.head
-    self.head = old_head.get_next()
-    old_head.set_next(None)
+    self.head = old_head.next_node
+    old_head.next_node = None
     if old_head == self.tail:
       self.tail = None
 
@@ -60,19 +60,39 @@ class LinkedList:
   def contains(self, value):
     marker = self.head
     while marker:
-      if marker.get_value() == value:
+      if marker.value == value:
         return True
-      marker = marker.get_next()
+      marker = marker.next_node
     return False
 
   def get_max(self):
     marker = self.head
     if not marker:
       return None
-    max = marker.get_value()
+    max = marker.value
     while marker:
-      if marker.get_value() > max:
-        max = marker.get_value()
-      marker = marker.get_next()
+      if marker.value > max:
+        max = marker.value
+      marker = marker.next_node
     return max
 
+
+# linked = LinkedList()
+
+# linked.add_to_tail(10)
+# linked.add_to_tail(20)
+# print(linked.remove_head() == 10)
+# print(not linked.contains(10))
+# print(linked.remove_head() == 20)
+# print(not linked.contains(20))
+# print(linked)
+# print("\n")
+
+# linked.add_to_tail(10)   
+# print(linked) 
+# print(linked.remove_head() == 10)    
+# print(linked) 
+# print(linked.head == None)
+
+# print(linked.tail == None)
+# print(linked.remove_head() == None)

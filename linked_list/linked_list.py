@@ -76,4 +76,20 @@ class LinkedList:
     return False
 
   def get_max(self):
-    pass
+    # grab the current head
+    current_head = self.head
+    # set a maximum value to None to initialize it
+    maximum_value = None
+
+    # while the current head is here
+    while current_head:
+
+      # if the maximum value is none or if the current heads value is greater than the maximum value
+      if maximum_value is None or current_head.get_value() > maximum_value:
+
+          # set the maximum value to the value of the current head
+          maximum_value = current_head.get_value()
+      # set the current head to the next node of the current head
+      current_head = current_head.get_next()
+    # return the maximum valuse to the caller
+    return maximum_value

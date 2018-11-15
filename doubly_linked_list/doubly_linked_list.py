@@ -109,10 +109,17 @@ class DoublyLinkedList:
 
   def remove_from_tail(self):
     # set self tail to removal node
+    node_to_remove = self.tail 
+    
     # set the previous node to the previous node of the tail
+    previous_node = self.tail.prev
+    
     # set the next node of the previous node to none
+    previous_node.next = None
+    
     # set the current tail to the previous node and return the removal nodes value to the caller
-    pass
+    self.tail = previous_node
+    return node_to_remove.value
 
   def move_to_front(self, node):
     # delete the node and add the nodes value to the head

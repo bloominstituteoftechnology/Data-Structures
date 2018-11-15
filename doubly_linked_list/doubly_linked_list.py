@@ -15,7 +15,6 @@ class ListNode:
     if isinstance(value, ListNode) is False:
       value = ListNode(value)
 
-
     if self.next is None:
       self.next = value
       value.prev = self

@@ -30,9 +30,7 @@ class LinkedList:
     head_node = self.head
     tail_node = self.tail
 
-    # define the prev node and
     # create a new node
-    prev_node = None
     new_node = Node(value)
 
     # check if head and tail are none,

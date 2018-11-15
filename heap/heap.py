@@ -9,12 +9,15 @@ class Heap:
     pass
 
   def get_max(self):
+    # return the storage and the zeroth index
     return self.storage[0]
 
   def get_size(self):
+    # return the length of the storage
     return len(self.storage)
 
   def _bubble_up(self, index):
+    
     pass
 
   def _sift_down(self, index):

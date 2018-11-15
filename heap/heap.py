@@ -36,7 +36,7 @@ class Heap:
   def get_max(self):
     # return the storage at index 1
     return self.storage[1]
-    pass
+    #pass
 
   def get_size(self):
     # return size

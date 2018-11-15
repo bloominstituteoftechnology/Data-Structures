@@ -28,6 +28,8 @@ class ListNode:
     pass
 
   def delete(self):
+    # if the prev is not none set the self prev next to next
+    # if the next is not none set the next.prev to the prev
     pass
 
 class DoublyLinkedList:

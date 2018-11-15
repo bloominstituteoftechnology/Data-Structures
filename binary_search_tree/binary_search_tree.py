@@ -33,6 +33,9 @@ class BinarySearchTree:
       else:
         return False
 
-
   def get_max(self):
-    pass
+    if self.right is None:
+      return self.value
+    
+    return self.right.get_max()
+

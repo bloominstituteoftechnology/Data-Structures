@@ -111,10 +111,4 @@ class DoublyLinkedList:
     return None
 
   def delete(self, node):
-    # this assumes the node does NOT necessarily exist in the list,
-    # so it performs a search for it before deleting, making the runtime complexity = O(n).
-    # if you assume the node already exists, you can just delete it,
-    # dropping the runtime complexity down to O(1).
-    selected_node = self.contains(node.value, self.head)
-    if selected_node:
-      selected_node.delete()
+    node.delete()

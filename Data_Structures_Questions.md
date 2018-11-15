@@ -84,5 +84,4 @@ For each of the methods associated with each data structure, classify it based o
     *   `O(n)`
 
     a. Compare the runtime of the doubly linked list's `delete` method with the worst-case runtime of the JS `Array.splice` method. Which method generally performs better?
-    *   With the way that I implemented doubly linked list's `delete` method, I did not assume the node to be deleted existed in the list. I performed a search for it before deleting, which made the runtime complexity = O(n), which is on par with the JS `Array.splice` method.
-    *   However, if you assume the node to be deleted already exists in the list, then the doubly linked list's `delete` method's runtime complexity drops down to O(1), which then becomes significantly faster than the JS `Array.splice` method's O(n) complexity.
+    *   The doubly linked list's `delete` method's runtime complexity is O(1), which is significantly faster than the JS `Array.splice` method's O(n) complexity.

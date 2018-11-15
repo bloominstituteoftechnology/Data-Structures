@@ -30,11 +30,14 @@ For each of the methods associated with each data structure, classify it based o
 
 ## Binary Search Tree
 
-1. What is the runtime complexity of `insert`? 
+1) What is the runtime complexity of `insert`? 
+- O(logn), it has to traverse half trees to find its place.
 
-2. What is the runtime complexity of `contains`?
+2) What is the runtime complexity of `contains`?
+- O(logn), it has to traverse half trees to find the target value.
 
-3. What is the runtime complexity of `get_max`? 
+3) What is the runtime complexity of `get_max`? 
+- O(logn), it has to traverse half trees all the way through to make sure it's the highest value.
 
 ## Heap
 

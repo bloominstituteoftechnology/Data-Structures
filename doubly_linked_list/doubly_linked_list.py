@@ -60,6 +60,10 @@ class DoublyLinkedList:
     pass
 
   def remove_from_head(self):
+    # set self to removal node
+    # if the head is none the return the head
+    # otherwise set a ret_val to the current heads value and set the head to the next node
+    # if the head is none then set the tail to none and return the ret_val to the caller
     pass
 
   def add_to_tail(self, value):

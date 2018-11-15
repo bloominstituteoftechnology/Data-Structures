@@ -57,10 +57,10 @@ class LinkedList:
 
 
   def get_max(self):
-    max = 0
+    max_value = 0
     node_checked = self.head
     while node_checked:
-      if node_checked.value > max:
-        max = node_checked.value
+      if node_checked.value > max_value:
+        max_value = node_checked.value
       node_checked = node_checked.get_next()
-    return max if max else None
+    return max_value if max_value else None

@@ -63,7 +63,25 @@ class LinkedList:
     else:
       return True
     
-
-
   def get_max(self):
-    pass
+    print('*****************************')
+    print('tail node: ', self.tail.value)
+    print('head node: ', self.head)
+    current_node = self.head
+   
+    max = 0
+    while current_node is not None:
+      if current_node is None:
+        return None
+      elif current_node.value > max:
+        max = current_node.value
+        print('Current max: ', max)
+      return max
+
+test_linked_list = LinkedList()
+
+test_linked_list.add_to_tail(100)
+test_linked_list.add_to_tail(55)
+test_linked_list.add_to_tail(101)
+test_linked_list.get_max()
+

@@ -5,8 +5,21 @@ class ListNode:
     self.next = next
 
   def insert_after(self, value):
-    pass
+    # set the next node as a new ListNode
 
+    # set the current node to this node
+
+    # set the previous_node to the current nodes prev
+
+    # set the other node to the current node next
+
+    # set the previous of the new node to the current node
+
+    # set the prev of the new node to the next node
+
+    # set the next node of the current node to the new node
+    pass
+    
   def insert_before(self, value):
     pass
 

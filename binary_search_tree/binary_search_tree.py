@@ -19,9 +19,17 @@ class BinarySearchTree:
     else:
       branch = self.right
       branch.insert(value)
-      
-  def contains(self, target):
-    pass
+
+  def contains(self, target):    
+    branch = self.right if target > self.value else self.left
+
+    if self.value == target: # --> Success case
+      return True
+    
+    elif branch is None:
+      return False
+    
+    return branch.contains(target)
 
   def get_max(self):
     pass

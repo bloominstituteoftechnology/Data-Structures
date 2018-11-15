@@ -28,8 +28,8 @@ class LinkedList:
       self.head=new_node
       self.tail=new_node
     else:
-      self.tail.next_node=Node(value)
-      self.tail=self.tail.next_node
+      self.tail.set_next(new_node)
+      self.tail=new_node
 
   def remove_head(self):
     to_remove =self.head

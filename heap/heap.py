@@ -2,17 +2,20 @@ class Heap:
   def __init__(self):
     self.storage = []
 
+# bubble the values from the end up to the start through the length of the array/list
   def insert(self, value):
-    pass
+    self.storage.append(value)
+    self._bubble_up(len(self.storage)-1)
 
   def delete(self):
     pass
 
   def get_max(self):
-    pass
-
+   return self.storage[0]
+# just the lenth of the array/list
   def get_size(self):
-    pass
+    return len(self.storage)
+    
 
   def _bubble_up(self, index):
     pass

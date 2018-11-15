@@ -38,4 +38,11 @@ class Heap:
     pass
 
   def _sift_down(self, index):
+    # set index left to index if 2 times the index is greater than size otherwise set it to two times index
+    # set index right to index if 2 times the index plus 1 is greater than size otherwise set it to two times index plus one
+    # set index of child to index left if the storage at index left is greater than the storage at index right otherwise return index right
+    # if the index of child is equal to the index then return to caller
+
+    # if the storage at index of child is greater than the storage at index 
+    # swap the storage value at index with the storage value at index of child and do a recursive call to sift down
     pass

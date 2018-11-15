@@ -113,7 +113,8 @@ class DoublyLinkedList:
       return self.tail.next.delete()
 
   def move_to_front(self, node):
-    pass
+    node.delete()
+    self.add_to_head(node)
 
   def move_to_end(self, node):
     node.delete()

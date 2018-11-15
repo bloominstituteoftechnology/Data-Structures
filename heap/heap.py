@@ -17,7 +17,7 @@ class Heap:
     if self.size == 0:
       return None
     # create variables for the storage top and storage end
-    storage_top = self.storage[self.size - 1]
+    storage_top = self.storage[1]
     storage_end = self.storage.pop()
     # decrement the size
     self.size -= 1

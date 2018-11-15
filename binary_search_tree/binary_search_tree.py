@@ -5,26 +5,54 @@ class BinarySearchTree:
     self.right = None
 
   def insert(self, value):
-
-    if value < self.value:
-        self.right = BinarySearchTree(self.value)
-        self.value = value
-    else:
-        self.left = BinarySearchTree(self.value)
-        self.value = value
-    print("value:", self.value, "left:", self.left, "right:", self.right)
+    currently_searching_tree = self
+    is_running = True
+    while is_running:
+        if value > currently_searching_tree.value:
+            if currently_searching_tree.right:
+                currently_searching_tree = currently_searching_tree.right
+            else:
+                currently_searching_tree.right = BinarySearchTree(value)
+                is_running = False
+        elif value < currently_searching_tree.value:
+            if currently_searching_tree.left:
+                currently_searching_tree = currently_searching_tree.left
+            else:
+                currently_searching_tree.left = BinarySearchTree(value)
+                is_running = False
+        else:
+            is_running = False
 
   def contains(self, target):
-    if self.value == target:
-        return True
-    if self.right != None and self.left != None:
-        if self.right == target:
+    currently_searching_tree = self
+    is_running = True
+    while is_running:
+        if target == currently_searching_tree.value:
             return True
-        elif self.left == target:
-            return True
+        elif target > currently_searching_tree.value:
+            if currently_searching_tree.right:
+                currently_searching_tree = currently_searching_tree.right
+            else:
+                return False
+        elif target < currently_searching_tree.value:
+            if currently_searching_tree.left:
+                currently_searching_tree = currently_searching_tree.left
+            else:
+                return False
         else:
-            self.contains(self.right, target)
-            self.contains(self.left, target)
+            is_running = False
 
   def get_max(self):
-    pass
+    current_max = -9999999
+    currently_searching_tree = self
+    is_running = True
+    while is_running:
+        if currently_searching_tree.value > current_max:
+            if currently_searching_tree.right:
+                current_max = currently_searching_tree.value
+                currently_searching_tree = currently_searching_tree.right
+            else:
+                return currently_searching_tree.value
+                is_running = False
+        else:
+            is_running = False

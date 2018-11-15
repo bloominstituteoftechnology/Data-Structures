@@ -68,4 +68,18 @@ class LinkedList:
             return False  # no node has that argument value
 
     def get_max(self):
-        pass
+        if self.head == None:  # if no node exists
+            return None
+        else:
+            current_node = self.head
+            max_value = 0
+            while current_node is not None:
+                if (
+                    current_node.value > max_value
+                ):  # if current value is more than stored value
+                    max_value = current_node.value  # update max_value
+                    current_node = (
+                        current_node.get_next()
+                    )  # keep going until reaches end
+            return max_value
+

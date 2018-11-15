@@ -17,6 +17,9 @@ class Node:
   def set_next(self, new_next):
     self.next_node = new_next
 
+  def __str__(self):
+    return f'<Node: {self.value}>'
+
 class LinkedList:
   def __init__(self):
     self.head = None
@@ -64,3 +67,14 @@ class LinkedList:
         max_value = node_checked.value
       node_checked = node_checked.get_next()
     return max_value if max_value else None
+  
+
+  def __str__(self):
+    r = ""
+
+    p = self.head
+    while p != None:
+      r += str(p) + ' -> '
+      p = p.next_node
+
+    return r

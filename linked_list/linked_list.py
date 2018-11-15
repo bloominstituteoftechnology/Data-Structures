@@ -29,6 +29,7 @@ class LinkedList:
         new_node = Node(value)
         if self.tail != None:
             self.tail.next_node = new_node
+            self.tail = new_node
         else:
             self.head = new_node
             self.tail = new_node
@@ -43,13 +44,17 @@ class LinkedList:
         return head
 
     def contains(self, value):
-        head = self.head
-        while head != None:
-            current_value = head.value
-            if current_value == value:
-                return True
-            head = head.next_node
-        return False
+        current = self.head
+        found = False
+        while current and found is False:
+            # current_value = head.value
+            if current.get_value() == value:
+                found = True
+            else:
+                current = current.get_next()
+        if current is None:
+            print('not in dataset')
+        return current
 
     def get_max(self):
         if self.head == None:

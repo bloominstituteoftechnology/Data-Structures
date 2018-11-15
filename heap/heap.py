@@ -1,13 +1,16 @@
 class Heap:
   def __init__(self):
-    self.storage = []
-    # TODO: add a size var to keep track
+    self.storage = [0]
+    self.size = 0
 
   def insert(self, value):
     # append value to storage
+    self.storage.append(value)
     #increment size
+    self.size += 1
     # bubble up
-    pass
+    self._bubble_up(self.size)
+    #pass
 
   def delete(self):
     # if empty return none

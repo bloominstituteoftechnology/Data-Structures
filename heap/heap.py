@@ -8,20 +8,18 @@ class Heap:
 
   def delete(self):
     self.storage.pop(0)
-    self.storage.insert(0,self.storage[len(self.storage)-1])
+    storage_length = len(self.storage)-1
+    last_element = self.storage[storage_length]
+    self.storage.insert(0,last_element)
     self.storage.pop()
     index = 0
-    while self.storage[index]<self.storage[(2*index)+1] or self.storage[index]<self.storage[(2*index)+2]:
-      if self.storage[index] < self.storage[(2*index)+1]:
-        temporary = self.storage[index]
-        self.storage[index] = self.storage[(2*index)+1]
-        self.storage[(2*index)+1] = temporary
-        index = (2*index)+1
-      else:
-        temporary = self.storage[index]
-        self.storage[index] = self.storage[(2*index)+2]
-        self.storage[(2*index)+2] = temporary
-        index = (2*index)+2
+    keep_sifting = True
+    storage_length = len(self.storage)
+    while keep_sifting:
+      index = self._sift_down(index)
+      if index == -1:
+        break
+      keep_sifting = index < storage_length
 
   def get_max(self):
     return self.storage[0]
@@ -36,18 +34,25 @@ class Heap:
       self.storage[self.get_size()-1] = temporary
 
   def _sift_down(self, index):
-    if (2*index)+1 < self.get_size():
-      if self.storage[index] < self.storage[(2*index)+1]:
-        temporary = self.storage[index]
-        self.storage[index] = self.storage[(2*index)+1]
-        self.storage[(2*index)+1] = temporary
-        return (2*index)+1
-    elif (2*index)+2 < self.get_size:
-      if self.storage[index] < self.storage[(2*index)+2]:
-        temporary = self.storage[index]
-        self.storage[index] = self.storage[(2*index)+2]
-        self.storage[(2*index)+2] = temporary
-        return (2*index)+2
+    left_child_index = (2*index)+1
+    storage_length = len(self.storage)
+    parent = self.storage[index]
+    right_child_index = (2*index)+2
+    if left_child_index < storage_length:
+      left_child = self.storage[left_child_index]
+      if parent < left_child:
+        temporary = parent
+        self.storage[index] = left_child
+        self.storage[left_child_index] = temporary
+        return left_child_index
+      elif right_child_index < storage_length:
+        right_child = self.storage[right_child_index]
+        if parent < right_child:
+          temporary = parent
+          self.storage[index] = right_child
+          self.storage[right_child_index] = temporary
+          return right_child_index
+        else:
+          return -1
     else:
-      print('Error in _sift_down()')
       return -1

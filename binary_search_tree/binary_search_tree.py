@@ -21,7 +21,24 @@ class BinarySearchTree:
                 self.right.insert(value)
 
     def contains(self, target):
-        pass
+        if target == self.value:  # if root node and target has the same value
+            return True
+        elif target < self.value:  # if target has a smaller value
+            if (
+                self.left is None
+            ):  # if there's no node to the left, nothing else to search
+                return False
+            else:  # if there is a node basically, start running the recursion
+                return self.left.contains(
+                    target
+                )  # run recursive check on left nodes to check a target match
+        elif target > self.value:
+            if self.right is None:
+                return False
+            else:
+                return self.right.contains(target)
+        else:  # all cases + if there's no root node
+            return False
 
     def get_max(self):
         pass

@@ -71,10 +71,22 @@ class DoublyLinkedList:
 
   def remove_from_head(self):
     # set self to removal node
+    removal_node = self
+    
     # if the head is none the return the head
+    if self.head == None:
+      return self.head
+    
     # otherwise set a ret_val to the current heads value and set the head to the next node
-    # if the head is none then set the tail to none and return the ret_val to the caller
-    pass
+    else:
+      ret_val = self.head.get_value()
+      self.head = self.head.get_next()
+      
+      # if the head is none then set the tail to none and return the ret_val to the caller
+      if self.head is None:
+          self.tail = None
+
+      return ret_val
 
   def add_to_tail(self, value):
     # set new node as a new list node with value

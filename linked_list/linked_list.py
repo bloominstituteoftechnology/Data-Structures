@@ -54,7 +54,33 @@ class LinkedList:
       return head.get_value()
 
   def contains(self, value):
-    pass
+    current_node = self.head
 
-  def get_max(self):
-    pass
+    if not current_node:
+      return False    
+
+    while current_node:
+      if current_node.get_value() == value:
+        return True
+
+      current_node = current_node.get_next()
+
+  def get_max(self):    
+    if not self.head:
+      return None
+
+    max_value = self.head.get_value()
+    current = self.head.get_next()
+
+    while current:
+      if current.get_value() > max_value:
+        max_value = current.get_value()
+
+      current = current.get_next()
+      
+    return max_value
+         
+
+      
+
+        

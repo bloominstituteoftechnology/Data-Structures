@@ -43,3 +43,78 @@ Queue:
     They are not general-purpose at all
 
 Binary Serach Tree:
+    What are trees? - Intuitively, trees can be thought of as linked lists, but withour the constraint
+    that each node only points to one other node. A tree node can point to multiple other nodes in the tree.
+    Note...that Linked Lists themselves count as trees!!!!
+    Binary Tree- why binary? points to how many nodes a single node can point to, in this case that would be 2
+    this is the typlical CYOA choices (Left or Right?, Red Pill or Blue Pill?) only 2 choices and the tree gets bigger from there
+        Root: top most node
+        Child: node directly connected to another node, coming off the Root
+        Parent: node directly connected to another node, going up to the Root
+        Siblings: share a common Parent
+        Leaf: childless node
+    ---Rule For Binary Tree-------------
+    for any given node, all values in the left subtree are less than the value at the given node.
+    Conversely all values in the right subtree are greater than or equal to the value of the given node
+                14
+                9      22
+            8   11      16   27
+        2      10         18
+    code example:
+    class BinarySearchTree:
+        self.value = value
+        self.left = left_subtree
+        self.right = right_subtree
+    Checking for a Value in a Binary Serach Tree(BST):
+    starting from the root, is what we are looking for greater or less than that?
+    remember the BST rule above. then we just keep comparing downt he tree until we find what we are looking for
+    Look up- how to insert values into a BST, how to delete, and how to show all, and what is a balanced tree?
+    Pros:
+    Searching for an element ina binary search tree is significantly more efficient than Searching
+    through an array or a linked list
+    Cons:
+    As a trade-off, it is not as efficient to insert into a BST
+    And, the performance of a BST depends on whether the tree is "balanced" or not
+
+Heap:
+What are heaps? - they are about one thinga nd one thing only! PRIORITY
+imagine your clothes pile, the clothes on top are the ones you wear more often
+stuff on the bottom, not as often. 
+Useful whenever you can define some sort of "priority"
+mid and max elements are common defining labels
+code example:
+def get_max(queue):
+    max_value = queue[0]
+    for element in queue:
+    if element > max_value:
+        max_value = element
+    return max_value
+This is O(n) linear time runtime
+    but we can do better = 0(1) constant time
+indexing, or key names ways to access values faster
+BST we always have the Root,starting point
+Heap as BST instead of Left Right, it's going down that the values lessen. 100 at the top 3 at the bottom
+            100
+        19         36
+    17  3         25     1
+2   8            12        0
+Delete from Heap- will delete the max element first/ top/ Root
+Need to replace the root
+take a leaf, then run down the tree swapping values until the top is max again
+until heap is valid
+runtime of delete.......
+
+Pros:
+Heaps are maximally efficient at what they do
+They are also very flexible since we can generalize the idea of priority to many different contexts
+Cons:
+the combining of the tree and array based approaches does not make the heap a particularly intuitive data Structures_____________
+to understand and grasp
+
+we don't have direct access to any of the other nodes besides the Root
+can turn it into an array, then we would have access to everything
+but what about the parent child relationship when this is converted into an array?
+THis formula allows you to calculate that:
+ l = 2i + 1
+ r = 2i + 2      
+ p = floor( ((i - 1) / 2))

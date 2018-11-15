@@ -1,4 +1,4 @@
-"""d
+"""
 Class that represents a single linked
 list node that holds a single value
 and a reference to the next node in the list
@@ -26,7 +26,15 @@ class LinkedList:
         self.tail = None
 
     def add_to_tail(self, value):
-        pass
+        next_node = Node(value)
+
+        if not self.head:
+        self.head = next_node
+        self.tail = next_node
+
+        else:
+            self.tail.set_next(next_node)
+            self.tail = next_node
 
     def remove_head(self):
         pass

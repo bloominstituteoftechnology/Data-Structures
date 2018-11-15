@@ -35,4 +35,5 @@ class Heap:
     
 
   def _sift_down(self, index):
-    pass
+    # left child formula : 2i+1
+    # right child formula:2i+2

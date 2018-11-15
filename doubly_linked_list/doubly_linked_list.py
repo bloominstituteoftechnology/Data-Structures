@@ -40,8 +40,11 @@ class ListNode:
 
   def delete(self):
     # if the prev is not none set the self prev next to next
+    if self.prev is not None:
+      self.prev.next = self.next
     # if the next is not none set the next.prev to the prev
-    pass
+    if self.next is not None:
+      self.next.prev = self.prev
 
 class DoublyLinkedList:
   def __init__(self, node=None):

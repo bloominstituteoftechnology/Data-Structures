@@ -41,4 +41,14 @@ class BinarySearchTree:
             return False
 
     def get_max(self):
-        pass
+        if self is None:  # if there's no root node
+            return None
+        else:
+            max = None
+            if self.right is None:  # if non-existent right node
+                max = self.value
+                return
+            else:  # if existing right node, it's a higher number definitely
+                max = self.right.value
+                self.right.get_max()
+            return max

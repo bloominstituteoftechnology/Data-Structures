@@ -18,6 +18,7 @@ class ListNode:
 
     # set the previous of the new node to the current node
     new_node.set_prev(current_node)
+
     # set the prev of the new node to the next node
     new_node.set_next(next_node)
 
@@ -26,10 +27,16 @@ class ListNode:
 
   def insert_before(self, value):
     # set the new node as a new ListNode
+    new_node = ListNode(value)
+
     # set the new nodes prev to the nodes prev
+    new_node.prev = self.prev
+
     # set new nodes next to this node
+    new_node.next = self
+
     # set this prev to the new node
-    pass
+    self.prev = new_node
 
   def delete(self):
     # if the prev is not none set the self prev next to next

@@ -121,4 +121,4 @@ class DoublyLinkedList:
     self.add_to_tail(node)
 
   def delete(self, node):
-    pass
+    node.delete()

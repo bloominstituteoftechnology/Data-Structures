@@ -1,4 +1,5 @@
 """
+"""
 Class that represents a single linked
 list node that holds a single value
 and a reference to the next node in the list
@@ -23,13 +24,41 @@ class LinkedList:
     self.tail = None
 
   def add_to_tail(self, value):
-    pass
+
+    node = Node(value)
+    if self.head == None:
+      self.head = node
+      self.tail = node
+    else:
+      self.tail.set_next(node)
+      self.tail = node
 
   def remove_head(self):
-    pass
+    if self.head == None:
+      return None
+    elif self.head.next_node == None:
+      removed_head = self.head.get_value()
+      self.head = None
+      self.tail = None
+      return removed_head
+    else:
+      removed_head = self.head.get_value()
+      self.head = self.head.get_next()
+      return removed_head
 
   def contains(self, value):
-    pass
+    current_node = self.head
+    while current_node != None:
+      if current_node.get_value() == value:
+        return True
+      current_node = current_node.get_next()
+    return False
 
   def get_max(self):
-    pass
+    current_node = self.head
+    max_value = None
+    while current_node:
+      if max_value is None or current_node.get_value() > max_value:
+        max_value = current_node.get_value()
+      current_node = current_node.get_next()
+    return max_value

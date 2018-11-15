@@ -26,7 +26,25 @@ class BinarySearchTree:
         self.right.insert(value)
 
   def contains(self, target):
-    pass
+    # if root equals target
+    if self.value == target:
+      # return True
+      return True
+    # Look at the left side  
+    if self.left:
+      # if left side contains target
+      if self.left.contains(target):
+        # return True
+        return True
+    # Look at the right side    
+    if self.right:
+      # if right side conatins target
+      if self.right.contains(target):
+        # return True
+        return True
+    # otherwise, return False    
+    return False
+
 
   def get_max(self):
     pass

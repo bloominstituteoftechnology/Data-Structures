@@ -30,7 +30,7 @@ class LinkedList:
     if self.head is None:
       self.head = node_value
     else:
-      self.tail.next = node_value
+      self.tail.set_next(node_value)
     
     self.tail = node_value
     # not sure what this return does
@@ -39,11 +39,13 @@ class LinkedList:
   def remove_head(self):
     if self.head:
       removed_head = self.head
-
-    if removed_head.next_node is not None:
-      self.head = removed_head.next_node
-    else:
-      self.head = None
+      if self.head.next_node:
+        self.head = removed_head.next_node
+      else:
+        self.head = None
+        self.tail = None
+    elif self.head is None:
+      return None
     
     return removed_head.value
 
@@ -53,7 +55,7 @@ class LinkedList:
     matches = []
 
     while current_node is not None:
-      if current_node.has_value(value):
+      if current_node.value == value:
         matches.append(node_id)
       current_node = current_node.next_node
       node_id = node_id + 1
@@ -64,19 +66,24 @@ class LinkedList:
       return True
     
   def get_max(self):
-    print('*****************************')
-    print('tail node: ', self.tail.value)
-    print('head node: ', self.head)
-    current_node = self.head
-   
-    max = 0
-    while current_node is not None:
-      if current_node is None:
-        return None
-      elif current_node.value > max:
-        max = current_node.value
-        print('Current max: ', max)
-      return max
+    # print('*****************************')
+    # print('tail node: ', self.tail.get_value())
+    # print('head node: ', self.head.get_value())
+
+    if not self.head:
+      return None
+    else:
+      max_value = self.head.get_value()
+
+      current_node = self.head
+
+      while current_node:
+        if current_node.get_value() > max_value:
+          max_value = current_node.get_value()
+          
+        current_node = current_node.get_next()
+        print('Current max: ', max_value)
+      return max_value
 
 test_linked_list = LinkedList()
 

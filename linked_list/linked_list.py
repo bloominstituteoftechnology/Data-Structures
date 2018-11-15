@@ -10,14 +10,15 @@ class Node:
         self.value = value
         self.next_node = next_node
 
-    def get_value(self):
-        return self.value
+    # You can use these but I prefer not to
+    # def get_value(self):
+    #     return self.value
 
-    def get_next(self):
-        return self.next_node
+    # def get_next(self):
+    #     return self.next_node
 
-    def set_next(self, new_next):
-        self.next_node = new_next
+    # def set_next(self, new_next):
+    #     self.next_node = new_next
 
 
 class LinkedList:
@@ -32,7 +33,7 @@ class LinkedList:
             self.tail = new_node
             return
         else:
-            self.tail.set_next(
+            self.tail.next_node = (
                 new_node
             )  # sets the 1st node to current node, providing connection
             self.tail = new_node  # instantiates new node, new next_node is now None
@@ -49,21 +50,21 @@ class LinkedList:
             self.tail = None
             return prev_head.value
         else:
-            self.head = self.head.get_next()  # set the next node as the current head
+            self.head = self.head.next_node  # set the next node as the current head
             return prev_head.value
 
     def contains(self, value):
-        current_node = self.head
-        if current_node == None:  # if no nodes exists
+        if self.head == None:  # if no nodes exists
             return False
         else:
+            current_node = self.head
             while current_node is not None:  # if node exists
                 if (
                     current_node.value == value
                 ):  # if value of current node matches argument value
                     return True
                 current_node = (
-                    current_node.get_next()
+                    current_node.next_node
                 )  # if value not matched, go to the next node
             return False  # no node has that argument value
 
@@ -79,7 +80,6 @@ class LinkedList:
                 ):  # if current value is more than stored value
                     max_value = current_node.value  # update max_value
                     current_node = (
-                        current_node.get_next()
+                        current_node.next_node
                     )  # keep going until reaches end
             return max_value
-

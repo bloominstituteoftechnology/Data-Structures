@@ -32,4 +32,14 @@ class BinarySearchTree:
     return branch.contains(target)
 
   def get_max(self):
-    pass
+    # if self.right == None: # --> Check if there is any number than the base value at top of tree
+    #   return self.value
+    # else:
+    #   return self.right.get_max() # --> Recursive call to check all right branch values
+
+    # ------------ Better Way Using max() comparison method ----------------
+
+    right_branch_value = self.value if self.right is None else self.right.get_max()
+
+    return max(self.value, right_branch_value)
+  

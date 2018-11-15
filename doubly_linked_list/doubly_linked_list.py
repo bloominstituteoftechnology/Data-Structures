@@ -128,7 +128,8 @@ class DoublyLinkedList:
 
   def move_to_end(self, node):
     # delete the node and add the nodes value to the tail
-    pass
+    node.delete()
+    self.add_to_tail(node.value)
 
   def delete(self, node):
     # set the next node to the nodes next node and the previous node to the nodes previous node

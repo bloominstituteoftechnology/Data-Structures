@@ -12,7 +12,7 @@ class Heap:
 
   def get_max(self):
    return self.storage[0]
-# just the lenth of the array/list
+# just the length of the array/list
   def get_size(self):
     return len(self.storage)
     

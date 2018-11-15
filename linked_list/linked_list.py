@@ -23,13 +23,43 @@ class LinkedList:
     self.tail = None
 
   def add_to_tail(self, value):
-    pass
+    new_node = Node(value)
+    if not self.head:
+      self.head = new_node
+      self.tail = new_node
 
+    else:
+      self.tail.set_next(new_node)
+      self.tail = new_node 
+    
   def remove_head(self):
-    pass
+    if self.head: 
+      self.head = self.tail.get_next()
+      self.head = None
+      
+    
 
   def contains(self, value):
-    pass
+    current = self.head
+    found = False
+    while current and found is False:
+      if current.get_value() == value:
+        found = True
+      else:
+        current = current.get_next()
+    if current is None:
+      print('not in dataset')
+    return current
 
-  def get_max(self):
-    pass
+  # def get_max(self):
+  #   if self.head == None:       
+  #     return None
+  #   head = self.head
+  #   max = head.value
+  #   while head != None:
+  #     if head.value > max:
+  #       max = head.value
+  #       head = head.next_node
+  #   return max
+  
+ 

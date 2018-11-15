@@ -4,12 +4,18 @@ class ListNode:
     self.prev = prev
     self.next = next
 
+  def __str__(self):
+    return f'Node Value: {self.value}'
+
   def insert_after(self, value):
     # if next is none, set next to value and prev to self
     # else, set the value of next to current node's next
     # and prev to current node and set the next node's prev
     # to value and current node's next to value
-    value = ListNode(value)
+    if isinstance(value, ListNode) is False:
+      value = ListNode(value)
+
+
     if self.next is None:
       self.next = value
       value.prev = self
@@ -24,7 +30,9 @@ class ListNode:
     # else, set the value of prev to current node's prev
     # and next to current node and set the prev node's next
     # to value and current node's prev to value
-    value = ListNode(value)
+    if isinstance(value, ListNode) is False:
+      value = ListNode(value)
+
     if self.prev is None:
       self.prev = value
       value.next = self
@@ -108,7 +116,8 @@ class DoublyLinkedList:
     pass
 
   def move_to_end(self, node):
-    pass
+    node.delete()
+    self.add_to_tail(node)
 
   def delete(self, node):
     pass

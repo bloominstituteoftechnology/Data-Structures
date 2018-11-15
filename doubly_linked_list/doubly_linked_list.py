@@ -87,6 +87,7 @@ class DoublyLinkedList:
     pass
 
   def move_to_end(self, node):
+    # delete the node and add the nodes value to the tail
     pass
 
   def delete(self, node):

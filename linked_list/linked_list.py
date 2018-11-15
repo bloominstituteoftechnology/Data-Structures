@@ -24,42 +24,46 @@ class LinkedList:
 
   def add_to_tail(self, value):
     new_node = Node(value)
-    if not self.head:
+    if self.tail:
+      self.tail.set_next(new_node)
+      self.tail = new_node
+    else:
       self.head = new_node
       self.tail = new_node
-
-    else:
-      self.tail.set_next(new_node)
-      self.tail = new_node 
-    
+ 
   def remove_head(self):
-    if self.head: 
-      self.head = self.tail.get_next()
-      self.head = None
-      
-    
-
-  def contains(self, value):
-    current = self.head
-    found = False
-    while current and found is False:
-      if current.get_value() == value:
-        found = True
+    if not self.head:
+      return None
+    else:
+      removed_head = self.head
+      if self.tail:
+        if self.head == self.tail:
+          self.head = None
+          self.tail = None
+        else: self.head = self.head.get_next()
       else:
-        current = current.get_next()
-    if current is None:
-      print('not in dataset')
-    return current
-
-  # def get_max(self):
-  #   if self.head == None:       
-  #     return None
-  #   head = self.head
-  #   max = head.value
-  #   while head != None:
-  #     if head.value > max:
-  #       max = head.value
-  #       head = head.next_node
-  #   return max
+        self.head = None
+    return removed_head.get_value()
+    
   
+  def contains(self, value):
+    current_node = self.head
+    while current_node:
+      if current_node.get_value() == value:
+        return True
+      current_node = current_node.get_next()
+    return False
+  
+  def get_max(self):
+    if self.head is None:
+      return None
+    else: 
+      current_node = self.head
+      max = self.head.get_value()
+    while current_node:
+      if current_node.get_value()> max:
+        max=current_node.get_value()
+      current_node = current_node.get_next()
+    print(max)
+    return max
  

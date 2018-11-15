@@ -4,14 +4,16 @@ from linked_list import LinkedList
 
 class Queue:
   def __init__(self):
-    self.size = 0
-    self.storage = LinkedList()
+      self.size = 0
+      self.storage = LinkedList()
 
   def enqueue(self, item):
-    pass
-  
+      if self.size > 0:
+          self.item.enqueue(item)
+
   def dequeue(self):
-    pass
+      if self.size > 0:
+          self.size.dequeue(-1)
 
   def len(self):
-    pass
+      # TO DO

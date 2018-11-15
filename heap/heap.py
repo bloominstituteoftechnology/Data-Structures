@@ -8,16 +8,19 @@ class Heap:
     self._bubble_up(len(self.storage)-1)
 
   def delete(self):
-    value= self.storage[0]
-    # first element replaced by last element
-    self.storage[0]=self.storage[(len(self.storage)-1)]
-    #delete last -pop off
-    self.storage.pop()
-    self._sift_down(0)
-    return value
+    if self.get_size() > 1:
+      removed_head = self.storage[0]
+      self.storage[0] = self.storage.pop()
+      self._sift_down(0)
+    else:
+      removed_head = self.storage.pop()
+    return removed_head
 
   def get_max(self):
    return self.storage[0]
+
+
+
 # just the length of the array/list
   def get_size(self):
     return len(self.storage)
@@ -37,3 +40,11 @@ class Heap:
   def _sift_down(self, index):
     # left child formula : 2i+1
     # right child formula:2i+2
+    # if 2i +2 <len(self.storage)
+    while index*2 + 1 <= len(self.storage)-1:
+      max_child=index*2+1
+      if self.storage[index] < self.storage[max_child]:
+         self.storage[index], self.storage[max_child] = self.storage[max_child], self.storage[index]
+      index=max_child
+
+      

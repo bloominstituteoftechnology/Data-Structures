@@ -123,7 +123,8 @@ class DoublyLinkedList:
 
   def move_to_front(self, node):
     # delete the node and add the nodes value to the head
-    pass
+    node.delete
+    self.add_to_head(node.value)
 
   def move_to_end(self, node):
     # delete the node and add the nodes value to the tail

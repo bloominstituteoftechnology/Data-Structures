@@ -20,22 +20,22 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="5" />
+          <entry key="py" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="5" />
+          <entry key="Python" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="3446" />
+          <entry key="py" value="6145" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="3446" />
+          <entry key="Python" value="6145" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -46,23 +46,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/linked_list/linked_list.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="687">
-              <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
+            <state relative-caret-position="855">
+              <caret line="70" column="4" selection-start-line="70" selection-start-column="4" selection-end-line="70" selection-end-column="4" />
               <folding>
-                <marker date="1542238000654" expanded="true" signature="346:351" ph="..." />
-                <marker date="1542238000654" expanded="true" signature="694:700" ph="..." />
-                <marker date="1542238000654" expanded="true" signature="729:950" ph="..." />
-                <marker date="1542238000654" expanded="true" signature="972:991" ph="..." />
+                <marker date="1542248534586" expanded="true" signature="140:141" ph="..." />
+                <marker date="1542248534586" expanded="true" signature="451:452" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/linked_list/LinkedListExample.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1944">
-              <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
             </state>
           </provider>
         </entry>
@@ -189,14 +178,30 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="Unittests in test_linked_list.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="Data-Structures" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/linked_list" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/linked_list/test_linked_list.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Python tests.Unittests in test_doubly_linked_list.py" />
       <item itemvalue="Python.doubly_linked_list" />
       <item itemvalue="Python.linked_list" />
+      <item itemvalue="Python tests.Unittests in test_linked_list.py" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.linked_list" />
+        <item itemvalue="Python tests.Unittests in test_linked_list.py" />
         <item itemvalue="Python.doubly_linked_list" />
         <item itemvalue="Python tests.Unittests in test_doubly_linked_list.py" />
       </list>
@@ -227,6 +232,15 @@
     </history-entry>
     <history-entry file="Unittests_in_test_doubly_linked_list_py - 2018.11.14 at 16h 43m 15s.xml">
       <configuration name="Unittests in test_doubly_linked_list.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_linked_list_py - 2018.11.14 at 19h 35m 06s.xml">
+      <configuration name="Unittests in test_linked_list.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_linked_list_py - 2018.11.14 at 19h 35m 23s.xml">
+      <configuration name="Unittests in test_linked_list.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_linked_list_py - 2018.11.14 at 19h 36m 25s.xml">
+      <configuration name="Unittests in test_linked_list.py" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -276,21 +290,15 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/linked_list/LinkedListExample.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1944">
-          <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/linked_list/linked_list.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="687">
-          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
+        <state relative-caret-position="855">
+          <caret line="70" column="4" selection-start-line="70" selection-start-column="4" selection-end-line="70" selection-end-column="4" />
           <folding>
-            <marker date="1542238000654" expanded="true" signature="346:351" ph="..." />
-            <marker date="1542238000654" expanded="true" signature="694:700" ph="..." />
-            <marker date="1542238000654" expanded="true" signature="729:950" ph="..." />
-            <marker date="1542238000654" expanded="true" signature="972:991" ph="..." />
+            <marker date="1542248534586" expanded="true" signature="140:141" ph="..." />
+            <marker date="1542248534586" expanded="true" signature="451:452" ph="..." />
           </folding>
         </state>
       </provider>

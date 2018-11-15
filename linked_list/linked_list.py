@@ -6,12 +6,10 @@ and a reference to the next node in the list
 
 
 class Node:
+
     def __init__(self, value=None, next_node=None):
         self.value = value
         self.next_node = next_node
-
-    def __str__(self):
-        return f"value: {self.value}, next_node: {self.next_node}"
 
     def get_value(self):
         return self.value
@@ -24,34 +22,60 @@ class Node:
 
 
 class LinkedList:
+
     def __init__(self):
         self.head = None
         self.tail = None
 
     def __str__(self):
-        return f"head: {self.head}, tail: {self.tail}"
+        return f"{self.head}, {self.tail}"
 
     def add_to_tail(self, value):
-        new_node = Node(value)
-        if self.head is None:
-            self.head = new_node
-            self.tail = new_node
+        next_node = Node(value)
+
+        if not self.head:
+            self.head = next_node
+            self.tail = next_node
         else:
-            new_node.next_node = new_node
-            self.tail.set_next(new_node)
+            self.tail.set_next(next_node)
+            self.tail = next_node
 
     def remove_head(self):
-        pass
+        if self.head:
+            if self.head.get_next() is None:
+                temp_head = self.head
+                self.head = None
+                self.tail = None
+                return temp_head.get_value()
+            else:
+                temp_head = self.head
+                self.head = self.head.get_next()
+                return temp_head.get_value()
+        else:
+            return None
 
     def contains(self, value):
-        pass
+        curr = self.head
+        while curr:
+            if curr.get_value() == value:
+                return True
+            curr = curr.get_next()
+        return False
 
     def get_max(self):
-        pass
+        curr = self.head
+        max_value = None
+        while curr:
+            if max_value is None or curr.get_value() > max_value:
+                max_value = curr.get_value()
+            curr = curr.get_next()
+        return max_value
 
 
 ll = LinkedList()
 ll.add_to_tail("Brian")
 ll.add_to_tail("Shawn")
-
-print(ll.tail)
+ll.add_to_tail("Aaron")
+# print(ll.contains("Brian"))
+# print(ll.get_max())
+# print(ll.remove_head())

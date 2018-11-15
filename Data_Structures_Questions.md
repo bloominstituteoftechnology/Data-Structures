@@ -19,11 +19,14 @@ For each of the methods associated with each data structure, classify it based o
 
 ## Queue
 
-1. What is the runtime complexity of `enqueue`?
+1) What is the runtime complexity of `enqueue`?
+- O(c), since we already have the tail reference.
 
-2. What is the runtime complexity of `dequeue`?
+2) What is the runtime complexity of `dequeue`?
+- O(c), since we already have the head reference.
 
-3. What is the runtime complexity of `len`?
+3) What is the runtime complexity of `len`?
+- O(c), since we are using a self.size to keep track.
 
 ## Binary Search Tree
 

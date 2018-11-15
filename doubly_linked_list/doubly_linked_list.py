@@ -76,6 +76,10 @@ class DoublyLinkedList:
     pass
 
   def remove_from_tail(self):
+    # set self tail to removal node
+    # set the previous node to the previous node of the tail
+    # set the next node of the previous node to none
+    # set the current tail to the previous node and return the removal nodes value to the caller
     pass
 
   def move_to_front(self, node):

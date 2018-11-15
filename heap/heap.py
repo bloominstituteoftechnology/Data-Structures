@@ -10,6 +10,15 @@ class Heap:
     pass
 
   def delete(self):
+    # if empty return none
+
+    # create variables for the storage top and storage end
+    # decrement the size
+    # if size zero return storage top
+
+    # set storage of index 1 to storage end
+    # shift down
+    #return storage top
     pass
 
   def get_max(self):

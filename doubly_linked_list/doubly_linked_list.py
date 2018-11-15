@@ -91,4 +91,6 @@ class DoublyLinkedList:
     pass
 
   def delete(self, node):
+    # set the next node to the nodes next node and the previous node to the nodes previous node
+    # swap the 2 nodes (next node) and (previous node)
     pass

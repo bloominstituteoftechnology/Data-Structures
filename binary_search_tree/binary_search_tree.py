@@ -47,4 +47,20 @@ class BinarySearchTree:
 
 
   def get_max(self):
-    pass
+    # if no root 
+    if not self:
+      # return None
+      return None
+    # declare that the max value equals the main root
+    max_value = self.value
+    # declare that current becomes the root node in question
+    current = self
+    while current:
+      # if the current value in question is greater than the max value
+      if current.value > max_value:
+        # current.value becomes the max value
+        max_value = current.value
+      #  current becomes the child node on the right, because it’s greater
+      current = current.right
+    # return max value  
+    return max_value

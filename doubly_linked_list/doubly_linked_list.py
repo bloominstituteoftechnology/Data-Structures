@@ -98,7 +98,11 @@ class DoublyLinkedList:
     self.tail = self.tail.next
 
   def remove_from_tail(self):
-    pass
+    # if tail is not none, set the tail to the prev node
+    # and delete the next node after the tail
+    if self.tail is not None:
+      self.tail = self.tail.prev
+      return self.tail.next.delete()
 
   def move_to_front(self, node):
     pass

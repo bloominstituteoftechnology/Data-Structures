@@ -7,12 +7,12 @@ class DoublyLinkedListTests(unittest.TestCase):
     self.node = ListNode(1)
     self.dll = DoublyLinkedList(self.node)
 
-  # def test_list_remove_from_tail(self):
-  #   self.dll.add_to_tail(33)
-  #   self.assertEqual(self.dll.remove_from_tail(), 33)
+  def test_list_remove_from_tail(self):
+    self.dll.add_to_tail(33)
+    self.assertEqual(self.dll.remove_from_tail(), 33)
 
-    # self.dll.add_to_tail(68)
-    # self.assertEqual(self.dll.remove_from_tail(), 68)
+    self.dll.add_to_tail(68)
+    self.assertEqual(self.dll.remove_from_tail(), 68)
 
   def test_list_remove_from_head(self):
     self.dll.add_to_head(2)

@@ -17,10 +17,10 @@ class ListNode:
     next_node = current_node.next
 
     # set the previous of the new node to the current node
-    new_node.set_prev(current_node)
+    new_node.prev = current_node
 
     # set the prev of the new node to the next node
-    new_node.set_next(next_node)
+    new_node.next = next_node
 
     # set the next node of the current node to the new node
     current_node.next = new_node
@@ -79,8 +79,8 @@ class DoublyLinkedList:
     
     # otherwise set a ret_val to the current heads value and set the head to the next node
     else:
-      ret_val = self.head.get_value()
-      self.head = self.head.get_next()
+      ret_val = self.head.value
+      self.head = self.head.next
       
       # if the head is none then set the tail to none and return the ret_val to the caller
       if self.head is None:
@@ -133,5 +133,8 @@ class DoublyLinkedList:
 
   def delete(self, node):
     # set the next node to the nodes next node and the previous node to the nodes previous node
+    next_node = node.next 
+    previous_node = node.prev
     # swap the 2 nodes (next node) and (previous node)
-    pass
+    previous_node.next = next_node
+    next_node.prev = previous_node

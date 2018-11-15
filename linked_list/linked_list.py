@@ -37,18 +37,33 @@ class LinkedList:
     return 
 
   def remove_head(self):
-    if self.head is not None:
+    if self.head:
       removed_head = self.head
 
-      if removed_head.next_node is not None:
-        self.head = removed_head.next_node
-      else:
-        self.head = None
+    if removed_head.next_node is not None:
+      self.head = removed_head.next_node
+    else:
+      self.head = None
     
     return removed_head.value
 
   def contains(self, value):
-    pass
+    current_node = self.head
+    node_id = 1
+    matches = []
+
+    while current_node is not None:
+      if current_node.has_value(value):
+        matches.append(node_id)
+      current_node = current_node.next_node
+      node_id = node_id + 1
+
+    if len(matches) == 0:
+      return False
+    else:
+      return True
+    
+
 
   def get_max(self):
     pass

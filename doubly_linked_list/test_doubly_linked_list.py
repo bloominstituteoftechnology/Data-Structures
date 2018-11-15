@@ -14,12 +14,12 @@ class DoublyLinkedListTests(unittest.TestCase):
     # self.dll.add_to_tail(68)
     # self.assertEqual(self.dll.remove_from_tail(), 68)
 
-  # def test_list_remove_from_head(self):
-  #   self.dll.add_to_head(2)
-  #   self.assertEqual(self.dll.remove_from_head(), 2)
+  def test_list_remove_from_head(self):
+    self.dll.add_to_head(2)
+    self.assertEqual(self.dll.remove_from_head(), 2)
     
-  #   self.dll.add_to_head(55)
-  #   self.assertEqual(self.dll.remove_from_head(), 55)
+    self.dll.add_to_head(55)
+    self.assertEqual(self.dll.remove_from_head(), 55)
 
   # def test_list_add_to_tail(self):
   #   self.dll.add_to_tail(30)

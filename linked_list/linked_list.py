@@ -62,4 +62,10 @@ class LinkedList:
                 return False
 
     def get_max(self):
-        pass
+        temp = self.head
+        max_value = None
+        while temp:
+            if max_value is None or temp.get_value() > max_value:
+                max_value = temp.get_value()
+            temp = temp.get_next()
+        return max_value

@@ -20,6 +20,7 @@ class LinkedListTests(unittest.TestCase):
     self.list.add_to_tail(10)
     self.assertTrue(self.list.contains(10))
     self.assertTrue(self.list.contains(2))
+    self.assertTrue(self.list.contains(1))
     self.assertFalse(self.list.contains(1000))
 
   def test_remove_head(self):

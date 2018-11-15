@@ -18,23 +18,22 @@ class BinarySearchTree:
         else:
             self.right.insert(value)
 
-  def contains(self, value):
-    if value == self.value:
+  def contains(self, target):
+    if target == self.value:
         return True
-    elif value < self.value:
+    elif target < self.value:
         if self.left:
-            return self.left.contains(value)
+            return self.left.contains(target)
         else:
             return False
     else:
         if self.right:
-            return self.right.contains(value)
+            return self.right.contains(target)
         else:
             return False
 
   def get_max(self):
-    # Returns the right most node of the BST.
-    max_node = self
-    while max_node.right:
-        max_node = max_node.right
-    return max_node
+    if self.right == None:
+      return self.value
+
+    return self.right.get_max()

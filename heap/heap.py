@@ -17,7 +17,7 @@ class Heap:
     return removed_head
 
   def get_max(self):
-   return self.storage[0]
+    return self.storage[1]
 
 
 
@@ -47,4 +47,8 @@ class Heap:
          self.storage[index], self.storage[max_child] = self.storage[max_child], self.storage[index]
       index=max_child
 
-      
+  def get_max_child(self, index):
+    if index*2+2 > self.get_size()-1:
+      return index*2+1
+    else:
+      return index*2+1 if self.storage[index*2+1] > self.storage[index*2+2] else index*2+2

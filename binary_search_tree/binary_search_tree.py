@@ -40,13 +40,13 @@ class BinarySearchTree:
 
 
 
+# Personal Test
+# bst = BinarySearchTree(20)
+# bst.insert(19)
+# bst.insert(22)
+# bst.insert(10)
+# bst.insert(40)
 
-bst = BinarySearchTree(20)
-bst.insert(19)
-bst.insert(22)
-bst.insert(10)
-bst.insert(40)
 
-
-print(bst.contains(10))
-print(bst.get_max())
+# print(bst.contains(10))
+# print(bst.get_max())

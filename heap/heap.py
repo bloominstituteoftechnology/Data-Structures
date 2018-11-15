@@ -9,6 +9,8 @@ class Heap:
   def delete(self):
     self.storage.pop(0)
     storage_length = len(self.storage)-1
+    if storage_length < 0:
+      return
     last_element = self.storage[storage_length]
     self.storage.insert(0,last_element)
     self.storage.pop()
@@ -38,15 +40,19 @@ class Heap:
     storage_length = len(self.storage)
     parent = self.storage[index]
     right_child_index = (2*index)+2
+    right_child = 0
+    if right_child_index < storage_length-1:
+      right_child = self.storage[right_child_index]
+    else:
+      right_child = 0
     if left_child_index < storage_length:
       left_child = self.storage[left_child_index]
-      if parent < left_child:
+      if parent < left_child and left_child>right_child:
         temporary = parent
         self.storage[index] = left_child
         self.storage[left_child_index] = temporary
         return left_child_index
       elif right_child_index < storage_length:
-        right_child = self.storage[right_child_index]
         if parent < right_child:
           temporary = parent
           self.storage[index] = right_child
@@ -54,5 +60,7 @@ class Heap:
           return right_child_index
         else:
           return -1
+      else:
+        return -1
     else:
       return -1

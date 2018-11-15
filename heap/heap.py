@@ -41,7 +41,7 @@ class Heap:
   def get_size(self):
     # return size
     return self.size
-    pass
+    #pass
 
   def _bubble_up(self, index):
     # set index of parent to index divided by 2 ( as whole number ) see : https://www.geeksforgeeks.org/division-operator-in-python/
@@ -60,10 +60,19 @@ class Heap:
 
   def _sift_down(self, index):
     # set index left to index if 2 times the index is greater than size otherwise set it to two times index
+    index_left = index if 2 * index > self.size else 2 * index
     # set index right to index if 2 times the index plus 1 is greater than size otherwise set it to two times index plus one
+    index_right = index if 2 * index + 1 > self.size else 2 * index + 1
     # set index of child to index left if the storage at index left is greater than the storage at index right otherwise return index right
+    index_of_child = index_left if self.storage[index_left] > self.storage[index_right] else index_right
     # if the index of child is equal to the index then return to caller
-
+    if index_of_child == index:
+      return
     # if the storage at index of child is greater than the storage at index 
+    if self.storage[index_of_child] > self.storage[index]:
     # swap the storage value at index with the storage value at index of child and do a recursive call to sift down
-    pass
+      temp = self.storage[index]
+      self.storage[index] = self.storage[index_of_child]
+      self.storage[index_of_child] = temp
+      self._sift_down(index_of_child)
+    #pass

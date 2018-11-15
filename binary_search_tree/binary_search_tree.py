@@ -33,7 +33,12 @@ class BinarySearchTree:
 
 
   def get_max(self):
-    pass
+    if self.right:
+      return self.right.get_max()
+    else:
+      return self.value
+
+
 
 
 bst = BinarySearchTree(20)
@@ -44,3 +49,4 @@ bst.insert(40)
 
 
 print(bst.contains(10))
+print(bst.get_max())

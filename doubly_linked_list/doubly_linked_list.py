@@ -84,18 +84,28 @@ class DoublyLinkedList:
       
       # if the head is none then set the tail to none and return the ret_val to the caller
       if self.head is None:
-          self.tail = None
+        self.tail = None
 
       return ret_val
 
   def add_to_tail(self, value):
     # set new node as a new list node with value
+    new_node = ListNode(value)
+
     # set the prev of the new node to the current tail
+    new_node.prev = self.tail
+
     # set the current tail to the next node with a value of the new node
+    self.tail.next = new_node
 
     # if the head and the tail are none then set the head and tail to the new node
+    if self.head is None and self.tail is None:
+      self.tail = new_node
+      self.head = new_node
+
     # otherwise just set the tail to the new node
-    pass
+    else:
+      self.tail = new_node
 
   def remove_from_tail(self):
     # set self tail to removal node

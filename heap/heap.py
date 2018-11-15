@@ -13,29 +13,31 @@ class Heap:
     # add the value to storage
     self.storage.append(value)
     # increase the size of the heap
-    self.size += 1
+    self.size = self.size + 1
     # bubble up for proper ordering, starting at last index i.e. self.size
     # this last index value is the newly added value via .append()
     self._bubble_up(self.size)
     # pass
 
   def delete(self):
-    # edge case for an empty heap
-    if self.size == 0:
-      return None
-    pass
+    root = self.storage[1]
+    self.storage[1] = self.storage[self.size]
+    self.size = self.size - 1
+    self.storage.pop()
+    self._sift_down(1)
+    return root
+    # pass
 
   def get_max(self):
-    return self.storage[1]
-    pass
+    return self.storage[self.size]
+    # pass
 
   def get_size(self):
     return self.size
     # pass
 
   def _bubble_up(self, index):
-    while (index // 2) > 0:
-      print('bubbling', index // 2)
+    while index // 2 > 0:
       if self.storage[index] < self.storage[index // 2]:
         # store the parent index in temp
         temp = self.storage[index // 2]
@@ -59,7 +61,6 @@ class Heap:
   def _sift_down(self, index):
     # traverse down the heap with while loop
     while (index * 2) <= self.size:
-      print('sifting')
       # collect the index of the lowest value via min_child()
       lowest = self.min_child(index)
       # compare the values of the current index with the values in the last index

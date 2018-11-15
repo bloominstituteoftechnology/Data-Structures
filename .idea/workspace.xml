@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2f0edb7-63ac-462a-9651-93aa009a030c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/linked_list/linked_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/linked_list/linked_list.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Stack.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/in_order_traversal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,22 +22,22 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="7" />
+          <entry key="py" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="7" />
+          <entry key="Python" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="6145" />
+          <entry key="py" value="6446" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="6145" />
+          <entry key="Python" value="6446" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -43,17 +45,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/linked_list/linked_list.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Stack.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="855">
-              <caret line="70" column="4" selection-start-line="70" selection-start-column="4" selection-end-line="70" selection-end-column="4" />
-              <folding>
-                <marker date="1542248534586" expanded="true" signature="140:141" ph="..." />
-                <marker date="1542248534586" expanded="true" signature="451:452" ph="..." />
-              </folding>
+            <state relative-caret-position="299">
+              <caret line="38" column="31" lean-forward="true" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/in_order_traversal.py">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -75,12 +78,16 @@
         <option value="$PROJECT_DIR$/doubly_linked_list/doubly_linked_list.py" />
         <option value="$PROJECT_DIR$/linked_list/LinkedListExample.py" />
         <option value="$PROJECT_DIR$/linked_list/linked_list.py" />
+        <option value="$PROJECT_DIR$/Stack.py" />
+        <option value="$PROJECT_DIR$/in_order_traversal.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+    <option name="x" value="2771" />
+    <option name="y" value="360" />
     <option name="width" value="2560" />
-    <option name="height" value="1440" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -94,11 +101,6 @@
               <item name="Data-Structures" type="b2602c69:ProjectViewProjectNode" />
               <item name="Data-Structures" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Data-Structures" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Data-Structures" type="462c0819:PsiDirectoryNode" />
-              <item name="linked_list" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -108,6 +110,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -121,7 +124,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.linked_list">
+  <component name="RunManager" selected="Python.in_order_traversal">
+    <configuration name="Stack" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Data-Structures" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Stack.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="doubly_linked_list" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Data-Structures" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -135,6 +159,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/doubly_linked_list/doubly_linked_list.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="in_order_traversal" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Data-Structures" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/in_order_traversal.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -164,20 +209,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests in test_doubly_linked_list.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="Data-Structures" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/doubly_linked_list" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/doubly_linked_list/test_doubly_linked_list.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
     <configuration name="Unittests in test_linked_list.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="Data-Structures" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -193,17 +224,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python tests.Unittests in test_doubly_linked_list.py" />
       <item itemvalue="Python.doubly_linked_list" />
       <item itemvalue="Python.linked_list" />
       <item itemvalue="Python tests.Unittests in test_linked_list.py" />
+      <item itemvalue="Python.Stack" />
+      <item itemvalue="Python.in_order_traversal" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.in_order_traversal" />
+        <item itemvalue="Python.Stack" />
         <item itemvalue="Python.linked_list" />
         <item itemvalue="Python tests.Unittests in test_linked_list.py" />
         <item itemvalue="Python.doubly_linked_list" />
-        <item itemvalue="Python tests.Unittests in test_doubly_linked_list.py" />
       </list>
     </recent_temporary>
   </component>
@@ -244,19 +277,19 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
+    <frame x="2560" y="360" width="1920" height="1080" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24980143" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1485623" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
       <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Terminal" weight="0.329927" />
+      <window_info anchor="bottom" id="Terminal" weight="0.26534653" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30656934" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3059406" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -294,14 +327,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/linked_list/linked_list.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="855">
-          <caret line="70" column="4" selection-start-line="70" selection-start-column="4" selection-end-line="70" selection-end-column="4" />
+        <state relative-caret-position="-7">
+          <caret line="55" selection-start-line="55" selection-end-line="55" />
           <folding>
-            <marker date="1542248534586" expanded="true" signature="140:141" ph="..." />
-            <marker date="1542248534586" expanded="true" signature="451:452" ph="..." />
+            <marker date="1542248736094" expanded="true" signature="140:141" ph="..." />
+            <marker date="1542248736094" expanded="true" signature="451:452" ph="..." />
+            <marker date="1542248736094" expanded="true" signature="550:599" ph="..." />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Stack.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="38" column="31" lean-forward="true" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/in_order_traversal.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>

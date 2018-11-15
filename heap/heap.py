@@ -26,6 +26,7 @@ class Heap:
     pass
 
   def get_size(self):
+    # return size
     pass
 
   def _bubble_up(self, index):

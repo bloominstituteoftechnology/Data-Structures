@@ -7,13 +7,26 @@ class Heap:
         self._bubble_up(len(self.storage) - 1)
 
     def delete(self):
-        pass
+        self.storage[0] == self.storage[-1]
+        self.storage.pop()
+        self._sift_down(0)
+
+    def left_index(self, index):
+        return index * 2 + 1
+
+    def left_value(self, index):
+        return self.storage[self.left_index(index)]
+
+    def right_index(self, index):
+        return index * 2 + 2
+
+    def right_value(self, index):
+        return self.storage[self.right_index(index)]
 
     def parent_index(self, index):
         return (index - 1) // 2
 
     def parent_val(self, index):
-
         return self.storage[self.parent_index(index)]
 
     def get_max(self):

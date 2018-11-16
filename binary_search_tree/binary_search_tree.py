@@ -4,6 +4,7 @@ class BinarySearchTree:
     self.left = None
     self.right = None
 
+  # Add a node to the tree
   def insert(self, value):
     if self.value:
       

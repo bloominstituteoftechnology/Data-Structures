@@ -4,23 +4,23 @@ class Heap:
 
   def insert(self, value):
     self.storage.append(value)
-    self._bubble_up(len(self.storage) - 1)
+    self._bubble_up(len(self.storage) - 1)  # call _bubble_up passing in index of the value that was just inserted
 
-  def delete(self):
-    self.storage[0] = self.storage[-1]
+  # def delete(self):
+  #   self.storage[0] = self.storage[-1]
 
 
-  def left_index(self, index):
-    return index * 2 + 1
+  # def left_index(self, index):
+  #   return index * 2 + 1
 
-  def left_val(self, index):
-    return self.storage[self.left_index(index)]
+  # def left_val(self, index):
+  #   return self.storage[self.left_index(index)]
 
-  def right_index(self, index):
-    return index * 2 + 2
+  # def right_index(self, index):
+  #   return index * 2 + 2
   
-  def right_val(self, index):
-    return self.storage[self.right_index(index)]
+  # def right_val(self, index):
+  #   return self.storage[self.right_index(index)]
 
   def parent_index(self, index):
     return (index - 1) // 2 
@@ -31,58 +31,60 @@ class Heap:
   def get_max(self):
     if len(self.storage) == 0:
       return None
-    return self.storage[0]
+    else:
+      return self.storage[0]
 
   def get_size(self):
     return len(self.storage)
 
   def _bubble_up(self, index):
-    while index > 0 and self.storage[index] > self.parent_val(index):
-      pindex = self.parent_index(index)
+    
+    while index > 0 and self.storage[index] > self.parent_val(index):  # If not at root & if current value greater than parent value
+      pindex = self.parent_index(index)                               
 
       self.storage[index], self.storage[pindex] = \
-        self.storage[pindex], self.storage[index] 
+        self.storage[pindex], self.storage[index]                      # Swap current value and parent value like a,b = b,a
       index = pindex
       print(self)
 
-  def get_max_child_index(self, index):
-    # if right is out of bounds, left must be bigger
-    if self.right_index(index) >= len(self.storage):
-      return self.left_index(index)
+  # def get_max_child_index(self, index):
+  #   # if right is out of bounds, left must be bigger
+  #   if self.right_index(index) >= len(self.storage):
+  #     return self.left_index(index)
 
-    if self.right_val(index) > self.left_val(index):
-      return self.right_index(index)
+  #   if self.right_val(index) > self.left_val(index):
+  #     return self.right_index(index)
 
-    return self.left_index(index)
+  #   return self.left_index(index)
 
-  def _sift_down(self, index):
-    while self.left_index(index) < len(self.storage):
-      max_child_index = self.get_max_child_index(index)
+  # def _sift_down(self, index):
+  #   while self.left_index(index) < len(self.storage):
+  #     max_child_index = self.get_max_child_index(index)
 
-      if self.storage[index] < self.storage[max_child_index]:
-        self.storage[index], self.storage[max_child_index] = \
-          self.storage[max_child_index], self.storage[index]
-        index = max_child_index
-        
-      else:
-        break
+  #     if self.storage[index] < self.storage[max_child_index]:
+  #       self.storage[index], self.storage[max_child_index] = \
+  #         self.storage[max_child_index], self.storage[index]
+  #       index = max_child_index
 
-  def __str__(self):
-      rv = "Heap:\n"
+  #     else:
+  #       break
 
-      l = 1
-      c = 0
+  # def __str__(self):
+  #     rv = "Heap:\n"
 
-      for i in range(len(self.storage)):
-        rv += str(self.storage[i]) + "  "
+  #     l = 1
+  #     c = 0
 
-        c += 1
+  #     for i in range(len(self.storage)):
+  #       rv += str(self.storage[i]) + "  "
 
-        if c >= l:
-          rv += "\n" + "  " * l
-          c = 0
-          l *= 2
+  #       c += 1
 
-      rv += "\n"
+  #       if c >= l:
+  #         rv += "\n" + "  " * l
+  #         c = 0
+  #         l *= 2
 
-      return rv
+  #     rv += "\n"
+
+  #     return rv

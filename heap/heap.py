@@ -29,7 +29,7 @@ class Heap:
     # pass
 
   def get_max(self):
-    return self.storage[self.size]
+    return self.storage[1]
     # pass
 
   def get_size(self):
@@ -38,7 +38,7 @@ class Heap:
 
   def _bubble_up(self, index):
     while index // 2 > 0:
-      if self.storage[index] < self.storage[index // 2]:
+      if self.storage[index] > self.storage[index // 2]:
         # store the parent index in temp
         temp = self.storage[index // 2]
         # swap the index values

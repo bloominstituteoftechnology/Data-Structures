@@ -21,9 +21,11 @@ class Heap:
 
   def delete(self):
     root = self.storage[1]
-    self.storage[1] = self.storage[self.size]
+    bottom = self.storage.pop()
     self.size = self.size - 1
-    self.storage.pop()
+    if self.size == 0:
+      return root
+    self.storage[1] = bottom
     self._sift_down(1)
     return root
     # pass
@@ -48,26 +50,27 @@ class Heap:
       index = index // 2
     # pass
 
-  # finds the lowest value's index in the heap to use in sift_down
-  def min_child(self, index):
-    if index * 2 + 1 > self.size:
-      return index * 2
-    else:
-      if self.storage[index*2] < self.storage[index*2+1]:
-        return index * 2
-      else:
-        return index * 2 + 1
-
   def _sift_down(self, index):
-    # traverse down the heap with while loop
-    while (index * 2) <= self.size:
-      # collect the index of the lowest value via min_child()
-      lowest = self.min_child(index)
-      # compare the values of the current index with the values in the last index
-      if self.storage[index] > self.storage[lowest]:
-        # perform a swap
-        temp = self.storage[index]
-        self.storage[index] = self.storage[lowest]
-        self.storage[lowest] = temp
-      
-      index = lowest
+    # collect the left and right children's indices of the given index
+    left_child = index * 2
+    right_child = (index * 2) + 1
+    # ensure we're not exceeding the size of the heap
+    if left_child > self.size:
+      return
+    if right_child <= self.size:
+      if self.storage[index] < self.storage[left_child] or self.storage[index] < self.storage[right_child]:
+        # find the largest child between left and right
+        largest_child = right_child if (self.storage[right_child] > self.storage[left_child]) else left_child
+        # swap the largest value with the current index
+        self.storage[index], self.storage[largest_child] = self.storage[largest_child], self.storage[index]
+        # recursively sift the low values down
+        return self._sift_down(largest_child)
+      else:
+        return
+    else:
+      if self.storage[index] < self.storage[left_child]:
+        # swap
+        self.storage[index], self.storage[left_child] = self.storage[left_child], self.storage[index]
+        return self._sift_down(left_child)
+      else:
+        return

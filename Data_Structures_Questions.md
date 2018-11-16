@@ -42,14 +42,19 @@ For each of the methods associated with each data structure, classify it based o
 ## Heap
 
 1. What is the runtime complexity of `_bubble_up`?
+    *   `O(n)`
 
 2. What is the runtime complexity of `_sift_down`?
+    *   `O(n)`
 
 3. What is the runtime complexity of `insert`?
+    *   `O(n)`
 
 4. What is the runtime complexity of `delete`?
+    *   `O(n)`
 
 5. What is the runtime complexity of `get_max`?
+    *   `O(1)`
 
 ## [Stretch Goal] Doubly Linked List
 

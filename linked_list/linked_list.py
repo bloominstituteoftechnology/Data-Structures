@@ -17,19 +17,64 @@ class Node:
   def set_next(self, new_next):
     self.next_node = new_next
 
+  def __str__(self):
+    return f'<Node: {self.value}>'
+
 class LinkedList:
   def __init__(self):
     self.head = None
     self.tail = None
 
   def add_to_tail(self, value):
-    pass
+    node = Node(value)
+    if not self.head:
+      self.head = node
+      self.tail = node
+      return
+    else:
+      if self.head == self.tail:
+        self.head.set_next(node)
+      else:
+        self.tail.set_next(node)
+    self.tail = node
 
   def remove_head(self):
-    pass
+    if self.head:
+      old_head = self.head
+      new_head = self.head.get_next()
+      self.head = new_head
+      if old_head == self.tail:
+        self.tail = new_head
+      return old_head.value
+    else:
+      return None
 
   def contains(self, value):
-    pass
+    node_checked = self.head
+    while node_checked != None:
+      if node_checked.get_value() == value:
+        return True
+      else:
+        node_checked = node_checked.get_next()
+    return False
+
 
   def get_max(self):
-    pass
+    max_value = 0
+    node_checked = self.head
+    while node_checked:
+      if node_checked.value > max_value:
+        max_value = node_checked.value
+      node_checked = node_checked.get_next()
+    return max_value if max_value else None
+  
+
+  def __str__(self):
+    r = ""
+
+    p = self.head
+    while p != None:
+      r += str(p) + ' -> '
+      p = p.next_node
+
+    return r

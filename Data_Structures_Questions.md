@@ -41,15 +41,20 @@ For each of the methods associated with each data structure, classify it based o
 
 ## Heap
 
-1. What is the runtime complexity of `_bubble_up`?
+1) What is the runtime complexity of `_bubble_up`?
+- O(logn), goes through half tree upwards pattern in order to swap the higher parent value with current value.
 
-2. What is the runtime complexity of `_sift_down`?
+2) What is the runtime complexity of `_sift_down`?
+- O(logn), goes through half tree downwards pattern in order to swap highest child value with current value.
 
-3. What is the runtime complexity of `insert`?
+3) What is the runtime complexity of `insert`?
+- O(logn), regular insert is a simple append so O(c) but goes through half tree pattern when doing _bubble_up in order to heapify.
 
-4. What is the runtime complexity of `delete`?
+4) What is the runtime complexity of `delete`?
+- O(logn), delete is just a simple swap so O(c) but goes through half tree pattern when doing _sift_down in order to correct the tree.
 
-5. What is the runtime complexity of `get_max`?
+5) What is the runtime complexity of `get_max`?
+- O(c), always the same operation.
 
 ## [Stretch Goal] Doubly Linked List
 

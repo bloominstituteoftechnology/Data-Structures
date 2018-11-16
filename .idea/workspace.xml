@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2f0edb7-63ac-462a-9651-93aa009a030c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/BST/.idea/libraries/R_User_Library.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BST/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BST/BST.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dictionaries/.idea/libraries/R_User_Library.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dictionaries/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/binary_search_tree/binary_search_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/binary_search_tree/binary_search_tree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/in_order_traversal.py" beforeDir="false" afterPath="$PROJECT_DIR$/in_order_traversal.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,45 +20,69 @@
     <session id="759786522">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.2" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="11" />
+          <entry key="py" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="11" />
+          <entry key="Python" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="8204" />
+          <entry key="py" value="8440" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="8204" />
+          <entry key="Python" value="8440" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/binary_search_tree/binary_search_tree.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="866">
-              <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+            <state relative-caret-position="95">
+              <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
               <folding>
-                <marker date="1542324368132" expanded="true" signature="15:368" ph="..." />
-                <marker date="1542324368132" expanded="true" signature="512:518" ph="..." />
-                <marker date="1542324368132" expanded="true" signature="542:902" ph="..." />
-                <marker date="1542324368132" expanded="true" signature="929:948" ph="..." />
+                <marker date="1542343247432" expanded="true" signature="251:286" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/binary_search_tree/test_binary_search_tree.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/linked_list/linked_list.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1045">
+              <caret line="55" selection-start-line="55" selection-end-line="55" />
+              <folding>
+                <marker date="1542248736094" expanded="true" signature="140:141" ph="..." />
+                <marker date="1542248736094" expanded="true" signature="451:452" ph="..." />
+                <marker date="1542248736094" expanded="true" signature="550:599" ph="..." />
               </folding>
             </state>
           </provider>
@@ -128,7 +157,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.binary_search_tree">
+  <component name="RunManager" selected="Python tests.Unittests in test_binary_search_tree.py">
     <configuration name="Stack" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Data-Structures" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -192,25 +221,18 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="linked_list" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Unittests in test_binary_search_tree.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="Data-Structures" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/linked_list" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/binary_search_tree" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/linked_list/linked_list.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/binary_search_tree/test_binary_search_tree.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
     <configuration name="Unittests in test_linked_list.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
@@ -228,19 +250,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.linked_list" />
       <item itemvalue="Python tests.Unittests in test_linked_list.py" />
       <item itemvalue="Python.Stack" />
       <item itemvalue="Python.in_order_traversal" />
       <item itemvalue="Python.binary_search_tree" />
+      <item itemvalue="Python tests.Unittests in test_binary_search_tree.py" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Unittests in test_binary_search_tree.py" />
         <item itemvalue="Python.binary_search_tree" />
+        <item itemvalue="Python tests.Unittests in test_linked_list.py" />
         <item itemvalue="Python.in_order_traversal" />
         <item itemvalue="Python.Stack" />
-        <item itemvalue="Python.linked_list" />
-        <item itemvalue="Python tests.Unittests in test_linked_list.py" />
       </list>
     </recent_temporary>
   </component>
@@ -258,39 +280,44 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_in_test_doubly_linked_list_py - 2018.11.14 at 16h 34m 45s.xml">
-      <configuration name="Unittests in test_doubly_linked_list.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_doubly_linked_list_py - 2018.11.14 at 16h 41m 16s.xml">
-      <configuration name="Unittests in test_doubly_linked_list.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_doubly_linked_list_py - 2018.11.14 at 16h 41m 46s.xml">
-      <configuration name="Unittests in test_doubly_linked_list.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_doubly_linked_list_py - 2018.11.14 at 16h 43m 15s.xml">
-      <configuration name="Unittests in test_doubly_linked_list.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_linked_list_py - 2018.11.14 at 19h 35m 06s.xml">
+    <history-entry file="Unittests_in_test_linked_list_py - 2018.11.15 at 19h 33m 00s.xml">
       <configuration name="Unittests in test_linked_list.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_linked_list_py - 2018.11.14 at 19h 35m 23s.xml">
+    <history-entry file="Unittests_in_test_linked_list_py - 2018.11.15 at 19h 34m 27s.xml">
       <configuration name="Unittests in test_linked_list.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_linked_list_py - 2018.11.14 at 19h 36m 25s.xml">
-      <configuration name="Unittests in test_linked_list.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test_binary_search_tree_py - 2018.11.15 at 23h 35m 50s.xml">
+      <configuration name="Unittests in test_binary_search_tree.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_binary_search_tree_py - 2018.11.15 at 23h 36m 09s.xml">
+      <configuration name="Unittests in test_binary_search_tree.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_binary_search_tree_py - 2018.11.15 at 23h 36m 22s.xml">
+      <configuration name="Unittests in test_binary_search_tree.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_binary_search_tree_py - 2018.11.15 at 23h 37m 03s.xml">
+      <configuration name="Unittests in test_binary_search_tree.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_binary_search_tree_py - 2018.11.15 at 23h 37m 34s.xml">
+      <configuration name="Unittests in test_binary_search_tree.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_binary_search_tree_py - 2018.11.15 at 23h 39m 23s.xml">
+      <configuration name="Unittests in test_binary_search_tree.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_binary_search_tree_py - 2018.11.15 at 23h 39m 45s.xml">
+      <configuration name="Unittests in test_binary_search_tree.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_binary_search_tree_py - 2018.11.15 at 23h 40m 47s.xml">
+      <configuration name="Unittests in test_binary_search_tree.py" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.110802226" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1115965" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Terminal" weight="0.23941606" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30583942" />
@@ -298,11 +325,15 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="R Packages" />
-      <window_info anchor="right" id="R Graphics" />
+      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.23941606" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="R Graphics" order="3" />
+      <window_info anchor="right" id="R Packages" order="4" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -329,18 +360,6 @@
     <entry file="file://$PROJECT_DIR$/linked_list/LinkedListExample.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/linked_list/linked_list.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="55" selection-start-line="55" selection-end-line="55" />
-          <folding>
-            <marker date="1542248736094" expanded="true" signature="140:141" ph="..." />
-            <marker date="1542248736094" expanded="true" signature="451:452" ph="..." />
-            <marker date="1542248736094" expanded="true" signature="550:599" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/in_order_traversal.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
@@ -358,15 +377,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/linked_list/linked_list.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1045">
+          <caret line="55" selection-start-line="55" selection-end-line="55" />
+          <folding>
+            <marker date="1542248736094" expanded="true" signature="140:141" ph="..." />
+            <marker date="1542248736094" expanded="true" signature="451:452" ph="..." />
+            <marker date="1542248736094" expanded="true" signature="550:599" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/binary_search_tree/test_binary_search_tree.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/binary_search_tree/binary_search_tree.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="866">
-          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+        <state relative-caret-position="95">
+          <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
           <folding>
-            <marker date="1542324368132" expanded="true" signature="15:368" ph="..." />
-            <marker date="1542324368132" expanded="true" signature="512:518" ph="..." />
-            <marker date="1542324368132" expanded="true" signature="542:902" ph="..." />
-            <marker date="1542324368132" expanded="true" signature="929:948" ph="..." />
+            <marker date="1542343247432" expanded="true" signature="251:286" ph="..." />
           </folding>
         </state>
       </provider>

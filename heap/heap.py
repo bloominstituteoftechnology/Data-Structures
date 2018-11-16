@@ -1,13 +1,17 @@
 class Heap:
   def __init__(self):
+    
     self.storage = []
 
   def insert(self, value):
     self.storage.append(value)
+    print('*************************')
+    print('Heap after inserting %(value)s: ' % {"value": value})
+    print(self)
     self._bubble_up(len(self.storage) - 1)  # call _bubble_up passing in index of the value that was just inserted
 
-  # def delete(self):
-  #   self.storage[0] = self.storage[-1]
+  def delete(self):
+    self.storage[0] = self.storage[-1]
 
 
   # def left_index(self, index):
@@ -44,7 +48,9 @@ class Heap:
 
       self.storage[index], self.storage[pindex] = \
         self.storage[pindex], self.storage[index]                      # Swap current value and parent value like a,b = b,a
+
       index = pindex
+      print('Heap after bubbling: ')
       print(self)
 
   # def get_max_child_index(self, index):
@@ -69,22 +75,22 @@ class Heap:
   #     else:
   #       break
 
-  # def __str__(self):
-  #     rv = "Heap:\n"
+  def __str__(self):
+      rv = "Heap:\n"
 
-  #     l = 1
-  #     c = 0
+      l = 1
+      c = 0
 
-  #     for i in range(len(self.storage)):
-  #       rv += str(self.storage[i]) + "  "
+      for i in range(len(self.storage)):
+        rv += str(self.storage[i]) + "  "
 
-  #       c += 1
+        c += 1
 
-  #       if c >= l:
-  #         rv += "\n" + "  " * l
-  #         c = 0
-  #         l *= 2
+        if c >= l:
+          rv += "\n" + "  " * l
+          c = 0
+          l *= 2
 
-  #     rv += "\n"
+      rv += "\n"
 
-  #     return rv
+      return rv

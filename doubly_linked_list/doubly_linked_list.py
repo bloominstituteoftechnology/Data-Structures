@@ -38,3 +38,4 @@ class DoublyLinkedList:
 
   def delete(self, node):
     pass
+

@@ -2,25 +2,15 @@
 
 Topics:
 
- * Linked Lists
  * Queues
  * Binary Search Trees
+ * Doubly Linked Lists
  * Heaps
 
 ## Tasks
 1. Implement each data structure, starting with the linked list data structure. Make sure you're in the approriate directory, then run `python3 test_[NAME OF DATA STRUCTURE].py` to run the tests for that data structure and check your progress. Get all the tests passing for each data structure.
 
 2. Open up the `Data_Structures_Questions.md` file, which asks you to evaluate the runtime complexity of each of the methods you implemented for each data structure. Add your answers to each of the questions in the file.
-
-### Linked Lists
- * Should have the methods: `add_to_tail`, `remove_head`, `contains`, and `get_max`.
-   * `add_to_tail` replaces the tail with a new value that is passed in.
-   * `remove_head` removes and returns the head node.
-   * `contains` should search through the linked list and return true if a matching value is found.
-   * `get_max` returns the maximum value in the linked list. 
- * The `head` property is a reference to the first node and the `tail` property is a reference to the last node. Build your nodes with objects.
- 
-![Image of Linked List](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Singly-linked-list.svg/816px-Singly-linked-list.svg.png)
 
 ### Queues
  * Should have the methods: `enqueue`, `dequeue`, and `len`.
@@ -38,6 +28,21 @@ Topics:
 
 ![Image of Binary Search Tree](https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Binary_search_tree.svg/300px-Binary_search_tree.svg.png)
 
+### Doubly Linked Lists
+ * The `ListNode` class, which represents a single node in the doubly-linked list, has already been implemented for you. Inspect this code and try to understand what it is doing to the best of your ability.
+ * The `DoublyLinkedList` class itself should have the methods: `add_to_head`, `add_to_tail`, `remove_from_head`, `remove_from_tail`, `move_to_front`, `move_to_end`, `delete`, and `get_max`.
+   * `add_to_head` replaces the head of the list with a new value that is passed in.
+   * `add_to_tail` replaces the tail of the list with a new value that is passed in.
+   * `remove_from_head` removes the head node and returns the value stored in it.
+   * `remove_from_tail` removes the tail node and returns the value stored in it.
+   * `move_to_front` takes a reference to a node in the list and moves it to the front of the list, shifting all other list nodes down. 
+   * `move_to_end` takes a reference to a node in the list and moves it to the end of the list, shifting all other list nodes up. 
+   * `delete` takes a reference to a node in the list and removes it from the list. The deleted node's `previous` and `next` pointers should point to each afterwards.
+   * `get_max` returns the maximum value in the list. 
+ * The `head` property is a reference to the first node and the `tail` property is a reference to the last node.
+ 
+![Image of Doubly Linked List](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Doubly-linked-list.svg/610px-Doubly-linked-list.svg.png)
+
 ### Heaps
 * Should have the methods `insert`, `delete`, `get_max`, `_bubble_up`, and `_sift_down`.
   * `insert` adds the input value into the heap; this method should ensure that the inserted value is in the correct spot in the heap
@@ -51,21 +56,6 @@ Topics:
 ![Image of a Heap in Array form](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Heap-as-array.svg/603px-Heap-as-array.svg.png)
 
 ## Stretch Goals
-1. Implement a [doubly-linked list](https://en.wikipedia.org/wiki/Doubly_linked_list) class that adheres to the following specification. Uncomment the tests in the `tests/doubly-linked-list.test.js` file in order to test your solution.
+1. Implement a [b-tree](https://en.wikipedia.org/wiki/B-tree) class that adheres to the following specification:
 
-   * Consists of a `DoublyLinkedList` class and a `ListNode` class.
-   * The `ListNode` class has the methods `insert_after`, `insert_before`, and `delete`.
-     * `insert_after` inserts a new node with the input value _after_ the calling node.
-     * `insert_before` inserts a new node with the input value _before_ the calling node.
-     * `delete` should remove the calling node from the list (think about what that means).
-
-   * The `DoublyLinkedList` class, like the `LinkedList` class, holds references to the `head` of the list as well as the `tail`; it has the methods `add_to_head`, `remove_from_head`, `add_to_tail`, `remove_from_tail`, `move_to_front`, `move_to_back`, and `delete`
-     * `add_to_head` creates a new node with the input value and adds the new node as the new head of the list.
-     * `add_to_tail` creates a new node with the input value and adds the new node as the new tail of the list.
-     * `remove_from_head` removes the current head of the list; the current head's next node should be designated as the new head.
-     * `remove_from_tail` removes the current tail of the list; the current tail's previous node should be designated as the new tail.
-     * `move_to_front` receives a node and moves that node (if it exists in the list) to the front of the list as the new head.
-     * `move_to_end`receives a node and moves that node (if it exists in the list) to the back of the list as the new tail.
-     * `delete` receives a node as input and deletes that node from the list.
-
-![Image of Doubly Linked List](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Doubly-linked-list.svg/610px-Doubly-linked-list.svg.png)
+TODO

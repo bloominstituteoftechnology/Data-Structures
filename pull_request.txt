@@ -1,0 +1,13 @@
+https://github.com/LambdaSchool/Data-Structures/pull/210
+
+
+* I completed Queue and BST
+
+* Need to complete Heap and review of this week's material for Sprint Challenge.
+
+* Blockers: Self
+* Breakthroughs: I'm coming to a pretty solid understanding of when and how to implement recursion.  
+
+
+* Please review each previous day's material.  PLEASE, GIVE US ANOTHER WEEK IN THIS SAME MATERIAL, before continuing on.  
+

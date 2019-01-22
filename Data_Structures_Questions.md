@@ -3,18 +3,19 @@ Answer the following questions for each of the data structures you implemented a
 ## Queue
 
 1. What is the runtime complexity of `enqueue`?
-
+   O(1) Constant time, because it's just adding a next_node value to the tail.
 2. What is the runtime complexity of `dequeue`?
-
+   O(1) Constant time, because it's making the head next_node the new head and removing the current head
 3. What is the runtime complexity of `len`?
+   O(1) Constant time, because we're incrementing or decrementing the size value with each call of `enqueue` or `dequeue`. So, it doesn't have to run through entire list and count whenever `len` is called
 
 ## Binary Search Tree
 
-1. What is the runtime complexity of `insert`? 
+1. What is the runtime complexity of `insert`?
 
 2. What is the runtime complexity of `contains`?
 
-3. What is the runtime complexity of `get_max`? 
+3. What is the runtime complexity of `get_max`?
 
 ## Heap
 

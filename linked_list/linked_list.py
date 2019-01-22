@@ -37,8 +37,11 @@ class LinkedList:
 
   def remove_head(self):
     # if head != none
-    # get the next node from the head save to a temp variable
-    # set the temp variable to the head
+    if self.head is not None:
+      # get the next node from the head save to a temp variable
+      temp_next = self.head.get_next()
+      # set the temp variable to the head
+      self.head = temp_next
     pass
 
   def contains(self, value):
@@ -55,8 +58,12 @@ class LinkedList:
 
 ll = LinkedList()
 ll.add_to_tail(4)
-print(ll.head.value)
-print(ll.tail.value)
+print(f'this should be 4:   {ll.head.value}')
+print(f'this should be 4:   {ll.tail.value}')
 ll.add_to_tail(7)
-print(ll.head.value)
-print(ll.tail.value)
+print(f'this should be 4:   {ll.head.value}')
+print(f'this should be 7:   {ll.tail.value}')
+ll.add_to_tail(9)
+ll.remove_head()
+print(f'this should be 7:   {ll.head.value}')
+print(f'this should be 9:   {ll.tail.value}')

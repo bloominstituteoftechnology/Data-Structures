@@ -24,6 +24,7 @@ class LinkedList:
     def __init__(self):
         self.head = None
         self.tail = None
+        self.max = None
 
     def add_to_tail(self, value):
         node = Node(value)
@@ -42,12 +43,12 @@ class LinkedList:
     def contains(self, value):
         curr_node = self.head
         while True:
-                if curr_node is None:
-                    return False
-                elif curr_node.value == value:
-                    return True
-                else:
-                    curr_node = curr_node.next_node
+            if curr_node is None:
+                return False
+            elif curr_node.value == value:
+                return True
+            else:
+                curr_node = curr_node.next_node
 
     def get_max(self):
-        pass
+        return self.max.value if self.max is not None else None

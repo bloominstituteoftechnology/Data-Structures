@@ -59,5 +59,9 @@ class BinarySearchTree:
             return False  # O(1)
         return child_bst.contains(target)  # Recurses through half so O(log n)
 
+    # O(log n)
     def get_max(self):
-        pass
+        if self.right is None:
+            return self.value
+        else:
+            return self.right.get_max()  # Recurses through half so O(log n)

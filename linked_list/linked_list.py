@@ -38,7 +38,7 @@ class LinkedList:
         if self.head is not None:
             # create temp variable
             new_head = self.head.next_node
-            if new_head == None:
+            if new_head is None:
                 self.tail = None
             prev_head = self.head.value
             # New head becomes head
@@ -70,7 +70,7 @@ class LinkedList:
         if curr_node is None:
             return None
 
-        while curr_node != None:
+        while curr_node is not None:
             if curr_node is not None:
                 if curr_node.value > maxNode:
                     maxNode = curr_node.value

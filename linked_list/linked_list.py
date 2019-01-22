@@ -45,8 +45,16 @@ class LinkedList:
     pass
 
   def contains(self, value):
+    current = self.head
     # while tail is true
-    # check if value matches node
+    while True:
+      if current is None:
+        return False
+      elif current.value == value:
+        return True
+      # check if value matches node
+      else:
+        current = current.next_node
     # go to the next node
     pass
 
@@ -67,3 +75,4 @@ ll.add_to_tail(9)
 ll.remove_head()
 print(f'this should be 7:   {ll.head.value}')
 print(f'this should be 9:   {ll.tail.value}')
+print(ll.contains(1))

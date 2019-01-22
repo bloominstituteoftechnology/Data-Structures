@@ -52,6 +52,15 @@ class LinkedList:
 
     return retval
 
+  # PM ERIC SUGGESTED MODIFICATION
+  # def remove_head(self):
+  #   if self.head == None:
+  #     return self.head
+  #   else:
+  #     retval = self.head.get_value()
+  #     self.head = self.head.get_next()
+  #     return retval
+
   def contains(self, value):
     # set the current node to the head
     curr_node = self.head

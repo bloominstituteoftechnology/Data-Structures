@@ -82,13 +82,3 @@ class LinkedList:
             return max_value
         else:
             return None
-
-
-ll = LinkedList()
-ll.add_to_tail(10)
-# ll.add_to_tail(20)
-
-print(ll.remove_head())
-# print(ll.head)
-# print(ll.tail.value)
-# print(ll.remove_head())

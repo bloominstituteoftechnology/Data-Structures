@@ -60,13 +60,14 @@ class LinkedList:
 
   def get_max(self):
     curr_node = self.head
-    max_node = 
-    
-    if self.next_node is None:
-      return self.value
-    elif 
+    max_node = self.head
 
-    else: 
+    if curr_node.get_next().value > curr_node.max_node:
+      max_node = curr_node.get_next()
+      curr_node = curr_node.get_next()
+    elif curr_node.get_next() is None:
+      return max_node.value
+    else curr_node == None: 
       raise ValueError("empty list")
 
 

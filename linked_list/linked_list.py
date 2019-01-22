@@ -45,12 +45,17 @@ class LinkedList:
         # check if head is None
         if self.head is not None:
             # set next to head value (it's the address)
-            new_head = self.head.next_node
-            # delete head node
-            old_head = copy(self.head.value)
+            new_head = self.head.get_next()
+            old_head = self.head.get_value()
+
+            # if no new head means there's only one item in list
+            if new_head is None:
+                self.tail = None
+                self.head = None
             # set new head
             self.head = new_head
-            return new_head.value
+
+            return old_head
 
     def contains(self, value):
         # set current node to head
@@ -78,7 +83,7 @@ class LinkedList:
             switch = False
 
             if curr_node.next_node is not None:
-                if curr_node.value < curr_node.next_node:
+                if curr_node.value < curr_node.next_node.value:
                     curr_node = curr_node.next_node
                     switch = True
 

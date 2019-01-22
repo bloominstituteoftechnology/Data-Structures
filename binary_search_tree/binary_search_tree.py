@@ -1,5 +1,6 @@
 class BinarySearchTree:
 
+    # O(1)
     def __init__(self, value):
         self.value = value
         self.left = None
@@ -11,22 +12,22 @@ class BinarySearchTree:
     Once a leaf node is found,
     the new node is added as a child of the leaf node.
     """
+    # O(log n)
     def insert(self, value):
-        
         # Defines wich side of the tree to add the value as the string version of the attribute
-        attr = "right" if value >= self.value else "left"
+        attr = "right" if value >= self.value else "left"  # O(1)
         # Gets the child binary search tree desired (either larger or smaller side)
-        child_bst = getattr(self, attr)
+        child_bst = getattr(self, attr)  # O(1) probably
         # If the child is empty
         if child_bst is None:
             # create a new bst
-            new_bst = BinarySearchTree(value)
+            new_bst = BinarySearchTree(value)  # O(1)
             # set it to the new bst
-            setattr(self, attr, new_bst)
+            setattr(self, attr, new_bst)  # O(1) probably
         # If it's not
         else:
             # Insert it into child tree (recursively)
-            child_bst.insert(value)
+            child_bst.insert(value)  # Recursing through half so O(log n)
         
         "Same as above"
         # if value >= self.value:
@@ -48,12 +49,15 @@ class BinarySearchTree:
     we recur for right subtree of root node.
     Otherwise we recur for left subtree.
     """
+    # O(log n)
     def contains(self, target):
-        # Check to see if head is equal to target
-        isEqualTo = self.head.isEqalTo(target)
-        # 1. Start from root.
-        # 2. Compare the inserting element with root, if less than root, then recurse for left, else recurse for right.
-        # 3. If element to search is found anywhere, return true, else return false.
+        if self.value == target:
+            return True
+        attr = "right" if target > self.value else "left"  # O(1)
+        child_bst = getattr(self, attr)  # O(1) probably
+        if child_bst is None:
+            return False  # O(1)
+        return child_bst.contains(target)  # Recurses through half so O(log n)
 
     def get_max(self):
         pass

@@ -38,10 +38,15 @@ class LinkedList:
   def remove_head(self):
     # check if the head is none, if it is
     if self.head is not None:
+      return_val = self.head.value
     # set the head nodes next node to a temp var
       new_head = self.head.next_node
       # set the head to the temp variable
       self.head = new_head
+    else:
+      return_val = None
+
+    return return_val
 
   def contains(self, value):
     # set the current node to the head

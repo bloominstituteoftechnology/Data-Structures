@@ -23,28 +23,35 @@ class LinkedList:
     self.tail = None
 
   def add_to_tail(self, value):
-    # create a new node
+    # 1. Create a new node
+    # 2. Check if there is a current tail
+    # 2-1. If there isn't a tail, then check if there is currently a head - if there isn't, we need the new node to be the tail and the head
+    # 3. Else If there is a current tail (aka not None), set its next pointer to the new node
+    # 3-1. Set the linked lists tail to the new node
     node = Node(value, None)
-    # If the LL is not empty
-    if self.tail is not None:
-      # Then set the tail's next to the new node
-      self.tail.set_next(node)
-    else:
-      # If it is empty, set the new node to the head
+    if self.tail is None and self.head is None:
+      self.tail = node
       self.head = node
-    # Set the LL's new node
-    self.tail = node
+    elif self.tail is not None:
+      self.tail.next_node = node
+      self.tail = node
 
   def remove_head(self):
-    # Check if the head is None
+    # 1. Check if there is a head
+    # 1-1. If there is a head, check if there is a next node
+    # 1-2. If there is a next node, set the next node to the new head
+    # 2. Else if there isn't a next node, the current node is both the tail and head, derefence both
     if self.head is not None:
-      # Get new head
-      old_head = self.head
-      new_head = self.head.next_node
-      self.head = new_head
-      return old_head.value
+      head_to_remove = self.head.value
+      if self.head.next_node is not None:
+        self.head = self.head.next_node
+      elif self.head.next_node is None:
+        self.head = None
+        self.tail = None
+      return head_to_remove
+    else:
+      return None
     
-
   def contains(self, value):
     curr_node = self.head
 

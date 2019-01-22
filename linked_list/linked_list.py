@@ -48,3 +48,4 @@ class LinkedList:
 
   def get_max(self):
     pass
+ 

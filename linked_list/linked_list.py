@@ -46,7 +46,16 @@ class LinkedList:
     
 
   def contains(self, value):
-    pass
+    current = self.head
+
+    # check to match current value, one of three cases will arise
+    while True:
+      if current is None:
+        return False
+      elif current.get_value() == value:
+        return True
+      else:
+        current = current.get_next()
 
   def get_max(self):
     pass

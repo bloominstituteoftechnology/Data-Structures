@@ -65,6 +65,6 @@ Answer the following questions for each of the data structures you implemented a
 
 10. What is the runtime complexity of `DoublyLinkedList.delete`?
     - O(1)
-
-    a. Compare the runtime of the doubly linked list's `delete` method with the worst-case runtime of the JS `Array.splice` method. Which method generally performs better?
-            - I don't know JS, but deleting a value from the middle of an array would be O(n) whereas dll delete() would only be O(1). Deleting from the middle of an array causes each of the succeeding values in the array to move up one spot in memory. With dlls, it doesn't matter where the each of the value is in memory, just that the head and tail of the item to delete point at each other.
+    
+    - Compare the runtime of the doubly linked list's `delete` method with the worst-case runtime of the JS `Array.splice` method. Which method generally performs better?
+        - I don't know JS, but deleting a value from the middle of an array would be O(n) whereas dll delete() would only be O(1). Deleting from the middle of an array causes each of the succeeding values in the array to move up one spot in memory. With dlls, it doesn't matter where each of the values is in memory, just that the head and tail of the item to delete, point at each other.

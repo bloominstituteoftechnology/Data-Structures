@@ -25,28 +25,32 @@ class LinkedList:
   def add_to_tail(self, value):
     # create a new node
     node = Node(value)
+
     # if the LL is not empty
-    if self.tail is not None:
-      #set the tails next to the new node
+    if self.head is not None and self.tail is not None:
+      # set the tails next to the new node
       self.tail.set_next(node)
+      self.tail = node
+    # else
     else:
-      # if it is empty set the new node to the head
+      # set the head and tail to the new node
       self.head = node
-    # set the LLs tail to the new node
+
     self.tail = node
 
   def remove_head(self):
-    # check if the head is none, if it is
-    if self.head is not None:
-      return_val = self.head.value
-    # set the head nodes next node to a temp var
-      new_head = self.head.next_node
-      # set the head to the temp variable
-      self.head = new_head
+    if self.head is None and self.tail is None:
+      retval = None
+    elif self.head == self.tail:
+      retval = self.head.value
+      self.head = None
+      self.tail = None
     else:
-      return_val = None
+      retval = self.head.value
+      new_head = self.head.next_node
+      self.head = new_head
 
-    return return_val
+    return retval
 
   def contains(self, value):
     # set the current node to the head
@@ -69,6 +73,10 @@ class LinkedList:
     current_node = self.head
     # while True to create a loop
     while True:
+      # had to test current_node for None right away
+      # before attempting to run methods on it.
+      if current_node == None:
+        return None
       # had to move None check higher
       # could not compare None.value
       if current_node.get_next() == None:

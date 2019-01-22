@@ -24,9 +24,15 @@ class LinkedList:
 
   def add_to_tail(self, value):
     # create the node
+    node = Node(value)
     # if tail != none | set next to node
     # if tail is none | set head as node
-    # set the tail as node 
+    if self.tail is not None:
+      self.tail.next_node = node
+    else:
+      self.head = node
+    # set the tail as node
+    self.tail = node 
     pass
 
   def remove_head(self):
@@ -46,3 +52,11 @@ class LinkedList:
     # while tail is true
     # if value is > results | result = value
     pass
+
+ll = LinkedList()
+ll.add_to_tail(4)
+print(ll.head.value)
+print(ll.tail.value)
+ll.add_to_tail(7)
+print(ll.head.value)
+print(ll.tail.value)

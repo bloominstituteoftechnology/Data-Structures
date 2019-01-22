@@ -63,4 +63,4 @@ class LinkedList:
     if self.max is not None:
       return self.max.value
     else:
-      return None
+      return None 

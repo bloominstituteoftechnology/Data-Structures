@@ -40,7 +40,7 @@ class LinkedList:
             new_head = self.head.next_node
             if new_head is None:
                 self.tail = None
-            prev_head = self.head.value
+            prev_head = self.head.get_value()
             # New head becomes head
             self.head = new_head
             return prev_head
@@ -57,7 +57,7 @@ class LinkedList:
             if curr_node is None:
                 return False
             # Else, if the node's value matches the query value, return True
-            elif curr_node.value == value:
+            elif curr_node.get_value() == value:
                 return True
             else:
                 curr_node = curr_node.next_node
@@ -72,8 +72,8 @@ class LinkedList:
 
         while curr_node is not None:
             if curr_node is not None:
-                if curr_node.value > maxNode:
-                    maxNode = curr_node.value
+                if curr_node.get_value() > maxNode:
+                    maxNode = curr_node.get_value()
             else:
                 pass
             curr_node = curr_node.next_node

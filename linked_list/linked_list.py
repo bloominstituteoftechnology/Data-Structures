@@ -23,13 +23,57 @@ class LinkedList:
     self.tail = None
 
   def add_to_tail(self, value):
-    pass
+    # create a new node
+    node = Node(value)
+    # if the LL is not empty
+    if self.tail is not None: 
+      # set the tails next to the new node
+      self.tail.set_next(node)
+    else:
+      # if it id empty set the new node to head
+      self.head = node
+    # set the LL tail to the new node
+    self.tail = node
 
   def remove_head(self):
-    pass
+    # check if the head is not none
+    if self.head is not None:
+      # set the head bodes next node value to a temp var
+      old_head = self.head
+      # del the head node
+      del(self.head)
+      #then set head to that temp
+      self.head = old_head.next_node
+      print(self.head)
+      if self.head is None:
+        self.tail = None
+      return old_head.value
+    
 
   def contains(self, value):
-    pass
+    # set the current node to the head
+    curr_node = self.head
+    while True:
+    # if the node is null return false
+      if curr_node is None:
+        return False
+      # else if the node value matches query value return true
+      elif curr_node.value == value:
+        return True
+      # otherwise set currents node to the tail
+      else:
+        curr_node = curr_node.next_node
 
   def get_max(self):
-    pass
+    # set the current node to the head
+    curr_node = self.head
+    # set max to None
+    max_value = None
+    while curr_node: 
+      # if there current none value is greater
+      if max_value is None or curr_node.get_value() > max_value:
+        # set max to current
+        max_value = curr_node.get_value()
+      # set current to next node to move on to the next node
+      curr_node = curr_node.get_next()
+    return max_value

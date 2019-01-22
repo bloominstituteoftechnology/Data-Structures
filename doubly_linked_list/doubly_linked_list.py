@@ -34,16 +34,39 @@ class ListNode:
 
 """Our doubly-linked list class. It holds references to
 the list's head and tail nodes."""
+## ListNode Methods
+# insert_after(value)
+# insert_before(value)
+# delete()
 class DoublyLinkedList:
   def __init__(self, node=None):
     self.head = node
     self.tail = node
 
   def add_to_head(self, value):
-    pass
+    node = ListNode(value)
+
+    if self.head != None and self.tail != None:
+      self.head.insert_before(node)
+      self.head = node
+
+    else:
+      self.head = node
+      self.tail = node
 
   def remove_from_head(self):
-    pass
+    if self.head is None and self.tail is None:
+      retval = None
+    elif self.head == self.tail:
+      retval = self.head.value
+      self.head = None
+      self.tail = None
+    else:
+      retval = self.head.value
+      new_head = self.head.next
+      self.head.delete()
+      self.head = new_head
+    return retval
 
   def add_to_tail(self, value):
     pass
@@ -62,3 +85,8 @@ class DoublyLinkedList:
     
   def get_max(self):
     pass
+
+DLL = DoublyLinkedList()
+DLL.add_to_head(5)
+DLL.add_to_head(4)
+print(DLL.remove_from_head())

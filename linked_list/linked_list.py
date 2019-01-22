@@ -26,34 +26,41 @@ class LinkedList:
         self.tail = None
 
     def add_to_tail(self, value):
-        #  Create a new node
         node = Node(value)
-        #  If the Linked List is not empty
-        if self.tail is not None:
-            # Then set the tail's next to the new node
-            self.tail.set_next(node)
-        else:
-            # If it is empty, set the new node to the head
+        if self.tail is None:
             self.head = node
-        # Set the Linked List's tail to the new node
-        self.tail = node
+            self.tail = node
+
+        else:
+            self.tail.set_next(node)
+            self.tail = node
 
     def remove_head(self):
         # Check if the head is None
         if self.head is not None:
-            # Set the head nodes next node value to a temp var
             new_head = self.head.next_node
-            # Delete the head node
             del(self.head)
-            # Set new pointer
             self.head = new_head
-            # Set new head to that temp
 
     def contains(self, value):
-        # set current node to the head
-        # 1. if the node is null, return false
-        # 2. else if the node's value matches the query value, return true
-        # 3. otherwise set the current node to the tail start from step 2
+        curr_node = self.head
+        while True:
+            if curr_node is None:
+                return False
+            elif curr_node.value == value:
+                return True
+            else:
+                curr_node = curr_node.next_node
 
     def get_max(self):
         pass
+
+
+# ll = LinkedList()
+# ll.add_to_tail(6)
+# print(ll.head.value)
+# ll.add_to_tail(1)
+# print(ll.tail.value)
+# print(ll.contains(2))
+# print(ll.contains)
+# print()

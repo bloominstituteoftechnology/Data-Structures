@@ -39,8 +39,11 @@ class LinkedList:
     # Check if the head is None
     if self.head is not None:
       # Get new head
+      old_head = self.head
       new_head = self.head.next_node
       self.head = new_head
+      return old_head.value
+    
 
   def contains(self, value):
     curr_node = self.head

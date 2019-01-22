@@ -25,15 +25,25 @@ class LinkedList:
   def add_to_tail(self, value):
     node = Node(value)
 
-    if self.tail is not None:
-      self.tail.set_next(node)
+   if self.tail is None or self.head is None:
+     self.head = node
     else:
-      self.head = node
+      self.tail.set_next(node)
 
     self.tail = node
    
   def remove_head(self):
-    pass
+    if self.head is not None:
+      previous = self.head.value
+      self.head = self.head.get_next()
+
+      if self.head is None:
+        self.tail = None
+        
+        return previous
+      else:
+        return None
+    
 
   def contains(self, value):
     pass

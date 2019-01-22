@@ -60,4 +60,20 @@ class LinkedList:
         cur_node = cur_node.next_node
 
   def get_max(self):
-    pass
+    # get current head
+    cur_head = self.head
+    # create a var for max value
+    max_value = None
+    # while there is a current head that we haven't checked
+    while cur_head:
+      # if max_value still has intital value or
+      # if cur_head is greater than our current max value
+      if max_value is None or cur_head.get_value() > max_value:
+        # set max_value to our current head
+        max_value = cur_head.get_value()
+        # afterwards change our current head to the next value to check if the next value is greater or if there is no next value the loop will end
+      cur_head = cur_head.get_next()
+    # return the max_value to user
+    return max_value
+
+

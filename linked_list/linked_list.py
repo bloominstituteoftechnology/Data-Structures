@@ -19,17 +19,56 @@ class Node:
 
 class LinkedList:
   def __init__(self):
-    self.head = None
-    self.tail = None
+    self.head = head
+    self.tail = tail
 
-  def add_to_tail(self, value):
-    pass
+  #first create new node
+  def add_to_tail(self): #could also add value arg but dont need to.
+    node = Node(value)
+    #set tail of existing tail
+    #cant set tail if none. if LL not empty set tail to new node. if empty set new node to head.
+    if self.tail is not None:
+        self.tail.set_next(node)
+    else: 
+        self.head = Node
+    #set LL tail to new node
+    self.tail = node
 
   def remove_head(self):
-    pass
+        #check if head is none
+    if self.head is not None:
+        new_head = self.head.next_node
+        #setting head nodes to next with temp var
+        
+        #delete head node
+        del(self.head)
+
+        #then set head to that temp
+        self.head = new_head
 
   def contains(self, value):
-    pass
+      #set current node to head. if node is null return false. 
+      # elif node value matches query value return true. else set current node to tail.
+      curr_node = self.head
+
+      if curr_node is None: 
+        return False
+      elif curr_node.value == value:
+        return True
+      else: 
+        curr_node = curr_node.next_node
 
   def get_max(self):
-    pass
+    curr_node = self.head
+    max_node = 
+    
+    if self.next_node is None:
+      return self.value
+    elif 
+
+    else: 
+      raise ValueError("empty list")
+
+
+
+

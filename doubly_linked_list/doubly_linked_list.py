@@ -64,7 +64,6 @@ class DoublyLinkedList:
 
   def move_to_front(self, node):
     oldHead = self.head
-    print(node.next)
     self.head = node 
     self.head.prev = oldHead.prev
     oldHead.next = node.next
@@ -72,10 +71,19 @@ class DoublyLinkedList:
     self.head.next.prev = self.head
   
   def move_to_end(self, node):
-    pass
+    oldTail = self.tail
+    self.tail = node
+    self.tail.next = oldTail.next
+    oldTail.prev = node.prev
+    self.tail.prev = oldTail
+    self.tail.prev.next = self.tail
 
   def delete(self, node):
-    pass
+    prevNode = node.prev
+    nextNode = node.next
+    prevNode.next = nextNode
+    nextNode.prev = prevNode
+
     
   def get_max(self):
     pass

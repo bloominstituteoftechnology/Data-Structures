@@ -59,6 +59,15 @@ class LinkedList:
     pass
 
   def get_max(self):
+    result = self.tail.value
+    current = self.head
+    while current != None:
+      if current.value > result:
+        result = current.value
+        current = current.next_node
+      else:
+        current = current.next_node
+    return result
     # set a results variable
     # while tail is true
     # if value is > results | result = value
@@ -76,3 +85,12 @@ ll.remove_head()
 print(f'this should be 7:   {ll.head.value}')
 print(f'this should be 9:   {ll.tail.value}')
 print(ll.contains(1))
+print(ll.get_max())
+ll.add_to_tail(1)
+ll.add_to_tail(5)
+print(ll.get_max())
+ll.add_to_tail(22)
+print(ll.get_max())
+ll.add_to_tail(15)
+print(ll.get_max())
+

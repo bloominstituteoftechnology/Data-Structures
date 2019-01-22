@@ -109,7 +109,7 @@ class DoublyLinkedList:
   def get_max(self):
     node = self.head
     if self.head is None:
-      return 'None'
+      return None
 
     value = node.value
     while node.next is not None:
@@ -118,4 +118,4 @@ class DoublyLinkedList:
         value = node.value
       
     
-    return self.tail.value
+    return value

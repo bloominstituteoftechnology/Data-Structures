@@ -36,14 +36,28 @@ class LinkedList:
     self.tail = node
 
   def remove_head(self):
-    # check if head is not None
-    if self.head is not None:
-      # set the heads nodes next nodes value to a temp var
-      new_head = self.head.next_node
-      # delete the head node
-      del(self.head)
-      # then set head equal to the temp value
-      self.head = new_head
+     # if we are the head
+    if self.head:
+      # if the next node of the head is empty
+      if self.head.get_next() == None:
+        # set up a temporary head to current head
+        temp_head = self.head
+        # empty off the current head and the current tail
+        self.head = None
+        self.tail = None
+        # then return the temp head value
+        return temp_head.get_value()
+      else:
+        # otherwise set the temporary head to the current head since head has a next value
+        temp_head = self.head
+        # and set the current head to the next node
+        self.head = self.head.get_next()
+        # then return the removed head value
+        return temp_head.get_value()
+    else:
+      # otherwise just return nothing / None
+      return None
+    
 
   def contains(self, value):
     # set the current node to the head
@@ -75,5 +89,3 @@ class LinkedList:
       cur_head = cur_head.get_next()
     # return the max_value to user
     return max_value
-
-

@@ -84,6 +84,8 @@ class DoublyLinkedList:
         pass
 
     def get_max(self):
+        if self.head is None:
+            return None
         curr_node = self.head
         maxNode = -float("inf")
         if curr_node is None:
@@ -96,7 +98,9 @@ class DoublyLinkedList:
 
 
 d = DoublyLinkedList()
-d.add_to_head(10)
 d.add_to_head(100)
+d.add_to_head(55)
+d.add_to_head(101)
 
-print(d.head.next.value)
+
+print(d.get_max())

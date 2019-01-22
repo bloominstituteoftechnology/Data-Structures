@@ -30,12 +30,14 @@ class LinkedList:
     if self.tail is not None:
       # Then set the tail's next to the new node
       self.tail.set_next(node)
+      self.tail = node
       # Set max to node if higher than current value
       if self.max.value < node.value:
         self.max = node
     else:
-      # If it is empty, set the new node to the head
+      # If it is empty, set the new node to the head and tail
       self.head = node
+      self.tail = node
       # And set it to max
       self.max = node
 
@@ -43,11 +45,17 @@ class LinkedList:
     # Check if the head is None
     if self.head is not None:
       # set the head nodes next node value to a temp var
-      new_head = self.head.next_node
+      old_head = self.head
       # delete the head node (not actually needed because python deallocates on its own if no more refrences)
       del(self.head)
       # Then set head to that temp
-      self.head = new_head
+      self.head = old_head.next_node
+
+      # Makes sure tail is also None if new_head is None
+      if self.head is None:
+        self.tail = None
+      
+      return old_head.value
 
   def contains(self, value):
     # Set the current node to the head
@@ -57,7 +65,7 @@ class LinkedList:
       # 1. If the node is null, return False (exit case)
       if curr_node is None:
         return False
-      elif curr_node.value = value:
+      elif curr_node.value == value:
         # 2. Else if the node's value matches the query value, return True
         return True
       else:
@@ -65,4 +73,4 @@ class LinkedList:
         curr_node = curr_node.next_node
 
   def get_max(self):
-    return self.max
+    return self.max.value if self.max is not None else None

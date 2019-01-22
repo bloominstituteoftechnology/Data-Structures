@@ -44,7 +44,6 @@ class LinkedList:
       self.head = new_head
 
   def contains(self, value):
-    pass
     # set the current node to the head
     curr_node = self.head
     while True:
@@ -59,12 +58,41 @@ class LinkedList:
         curr_node = curr_node.next_node
 
   def get_max(self):
-    pass
     # set the currrent highest to the first
+    current_highest = self.head
+    # set current node to the first node
+    current_node = self.head
     # while True to create a loop
-    # check if the next node is higher and if so
-      # set current_highest to current node
-      # set current node to next node
-    #else
-      # set current node to next node
-    # if next node = None return current_highest
+    while True:
+      # had to move None check higher
+      # could not compare None.value
+      if current_node.get_next() == None:
+        return current_highest.value
+      # check if the next node is higher and if so
+      if current_node.get_next().value > current_highest.value:
+        # set current_highest to current node
+        current_highest = current_node.get_next()
+        # set current node to next node
+        current_node = current_node.get_next()
+        
+      #else
+      else:
+        # set current node to next node
+        current_node = current_node.get_next()
+
+
+#############
+# TEST CODE #
+#############
+
+# LL = LinkedList()
+# LL.add_to_tail(1)
+# LL.add_to_tail(5)
+# LL.add_to_tail(302)
+# LL.add_to_tail(7)
+# LL.add_to_tail(4)
+# LL.add_to_tail(1)
+
+# print(f'LL CONTAINS TRUE: {LL.contains(5)}')
+# print(f'LL CONTAINS FALSE: {LL.contains(13)}')
+# print(f'LL GET_MAX: {LL.get_max()}')

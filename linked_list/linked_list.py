@@ -30,7 +30,8 @@ class LinkedList:
           self.head = node_to_add
           self.tail = node_to_add
       else:
-          self.tail = node_to_add    
+          self.tail.set_next(node_to_add)
+          self.tail = node_to_add
 
   def remove_head(self):
       #check if the linked-list is empty .. return None
@@ -69,3 +70,19 @@ class LinkedList:
                 current = current.get_next()
         
       return max
+      
+  def display(self):
+        current = self.head
+        while current != None:
+            print(current.get_value(), end = " -> ")
+            current = current.get_next()
+           
+      
+ll = LinkedList()
+ll.add_to_tail(10)
+ll.add_to_tail(20)
+ll.add_to_tail(30)
+ll.add_to_tail(40)
+ll.display()
+print("\nMax in Linked- List  : ", ll.get_max())
+print(ll.contains(30))

@@ -40,7 +40,8 @@ class LinkedList:
         if self.head == self.tail:
           self.head = None
           self.tail = None
-        else: self.head = self.head.get_next()
+        else:
+          self.head = self.head.get_next()
       else:
         self.head = None
     return removed_head.get_value()

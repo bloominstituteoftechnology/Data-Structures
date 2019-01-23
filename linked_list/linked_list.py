@@ -32,19 +32,26 @@ class LinkedList:
 
   def remove_head(self):
     if self.head is not None:
+      old_head = self.head.get_value()
       new_head = self.head.get_next()
-      del(self.head)
-      self.head = new_head
+      if new_head is not None:
+        self.head = new_head
+      else:
+        self.tail = None
+        self.head = None
+      return old_head
 
   def contains(self, value):
-    current_node = self.head
-    while True:
-      if current_node.get_next() == None:
-        return False
-      if current_node.get_value() == value:
-        return True
-      else:
-        current_node = current_node.get_next()
+    if self.head is not None:
+      current_node = self.head
+      while True:
+        if current_node.get_value() == value:
+          return True
+        elif current_node.get_next() == None:
+          return False
+        else:
+          current_node = current_node.get_next()
+    return False
 
   def get_max(self):
     if self.head is not None:
@@ -61,13 +68,13 @@ class LinkedList:
       return None
 
 
-newList = LinkedList()
+# newList = LinkedList()
 
-newList.add_to_tail('turtle')
-newList.add_to_tail('porcupine')
-newList.add_to_tail('walrus')
-newList.add_to_tail('kookaburra')
+# newList.add_to_tail('turtle')
+# newList.add_to_tail('porcupine')
+# newList.add_to_tail('walrus')
+# newList.add_to_tail('kookaburra')
 
-print(newList.head.get_value())
-print(newList.contains('walrus'))
-print(newList.get_max())
+# print(newList.head.get_value())
+# print(newList.contains('walrus'))
+# print(newList.get_max())

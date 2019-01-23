@@ -24,7 +24,17 @@ class BinarySearchTree:
         return rec(value, self)
 
     def contains(self, target):
-        pass
+        def rec(value, current_node):
+            if current_node is None:
+                return False
+            elif value == current_node.value:
+                return True
+            elif value > current_node.value:
+                return rec(value, current_node.right)
+            elif value < current_node.value:
+                return rec(value, current_node.left)
+
+        return rec(target, self)
 
     def get_max(self):
         pass
@@ -33,5 +43,9 @@ class BinarySearchTree:
 bst = BinarySearchTree(5)
 
 bst.insert(2)
+bst.insert(7)
+bst.insert(4)
+bst.insert(6)
 
-print(bst.left, bst.right)
+print(bst.contains(4))
+print(bst.contains(10))

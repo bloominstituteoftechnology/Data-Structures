@@ -100,13 +100,22 @@ class DoublyLinkedList:
 
     pass
   def remove_from_tail(self): 
-    pass
+    # set self tail to node for removal and set previous node to the previous node of the tail
+    remove_node = self.tail 
+    prev_node = self.tail.prev
 
+    #then, set the next node of the previous node to none
+    prev_node.next = None
+
+    #finally, set current tail to the previous node and return value of removed node
+    self.tail = prev_node
+
+    return remove_node.value
   def move_to_front(self, node):
     pass
 
   def move_to_end(self, node):
- 
+    
     if node.prev is not None:
       node.prev.next = node.next
 
@@ -122,7 +131,13 @@ class DoublyLinkedList:
     
 
   def delete(self, node):
-    pass
-    
+  # set the next node to the nodes next node and the previous node to the nodes previous node
+    next_node = node.next 
+    previous_node = node.prev
+   
+    # swap next and previous node
+    previous_node.next = next_node
+    next_node.prev = previous_node
+
   def get_max(self):
     pass

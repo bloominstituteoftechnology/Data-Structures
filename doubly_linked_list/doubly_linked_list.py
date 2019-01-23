@@ -112,15 +112,46 @@ class DoublyLinkedList:
 
 
   def move_to_end(self, node):
-    pass
+    if self.head == None:
+      return 'list empty'
+    else:
+      curr_node = self.head
+      while True:
+        ## if curr_node matches passed in node
+        if curr_node == node:
+          self.head.insert_after(node)
+          curr_node.delete()
+        else:
+          curr_node = curr_node.next
 
   def delete(self, node):
-    pass
+    if self.head == None:
+      return 'list empty'
+    else:
+      curr_node = self.head
+      while True:
+        if curr_node == node:
+          return curr_node.delete()
+        else:
+          curr_node = curr_node.next
     
   def get_max(self):
-    pass
+    if self.head == None:
+      return 'list empty'
+    else:
+      curr_node = self.head
+      curr_highest = self.head
+      while True:
+        if curr_node == None:
+          return curr_highest.value
+        if curr_node.next.value > curr_highest.value:
+          curr_highest = curr_node.next
+          curr_node = curr_node.next
+        else:
+          curr_node = curr_node.next
 
-DLL = DoublyLinkedList()
-DLL.add_to_head(5)
-DLL.add_to_head(4)
-print(DLL.remove_from_head())
+# DLL = DoublyLinkedList()
+# DLL.add_to_head(5)
+# DLL.add_to_head(4)
+# DLL.add_to_head(16)
+# print(DLL.remove_from_head())

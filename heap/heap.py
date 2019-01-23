@@ -28,9 +28,10 @@ class Heap:
 
     # O(log n)
     def _bubble_up(self, index):
-        if index < 2:
+        # if it's the first in storage, there's none above it
+        if index == 0:
             return
-        # index // 2 will always be parent node
+        # index // 2 will always be parent node (but 0 indexing)
         parent_index = ((index + 1) // 2) - 1
         # if node is larger than parent
         if self.storage[index] > self.storage[parent_index]:
@@ -41,24 +42,29 @@ class Heap:
         return self._bubble_up(parent_index)
 
     def _sift_down(self, index):
-#        first_child_index = index * 2
-#        if len(self.storage) < first_child_index + 1:
-#            return
-        def minChild(self,i):
-            if i * 2 + 1 > len(self.storage) - 1:
-                return i * 2
+        # get first child
+        first_child_index = (index + 1) * 2 - 1
+        # if no child
+        if first_child_index < len(self.storage) - 1:
+            return
+        # if one child
+        elif first_child_index == len(self.storage) - 1:
+            if self.storage[index] < self.storage[first_child_index]:
+                # swap parent and child - O(1)
+                self.storage[index], self.storage[first_child_index] = self.storage[first_child_index], self.storage[index]
+                #  increment to prepare for next loop
+                parent_index *= 2
+        # has two children
+        else:
+            second_child_index = first_child_index + 1
+            second_is_larger = False
+            if self.storage[second_child_index] > self.storage[first_child_index]:
+                larger_index = second_child_index
+                second_is_larger = True
             else:
-                if self.storage[i*2] < self.storage[i*2+1]:
-                    return i * 2
-                else:
-                    return i * 2 + 1
-
-        while (index * 2) <= len(self.storage) - 1:
-            mc = self.minChild(index)
-            if self.storage[index] > self.storage[mc]:
-                tmp = self.storage[index]
-                self.storage[index] = self.storage[mc]
-                self.storage[mc] = tmp
-            index = mc
-
-    
+                larger_index = first_child_index
+            if self.storage[index] < self.storage[larger_index]:
+                # swap parent and child - O(1)
+                self.storage[index], self.storage[first_child_index] = self.storage[first_child_index], self.storage[index]
+                #  increment to prepare for next loop
+                parent_index = (parent_index * 2) + 1 if second_is_larger else parent_index * 2

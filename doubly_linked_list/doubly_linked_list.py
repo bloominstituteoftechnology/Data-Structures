@@ -40,25 +40,56 @@ class DoublyLinkedList:
     self.tail = node
 
   def add_to_head(self, value):
-    pass
+    if self.head is not None:
+      self.head.insert_before(value)
+      self.head = self.head.prev
+    else:
+      self.head = ListNode(value)
+      self.tail = self.head
 
   def remove_from_head(self):
-    pass
+    if self.head is not None:
+      current_head = self.head
+      self.head.delete()
+      return current_head.value
 
   def add_to_tail(self, value):
-    pass
+    if self.tail is not None:
+      self.tail.insert_after(value)
+      self.tail = self.tail.next
+    else:
+      self.head = ListNode(value)
+      self.tail = self.head
 
   def remove_from_tail(self):
-    pass
+    if self.tail is not None:
+      current_tail = self.tail
+      self.tail.delete()
+      return current_tail.value
 
   def move_to_front(self, node):
-    pass
+    current_node = node.value
+    node.delete()
+    self.add_to_head(current_node)
 
   def move_to_end(self, node):
-    pass
+    current_node = node.value
+    node.delete()
+    self.add_to_tail(current_node)
 
   def delete(self, node):
-    pass
+    node.delete()
     
   def get_max(self):
-    pass
+    if self.head is not None and self.head != self.tail: # Personally, I feel like get_max should return the value of the single node... Oh well...
+      current_node = self.head
+      maximum = current_node
+      while True:
+        if current_node.value > maximum.value:
+          maximum = current_node
+        if current_node.next == None:
+          return maximum.value
+        else:
+          current_node = current_node.next
+    else:
+      return None

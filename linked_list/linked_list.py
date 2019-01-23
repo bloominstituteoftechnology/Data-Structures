@@ -69,22 +69,28 @@ class LinkedList:
                 curr_node = curr_node.next_node
 
     def get_max(self):
-        curr_node = self.head
-        switch = True
-
         # if linked list is empty
-        if curr_node is None:
+        if self.head is None:
             return
-        # if only one item
+
+        # store head in temp variable
+        curr_node = self.head
+
+        # if there is only one item in linked list
         if curr_node.next_node is None:
-            return curr_node.value
+            # that's the biggest!
+            return curr_node.get_value()
 
-        while switch is True:
-            switch = False
+        # else assign the next node to a temp variable
+        next_node = self.head.get_next()
 
-            if curr_node.next_node is not None:
-                if curr_node.value < curr_node.next_node.value:
-                    curr_node = curr_node.next_node
-                    switch = True
-
-        return curr_node.value
+        # Loop through the linked list
+        while next_node is not None:
+            # check to see if next node is bigger than current
+            if curr_node.get_value() < next_node.get_value():
+                # switch current node
+                curr_node = next_node
+            # update to next node -> if None the loop stops
+            next_node = next_node.get_next()
+        else:
+            return curr_node.get_value()

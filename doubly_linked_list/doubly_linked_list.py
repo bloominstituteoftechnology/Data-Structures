@@ -83,8 +83,10 @@ class DoublyLinkedList:
             return removed
 
     def move_to_front(self, node):
-        prev_front = self.head
-        self.head = ListNode(node, None, prev_front)
+        # node.insert_before(self.head)
+        prev_head = self.head
+        self.head = node
+        self.head.insert_before(prev_head)
         # self.tail = ListNode(prev_front, self.head, None)
 
     def move_to_end(self, node):

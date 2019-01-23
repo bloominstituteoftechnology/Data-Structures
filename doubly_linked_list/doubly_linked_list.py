@@ -56,8 +56,8 @@ class DoublyLinkedList:
             self.tail = ListNode(value, value, None)
         else:
             # store current head in next value
-            next_val = self.head
-            self.head = ListNode(value, None, next_val)
+            self.head.insert_before(value)
+            self.head = self.head.prev
 
     def remove_from_head(self):
         # store old head in variable
@@ -65,29 +65,31 @@ class DoublyLinkedList:
             # store old head in temp variable
             removed = self.head.value
             # update head to next value
-            self.head = self.head.next
+            self.head.delete()
             return removed
 
     def add_to_tail(self, value):
         # if there is a current tail
         if self.tail is not None:
-            # store old tail in temp variable
-            prev_tail = self.tail
-            # update tail to next value
-            self.tail = ListNode(value, prev_tail, None)
+            self.tail.insert_after(value)
+            self.tail = self.tail.next
 
     def remove_from_tail(self):
         if self.tail:
             removed = self.tail.value
-            self.tail = self.tail.prev
+            self.tail.delete()
             return removed
 
     def move_to_front(self, node):
         # node.insert_before(self.head)
-        prev_head = self.head
+        if node.prev is not None:
+            node.prev.next = node.next
+        if node.next is not None:
+            node.next.prev = node.prev
+        self.head.next = node
+        node.prev = None
+        node.next = self.head
         self.head = node
-        self.head.insert_before(prev_head)
-        # self.tail = ListNode(prev_front, self.head, None)
 
     def move_to_end(self, node):
         # previous.next should equal next.previous
@@ -99,10 +101,20 @@ class DoublyLinkedList:
         node.prev = self.tail
         node.next = None
         self.tail = node
-        pass
 
     def delete(self, node):
         return node.delete()
 
     def get_max(self):
-        pass
+        if self.head is None:
+            return None
+
+        max_val = self.head.value
+        next_val = self.head.next
+
+        while next_val is not None:
+            if max_val < next_val.value:
+                max_val = next_val.value
+            next_val = next_val.next
+
+        return max_val

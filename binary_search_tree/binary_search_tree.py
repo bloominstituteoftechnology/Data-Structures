@@ -11,26 +11,38 @@ class BinarySearchTree:
         # exit insert if value already exists
         if value == self.value:
             return
+        # If value is smaller
         elif self.value > value:
             if self.left is None:
+                # Create a leaf
                 self.left = BinarySearchTree(value)
             else:
-                self.left.insert(value)
+                return self.left.insert(value)
+        # If value is bigger
         elif self.value < value:
             if self.right is None:
+                # Create a leaf
                 self.right = BinarySearchTree(value)
             else:
-                self.right.insert(value)
-        # if null create leaf
-        # else insert(self.left.insert)
+                return self.right.insert(value)
 
     def contains(self, target):
-        # if target is == self.value return True
-        # if target is > self.value check self.right
-        # if target is < self.value check self.left
-        # repeat
-        pass
+        if target == self.value:
+            return True
+        if target < self.value:
+            if self.left is None:
+                return False
+            else:
+                return self.left.contains(target)
+        if target > self.value:
+            if self.right is None:
+                return False
+            else:
+                return self.right.contains(target)
 
     def get_max(self):
         # follow down the right ->
-        pass
+        if self.right is None:
+            return self.value
+        else:
+            return self.right.get_max()

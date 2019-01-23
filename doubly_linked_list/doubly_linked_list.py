@@ -34,6 +34,17 @@ class ListNode:
     if self.next:
       self.next.prev = self.prev
 
+#brought over methods from single linked list
+  def get_value(self):
+    return self.value
+
+  def get_next(self):
+    return self.next
+
+  def set_next(self, new_next):
+    self.next= new_next
+  
+
 """Our doubly-linked list class. It holds references to
 the list's head and tail nodes."""
 
@@ -41,10 +52,14 @@ class DoublyLinkedList:
   def __init__(self, node=None):
     self.head = node
     self.tail = node
+    self.max = None
 
   def add_to_head(self, value):
-
+  #create a new node instance 
     new_node = ListNode(value)
+
+  #1st set next property of new node instance to head
+  #2nd set head property of new node instance to the new node (new_node)
     new_node.next = self.head
     self.head = new_node
 
@@ -52,21 +67,46 @@ class DoublyLinkedList:
        self.tail = new_node
 
   def remove_from_head(self):
-    #example in linked_list
-    pass
+    #set the node that will be removed, which is it's self
+    remove_node = self
+    
+    if self.head == None:
+      return self.head
+    
+    else:
+      return_val = self.head.get_value()
+      self.head = self.head.get_next()
+    
+      if self.head is None:
+          self.tail = None
+
+      return return_val
 
   def add_to_tail(self, value):
-    #example in linked_list
-    pass
+    #create new node, and set prev property to the tail
+    new_node = ListNode(value)
+    new_node.prev = self.tail
 
-  def remove_from_tail(self):
+    #then set current tail next property to the new node
+    self.tail.next = new_node
+
+    # and if the head and the tail are none then set the head and tail to the new node
+    if self.head is None and self.tail is None:
+      self.tail = new_node
+      self.head = new_node
+      #if not, just set the tail to new node
+    else:
+      self.tail = new_node
+
+    pass
+  def remove_from_tail(self): 
     pass
 
   def move_to_front(self, node):
     pass
 
   def move_to_end(self, node):
-
+ 
     if node.prev is not None:
       node.prev.next = node.next
 
@@ -74,8 +114,10 @@ class DoublyLinkedList:
       node.next.prev = node.prev
 
     self.tail.next = node
+
     node.prev = self.tail
     node.next = None
+
     self.tail = node
     
 

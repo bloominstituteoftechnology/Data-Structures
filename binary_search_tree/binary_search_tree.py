@@ -47,4 +47,36 @@ class BinarySearchTree:
       return False
 
   def get_max(self):
-      pass
+      root = self
+      #check if BST is empty
+      if root.value is None:
+          return None
+      max_value = 0
+      while root:
+          if root.value > max_value:
+              max_value = root.value
+          root = root.right # as in BST higher values will be on right side 
+                            # no need to check left-side          
+      return max_value
+
+  def display(self):
+      root = self
+      if root.value is None:
+          return None
+
+      if root.left:
+          root.left.display()
+      
+      print(root.value, end = " -> ")
+
+      if root.right:
+          root.right.display()
+
+bst = BinarySearchTree(8)
+bst.insert(9)
+bst.insert(12)
+bst.insert(5)
+bst.insert(3)
+bst.insert(15)
+bst.display()
+       

@@ -26,8 +26,8 @@ class LinkedList:
     new_node = Node(value)
     # new_node.next_node = None
     if self.head is None and self.tail is None:
-      self.head = new_node
-      self.tail = new_node
+      self.head = self.tail = new_node
+      # self.tail = new_node
     else:
       self.tail.next_node = new_node
       self.tail = self.tail.next_node

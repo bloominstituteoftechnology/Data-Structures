@@ -1,6 +1,7 @@
 import sys
-sys.path.append('../linked_list')
-from linked_list import LinkedList
+import os
+sys.path.append(f'{os.getcwd()}/linked_list')
+from linked_list import LinkedList # noqa
 
 class Queue:
   def __init__(self):

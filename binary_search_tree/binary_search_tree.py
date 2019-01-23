@@ -31,47 +31,27 @@ class BinarySearchTree:
         return False
 
   def get_max(self):
-    pass
+    if self.right is not None:
+      return self.right.get_max()
+    else:
+      return self.value
+
+  def print_tree(self):
+    if self.left is not None:
+      self.left.print_tree()
+    print(self.value)
+    if self.right is not None:
+      self.right.print_tree()
 
 print('binary search tree ran')
 
-bst = BinarySearchTree(5)
-bst.insert(6)
-print(bst.contains(5))
-print(bst.contains(6))
-print(bst.contains(7))
-bst.insert(7)
-print(bst.contains(7))
+# bst = BinarySearchTree(5)
+# bst.insert(6)
+# print(bst.contains(5))
+# print(bst.contains(6))
+# print(bst.contains(7))
+# bst.insert(7)
+# print(bst.contains(7))
+# print(bst.get_max())
+# bst.print_tree()
 
-
-# import unittest
-
-# class BinarySearchTreeTests(unittest.TestCase):
-#   def setUp(self):
-#     self.bst = BinarySearchTree(5)
-
-#   def test_insert(self):
-#     self.bst.insert(2)
-#     self.bst.insert(3)
-#     self.bst.insert(7)
-#     self.bst.insert(6)
-#     self.assertEqual(self.bst.left.right.value, 3)
-#     self.assertEqual(self.bst.right.left.value, 6)
-
-#   def test_contains(self):
-#     self.bst.insert(2)
-#     self.bst.insert(3)
-#     self.bst.insert(7)
-#     self.assertTrue(self.bst.contains(7))
-#     self.assertFalse(self.bst.contains(8))
-
-#   def test_get_max(self):
-#     self.assertEqual(self.bst.get_max(), 5)
-#     self.bst.insert(30)
-#     self.assertEqual(self.bst.get_max(), 30)
-#     self.bst.insert(300)
-#     self.bst.insert(3)
-#     self.assertEqual(self.bst.get_max(), 300)
-
-# if __name__ == '__main__':
-#   unittest.main()

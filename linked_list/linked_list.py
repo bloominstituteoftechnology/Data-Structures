@@ -3,7 +3,8 @@ Class that represents a single linked
 list node that holds a single value
 and a reference to the next node in the list
 """
-class Node:
+class Node(object):
+
   def __init__(self, value=None, next_node=None):
     self.value = value
     self.next_node = next_node
@@ -22,23 +23,39 @@ class LinkedList:
     self.head = None
     self.tail = None
 
-  def insert(self, value):
-    new_node = Node(value)
-    new_node.set_next(self.head)
-    self.head = new_node
+  # def insert(self, value):
+  #   new_node = Node(value)
+  #   new_node.set_next(self.head)
+  #   self.head = new_node
 
   def add_to_tail(self, value):
-    node = Node(value)
-    if self.tail is not None:
-        self.tail.set_next(node)
-    else:
-        self.tail = node
+    # create node
+    new_node = Node(value, None)
+    # if list exists
+    if not self.head:
+      self.head = new_node
+      self.tail = new_node
+    else: 
+      self.tail.set_next(new_node)
+      self.tail = new_node
 
   def remove_head(self):
-    if self.head.next_node is not None:
-      next = self.head.next_node
-      self.head.set_next(next)
-      return next
+#   if list is empty:
+    if not self.head:
+      return None
+    # if only 1 element in list
+    if self.head.get_next() is None:
+      old = self.head
+      self.head = None 
+      self.tail = None
+      print("\n test", old.get_value())
+      return old.get_value()
+      # more than one element
+    # if self.head.next_node is not None:
+    oldVal = self.head.get_value()
+    next = self.head.get_next()
+    self.head = next
+    return oldVal
 
   def contains(self, value):
     currentNode = self.head
@@ -52,8 +69,12 @@ class LinkedList:
       
 
   def get_max(self):
+    # if list is empty
+    if not self.head:
+      return None
+
     currentNode = self.head
-    largest = self.head.value
+    largest = self.head.get_value()
     while currentNode is not None:
       if currentNode.value > largest:
         largest = currentNode.value

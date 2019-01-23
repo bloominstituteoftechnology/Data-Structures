@@ -40,7 +40,6 @@ class DoublyLinkedList:
     self.tail = node
 
   def add_to_head(self, value):
-
     if self.head is None:
       self.head = self.tail = ListNode(value)
       return
@@ -48,30 +47,71 @@ class DoublyLinkedList:
       self.head.insert_before(value)
       self.head = self.head.prev
 
-
   def remove_from_head(self):
-    pass
+    old_head = self.head.value
+    new_head = self.head.next
+    self.head.delete()
+    self.head = new_head
+    return old_head
 
   def add_to_tail(self, value):
-    
     if self.tail is None:
-      self.head = self.tail = ListNode(value)
+      self.tail = self.head = ListNode(value)
       return
     else:
-      self.head.insert_after(value)
-      self.tail = self.head.next
+      self.tail.insert_after(value)
+      self.tail = self.tail.next
 
   def remove_from_tail(self):
-    pass
+    old_tail = self.tail.value
+    new_tail = self.tail.prev
+    self.tail.delete()
+    self.tail = new_tail
+    return old_tail
 
   def move_to_front(self, node):
-    pass
+    if node is None:
+      return
+    else:
+      next_up = self.head
+      if next_up:
+        if next_up.value is not node.value:
+          next_up = next_up.next
+        else:
+          next_up.delete()
+      self.add_to_head(node.value)
 
   def move_to_end(self, node):
-    pass
+    if node is None:
+      return
+    else:
+      last = self.tail
+      if last:
+        if last.value is not node.value:
+          last = last.prev
+        else:
+          last.delete()
+      self.add_to_tail(node.value)
 
   def delete(self, node):
-    pass
+    if node.next:
+      node.next.prev = node.prev
+    if node.prev:
+      node.prev.next = node.next
+    node.delete()
+
     
   def get_max(self):
-    pass
+    current = self.head
+    if current is None or self.tail is None:
+      return None
+    elif self.head ==  self.tail:
+      return None
+    max_node = current
+    next_up = current.next
+    while next_up:
+      if next_up.value > max_node.value:
+        max_node = next_up
+      else:
+        next_up = next_up.next
+    return max_node.value

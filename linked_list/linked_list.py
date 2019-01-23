@@ -24,39 +24,63 @@ class LinkedList:
 
   def add_to_tail(self, value):
     node = Node(value)
-    if self.head is not None:
-      self.tail.set_next(node)
-    else:
+    if not self.head:
       self.head = node
+      self.tail = node
+    else:
+      self.tail.set_next(node)
+      self.tail = node
+    # while (self.head.next_node) is not None:
+    #   self.head = self.head.next_node
+    #   self.head.next_node = node
 
-    self.tail = node
-    pass
+    
+    
 
   def remove_head(self):
-    if self.head is not None:
-      new_head = self.head.next_node
-      del(self.head)
-      self.head = new_head
-    pass
+    curr_node = self.head
+    if not self.head:
+      return None
+    if not self.head.get_next():
+      x = self.head
+      self.head = None
+      self.tail = None
+      return x.get_value()
+    cur_value = self.head.get_value()
+    self.head = self.head.get_next()
+    return cur_value
+    # if curr_node is not None:
+    #   self.head = curr_node.next_node
+    #   curr_node = None
+      
+    #   del(self.head)
+    #   self.head = new_head
+    # if self.tail is None:
+    #   self.tail = self.tail.next_node
+    
+    
 
   def contains(self, value):
     curr_node = self.head
-    if curr_node == None:
-      return False
-    elif curr_node.value == value:
-      return True
-    else:
-      curr_node = curr_node.next_node
-    pass
+    while True:
+      if not curr_node:
+        return False
+      elif curr_node.value == value:
+        return True
+      else:
+        curr_node = curr_node.get_next()
+    
 
   def get_max(self):
-    curr_node = self.head
-    if curr_node == None:
-      return False
-    elif curr_node.next_node is None:
-      return max_node
-    elif curr_node.next_node > curr_node:
-      max_node = curr_node.next_node
-    else:
-      curr_node = curr_node.next_node
+    if not self.head:
+      return None
+    curr_node = self.head.get_next()
+    max_node = self.head
+    while curr_node:
+      if curr_node.get_value() > max_node.get_value():
+        max_node = curr_node
+      else:
+        curr_node = curr_node.get_next()
+
+    return max_node.get_value()
     

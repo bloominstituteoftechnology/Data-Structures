@@ -37,7 +37,14 @@ class BinarySearchTree:
         return rec(target, self)
 
     def get_max(self):
-        pass
+        maxValue = -float("inf")
+        current_node = self
+        while current_node is not None:
+            if current_node.value > maxValue:
+                maxValue = current_node.value
+            current_node = current_node.right
+
+        return maxValue
 
 
 bst = BinarySearchTree(5)

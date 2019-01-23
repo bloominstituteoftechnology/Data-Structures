@@ -92,8 +92,12 @@ class DoublyLinkedList:
         self.add_to_tail(node.value)
 
     def delete(self, node):
+        if node == self.head:
+            self.head = node.next
+        elif node == self.tail:
+            self.tail = node.prev
         node.delete()
-        return node
+        return node.value
 
     def get_max(self):
         if self.head is None:
@@ -107,12 +111,3 @@ class DoublyLinkedList:
                 maxNode = curr_node.value
             curr_node = curr_node.next
         return maxNode
-
-
-node = ListNode(1)
-d = DoublyLinkedList(node)
-d.add_to_tail(100)
-d.add_to_tail(55)
-d.add_to_tail(101)
-
-print(d.get_max())

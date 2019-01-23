@@ -48,31 +48,36 @@ class DoublyLinkedList:
         self.tail = node
 
     def add_to_head(self, value):
-        node = None
-        if self.head is not None:
-            node = ListNode(value, None, self.head)
-            self.head.insert_before(value)
-        else:
-            node = ListNode(value)
-            self.tail = node
-        self.head = node
-
-    def remove_from_head(self):
-        pass
-
-    def add_to_tail(self, value):
-        node = None
-        if self.tail is not None:
-            node = ListNode(value, self.tail, None)
-            self.tail.insert_after(value)
-        else:
+        if self.head is None:
             node = ListNode(value)
             self.tail = node
             self.head = node
-        self.tail = node
+        else:
+            current_node = self.head
+            current_node.insert_before(value)
+            self.head = current_node.prev
+
+    def remove_from_head(self):
+        current_node = self.head
+        self.head = current_node.next
+        current_node.delete()
+        return current_node.value
+
+    def add_to_tail(self, value):
+        if self.head is None:
+            node = ListNode(value)
+            self.head = node
+            self.tail = node
+        else:
+            current_tail = self.tail
+            current_tail.insert_after(value)
+            self.tail = current_tail.next
 
     def remove_from_tail(self):
-        pass
+        current_node = self.tail
+        self.tail = current_node.prev
+        current_node.delete()
+        return current_node.value
 
     def move_to_front(self, node):
         pass
@@ -81,7 +86,8 @@ class DoublyLinkedList:
         pass
 
     def delete(self, node):
-        pass
+        node.delete()
+        return node
 
     def get_max(self):
         if self.head is None:
@@ -97,10 +103,10 @@ class DoublyLinkedList:
         return maxNode
 
 
-d = DoublyLinkedList()
-d.add_to_head(100)
-d.add_to_head(55)
-d.add_to_head(101)
-
+node = ListNode(1)
+d = DoublyLinkedList(node)
+d.add_to_tail(100)
+d.add_to_tail(55)
+d.add_to_tail(101)
 
 print(d.get_max())

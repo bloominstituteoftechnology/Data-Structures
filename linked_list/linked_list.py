@@ -28,7 +28,7 @@ class LinkedList:
     # if tail != none | set next to node
     # if tail is none | set head as node
     if self.tail is not None:
-      self.tail.next_node = node
+      self.tail.set_next(node)
     else:
       self.head = node
     # set the tail as node
@@ -36,7 +36,6 @@ class LinkedList:
     pass
 
   def remove_head(self):
-
     # if head != none
     if self.head is not None:
       removed = self.head.value
@@ -44,7 +43,7 @@ class LinkedList:
       temp_next = self.head.get_next()
       # set the temp variable to the head
       self.head = temp_next
-      return removed
+      print(removed)
     pass
 
   def contains(self, value):
@@ -79,23 +78,28 @@ class LinkedList:
     # if value is > results | result = value
     pass
 
-# ll.add_to_tail(4)
-# print(f'this should be 4:   {ll.head.value}')
-# print(f'this should be 4:   {ll.tail.value}')
-# ll.add_to_tail(7)
-# print(f'this should be 4:   {ll.head.value}')
-# print(f'this should be 7:   {ll.tail.value}')
-# ll.add_to_tail(9)
-# ll.remove_head()
-# print(f'this should be 7:   {ll.head.value}')
-# print(f'this should be 9:   {ll.tail.value}')
-# print(ll.contains(1))
-# print(ll.get_max())
-# ll.add_to_tail(1)
-# ll.add_to_tail(5)
-# print(ll.get_max())
-# ll.add_to_tail(22)
-# print(ll.get_max())
-# ll.add_to_tail(15)
-# print(ll.get_max())
+
+ll = LinkedList()
+ll.add_to_tail(4)
+print(f'this should be 4:   {ll.head.value}')
+print(f'this should be 4:   {ll.tail.value}')
+ll.add_to_tail(7)
+print(f'this should be 4:   {ll.head.value}')
+print(f'this should be 7:   {ll.tail.value}')
+ll.add_to_tail(9)
+ll.remove_head()
+print(f'this should be 7:   {ll.head.value}')
+print(f'this should be 9:   {ll.tail.value}')
+print(f'this should be False:   {ll.contains(1)}')
+print(f'this should be 9:   {ll.get_max()}')
+ll.add_to_tail(1)
+ll.add_to_tail(5)
+print(f'this should be 9:   {ll.get_max()}')
+ll.add_to_tail(22)
+print(f'this should be 22:  {ll.get_max()}')
+ll.add_to_tail(15)
+print(f'this should be 22:  {ll.get_max()}')
+print(f'this should be 7:   {ll.head.value}')
+ll.remove_head()
+print(f'this should be 9:   {ll.head.value}')
 

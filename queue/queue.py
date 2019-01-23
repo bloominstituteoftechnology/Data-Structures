@@ -17,7 +17,8 @@ class Queue:
   
   def dequeue(self):
     self.storage.remove_head()
-    self.size -= 1
+    if self.size != 0:
+      self.size -= 1
     # remove first element
     # decrement size
     pass

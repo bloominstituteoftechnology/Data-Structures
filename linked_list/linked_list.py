@@ -38,12 +38,16 @@ class LinkedList:
   def remove_head(self):
     # if head != none
     if self.head is not None:
-      removed = self.head.value
+      removed = self.head.get_value()
       # get the next node from the head save to a temp variable
       temp_next = self.head.get_next()
       # set the temp variable to the head
       self.head = temp_next
       print(removed)
+      if self.head is None:
+        del(self.tail)
+        self.tail = None
+      return removed
     pass
 
   def contains(self, value):
@@ -76,7 +80,6 @@ class LinkedList:
     # set a results variable
     # while tail is true
     # if value is > results | result = value
-    pass
 
 
 ll = LinkedList()

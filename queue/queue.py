@@ -30,7 +30,6 @@ class Queue:
     # return counter
     # -------------------------------
     # or just return self.size
-    pass
 
 # newQ = Queue()
 # print(newQ)

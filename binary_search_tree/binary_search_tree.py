@@ -4,52 +4,54 @@ class BinarySearchTree:
         self.left = None
         self.right = None
 
-    def insert(self, value, leaf=self.value):
-        if leaf is not None:
-            if value > leaf:
-                # go right
-                if self.right is None:
-                    self.right = BinarySearchTree(value)
-                    return value
-                else:
-                  # make self.right new value, and recall insert
-                    new_value = self.right
-                    BinarySearchTree.insert(value, new_value)
+    def insert(self, value, leaf=None):
+        leaf = leaf if leaf is not None else self.value
+        if value > leaf:
+            # go right
+            if self.right is None:
+                self.right = BinarySearchTree(value)
             else:
-                # go left
-                if self.left is None:
-                    self.left = BinarySearchTree(value)
-                    return value
-                else:
-                    # make self.left new value, and recall insert
-                    new_value = self.left
-                    BinarySearchTree.insert(value, new_value)
+              # make self.right new value, and recall insert
+                new_leaf = self.right.value
+                self.right.insert(value, new_leaf)
         else:
-            self.value = BinarySearchTree(value)
-            return value
+            # go left
+            if self.left is None:
+                self.left = BinarySearchTree(value)
+            else:
+                # make self.left new value, and recall insert
 
-    def contains(self, target, leaf=self.value):
+                new_leaf = self.left.value
+                self.left.insert(value, new_leaf)
+
+    def contains(self, target, leaf=None):
+        leaf = leaf if leaf is not None else self.value
+        print("current leaf is: ", leaf)
+        print("we are looking for: ", target)
         if leaf is not None:
             if target > leaf:
-                  # if target is greater than leaf, go right
-                leaf = self.right
-                BinarySearchTree.contains(target, leaf)
+              # if target is greater than leaf, go right
+                leaf = self.right.value
+                self.contains(target, leaf)
             elif target < leaf:
                 # target is less than leaf
-                leaf = self.left
-                BinarySearchTree.contains(target, leaf)
+                leaf = self.left.value
+                self.contains(target, leaf)
             else:
-                # target is == leaf
                 if target == leaf:
-                    return leaf
+                    print("we have a winner: ", leaf)
+                    return True
                 else:
-                    return None
+                    return False
+        else:
+            return False
 
-    def get_max(self, leaf=self.right):
+    def get_max(self, leaf=None):
+        leaf = leaf if leaf is not None else self.right
         if leaf is not None:
             # if the leaf (self.right) is not none, make it new leaf and recheck
-            leaf = self.right
-            BinarySearchTree.get_max(leaf)
+            leaf = self.right.value
+            self.get_max(leaf)
         else:
             # there is no more to the right, return current leaf
             return leaf

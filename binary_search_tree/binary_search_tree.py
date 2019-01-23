@@ -17,7 +17,18 @@ class BinarySearchTree:
         self.right.insert(value)
 
   def contains(self, target):
-    pass
+    if self.value == target:
+      return True
+    elif target < self.value:
+      if self.left is not None:
+        return self.left.contains(target)
+      else:
+        return False
+    elif target > self.value:
+      if self.right is not None:
+        return self.right.contains(target)
+      else:
+        return False
 
   def get_max(self):
     pass
@@ -26,7 +37,11 @@ print('binary search tree ran')
 
 bst = BinarySearchTree(5)
 bst.insert(6)
-
+print(bst.contains(5))
+print(bst.contains(6))
+print(bst.contains(7))
+bst.insert(7)
+print(bst.contains(7))
 
 
 # import unittest

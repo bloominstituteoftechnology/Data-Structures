@@ -24,16 +24,16 @@ class LinkedList:
 
   def add_to_tail(self, value):
     new_node = Node(value)
-    if self.head is None:
+    if self.head is None: #LL has no nodes
       self.head = new_node
     else: 
       self.tail.set_next(new_node)
     self.tail = new_node
 
   def remove_head(self):
-    if self.head is None:
+    if self.head is None: #LL has no nodes
       return None
-    elif self.head.next_node is None:
+    elif self.head.next_node is None: #LL has only one node prior to removal
       rtrn_val = self.head.value
       self.head = None
       self.tail = None

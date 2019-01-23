@@ -31,6 +31,8 @@ class QueueTests(unittest.TestCase):
     self.q.enqueue(100)
     self.q.enqueue(101)
     self.q.enqueue(105)
+    print(f'*************** self.q.size is {self.q.size}')
+    print(f'*************** self.q.storage is {self.q.storage}')
     self.assertEqual(self.q.dequeue(), 100)
     self.assertEqual(self.q.len(), 2)
     self.assertEqual(self.q.dequeue(), 101)

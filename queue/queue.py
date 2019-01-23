@@ -10,7 +10,7 @@ class Queue:
   def enqueue(self, item):
     self.storage.add_to_tail(item)
     self.size = self.size + 1
-    pass
+  
   
   def dequeue(self):
     if self.size == 0:
@@ -19,8 +19,8 @@ class Queue:
       self.size = self.size - 1
       return self.storage.remove_head()
       
-    pass
+    
 
   def len(self):
     return self.size
-    pass
+    

@@ -43,9 +43,10 @@ class DoublyLinkedList:
     node = ListNode(value, self)
     node.next = self.head
     self.head = node
-    if self.tail == None:
+    if self.head == None:
       self.tail = node
     pass
+
 
   def remove_from_head(self):
     if self.head == None and self.tail == None:
@@ -74,32 +75,39 @@ class DoublyLinkedList:
     pass
 
   def remove_from_tail(self):
-    current_node = self.head
-
-    while current_node is not None:
-      current_node.prev.next = current_node.next
-      current_node.next.prev = current_node.prev
-
-      current_node = current_node.next
-    pass
+    if self.head == None and self.tail == None:
+      return None
+    temp = self.tail
+    if self.tail.prev is not None:
+      temp = self.tail
+      self.tail.delete()
+      self.tail = temp.prev
+      return temp.value
+    else:
+      temp = self.tail
+      self.tail.delete()
+      return temp.value
 
   def move_to_front(self, node):
-    current = self.head
-    node.next = self.head
+    if node.prev is not None:
+      node.prev.next = node.next
+    if node.next is not None:
+      node.next.prev = node.prev
+    self.head.prev = node
     node.prev = None
-
-    if current == None:
-      return None
-    
-    while current is not None:
-      current.prev.next = current
-      current.next.prev = current
-
-      current = current.next
-    pass
+    node.next = self.head
+    self.head = node
 
   def move_to_end(self, node):
-    pass
+    #previous.next should equal next.previous
+    if node.prev is not None:
+      node.prev.next = node.next
+    if node.next is not None:
+      node.next.prev = node.prev
+    self.tail.next = node
+    node.prev = self.tail
+    node.next = None
+    self.tail = node
 
   def delete(self, node):
     pass
@@ -111,8 +119,9 @@ class DoublyLinkedList:
       return None
     else:
       maximum = self.tail.value
-      while current is not None:
+      while current != None:
         if current.value > maximum:
           maximum = current.value
         current = current.next
+        print(maximum)
       return maximum

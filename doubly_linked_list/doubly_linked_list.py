@@ -90,6 +90,15 @@ class DoublyLinkedList:
         # self.tail = ListNode(prev_front, self.head, None)
 
     def move_to_end(self, node):
+        # previous.next should equal next.previous
+        if node.prev is not None:
+            node.prev.next = node.next
+        if node.next is not None:
+            node.next.prev = node.prev
+        self.tail.next = node
+        node.prev = self.tail
+        node.next = None
+        self.tail = node
         pass
 
     def delete(self, node):

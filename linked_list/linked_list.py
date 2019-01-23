@@ -51,7 +51,7 @@ class LinkedList:
             # if no new head means there's only one item in list
             if new_head is None:
                 self.tail = None
-                self.head = None
+
             # set new head
             self.head = new_head
 
@@ -71,7 +71,7 @@ class LinkedList:
     def get_max(self):
         # if linked list is empty
         if self.head is None:
-            return
+            return None
 
         # store head in temp variable
         curr_node = self.head
@@ -92,5 +92,5 @@ class LinkedList:
                 curr_node = next_node
             # update to next node -> if None the loop stops
             next_node = next_node.get_next()
-        else:
-            return curr_node.get_value()
+
+        return curr_node.get_value()

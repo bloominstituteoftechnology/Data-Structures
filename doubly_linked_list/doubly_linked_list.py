@@ -40,16 +40,45 @@ class DoublyLinkedList:
     self.tail = node
 
   def add_to_head(self, value):
-    pass
+    # have to overwrite next and prev or else they'll be none type
+    if self.head and self.tail:
+      curr_head = self.head
+      self.head.prev = ListNode(value) #new node adding to head
+      self.head = self.head.prev #setting pointer to the value of new node 
+      self.head.next = curr_head #setting pointer from new head to old head
+    else: #if the list is empty
+      self.head = ListNode(value)
+      self.tail = self.head
 
   def remove_from_head(self):
-    pass
+    if self.head:
+      curr_head = self.head
+      if self.tail: 
+        next = self.head.next
+        self.head = next
+        self.head.prev = None
+      else: # if theres only one element in list
+        self.head = None
+    return curr_head.value
 
   def add_to_tail(self, value):
-    pass
+    curr_tail = self.tail
+    if self.head and self.tail:
+      self.tail.next = ListNode(value) # creating new tail node
+      self.tail = self.tail.next
+    else: 
+      self.head = None
+    return curr_tail
 
   def remove_from_tail(self):
-    pass
+    if self.tail is None: # no elements in the list
+      self.tail = None
+      return self.tail.value
+    else:
+      curr_tail = self.tail # current tail
+      self.tail = self.tail.prev 
+      # self.tail.next = None 
+      return curr_tail.value
 
   def move_to_front(self, node):
     pass

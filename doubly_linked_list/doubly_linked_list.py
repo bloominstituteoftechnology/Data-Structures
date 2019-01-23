@@ -43,8 +43,9 @@ class DoublyLinkedList:
     new_node = ListNode(value)
     if self.head is None:
       self.head = new_node
-    elif self.head is not None:
-      self.head.insert_before(value)
+      self.tail = new_node
+    else:
+      new_node.next = self.head
       self.head = new_node
 
 
@@ -60,17 +61,19 @@ class DoublyLinkedList:
 
   def add_to_tail(self, value):
     new_node = ListNode(value)
-    if self.tail is None:
+    if self.head is None:
+      self.head = new_node
       self.tail = new_node
-    elif self.tail is not None:
-      self.tail.insert_after(value)
+    else:
+      self.tail.next = new_node
+      new_node.prev = self.tail
       self.tail = new_node
 
   def remove_from_tail(self):
-    if self.tail is not None:
+    if self.head:
       tmp = self.tail
       self.tail.delete()
-      return tmp
+      return tmp.value
 
   def move_to_front(self, node):
     current_node = self.head
@@ -83,12 +86,21 @@ class DoublyLinkedList:
 
 
   def move_to_end(self, node):
-    current_node = self.head
-    while current_node is not None:
-      if current_node == node:
-        self.add_to_tail(node.value)
-        node.delete()
-      current_node = current_node.next
+    if self.tail:
+      tmp = self.tail
+      self.tail = node
+      self.tail.prev = tmp
+      self.tail.next = None
+      tmp.next = self.tail
+    else:
+      self.tail = node
+
+    # current_node = self.head
+    # while current_node is not None:
+    #   if current_node == node:
+    #     self.add_to_tail(node.value)
+    #     node.delete()
+    #   current_node = current_node.next
 
   def delete(self, node):
     tmp = node
@@ -96,10 +108,21 @@ class DoublyLinkedList:
     return tmp.value
     
   def get_max(self):
-    current_node = self.head
-    max = 0
-    while current_node is not None:
-      if current_node.value > max:
-        max = current_node.value
-      current_node = current_node.next
-    return max
+    if self.head:
+      current_node = self.head
+      max = 0
+      while current_node is not None:
+        if current_node.value > max:
+          max = current_node.value
+        current_node = current_node.next
+      return max
+
+# list = DoublyLinkedList()
+# list.add_to_tail(2)
+# list.add_to_tail(200)
+# list.add_to_tail(400)
+# print(list.tail.prev.value)
+# print(list.get_max())
+
+
+  

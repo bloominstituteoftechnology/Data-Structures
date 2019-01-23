@@ -98,7 +98,7 @@ class DoublyLinkedList:
     else:
       self.tail = new_node
 
-    pass
+
   def remove_from_tail(self): 
     # set self tail to node for removal and set previous node to the previous node of the tail
     remove_node = self.tail 
@@ -112,7 +112,9 @@ class DoublyLinkedList:
 
     return remove_node.value
   def move_to_front(self, node):
-    pass
+    # delete the node and add it to the head
+    node.delete
+    self.add_to_head(self,node.value)
 
   def move_to_end(self, node):
     
@@ -140,4 +142,14 @@ class DoublyLinkedList:
     next_node.prev = previous_node
 
   def get_max(self):
-    pass
+    #REMEMBER come back to modify for double link exercise 
+    current_node = self.head
+    max_value = 0
+    if current_node != None:
+      while current_node != None:
+        temp_value = current_node.get_value()
+        if temp_value > max_value  :
+          max_value = temp_value
+        else:
+          current_node = current_node.get_next()
+      return max_value

@@ -81,12 +81,12 @@ class DoublyLinkedList:
         return node_to_remove.value
 
     def move_to_front(self, node):
-        node.delete
-        self.add_to_head(node)
+        node.delete()
+        self.add_to_head(node.value)
 
     def move_to_end(self, node):
-        node.delete
-        self.add_to_head(node)
+        node.delete()
+        self.add_to_tail(node.value)
 
     def delete(self, node):
         # Just swapping the two

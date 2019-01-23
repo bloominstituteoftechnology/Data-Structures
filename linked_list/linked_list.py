@@ -38,23 +38,23 @@ class LinkedList:
       if self.head == None:
           return None
       else:
-          head = self.head
-          self.head = head.get_next()
-          return head.value
+          old_head_value = self.head.value
+          if self.head.next_node is not None:
+              self.head = self.head.next_node
+          elif self.head.next_node is None:
+              self.head = None
+              self.tail = None
+          return old_head_value
 
   def contains(self, value):
-      #check if the linked-list is empty .. return None
-      if self.head == None:
-          return None
-      else:
-          current = self.head
-          while current.get_next() != None:
-            if current.get_value() == value:
-                return True
-            else:
-                current = current.get_next()
-        
-      return False
+      current_node = self.head
+      while True:
+          if current_node == None:
+              return False
+          elif current_node.value == value:
+              return True
+          else:
+              current_node = current_node.next_node
 
   def get_max(self):
       #check if the linked-list is empty .. return None
@@ -83,6 +83,19 @@ ll.add_to_tail(10)
 ll.add_to_tail(20)
 ll.add_to_tail(30)
 ll.add_to_tail(40)
+ll.add_to_tail(90)
+ll.add_to_tail(129)
+ll.add_to_tail(460)
 ll.display()
 print("\nMax in Linked- List  : ", ll.get_max())
-print(ll.contains(30))
+print(ll.contains(460))
+l5 = LinkedList()
+l5.add_to_tail(1)
+l5.add_to_tail(2)
+l5.add_to_tail(5)
+l5.add_to_tail(10)
+l5.display()
+print("****",l5.contains(10))
+print(l5.contains(2))
+
+print(l5.contains(1000))

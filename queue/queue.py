@@ -1,6 +1,10 @@
 import sys
 sys.path.append('../linked_list')
-from linked_list import LinkedList
+from linked_list import LinkedList # noqa 
+'''Adding # noqa to a line indicates that the linter 
+   (a program that automatically checks code quality) 
+   should not check this line. 
+   Any warnings that code may have generated will be ignored.'''
 
 class Queue:
   def __init__(self):

@@ -87,6 +87,8 @@ class DoublyLinkedList:
             new_node.prev = self.tail
             # set tail to a new node
             self.tail = new_node
+            # connect new_node's prev's next to new_node
+            new_node.prev.next = new_node
 
     def remove_from_tail(self):
         # check if the head is None
@@ -145,7 +147,17 @@ class DoublyLinkedList:
         else:
             return None
 
+    def print_list(self):
+        temp = self.head
+        while temp:
+            print(temp.value)
+            temp = temp.next
+
 
 dll = DoublyLinkedList()
 dll.add_to_head(1)
+dll.add_to_head(3)
+dll.add_to_tail(100)
+# print(dll.tail.next)
+# dll.print_list()
 print(dll.get_max())

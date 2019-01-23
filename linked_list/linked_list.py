@@ -29,7 +29,7 @@ class LinkedList:
         # create a new node
         node = Node(value)
         # if the LL is not empty
-        if self.tail is not None:
+        if self.tail:
             # then set the tail's next to the new node
             self.tail.set_next(node)
         else:
@@ -40,7 +40,7 @@ class LinkedList:
 
     def remove_head(self):
         # check if the head is None
-        if self.head is not None:
+        if self.head:
             # set the head node's next node value to a temp var
             old_head = self.head
             # del the head node
@@ -67,7 +67,7 @@ class LinkedList:
                 curr_node = curr_node.next_node
 
     def get_max(self):
-        if self.head is not None:
+        if self.head:
             # set initial max value to head
             current = self.head
             max_value = current.value

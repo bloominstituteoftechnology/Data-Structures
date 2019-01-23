@@ -25,7 +25,7 @@ class LinkedList:
   def add_to_tail(self, value):
     
     # Create a new node
-    # If the tail doesn't exists, meaning the list is empty, head and tail will be node  
+    # If the tail doesn't exists, meaning the list is empty, since we are adding a new node, the head and tail will be set to the new node  
     # Else, set the tail's next node to be the new node  
     
     new_node = Node(value)    # new_node = Node(value, None)
@@ -39,10 +39,12 @@ class LinkedList:
     
   def remove_head(self):
     
-    # Check if the head exist
-    # If yes, save it to a temperary head
-    # Delete the head
+    # Check if the head doesn't exist, return none
+    # If the head exists, 
+      # save it to a temperary head and get its value
     # Set the new head to be the temperary head's next node
+    # Delete the old head
+    # Return the old value because the test expects a return value to compare
     
     if self.head is None:
       return None
@@ -67,9 +69,10 @@ class LinkedList:
   def contains(self, value):
     
     # Set the current node to the head
-    # If the node is null, return false
-    # Else, if the node's value mathces the query value, return true
-    # Otherwise, set the current node to the tail and start from step 1
+    # Do a while loop
+      # If the current node doesn't exist, return false
+      # Compare the current node's value to the query value, return true if they are equalled
+      # Set the current node to be the next node
     
     current_node = self.head
     
@@ -83,18 +86,19 @@ class LinkedList:
 
   def get_max(self):
     
+    # Create a variable to hold the max, initialize it with None
     # Get the current node
-    # If the current node doesn't exist, meaning the list is empty, return
-    # If the next node doesn't exist, meaning the list has only 1 element, return the current node's value
-    # Loop through the list, and compare the current node's value to the next node's value
-    # If the next node's value is greater, then set the current node to be the next node
-    # Return the current node's value
+    # Do while loop to check if the current node exist
+      # If it exists, check if there is a current max or if the current node's value is greater than the current max
+        # If either of these case is true, set the current max to be the current node's value
+      # Set the current node to be the next node
+    # Return the current max
     
-    current_max = 0
+    current_max = None
     current_node = self.head
     
     while current_node is not None:
-      if current_node.get_value() > current_max:
+      if current_max is None or current_node.get_value() > current_max:
         current_max = current_node.get_value()
         
       current_node = current_node.get_next()

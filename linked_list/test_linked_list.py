@@ -37,7 +37,7 @@ class LinkedListTests(unittest.TestCase):
     self.assertIsNone(self.list.remove_head())
 
   def test_get_max(self):
-    self.assertEqual(self.list.get_max(), 0)
+    self.assertIsNone(self.list.get_max())
     self.list.add_to_tail(100)
     self.assertEqual(self.list.get_max(), 100)
     self.list.add_to_tail(55)

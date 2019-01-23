@@ -16,11 +16,12 @@ class Queue:
     pass
   
   def dequeue(self):
-    self.storage.remove_head()
+    removed = self.storage.remove_head()
     if self.size != 0:
       self.size -= 1
     # remove first element
     # decrement size
+    return removed
     pass
 
   def len(self):

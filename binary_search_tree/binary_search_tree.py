@@ -23,6 +23,7 @@ class BinarySearchTree:
 
                 new_leaf = self.left.value
                 self.left.insert(value, new_leaf)
+    # contains works in a seperate terminal, not in VSC for some reason
 
     def contains(self, target, leaf=None):
         leaf = leaf if leaf is not None else self.value
@@ -41,17 +42,16 @@ class BinarySearchTree:
                 if target == leaf:
                     print("we have a winner: ", leaf)
                     return True
+
                 else:
                     return False
         else:
             return False
 
     def get_max(self, leaf=None):
-        leaf = leaf if leaf is not None else self.right
-        if leaf is not None:
-            # if the leaf (self.right) is not none, make it new leaf and recheck
+        leaf = leaf if leaf is not None else self.value
+        if self.right is not None:
             leaf = self.right.value
             self.get_max(leaf)
         else:
-            # there is no more to the right, return current leaf
             return leaf

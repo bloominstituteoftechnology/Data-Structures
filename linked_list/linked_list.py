@@ -68,13 +68,14 @@ class LinkedList:
     # Check to see if none
     if not self.head:
       return None
-    # Set the current node to the head
+    # Set the current node as max value (a temp var)
     curr_node = self.head.get_next()
     max_value = self.head.get_value()
+    # step though each node and compare
     while curr_node:
+      # if its bigger, set max to the bigger value
       if curr_node.get_value() > max_value:
         max_value = curr_node.get_value()
-      else:
-        curr_node = curr_node.get_next()
+      curr_node = curr_node.get_next()
     return max_value
 

@@ -4,11 +4,14 @@ class BinarySearchTree:
     self.left = None
     self.right = None
 
-  def insert(self, value):
+  def insert(self, value): #insert includes getmax
     pass
 
   def contains(self, target):
     pass
 
-  def get_max(self):
+  def get_max(self): 
     pass
+
+  def delete(self):
+  pass

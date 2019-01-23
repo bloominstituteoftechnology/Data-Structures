@@ -24,8 +24,9 @@ class LinkedList:
 
   #first create new node
   def add_to_tail(self): #could also add value arg but dont need to.
+    #create new node
     node = Node(value)
-    #set tail of existing tail
+    #set tail of existing tail to next new node
     #cant set tail if none. if LL not empty set tail to new node. if empty set new node to head.
     if self.tail is not None:
         self.tail.set_next(node)
@@ -37,14 +38,17 @@ class LinkedList:
   def remove_head(self):
         #check if head is none
     if self.head is not None:
+        #set head node's next node value to a temp val
         new_head = self.head.next_node
-        #setting head nodes to next with temp var
-        
+        #store value to be returned
+        val = self.head.get_value()
         #delete head node
         del(self.head)
-
         #then set head to that temp
         self.head = new_head
+        if self.head is None:
+          del(self.tail)
+          self.tail = None
 
   def contains(self, value):
       #set current node to head. if node is null return false. 
@@ -59,7 +63,7 @@ class LinkedList:
         curr_node = curr_node.next_node
 
   def get_max(self):
-    curr_node = self.head
+    """curr_node = self.head
     max_node = self.head
 
     if curr_node.get_next().value > curr_node.max_node:
@@ -68,7 +72,21 @@ class LinkedList:
     elif curr_node.get_next() is None:
       return max_node.value
     else curr_node == None: 
-      raise ValueError("empty list")
+      raise ValueError("empty list")"""
+
+    #if head is none return none
+    if self.head is None:
+      return None
+    #set head as max value (temp val)  
+    max_val = self.head.get_value()
+    curr_node = self.head.get_next()
+    # step through each node and compare and if it's bigger set that as max.
+    while curr_node is not None:
+      if curr_node.get_value() > max_val:
+        max_val = curr_node.get_value()
+      curr_node = curr_node.get_next()
+    #then return the value
+    return max_val
 
 
 

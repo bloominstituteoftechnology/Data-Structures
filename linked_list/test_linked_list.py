@@ -25,7 +25,7 @@ class LinkedListTests(unittest.TestCase):
   def test_remove_head(self):
     self.list.add_to_tail(10)
     self.list.add_to_tail(20)
-    self.assertEqual(self.list.remove_head(), 10)
+    self.assertEqual(self.list.remove_head(), 10)  # assertEqual expects a value to compare to 10
     self.assertFalse(self.list.contains(10))
     self.assertEqual(self.list.remove_head(), 20)
     self.assertFalse(self.list.contains(20))
@@ -37,7 +37,7 @@ class LinkedListTests(unittest.TestCase):
     self.assertIsNone(self.list.remove_head())
 
   def test_get_max(self):
-    self.assertIsNone(self.list.get_max())
+    self.assertEqual(self.list.get_max(), 0)
     self.list.add_to_tail(100)
     self.assertEqual(self.list.get_max(), 100)
     self.list.add_to_tail(55)

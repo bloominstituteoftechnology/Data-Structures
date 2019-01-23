@@ -40,7 +40,13 @@ class DoublyLinkedList:
     self.tail = node
 
   def add_to_head(self, value):
-    pass
+    node = ListNode(value)
+    if not self.head:
+      self.head = node
+      self.tail = node
+    else:
+      node.next = self.head
+      self.head = node
 
   def remove_from_head(self):
     pass

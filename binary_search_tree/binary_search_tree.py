@@ -21,7 +21,7 @@ class BinarySearchTree:
         else: 
           current_node = current_node.right
 
-    # while True: ##  First Pass Solution <-- WARNING - DOES NOT WORK - ACTUAL MADNESS
+    # while True: ##  First Pass Solution <-- WARNING - DOES NOT WORK - ACTUAL LOONY RAVINGS
       # if current_node.right == None and current_node.left == None:
       #   current_node.right = BinarySearchTree(value)
       #   break

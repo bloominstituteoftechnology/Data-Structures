@@ -36,12 +36,15 @@ class LinkedList:
     pass
 
   def remove_head(self):
+
     # if head != none
     if self.head is not None:
+      removed = self.head.value
       # get the next node from the head save to a temp variable
       temp_next = self.head.get_next()
       # set the temp variable to the head
       self.head = temp_next
+      return removed
     pass
 
   def contains(self, value):
@@ -59,7 +62,10 @@ class LinkedList:
     pass
 
   def get_max(self):
-    result = self.tail.value
+    if self.tail == None:
+      return None
+    else:
+      result = self.tail.value
     current = self.head
     while current != None:
       if current.value > result:
@@ -73,24 +79,23 @@ class LinkedList:
     # if value is > results | result = value
     pass
 
-ll = LinkedList()
-ll.add_to_tail(4)
-print(f'this should be 4:   {ll.head.value}')
-print(f'this should be 4:   {ll.tail.value}')
-ll.add_to_tail(7)
-print(f'this should be 4:   {ll.head.value}')
-print(f'this should be 7:   {ll.tail.value}')
-ll.add_to_tail(9)
-ll.remove_head()
-print(f'this should be 7:   {ll.head.value}')
-print(f'this should be 9:   {ll.tail.value}')
-print(ll.contains(1))
-print(ll.get_max())
-ll.add_to_tail(1)
-ll.add_to_tail(5)
-print(ll.get_max())
-ll.add_to_tail(22)
-print(ll.get_max())
-ll.add_to_tail(15)
-print(ll.get_max())
+# ll.add_to_tail(4)
+# print(f'this should be 4:   {ll.head.value}')
+# print(f'this should be 4:   {ll.tail.value}')
+# ll.add_to_tail(7)
+# print(f'this should be 4:   {ll.head.value}')
+# print(f'this should be 7:   {ll.tail.value}')
+# ll.add_to_tail(9)
+# ll.remove_head()
+# print(f'this should be 7:   {ll.head.value}')
+# print(f'this should be 9:   {ll.tail.value}')
+# print(ll.contains(1))
+# print(ll.get_max())
+# ll.add_to_tail(1)
+# ll.add_to_tail(5)
+# print(ll.get_max())
+# ll.add_to_tail(22)
+# print(ll.get_max())
+# ll.add_to_tail(15)
+# print(ll.get_max())
 

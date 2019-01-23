@@ -47,7 +47,6 @@ class DoublyLinkedList:
     #   self.tail = new_node
     # new_node.insert_before(self.head.value)
 
-
     # Instructor Solution:
     new_node = ListNode(value)
     # set the tail of new node to old head

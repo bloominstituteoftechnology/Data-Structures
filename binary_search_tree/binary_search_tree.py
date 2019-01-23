@@ -5,24 +5,37 @@ class BinarySearchTree:
     self.right = None
 
   def insert(self, value):
-    print('self.value', self.value, self.left, self.right, value)
-    if self.value == None:
-      self.value == value
-    if value > self.value:
-      if self.right is None:
-        self.right = value
-        print('R', self.value, self.left, self.right)
+    # print('self.value', self.value, self.left, self.right, value)
+    print('self.value', self.value)
+    print('lefty', self.left)
+    print('right', self.right)
+    print(value)
+    parent = self.value
+    print(self)
+    if self.value is None:
+      self.value = value
+      print('1****')
+    else:
+      if self.value < value:
+        if self.right is None:
+          self.right = value
+          print('R', self.value, self.left, self.right)
+          return BinarySearchTree.insert(self, value)
+          
+        else:
+          print('R ELSE', self.value, self.left, self.right)
+          return BinarySearchTree(self.right)
       else:
-        return(self.right, value)
-    elif value < self.value:
-      print(value, self.value)
-      if self.left is None:
-        self.left = value
-        print('L', self.value, self.left, self.right)
-      else:
-        print('L ELSE', self.value, self.left, self.right)
-        return(self.left, value)
-    pass
+        print(value, self)
+        if self.left is None:
+          self.left = value
+          print('L', self.value, self.left, self.right)
+          return BinarySearchTree.insert(self, value)
+          
+        else:
+          print('L ELSE', self.value, self.left, self.right)
+          return BinarySearchTree(self.left)
+   
 
   def contains(self, target):
     curr = self.value

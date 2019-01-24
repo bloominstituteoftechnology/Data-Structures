@@ -25,20 +25,22 @@ class BinarySearchTree:
       
 
   def contains(self, target):
+    current_val = self.value
     print(self.value)
-    if self.value == target:
-      print('found it!!!!!!')
+    if current_val == target:
       return True
-    if self.left is None and self.right is None and self.value is not target:
+    if self.left is None and self.right is None and current_val is not target:
       return False
-    if target > self.value:
-      self.right.contains(target)
-    if target < self.value:
-      self.left.contains(target)
+    if self.right is not None and target > current_val:
+      return self.right.contains(target)
+    if self.left is not None and target < current_val:
+      return self.left.contains(target)
 
   def get_max(self):
-    pass
-
+    if self.right is None:
+      return self.value
+    else:
+      return self.right.get_max()
 
 bst = BinarySearchTree(5)
 print('created a new BST with value:', bst.value)

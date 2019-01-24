@@ -23,10 +23,10 @@ class LinkedList:
     self.head = None
     self.tail = None
 
-  # def insert(self, value):
-  #   new_node = Node(value)
-  #   new_node.set_next(self.head)
-  #   self.head = new_node
+  def insert(self, value):
+    new_node = Node(value)
+    new_node.set_next(self.head)
+    self.head = new_node
 
   def add_to_tail(self, value):
     # create node

@@ -40,25 +40,81 @@ class DoublyLinkedList:
     self.tail = node
 
   def add_to_head(self, value):
-    pass
+    # create a new node to add
+    new_node = ListNode(value)
+    # point the new nodes next val to existing head node
+    new_node.next = self.head
+    # make the head node the newly created node
+    self.head = new_node
+    # incase head is empty just make the tail as the new node as well
+    if self.head is None:
+      self.tail = new_node
+      
 
   def remove_from_head(self):
-    pass
+    # if list is empty:
+    if not self.head:
+      return None
+    # if only 1 element in list
+    if self.head.get_next() is None:
+      old = self.head
+      self.head = None 
+      self.tail = None
+      return old.get_value()
+     
+    oldVal = self.head.get_value()
+    next = self.head.get_next()
+    self.head = next
+    return oldVal
 
   def add_to_tail(self, value):
-    pass
+    # create node
+    new_node = Node(value, None)
+    # if list empty
+    if not self.head:
+      self.head = new_node
+      self.tail = new_node
+    else: 
+      self.tail.set_next(new_node)
+      self.tail = new_node
 
   def remove_from_tail(self):
-    pass
+    if not self.tail:
+      return None
+    prev_node = self.tail.prev
+    self.tail = prev_node
+    self.tail.next = None
 
   def move_to_front(self, node):
     pass
 
   def move_to_end(self, node):
-    pass
+    if node.prev is not None:
+      node.prev.next = node.next
+    
+    if node.next is not None:
+      node.next.prev = node.prev
+
+    self.tail.next = node
+    node.prev = self.tail
+    node.next = None
+    self.tail = node
 
   def delete(self, node):
     pass
     
+    
   def get_max(self):
-    pass
+    # if list is empty
+    if not self.head:
+      return None
+
+    currentNode = self.head
+    largest = self.head.get_value()
+    while currentNode is not None:
+      if currentNode.value > largest:
+        largest = currentNode.value
+        currentNode = currentNode.next_node
+      else:
+        currentNode = currentNode.next_node
+    return largest

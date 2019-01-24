@@ -40,25 +40,80 @@ class DoublyLinkedList:
     self.tail = node
 
   def add_to_head(self, value):
-    pass
+    # My attempt using provided methods:
+    # new_node = ListNode(value)
+    # if not self.head:
+    #   self.head = new_node
+    #   self.tail = new_node
+    # new_node.insert_before(self.head.value)
+
+    # Instructor Solution:
+    new_node = ListNode(value)
+    # set the tail of new node to old head
+    new_node.next = self.head
+    # set head to the tail of new_node
+    self.head = new_node  
+    if not self.head:
+      # set head and tail to new listnode
+      self.head = new_node
+      self.tail = new_node
 
   def remove_from_head(self):
-    pass
+    new_head = self.head
+    removed_head = None
+    if self.head:
+      new_head = self.head.next
+      if new_head:
+        removed_head = self.head.value
+        return removed_head
+      self.tail = None
+    return None
 
   def add_to_tail(self, value):
-    pass
+    new_tail = ListNode(value)
+    new_tail.next = self.tail
+    self.tail = new_tail
+    if not self.tail:
+      self.head = new_tail
+      self.tail = new_tail
 
   def remove_from_tail(self):
-    pass
+    if self.tail:
+      removed_tail = self.tail.value
+      return removed_tail
+    return None
 
   def move_to_front(self, node):
-    pass
+    if node.prev:
+      node.prev.next = node.prev
+    self.head.prev = node
+    node.next = self.head
+    node.prev = None
+    self.head = node
+      
 
   def move_to_end(self, node):
-    pass
+    # Instructor Solution:
+    if node.prev:
+      node.prev.next = node.next
+    if node.next:
+      node.next.prev = node.prev
+    self.tail.next = node
+    node.prev = self.tail
+    node.next = None
+    self.tail = node
 
   def delete(self, node):
     pass
     
   def get_max(self):
-    pass
+    if self.head:
+      curr_node = self.head.next
+      max_value = self.head.value
+      while curr_node:
+        if curr_node.value > max_value:
+          max_value = curr_node
+        curr_node = curr_node.next
+      return max_value
+    return None
+

@@ -160,8 +160,7 @@ class DoublyLinkedList:
         if self.head is None:
             return None
 
-        curr_node = self.head
-        max_node = -float("inf")
+        max_node, curr_node = self.head.value, self.head.next
 
         while curr_node is not None:
             if curr_node.value > max_node:

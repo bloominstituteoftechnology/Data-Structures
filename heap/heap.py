@@ -14,7 +14,7 @@ class Heap:
         if self.get_size() == 0:
             return first
         self.storage[0] = end
-        self._sift_down(0)
+        # self._sift_down(0)
         return first
 
     def get_max(self):

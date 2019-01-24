@@ -1,6 +1,7 @@
 class Heap:
   def __init__(self):
     self.storage = []
+    # self.count = 0
 
   def insert(self, value):
     self.storage.append(value)
@@ -8,7 +9,7 @@ class Heap:
 
   def delete(self):
     retval = self.storage[0]
-    self.storage[0] = self.storage[len(self.storage) - 1]
+    self.storage[0] = self.storage[-1]
     self.storage.pop()
     self._sift_down(0)
     return retval
@@ -27,4 +28,14 @@ class Heap:
       index = (index - 1) // 2
 
   def _sift_down(self, index):
-    pass
+    while index * 2 + 1 <= len(self.storage) - 1:
+      mc = self._max_child(index)
+      if self.storage[index] < self.storage[mc]:
+        self.storage[index], self.storage[mc] = self.storage[mc], self.storage[index]
+      index = mc
+
+  def _max_child(self, index):
+    if index * 2 + 2 > len(self.storage) - 1:
+      return index * 2 + 1
+    else:
+      return index * 2 + 1 if self.storage[index * 2 + 1] > self.storage[index * 2 + 2] else index * 2 + 2

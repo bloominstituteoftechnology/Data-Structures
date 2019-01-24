@@ -5,6 +5,10 @@ class BinarySearchTree:
     self.right = None
 
   def insert(self, value):
+    # if value exists then return
+    if value == self.value:
+      return
+
     if value < self.value:
       if self.left is None:
         self.left = BinarySearchTree(value)
@@ -20,23 +24,23 @@ class BinarySearchTree:
         self.right.insert(value)
 
   def contains(self, target):
-    if target < self.value and self.left is not None:
-      if self.left.value == target:
-        return True
-      else:
-        self.left.contains(target)
-    if target > self.value and self.right is not None:
-      if self.right.value == target:
-        return True
-      else:
-        self.right.contains(target)
+    if target == self.value:
+      return True
 
-    return False
+    if target < self.value:
+      if self.left is None:
+        return False
+      else:
+        return self.left.contains(target)
+
+    if target > self.value:
+      if self.right is None:
+        return False
+      else:
+        return self.right.contains(target)
 
   def get_max(self):
-    max_value = self.value
-
     if self.right is None:
-      return max_value
+      return self.value
     else:
       return self.right.get_max()

@@ -45,11 +45,11 @@ O(1)
 7. What is the runtime complexity of `DoublyLinkedList.remove_from_tail`?
 O(1)
 8. What is the runtime complexity of `DoublyLinkedList.move_to_front`?
-O(n)
+O(1)
 9. What is the runtime complexity of `DoublyLinkedList.move_to_end`?
-O(n)
+O(1)
 10. What is the runtime complexity of `DoublyLinkedList.delete`?
-O(n)
+O(1)
     a. Compare the runtime of the doubly linked list's `delete` method with the worst-case runtime of the JS `Array.splice` method. Which method generally performs better?
 
     If you know the node exists and dont have to search to see if it exists, then it will be down to O(1), compared to Array.splice O(n) complexity

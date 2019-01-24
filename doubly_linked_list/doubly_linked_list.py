@@ -70,10 +70,13 @@ class DoublyLinkedList:
       self.head = new_node
     elif not self.tail:
       self.tail = new_node
+      self.head.next = new_node
     else:
       new_node.prev = self.tail
-      new_node.next = None
+      new_node.next = self.tail
       self.tail = new_node
+      self.head.next = new_node
+      self.tail.next = None
       
     
 
@@ -90,12 +93,13 @@ class DoublyLinkedList:
     
 
   def move_to_front(self, node):
-
+    
     pass
+    
 
   def move_to_end(self, node):
-    if node.head is not None:
-      node.prev.next = node.next
+    if node is not None:
+      node.insert_after(node)
     if node.next is not None:
       node.next.prev = node.prev
     self.tail.next = node
@@ -109,4 +113,23 @@ class DoublyLinkedList:
     pass
     
   def get_max(self):
-    pass
+    if self.tail.value == 1:
+      if self.head.value == 1:
+        return None
+    print("in get max: ",self.head)
+    print("in get max: ",self.head.next.value)
+    print("in get max: ",self.tail.value)
+    print("in get max, tail", self.tail.next)
+    
+    curr_node = self.head.next
+    max_node = self.head
+    while curr_node:
+      print("#in while loop: ",curr_node)
+      print("#in while loop: ",max_node)
+      if curr_node.value > max_node.value:
+        max_node = curr_node
+        
+      else:
+        curr_node = curr_node.next
+
+    return max_node.value

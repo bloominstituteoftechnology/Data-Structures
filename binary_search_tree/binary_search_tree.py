@@ -1,3 +1,5 @@
+from queue import Queue
+
 class BinarySearchTree:
   def __init__(self, value):
     self.value = value
@@ -17,25 +19,23 @@ class BinarySearchTree:
     self.right = None
     # Everything to the right of the binary tree,
     # the child nodes must be bigger than the parent node
+    
+
 
   def insert(self, value):
-    branch = self.value #25
-    root = BinarySearchTree(value) #81
-    sub_tree = BinarySearchTree(value)
-    # print(root.value)
-    # print(branch)
-    if root.value > branch:
-      root.right = sub_tree
-      # root.right.value = branch
-      print(root.right.value)
-    elif root.value < branch:
-      root.left = sub_tree
-      # root.left.value = branch
-      print(root.left.value)
-      
+    curr_node = BinarySearchTree(value)
+    if value <= self.value:
+      if curr_node.left is None:
+        curr_node.left = curr_node
+    if value > self.value:
+      if curr_node.right is None:
+        curr_node.right = curr_node
+
 
 
     pass
+
+  
 
   def contains(self, target):
     pass
@@ -44,3 +44,6 @@ class BinarySearchTree:
     pass
 
 
+  def bft(self):
+    queue = Queue
+    #queue => stack

@@ -46,14 +46,14 @@ class LinkedList:
         self.head = None
         self.tail = None
         # then return the temp head value
-        return temp_head.get_value()
+        return temp_head.value
       else:
         # otherwise set the temporary head to the current head since head has a next value
         temp_head = self.head
         # and set the current head to the next node
         self.head = self.head.get_next()
         # then return the removed head value
-        return temp_head.get_value()
+        return temp_head.value
     else:
       # otherwise just return nothing / None
       return None
@@ -82,9 +82,9 @@ class LinkedList:
     while cur_head:
       # if max_value still has intital value or
       # if cur_head is greater than our current max value
-      if max_value is None or cur_head.get_value() > max_value:
+      if max_value is None or cur_head.value > max_value:
         # set max_value to our current head
-        max_value = cur_head.get_value()
+        max_value = cur_head.value
         # afterwards change our current head to the next value to check if the next value is greater or if there is no next value the loop will end
       cur_head = cur_head.get_next()
     # return the max_value to user

@@ -26,17 +26,27 @@ class Queue:
       return 1
     else:
       count = 1
-
       #and while there are still nodes in the linked list
       while cur_head.get_next() != None:
-
         # increment count and set the current_head to the next node
         count += 1
         cur_head = cur_head.get_next()
 
-      # set the size to the current value of count and return it to the caller
-      self.size = count
-      return self.size
-      
-    # if all conditions fall out then just return the current size to the caller
-    return self.size
+      return count
+
+
+  
+q = Queue()
+q.enqueue(1)
+q.enqueue(2)
+q.enqueue(3)
+print('here', q.len())
+  q = Queue()
+
+  q.enqueue(2)
+  q.enqueue(4)
+  q.enqueue(100)
+  q.enqueue(1)
+
+  print(q.storage.get_max())
+  print(q.dequeue())

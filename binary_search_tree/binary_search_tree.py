@@ -45,7 +45,7 @@ class BinarySearchTree:
     #largest item is the right most node's value, 
     # so get right most using recursive method to traverse tree
     if self.right:
-      return self.get_max(self.right)
+      return self.right.get_max()
       
     return self.value
 

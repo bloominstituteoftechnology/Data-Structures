@@ -23,13 +23,58 @@ class LinkedList:
     self.tail = None
 
   def add_to_tail(self, value):
-    pass
+    if self.head == None:
+        new_tail = Node(value)
+        self.head = new_tail
+        self.tail = new_tail
+    else:
+        new_tail = Node(value)
+        self.tail.set_next(new_tail)
+        self.tail = new_tail
 
   def remove_head(self):
-    pass
+    if self.head == None:
+        return
+    elif self.head.next_node == None:
+        head_to_return = self.head
+        self.head = None
+        self.tail = None
+        #print(head_to_return.get_value())
+        return head_to_return.get_value()
+    else:
+        next_head = self.head.next_node
+        head_to_return = self.head
+        self.head = next_head
+        #print(head_to_return.get_value())
+        return head_to_return.get_value()
 
   def contains(self, value):
-    pass
+    if self.head != None:
+        presently_searching_node = self.head
+    else:
+        return
+    while presently_searching_node.get_value() != self.tail.get_value():
+        #print(presently_searching_node.get_value())
+        if presently_searching_node.get_value() == value:
+            return True
+        else:
+            presently_searching_node = presently_searching_node.get_next()
+    if presently_searching_node.get_value() == value:
+        return True
+    else:
+        return False
 
   def get_max(self):
-    pass
+    current_max = -9999999999
+    if self.head != None:
+        presently_searching_node = self.head
+    else:
+        return
+    while presently_searching_node.get_value() != self.tail.get_value():
+        if presently_searching_node.get_value() > current_max:
+            current_max = presently_searching_node.get_value()
+        else:
+            presently_searching_node = presently_searching_node.get_next()
+    if presently_searching_node.get_value() > current_max:
+        current_max = presently_searching_node.get_value()
+    return current_max

@@ -32,8 +32,6 @@ class LinkedList:
       self.tail.next_node = new_node
       self.tail = self.tail.next_node
 
-
-
   def remove_head(self):
     old_head = self.head
     if old_head is None: # Empty Linked List

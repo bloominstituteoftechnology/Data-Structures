@@ -90,9 +90,14 @@ class DoublyLinkedList:
 
   def remove_from_tail(self):
     # if tail not none
-    # save current tail for return
-    # set tail as tail.prev
-    # set tail.next to none
+    if self.tail is not None:
+      # save current tail for return
+      cur_tail = self.tail
+      # set tail as tail.prev
+      self.tail = self.tail.prev
+      # set tail.next to none
+      self.tail.next = None
+      return cur_tail.value
     pass
 
   def move_to_front(self, node):

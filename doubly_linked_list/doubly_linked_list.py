@@ -8,7 +8,7 @@ class ListNode:
 
   """Wrap the given value in a ListNode and insert it
   after this node. Note that this node could already
-  have a next node it is point to."""
+  have a next node it is pointing to."""
   def insert_after(self, value):
     current_next = self.next
     self.next = ListNode(value, self, current_next)
@@ -40,19 +40,36 @@ class DoublyLinkedList:
     self.tail = node
 
   def add_to_head(self, value):
-    pass
+    # create new node
+    new_node = ListNode(value)
+    # store current head in temp variable
+    temp = self.head
+    # insert new node in front of current head
+    self.head.insert_before(new_node)
+    # set DLL pointer (self.head) to new node
+    self.head = new_node
+    # set pointer on new head to point to old head
+    self.head.next = temp
 
   def remove_from_head(self):
-    pass
+    temp = self.head.value
+    self.head.delete()
+    return temp
 
   def add_to_tail(self, value):
-    pass
+    new_node = ListNode(value)
+    self.tail.insert_after(new_node)
+    self.tail = new_node
 
   def remove_from_tail(self):
-    pass
+    temp = self.tail.value
+    self.tail.delete()
+    return temp
 
   def move_to_front(self, node):
-    pass
+    node.delete()
+
+    self.add_to_head(node.value)
 
   def move_to_end(self, node):
     pass

@@ -29,11 +29,13 @@ class BinarySearchTree:
     def contains(self, target):
         if target == self.value:
             return True
+
         if target < self.value:
             if self.left is None:
                 return False
             else:
                 return self.left.contains(target)
+
         if target > self.value:
             if self.right is None:
                 return False

@@ -81,7 +81,9 @@ class DoublyLinkedList:
             return removed
 
     def move_to_front(self, node):
-        self.add_to_head(node.value)
+        temp = node.value
+        node.delete()
+        self.add_to_head(temp)
         # node.insert_before(self.head)
         # if node.prev is not None:
         #     node.prev.next = node.next
@@ -120,3 +122,16 @@ class DoublyLinkedList:
             next_val = next_val.next
 
         return max_val
+
+
+node = ListNode(1)
+dll = DoublyLinkedList(node)
+
+dll.add_to_tail(5)
+dll.add_to_tail(6)
+print(dll.head.value)
+print(dll.tail.value)
+dll.move_to_front(dll.tail)
+print(dll.head.value)
+print(dll.head.next.value)
+print(dll.tail.prev.value)

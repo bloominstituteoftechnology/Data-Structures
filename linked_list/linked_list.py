@@ -19,11 +19,11 @@ class Node:
 
 class LinkedList:
   def __init__(self):
-    self.head = head
-    self.tail = tail
+    self.head = None
+    self.tail = None
 
   #first create new node
-  def add_to_tail(self): #could also add value arg but dont need to.
+  def add_to_tail(self, value): #could also add value arg but dont need to.
     #create new node
     node = Node(value)
     #set tail of existing tail to next new node
@@ -35,11 +35,12 @@ class LinkedList:
     #set LL tail to new node
     self.tail = node
 
-  def remove_head(self):
+  """def remove_head(self):
         #check if head is none
     if self.head is not None:
         #set head node's next node value to a temp val
         new_head = self.head.next_node
+        
         #store value to be returned
         val = self.head.get_value()
         #delete head node
@@ -48,7 +49,21 @@ class LinkedList:
         self.head = new_head
         if self.head is None:
           del(self.tail)
-          self.tail = None
+          self.tail = None"""
+
+  def remove_head(self):
+    if not self.head:
+      return None
+    if not self.head.get_next():
+      head = self.head
+      self.head = None
+      self.tail = None
+
+      return head.get_value()
+    
+    value = self.head.get_value()
+    self.head = self.head.get_next()
+    return value
 
   def contains(self, value):
       #set current node to head. if node is null return false. 

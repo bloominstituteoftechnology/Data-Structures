@@ -8,8 +8,8 @@ class Heap:
 
   def delete(self):
     returnvalue = self.storage[1]
-    self.storage[1] = self.storage[self.get_size]
-    self.get_size = self.get_size - 1
+    self.storage[1] = self.storage[self.get_size()]
+    self.get_size = self.get_size() - 1
     self.storage.pop()
     self._sift_down(1)
     return returnvalue
@@ -29,4 +29,18 @@ class Heap:
       index = index // 2
 
   def _sift_down(self, index):
-    pass
+    max_child = None
+    if index * 2 + 1 >= self.get_size():
+        return
+    elif index * 2 + 2 >= self.get_size():
+        max_child = index * 2 + 1
+    elif storage[index * 2 + 1] > storage[index * 2 + 2]:
+        max_child = index * 2 + 1
+    else:
+        max_child = index * 2 + 2
+
+    if storage[index] < storage[max_child]:
+        storage[index], storage[max_child] = storage[max_child], storage[index]
+        self._sift_down(max_child)
+    else:
+        return

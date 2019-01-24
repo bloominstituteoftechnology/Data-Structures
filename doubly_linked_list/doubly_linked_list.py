@@ -66,10 +66,23 @@ class DoublyLinkedList:
     self.tail.delete()
     return temp
 
-  def move_to_front(self, node):
-    node.delete()
+  def move_to_front(self, node): # assume DLL > 0 nodes
+    print(f'\n\n*********  node {node}')
+    print(f'\n\n*********  node.value {node.value}')
+    print(f'\n\n*********  node.prev {node.prev}')
+    print(f'\n\n*********  node.next {node.next}')
+    
+    # this test is broken! node.prev = None, not 1! Is my add to tail messed up?
 
-    self.add_to_head(node.value)
+    node.prev.next = node.next
+    node.next.prev = node.prev
+    # change node.prev to none and node.next to head
+    node.prev = None
+    node.next = self.head
+    # change self.head to node
+    self.head = node
+    print(f'*** self.head.value is {self.head.value}')
+
 
   def move_to_end(self, node):
     pass

@@ -1,5 +1,5 @@
 import unittest
-from linked_list import LinkedList
+from linked_list import LinkedList # pylint: disable-msg=E0611
 
 class LinkedListTests(unittest.TestCase):
   def setUp(self):

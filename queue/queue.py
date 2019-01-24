@@ -25,6 +25,9 @@ class Queue:
       # If it is, returns None
       return None
 
+  def make_low_priority(self, node):
+    self.storage.move_to_end(node)
+
   # O(1)
   def len(self):
     # Simply returns the queue's size

@@ -1,11 +1,13 @@
-from heap import Heap
+import sys
+sys.path.append('../queue')
+from queue import Queue
 
 
 class LRUCache:
-    def __init__(self, limit=10, cache={}):
+    def __init__(self, limit=10):
         self.limit = limit
-        self.cache = cache
-        self.heap = Heap()
+        self.cache = {}
+        self.queue = Queue()
 
     """
     Retrieves the value associated with the given key. Also
@@ -16,7 +18,9 @@ class LRUCache:
     """
     # doesn't delete the key
     def get(self, key):
-        pass
+        node = self.chache[key]
+        self.queue.make_low_priority(node)
+        return node.value
 
     """
     Adds the given key-value pair to the cache. The newly-
@@ -32,6 +36,3 @@ class LRUCache:
         if len(self.cache) == self.limit:
             self.get(last_key)
         self.cache[key] = value
-
-    def _delete(self):
-        self.heap.delete()

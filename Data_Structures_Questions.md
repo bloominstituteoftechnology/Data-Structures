@@ -24,7 +24,7 @@ Answer the following questions for each of the data structures you implemented a
 
 7. What is the runtime complexity of `DoublyLinkedList.remove_from_tail`? **O(1)**
 
-8. What is the runtime complexity of `DoublyLinkedList.move_to_front`? **Skipped until I have a working function**
+8. What is the runtime complexity of `DoublyLinkedList.move_to_front`? **O(1)**
 
 9. What is the runtime complexity of `DoublyLinkedList.move_to_end`? **O(1)**
 
@@ -34,11 +34,11 @@ Answer the following questions for each of the data structures you implemented a
 
 ## Binary Search Tree
 
-1. What is the runtime complexity of `insert`? 
+1. What is the runtime complexity of `insert`? **O(n)**
 
-2. What is the runtime complexity of `contains`?
+2. What is the runtime complexity of `contains`? **O(n)**
 
-3. What is the runtime complexity of `get_max`? 
+3. What is the runtime complexity of `get_max`? **O(n)**
 
 ## Heap
 

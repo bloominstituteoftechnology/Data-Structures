@@ -7,7 +7,12 @@ class Heap:
     return self._bubble_up(self.get_size() - 1)
 
   def delete(self):
-    pass
+    returnvalue = self.storage[1]
+    self.storage[1] = self.storage[self.get_size]
+    self.get_size = self.get_size - 1
+    self.storage.pop()
+    self._sift_down(1)
+    return returnvalue
 
   def get_max(self):
     return self.storage[0]
@@ -16,12 +21,11 @@ class Heap:
     return len(self.storage)
 
   def _bubble_up(self, index):
-    storage = self.storage
     while index // 2 > 0:
-      if self.heapList[index] < self.heapList[index // 2]:
-         tmp = self.heapList[index // 2]
-         self.heapList[index // 2] = self.heapList[index]
-         self.heapList[index] = tmp
+      if self.storage[index] < self.storage[index // 2]:
+         tmp = self.storage[index // 2]
+         self.storage[index // 2] = self.storage[index]
+         self.storage[index] = tmp
       index = index // 2
 
   def _sift_down(self, index):

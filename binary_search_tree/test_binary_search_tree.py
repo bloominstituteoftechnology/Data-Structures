@@ -12,7 +12,7 @@ class BinarySearchTreeTests(unittest.TestCase):
     self.bst.insert(6)
     self.assertEqual(self.bst.left.right.value, 3)
     self.assertEqual(self.bst.right.left.value, 6)
-'''
+
   def test_contains(self):
     self.bst.insert(2)
     self.bst.insert(3)
@@ -27,6 +27,6 @@ class BinarySearchTreeTests(unittest.TestCase):
     self.bst.insert(300)
     self.bst.insert(3)
     self.assertEqual(self.bst.get_max(), 300)
-'''
+
 if __name__ == '__main__':
   unittest.main()

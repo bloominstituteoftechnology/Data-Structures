@@ -27,4 +27,10 @@ class BinarySearchTree:
     pass
 
   def get_max(self):
-    pass
+    #largest item is the right most node's value, 
+    # so get right most using recursive method to traverse tree
+    if self.right:
+      return self.get_max(self.right)
+      
+    return self.value
+

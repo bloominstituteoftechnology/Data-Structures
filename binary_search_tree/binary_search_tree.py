@@ -79,4 +79,5 @@ bst.insert(5)
 bst.insert(3)
 bst.insert(15)
 bst.display()
-       
+print("\nMax in BST",bst.get_max())       
+print(bst.contains(9))

@@ -81,6 +81,7 @@ class DoublyLinkedList:
           next_up.delete()
       self.add_to_head(node.value)
 
+
   def move_to_end(self, node):
     if node is None:
       return

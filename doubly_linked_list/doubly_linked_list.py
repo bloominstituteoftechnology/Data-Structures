@@ -55,6 +55,8 @@ class DoublyLinkedList:
     oldTail = self.tail
     newTail = self.tail.next
     self.tail = newTail
+    if self.head is None:
+      self.head = newTail
     self.tail.prev = oldTail
     return self.tail.value
 
@@ -86,15 +88,16 @@ class DoublyLinkedList:
 
     
   def get_max(self):
-    curr_node = self.head
-    if curr_node is None:
-      max = 0
-      while curr_node is not None:
-        if curr_node.value > max:
-          max = curr_node.value
-        else:
-          curr_node = curr_node.next
-      return max
-    else:
+    print(self.head.value)
+    print(self.tail.value)
+    if self.head is None:
       return None
+    curr_node = self.head
+    max = self.head.value
+    while curr_node is not None:
+      if curr_node.value > max:
+        max = curr_node.value
+      else:
+        curr_node = curr_node.next
+    return max
 

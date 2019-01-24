@@ -4,13 +4,20 @@ Answer the following questions for each of the data structures you implemented a
 
 1. What is the runtime complexity of `enqueue`?
 
+<br> (queue.py) using a linked list with tail pointer, O(1)
+<br> using a linked list *withOUT* tail pointer, O(n)
+<br> using an array,O(1) 
+
 2. What is the runtime complexity of `dequeue`?
+<br> using an array or linked list,O(1) 
 
 3. What is the runtime complexity of `len`?
+<br> in lists, dictionaries, or sets, O(1)
 
 ## Binary Search Tree
 
 1. What is the runtime complexity of `insert`? 
+
 
 2. What is the runtime complexity of `contains`?
 

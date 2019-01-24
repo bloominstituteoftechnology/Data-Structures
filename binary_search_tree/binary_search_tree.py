@@ -42,7 +42,10 @@ class BinarySearchTree:
 
     def get_max(self):
         # follow down the right ->
+        # if at the end
         if self.right is None:
+            # this is the biggest value
             return self.value
         else:
+            # go deeper!
             return self.right.get_max()

@@ -57,15 +57,17 @@ class Heap:
             return this.storage[right_index]
 
     def _bubble_up(self, index):
-        parent_index = self._get_parent_index(index)
-        # move element at index up the heap if parent value is smaller
-        if self.storage[index] > self.storage[parent_index]:
-            # swap
-            temp = self.storage[parent_index]
-            self.storage[parent_index] = self.storage[index]
-            self.storage[index] = temp
-        # return new index
-        return parent_index
+        while index > 0:
+            parent_index = self._get_parent_index(index)
+            # move element at index up the heap if parent value is smaller
+            if self.storage[index] > self.storage[parent_index]:
+                # swap
+                temp = self.storage[parent_index]
+                self.storage[parent_index] = self.storage[index]
+                self.storage[index] = temp
+                index = parent_index
+            else:
+                return
 
     def _sift_down(self, index):
         # grab indecies of element's children

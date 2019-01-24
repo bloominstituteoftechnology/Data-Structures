@@ -56,26 +56,26 @@ class DoublyLinkedList:
     if not self.head:
       return None
     # if only 1 element in list
-    if self.head.get_next() is None:
+    if self.head.next is None:
       old = self.head
       self.head = None 
       self.tail = None
-      return old.get_value()
+      return old.value
      
-    oldVal = self.head.get_value()
-    next = self.head.get_next()
+    oldVal = self.head.value
+    next = self.head.next
     self.head = next
     return oldVal
 
   def add_to_tail(self, value):
     # create node
-    new_node = Node(value, None)
+    new_node = ListNode(value)
     # if list empty
     if not self.head:
       self.head = new_node
       self.tail = new_node
     else: 
-      self.tail.set_next(new_node)
+      self.tail.next = new_node
       self.tail = new_node
 
   def remove_from_tail(self):
@@ -86,7 +86,19 @@ class DoublyLinkedList:
     self.tail.next = None
 
   def move_to_front(self, node):
-    pass
+    if node.prev is not None:
+      node.prev.next = node.next
+    
+    if node.next is not None:
+      node.next.prev = node.prev
+
+    self.head.prev = node
+    node.prev = None
+    node.next = self.head
+    self.head = node
+
+  def delete(self, node):
+    node.delete()
 
   def move_to_end(self, node):
     if node.prev is not None:
@@ -100,9 +112,6 @@ class DoublyLinkedList:
     node.next = None
     self.tail = node
 
-  def delete(self, node):
-    pass
-    
     
   def get_max(self):
     # if list is empty
@@ -110,11 +119,11 @@ class DoublyLinkedList:
       return None
 
     currentNode = self.head
-    largest = self.head.get_value()
+    largest = self.head.value
     while currentNode is not None:
       if currentNode.value > largest:
         largest = currentNode.value
-        currentNode = currentNode.next_node
+        currentNode = currentNode.next
       else:
-        currentNode = currentNode.next_node
+        currentNode = currentNode.next
     return largest

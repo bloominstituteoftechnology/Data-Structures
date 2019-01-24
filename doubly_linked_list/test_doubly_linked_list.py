@@ -76,7 +76,10 @@ class DoublyLinkedListTests(unittest.TestCase):
     self.assertEqual(self.dll.head.next.value, 1)
 
   def test_get_max(self):
-    self.assertIsNone(self.dll.get_max())
+    # changed the test to be an assertEqual instead of assertIsNone
+    # the list is built with a initial '1' so this test should not
+    # through none, it should show the single element
+    self.assertEqual(self.dll.get_max(), 1)
     self.dll.add_to_tail(100)
     self.assertEqual(self.dll.get_max(), 100)
     self.dll.add_to_tail(55)

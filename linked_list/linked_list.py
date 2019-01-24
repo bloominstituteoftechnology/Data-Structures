@@ -8,13 +8,13 @@ class Node:
     self.value = value
     self.next_node = next_node  # pointer to the next, pointer is a memory address
 
-  def get_value(self):
+  def get_value(self):  # O(1)
     return self.value
 
-  def get_next(self):
+  def get_next(self):  # O(1)
     return self.next_node
 
-  def set_next(self, new_next):
+  def set_next(self, new_next):  # O(1)
     self.next_node = new_next
 
 class LinkedList:
@@ -22,22 +22,22 @@ class LinkedList:
     self.head = None  # first item
     self.tail = None  # last item
 
-  def add_to_tail(self, value):
+  def add_to_tail(self, value):  # => O(1)
     
     # Create a new node
     # If the tail doesn't exists, meaning the list is empty, since we are adding a new node, the head and tail will be set to the new node  
     # Else, set the tail's next node to be the new node  
     
-    new_node = Node(value)    # new_node = Node(value, None)
+    new_node = Node(value)    # new_node = Node(value, None) O(1)
     
-    if self.tail is None:
+    if self.tail is None:  # O(1)
       self.head = new_node
       self.tail = new_node
     else:  # tail exists
-      self.tail.set_next(new_node)  # tell existing tail that next node is the new one
+      self.tail.set_next(new_node)  # tell existing tail that next node is the new one, O(1)
       self.tail = new_node # new tail
     
-  def remove_head(self):
+  def remove_head(self):  # => O(1)
     
     # Check if the head doesn't exist, return none
     # If the head exists, 
@@ -66,7 +66,11 @@ class LinkedList:
     # to get rid of the old head completely, we do something like: del(old_head)
     
               
-  def contains(self, value):
+  def contains(self, value):  # => O(n)
+  
+  # best case: you get the value right away, O(1)
+  # worse case: you have to go through the entire queue, O(n)
+  # average case: add all the possibilities up and divide by number of possibilities, O(n/2)
     
     # Set the current node to the head
     # Do a while loop
@@ -74,15 +78,15 @@ class LinkedList:
       # Compare the current node's value to the query value, return true if they are equalled
       # Set the current node to be the next node
     
-    current_node = self.head
+    current_node = self.head  # O(1)
     
-    while True:
-      if current_node is None:
+    while True:  # O(n), as long as there is node
+      if current_node is None:  # O(1)
         return False
-      elif current_node.get_value() == value:
+      elif current_node.get_value() == value:  # O(1)
         return True
       else:
-        current_node = current_node.get_next()
+        current_node = current_node.get_next()  # O(1)
 
   def get_max(self):
     

@@ -9,7 +9,7 @@ class ListNode:
   """Wrap the given value in a ListNode and insert it
   after this node. Note that this node could already
   have a next node it is point to."""
-  def insert_after(self, value):
+  def insert_after(self, value):  # O(1)
     current_next = self.next
     self.next = ListNode(value, self, current_next)
     if current_next:
@@ -18,7 +18,7 @@ class ListNode:
   """Wrap the given value in a ListNode and insert it
   before this node. Note that this node could already
   have a previous node it is point to."""
-  def insert_before(self, value):
+  def insert_before(self, value):  # O(1)
     current_prev = self.prev
     self.prev = ListNode(value, current_prev, self)
     if current_prev:
@@ -26,7 +26,7 @@ class ListNode:
 
   """Rearranges this ListNode's previous and next pointers
   accordingly, effectively deleting this ListNode."""
-  def delete(self):
+  def delete(self):  # O(1)
     if self.prev:
       self.prev.next = self.next
     if self.next:
@@ -39,7 +39,7 @@ class DoublyLinkedList:
     self.head = node
     self.tail = node
 
-  def add_to_head(self, value):
+  def add_to_head(self, value):  # O(1)
     
     # Create new node
     # Check if head exists, 
@@ -55,7 +55,7 @@ class DoublyLinkedList:
     new_node.next = self.head
     self.head = new_node
 
-  def remove_from_head(self):
+  def remove_from_head(self):  # O(1)
     
     # If the head exists...
       # Set the head to be the old head's next
@@ -80,7 +80,7 @@ class DoublyLinkedList:
     
     return old_value
 
-  def add_to_tail(self, value):
+  def add_to_tail(self, value):  # O(1)
     
     # The insert_after() method takes care of creating a new node and setting up the prev and next
     
@@ -93,7 +93,7 @@ class DoublyLinkedList:
     self.tail.insert_after(value) # insert after the current tail
     self.tail = self.tail.next  # change the tail to be the new node
     
-  def remove_from_tail(self):
+  def remove_from_tail(self):  # O(1)
     
     if self.tail is None:
       return None
@@ -114,7 +114,7 @@ class DoublyLinkedList:
     
     return old_value
 
-  def move_to_front(self, node):
+  def move_to_front(self, node):  # O(1)
     
     # If there is only one item in the list
     if self.head is self.tail:
@@ -130,7 +130,7 @@ class DoublyLinkedList:
     node.prev = None
     self.head = node
     
-  def move_to_end(self, node):
+  def move_to_end(self, node):  # O(1)
     
     # If there is only one item in the list
     if self.head is self.tail:
@@ -146,19 +146,19 @@ class DoublyLinkedList:
     node.next = None
     self.tail = node
 
-  def delete(self, node):
+  def delete(self, node):  # O(1)
     node.delete()
     
-  def get_max(self):
+  def get_max(self):  # O(n)
     
-    current_max = None
-    current_node = self.head
+    current_max = None  # O(1)  
+    current_node = self.head  # O(1)
     
-    while current_node is not None:
-      if current_max is None or current_node.value > current_max:
-        current_max = current_node.value
+    while current_node is not None:  # O(n)
+      if current_max is None or current_node.value > current_max:  # O(1)
+        current_max = current_node.value  # O(1)
         
-      current_node = current_node.next
+      current_node = current_node.next  # O(1)
     
-    return current_max
+    return current_max  # O(1)
 

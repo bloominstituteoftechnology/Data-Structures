@@ -1,12 +1,14 @@
 class Heap:
   def __init__(self):
     self.storage = []
-    self.count = len(self.storage) - 1
+    self.count = 0
 
   def insert(self, value):
     index = self.count
-    self.storage[index] = value
+    self.storage.append(value)
+    print(self.storage)
     self._bubble_up(index)
+    self.count += 1
 
   def delete(self):
     pass
@@ -27,7 +29,15 @@ class Heap:
       return (index * 2) + 2
 
   def _bubble_up(self, index):
-    pass
+    if index is 0:
+      return
+    else:
+      parent = self._find_parent(index)
+      if self.storage[parent] < self.storage[index]:
+        self.storage[parent], self.storage[index] = self.storage[index], self.storage[parent]
+        return self._bubble_up(parent)
+      else:
+        return
 
   def _sift_down(self, index):
     pass
@@ -45,3 +55,16 @@ class Heap:
 # print(test_parent.storage[test_parent._find_parent(4)])
 # print(test_parent.storage[test_parent._find_parent(5)])
 #########################################################
+
+#####################
+# Testing Insertion #
+#####################
+# test_insertion = Heap()
+# print(test_insertion.storage)
+# test_insertion.insert(110)
+# print(test_insertion.storage)
+# test_insertion.insert(10)
+# print(test_insertion.storage)
+# test_insertion.insert(1010)
+# print(test_insertion.storage)
+###############################

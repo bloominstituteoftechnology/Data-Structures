@@ -25,8 +25,9 @@ class BinarySearchTree:
 
 
     def get_max(self):
-        temp = self.right
-        if self.right is not None:
-            BinarySearchTree.get_max(self.right)
-        else:
-            return temp
+        r = 'right'
+        if self.value is not None and getattr(self, r) is not None:
+            self = getattr(self, r)
+        elif self.value is not None and getattr(self, r) is None:
+            return self.value
+        return self.get_max()

@@ -3,8 +3,11 @@ class Heap:
         self.storage = []
 
     def insert(self, value):
+        # Add value to storage
         self.storage.append(value)
+        # save index in value
         last_index = len(self.storage) - 1
+        # make heap valid
         self._bubble_up(last_index)
 
     def delete(self):
@@ -14,22 +17,9 @@ class Heap:
         self.storage[0] = self.storage[-1]
         # remove last element
         self.storage.pop()
-        # loop
-        for i in range(len(self.storage)):
-            # check if left child is bigger than right child
-            if self.storage[2*i + 1] > self.storage[2*i + 2]:
-                # swap
-                temp = self.storage[0]
-                self.storage[0] = self.storage[2*i + 1]
-                self.storage[2*i + 1] = temp
-            else:
-                # swap
-                temp = self.storage[0]
-                self.storage[0] = self.storage[2*i + 2]
-                self.storage[2*i + 2] = temp
-        # check children
-        # swap with larger element
-        # if null stop
+        # sift down
+        self._sift_down(0)
+
         return removed
 
     def get_max(self):
@@ -44,17 +34,17 @@ class Heap:
 
     def _get_left(self, index):
         left_index = index * 2 + 1
-        if left_idnex > self.count - 1:
+        if left_index > len(self.storage) - 1:
             return None
         else:
-            return this.storage[left_index]
+            return left_index
 
     def _get_right(self, index):
         right_index = index * 2 + 2
-        if left_idnex > self.count - 1:
+        if right_index > len(self.storage) - 1:
             return None
         else:
-            return this.storage[right_index]
+            return right_index
 
     def _bubble_up(self, index):
         while index > 0:
@@ -70,16 +60,36 @@ class Heap:
                 return
 
     def _sift_down(self, index):
-        # grab indecies of element's children
-        # if left child is larger or right child is larger
-        # check if larger value is bigger than parent
-        # if so swap
-        pass
+        # check if left child is bigger than right child
+        while 2*index + 2 <= len(self.storage) - 1:
+            if self.storage[2*index + 1] >= self.storage[2*index + 2]:
+                if self.storage[index] <= self.storage[2*index + 1]:
+                    # swap
+                    temp = self.storage[index]
+                    self.storage[index] = self.storage[2*index + 1]
+                    self.storage[2*index + 1] = temp
+                    index = 2*index + 1
+            elif self.storage[2*index + 1] <= self.storage[2*index + 2]:
+                if self.storage[index] <= self.storage[2*index + 2]:
+                    # swap
+                    temp = self.storage[index]
+                    self.storage[index] = self.storage[2*index + 2]
+                    self.storage[2*index + 2] = temp
+                    index = 2*index + 2
+            else:
+                return
 
 
 heap = Heap()
-heap.insert(15)
+heap.insert(6)
+heap.insert(8)
+heap.insert(10)
 heap.insert(9)
-heap.insert(100)
-heap.insert(101)
+heap.insert(1)
+heap.insert(9)
+heap.insert(9)
+heap.insert(5)
+print(heap.storage)
+# should delete 101 and put 9 in front and delete 9 from end
+heap.delete()
 print(heap.storage)

@@ -49,15 +49,26 @@ class BinarySearchTree:
     we recur for right subtree of root node.
     Otherwise we recur for left subtree.
     """
-    # O(log n)
+    # O(n)
     def contains(self, target):
         if self.value == target:
             return True
+        if self.right and self.left:
+            return self.right.contains(target) or self.left.contains(target)
+        if self.right:
+            return self.right.contains(target)
+        if self.left:
+            return self.left.contains(target)
+        return False
+
+        # Only looked at one side of tree when the other side could have contained the value also
+        """
         attr = "right" if target > self.value else "left"  # O(1)
         child_bst = getattr(self, attr)  # O(1) probably
         if child_bst is None:
             return False  # O(1)
         return child_bst.contains(target)  # Recurses through half so O(log n)
+        """
 
     # O(log n)
     def get_max(self):

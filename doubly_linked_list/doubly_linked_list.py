@@ -87,6 +87,8 @@ class DoublyLinkedList:
 
   def delete(self, node):
     node.delete()
-    
+
   def get_max(self):
     pass
+    
+ scott bren

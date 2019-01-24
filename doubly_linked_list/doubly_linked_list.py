@@ -64,7 +64,6 @@ class DoublyLinkedList:
     if self.head:
       new_head = self.head.next
       if new_head:
-        print('here', new_head.value)
         removed_head = self.head.value
         return removed_head
       self.tail = None
@@ -72,10 +71,11 @@ class DoublyLinkedList:
 
   def add_to_tail(self, value):
     new_tail = ListNode(value)
-    if self.tail:
-      self.tail.next = new_tail
-    self.head = new_tail
+    new_tail.next = self.tail
     self.tail = new_tail
+    if not self.tail:
+      self.head = new_tail
+      self.tail = new_tail
 
   def remove_from_tail(self):
     if self.tail:
@@ -84,10 +84,8 @@ class DoublyLinkedList:
     return None
 
   def move_to_front(self, node):
-    print('beg', node.value)
     if node.prev:
       node.prev.next = node.prev
-      print('here2', node.prev.value)
     self.head.prev = node
     node.next = self.head
     node.prev = None
@@ -96,9 +94,8 @@ class DoublyLinkedList:
 
   def move_to_end(self, node):
     # Instructor Solution:
-    # if node.prev:
-    #   node.prev.next = node.next
-    #   print('here', node.prev.value, node.next.value, node.prev.next.value)
+    if node.prev:
+      node.prev.next = node.next
     if node.next:
       node.next.prev = node.prev
     self.tail.next = node
@@ -115,7 +112,8 @@ class DoublyLinkedList:
       max_value = self.head.value
       while curr_node:
         if curr_node.value > max_value:
-          max_value = curr_node.value
+          max_value = curr_node
         curr_node = curr_node.next
       return max_value
     return None
+

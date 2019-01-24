@@ -1,57 +1,46 @@
 class BinarySearchTree:
-    def __init__(self, value):
-        self.value = value
-        self.left = None
-        self.right = None
+  # log based 2
+  # ternary tree would be log based 3
+  def __init__(self, value):
+    self.value = value
+    self.left = None #left side smaller than root
+    self.right = None#right side larger than root
 
-    def insert(self, value, leaf=None):
-        leaf = leaf if leaf is not None else self.value
-        if value > leaf:
-            # go right
-            if self.right is None:
-                self.right = BinarySearchTree(value)
-            else:
-              # make self.right new value, and recall insert
-                new_leaf = self.right.value
-                self.right.insert(value, new_leaf)
-        else:
-            # go left
-            if self.left is None:
-                self.left = BinarySearchTree(value)
-            else:
-                # make self.left new value, and recall insert
+  def insert(self, value): #O(logn) # you divide the searches of where to add it by 2
+    tree = BinarySearchTree(value)
+    # if value of the new tree is less then tree
+    if value < self.value:
+      if self.left is None:
+        self.left = tree
+      else: 
+        self.left.insert(value)
+    else:
+      if self.right is None:
+        self.right = tree
+      else:
+        self.right.insert(value)
 
-                new_leaf = self.left.value
-                self.left.insert(value, new_leaf)
-    # contains works in a seperate terminal, not in VSC for some reason
+  def contains(self, target): #walk down till you find item or empty branch it doesn't exist
+    current = self
+    while True:
+      if current is None:
+        return False
+      if target == current.value:
+        return True
+      if target > current.value: 
+        current = current.right
+      else:
+        current = current.left
 
-    def contains(self, target, leaf=None):
-        leaf = leaf if leaf is not None else self.value
-        print("current leaf is: ", leaf)
-        print("we are looking for: ", target)
-        if leaf is not None:
-            if target > leaf:
-              # if target is greater than leaf, go right
-                leaf = self.right.value
-                self.contains(target, leaf)
-            elif target < leaf:
-                # target is less than leaf
-                leaf = self.left.value
-                self.contains(target, leaf)
-            else:
-                if target == leaf:
-                    print("we have a winner: ", leaf)
-                    return True
+  def get_max(self): #all the way down right side till the end
+    current = self
+    while True:
+      # when you reach the end then you'll be at the biggest value
+      if current.right is None:
+        return current.value # return max
+      # keep incrementing on right side till the end
+      current = current.right
+    
 
-                else:
-                    return False
-        else:
-            return False
 
-    def get_max(self, leaf=None):
-        leaf = leaf if leaf is not None else self.value
-        if self.right is not None:
-            leaf = self.right.value
-            self.get_max(leaf)
-        else:
-            return leaf
+# middle most value as root of the root

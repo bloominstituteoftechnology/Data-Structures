@@ -1,4 +1,4 @@
-import unittest
+import unittest # noqa
 from linked_list import LinkedList
 
 class LinkedListTests(unittest.TestCase):

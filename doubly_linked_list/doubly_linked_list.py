@@ -41,9 +41,14 @@ class DoublyLinkedList:
 
   def add_to_head(self, value):
     # create a new node
+    node = ListNode(value)
     # set tail of new to old head
+    node.next = self.head
     # set head to new node
+    self.head = node
     # if head is none
+    if self.head is None:
+      self.tail = node
       # set tail as well as head | new node
     pass
 

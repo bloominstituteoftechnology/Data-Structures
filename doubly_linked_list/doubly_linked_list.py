@@ -111,6 +111,7 @@ class DoublyLinkedList:
     self.tail = prev_node
 
     return remove_node.value
+    
   def move_to_front(self, node):
     # delete the node and add it to the head
     node.delete

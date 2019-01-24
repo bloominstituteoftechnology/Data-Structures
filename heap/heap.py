@@ -34,13 +34,13 @@ class Heap:
         return
     elif index * 2 + 2 >= self.get_size():
         max_child = index * 2 + 1
-    elif storage[index * 2 + 1] > storage[index * 2 + 2]:
+    elif self.storage[index * 2 + 1] > self.storage[index * 2 + 2]:
         max_child = index * 2 + 1
     else:
         max_child = index * 2 + 2
 
-    if storage[index] < storage[max_child]:
-        storage[index], storage[max_child] = storage[max_child], storage[index]
+    if self.storage[index] < self.storage[max_child]:
+        self.storage[index], self.storage[max_child] = self.storage[max_child], self.storage[index]
         self._sift_down(max_child)
     else:
         return

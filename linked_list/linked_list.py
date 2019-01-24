@@ -31,70 +31,48 @@ class LinkedList:
     if self.tail is not None:
         self.tail.set_next(node)
     else: 
-        self.head = Node
+        self.head = node
     #set LL tail to new node
     self.tail = node
 
-  """def remove_head(self):
-        #check if head is none
-    if self.head is not None:
-        #set head node's next node value to a temp val
-        new_head = self.head.next_node
-        
-        #store value to be returned
-        val = self.head.get_value()
-        #delete head node
-        del(self.head)
-        #then set head to that temp
-        self.head = new_head
-        if self.head is None:
-          del(self.tail)
-          self.tail = None"""
-
   def remove_head(self):
-    if not self.head:
-      return None
-    if not self.head.get_next():
-      head = self.head
-      self.head = None
-      self.tail = None
-
-      return head.get_value()
-    
-    value = self.head.get_value()
-    self.head = self.head.get_next()
-    return value
-
-  def contains(self, value):
-      #set current node to head. if node is null return false. 
-      # elif node value matches query value return true. else set current node to tail.
-      curr_node = self.head
-
-      if curr_node is None: 
-        return False
-      elif curr_node.value == value:
-        return True
+      #check if head is none
+      #set head node's next node value to a temp val
+    if self.head is not None:
+      #store value to be returned
+      old_head = self.head.get_value()
+      #assign new head
+      new_head = self.head.next_node
+      #if there is another item
+      if new_head is not None:
+        self.head = new_head
       else: 
-        curr_node = curr_node.next_node
+        self.head = None
+        self.tail = None
+      return old_head
+      
+  def contains(self, value):
+    #set current node to head. if node is null return false. 
+    # elif node value matches query value return true. else set current node to tail.
+    curr_node = self.head
+
+    #while current node exists
+    while curr_node:
+      #if current node is equal to target value return true
+      if curr_node.get_value() == value:
+        return True
+      #proceed to next node
+      curr_node = curr_node.next_node
+    #if value not in list
+    return False
 
   def get_max(self):
-    """curr_node = self.head
-    max_node = self.head
-
-    if curr_node.get_next().value > curr_node.max_node:
-      max_node = curr_node.get_next()
-      curr_node = curr_node.get_next()
-    elif curr_node.get_next() is None:
-      return max_node.value
-    else curr_node == None: 
-      raise ValueError("empty list")"""
-
     #if head is none return none
     if self.head is None:
       return None
     #set head as max value (temp val)  
     max_val = self.head.get_value()
-    curr_node = self.head.get_next()
+    curr_node = self.head
     # step through each node and compare and if it's bigger set that as max.
     while curr_node is not None:
       if curr_node.get_value() > max_val:
@@ -104,5 +82,11 @@ class LinkedList:
     return max_val
 
 
+# ll = LinkedList()
+# ll.add_to_tail(5)
+# #print(ll.head.value)
+# ll.add_to_tail(10)
+# ll.add_to_tail(3)
+# print(ll.get_max())
 
 

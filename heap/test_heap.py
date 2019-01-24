@@ -65,18 +65,18 @@ class HeapTests(unittest.TestCase):
       descending_order.append(self.heap.delete())
 
     self.assertEqual(descending_order, [10, 8, 7, 6, 5, 5, 2, 1])
-
+  
   def test_bubble_up_was_called(self):
     self.heap._bubble_up = MagicMock()
     self.heap.insert(5)
     self.assertTrue(self.heap._bubble_up.called)
-
+  
   def test_sift_down_was_called(self):
     self.heap._sift_down = MagicMock()
     self.heap.insert(10)
     self.heap.insert(11)
     self.heap.delete()
     self.assertTrue(self.heap._sift_down.called)
-
+ 
 if __name__ == '__main__':
   unittest.main()

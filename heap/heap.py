@@ -15,6 +15,7 @@ class Heap:
             self.storage.pop()  # O(1) to pop from end of array
             self._sift_down(0)  # O(log n)
             return old_value
+        # only one number left in heap so no need for _sift_down
         elif len(self.storage) == 1:
             old_value = self.storage[0]
             self.storage = []  # O(1)

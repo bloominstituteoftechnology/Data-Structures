@@ -1,11 +1,11 @@
 import sys
-sys.path.append('../linked_list')
-from linked_list import LinkedList
+sys.path.append('../doubly_linked_list')
+from doubly_linked_list import DoublyLinkedList
 
 class Queue:
   def __init__(self):
     self.size = 0
-    self.storage = LinkedList()
+    self.storage = DoublyLinkedList()
 
   # O(1)
   def enqueue(self, item):
@@ -20,7 +20,7 @@ class Queue:
     if self.storage.head is not None:
       # If not, increments size and removes head
       self.size -= 1  # O(1)
-      return self.storage.remove_head()
+      return self.storage.remove_from_head()
     else:
       # If it is, returns None
       return None

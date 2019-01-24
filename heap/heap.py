@@ -27,6 +27,11 @@ class Heap:
         else:
             return self.storage[left_index]
 
+    def _get_right(self, index):
+        right_index = index * 2 + 2
+        if left_index > self.count - 1:
+            return None
+
     def _bubble_up(self, index):
         pass
 

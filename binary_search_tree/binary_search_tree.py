@@ -30,25 +30,3 @@ class BinarySearchTree:
             BinarySearchTree.get_max(self.right)
         else:
             return temp
-
-
-
-
-        # if start is not None:
-        #     # Moves it to the right if value is larger
-        #     if value > self.value:
-        #         if self.right is None:
-        #             self.right = BinarySearchTree(value)
-        #             return value
-        #         else:
-        #             BinarySearchTree.insert(value, self.right)
-        #     # Moves to the left
-        #     else:
-        #         if self.left is None:
-        #             self.left = BinarySearchTree(value)
-        #             return value
-        #         else:
-        #             BinarySearchTree.insert(value, self.left)
-        # else:
-        #     self.value = BinarySearchTree(value)
-        #     return value

@@ -40,25 +40,96 @@ class DoublyLinkedList:
     self.tail = node
 
   def add_to_head(self, value):
-    pass
+    new_node = ListNode(value)
+    if not self.head:
+      self.head = new_node
+      self.tail = new_node
+    else:
+      new_node.next = self.head
+      self.head = new_node
+      print(self.head.value)
+    
+
+    
 
   def remove_from_head(self):
-    pass
+    if not self.head:
+      return None
+    if not self.head.next:
+      x = self.head
+      self.head = None
+      self.tail = None
+      return x.value
+    cur_value = self.head.value
+    self.head = self.head.next
+    return cur_value
 
   def add_to_tail(self, value):
-    pass
+    new_node = ListNode(value)
+    if not self.head:
+      self.head = new_node
+    elif not self.tail:
+      self.tail = new_node
+      self.head.next = new_node
+    else:
+      new_node.prev = self.tail
+      new_node.next = self.tail
+      self.tail = new_node
+      self.head.next = new_node
+      self.tail.next = None
+      
+    
 
   def remove_from_tail(self):
-    pass
+    if not self.head:
+      return None
+    if not self.tail:
+      return None
+    elif self.tail:
+      x = self.tail
+      self.tail = None
+      return x.value
+    self.tail = self.prev
+    
 
   def move_to_front(self, node):
+    
     pass
+    
 
   def move_to_end(self, node):
-    pass
+    if node is not None:
+      node.insert_after(node)
+    if node.next is not None:
+      node.next.prev = node.prev
+    self.tail.next = node
+    node.prev = self.tail
+    node.next = None
+    self.tail = node
+
+    
 
   def delete(self, node):
     pass
     
   def get_max(self):
-    pass
+    if self.tail.value == 1:
+      if self.head.value == 1:
+        return None
+    print("in get max: ",self.head)
+    print("in get max: ",self.head.next.value)
+    print("in get max: ",self.tail.value)
+    print("in get max, tail", self.tail.next)
+    
+    curr_node = self.head.next
+    max_node = self.head
+    while curr_node:
+      print("#in while loop: ",curr_node)
+      print("#in while loop: ",max_node)
+      if curr_node.value > max_node.value:
+        max_node = curr_node
+        
+      else:
+        curr_node = curr_node.next
+
+    return max_node.value

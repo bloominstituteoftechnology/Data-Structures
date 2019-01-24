@@ -31,7 +31,9 @@ class QueueTests(unittest.TestCase):
     self.q.enqueue(100)
     self.q.enqueue(101)
     self.q.enqueue(105)
+
     self.assertEqual(self.q.dequeue(), 100)
+    
     self.assertEqual(self.q.len(), 2)
     self.assertEqual(self.q.dequeue(), 101)
     self.assertEqual(self.q.len(), 1)

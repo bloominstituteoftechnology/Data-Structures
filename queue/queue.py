@@ -8,10 +8,38 @@ class Queue:
     self.storage = LinkedList()
 
   def enqueue(self, item):
+    self.storage.add_to_tail(item)
+    self.size += 1
+    # create the new node - new node created in add_to_tail
+    # add the ned node to the linkedlist add_to_tail
+    # increment size
     pass
   
   def dequeue(self):
+    removed = self.storage.remove_head()
+    if self.size != 0:
+      self.size -= 1
+    # remove first element
+    # decrement size
+    return removed
     pass
 
   def len(self):
-    pass
+    return self.size
+    # create a counter
+    # step through elements incrementing counter
+    # return counter
+    # -------------------------------
+    # or just return self.size
+
+# newQ = Queue()
+# print(newQ)
+# newQ.enqueue(3)
+# newQ.enqueue(5)
+# newQ.enqueue(8)
+# print(newQ.storage.head.value)
+# print(newQ.storage.tail.value)
+# newQ.dequeue()
+# print(newQ.storage.head.value)
+# print(newQ.storage.tail.value)
+# print(newQ.len())

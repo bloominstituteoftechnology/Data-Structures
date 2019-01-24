@@ -75,10 +75,20 @@ class DoublyLinkedList:
     pass
 
   def move_to_front(self, node):
-    
+    # save head in temp
+    # node.prev = node.next
+    # if head is not none
+      # set head.prev to node
+      # node.prev set to none
+      # node.next set to temp head
+      # set head to node
+    # head = node
+    # tail = node
     pass
 
   def move_to_end(self, node):
+    # save tail in temp
+    # node.next = node.prev
     pass
 
   def delete(self, node):

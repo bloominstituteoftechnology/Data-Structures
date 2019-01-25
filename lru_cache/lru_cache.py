@@ -14,7 +14,14 @@ class LRUCache:
     def get(self, key):
         for k in self.cache:
             if k == key:
-                return self.cache[key]
+                # get value
+                value = self.cache[k]
+                # remove key value
+                self.cache.pop(k)
+                # reinset value as most recently used
+                self.set(k, value)
+                # return value
+                return self.cache[k]
 
         return None
 
@@ -30,19 +37,19 @@ class LRUCache:
   """
 
     def set(self, key, value):
+        popped = None
         # if key exists overwrite it
         if self.cache.get(key):
             self.cache[key] = value
 
         # add key value pair
-        if len(self.cache) < self.limit:
+        elif self.limit == len(self.cache):
+            for i, k in enumerate(self.cache):
+                # if the last item in dict
+                if i == 0:
+                    popped = k
+                    self.cache.pop(popped)
+                    self.cache[key] = value
+                    break
+        else:
             self.cache[key] = value
-
-
-lru_cache = LRUCache(3)
-lru_cache.set('hello', 'world')
-lru_cache.set('mellon', 'jam')
-lru_cache.set('great', 'peace')
-lru_cache.set('mellon', 'eyes')
-print(lru_cache.cache)
-print(len(lru_cache.cache))

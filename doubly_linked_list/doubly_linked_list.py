@@ -34,31 +34,124 @@ class ListNode:
 
 """Our doubly-linked list class. It holds references to
 the list's head and tail nodes."""
+## ListNode Methods
+# insert_after(value)
+# insert_before(value)
+# delete()
 class DoublyLinkedList:
   def __init__(self, node=None):
     self.head = node
     self.tail = node
 
   def add_to_head(self, value):
-    pass
+    node = ListNode(value)
+
+    if self.head != None and self.tail != None:
+      self.head.insert_before(node)
+      self.head = node
+
+    else:
+      self.head = node
+      self.tail = node
 
   def remove_from_head(self):
-    pass
+    if self.head is None and self.tail is None:
+      retval = None
+    elif self.head == self.tail:
+      retval = self.head.value
+      self.head = None
+      self.tail = None
+    else:
+      retval = self.head.value
+      new_head = self.head.next
+      self.head.delete()
+      self.head = new_head
+    return retval
 
   def add_to_tail(self, value):
-    pass
+    node = ListNode(value)
+    if self.head is not None and self.tail is not None:
+      self.tail.insert_after(node)
+      self.tail = node
+    
+    else:
+      self.head = node
+      self.tail = node
 
   def remove_from_tail(self):
-    pass
+    if self.head is None and self.tail is None:
+      retval = None
+    elif self.head == self.tail:
+      retval = self.tail.value
+      self.head = None
+      self.tail = None
+    else:
+      retval = self.tail.value
+      new_tail = self.tail.prev
+      self.tail.delete()
+      self.tail = new_tail
+    return retval
 
   def move_to_front(self, node):
-    pass
+    if self.head == None:
+      return 'List Empty'
+    else:
+      curr_node = self.head
+      while True:
+        ## if curr_node matches passed in node
+        if curr_node == node:
+          # self.add_to_head(curr_node.value)
+          self.head.insert_before(node)
+          # delete curr_node
+          curr_node.delete()
+        ## else:
+        else:
+          # curr_node = curr_node.next
+          curr_node = curr_node.next
+
+
 
   def move_to_end(self, node):
-    pass
+    if self.head == None:
+      return 'list empty'
+    else:
+      curr_node = self.head
+      while True:
+        ## if curr_node matches passed in node
+        if curr_node == node:
+          self.head.insert_after(node)
+          curr_node.delete()
+        else:
+          curr_node = curr_node.next
 
   def delete(self, node):
-    pass
+    if self.head == None:
+      return 'list empty'
+    else:
+      curr_node = self.head
+      while True:
+        if curr_node == node:
+          return curr_node.delete()
+        else:
+          curr_node = curr_node.next
     
   def get_max(self):
-    pass
+    if self.head == None:
+      return 'list empty'
+    else:
+      curr_node = self.head
+      curr_highest = self.head
+      while True:
+        if curr_node == None:
+          return curr_highest.value
+        if curr_node.next.value > curr_highest.value:
+          curr_highest = curr_node.next
+          curr_node = curr_node.next
+        else:
+          curr_node = curr_node.next
+
+# DLL = DoublyLinkedList()
+# DLL.add_to_head(5)
+# DLL.add_to_head(4)
+# DLL.add_to_head(16)
+# print(DLL.remove_from_head())

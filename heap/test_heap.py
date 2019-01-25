@@ -17,6 +17,17 @@ class HeapTests(unittest.TestCase):
     self.heap.insert(5) 
     self.assertEqual(self.heap.storage, [10, 9, 9, 6, 1, 8, 9, 5])
 
+
+    # self.heap.insert(6)
+    # self.heap.insert(7)
+    # self.heap.insert(5)
+    # self.heap.insert(8)
+    # self.heap.insert(10)
+    # self.heap.insert(1)
+    # self.heap.insert(2)
+    # self.heap.insert(5)
+    # self.assertEqual(self.heap.storage, [10, 8, 5, 6, 7, 1, 2, 5])
+
   def test_get_max_works(self):
     self.heap.insert(6)
     self.heap.insert(8)
@@ -58,9 +69,8 @@ class HeapTests(unittest.TestCase):
     self.heap.insert(1)
     self.heap.insert(2)
     self.heap.insert(5)
-
+    # self.assertEqual(self.heap.storage, [10, 8, 5, 6, 7, 1, 2, 5])
     descending_order = []
-
     while self.heap.get_size() > 0:
       descending_order.append(self.heap.delete())
 
@@ -75,6 +85,9 @@ class HeapTests(unittest.TestCase):
     self.heap._sift_down = MagicMock()
     self.heap.insert(10)
     self.heap.insert(11)
+    # ***
+    self.heap.insert(12)
+    # ***
     self.heap.delete()
     self.assertTrue(self.heap._sift_down.called)
 

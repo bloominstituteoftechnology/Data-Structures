@@ -3,7 +3,7 @@ from binary_search_tree import BinarySearchTree
 
 class BinarySearchTreeTests(unittest.TestCase):
   def setUp(self):
-    self.bst = BinarySearchTree(5)
+    self.bst = BinarySearchTree(5) # 5
 
   def test_insert(self):
     self.bst.insert(2)

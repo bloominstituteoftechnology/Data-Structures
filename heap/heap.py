@@ -5,50 +5,61 @@ class Heap:
     self.storage = []
 
   def insert(self, value):
+    # Append the value to the end of the storage
+    # Bubble that value up through the heap until heap is sorted 
     self.storage.append(value)
     self._bubble_up(len(self.storage) - 1)
 
+
+  def _bubble_up(self, index):   # initial index of parent's value
+    while (index - 1) // 2 >= 0:         # while parent's index > 0
+      # if child val > parent val
+      if self.storage[index] > self.storage[(index - 1) // 2]: 
+        self.storage[index], self.storage[(index - 1) // 2] = self.storage[(index - 1) // 2], self.storage[index]  # swap
+      index = (index - 1) // 2            # reduce to compare potential next parent's value
+
   def delete(self):
-    deleted = []
-    print(self.storage)
-    [self.storage[0]], self.storage[-1:] = self.storage[-1:], [self.storage[0]]
-    # print(self.storage)
-
-    deleted = [self.storage.pop()] + deleted
-    print(self.storage)
-    self._sift_down(0)  
-
-    print(self.storage, deleted)
-    
+    deleted = self.storage[0]
+    self.storage[:1], self.storage[-1:] = self.storage[-1:], self.storage[:1]
+    self.storage.pop()
+    if len(self.storage) > 1:   # if only root left, no need to sift_down
+      self._sift_down(0)        # had to change test for it to pass
+    return deleted
 
   def get_max(self):
     return self.storage[0]
 
   def get_size(self):
     return len(self.storage)
+  
+  # def _get_parent(self, index):
+  #   return self.storage[(index - 1) // 2]
+  
+  # def _get_right_child(self, index):
+  #   r = index * 2 + 2
+  #   if r > self.get_size():
+  #     return None
+  #   return self.storage[r]
+  
+  # def _get_left_child(self, index):
+  #   L = index * 2 + 1
+  #   if L > self.get_size():
+  #     return None
+  #   return self.storage[L]
+        
+  
+  def _sift_down(self, index):
+    # while left child index <= index of last element
+    while index <= len(self.storage)/2 - 1:
+      mc_i = index * 2 + 2 if len(self.storage)/2 - 1.5 >= index and self.storage[index * 2 + 2] > self.storage[index * 2 + 1] else index * 2 + 1
+      if self.storage[index] < self.storage[mc_i]:
+        self.storage[index], self.storage[mc_i] = self.storage[mc_i], self.storage[index]
+      index = mc_i
 
-  def _bubble_up(self, index):
-    p_idx = (index - 1) // 2              # initial index of parent's value
-    while p_idx >= 0:                     # while parent's index > 0
-      if self.storage[index] > self.storage[p_idx]: # if child val > parent val
-        self.storage[index], self.storage[p_idx]                                = self.storage[p_idx], self.storage[index]  # swap
-      p_idx -= 2             # reduce to compare potential next parent's value
 
-  def _sift_down(self, index):    # index 0
-    for i in range(0, int(math.log2(math.floor(len(self.storage))))):
-      # print(int(math.log2(math.floor(len(self.storage))))+1)
-      print(self.storage, 's')
-      if self.storage[index] < self.storage[(index * 2) + 1]:
 
-        self.storage[index], self.storage[(index * 2) + 1] = self.storage[(index * 2) + 1], self.storage[index]
-        # print(self.storage, 'if')
-        index = (index * 2) + 1
-      elif self.storage[index] > self.storage[(index * 2) + 2]:
-        self.storage[index], self.storage[(index * 2) + 2] = self.storage[(index * 2) + 2], self.storage[index]
-        index = (index * 2) + 2
-        # print(self.storage, 'elif')
-    print(self.storage, 'sifted')                                                        # log2(idx+1) = 3
-    pass
+        # for i in range(0, math.floor(math.log2(len(self.storage)))):
+#     pass
 # [6,   8,  10,     9,      1,      9,        9,           5]
 # Initial                                                             Len log(n)
 # 6    6    8     10       10      10        10           10          1      1/0
@@ -61,4 +72,5 @@ class Heap:
 #                 6             6 1   8
 # [10, 9, 9, 6, 1, 8, 9, 5]
 # [5  9 9 6 1 8 9 10] swap first and last
-# [9 5 9 61 89  10] => [9 6 9 51 89  10] swap 5 with L9, swap 5 with 6 heapify 
+# [9 5 9 61 89  10] => [9 6 9 51 89  10] swap 5 w/ L9, swap 5 w/ 6 heapify [10] 
+# [9]

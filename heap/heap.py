@@ -14,7 +14,7 @@ class Heap:
         if self.get_size() == 0:
             return first
         self.storage[0] = end
-        # self._sift_down(0)
+        self._sift_down(0)
         return first
 
     def get_max(self):
@@ -35,4 +35,12 @@ class Heap:
             self._bubble_up(index_of_parent)
 
     def _sift_down(self, index):
-        pass
+        biggest = None
+        while index * 2 + 1 <= len(self.storage) - 1:
+            if index*2+2 > len(self.storage)-1:
+                biggest = index*2+1
+            else:
+                biggest = index*2+1 if self.storage[index*2+1] > self.storage[index*2+2] else index*2+2
+            if self.storage[index] < self.storage[biggest]:
+                self.storage[index], self.storage[biggest] = self.storage[biggest], self.storage[index]
+            index = biggest

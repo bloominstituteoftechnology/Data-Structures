@@ -8,8 +8,11 @@ class HeapTests(unittest.TestCase):
 
   def test_heap_insert_works(self):
     self.heap.insert(6)
+    print(self.heap.storage)
     self.heap.insert(8)
+    print(self.heap.storage)
     self.heap.insert(10)
+    print(self.heap.storage)
     self.heap.insert(9)
     self.heap.insert(1)
     self.heap.insert(9)

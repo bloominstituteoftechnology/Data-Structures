@@ -24,28 +24,46 @@ class Heap:
     return len(self.storage)
 
   def _bubble_up(self, index):
-    parent_index = self._get_parent_index(index)
-    while self.storage[parent_index] < self.storage[index]:
-        print(f'{self.storage[index]} is greater than {self.storage[parent_index]}. lets swap them')
-        self._swap(index, parent_index)
-        # It is only swapping ONE time with parent ????????
-        index = parent_index
-
+   
+    while (index -1) // 2 >= 0:
+      if self.storage[(index -1) // 2] < self.storage[index]:
+        self.storage[(index -1) // 2], self.storage[index] = self.storage[index], self.storage[(index -1) // 2]
+      index = (index -1) // 2
 
 
   def _sift_down(self, index):
-    left_child_index = self._get_left_child_index(index)
-    right_child_index = self._get_right_child_index(index)
+    while (index*2 + 1) < len(self.storage):
+      if self.storage[index*2+2]:
+        left_child = self.storage[index*2+1]
+        right_child = self.storage[index*2+2]
+        if left_child > right_child:
+          if left_child > self.storage[index]:
+            #swap(left, parent)
+            self.storage[index*2+1], self.storage[index] = self.storage[index], self.storage[index*2+1]
+            #set index to left
+            index = index*2+1
+        else:
+           if right_child > self.storage[index]:
+             #swap(right, parent)
+             self.storage[index*2+2], self.storage[index] = self.storage[index], self.storage[index*2+2]
+             #set index to right
+            index = index*2+2
+
+    # left_child_index = self._get_left_child_index(index)
+    # right_child_index = self._get_right_child_index(index)
     
-    if left_child_index:
-      if self.storage[left_child_index] > self.storage[right_child_index]:
-        self._swap(left_child_index, index)
-      else:
-        self._swap(right_child_index, index)
+    # if left_child_index:
+    #   if self.storage[left_child_index] > self.storage[right_child_index]:
+    #     self._swap(left_child_index, index)
+    #   else:
+    #     self._swap(right_child_index, index)
+
   def _get_parent_index(self, index):
     return math.floor((index - 1) / 2)
+
   def _get_left_child_index(self, index):
     return (index * 2) + 1
+
   def _get_right_child_index(self, index):
     return (index * 2) + 2
   

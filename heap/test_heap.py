@@ -63,7 +63,7 @@ class HeapTests(unittest.TestCase):
 
     while self.heap.get_size() > 0:
       descending_order.append(self.heap.delete())
-
+      # print(descending_order)
     self.assertEqual(descending_order, [10, 8, 7, 6, 5, 5, 2, 1])
 
   def test_bubble_up_was_called(self):

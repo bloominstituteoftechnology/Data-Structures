@@ -6,8 +6,11 @@ class Heap:
   def insert(self, value):
     self.storage.append(value)
     self.count += 1
-    if (self.count - 1) >= 1:
-      parent = self.storage[self._get_parent(self.count -1)]
+    parent = self.storage[self._get_parent(self.count -1 )]
+    if parent > 0:
+      left_val = self.storage[self._get_lefty(self.count - 1)]
+      right_val = self.storage[self.get_righty(self.count - 1)]
+      if self.storage[left_val] > self.storage[parent]
       
     # need to write a bubble up function to put element in place
     pass
@@ -45,11 +48,11 @@ class Heap:
       return righty
 
   def _bubble_up(self, index):
-    if index % 2 == 0:
-      self.storage[(2*index)+2] = parent
-    else:
-      self.storage[(2*index)+1] = parent
-    self.storage[(index - 1)//2] = new_node
+    
+    left_val = self.storage[self._get_lefty(index - 1)]
+    right_val = self.storage[self._get_righty(index - 1)]
+    if left_val == None:
+    if 
     pass
 
   def _sift_down(self, index):

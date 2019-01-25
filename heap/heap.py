@@ -4,7 +4,7 @@ class Heap:
 
   def insert(self, value):
     self.storage.append(value)
-    length = len(self.storage) + 1
+    length = self.get_size() - 1
     self._bubble_up(length)
 
   def delete(self):
@@ -26,16 +26,36 @@ class Heap:
   def get_size(self):
     return len(self.storage)
 
+
+  """
+  While the index has a parent
+  Check the current index against its parent index
+  If the element at the current index is greater than its parent, swap it with its parent
+  Set the current index to the parent of the previous index
+  """
   def _bubble_up(self, index):
-    while index // 2 > 0:
-      if self.storage[index] < self.storage[index // 2]:
-        temp = self.storage[index // 2]
-        self.storage[index // 2] = self.storage[index]
+    while (index - 1) // 2 >= 0:
+      if self.storage[index] > self.storage[(index - 1) // 2]:
+        temp = self.storage[(index - 1) // 2]
+        self.storage[(index - 1) // 2] = self.storage[index]
         self.storage[index] = temp
-      index = index // 2
+      index = (index - 1) // 2
 
   def _sift_down(self, index):
-    pass
+    while index * 2 + 1 <= len(self.storage) - 1:
+      max_child = self.get_max_child(index)
+      if self.storage[index] < self.storage[max_child]:
+        self.storage[index], self.storage[max_child] = self.storage[max_child], self.storage[index]
+      index = max_child
+
+  '''
+  If the 
+  '''
+  def get_max_child(self, index):
+    if index * 2 + 2 > len(self.storage) - 1:
+      return index * 2 + 1
+    else:
+      return index * 2 + 1 if self.storage[index * 2 + 1] > self.storage[index * 2 + 2] else index * 2 + 2
 
 
 # left = 2index + 1 

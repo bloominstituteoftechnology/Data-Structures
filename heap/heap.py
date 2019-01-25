@@ -12,13 +12,13 @@ class Heap:
   def delete(self):
     if self.count > 0:
       retval = self.get_max()
-      print(f'before delete: {self.storage}')# <-- debugging
       last = self.storage.pop()
-      self.storage[0] = last
+      # attempting this next line when storage was empty []
+      # caused index out of range error
+      if len(self.storage)>0:
+        self.storage[0] = last
       self.count -= 1
-      print(f'after delete: {self.storage}')# <-- debugging
       self._sift_down(0)
-      print(f'after sift down: {self.storage}')# <-- debugging
       return retval
 
   def get_max(self):
@@ -80,13 +80,11 @@ class Heap:
       # flip them and recurse at storage index
       if self.storage[s] > self.storage[index]:
         self.storage[s], self.storage[index] = self.storage[index], self.storage[s]
-        print(f'post swap: {self.storage}')# <-- Debugging
+        # print(f'post swap: {self.storage}')# <-- Debugging
         return self._sift_down(s)
 
       else:
         return
-
-        
 
 
 
@@ -125,5 +123,35 @@ class Heap:
 #   test_delete.insert(i)
 # print(f'before delete: {test_delete.storage}')
 # print(f'delete result: {test_delete.delete()}')
-# print(f'after delete: {test_delete.storage}'
-#################################################
+# print(f'after delete: {test_delete.storage}')
+###############################################
+
+################################
+# previously failing test case #
+################################
+
+# heap = Heap()
+
+# heap.insert(6)
+# heap.insert(7)
+# heap.insert(5)
+# heap.insert(8)
+# heap.insert(10)
+# heap.insert(1)
+# heap.insert(2)
+# heap.insert(5)
+
+# decending_order = []
+
+# decending_order.append(heap.delete())
+# decending_order.append(heap.delete())
+# decending_order.append(heap.delete())
+# decending_order.append(heap.delete())
+# decending_order.append(heap.delete())
+# decending_order.append(heap.delete())
+# decending_order.append(heap.delete())
+# decending_order.append(heap.delete())
+
+# print(f'EXPECTED: [10, 8, 7, 6, 5, 5, 2, 1]')
+# print(f'RESULT: {decending_order}')
+###############################################

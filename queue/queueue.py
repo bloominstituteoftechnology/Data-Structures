@@ -8,11 +8,12 @@ class Queue:
     self.storage = DoublyLinkedList()
 
   # O(1)
-  def enqueue(self, item):
+  def enqueue(self, item, key=None):
     # Adds item to tail
-    self.storage.add_to_tail(item)  # O(1)
+    node = self.storage.add_to_tail(item, key)  # O(1)
     # Increments size
     self.size += 1  # O(1)
+    return node
 
   # O(1)
   def dequeue(self):
@@ -26,7 +27,7 @@ class Queue:
       return None
 
   def make_low_priority(self, node):
-    self.storage.move_to_end(node)
+    return self.storage.move_to_end(node)
 
   # O(1)
   def len(self):

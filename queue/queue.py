@@ -9,14 +9,17 @@ class Queue:
 
   def enqueue(self, item):
     # Put value [item] into the queue
-    size += 1
+    self.size += 1
+    self.storage.add_to_tail(item)
+
     pass
   
   def dequeue(self):
     # Take a vaue of of the queue from the front
-    size -= 1
-    pass
+    self.storage.remove_head()
+    self.size -= 1
+    
 
   def len(self):
     return self.size
-    pass
+    

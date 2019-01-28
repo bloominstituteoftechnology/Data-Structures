@@ -41,10 +41,8 @@ class LinkedList:
 
   def remove_head(self):
     #Check if the head is None
-    head = self.head
-    if head is not None:
+    if self.head is not None:
     #set the head nodes next node value to a temp var
-      del(head)
       new_head = self.head.next_node
     #delete the head node
     #then set head to that temp
@@ -69,8 +67,13 @@ class LinkedList:
   def get_max(self):
     #set start to head
     start = self.head
+    #set current max to value of head
     cur_max = start.get_value()
+    #while head is not empty
     while start:
+      # if current max is less than next value
+      # assign greater value to current max
+      # go to next value
       if cur_max < start.get_value():
         cur_max = start.get_value()
       start = start.get_next()

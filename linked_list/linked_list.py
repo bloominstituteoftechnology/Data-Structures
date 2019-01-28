@@ -64,6 +64,9 @@ class LinkedList:
         current_node = self.head
         cur_max = 0
 
+        if current_node == None:
+            cur_max = None
+
         while current_node is not None:
             if current_node.value > cur_max:
                 cur_max = current_node.value
@@ -89,4 +92,4 @@ myList.remove_head()
 myList.remove_head()
 
 print(myList.get_max())
-print(myList.contains(10))
+print(myList.contains(2939))

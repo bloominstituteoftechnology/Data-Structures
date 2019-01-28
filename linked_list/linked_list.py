@@ -39,7 +39,7 @@ class LinkedList:
   def remove_head(self):
     # check if head exist
     if self.head:
-      # check if there head has a next value 
+      # check if the head's pointer value is None so we can set the LL to its initial start
       if self.head.get_next() == None:
         temp_value = self.head.value
         self.head = None
@@ -48,14 +48,38 @@ class LinkedList:
       else:
         # head's next value does exist
         temp_value = self.head.value
+        # set head value equal to the old heads pointer
         self.head = self.head.get_next()
         return temp_value
     else:
       return None
 
   def contains(self, value):
-    pass
+   # set the current node to the head
+    cur_node = self.head
+    while True:
+      # 1. if the node is null return False
+      if cur_node is None:
+        return False
+      # elif the nodes value matches the query value, return True
+      elif cur_node.value == value:
+        return True
+      # otherwise set the current node to the tail and start from step 1
+      else:
+        cur_node = cur_node.next_node
 
   def get_max(self):
-    pass
+    # get current head
+    current_element = self.head
+     # create a var for max value
+    max_value = None
+         # while there is a current head that we haven't checked
+    while current_element:
+      if max_value == None or current_element.value >  max_value:
+        # reset max value to the greater value
+        max_value = current_element.value
+      # for every itteration reassign the current head to next element
+      current_element = current_element.get_next()
+    return max_value
+
 

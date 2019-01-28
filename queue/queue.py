@@ -14,8 +14,9 @@ class Queue:
   
   def dequeue(self):
     # Take a vaue of of the queue from the front
-    self.storage.remove_head()
     self.size -= 1
+    return self.storage.remove_head()
+    
     
 
   def len(self):

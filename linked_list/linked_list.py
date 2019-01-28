@@ -48,7 +48,7 @@ class LinkedList:
       del self.head
     #then set head to that temp
       self.head = current_head.next_node
-    
+    return current_head
   def contains(self, value):
     # start at head
     curr_node = self.head

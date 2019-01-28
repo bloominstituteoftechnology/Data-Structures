@@ -23,9 +23,18 @@ class LinkedList:
     self.tail = None
 
   def add_to_tail(self, value):
+    #Create new node
+    #if the LinkList is not empty
+    #Then set the tail's next to the new node
+    #if it is empty, set the new node to the head
+    #set the ll tail to the new node
     pass
 
   def remove_head(self):
+    #Check if the head is None
+    #set the head nodes next node value to a temp var
+    #delete the head node
+    #then set head to that temp
     pass
 
   def contains(self, value):

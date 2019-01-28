@@ -35,7 +35,9 @@ class LinkedList:
             # if it is empty, set the new node to the head
             self.head = node
         # set the LL's tail to the new node
+
         self.tail = node
+        print(f'Adding new node to tail: {node.value}')
 
     def remove_head(self):
         # set the head nodes next node value to a temp var
@@ -44,6 +46,7 @@ class LinkedList:
         del(self.head)
         # then set head to that temp
         self.head = new_head
+        print(f'Removing node from head {new_head.value}')
 
     def contains(self, value):
         # starts at head
@@ -64,7 +67,9 @@ class LinkedList:
         while current_node is not None:
             if current_node.value > cur_max:
                 cur_max = current_node.value
+
             current_node = current_node.get_next()
+
         return cur_max
 
         # cur_max, biggest value so far
@@ -78,6 +83,10 @@ myList = LinkedList()
 myList.add_to_tail(6)
 myList.add_to_tail(3)
 myList.add_to_tail(10)
-myList.get_max()
+myList.add_to_tail(2939)
+myList.remove_head()
+myList.remove_head()
+myList.remove_head()
 
+print(myList.get_max())
 print(myList.contains(10))

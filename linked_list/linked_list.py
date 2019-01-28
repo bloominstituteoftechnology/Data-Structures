@@ -46,7 +46,17 @@ class LinkedList:
         self.head = new_head
 
     def contains(self, value):
+      # starts at head
+      # loop WHILE cur_node.next_node != NULL
+      # if cur_node.value == value, return True
+
+      # after loop exits if not found, return False
         pass
 
     def get_max(self):
+      # cur_max, biggest value so far
+      # for each value: compare value to cur_max
+      # if Node.value  > cur_max, update cur_max
+
+      # return cur_max
         pass

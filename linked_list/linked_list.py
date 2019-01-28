@@ -48,7 +48,18 @@ class LinkedList:
         self.tail = None
         self.head = None
       return cur_head
-    
+
+  def remove_tail(self):
+    node = self.head
+    node_after = node.next_node.next_node
+    while node is not None:
+      print(node_after.value)
+      if node_after == None:
+        node.next_node == None
+        self.tail = node
+        break
+      else:
+        node = node.next_node
 
   def contains(self, value):
     node = self.head

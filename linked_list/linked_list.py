@@ -9,6 +9,7 @@ class Node:
     self.next_node = next_node
 
   def get_value(self):
+    return self.value
 
   def get_next(self):
     return self.next_node
@@ -36,7 +37,21 @@ class LinkedList:
     self.tail = new_node
 
   def remove_head(self):
-    pass
+    # check if head exist
+    if self.head:
+      # check if there head has a next value 
+      if self.head.get_next() == None:
+        temp_value = self.head.value
+        self.head = None
+        self.tail = None
+        return temp_value
+      else:
+        # head's next value does exist
+        temp_value = self.head.value
+        self.head = self.head.get_next()
+        return temp_value
+    else:
+      return None
 
   def contains(self, value):
     pass

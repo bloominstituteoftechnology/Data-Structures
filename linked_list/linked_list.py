@@ -29,7 +29,8 @@ class LinkedList:
     #if the LinkList is not empty
     #Then set the tail's next to the new node
     if self.tail is not None:
-      self.tail.set_next = node
+      self.tail.set_next(node)
+
 
     #if it is empty, set the new node to the head
     else:
@@ -40,13 +41,14 @@ class LinkedList:
 
   def remove_head(self):
     #Check if the head is None
-    if self.head is not None:
+    head = self.head
+    if head is not None:
     #set the head nodes next node value to a temp var
-      new_node = self.head.next_node
+      del(head)
+      new_head = self.head.next_node
     #delete the head node
-      del(self.head)
     #then set head to that temp
-      self.head = new_node
+      self.head = new_head
     
   def contains(self, value):
     # start at head
@@ -65,14 +67,12 @@ class LinkedList:
     
 
   def get_max(self):
-    # variable to store current max node
-    cur_max = []
-    if self.head is not None:
-      while True:
-        # set current max to ll head node
-        self.head.value = cur_max
-        if cur_max < self.head.next_node.value:
-          self.head.next_node = cur_max
-          return False
+    #set start to head
+    start = self.head
+    cur_max = start.get_value()
+    while start:
+      if cur_max < start.get_value():
+        cur_max = start.get_value()
+      start = start.get_next()
 
     return cur_max

@@ -30,6 +30,14 @@ class LinkedList:
       self.head = new_tail
     self.tail = new_tail
 
+  def add_to_head(self, value):
+    new_head = Node(value)
+    if self.head is not None:
+      new_head.next_node = self.head
+    if self.tail is None:
+      self.tail = new_head
+    self.head = new_head
+
   def remove_head(self):
     if self.head is not None:
       cur_head = self.head.get_value()

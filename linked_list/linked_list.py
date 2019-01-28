@@ -30,7 +30,7 @@ class LinkedList:
         node = Node(value)
         # if the LL is not empty
         if self.tail is not None:
-            self.talk.set_next(node)
+            self.tail.set_next(node)
         else:
             # if it is empty, set the new node to the head
             self.head = node
@@ -53,20 +53,31 @@ class LinkedList:
         while current_node is not None:
             if current_node.value == value:
                 return True
-            else:
-                return False
+            current_node = current_node.get_next()
+        return False
         # after loop exits if not found, return False
 
     def get_max(self):
+        current_node = self.head
+        cur_max = 0
+
+        while current_node is not None:
+            if current_node.value > cur_max:
+                cur_max = current_node.value
+            current_node = current_node.get_next()
+        return cur_max
+
         # cur_max, biggest value so far
         # for each value: compare value to cur_max
         # if Node.value  > cur_max, update cur_max
 
         # return cur_max
-        pass
 
 
 myList = LinkedList()
 myList.add_to_tail(6)
+myList.add_to_tail(3)
+myList.add_to_tail(10)
+myList.get_max()
 
-print(myList.contains(5))
+print(myList.contains(10))

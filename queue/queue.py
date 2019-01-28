@@ -11,8 +11,6 @@ class Queue:
     # Put value [item] into the queue
     self.size += 1
     self.storage.add_to_tail(item)
-
-    pass
   
   def dequeue(self):
     # Take a vaue of of the queue from the front

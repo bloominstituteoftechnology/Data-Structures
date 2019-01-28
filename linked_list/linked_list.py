@@ -43,10 +43,11 @@ class LinkedList:
     #Check if the head is None
     if self.head is not None:
     #set the head nodes next node value to a temp var
-      new_head = self.head.next_node
+      current_head = self.head
     #delete the head node
+      del self.head
     #then set head to that temp
-      self.head = new_head
+      self.head = current_head.next_node
     
   def contains(self, value):
     # start at head

@@ -106,13 +106,15 @@ class DoublyLinkedList:
       node.next.prev = node.prev
       # the previous node's next attribute changes to the moving node
       node.prev.next = node
-      
-      
-      
-      
 
   def delete(self, node):
     pass
     
   def get_max(self):
-    pass
+    node = self.head
+    maximum = float("-inf")
+    while node is not None:
+      if node.value > maximum:
+        maximum = node.value
+      node = node.next
+    return None if maximum == float("-inf") else maximum

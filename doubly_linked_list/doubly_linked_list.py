@@ -50,10 +50,23 @@ class DoublyLinkedList:
       self.head.prev = new_dll
     self.head = new_dll
   def remove_from_head(self):
-    pass
-
+    
+    if self.head is not None:
+      deleted_head = self.head
+      del(self.head)
+      self.head = deleted_head.next
+    return deleted_head.value
+    
   def add_to_tail(self, value):
-    pass
+    new_dll = ListNode(value)
+
+    if self.tail is None:
+      self.head = new_dll
+      self.tail = new_dll
+    else:
+      new_dll.prev = self.tail
+      self.tail = new_dll
+
 
   def remove_from_tail(self):
     pass

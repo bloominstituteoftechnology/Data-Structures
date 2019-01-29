@@ -43,12 +43,17 @@ class LinkedList:
     #Check if the head is None
     if self.head is not None:
     #set the head nodes next node value to a temp var
-      current_head = self.head
+      current_head = self.head.next_node
     #delete the head node
-      del self.head
+      
     #then set head to that temp
-      self.head = current_head.next_node
-    return current_head
+      val = self.head.get_value()
+      del(self.head)
+      self.head = current_head
+      if self.head is None:
+        del(self.tail)
+        self.tail = None
+      return val
   def contains(self, value):
     # start at head
     curr_node = self.head
@@ -66,12 +71,15 @@ class LinkedList:
     
 
   def get_max(self):
+    if self.head == None:
+      return None
     #set start to head
     start = self.head
     #set current max to value of head
     cur_max = start.get_value()
     #while head is not empty
     while start:
+
       # if current max is less than next value
       # assign greater value to current max
       # go to next value

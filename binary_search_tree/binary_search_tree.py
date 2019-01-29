@@ -5,15 +5,20 @@ class BinarySearchTree:
     self.right = None
 
   def insert(self, value):
-    #check to see if there is a root
-    if self.value == None:
-      #assign value to root
-      vale = self.value
+
+    binary_tree = BinarySearchTree(value)
+ 
     #check if root is greater or equal than value
+    if self.value < value:
+      if self.right is None:
+        self.right = binary_tree
+      else:
+        self.right.insert(value)
     else:
-      if self.value >= value:
-        if self.right == None:
-          self.value = value
+      if self.left is None:
+        self.left = binary_tree
+      else:
+        self.left.insert(value)
 
 
 

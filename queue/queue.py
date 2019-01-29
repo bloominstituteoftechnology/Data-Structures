@@ -8,24 +8,14 @@ class Queue:
     self.storage = LinkedList()
 
   def enqueue(self, item):
+    self.size += 1
     self.storage.add_to_tail(item)
   
   def dequeue(self):
+    if self.size == 0:
+      return None
+    self.size -= 1
     return self.storage.remove_head()
 
   def len(self):
-    # to get the length check first check if there is a length
-    # get the value of the current head
-    current_head = self.storage.head
-    # check if current head exist
-    if current_head == None:
-      return 0
-    if current_head.get_next() == None:
-      return 1
-    else:
-      count = 1
-      while current_head.get_next() is not None:
-        count += 1
-        current_head = current_head.get_next()
-      return count
-
+    return self.size

@@ -38,7 +38,6 @@ class LinkedList:
       self.head = self.head.get_next()
       if self.head is None:
         self.tail = None
-
       return prev_value
     else:
       return None
@@ -68,5 +67,5 @@ def get_max(self):
       return max_value.get_value()
     elif curr_node.get_value() > max_value.get_value():
       max_value = curr_node
-
       curr_node = curr_node.get_next() 
+  return max_value

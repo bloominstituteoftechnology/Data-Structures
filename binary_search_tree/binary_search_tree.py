@@ -32,4 +32,12 @@ class BinarySearchTree:
     pass
 
   def get_max(self):
+    max_value = self.value
+    current = self
+    while current:
+      if current.value > max_value:
+        max_value = current.value
+      current = current.right
+    return max_value
+
     pass

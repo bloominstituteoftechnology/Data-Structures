@@ -57,7 +57,6 @@ class DoublyLinkedList:
       removed = self.head.value
       self.head = self.head.next
       self.head.prev = None
-      print(self.head.prev)
       return removed
 
 
@@ -94,7 +93,23 @@ class DoublyLinkedList:
         break
 
   def move_to_end(self, node):
-    pass
+    while node.next is not None:
+      if node is self.head:
+        self.head = node.next
+      # the moving node's previous attribute is now the node it was behind
+      node.prev = node.next
+      node.next = node.next.next
+      if node.next is None:
+        self.tail = node
+        break
+      # the next node's previous attribute changes to the moving node's previous attribute
+      node.next.prev = node.prev
+      # the previous node's next attribute changes to the moving node
+      node.prev.next = node
+      
+      
+      
+      
 
   def delete(self, node):
     pass

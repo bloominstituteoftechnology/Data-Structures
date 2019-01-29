@@ -79,7 +79,19 @@ class DoublyLinkedList:
       return None
 
   def move_to_front(self, node):
-    pass
+    while node.prev is not None:
+      # the previous node's next attribute changes to the moving node's next attribute
+      node.prev.next = node.next
+      if node.next is not None:
+        # the next node's previous attribute changes to the moving node's previous attribute
+        node.next.prev = node.prev
+      # the moving node's next attribute is now the node it was ahead of
+      node.next = node.prev
+      # the moving node's previous attribute is now the previous node's previous attribute
+      node.prev = node.prev.prev
+      if node.prev is None:
+        self.head = node
+        break
 
   def move_to_end(self, node):
     pass

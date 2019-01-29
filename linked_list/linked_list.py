@@ -40,13 +40,20 @@ class LinkedList:
         print(f'Adding new node to tail: {node.value}')
 
     def remove_head(self):
+        if self.head == None:
+            return None
         # set the head nodes next node value to a temp var
-        new_head = self.head.next_node
+
+        old_head = self.head.value
+        self.head = self.head.get_next()
         # delete the head node
-        del(self.head)
+        # del(self.head)
         # then set head to that temp
-        self.head = new_head
-        print(f'Removing node from head {new_head.value}')
+
+        # print(
+        #     f'Removing node from head: {old_head}, new head is {new_head.value}')
+        print(f' this is the old head {old_head}')
+        return old_head
 
     def contains(self, value):
         # starts at head

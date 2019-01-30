@@ -60,13 +60,18 @@ class BinarySearchTree:
         #     if current.value == None:
         #       return False
 
-
+    def has_right(self):
+      return self.right
+    
+    
     def get_max(self):
-        # current = self
-        # highestValue = 0
-        # while True:
-        #   if highestValue <
-        pass
+        current = self
+        while current.right is not None:
+          current = current.right
+        return current.value
+          
+
+      
 
 
 
@@ -77,5 +82,7 @@ tree_test.insert(2)
 tree_test.insert(3)
 tree_test.insert(7)
 tree_test.insert(6)
+tree_test.insert(10)
+print(tree_test.get_max())
 print(tree_test.contains(8))
 print(tree_test.right.value)

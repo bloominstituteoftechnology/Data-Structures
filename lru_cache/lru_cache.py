@@ -1,6 +1,9 @@
 class LRUCache:
   def __init__(self, limit=10):
-    pass
+    self.storage = []
+    self.head = None
+    self.tail = None
+    self.limit = limit
 
   """
   Retrieves the value associated with the given key. Also
@@ -10,7 +13,10 @@ class LRUCache:
   key-value pair doesn't exist in the cache. 
   """
   def get(self, key):
-    pass
+    for pair in self.storage:
+      if key in pair:
+        return list(pair.values())[0]
+    return None
 
   """
   Adds the given key-value pair to the cache. The newly-
@@ -23,4 +29,13 @@ class LRUCache:
   the newly-specified value. 
   """
   def set(self, key, value):
-    pass
+    if len(self.storage) == self.limit:
+      del(self.storage[self.limit - 1])
+    pair = {key: value}
+    for kv in self.storage:
+      kv.update((k, value) for k, v in kv.items() if k == key)
+    else:
+      self.storage.insert(0, pair)
+      self.head = pair
+    print("one", self.storage)
+    

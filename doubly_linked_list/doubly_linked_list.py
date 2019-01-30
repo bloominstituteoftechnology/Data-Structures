@@ -50,12 +50,20 @@ class DoublyLinkedList:
     pass
 
   def remove_from_head(self):
+    removed = self.head.value
+    self.head.delete()
+    return removed
+
     pass
 
   def add_to_tail(self, value):
+    
+   
+    
     pass
 
   def remove_from_tail(self):
+   
     pass
 
   def move_to_front(self, node):
@@ -73,6 +81,7 @@ class DoublyLinkedList:
     pass
 
   def delete(self, node):
+    
     pass
     
   def get_max(self):

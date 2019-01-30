@@ -10,18 +10,20 @@ class BinarySearchTree:
       if value < current.value:
         if current.left == None:
           current.left = BinarySearchTree(value)
+          print(current.left.value)
           break
         else:
-          current.left = BinarySearchTree(value)
-          break
-       
-      elif value > current.value:
+          current = current.left
+          
+      else:
         if current.right == None:
           current.right = BinarySearchTree(value)
+          print(current.right.value)
           break
         else:
-          current.right = BinarySearchTree(value)
-          break
+          current = current.right
+          
+          
         
 
   def contains(self, target):
@@ -35,9 +37,9 @@ class BinarySearchTree:
     pass
 
 
-# tree_test = BinarySearchTree(5)
-# tree_test.insert(2)
-# tree_test.insert(3)
-# tree_test.insert(7)
-# tree_test.insert(6)
-# print(tree_test.left.right.value)
+tree_test = BinarySearchTree(5)
+tree_test.insert(2)
+tree_test.insert(3)
+tree_test.insert(7)
+tree_test.insert(6)
+print(tree_test.right.value)

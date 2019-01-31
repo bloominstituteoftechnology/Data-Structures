@@ -1,9 +1,11 @@
 class Heap:
   def __init__(self):
     self.storage = []
+    self.size = 0
 
   def insert(self, value):
-    pass
+    self.size += 1
+    self.storage.append(value)
 
   def delete(self):
     pass
@@ -19,3 +21,8 @@ class Heap:
 
   def _sift_down(self, index):
     pass
+
+
+new_heap = Heap()
+
+print(new_heap.insert(10))

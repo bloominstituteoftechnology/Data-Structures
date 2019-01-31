@@ -23,13 +23,60 @@ class LinkedList:
     self.tail = None
 
   def add_to_tail(self, value):
-    pass
+    new_tail = Node(value)
+    if self.tail is not None:
+      self.tail.set_next(new_tail)
+    else:
+      self.head = new_tail
+    self.tail = new_tail
+
+  def add_to_head(self, value):
+    new_head = Node(value)
+    if self.head is not None:
+      new_head.next_node = self.head
+    if self.tail is None:
+      self.tail = new_head
+    self.head = new_head
 
   def remove_head(self):
-    pass
+    if self.head is not None:
+      cur_head = self.head.get_value()
+      new_head = self.head.get_next()
+      if new_head is not None:
+        self.head = new_head
+      else:
+        self.tail = None
+        self.head = None
+      return cur_head
+
+  def remove_tail(self):
+    node = self.head
+    node_after = node.next_node.next_node
+    while node is not None:
+      print(node_after.value)
+      if node_after == None:
+        node.next_node == None
+        self.tail = node
+        break
+      else:
+        node = node.next_node
 
   def contains(self, value):
-    pass
+    node = self.head
+    while node is not None:
+      if node.value == value:
+        return True
+      if node.next_node == None:
+        return False
+      else:
+        node = node.next_node
+    return False
 
   def get_max(self):
-    pass
+    node = self.head
+    maximum = float("-inf")
+    while node is not None:
+      if node.value > maximum:
+        maximum = node.value
+      node = node.next_node
+    return None if maximum == float("-inf") else maximum

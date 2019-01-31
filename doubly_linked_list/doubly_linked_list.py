@@ -40,25 +40,101 @@ class DoublyLinkedList:
     self.tail = node
 
   def add_to_head(self, value):
-    pass
+    if self.head is not None:
+      self.head.insert_before(value)
+      if self.head.next is None:
+        self.head = self.tail
+      self.head = self.head.prev
+    else:
+      self.head = ListNode(value)
+      self.tail = ListNode(value)
+
 
   def remove_from_head(self):
-    pass
+    if self.head is None:
+      return None
+    else:
+      removed = self.head.value
+      self.head = self.head.next
+      self.head.prev = None
+      return removed
+
 
   def add_to_tail(self, value):
-    pass
+    if self.tail is not None:
+      self.tail.insert_after(value)
+      self.tail = self.tail.next
+    if self.tail is None:
+      self.tail = ListNode(value)
+
 
   def remove_from_tail(self):
-    pass
+    if self.tail is not None:
+      removed = self.tail.value
+      self.tail.prev.next = None
+      self.tail = self.tail.prev
+      return removed
+    else:
+      return None
 
   def move_to_front(self, node):
-    pass
+    while node.prev is not None:
+      # the previous node's next attribute changes to the moving node's next attribute
+      node.prev.next = node.next
+      if node.next is not None:
+        # the next node's previous attribute changes to the moving node's previous attribute
+        node.next.prev = node.prev
+      # the moving node's next attribute is now the node it was ahead of
+      node.next = node.prev
+      # the moving node's previous attribute is now the previous node's previous attribute
+      node.prev = node.prev.prev
+      if node.prev is None:
+        self.head = node
+        break
 
   def move_to_end(self, node):
-    pass
+    while node.next is not None:
+      if node is self.head:
+        self.head = node.next
+      # the moving node's previous attribute is now the node it was behind
+      node.prev = node.next
+      node.next = node.next.next
+      if node.next is None:
+        self.tail = node
+        break
+      # the next node's previous attribute changes to the moving node's previous attribute
+      node.next.prev = node.prev
+      # the previous node's next attribute changes to the moving node
+      node.prev.next = node
 
   def delete(self, node):
-    pass
+    if node.next is None and node.prev is not None:
+      node.prev.next = None
+      self.tail = node.prev
+      return node.value
+    if node.prev is None and node.next is not None:
+      node.next.prev = None
+      self.head = node.next
+      return node.value
+    if node.prev is None and node.next is None:
+      self.head = None
+      self.tail = None
+      return node.value
+    else:
+      node.prev.next = node.next
+      node.next.prev = node.prev
+
+      if node == self.head:
+        self.head = node.next
+      if node == self.tail:
+        self.tail = node.prev
+    return node.value
     
   def get_max(self):
-    pass
+    node = self.head
+    maximum = float("-inf")
+    while node is not None:
+      if node.value > maximum:
+        maximum = node.value
+      node = node.next
+    return None if maximum == float("-inf") else maximum

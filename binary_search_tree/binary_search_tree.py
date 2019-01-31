@@ -38,3 +38,9 @@ class BinarySearchTree:
 
     # then return the max of the self value against the right branch
     return max(self.value, right_branch)
+
+  def delete(self, target):
+    if self.contains(target):
+      return 'yes'
+    else:
+      return 'doesnt contain'

@@ -74,14 +74,7 @@ class DoublyLinkedList:
     # set the nextent tail to the next node with a value of the new node
     self.tail.next = new_node
 
-    # if the head and the tail are none then set the head and tail to the new node
-    if self.head is None and self.tail is None:
-      self.tail = new_node
-      self.head = new_node
-
-    # otherwise just set the tail to the new node
-    else:
-      self.tail = new_node
+    self.tail = new_node
 
   def remove_from_tail(self):
     node_to_remove = self.tail 

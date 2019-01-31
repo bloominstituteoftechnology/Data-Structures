@@ -24,7 +24,7 @@ class Heap:
     while (index - 1) // 2 >= 0:
       if self.storage[(index - 1) // 2] < self.storage[index]:
           self.storage[index], self.storage[(
-              index - 1) // 2] = self.storage[(index - 1 // 2)], self.storage[index]
+              index - 1) // 2] = self.storage[(index - 1) // 2], self.storage[index]
       index = (index - 1) // 2
  
 
@@ -43,20 +43,37 @@ class Heap:
     if largest != index:
       self._swap(index, largest)
       self._sift_down(largest)
-  
+   
+
   def _swap(self, i, j):
     self.storage[i], self.storage[j] = self.storage[j], self.storage[i]
     
     
 
 
-new_heap = Heap()
-new_heap.insert(5)
-new_heap.insert(10)
-new_heap.insert(2)
-print(new_heap.storage)
-# print(new_heap.delete())
+def heapsort(arr):
+    newArr = []
+    newHeap = Heap()
+
+    for item in arr:
+        newHeap.insert(item)
+
+    for x in range(newHeap.get_size()):
+        j = newHeap.delete()
+        newArr.insert(0, j)
+
+    print(newArr)
+    return newArr
+
+heapsort([1,2,4,5,6,2,3,4,5,])
+# new_heap.insert(10)
+# new_heap.insert(2)
+# print(new_heap.storage)
+# # print(new_heap.delete())
+# # print(new_heap.delete())
+# # print(new_heap.delete())
 # print(new_heap.storage)
 
 # print(new_heap.get_max())
 # print(new_heap.get_size())
+# print(new_heap.storage)

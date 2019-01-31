@@ -23,11 +23,30 @@ class Heap:
   def _bubble_up(self, index):
     while (index - 1) // 2 >= 0:
       if self.storage[(index - 1) // 2] < self.storage[index]:
-          self.storage[index], self.storage[(index - 1) // 2] = self.storage[(index -1 // 2)], self.storage[index] 
+          self.storage[index], self.storage[(
+              index - 1) // 2] = self.storage[(index - 1 // 2)], self.storage[index]
       index = (index - 1) // 2
+ 
 
   def _sift_down(self, index):
-    pass
+
+    left = index * 2
+    right = index * 2 + 1
+    largest = index
+
+    if len(self.storage) > left and self.storage[largest] < self.storage[left]:
+      largest = left
+      
+    if len(self.storage) > right and self.storage[largest] < self.storage[right]:
+      largest = right
+    
+    if largest != index:
+      self._swap(index, largest)
+      self._sift_down(largest)
+  
+  def _swap(self, i, j):
+    self.storage[i], self.storage[j] = self.storage[j], self.storage[i]
+    
     
 
 

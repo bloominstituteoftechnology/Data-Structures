@@ -21,14 +21,15 @@ Answer the following questions for each of the data structures you implemented a
 ## Heap
 
 1. What is the runtime complexity of `_bubble_up`?
-
+    O(log n)
 2. What is the runtime complexity of `_sift_down`?
-
+    O(log n)
 3. What is the runtime complexity of `insert`?
-
+    O(log n)
 4. What is the runtime complexity of `delete`?
-
+    O(log n)
 5. What is the runtime complexity of `get_max`?
+    O(1)
 
 ## Doubly Linked List
 
@@ -52,5 +53,6 @@ Answer the following questions for each of the data structures you implemented a
     O(n), can be improved to O(1) by removing the node, connecting its prev and next, and making the node the new tail.
 
 10. What is the runtime complexity of `DoublyLinkedList.delete`?
-    O(n)
+    O(1)
     a. Compare the runtime of the doubly linked list's `delete` method with the worst-case runtime of the JS `Array.splice` method. Which method generally performs better?
+    Splice will almost always have an O(n) runtime due to having to update indexes. Delete is O(1) since we know what node we want to delete and then have to change a few things based on circumstances (is the deleted node the head or tail, is the list empty upon deletion, etc.). Delete will generally perform better.

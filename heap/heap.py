@@ -3,16 +3,16 @@ class Heap:
     self.storage = []
 
   def insert(self, value):
-    pass
+    
 
   def delete(self):
-    pass
+    del(self.storage[0])
 
   def get_max(self):
     pass
 
   def get_size(self):
-    pass
+    return len(self.storage)
 
   def _bubble_up(self, index):
     pass

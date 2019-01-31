@@ -1,8 +1,7 @@
+from collections import OrderedDict
 class LRUCache:
   def __init__(self, limit=10):
-    self.storage = []
-    self.head = None
-    self.tail = None
+    self.storage = OrderedDict()
     self.limit = limit
 
   """
@@ -13,10 +12,15 @@ class LRUCache:
   key-value pair doesn't exist in the cache. 
   """
   def get(self, key):
-    for pair in self.storage:
-      if key in pair:
-        return list(pair.values())[0]
-    return None
+    # for pair in self.storage:
+    #   if key in pair:
+    #     return list(pair.values())[0]
+    # return None
+    if key in self.storage:
+      self.storage.move_to_end(key, last=True)
+      return self.storage[key]
+    else:
+      return None
 
   """
   Adds the given key-value pair to the cache. The newly-
@@ -28,14 +32,9 @@ class LRUCache:
   want to overwrite the old value associated with the key with
   the newly-specified value. 
   """
+
   def set(self, key, value):
-    if len(self.storage) == self.limit:
-      del(self.storage[self.limit - 1])
-    pair = {key: value}
-    for kv in self.storage:
-      kv.update((k, value) for k, v in kv.items() if k == key)
-    else:
-      self.storage.insert(0, pair)
-      self.head = pair
-    print("one", self.storage)
+    self.storage[key] = value
+    if len(self.storage) - 1 >= self.limit:
+      self.storage.popitem(last=False)
     

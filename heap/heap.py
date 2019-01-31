@@ -8,13 +8,13 @@ class Heap:
     self.storage.append(value)
 
   def delete(self):
-    pass
+    self.size -= 1
 
   def get_max(self):
-    pass
+    return self.storage[0]
 
   def get_size(self):
-    pass
+    return len(self.storage)
 
   def _bubble_up(self, index):
     pass
@@ -24,5 +24,7 @@ class Heap:
 
 
 new_heap = Heap()
-
-print(new_heap.insert(10))
+new_heap.insert(5)
+new_heap.insert(10)
+new_heap.insert(2)
+print(new_heap.get_size())

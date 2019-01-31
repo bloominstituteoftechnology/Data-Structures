@@ -6,6 +6,7 @@ class Heap:
   def insert(self, value):
     self.size += 1
     self.storage.append(value)
+    self._bubble_up(len(self.storage) - 1)
 
   def delete(self):
     self.size -= 1
@@ -20,10 +21,14 @@ class Heap:
     return len(self.storage)
 
   def _bubble_up(self, index):
-    pass
+    while (index - 1) // 2 >= 0:
+      if self.storage[(index - 1) // 2] < self.storage[index]:
+          self.storage[index], self.storage[(index - 1) // 2] = self.storage[(index -1 // 2)], self.storage[index] 
+      index = (index - 1) // 2
 
   def _sift_down(self, index):
     pass
+    
 
 
 new_heap = Heap()
@@ -31,8 +36,8 @@ new_heap.insert(5)
 new_heap.insert(10)
 new_heap.insert(2)
 print(new_heap.storage)
-print(new_heap.delete())
-print(new_heap.storage)
+# print(new_heap.delete())
+# print(new_heap.storage)
 
-print(new_heap.get_max())
-print(new_heap.get_size())
+# print(new_heap.get_max())
+# print(new_heap.get_size())

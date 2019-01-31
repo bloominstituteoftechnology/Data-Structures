@@ -60,7 +60,6 @@ class DoublyLinkedList:
     if self.tail is not None:
       self.tail.insert_after(value)
       self.tail = self.tail.next
-    
     pass
 
   def remove_from_tail(self):

@@ -23,13 +23,68 @@ class LinkedList:
     self.tail = None
 
   def add_to_tail(self, value):
-    pass
+    #Create new node
+    node = Node(value)
+
+    #if the LinkList is not empty
+    #Then set the tail's next to the new node
+    if self.tail is not None:
+      self.tail.set_next(node)
+
+
+    #if it is empty, set the new node to the head
+    else:
+      self.head = node
+
+    #set the ll tail to the new node
+    self.tail = node
 
   def remove_head(self):
-    pass
-
+    #Check if the head is None
+    if self.head is not None:
+    #set the head nodes next node value to a temp var
+      current_head = self.head.next_node
+    #delete the head node
+      
+    #then set head to that temp
+      val = self.head.get_value()
+      del(self.head)
+      self.head = current_head
+      if self.head is None:
+        del(self.tail)
+        self.tail = None
+      return val
   def contains(self, value):
-    pass
+    # start at head
+    curr_node = self.head
+
+    while True:
+      #if node is null, return false
+      if curr_node is None:
+        return False
+      
+      elif curr_node.value == value:
+        return True
+
+      else:
+        curr_node = curr_node.next_node
+    
 
   def get_max(self):
-    pass
+    if self.head == None:
+      return None
+    #set start to head
+    start = self.head
+    #set current max to value of head
+    cur_max = start.get_value()
+    #while head is not empty
+    while start:
+
+      # if current max is less than next value
+      # assign greater value to current max
+      # go to next value
+      if cur_max < start.get_value():
+        cur_max = start.get_value()
+      start = start.get_next()
+
+    return cur_max

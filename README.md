@@ -2,8 +2,8 @@
 
 Topics:
  * Queues
- * Binary Search Trees
  * Doubly Linked Lists
+ * Binary Search Trees
  * Heaps
 
 Stretch Goals:

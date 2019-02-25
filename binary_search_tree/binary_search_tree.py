@@ -46,4 +46,7 @@ class BinarySearchTree:
                 pointer = pointer.right
 
     def get_max(self):
-        pass
+        pointer = self
+        while pointer.right:
+            pointer = pointer.right
+        return pointer.value

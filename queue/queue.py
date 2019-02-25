@@ -10,7 +10,6 @@ try:
 except ValueError:  # Already removed
     pass
 
-from doubly_linked_list.doubly_linked_list import ListNode  # nopep8
 from doubly_linked_list.doubly_linked_list import DoublyLinkedList  # nopep8
 
 
@@ -19,16 +18,19 @@ class Queue:
         self.size = 0
         # what data structure should we
         # use to store queue elements?
-        self.storage = []
+        self.storage = DoublyLinkedList()
 
     def enqueue(self, item):
-        self.storage.append(item)
+        self.storage.add_to_tail(item)
+        self.size += 1
 
     def dequeue(self):
-        try:
-            return self.storage.pop(0)
-        except IndexError:
-            pass
+        item = self.storage.remove_from_head()
+        if item:
+            self.size -= 1
+            return item
+        else:
+            return None
 
     def len(self):
-        return len(self.storage)
+        return self.size

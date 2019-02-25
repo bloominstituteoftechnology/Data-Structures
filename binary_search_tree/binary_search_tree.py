@@ -34,7 +34,16 @@ class BinarySearchTree:
                         finished = True
 
     def contains(self, target):
-        pass
+        pointer = self
+        while True:
+            if not pointer:
+                return False
+            if pointer.value == target:
+                return True
+            elif pointer.value > target:
+                pointer = pointer.left
+            else:
+                pointer = pointer.right
 
     def get_max(self):
         pass

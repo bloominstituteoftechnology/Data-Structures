@@ -104,17 +104,26 @@ class DoublyLinkedList:
             current_head.prev = node
 
     def move_to_end(self, node):
-            # check if the nodelist is empty
-        if not self.head:
-            return None
-        current_node = self.tail
-        while current_node:
-            if current_node.value == node:
-                return self.add_to_tail(node)
-            current_node = current_node.prev
+         # check if the nodelist is empty
+        if self.tail is not node:
+            if node.next and node.prev:  # if in a middle spot
+                node.prev.next = node.next
+                node.next.prev = node.prev
+            current_tail = self.tail
+            self.tail = node
+            node.prev = current_tail
+            current_tail.next = node
 
     def delete(self, node):
-        pass
+        # check if the nodelist is empty
+        if not node.next and not node.prev:
+            self.head = self.head.next
+            self.tail = self.tail.next
+        if self.head == node:
+            current_head = self.head
+            node.delete()
+            self.head = current_head.prev
+            # self.head = self.head.prev
 
     def get_max(self):
         pass

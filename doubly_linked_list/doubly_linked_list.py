@@ -50,7 +50,9 @@ class DoublyLinkedList:
     def add_to_head(self, value):
         current_head = self.head
         if not current_head:
-            self.head = ListNode(value)
+            new_node = ListNode(value)
+            self.head = new_node
+            self.tail = new_node
         else:
             current_head.insert_before(value)
             self.head = current_head.prev
@@ -99,6 +101,8 @@ class DoublyLinkedList:
             elif not node.next:  # if at end
                 node.prev.next = None
 
+            if self.tail is node:
+                self.tail = node.prev
             current_head = self.head
             self.head = node
             node.next = current_head
@@ -113,6 +117,8 @@ class DoublyLinkedList:
             else:  # it must be at start
                 node.next.prev = None
 
+            if self.head is node:
+                self.head = node.next
             current_tail = self.tail
             self.tail = node
             node.prev = current_tail

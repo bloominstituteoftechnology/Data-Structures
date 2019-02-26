@@ -30,14 +30,13 @@ class Queue:
     # what data structure should we
     # use to store queue elements?
     self.storage=None
-    self.currentNode=None
 
   def enqueue(self, item):
     if self.storage==None:
       self.storage= ListNode(item)
       self.size+=1
     else:
-      self.storage=self.currentNode.next
+      self.storage=self.storage.next
       self.size+=1
     pass
   
@@ -45,4 +44,4 @@ class Queue:
     pass
 
   def len(self):
-    pass
+    return self.size

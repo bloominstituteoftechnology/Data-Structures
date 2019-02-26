@@ -1,6 +1,3 @@
-import sys
-
-
 class Heap:
     def __init__(self):
         self.storage = []
@@ -25,7 +22,10 @@ class Heap:
         return len(self.storage)
 
     def _bubble_up(self, index):
-        parent_index = index//2  # round down
+        print(index)
+        parent_index = max(0, ((index + 1)//2) - 1)  # round down
+        print(self.storage)
+        print(f'parent index {parent_index}')
         if self.storage[parent_index] < self.storage[index]:
             self.storage[parent_index], self.storage[index] = self.storage[index], self.storage[parent_index]
             self._bubble_up(parent_index)
@@ -35,7 +35,8 @@ class Heap:
         location = len(self.storage) - 1
         while location > 0:
             path.append(location)
-            location = location//2
+            location = max(0, ((location + 1)//2) - 1)
+        print(path)
 
         while len(path):
             sift_loc = 0

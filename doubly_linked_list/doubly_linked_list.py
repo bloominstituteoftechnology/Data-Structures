@@ -54,6 +54,7 @@ class DoublyLinkedList:
         else:
             current_head.insert_before(value)
             self.head = current_head.prev
+        return self.head
 
     def remove_from_head(self):
         current_head = self.head

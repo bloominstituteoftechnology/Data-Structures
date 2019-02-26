@@ -1,6 +1,7 @@
 class ListNode:
   def __init__(self, value, prev=None, next=None):
     self.value = value
+
     self.prev = prev
     self.next = next
 
@@ -30,18 +31,30 @@ class Queue:
     # what data structure should we
     # use to store queue elements?
     self.storage=None
+    self.current_head=None
 
   def enqueue(self, item):
-    if self.storage==None:
-      self.storage= ListNode(item)
+    if self.storage is None:
+      if self.current_head is None:
+        self.current_head=ListNode(item)
+      self.storage= self.current_head
       self.size+=1
     else:
       self.storage=self.storage.next
       self.size+=1
-    pass
   
   def dequeue(self):
-    pass
+    if self.current_head==None:
+      return None
+    else:
+      temp_head= self.current_head
+      print(f"current head {self.current_head.value}")
+      print(f"current head next {self.current_head.next}")
+      self.current_head=self.current_head.next
+      answer=temp_head.value
+      temp_head.delete()
+      self.size-=1
+      return answer
 
   def len(self):
     return self.size

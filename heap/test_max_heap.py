@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import MagicMock
-from heap import Heap
+from max_heap import Heap
 
 class HeapTests(unittest.TestCase):
   def setUp(self):

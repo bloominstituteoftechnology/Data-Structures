@@ -30,7 +30,7 @@ class AVLTree:
       print ('-' * level * 2, pref, self.node.key, "[" + str(self.height) + ":" + str(self.balance) + "]", 'L' if self.is_leaf() else ' '    )
       if self.node.left != None: 
         self.node.left.display(level + 1, '<')
-      if self.node.left != None:
+      if self.node.right != None:
         self.node.right.display(level + 1, '>')
 
   """

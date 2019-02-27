@@ -14,7 +14,7 @@ balance factor and the rebalancing logic
 """
 class AVLTree:
   def __init__(self):
-    self.root = None
+    self.node = None
     # init height to -1 because of 0-indexing
     self.height = -1
     self.balance = 0
@@ -23,8 +23,9 @@ class AVLTree:
   Display the whole tree. Uses recursive def.
   """
   def display(self, level=0, pref=''):
-    self.update_heights()  # Update height before balancing
-    self.update_balances()
+    self.update_height()  # Update height before balancing
+    self.update_balance()
+    
     if self.node != None: 
       print ('-' * level * 2, pref, self.node.key, "[" + str(self.height) + ":" + str(self.balance) + "]", 'L' if self.is_leaf() else ' '    )
       if self.node.left != None: 

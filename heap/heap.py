@@ -44,25 +44,15 @@ class Heap:
       parent_index= (parent_index-1) //2
 
   def _sift_down(self, index):
-    current_index=index
-    checker=False
-    while not checker:
-      if ((current_index*2)+1)> len(self.storage)-1 or ((current_index*2)+2)> len(self.storage)-1:
-        if ((current_index*2)+1)> len(self.storage)-1:
-          break
-        else:
-          if self.storage[(current_index*2)+1]> self.storage[current_index]:
-            self.storage[(current_index*2)+1], self.storage[current_index]=self.storage[current_index],self.storage[(current_index*2)+1]
-          else:
-            checker=True
-      elif self.storage[(current_index*2)+1]> self.storage[(current_index*2)+2]:
-        if self.storage[(current_index*2)+1]> self.storage[current_index]:
-          self.storage[(current_index*2)+1], self.storage[current_index]=self.storage[current_index],self.storage[(current_index*2)+1]
-        else:
-          checker=True
-      elif self.storage[(current_index*2)+2]>= self.storage[(current_index*2)+1]:
-        if self.storage[(current_index*2)+2]> self.storage[current_index]:
-          self.storage[(current_index*2)+2], self.storage[current_index]=self.storage[current_index],self.storage[(current_index*2)+2]
-        else:
-          checker=True
+    while index  * 2 + 1 <= len(self.storage) - 1:
+      if index * 2 + 2 > len(self.storage) - 1:
+        maximum = index * 2 + 1
+      elif self.storage[index * 2 + 1] > self.storage[index * 2 + 2]:
+        maximum = index * 2 + 1
+      else:
+        maximum = index * 2 + 2
+      
+      if self.storage[maximum] > self.storage[index]:
+        self.storage[maximum], self.storage[index] = self.storage[index], self.storage[maximum]
+      index = maximum
 

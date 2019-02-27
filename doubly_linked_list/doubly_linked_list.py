@@ -40,25 +40,77 @@ class DoublyLinkedList:
     self.tail = node
 
   def add_to_head(self, value):
-    pass
+    current_head= self.head
+    if current_head is None:
+      self.head= ListNode(value)
+    else:
+      current_head.insert_before(value)
+      self.head= current_head.prev
 
   def remove_from_head(self):
-    pass
+    current_head = self.head
+    if not current_head:
+      return None
+    else:
+      self.head = current_head.next  # if doesn't exist will be None
+      try:
+        current_head.next.prev = None
+      except:
+        pass
+      return current_head.value
 
   def add_to_tail(self, value):
-    pass
-
+    current_tail= self.tail
+    if current_tail is None:
+      self.tail= ListNode(value)
+    else:
+      current_tail.insert_after(value)
+      self.tail= current_tail.next
   def remove_from_tail(self):
-    pass
+    current_tail=self.tail
+    if not current_tail:
+      return None
+    else:
+      self.tail= current_tail.prev
+      try:
+        current_tail.prev.next=None
+      except:
+        pass
+      return current_tail.value
 
   def move_to_front(self, node):
-    pass
+    if self.head is not node:
+      if node.next and node.prev:
+        node.prev.next = node.next
+        node.next.prev = node.prev
+      elif not node.next:  
+        node.prev.next = None
+
+      current_head = self.head
+      self.head = node
+      node.next = current_head
+      current_head.prev = node
 
   def move_to_end(self, node):
-    pass
+      if self.tail is not node:
+          if node.next and node.prev:  
+              node.prev.next = node.next
+              node.next.prev = node.prev
+          else:  
+              node.next.prev = None
+          current_tail = self.tail
+          self.tail = node
+          node.prev = current_tail
+          current_tail.next = node
 
   def delete(self, node):
-    pass
-    
+      node.delete
+
   def get_max(self):
-    pass
+      max = 0
+      pointer = self.head
+      while pointer:
+          if pointer.value > max:
+              max = pointer.value
+          pointer = pointer.next
+      return max

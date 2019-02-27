@@ -13,8 +13,8 @@ A tree class to keep track of things like the
 balance factor and the rebalancing logic
 """
 class AVLTree:
-  def __init__(self):
-    self.node = None
+  def __init__(self, node=None):
+    self.node = node
     # init height to -1 because of 0-indexing
     self.height = -1
     self.balance = 0

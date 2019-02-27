@@ -12,14 +12,18 @@ class Heap:
     #print(f"Storage 0  {self.storage[0]}")
     #print(f"Storage last  {self.storage[-1]}")
     if len(self.storage)==1:
+      self.size-=1
       return self.storage.pop()
+      
     else:
       if len(self.storage)==0:
         return None
       else:
         self.storage[0]=self.storage.pop()
         self._sift_down(0)
+        self.size-=1
         return self.storage[0]
+    
 
   def get_max(self):
     return self.storage[0]

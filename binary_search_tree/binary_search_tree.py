@@ -40,7 +40,6 @@ class BinarySearchTree:
     def get_max(self):
         current = self
         max = 0
-
         while current:
             if current.value > max:
                 max = current.value

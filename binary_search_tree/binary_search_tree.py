@@ -12,3 +12,6 @@ class BinarySearchTree:
 
   def get_max(self):
     pass
+
+  def for_each(self, cb):
+    pass

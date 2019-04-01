@@ -13,6 +13,7 @@ for i in range(n):
     ll.add_to_tail(i)
 
 start_time = time.time()
+
 for i in range(n):
     ll.remove_from_head()
 end_time = time.time()

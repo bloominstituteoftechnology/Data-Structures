@@ -29,9 +29,9 @@ class Queue:
         self.storage = list()
 
     def enqueue(self, item):
-        if item not in self.storage:
-            self.storage.insert(0, item)
-            self.size += 1
+
+        self.storage.insert(0, item)
+        self.size += 1
 
     def dequeue(self):
         if self.size > 0:

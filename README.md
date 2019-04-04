@@ -16,6 +16,8 @@ Stretch Goals:
 
 2. Open up the `Data_Structures_Questions.md` file, which asks you to evaluate the runtime complexity of each of the methods you implemented for each data structure. Add your answers to each of the questions in the file.
 
+ > NOTE: The quickest and easiest way to reliably import a file in Python is to just copy and paste the file you want to import into the same directory as the file that wants to import. This obviously isn't considered best practice, but it is the most reliable way to do it across all platforms.
+
 ### Queues
  * Should have the methods: `enqueue`, `dequeue`, and `len`.
    * `enqueue` should add an item to the back of the queue.

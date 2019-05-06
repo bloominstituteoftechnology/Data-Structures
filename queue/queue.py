@@ -1,3 +1,4 @@
+# Notes from lecture
 class Node:
   def __init__(self, value, next_node=None):
     self.value = value
@@ -22,7 +23,7 @@ class LinkedList:
       self.tail.set_next(new_node)
       self.tail = new_node
 
-  def remove_head()
+  def remove_head(self):
     if not self.head and not self.tail:
       return None
     if self.head == self.tail:
@@ -47,12 +48,14 @@ class LinkedList:
       current = current.get_next()
     return False
 
+ll = LinkedList()
+
 class Queue:
   def __init__(self):
     self.size = 0
     # what data structure should we
     # use to store queue elements?
-    self.storage = 
+    self.storage = ll
 
   def enqueue(self, item):
     pass

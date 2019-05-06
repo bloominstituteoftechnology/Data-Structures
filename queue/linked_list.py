@@ -34,3 +34,36 @@ class LinkedList:
             # update the tail nodes next o refer to new node
             self.tail.set_next(new_node)
             self.tail = new_node
+
+    def remove_head(self):
+        # 1. what if our linked list is empty
+        if not self.head and not self.tail:
+            return None
+        # 2. what if our linked list has one node
+        if self.head == self.tail:
+            old_head = self.head
+            # now we can set both head and tail to none
+            self.head = None
+            self.tail = None
+            return old_head.get_value()
+        # 3. what if our linked list has more than one node
+        else:
+            # set the list's head reference to refer head node's next node
+            old_head = self.head
+            self.head = self.head.get_next()
+            return old_head.get_value()
+
+    def contain(self, value):
+        # make sure we have elements in the list to traverse
+        if not self.head and not self.tail:
+            return None
+        current = self.head
+
+        # keep traversing while we're at a valid node
+        while current:
+            if current.get_value() == value:
+                return True
+            # update our current pointer
+            current = current.get_next()
+        # we've tranversed the entire list and our value was not found
+        return False

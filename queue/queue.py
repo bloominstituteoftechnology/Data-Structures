@@ -1,20 +1,4 @@
-class Queue:
-  def __init__(self):
-    self.size = 0
-    # what data structure should we
-    # use to store queue elements?
-    self.storage = LinkedList()
-
-  def enqueue(self, item):
-    self.storage.add_to_tail(item)
-  def dequeue(self):
-    self.storage.remove_head()
-  def len(self):
-    pass
-
 class Node:
-    # Next_node will be a reference to another Node
-    # in the linked list (if we decided to use this parameter)
     def __init__(self, value, next_node=None):
         self.value = value
         self.next_node = next_node
@@ -27,7 +11,6 @@ class Node:
 
     def set_next(self, new_next):
         self.next_node = new_next
-
 
 class LinkedList:
     def __init__(self):
@@ -76,3 +59,17 @@ class LinkedList:
         count += 1
         current = current.get_next()
       return count
+
+class Queue:
+  def __init__(self):
+    self.size = 0
+    # what data structure should we
+    # use to store queue elements?
+    self.storage = LinkedList()
+
+  def enqueue(self, item):
+    return self.storage.add_to_tail(item)
+  def dequeue(self):
+    return self.storage.remove_head()
+  def len(self):
+    return self.storage.count()

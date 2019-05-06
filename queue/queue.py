@@ -1,3 +1,7 @@
+
+from linked_list import LinkedList
+
+
 class Queue:
     def __init__(self):
         self.size = 0
@@ -8,11 +12,15 @@ class Queue:
      # item should be added to the back
 
     def enqueue(self, item):
-        pass
+        self.storage.add_to_tail(item)
+        self.size += 1
 
     # item should be removed from front of queue
     def dequeue(self):
-        pass
+        if self.size == 0:
+            return None
+        else:
+            return self.storage.remove_head()
 
     def len(self):
-        pass
+        return self.size

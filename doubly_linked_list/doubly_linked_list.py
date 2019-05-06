@@ -44,25 +44,61 @@ class DoublyLinkedList:
     return self.length
 
   def add_to_head(self, value):
-    pass
+    if self.head:
+      self.head.insert_before(value)
+      self.head = self.head.prev
+    else:
+      headnode = ListNode(value)
+      self.head = headnode
+      self.tail = headnode
+    self.length += 1
 
   def remove_from_head(self):
-    pass
+    savehead = self.head.value
+    self.delete(self.head)
+    return savehead
 
   def add_to_tail(self, value):
-    pass
+    if self.tail:
+      self.tail.insert_after(value)
+      self.tail = self.tail.next
+    else:
+      tailnode = ListNode(value)
+      self.tail = tailnode
+      self.head = tailnode
+    self.length += 1
 
   def remove_from_tail(self):
-    pass
+    savetail = self.tail.value
+    self.delete(self.tail)
+    return savetail
 
   def move_to_front(self, node):
-    pass
+    self.delete(node)
+    self.add_to_head(node.value)
 
   def move_to_end(self, node):
-    pass
+    self.delete(node)
+    self.add_to_tail(node.value)
 
   def delete(self, node):
-    pass
+    if node is self.head and node is self.tail:
+      self.head = None
+      self.tail = None
+    elif node is self.head:
+      self.head = node.next
+    elif node is self.tail:
+      self.tail = node.prev
+
+    node.delete()
+    self.length -= 1 if self.length > 0 else 0
     
   def get_max(self):
-    pass
+    if not self.head or not self.tail:
+      return None
+    curnode = self.head
+    maxval = curnode.value
+    while curnode:
+      maxval = curnode.value if curnode.value > maxval else maxval
+      curnode = curnode.next
+    return maxval

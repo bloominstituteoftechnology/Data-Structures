@@ -71,7 +71,11 @@ class DoublyLinkedList:
     pass
 
   def move_to_front(self, node):
-    pass
+    if self.head is not node:
+      cur_head = self.head
+      self.head = node
+      node.next = cur_head
+      cur_head.prev = node
 
   def move_to_end(self, node):
     pass

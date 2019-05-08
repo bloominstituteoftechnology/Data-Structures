@@ -21,13 +21,6 @@ class Pennant:
         self.left = None
         self.right = None
         self.k = 0
-
-    def _determine_k(self):
-        """
-        Helper method to determine the k value
-        of the Pennant.
-        """
-        return math.log2(self.count)
         
     def combine(self, pennant):
         """
@@ -38,6 +31,8 @@ class Pennant:
         maintain the invariant that only Pennants
         of equal k value will be combined together.
         """
+        # Root of the pennant has no `middle` child
+        # Thus this pennant has no children
         if not self.middle:
             self.middle = pennant
             self.count += 1
@@ -50,7 +45,7 @@ class Pennant:
             pennant.right = y
             pennant.middle = None
             self.count += pennant.count
-            self.k = self._determine_k()
+            self.k = math.log2(self.count)
 
     def split(self):
         """
@@ -67,7 +62,7 @@ class Pennant:
             new_pennant.right = None
 
             self.count = self.count // 2
-            self.k = self._determine_k()
+            self.k = math.log2(self.count)
 
             new_pennant.count = self.count
             new_pennant.k = self.k

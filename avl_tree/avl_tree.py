@@ -51,7 +51,7 @@ class AVLTree:
   node the parent and making the old parent the left child
   of the new parent. 
   """
-  def _left_rotate(self):
+  def left_rotate(self):
     pass
 
   """
@@ -59,7 +59,7 @@ class AVLTree:
   node the parent and making the old parent the right child
   of the new parent. 
   """
-  def _right_rotate(self):
+  def right_rotate(self):
     pass
 
   """

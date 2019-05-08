@@ -36,7 +36,7 @@ class Pennant:
         if not self.middle:
             self.middle = pennant
             self.count += 1
-            self.k = 1
+            self.k = math.log2(self.count)
         else:
             x = self.middle
             y = pennant.middle
@@ -68,6 +68,3 @@ class Pennant:
             new_pennant.k = self.k
 
             return new_pennant
-
-
-    

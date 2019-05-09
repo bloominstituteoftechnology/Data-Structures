@@ -16,7 +16,7 @@ class BinarySearchTree:
         if self.left == None:
           self.left = value
         else:
-          self.left.insert(value)
+          node.insert(value)
     else:
       self.value = value
 
@@ -36,6 +36,5 @@ class BinarySearchTree:
 
   def get_max(self):
     pass
-
   def for_each(self, cb):
     pass

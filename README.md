@@ -12,7 +12,7 @@ Stretch Goals:
  * LRU Caches
 
 ## Tasks
-1. Implement each data structure, starting with the linked list data structure. Make sure you're in the approriate directory, then run `python3 test_[NAME OF DATA STRUCTURE].py` to run the tests for that data structure and check your progress. Get all the tests passing for each data structure.
+1. Implement each data structure, starting with the queue. Make sure you're in the approriate directory, then run `python3 test_[NAME OF DATA STRUCTURE].py` to run the tests for that data structure and check your progress. Get all the tests passing for each data structure.
 
 2. Open up the `Data_Structures_Questions.md` file, which asks you to evaluate the runtime complexity of each of the methods you implemented for each data structure. Add your answers to each of the questions in the file.
 

@@ -1,15 +1,21 @@
+from node import LinkedList
+
 class Queue:
   def __init__(self):
     self.size = 0
     # what data structure should we
     # use to store queue elements?
-    self.storage = 
+    self.storage = LinkedList()
 
   def enqueue(self, item):
-    pass
+    self.storage.add_to_tail(item)
+    self.size += 1
   
   def dequeue(self):
-    pass
+    item = self.storage.remove_head()
+    self.size -= 1 if self.size > 0 else 0
+    return item
+
 
   def len(self):
-    pass
+    return self.size

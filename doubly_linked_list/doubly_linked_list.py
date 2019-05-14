@@ -122,15 +122,18 @@ class DoublyLinkedList:
     if self.tail is None:
       self.add_to_tail(node.value)
     elif self.tail.prev is None:
-      if self.tail == node:
-        return
-      else:
-        self.head = node
-        self.tail = node
-    else:
       self.add_to_tail(node.value)
+    elif self.head == node:
+      self.head = self.head.next
+      self.head.prev = None
+      self.length -= 1
+      self.add_to_tail(node.value)
+    else:
       node.delete()
       self.length -= 1
+      self.add_to_tail(node.value)
+  
+      
     
   def delete(self, node):
     if self.head is None and self.tail is None:

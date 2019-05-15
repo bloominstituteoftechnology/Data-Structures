@@ -27,25 +27,37 @@ class BinarySearchTree:
 
   def contains(self, target):
     # check if the node's value is equal to our node's current value
-    if target.value == self.value:
+    if target == self.value:
       # if it is return true
       return True
     elif self.right is None and self.left is None:
       return False
     else:
       if self.left is not None:
-        self.left.contains(target)
+        if self.left.contains(target):
+          return True
       if self.right is not None:
-        self.right.contains(target)
+        if self.right.contains(target):
+          return True
 
   def get_max(self):
-    return self.value
+    if self.right is None:
+      return self.value
+    else:
+      return self.right.get_max()
 
   def for_each(self, cb):
     
-		# check if the new nodes value is greather than or equal to our current node's value	
+    # check if the node's value is equal to our node's current value
+    cb(self.value)
+    if self.right is None and self.left is None:
+      return
+    else:
+      if self.left is not None:
+        self.left.for_each(cb)
+      if self.right is not None:
+        self.right.for_each(cb)
+    
+    return
 
 		# it'd poorly weighted	
-
-new_tree = BinarySearchTree(15)
-new_tree.insert(2)

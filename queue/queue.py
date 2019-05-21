@@ -23,7 +23,7 @@ class Queue:
   def dequeue(self):
     item = self.storage.remove_head()
     if self.size > 0:
-      self.size.dequeue(-1)
+      self.size -= 1
     return item
 
   def len(self):

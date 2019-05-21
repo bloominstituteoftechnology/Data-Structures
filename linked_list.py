@@ -55,12 +55,13 @@ class LinkedList:
             # Store next node into a variable
             new_head = self.head.next_node
             # Store a return value
-            result = self.head
+            old_head = self.head.get_value()
             # Delete the old head
             del(self.head)
             # set head to next node
             self.head = new_head
-            return result
+            return old_head
+        return None
 
     # find if a value exists in our list
     # returns a boolean

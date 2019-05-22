@@ -72,7 +72,7 @@ class DoublyLinkedList:
     # old_head = self.head # and line 76
     self.head = self.head.next
     # set the previous none to none
-    self.head.prev = None
+    # self.head.prev = None
     # Delete the old head
     # del(old_head)
     # check if there was only one node
@@ -97,14 +97,16 @@ class DoublyLinkedList:
       self.tail.insert_after(value)
       # set new node to tail
       self.tail = self.tail.next
-    self.lenght += 1
+    self.length += 1
 
   def remove_from_tail(self):
-    if self.tail == None:
+    """ I don't know why this line wont work..."""
+    # if self.head == self.tail:
+    if self.length == 0:
       return None
     old_tail_value = self.tail.value
     self.tail = self.tail.prev
-    self.tail.next = None
+    self.length -= 1
     # check if there was only one node
     if self.tail == None:
       self.head = None
@@ -134,20 +136,24 @@ class DoublyLinkedList:
     temp_value = node.value
     node.delete()
     # add the new node to the from of the list
-    self.head.insert_after(temp_value)
+    self.tail.insert_after(temp_value)
     self.tail = self.tail.next
 
   def delete(self, node):
-    # well this is kinda confusing...
+    temp_node = node
     node.delete()
+    if self.head == node:
+      self.head = temp_node.next
+    if self.tail == node:
+      self.tail = temp_node.prev
+    self.length -= 1
     
   def get_max(self):
-    if self.head == self.tail:
-      return
-    current_max = None
+    current_max = self.head.value
     current_node = self.head
     while current_node:
-      if not current_max or current_node.value > curent_max:
+      if not current_max or current_node.value > current_max:
         current_max = current_node.value
       # traverse thru the list.
       current_node = current_node.next
+    return current_max

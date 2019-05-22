@@ -1,3 +1,11 @@
+"""
+Left child: 2i + 1
+Right: Child: 2i + 2
+Parent: (index - 1)/2
+
+Heap Property
+In a max heap, the heap property is that every node is >= 
+"""
 class Heap:
   def __init__(self):
     self.storage = []

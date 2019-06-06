@@ -55,7 +55,21 @@ class DoublyLinkedList:
     self.length += 1
 
   def remove_from_head(self):
-    pass
+    if self.length == 0:
+      pass
+    elif self.length == 1:
+      curr_head = self.head
+      self.head = None
+      self.tail = None
+      self.length -= 1
+      return curr_head.value
+    elif self.length > 1:
+      curr_head = self.head
+      self.head = curr_head.next
+      curr_head.delete()
+      self.length -= 1
+      return curr_head.value
+
 
   def add_to_tail(self, value):
     pass

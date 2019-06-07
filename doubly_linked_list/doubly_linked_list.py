@@ -55,24 +55,49 @@ class DoublyLinkedList:
     self.length += 1
 
   def remove_from_head(self):
-    if self.length == 0:
-      pass
-    elif self.length == 1:
-      curr_head = self.head
+    # MY OWN CODE!
+    # if self.length == 0:
+    #   pass
+    # elif self.length == 1:
+    #   curr_head = self.head
+    #   self.head = None
+    #   self.tail = None
+    #   self.length -= 1
+    #   return curr_head.value
+    # elif self.length > 1:
+    #   curr_head = self.head
+    #   self.head = curr_head.next
+    #   curr_head.delete()
+    #   self.length -= 1
+    #   return curr_head.value
+    # IN CLASS CODE!
+    removed = self.head.value
+    if self.head == self.tail:
       self.head = None
       self.tail = None
+      self.length = 0
+    else:
+      self.head = self.head.next
+      self.head.prev.delete()
       self.length -= 1
-      return curr_head.value
-    elif self.length > 1:
-      curr_head = self.head
-      self.head = curr_head.next
-      curr_head.delete()
-      self.length -= 1
-      return curr_head.value
+    return removed
 
 
   def add_to_tail(self, value):
-    pass
+    # if already an existing tail...
+    if self.tail:
+      curr_tail = self.tail
+      # point current tail's next to new tail
+      self.tail.insert_after(value)
+      # set new tail
+      self.tail = ListNode(value, curr_tail, None)
+    # else if no node, set new node as head and tail
+    else:
+      new_tail = ListNode(value, None, None) 
+      self.head = new_tail
+      self.tail = new_tail
+    # add to list length
+    self.length += 1
 
   def remove_from_tail(self):
     pass

@@ -122,4 +122,10 @@ class DoublyLinkedList:
       self.length -= 1
     
   def get_max(self):
-    pass
+    max_val = -float("inf")
+    location = self.head
+    while location != None:
+      if location.value > max_val:
+        max_val = location.value
+      location = location.next
+    return max_val

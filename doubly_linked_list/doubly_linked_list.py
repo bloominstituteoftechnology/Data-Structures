@@ -95,7 +95,10 @@ class DoublyLinkedList:
     return removed
 
   def move_to_front(self, node):
-    pass
+    self.add_to_head(node.value)
+    node.delete()
+    self.length -= 1
+
 
   def move_to_end(self, node):
     pass

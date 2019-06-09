@@ -112,13 +112,37 @@ class DoublyLinkedList:
     return removed
 
   def move_to_front(self, node):
-    pass
+    # add moving node to head
+    self.add_to_head(node.value)
+    # change prev of next node to point to node before the moving node
+    # change next of prev node to point to node after the moving node
+    node.delete()
+    # adjust length due to add_to_head addition
+    self.length -= 1
+
+      
 
   def move_to_end(self, node):
-    pass
+    # add moving node to tail
+    self.add_to_tail(node.value)
+    # change prev of next node to point to node before the moving node
+    # change next of prev node to point to node after the moving node
+    node.delete()
+    # adjust length due to add_to_ addition
+    self.length -= 1
 
   def delete(self, node):
-    pass
+    if self.head == self.tail:
+      self.head = None
+      self.tail = None
+      self.length -= 1
+    elif self.head == node:
+      self.remove_from_head()
+    elif self.tail == node:
+      self.remove_from_tail()
+    else:
+      node.delete()
+      self.length -= 1
     
   def get_max(self):
     pass

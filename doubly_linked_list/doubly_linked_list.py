@@ -89,7 +89,7 @@ class DoublyLinkedList:
       curr_tail = self.tail
       # point current tail's next to new tail
       self.tail.insert_after(value)
-      # set new tail
+      # set new tail, with prev set to previous tail
       self.tail = ListNode(value, curr_tail, None)
     # else if no node, set new node as head and tail
     else:
@@ -100,7 +100,16 @@ class DoublyLinkedList:
     self.length += 1
 
   def remove_from_tail(self):
-    pass
+    removed = self.tail.value
+    if self.head == self.tail:
+      self.tail = None
+      self.head = None
+      self.length = 0
+    else:
+      self.tail = self.tail.prev
+      self.tail.next.delete()
+      self.length -= 1
+    return removed
 
   def move_to_front(self, node):
     pass

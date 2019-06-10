@@ -21,19 +21,38 @@ class LinkedList:
         self.tail = None
       
     def add_to_tail(self, value):
-        #  wrap the value in a node
+        #  STEP 1: Wrap the value in a node
         new_node = Node(value)
-        #  check if we're in an empty list state
+        #  STEP 2: Check if we're in an empty list state
         if not self.head and not self.tail:
-            #  set the list's head reference to point to new_node
+            #  STEP 3: Set the list's head reference to point to new_node
             self.head = new_node
-            #  set the list's tail reference to point to new_node
+            #  STEP 4: Set the list's tail reference to point to new_node
             self.tail = new_node
         else:
-            #  update the old tail's next reference to refer to the new code
+            #  STEP 3a: Update the old tail's next reference to refer to the new code
             self.tail.set_next(new_node)  
-            #  update the LinkedList's 'tail' reference
+            #  STEP 4a: Update the LinkedList's 'tail' reference
             self.tail = new_node
+            
+    def remove_head(self):
+        #  What if our list is empty?
+        if not self.head and not self.tail:
+            return None
+        #  What if our list only contained a single node?
+        #  if not self.head.get_next():
+        if self.head is self.tail:
+            old_head = self.head
+            self.head = None
+            self.tail = None
+            return old_head.get_value()
+        #  store a reference to the node we're removing
+        old_head = self.head
+        #  update the head reference to refer to the old head's next node
+        self.head = old_head.get_next()
+        #  return the old head's value
+        return old_head.get_value()
+        #  delete the old head  <== you don't have to do this because Python cleans this up for you
         
         
         

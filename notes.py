@@ -24,7 +24,7 @@ class LinkedList:
         #  wrap the value in a node
         new_node = Node(value)
         #  update the old tail's next reference to refer to the new code
-        
+        self.tail.set_next(new_node)
         #  update the LinkedList's 'tail' reference
-        
+        self.tail = new_node
         

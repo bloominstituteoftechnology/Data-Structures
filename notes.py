@@ -54,5 +54,24 @@ class LinkedList:
         return old_head.get_value()
         #  delete the old head  <== you don't have to do this because Python cleans this up for you
         
+        # if self.head is self.tail:
+        #     self.tail = None
+        # old_head = self.head
+        # self.head = old_head.get_next()
+        # return old_head.get_value()
         
-        
+    def contains(self, target):
+        #  What if our list is empty?
+        if not self.head and not self.tail:
+            return False
+        #  get another reference that initially starts at the head of the list
+        current = self.head
+        #  loop so long as 'current' is a valid node
+        while current:
+            if current.get_value() == target:
+                return True
+            #  update the current reference to refer to current's next node
+            current = current.get_next()
+        #  we've looped through the whole list and haven't found what we're looking for
+        return False
+      

@@ -48,25 +48,33 @@ class DoublyLinkedList:
     old_head = self.head
     self.head = new_node
     self.head.next = old_head
-    self.head.nex.prev = self
+    self.head.next.prev = self
     
     pass
 
   def remove_from_head(self):
-    self.head.next.prev = None
-    self.head = self.head.next
+    if not self.head or not self.tail:
+        return
+    if not self.head.next:
+        self.head = None
+    else:
+        self.head.next.prev = None
+        self.head = self.head.next
     pass
 
   def add_to_tail(self, value):
     old_tail = self.tail
-    old_tail.next = Node(value)
+    old_tail.next = ListNode(value)
     self.tail = old_tail.next
     pass
 
   def remove_from_tail(self):
     old_tail = self.tail
-    old_tail.prev.next = None
-    self.tail = old_tail.prev
+    if not old_tail.prev:
+        self.tail = None
+    else:
+        old_tail.prev.next = None
+        self.tail = old_tail.prev
     pass
 
   def move_to_front(self, node):
@@ -75,8 +83,10 @@ class DoublyLinkedList:
         node.prev.next = node.next
     
     elif node is self.tail:
-        node.prev.next = None
+        print(f"Here it is!!!!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nValue: {node.value}\n{self.tail.value}, {self.head.value}")
         self.tail = node.prev
+        if not self.tail:
+            self.tail = self.head
     
     elif node is self.head:
         return
@@ -85,8 +95,6 @@ class DoublyLinkedList:
     node.prev = None
     self.head.prev = node
     self.head = node
-    
-    pass
 
   def move_to_end(self, node):
     if node is not self.tail and node is not self.head:
@@ -104,12 +112,26 @@ class DoublyLinkedList:
     node.next = None
     self.tail.next = node
     self.tail = node
-    pass
 
   def delete(self, node):
-    node.prev = node.next.prev
-    node.next = node.prev.next
-    pass
+    if not self.head and not self.tail: return
+    if not self.head or not self.tail:
+        self.head = None
+        self.tail = None
+        return
+    if node is self.tail and node is self.head:
+        self.tail = None
+        self.head = None
+    elif node is self.tail:
+        print(f"Here it is!!!!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nValue: {node.value}\n{self.tail.value}, {self.head.value}")
+        node.prev.next = None
+        self.tail = node.prev
+    elif node is self.head:
+        node.next.prev = None
+        self.head = node.next
+    else:
+        node.prev = node.next.prev
+        node.next = node.prev.next
     
   def get_max(self):
     if not self.head and not self.tail: return None
@@ -119,5 +141,5 @@ class DoublyLinkedList:
     while current:
         if current.value > max_value:
             max_value = current.value
-    current = current.next
-    pass
+        current = current.next
+    return max_value

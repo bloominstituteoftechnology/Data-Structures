@@ -3,11 +3,14 @@ Answer the following questions for each of the data structures you implemented a
 ## Queue
 
 1. What is the runtime complexity of `enqueue`?
+    0(1) since it is just inserting into the list a value at index(0).
+
 
 2. What is the runtime complexity of `dequeue`?
     0(1) since it is esentially a pop method where it returns the last index of the list.
 
 3. What is the runtime complexity of `len`?
+    0(1) since it is just returning the length of the list or if the class has already stored the number.
 
 ## Binary Search Tree
 

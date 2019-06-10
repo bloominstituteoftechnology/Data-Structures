@@ -60,10 +60,11 @@
         
 #   ***WINNER (for building a queue)*** => Linked Lists
 
+#  Creates a Node class to store individual entries for the queue
 class Node:
     def __init__(self, value=None, next_node=None):
        self.value = value
-       self.next = next_node
+       self.next_node = next_node
  
 class Queue:
     def __init__(self):
@@ -77,8 +78,8 @@ class Queue:
             self.head = new_node
             self.tail = self.head
         else:
-            self.tail.next = new_node
-            self.tail = self.tail.next
+            self.tail.next_node = new_node
+            self.tail = self.tail.next_node
         self.size += 1
  
     def dequeue(self):
@@ -86,7 +87,7 @@ class Queue:
             return None
         else:
             to_return = self.head.value
-            self.head = self.head.next
+            self.head = self.head.next_node
             self.size -= 1
             return to_return 
           

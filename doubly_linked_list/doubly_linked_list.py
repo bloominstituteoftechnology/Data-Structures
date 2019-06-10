@@ -84,19 +84,14 @@ class DoublyLinkedList:
 
 
   def add_to_tail(self, value):
-    # if already an existing tail...
     if self.tail:
       curr_tail = self.tail
-      # point current tail's next to new tail
       self.tail.insert_after(value)
-      # set new tail, with prev set to previous tail
       self.tail = ListNode(value, curr_tail, None)
-    # else if no node, set new node as head and tail
     else:
       new_tail = ListNode(value, None, None) 
       self.head = new_tail
       self.tail = new_tail
-    # add to list length
     self.length += 1
 
   def remove_from_tail(self):
@@ -112,24 +107,35 @@ class DoublyLinkedList:
     return removed
 
   def move_to_front(self, node):
-    # add moving node to head
+    if node == self.head:
+      pass
+    # USING BUILT IN NODE METHOD TO DELETE
+    # elif node == self.tail:
+    #   self.remove_from_tail()
+    # # add moving node to head
+    # else:
+    #   node.delete()
+    #   self.length -= 1
+    # USING BUILT IN LIST METHOD TO DELETE
+    else:
+      self.delete(node)
     self.add_to_head(node.value)
-    # change prev of next node to point to node before the moving node
-    # change next of prev node to point to node after the moving node
-    node.delete()
-    # adjust length due to add_to_head addition
-    self.length -= 1
-
-      
 
   def move_to_end(self, node):
-    # add moving node to tail
+    if node == self.tail:
+      pass
+    # USING BUILT IN NODE METHOD TO DELETE
+    # elif node == self.head:
+    #   self.remove_from_head()
+    # else:
+    #   node.delete()
+    #   self.length -= 1
+    # self.add_to_tail(node.value)
+    # USING BUILT IN LIST METHOD TO DELETE
+    else:
+      self.delete(node)
     self.add_to_tail(node.value)
-    # change prev of next node to point to node before the moving node
-    # change next of prev node to point to node after the moving node
-    node.delete()
-    # adjust length due to add_to_ addition
-    self.length -= 1
+      
 
   def delete(self, node):
     if self.head == self.tail:

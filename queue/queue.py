@@ -61,55 +61,34 @@
 #   ***WINNER (for building a queue)*** => Linked Lists
 
 class Node:
-    def __init__(self, value=None, next_node=None):
-        self.value = value
-        self.next_node = next_node
-    
-    def get_value(self):
-        return self.value
-      
-    def get_next(self):
-        return self.next_node
-      
-    def set_next(self, new_next):
-        self.next_node = new_next
-    
-    def set_value(self, value):
-        self.value = value
-      
-
+    def __init__(self, value):
+       self.value = value
+       self.next = None
+ 
 class Queue:
     def __init__(self):
-        self.size = 0
         self.head = None
         self.tail = None
-        self.storage = None
-       
-    #  looks at first item in the linked list 
-    def peek(self, head):
-        if not self.head and not self.tail:
-            return None
-        elif self.head == True:
-            return self.head
-      
+        self.size = 0
+ 
     def enqueue(self, item):
-        #  Wraps the item in a node
         new_node = Node(item)
-        
-        #  Checks for an empty list state
-        if not self.head and not self.tail:
-            #  Sets the list's 'head' reference to point to new_node
+        if self.tail is None:
             self.head = new_node
-            #  Sets the list's 'tail' reference to point to new_node
-            self.tail = new_node
+            self.tail = self.head
         else:
-            #  Updates the old tail's next reference to refer to new code
-            self.tail.set_next(new_node)
-            #  Updates the list's 'tail' reference to new_node
-            self.tail = new_node
-    
+            self.tail.next = new_node
+            self.tail = self.tail.next
+        self.size += 1
+ 
     def dequeue(self):
-        pass
-
+        if self.head is None:
+            return None
+        else:
+            to_return = self.head.value
+            self.head = self.head.next
+            self.size -= 1
+            return to_return 
+          
     def len(self):
-        pass
+        return self.size

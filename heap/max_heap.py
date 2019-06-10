@@ -3,7 +3,19 @@ class Heap:
     self.storage = []
 
   def insert(self, value):
-    pass
+    i = 0
+    put = False
+    while True:
+      for j in range(2**i - 1, 2**(i + 1)):
+        if j < self.get_size():
+          if self.storage[j] < value:
+            self.storage.insert(j, value)
+            put = True
+            break
+      if put:
+        break
+    if not put:
+      self.storage.append(value)
 
   def delete(self):
     pass
@@ -12,7 +24,7 @@ class Heap:
     pass
 
   def get_size(self):
-    pass
+    return len(self.storage)
 
   def _bubble_up(self, index):
     pass

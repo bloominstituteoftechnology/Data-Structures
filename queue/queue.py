@@ -61,9 +61,9 @@
 #   ***WINNER (for building a queue)*** => Linked Lists
 
 class Node:
-    def __init__(self, value):
+    def __init__(self, value=None, next_node=None):
        self.value = value
-       self.next = None
+       self.next = next_node
  
 class Queue:
     def __init__(self):

@@ -64,17 +64,49 @@ class Node:
     def __init__(self, value=None, next_node=None):
         self.value = value
         self.next_node = next_node
+    
+    def get_value(self):
+        return self.value
+      
+    def get_next(self):
+        return self.next_node
+      
+    def set_next(self, new_next):
+        self.next_node = new_next
+    
+    def set_value(self, value):
+        self.value = value
       
 
 class Queue:
     def __init__(self):
         self.size = 0
-        # what data structure should we
-        # use to store queue elements?
-        self.storage = 
-
+        self.head = None
+        self.tail = None
+        self.storage = None
+       
+    #  looks at first item in the linked list 
+    def peek(self, head):
+        if not self.head and not self.tail:
+            return None
+        elif self.head == True:
+            return self.head
+      
     def enqueue(self, item):
-        pass
+        #  Wraps the item in a node
+        new_node = Node(item)
+        
+        #  Checks for an empty list state
+        if not self.head and not self.tail:
+            #  Sets the list's 'head' reference to point to new_node
+            self.head = new_node
+            #  Sets the list's 'tail' reference to point to new_node
+            self.tail = new_node
+        else:
+            #  Updates the old tail's next reference to refer to new code
+            self.tail.set_next(new_node)
+            #  Updates the list's 'tail' reference to new_node
+            self.tail = new_node
     
     def dequeue(self):
         pass

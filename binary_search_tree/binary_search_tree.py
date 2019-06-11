@@ -8,24 +8,28 @@ class BinarySearchTree:
     current = self
     while current.left or current.right:
         if new_value > current.value:
-             current = current.right
+            if current.right:
+                current = current.right
+            else:
+                current.right = current
+                break
         elif new_value < current.value:
             current = current.left
-    if new_value => current.value:
+    if new_value >= current.value:
         current.right = BinarySearchTree(new_value)
     elif new_value < current.value:
         current.left = BinarySearchTree(new_value)
 
   def contains(self, target):
+    number = 0
     current = self
-    while current.right or current.left:
-        if target == current.value:
-            return True
-        elif target > current.value:
-            current = current.right
-        elif target < current.value:
-            current = current.left
-    return False
+    if target == current.value:
+        number += 1
+    if self.right:
+        number += self.right.contains(target)
+    if self.left:
+        number += self.left.contains(target)
+    return number
 
   def get_max(self):
     max_amount = 0
@@ -44,5 +48,5 @@ class BinarySearchTree:
     cb(self.value)
     if self.right:
         self.right.for_each(cb)
-    if self.left
+    if self.left:
         self.left.for_each(cb)

@@ -31,6 +31,27 @@ class ListNode:
           self.prev.next = self.next
         if self.next:
           self.next.prev = self.prev
+          
+    #  Returns next ListNode
+    def get_next(self):
+        return self.next
+
+    #  Sets next ListNode to 'node' argument
+    def set_next(self, next):
+        self.next = next
+        
+    #  Returns next ListNode
+    def get_prev(self):
+        return self.prev
+
+    #  Sets next ListNode to 'node' argument
+    def set_prev(self, prev):
+        self.prev = prev
+ 
+    #  Sets next ListNode to 'node' argument
+    def get_value(self, prev):
+        return self.value      
+        
 
 """Our doubly-linked list class. It holds references to
 the list's head and tail nodes."""
@@ -79,7 +100,7 @@ class DoublyLinkedList:
         pass
 
     def delete(self, node):
-        pass
+        
       
     def get_max(self):
         pass

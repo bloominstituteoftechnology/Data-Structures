@@ -68,6 +68,7 @@ class DoublyLinkedList:
         if self.head is None:
             new_node = ListNode(value)
             self.head = new_node
+            return
         new_node = ListNode(value)
         new_node.next = self.head
         self.head.prev = new_node
@@ -78,21 +79,24 @@ class DoublyLinkedList:
         pass
 
     def add_to_tail(self, value):
-        new_node = ListNode(value)
-        last = self.head
-        new_node.next = None
-        if self.head is None:
-            new_node.prev = None
-            self.head = new_node
+        if not self.tail:
+            new_node = ListNode(value)
+            self.tail = new_node
             return
-        while (last.next is not None):
-            last = last.next
-        last.next = new_node
-        new_node.prev = last
+        while self.tail.next is False:
+            new_node = ListNode(value)
+            self.tail.next = new_node
+            new_node.prev = self.tail.next
+        self.length += 1
         
-
     def remove_from_tail(self):
-        pass
+        if self.tail is None:
+            return "This list has no item to delete"
+        if self.tail.next is None:
+            self.tail = None
+            return
+        while self.tail.next is not None:
+            self.tail.next.prev.next = None
 
     def move_to_front(self, node):
         pass

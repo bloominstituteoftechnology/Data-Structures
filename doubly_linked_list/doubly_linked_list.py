@@ -52,28 +52,45 @@ class DoublyLinkedList:
         return self.length
 
     def add_to_head(self, value):
-        self.head = ListNode(value, None, self.head)
-        self.head.insert_before(value)
-        self.length = self.length + 1
-
-    def remove_from_head(self):
-        if self.length is not 0:
-            self.head.delete()
-
-    def add_to_tail(self, value):
-        if self.length == 0:
-            self.head = ListNode(value)
-            self.length = 1
-
-        elif self.length == 1:
-            self.tail = ListNode(value)
-            self.head.insert_after(value)
-            self.length = 2
+        new_node = ListNode(value)
+        if self.head is not None:
+            previous_head = self.head
+            self.head = new_node
+            self.head.next = previous_head
+            previous_head.prev = self.head
+            self.length += 1
+            return self.head.value
 
         else:
-            self.tail = ListNode(value, None, self.head)
-            self.tail.insert_after(value)
-            self.length = self.length + 1
+            self.head = new_node
+            self.head.next = self.tail
+            self.tail.prev = self.head
+            self.length += 1
+            return self.head.value
+
+    def remove_from_head(self):
+        if self.head is not None:
+            deleted_head_value = self.head.value
+            self.head.delete()
+            self.length -= 1
+            return deleted_head_value
+        else:
+            return None
+
+    def add_to_tail(self, value):
+        new_node = ListNode(value)
+        if self.tail is not None:
+            previous_tail = self.tail
+            self.tail = new_node
+            self.tail.prev = previous_tail
+            previous_tail.next = self.tail
+            return self.tail.value
+
+        else:
+            self.tail = new_node
+            self.head.next = self.tail
+            self.tail.prev = self.head
+            return self.tail.value
 
     def remove_from_tail(self):
         if not self.tail:

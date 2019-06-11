@@ -14,7 +14,11 @@ class BinarySearchTree:
                 current.right = current
                 break
         elif new_value < current.value:
-            current = current.left
+            if current.left:
+                current = current.left
+            else:
+                current.left = current
+                break
     if new_value >= current.value:
         current.right = BinarySearchTree(new_value)
     elif new_value < current.value:
@@ -32,6 +36,7 @@ class BinarySearchTree:
     return number
 
   def get_max(self):
+    current = self
     max_amount = 0
     while current:
         max_amount = current.value

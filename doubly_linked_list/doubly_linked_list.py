@@ -102,11 +102,14 @@ class DoublyLinkedList:
 
   def move_to_end(self, node):
     if self.head == node:
-        self.head = self.head.next
+        if self.head.next:
+            self.head = self.head.next
+        else:
+            self.head = None
+            self.tail = None
+            self.node = None
     node.delete()
     self.add_to_tail(node.value)
-    self.tail = self.tail.next
-
 
   def delete(self, node):
     node.delete()

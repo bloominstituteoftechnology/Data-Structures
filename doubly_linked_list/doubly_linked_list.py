@@ -121,8 +121,6 @@ class DoublyLinkedList:
             self.head = None
     if node == self.tail:
         self.tail = None
-    if self.tail is None and self.head is None:
-        self.node = None
 
     
   def get_max(self):

@@ -25,7 +25,23 @@ class BinarySearchTree:
     
 
   def contains(self, target):
-    pass
+    #checks if target is less than value then repeat check
+    # checks if target is greater than value then repeat check
+    # checks if target equal to value
+    # if no value == target return false
+
+    if self.value == target:
+      return True
+    elif self.value > target:
+      if self.left == None:
+        return False
+      return self.left.contains(target)
+    elif self.value < target:
+      if self.right == None:
+         return False
+      return self.right.contains(target)
+
+    
 
   def get_max(self):
     pass

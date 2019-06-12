@@ -5,22 +5,27 @@ class Heap:
     self.storage = []
 
   def _bubble_up(self, index):
-    while True:
-        parent = math.floor((index - 1) / 2)
-        if parent >= 0:
-            if self.storage[index] > self.storage[parent]:
-                swapped_value = self.storage[parent]
-                self.storage[parent] = self.storage[index]
-                self.storage[index] = swapped_value
-                index = parent
-            else:
-                break
+# keep bubbling up until we've either reached the top of the heap
+# or we've reached a point where the parent is higher prio
+    while index > 0:
+    # on a single bubble up iteration
+    # get the parent index
+        parent = (index - 1) // 2
+    # compare the child against the value of the parent
+    # if the child's value is higher prio than its parent's value
+        if self.storage[index] > self.storage[parent]:
+        # swap them
+            self.storage[index], self.storage[parent] = self.storage[parent], self.storage[index]
+        # update the child's index to be the new index it is now at
+            index = parent
+        # otherwise, child is at a valid spot
         else:
+    # stop bubbling up
             break
 
   def insert(self, value):
     self.storage.append(value)
-    self._bubble_up(-1)
+    self._bubble_up(len(self.storage) - 1)
 
   def _sift_down(self, index):
     my_index = index

@@ -29,17 +29,23 @@ class Heap:
 
   def _sift_down(self, index):
     my_index = index
+    if len(self.storage) < 2:
+        return
     # determine the indices of index's children
     # determine which child has a larger value
     # if the child has a larger value than the parent, the parent and child elements are swapped
     # update the index value
     # base case: index of index's left child is out of range or neither child is larger than the parent
-    while (2 * index) + 2 < len(self.storage):
+    while (2 * index) + 1 < len(self.storage):
         left_child = (2 * index) + 1
         right_child = (2 * index) + 2
-        print(f"\n\n\n\n\nArray Length: {len(self.storage)}\n\n\n\n\n")
-        print(f"Current Index: {index}\n\n\n\n\n")
-        if self.storage[left_child] > self.storage[right_child]:
+        if right_child > len(self.storage) - 1:
+            if self.storage[left_child] > self.storage[index]:
+                swapped_value = self.storage[left_child]
+                self.storage[left_child] = self.storage[index]
+                self.storage[index] = swapped_value
+                index = left_child
+        elif self.storage[left_child] > self.storage[right_child]:
             if self.storage[left_child] > self.storage[index]:
                 swapped_value = self.storage[left_child]
                 self.storage[left_child] = self.storage[index]

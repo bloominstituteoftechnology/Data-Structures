@@ -23,22 +23,18 @@ class BinarySearchTree:
     # if not less than, value is greater than
     # check right value if it exists
     if target == self.value:
-      print('True')
       return True
     elif target > self.value and self.right != None:
-        print(self.right.value)
         return self.right.contains(target)
-    elif target < self.value and self.left != None:
-        print(self.left.value)
+    elif self.left != None:
         return self.left.contains(target)
     return False
 
   def get_max(self):
-    # get current value
-    # see if there is a right value
-    # if there is a right value, store as max
+    # if no nodes, or if there is no right node, return the current value, as it is the maximum in the BST
     if self.value == None or self.right == None:
       return self.value
+    # else, recursively call function, and run it until there is no right node
     return self.right.get_max()
 
     

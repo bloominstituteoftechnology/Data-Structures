@@ -46,3 +46,15 @@ class BinarySearchTree:
             return self.left.for_each(cb)
         if self.right:
             return self.right.for_each(cb)
+
+
+bst = BinarySearchTree(5)
+bst.insert(4)
+bst.insert(5)
+bst.insert(20)
+bst.insert(11)
+bst.insert(15)
+
+print(bst)
+print(bst.contains(11))
+print(bst.get_max())

@@ -1,6 +1,10 @@
+from doubly_linked_list import ListNode
+from doubly_linked_list import DoublyLinkedList
+
 class LRUCache:
   def __init__(self, limit=10):
-    pass
+    self.storage = {}
+    self.order_of_use = []
 
   """
   Retrieves the value associated with the given key. Also
@@ -10,8 +14,15 @@ class LRUCache:
   key-value pair doesn't exist in the cache. 
   """
   def get(self, key):
-    pass
-
+    if key in self.storage:
+        for i in range(0, len(self.order_of_use)):
+            if self.order_of_use[i] == key:
+                swapped_element = self.order_of_use[0]
+                self.order_of_use[0] = self.order_of_use[i]
+                self.order_of_use[i] = swapped_element
+                break
+        return self.storage[key]
+    return None
   """
   Adds the given key-value pair to the cache. The newly-
   added pair should be considered the most-recently used
@@ -23,4 +34,16 @@ class LRUCache:
   the newly-specified value. 
   """
   def set(self, key, value):
-    pass
+    if len(self.storage) == 10:
+        self.storage[self.order_of_use[-1]] = None
+        self.order_of_use.remove(-1)
+    if key in self.storage:
+        for i in range(0, len(self.order_of_use)):
+            if self.order_of_use[i] == key:
+                swapped_element = self.order_of_use[0]
+                self.order_of_use[0] = self.order_of_use[i]
+                self.order_of_use[i] = swapped_element
+                break
+    else:
+        self.order_of_use.insert(0, key)
+    self.storage[key] = value

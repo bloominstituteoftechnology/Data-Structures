@@ -44,95 +44,74 @@ class DoublyLinkedList:
     return self.length
 
   def add_to_head(self, value):
-    current_head = self.head
-    # if list is empty
-    if not current_head:
-      self.head = ListNode(value)
-    # else insert before old head 
-    # and new head is node before old head
+    if self.head:
+      self.head.insert_before(value)
+      self.head = self.head.prev
     else:
-      current_head.insert_before(value)
-      self.head = current_head.prev
-      self.length += 1 # increase list lenght
+      self.head = ListNode(value)
+      self.tail = self.head
+    self.length += 1
   
   def remove_from_head(self): # need to return removed value
-    # if list is empty
-    if not self.head:
-      return None
-    # if list not empty
+    old_head = self.head
+    self.head.delete()
+    if self.head.next:
+      self.head = self.head.next
+      self.head.prev = None
     else:
-      head = self.head # save old head
-      self.head.delete() # delete head
-      self.length -= 1 # decrease list length
-      return head.value # return old head (deleted)
-
-  def add_to_tail(self, value):
-    current_tail = self.tail
-    # if list is empty
-    if not self.head:
-      return None
-    # if list not empty
-    else:
-      current_tail.insert_after(value) # insert after old tail
-      self.tail = current_tail.next # new tail is new node after old tail
-      self.length += 1 # increase list length
-
-  def remove_from_tail(self):
-    # if list is empty
-    if not self.head:
-      return None
-    # if list of 1 node
-    if self.head == self.tail:
-      # head and tail become None
-      tail = self.tail
       self.head = None
       self.tail = None
-      return tail.value
+    self.length -= 1
+    return old_head.value
+
+  def add_to_tail(self, value):
+    if self.tail:
+      self.tail.insert_after(value)
+      self.tail = self.tail.next
     else:
-      tail = self.tail # old tail
-      self.tail.delete() # delete old tail
-      self.tail = tail.prev # new tail
-      self.length -= 1 # decrease list length
-      return tail.value # return old tail (deleted)
+      self.tail = ListNode(value)
+      self.head = self.tail
+    self.length += 1
+
+  def remove_from_tail(self):
+    old_tail = self.tail
+    if self.tail == self.head:
+      self.tail = None
+      self.head = None
+
+    elif self.tail.prev:
+      self.tail = self.tail.prev
+      self.tail.next = None
+      self.tail.delete()
+    self.length -= 1
+    return old_tail.value
 
   def move_to_front(self, node): # need to return value moved
+    current_head = self.head # old head
     if self.head is not node:
       if node.next and node.prev: # if node has next and prev
         node.delete() 
-      current_head = self.head # old head
       self.head = node # node becomes new head
       node.next = current_head
-      current_head.prev = node
+      self.head = node
 
   def move_to_end(self, node):
-    if self.tail is not node:
-      if node.next and node.prev:
-        node.delete()
-      current_tail = self.tail
-      self.tail = node
-      node.prev = current_tail
-      current_tail.next = node
+    if node == self.head:
+      self.head = node.next
+    self.delete(node)
+    self.add_to_tail(node.value)
 
   def delete(self, node):
-    if node.next is None and node.prev is not None:
-      node.prev.next = None
-      self.tail = node.prev
-      return node.value
-    if node.prev is None and node.next is not None:
-      node.next.prev = None
-      self.head = node.next
-      return node.value
-    if node.prev is None and node.next is None:
-      self.head = None
-      self.tail = None
-      return node.value
-    else:
-      node.delete()
-      if node == self.head:
+    node.delete()
+    if node == self.head:
+      if node.next:
         self.head = node.next
-      if node == self.tail:
-        self.tail = node.prev
-    return node.value
+        self.head.prev = None
+      else:
+        self.head = None
+    if node == self.tail:
+      self.tail = None
+    self.length -= 1
   
   def get_max(self):
     if not self.head:

@@ -50,28 +50,81 @@ class DoublyLinkedList:
     def add_to_head(self, value):
         newhead = ListNode(value)
         newhead.next = self.head
-        self.head.prev = newhead
+        if self.head:
+            self.head.prev = newhead
         self.head = newhead
+        if not self.tail:
+            self.tail = newhead
         self.length += 1
 
     def remove_from_head(self):
-        self.head = self.head.next
+        value = self.head.value
+        if self.head == self.tail:
+            self.head = None
+            self.tail = None
+        else:
+            self.head = self.head.next
         self.length -= 1
+        return value
 
     def add_to_tail(self, value):
-        pass
+        newnode = ListNode(value)
+        if not self.head and not self.tail:
+            self.head = newnode
+            self.tail = newnode
+        else:
+            self.tail.next = newnode
+            newnode.prev = self.tail
+            self.tail = newnode
+        self.length += 1
 
     def remove_from_tail(self):
-        pass
+        value = self.tail.value
+        if self.head == self.tail:
+            self.head = None
+            self.tail = None
+        else:
+            self.tail = self.tail.prev
+        self.length -= 1
+        return value
 
     def move_to_front(self, node):
-        pass
+        if not node.next:
+            self.tail = node.prev
+        else:
+            node.next.prev = node.prev
+            node.prev.next = node.next
+        node.next = self.head
+        self.head = node
 
     def move_to_end(self, node):
-        pass
+        if node == self.head:
+            self.head = node.next
+        self.delete(node)
+        self.add_to_tail(node.value)
 
     def delete(self, node):
-        pass
+        if node.prev:
+            node.prev.next = node.next
+        if node.next:
+            node.next.prev = node.prev
+        self.length -= 1
 
     def get_max(self):
-        pass
+        current = self.head
+        maxval = current.value
+        current = current.next
+        while current:
+            if current.value > maxval:
+                maxval = current.value
+            current = current.next
+        return maxval
+
+node = ListNode(1)
+dll = DoublyLinkedList(node)
+dll.add_to_head(40)
+dll.move_to_end(dll.head)
+current = dll.head
+while current:
+    print(current.value)
+    current = current.next

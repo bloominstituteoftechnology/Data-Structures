@@ -17,13 +17,13 @@ class Heap:
     # if nothing in heap then return false
     if len(self.storage) > 1:
       self.swap(0,len(self.storage)-1)
-      max = self.storage.pop()
+      max_deleted = self.storage.pop()
       self._sift_down(0)
     elif len(self.storage) == 1:
-      max = self.storage.pop()
+      max_deleted = self.storage.pop()
     else:
-      max = False
-    return max
+      max_deleted = False
+    return max_deleted
 
     
 

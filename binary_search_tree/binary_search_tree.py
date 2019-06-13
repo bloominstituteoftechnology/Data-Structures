@@ -12,8 +12,8 @@ class BinarySearchTree:
       # 4. Otherwise, go back to step 1
 
       # What is the base case?
-      # ---- Base case: We've found an empty spot where
-      # ---- we can add the value
+      # ----- Base case: We've found an empty spot where
+      # ----- we can add the value
       if value < self.value:
           # If value is less, we go left
           # If there is no left child, we can park this node here

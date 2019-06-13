@@ -60,3 +60,5 @@ class BinarySearchTree:
       self.left.for_each(cb)
     if self.right and self.right is not None:
       self.right.for_each(cb)
+
+#test passed

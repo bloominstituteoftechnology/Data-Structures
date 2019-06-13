@@ -22,3 +22,5 @@ class Queue:
 
     def leng(self):
         return self.size
+
+        

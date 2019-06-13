@@ -4,6 +4,8 @@ class Heap:
     self.comparator = comparator
 
   def insert(self, value):
+    #appends value to the open spot
+    # compares value from previous spots to orders it correctly
     pass
 
   def delete(self):

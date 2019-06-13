@@ -14,6 +14,7 @@ class Heap:
 
     def get_size(self):
         pass
+        # return len(self.storage)
 
     def _bubble_up(self, index):
         while (index - 1) // 2 >= 0:
@@ -23,4 +24,15 @@ class Heap:
             index = parent_idx
 
     def _sift_down(self, index):
-        pass
+        left_child = 2 * index + 1
+        right_child = 2 * index + 2
+        largest = index
+        if len(self.storage) > left_child and self.storage[largest] < self.storage[left_child]:
+            largest = left_child
+
+        if len(self.storage) > right_child and self.storage[largest] < self.storage[right_child]:
+            largest = right_child
+
+        if largest != index:
+            index, largest = largest, index
+            self._sift_down(largest)

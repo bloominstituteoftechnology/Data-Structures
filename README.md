@@ -1,4 +1,4 @@
-# Data Structures 
+# Data Structures - A. Franklin
 
 Topics:
  * Queues

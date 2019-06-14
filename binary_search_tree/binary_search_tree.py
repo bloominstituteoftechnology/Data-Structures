@@ -41,3 +41,16 @@ class BinarySearchTree:
         self.left.for_each(cb)
       if self.right:
         self.right.for_each(cb)
+
+arr = [ 1, 4, 6, 5, 2, 3, 8]
+
+
+bst = BinarySearchTree(0)
+
+for i in arr:
+  bst.insert(i)
+
+for i in range(min(arr), max(arr)):
+  if bst.contains(i)!= True:
+    print(i)
+    break

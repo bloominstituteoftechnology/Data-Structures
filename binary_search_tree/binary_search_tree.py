@@ -51,13 +51,14 @@ class BinarySearchTree:
     
 
   def for_each(self, cb):
-
+    cb(self.value)
+    
     if self.left:
-      print(f'left {self.left.value}')
-      self.left.for_each(self.value)
+      self.left.for_each(cb)
     
     if self.right:
-      print(f'right {self.right.value}')
-      self.right.for_each(self.value)
+      self.right.for_each(cb)
+
+    
 
     

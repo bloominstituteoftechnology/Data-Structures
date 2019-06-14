@@ -41,9 +41,9 @@ class Heap:
 
   def _sift_down(self, index):
     '''
-          A 
-        B   C   # parent A must be larger than B or C
-      D E   F G # parent B must be larger than D or E, etc
+          A     # parent A must be larger than its children
+        B   C   # if A is smaller than B or C, then A will swap with the larger of children
+      D E   F G # if A has swapped with B and B is smaller than D, then B will swap with D.
     '''
     parent = index
    

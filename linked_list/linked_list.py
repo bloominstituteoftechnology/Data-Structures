@@ -42,10 +42,10 @@ class LinkedList:
     if not self.head: 
       return None
     if not self.head.next_node: 
-      head = self.head 
+      value = self.head.value
       self.head = None 
       self.tail = None 
-      return head. value 
+      return value 
     else: 
       value = self.head.value
       self.head = self.head.next_node

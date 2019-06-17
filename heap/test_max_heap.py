@@ -69,6 +69,7 @@ class HeapTests(unittest.TestCase):
   def test_bubble_up_was_called(self):
     self.heap._bubble_up = MagicMock()
     self.heap.insert(5)
+    print(self.heap.storage)
     self.assertTrue(self.heap._bubble_up.called)
 
   def test_sift_down_was_called(self):

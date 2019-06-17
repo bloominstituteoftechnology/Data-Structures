@@ -1,4 +1,4 @@
-# Data Structures 
+# Data Structures  
 
 Topics:
  * Queues
@@ -12,11 +12,9 @@ Stretch Goals:
  * LRU Caches
 
 ## Tasks
-1. Implement each data structure, starting with the queue. Make sure you're in the approriate directory, then run `python3 test_[NAME OF DATA STRUCTURE].py` to run the tests for that data structure and check your progress. Get all the tests passing for each data structure.
+1. Implement each data structure, starting with the linked list data structure. Make sure you're in the approriate directory, then run `python3 test_[NAME OF DATA STRUCTURE].py` to run the tests for that data structure and check your progress. Get all the tests passing for each data structure.
 
 2. Open up the `Data_Structures_Questions.md` file, which asks you to evaluate the runtime complexity of each of the methods you implemented for each data structure. Add your answers to each of the questions in the file.
-
- > NOTE: The quickest and easiest way to reliably import a file in Python is to just copy and paste the file you want to import into the same directory as the file that wants to import. This obviously isn't considered best practice, but it is the most reliable way to do it across all platforms.
 
 ### Queues
  * Should have the methods: `enqueue`, `dequeue`, and `len`.
@@ -46,7 +44,7 @@ Stretch Goals:
   * `insert` adds the input value to the binary search tree, adhering to the rules of the ordering of elements in a binary search tree.
   * `contains` searches the binary search tree for the input value, returning a boolean indicating whether the value exists in the tree or not.
   * `get_max` returns the maximum value in the binary search tree.
-  * `for_each` performs a traversal of _every_ node in the tree, executing the passed-in callback function on each tree node value. There is a myriad of ways to perform tree traversal; in this case any of them should work. 
+  * `for_each` performs a traversal of _every_ node in the tree, executing the passed-in callback function on each tree node value. There are myriad to perform tree traversal; in this case any of them should work. 
 
 ![Image of Binary Search Tree](https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Binary_search_tree.svg/300px-Binary_search_tree.svg.png)
 

@@ -80,7 +80,7 @@ class DoublyLinkedList:
       current_tail = self.tail
       self.tail = node
       self.tail.prev = current_tail
-      current_tail.next = self. tail
+      current_tail.next = self.tail
 
       if current_tail == self.head:
         self.head = current_tail

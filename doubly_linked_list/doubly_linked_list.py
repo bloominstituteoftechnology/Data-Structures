@@ -59,6 +59,9 @@ class DoublyLinkedList:
             self.head.insert_before(value)
 
     def remove_from_head(self):
+        if self.head:
+            self.head.delete(value)
+        return self.head.value
 
     def add_to_tail(self, value):
         pass

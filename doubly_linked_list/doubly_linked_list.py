@@ -86,6 +86,8 @@ class DoublyLinkedList:
     self.length -= 1
     return old_tail.value
 
+    
+
   def move_to_front(self, node): # need to return value moved
     current_head = self.head # old head
     if self.head is not node:

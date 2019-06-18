@@ -12,8 +12,8 @@ class BinarySearchTree:
       # 4. Otherwise, go back to step 1
 
       # What is the base case?
-      # ---- Base case: We've found an empty spot where
-      # ---- we can add the value
+      # ------ Base case: We've found an empty spot where
+      # ------ we can add the value
       if value < self.value:
           # If value is less, we go left
           # If there is no left child, we can park this node here
@@ -50,9 +50,15 @@ class BinarySearchTree:
       
 
   def get_max(self):
+      # we assume max_value is root node
+      
       max_value = self.value
+      # if no nodes on right then max_value is root
       if not self.right:
           return max_value
+      # but if there are higher values than root
+      # these will be on the right of root node
+      # so we do the same steps as above recursively
       else:
           return self.right.get_max()
 

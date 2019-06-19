@@ -26,7 +26,10 @@ class BinarySearchTree:
         return False
 
     def get_max(self):
-        pass
+        if not self.right:
+            return self.value
+        else:
+            return self.right.get_max()
 
     def for_each(self, cb):
         pass

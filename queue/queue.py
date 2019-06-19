@@ -7,9 +7,10 @@ class Queue:
 
   def enqueue(self, item):
     pass
+    # self.storage[:0] = item?
   
   def dequeue(self):
-    pass
+    # self.storage.pop()?
 
   def len(self):
    return len(self.storage)

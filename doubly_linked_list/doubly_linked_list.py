@@ -18,8 +18,8 @@ class ListNode:
   """Wrap the given value in a ListNode and insert it
   before this node. Note that this node could already
   have a previous node it is point to."""
-  def insert_before(self, value):
-    current_prev = self.prev
+  def insert_before(self, value): 
+    current_prev = self.prev 
     self.prev = ListNode(value, current_prev, self)
     if current_prev:
       current_prev.next = self.prev

@@ -1,38 +1,19 @@
 class Queue:
 	def __init__(self):
-		self.size = 0
 	  # what data structure should we
 	  # use to store queue elements?
 		self.storage = Linked_List()
 
+
 	def enqueue(self, item):
 		# if no value in the queue add head
-		if self.storage.head == None:
-			value = Node(item)
-			self.storage.change_head(value)
-			self.size =+ 1
-		else:
-			self.storage.change_tail(item)
-			self.size += 1
-		#add new node to linked list
-		#change tail to new node
+		self.storage.enqueue(item)
 
 	def dequeue(self):
-		if self.storage.head == None:
-			return None
-		else:
-			removed_node = Node(self.storage.head.get_value())
-			self.storage.change_head()
-			self.size -= 1
-			return removed_node.get_value()
-			
-			
-
-		#remove first node 
-		#move head to next node
+		return self.storage.dequeue()
 
 	def len(self):
-		return self.size
+		return self.storage.get_size()
 
 	#que FIFO   <-- removing 1<-- adding
 class Node:
@@ -56,26 +37,41 @@ class Linked_List:
 	def __init__(self):
 		self.head = None
 		self.tail = None
+		self.size = 0
 
-	def change_head(self, node=None):
+	def get_size(self):
+		return self.size
+
+	def dequeue(self, node=None):
 		if self.head == None:
-			self.head = node
-			self.tail = node
+			return None
+		elif self.head == self.tail:
+			last_node = self.tail
+			self.head = None
+			self.tail = None
+			self.size -= 1
+			return last_node.get_value()
 		else:
-			temp = self.head.get_next()
-			self.head = temp
+			temp = self.head
+			self.head = self.head.get_next()
+			self.size -= 1
+			return temp.get_value()
 			
 			
+	def enqueue(self, item):
+		node = Node(item)
+		if self.tail == None:
+			self.tail = node
+			self.head = node
+		else:
+			self.tail.set_next(node)  
+			self.tail = node
+		self.size += 1
 
-	def change_tail(self, node):
-		value = Node(node)
-		self.tail.next_node = value
-		value = self.tail
 
-
-# items_queue = Queue()
-# print(items_queue.len())
-# items_queue.enqueue(1)
-# items_queue.enqueue(2)
-# print(items_queue.len())
+items_queue = Queue()
+print(items_queue.len())
+items_queue.enqueue(1)
+items_queue.enqueue(2)
+print(items_queue.len())
 

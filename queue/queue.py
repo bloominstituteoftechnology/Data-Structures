@@ -13,7 +13,15 @@ class Queue:
     return self.storage
   
   def dequeue(self):
-    pass
+    # remove item from end of list
+    # decrement size property
+    # return dequeue
+    if len(self.storage) > 0:
+        popped = self.storage.pop()
+        self.size -= 1
+        return popped
+
+    return None    
 
   def len(self):
     pass

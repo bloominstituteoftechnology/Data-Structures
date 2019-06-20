@@ -1,4 +1,4 @@
-# Da ta Structures 
+# Data Structures 
 
 Topics:
  * Queues

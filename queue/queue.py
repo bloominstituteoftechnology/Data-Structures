@@ -24,4 +24,4 @@ class Queue:
     return None    
 
   def len(self):
-    pass
+      return self.size

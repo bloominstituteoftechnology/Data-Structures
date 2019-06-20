@@ -13,9 +13,4 @@ class Queue:
         return self.storage.pop()
 
     def len(self):
-        return len(self.size)
-
-
-class LinkedList:
-    def __init__(self, head=None):
-        self.head = head
+        return len(self.storage)

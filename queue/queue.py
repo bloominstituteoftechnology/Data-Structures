@@ -6,11 +6,11 @@ class Queue:
     self.storage = []
 
   def enqueue(self, item):
-    pass
-    # self.storage[:0] = item?
+    self.storage.append(item)
+    
   
   def dequeue(self):
-    # self.storage.pop()?
+    del self.storage[:1]
 
   def len(self):
    return len(self.storage)

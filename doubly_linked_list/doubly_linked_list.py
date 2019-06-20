@@ -52,10 +52,12 @@ class DoublyLinkedList:
     return temp
 
   def add_to_tail(self, value):
-    pass
+    self.tail = value
 
   def remove_from_tail(self):
-    pass
+    temp = self.tail
+    del self.tail
+    return temp
 
   def move_to_front(self, node):
     pass

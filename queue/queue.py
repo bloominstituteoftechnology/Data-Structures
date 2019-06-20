@@ -10,7 +10,10 @@ class Queue:
     
   
   def dequeue(self):
-    del self.storage[:1]
+    if len(self.storage) > 1 or len(self.storage) == 1:
+     self.storage.remove(0)
+    elif len(self.storage) < 1:
+     return None 
 
   def len(self):
    return len(self.storage)

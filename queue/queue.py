@@ -31,7 +31,18 @@ class LinkedList(object):
             current = current.get_next()
         return count
 
-    def remove_from_head():
+    def remove_from_head(self):
+        if self.head == None:
+            return None
+        elif self.head.next_node == None:
+            removed_head = self.head.get_value()
+            self.head = None
+            self.tail = None
+            return removed_head
+        else:
+            removed_head = self.head.get_value()
+            self.head = self.head.get_next()
+            return removed_head
 
 
 class Queue:
@@ -43,10 +54,14 @@ class Queue:
         self.storage = LinkedList()
 
     def enqueue(self, item):
-        pass
+        self.storage.add_to_tail(item)
+        self.size = self.size + 1
 
     def dequeue(self):
-        pass
+        if self.size == 0:
+            return None
+        self.size = self.size - 1
+        return self.storage.remove_head()
 
     def len(self):
         return self.size

@@ -52,30 +52,59 @@ class DoublyLinkedList:
         return self.length
 
     def add_to_head(self, value):
-        node = ListNode(value)
-        if self.head == None:
-            self.head = node
-            self.tail = node
+        new_head = ListNode(value, None, self.head)
+        if self.head == None and self.tail == None:
+            self.head = new_head
+            self.tail = new_head
+            self.head.prev = None
+            self.head.next = None
+            self.length = 1
+
         else:
-            self.head.insert_before(value)
-            self.head = self.head.prev
+            self.head.prev = new_head
+            new_head.prev = None
+            self.head = new_head
             self.length += 1
 
     def remove_from_head(self):
-        if self.head == None:
-            return None
-        prev_head = self.head.value
-        self.head = self.head.next
-        if self.head == None:
+        removed = self.head.value
+        if self.head == self.tail:
+            self.head = None
             self.tail = None
-        self.length -= 1
-        return prev_head
+            self.length = 0
+
+        else:
+            self.head = self.head.next
+            self.head.prev.delete()
+            self.length -= 1
+        return removed
 
     def add_to_tail(self, value):
-        pass
+        new_tail = ListNode(value, self.tail)
+        if self.head == None and self.tail == None:
+            self.head = new_tail
+            self.tail = new_tail
+            self.head.prev = None
+            self.head.next = None
+            self.length = 1
+
+        else:
+            self.tail.next = new_tail
+            self.tail = new_tail
+            self.length += 1
 
     def remove_from_tail(self):
-        pass
+        removed = self.tail.value
+        if self.head == self.tail:
+            self.head = None
+            self.tail = None
+            self.length = 0
+
+        else:
+            self.tail = self.head.prev
+            self.tail.next.delete()
+            self.length -= 1
+        return removed
 
     def move_to_front(self, node):
         pass

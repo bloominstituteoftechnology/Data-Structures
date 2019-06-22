@@ -64,15 +64,16 @@ class DoublyLinkedList:
     pass
 
   def remove_from_head(self):
-    node.remove_from_head()
-    pass
+    self.head = self.head.next_node
+    self.head.prev_node = None
 
   def add_to_tail(self, value):
     #similar to single linked list
     pass
 
   def remove_from_tail(self):
-    pass
+    self.tail = self.tail.prev_node
+    self.tail.next_node = None
 
   def move_to_front(self, node):
 

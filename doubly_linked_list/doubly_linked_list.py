@@ -56,6 +56,9 @@ class DoublyLinkedList:
     pass
 
   def move_to_front(self, node):
+    value = node.value
+    node.delete()
+    self.add_to_head(value)
     pass
 
   def move_to_end(self, node):

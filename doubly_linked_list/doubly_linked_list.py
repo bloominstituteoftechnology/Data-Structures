@@ -60,8 +60,16 @@ class DoublyLinkedList:
       self.length += 1
 
   def remove_from_head(self):
-    self.head = self.head.next_node
-    self.head.prev_node = None
+    removed = self.head.value
+    if self.head == self.tail:
+      self.head = None
+      self.tail = None
+      self.lenght = 0
+    else:
+      self.head = self.head.next
+      self.head.prev.delete()
+      self.lenght -= 1
+    return removed
 
   def add_to_tail(self, value):
     #similar to single linked list

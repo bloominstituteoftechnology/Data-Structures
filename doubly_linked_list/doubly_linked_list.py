@@ -102,16 +102,19 @@ class DoublyLinkedList:
 
     # remove 'node' ...ListNode delete() BUT need to save value first
     value = node.value # value = 2
-    node.delete()
    
     # add 'node' to head ...add_to_head()
     self.add_to_head(value)
-
-    pass
+    self.length -= 1
 
   def move_to_end(self, node):
     # similar to move_to_head()
-    pass
+    if self.length > 1 and node != self.tail:
+      self.tail.insert_after(node.value)
+      self.tail = self.tail.next
+    if node == self.head:
+      self.head = node.next
+    node.delete()
 
   def delete(self, node):
     pass

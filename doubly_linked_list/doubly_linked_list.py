@@ -44,25 +44,86 @@ class DoublyLinkedList:
     return self.length
 
   def add_to_head(self, value):
-    pass
+    if not self.head and not self.tail:
+      new_node = ListNode(value)
+      self.head = new_node
+      self.tail = new_node
+    # add new value as new head
+    else:
+      self.head.insert_before(value)
+      self.head = self.head.prev
+    self.length += 1
 
   def remove_from_head(self):
-    pass
+    value = self.head.value
+    if self.head is self.tail:
+      self.head = None
+      self.tail = None
+    else:
+      self.head.delete()
+    self.length = self.length - 1
+
+    return value
 
   def add_to_tail(self, value):
-    pass
+    if not self.head and not self.tail:
+      new_node = ListNode(value)
+      self.head = new_node
+      self.tail = new_node
+    else:
+      self.tail.insert_after(value)
+      self.tail = self.tail.next
+    self.length += 1
 
   def remove_from_tail(self):
-    pass
+    value = self.tail.value
+    if self.tail is self.head:
+      self.head = None
+      self.tail = None
+    else:
+      self.tail.delete()
+    self.length = self.length - 1
+
+     return value
 
   def move_to_front(self, node):
-    pass
+    if node == self.head:
+      return None
+
+     self.add_to_head(node.value)
+    if node == self.tail:
+      self.tail = self.tail.next
+      node.delete()
+    self.length = self.length -1
 
   def move_to_end(self, node):
-    pass
+    if node == self.tail:
+      return None
+    self.add_to_tail(node.value)
+    if node == self.head:
+      self.head = self.head.next
+      node.delete()
+    self.length = self.length - 1
 
   def delete(self, node):
-    pass
+    if self.head is None and self.tail is None:
+      self.head = None
+      self.tail = None
+    else:
+      if node == self.head:
+        self.head = node.next
+      if node == self.tail:
+        self.tail = node.prev
+      node.delete()
+    self.length = self.length - 1
     
   def get_max(self):
-    pass
+    if not self.head:
+      return None
+    current_node = self.head
+    max_node = self.head.value
+    while current_node:
+      if current_node.value > max_node:
+        max_node = current_node.value
+      current_node = current_node.next
+    return max_node

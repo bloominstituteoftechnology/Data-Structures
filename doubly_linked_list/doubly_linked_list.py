@@ -13,7 +13,7 @@ class ListNode:
     current_next = self.next
     self.next = ListNode(value, self, current_next)
     if current_next:
-      current_next.prev = self.next
+      current_next.prev = self.next # This is a comment. asdasd
 
   """Wrap the given value in a ListNode and insert it
   before this node. Note that this node could already
@@ -43,7 +43,11 @@ class DoublyLinkedList:
   def __len__(self):
     return self.length
 
-  def add_to_head(self, value):
+  def add_to_head(self, node):
+    # Use node or self to target insert before fn and feed it a value.
+    value = node
+    # node.delete()
+    # self.head = value
     self.head = value
 
   def remove_from_head(self):
@@ -60,13 +64,19 @@ class DoublyLinkedList:
     return temp
 
   def move_to_front(self, node):
-    pass
+    temp = node
+    node.delete()
+    self.add_to_head(temp)
 
   def move_to_end(self, node):
-    pass
+    temp = node
+    node.delete()
+    self.add_to_tail(temp)
 
   def delete(self, node):
     pass
     
   def get_max(self):
-    pass
+    temp = self.head
+    if self.head.next > self.head:
+      temp = self.head.next

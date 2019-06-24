@@ -24,7 +24,7 @@ class DoublyLinkedListTests(unittest.TestCase):
   #   self.assertEqual(len(self.dll), 1)
   #   self.assertEqual(self.dll.remove_from_tail(), 68)
   #   self.assertEqual(len(self.dll), 0)
-
+  #
   # def test_list_remove_from_head(self):
   #   self.dll.remove_from_head()
   #   self.assertIsNone(self.dll.head)
@@ -75,15 +75,15 @@ class DoublyLinkedListTests(unittest.TestCase):
   # def test_node_insert_before(self):
   #   self.node.insert_before(0)
   #   self.assertEqual(self.node.prev.value, 0)
-
-  def test_list_add_to_head(self):
-    self.assertEqual(self.dll.head.value, 1)
-
-    self.dll.add_to_head(10)
-    self.assertEqual(self.dll.head.value, 10)
-    self.assertEqual(self.dll.head.next.value, 1)
-    self.assertEqual(len(self.dll), 2)
-
+  #
+  # def test_list_add_to_head(self):
+  #   self.assertEqual(self.dll.head.value, 1)
+  #
+  #   self.dll.add_to_head(10)
+  #   self.assertEqual(self.dll.head.value, 10)
+  #   self.assertEqual(self.dll.head.next.value, 1)
+  #   self.assertEqual(len(self.dll), 2)
+  #
   # def test_node_insert_after(self):
   #   self.node.insert_after(2)
   #   self.assertEqual(self.node.next.value, 2)
@@ -139,15 +139,15 @@ class DoublyLinkedListTests(unittest.TestCase):
   #   self.assertEqual(self.dll.head.value, 6)
   #   self.assertEqual(self.dll.tail.value, 6)
   #   self.assertEqual(len(self.dll), 1)
-  #
-  # def test_get_max(self):
-  #   self.assertEqual(self.dll.get_max(), 1)
-  #   self.dll.add_to_tail(100)
-  #   self.assertEqual(self.dll.get_max(), 100)
-  #   self.dll.add_to_tail(55)
-  #   self.assertEqual(self.dll.get_max(), 100)
-  #   self.dll.add_to_tail(101)
-  #   self.assertEqual(self.dll.get_max(), 101)
+
+  def test_get_max(self):
+    self.assertEqual(self.dll.get_max(), 1)
+    self.dll.add_to_tail(100)
+    self.assertEqual(self.dll.get_max(), 100)
+    self.dll.add_to_tail(55)
+    self.assertEqual(self.dll.get_max(), 100)
+    self.dll.add_to_tail(101)
+    self.assertEqual(self.dll.get_max(), 101)
 
 if __name__ == '__main__':
   unittest.main()

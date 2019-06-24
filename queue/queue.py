@@ -31,7 +31,7 @@ class Linked_List:
 
 
   def remove_head(self):
-    if self.head = None:
+    if self.head == None:
       return None
     elif self.head == self.tail:
       del_value = self.head.get_value()
@@ -43,8 +43,6 @@ class Linked_List:
       self.head = self.head.get_next()
       return del_value
 
-
-
 class Queue:
   def __init__(self):
     self.size = 0
@@ -53,11 +51,17 @@ class Queue:
     self.storage = Linked_List()
 
   def enqueue(self, item):
-    # pass
+    self.storage.add_to_tail(item)
+    self.size += 1
+
   
   def dequeue(self):
-    # pass
+    if self.size == 0:
+      return None
+    else:  
+      self.storage.remove_head()
+      self.size -= 1
     
 
   def len(self):
-    # pass
+    return self.size

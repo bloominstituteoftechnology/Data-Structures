@@ -43,12 +43,20 @@ class DoublyLinkedList:
   def __len__(self):
     return self.length
 
-  def add_to_head(self, node):
+  def add_to_head(self, value):
     # Use node or self to target insert before fn and feed it a value.
-    value = node
+    node = ListNode(value)
     # node.delete()
     # self.head = value
-    self.head = value
+    if self.head == None:
+      self.head = node
+      self.tail = node
+    else:
+      node.next = self.head
+      self.head.prev = node
+      self.head = node
+
+    self.length += 1
 
   def remove_from_head(self):
     temp = self.head
@@ -77,14 +85,25 @@ class DoublyLinkedList:
     pass
     
   def get_max(self):
-    while self.head == None:
+    x = 0
+    # while self.head == None:
+    #   return None
+    # while self.head != None:
+    #   max_val = self.head.value
+    #   temp_node = self.head
+    #   if temp_node.next:
+    #     temp_node = temp_node.next
+    #   if temp_node.value > max_val:
+    #     max_val = temp_node.value
+    #
+    #   return max_val
+    if self.head == None:
       return None
-    while self.head != None:
-      max_val = self.head.value
-      temp_node = self.head
-      if temp_node.next:
-        temp_node = temp_node.next
-      if temp_node.value > max_val:
-        max_val = temp_node.value
-
-    return max_val
+    else:
+      cur_max = self.head.value
+      cur_node = self.head
+      while cur_node.next:
+        cur_node = cur_node.next
+        if cur_node.value > cur_max:
+          cur_max = cur_node.value
+      return cur_max

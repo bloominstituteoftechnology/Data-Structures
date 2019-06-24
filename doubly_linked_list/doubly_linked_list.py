@@ -67,21 +67,19 @@ class DoublyLinkedList:
     if not self.head and not self.tail:
       return None
 
-    if self.length > 0:
-      # value = self.head.value
     # Check to see if only 1 node in Linked List
-      if self.head == self.tail:
-        value = self.head.value
-        self.head = None
-        self.tail = None
-        self.length -= 1
-        return value
+    if self.head == self.tail:
+      value = self.head.value
+      self.head = None
+      self.tail = None
+      self.length -= 1
+      return value
 
       # If more than 1 node in Linked List
-      else:
-        value = self.head.value
-        self.head.delete()
-        return value
+    else:
+      value = self.head.value
+      self.delete(node)
+      return value
 
   def add_to_tail(self, value):
   # `add_to_tail` replaces the tail of the list with a new value that is passed in.
@@ -107,21 +105,19 @@ class DoublyLinkedList:
     if not self.head and not self.tail:
       return None
 
-    if self.length > 0:
-      # value = self.head.value
     # Check to see if only 1 node in Linked List
-      if self.head == self.tail:
-        value = self.tail.value
-        self.head = None
-        self.tail = None
-        self.length -= 1
-        return value
+    if self.head == self.tail:
+      value = self.tail.value
+      self.head = None
+      self.tail = None
+      self.length -= 1
+      return value
 
       # If more than 1 node in Linked List
-      else:
-        value = self.tail.value
-        self.tail.delete()
-        return value
+    else:
+      value = self.tail.value
+      self.delete(node)
+      return value
 
   def move_to_front(self, node):
   # `move_to_front` takes a reference to a node in the list and moves it to the front of the list, shifting all other list nodes down. 

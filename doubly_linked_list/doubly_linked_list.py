@@ -121,18 +121,71 @@ class DoublyLinkedList:
       self.tail = self.tail.get_next()
       return value
 
-  #move_to_front takes a reference to a node in the list and moves it to the front of the list, shifting all other list nodes down
+  #move_to_front takes a reference to a node in the list and 
+  # moves it to the front of the list, shifting all other list nodes down
   def move_to_front(self, node):
-    pass
+    #if the node is already in the front
+    if node is self.head:
+      return None
+
+    value = node.value
+
+    #if the node is currently the tail
+    elif node is self.tail:
+      self.remove_from_tail()
+      self.add_to_head(value)
+    
+    else:
+      node.delete()
+      self.add_to_head(value)
+
 
   #move_to_end takes a reference to a node in the list and moves it to the end of the list, shifting all other list nodes up
   def move_to_end(self, node):
-    pass
+    #if the node is already at the end
+    if node is self.tail:
+      return None
 
-  #delete takes a reference to a node in the list and removes it from the list. The deleted node's previous and next pointers should point to each afterwards
+    value = node.value
+
+    #if the node is currently the head
+    elif node is self.head:
+      self.remove_from_head()
+      self.add_to_tail(value)
+
+    else:
+      node.delete()
+      self.add_to_tail(value)
+
+
+  #delete takes a reference to a node in the list and removes it from the list. 
+  # The deleted node's previous and next pointers should point to each afterwards
   def delete(self, node):
-    pass
+    #if the list is empty
+    if not self.head and not self.tail:
+      return None
+
+    #if one element
+    if self.head == self.tail:
+      self.head = None
+      self.tail = None
+
+
     
+
   #get_max returns the maximum value in the list.
   def get_max(self):
-    pass
+    #if the list is empty
+    if not self.head:
+      return None
+
+    max_value = self.head.value
+    current = self.head
+
+    #if the list has one or more items
+    while current:
+      if current.value > max_value:
+        max_value = current.value
+
+      current = current.next
+    return max_value

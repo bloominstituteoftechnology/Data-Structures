@@ -44,28 +44,78 @@ class DoublyLinkedList:
     return self.length
 
   def add_to_head(self, value):
-    pass
+    node = ListNode(value)
+    if self.head is not None:
+      self.head.insert_before(value)
+      self.head = self.head.prev
+    else:
+      node = ListNode(value)
+      self.head = node
+      self.tail = node
+    self.length += 1
 
   def remove_from_head(self):
-    pass
+    nextNode = self.head.next
+    self.head.delete()
+    self.head = nextNode
+    self.length -= 1
 
   def add_to_tail(self, value):
-    pass
+    if self.tail is not None:
+      self.tail.insert_after(value)
+      self.tail = self.tail.next
+    else:
+      node = ListNode(value)
+      self.head = node
+      self.tail = node
+    self.length += 1
 
   def remove_from_tail(self):
-    pass
+    prevNode = self.tail.prev
+    if self.head == self.tail:
+      self.head.delete()
+      self.tail.delete()
+
+    self.tail.delete()
+    self.tail = prevNode
+    self.length -= 1
 
   def move_to_front(self, node):
     value = node.value
     node.delete()
     self.add_to_head(value)
-    pass
 
   def move_to_end(self, node):
-    pass
+    value = node.value
+    node.delete()
+    self.add_to_tail(value)
 
   def delete(self, node):
-    pass
+    self.length -= 1
+    node.delete()
     
   def get_max(self):
-    pass
+    max = self.head.value
+    node = self.head
+    if self.__len__() == 0:
+      return 0
+    else:
+      while node is not None:
+        node = node.next
+        if node is None:
+          break
+        if node is not None and node.value > max:
+          max = node.value
+    return max
+
+
+dll = DoublyLinkedList(ListNode(1))
+dll.add_to_head(100)
+dll.add_to_head(200)
+dll.add_to_tail(500)
+dll.remove_from_tail()
+dll.remove_from_tail()
+dll.remove_from_tail()
+dll.remove_from_tail()
+print(dll.head)
+print(dll.tail)

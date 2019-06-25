@@ -54,10 +54,8 @@ class BinarySearchTree:
     max = 0
     print(self.right is not None)
     if self.right is None:
-      print('return value')
       return self.value
-    else:
-      while self.right is not None:
+    elif self.right is not None:
         max = self.right.get_max()
     return max
 

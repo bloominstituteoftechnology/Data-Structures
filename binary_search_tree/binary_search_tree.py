@@ -1,6 +1,6 @@
 class BinarySearchTree:
 	def __init__(self, value):
-		self.value = value
+		self.value = value //root
 		self.left = None
 		self.right = None
 

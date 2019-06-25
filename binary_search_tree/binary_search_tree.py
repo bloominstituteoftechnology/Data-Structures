@@ -52,10 +52,12 @@ class BinarySearchTree:
 
   def get_max(self):
     max = 0
-    print(self.right is not None)
+    # If the right node is None, return the current value. 
+    # It should be the largest value unless we messed up with the insert method.
     if self.right is None:
       return self.value
     elif self.right is not None:
+      # Else we need to recurse to the right.
         max = self.right.get_max()
     return max
 

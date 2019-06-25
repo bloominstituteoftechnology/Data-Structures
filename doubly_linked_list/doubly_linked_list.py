@@ -24,6 +24,20 @@ class ListNode:
     if current_prev:
       current_prev.next = self.prev
 
+
+  #i think we might need these methods
+  #get value of next node
+  def get_value(self):
+      return self.value
+
+  def get_next(self):
+      return self.next_node
+
+    #set the next node allows you to get the next node
+  def set_next(self, new_next_node):
+        #set this node's next_node reference to the passed in node
+      self.next_node = new_next_node
+
   """Rearranges this ListNode's previous and next pointers
   accordingly, effectively deleting this ListNode."""
   def delete(self):
@@ -43,26 +57,82 @@ class DoublyLinkedList:
   def __len__(self):
     return self.length
 
+  #add_to_head replaces the head of the list with a new value that is passed in
   def add_to_head(self, value):
-    pass
+    #initialize a node with a value
+    new_node = Node(value, None)
 
+    #if the list is empty
+    if not self.head:
+      self.head = new_node
+      self.tail = new_node
+
+    #if the list has one item
+    elif not self.head.get_next():
+      new_node.set_next = self.head
+      self.head = new_node
+
+    #if the list has 2 or more items
+    else:
+      prev_head = self.head
+      self.head = new_node
+      self.head.set_next(prev_head)
+    
+
+  #remove_from_head removes the head node and returns the value stored in it
   def remove_from_head(self):
-    pass
+    #if the linked list is empty, return none
+    #if linked list has one value this also will have the same return
+    if not self.head:
+      return None
 
+    #if the linked list has more than 1 value
+    else:
+      value = self.head.get_value()
+      self.head = self.head.get_next()
+      return value
+
+  #add_to_tail replaces the tail of the list with a new value that is passed in
   def add_to_tail(self, value):
-    pass
+    #initialize a node with a value
+    new_node = Node(value, None)
 
+    #check if no head
+    if self.tail is None:
+      self.head = new_node
+      self.tail = new_node
+    #if our list is not empty add new node to tail
+    else:
+      #set current tail's next reference to the new node that we passed in
+      self.tail.set_next(new_node)
+      #state the linked list's tail
+      self.tail = new_node
+
+  #remove_from_tail removes the tail node and returns the value stored in it
   def remove_from_tail(self):
-    pass
+    #if linked list is empty return none
+    #also if there is only one value in the linked list
+    if not self.tail:
+      return None
 
+    #if linked list has more than one element
+    else:
+      value = self.tail.get_value()
+      self.tail = self.tail.get_next()
+      return value
+
+  #move_to_front takes a reference to a node in the list and moves it to the front of the list, shifting all other list nodes down
   def move_to_front(self, node):
     pass
 
+  #move_to_end takes a reference to a node in the list and moves it to the end of the list, shifting all other list nodes up
   def move_to_end(self, node):
     pass
 
+  #delete takes a reference to a node in the list and removes it from the list. The deleted node's previous and next pointers should point to each afterwards
   def delete(self, node):
     pass
     
+  #get_max returns the maximum value in the list.
   def get_max(self):
     pass

@@ -18,7 +18,15 @@ class BinarySearchTree:
 
   def contains(self, target):
     current = self
-    pass
+    while True:
+      if current is None:
+        return False
+      if target == current.value:
+        return True
+      if target > current.value:
+        current = current.right
+      else:
+        current = current.left
 
   def get_max(self):
     pass

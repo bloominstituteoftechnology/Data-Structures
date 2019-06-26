@@ -84,7 +84,10 @@ class DoublyLinkedList:
     self.add_to_tail(temp)
 
   def delete(self, node):
-    pass
+    if self.prev:
+      self.prev.next = self.next
+    if self.next:
+      self.next.prev = self.prev
     
   def get_max(self):
     # while self.head == None:

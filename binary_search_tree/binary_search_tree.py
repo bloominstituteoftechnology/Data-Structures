@@ -37,7 +37,10 @@ def contains(self, target):
 
 
 def get_max(self):
-    pass
+    if self.right:
+        return self.get_max(self.right)
+
+    return self.value
 
 
 def for_each(self, cb):

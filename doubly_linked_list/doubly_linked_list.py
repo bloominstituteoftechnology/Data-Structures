@@ -70,6 +70,7 @@ class DoublyLinkedList:
 
   def remove_from_tail(self):
     temp = self.tail
+    self.prev.next = None
     del self.tail
     return temp
 

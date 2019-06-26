@@ -23,7 +23,17 @@ def insert(self, value):
 
 
 def contains(self, target):
-    pass
+    # takes target value and checks tree to see if that value already exists.
+    if target < self.value:
+        if self.left == None:
+            return False
+        return self.left.contains(target)
+
+    # if value is greater than parent check right
+    if target > self.value:
+        if self.right == None:
+            return False
+        return self.right.contains(target)
 
 
 def get_max(self):

@@ -11,8 +11,8 @@ class Queue:
         
     def dequeue(self):
         if self.size > 0:
-          self.size -= 1
-          return self.storage.rem_first_item()
+            self.size -= 1
+            return self.storage.rem_first_item()
 
     def len(self):
         return self.size

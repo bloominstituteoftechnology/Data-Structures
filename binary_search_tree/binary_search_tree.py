@@ -26,10 +26,45 @@ class BinarySearchTree:
         self.right.insert(value)
 
   def contains(self, target):
-    pass
+    if self.value == target:
+      return True
+
+    if target < self.value:
+      # Search left
+      if not self.left:
+        return False
+
+      return self.left.contains(target)
+    else:
+      # Search right
+      if not self.right:
+        return False
+
+      return self.right.contains(target)
+
 
   def get_max(self):
-    pass
+    while self.right is not None:
+      max = self.value
+      self = self.right
+
+    max = self.value
+    return max
+
 
   def for_each(self, cb):
-    pass
+    # Initial node:
+    return self.value
+    
+
+bst = BinarySearchTree(5)
+arr = []
+cb = lambda x: arr.append(x)
+
+bst.insert(1)
+bst.insert(2)
+bst.insert(3)
+bst.insert(4)
+bst.insert(6)
+
+print(bst.for_each(cb))

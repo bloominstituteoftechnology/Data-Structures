@@ -68,15 +68,19 @@ class DoublyLinkedList:
         pass
 
     def remove_from_head(self):
-        pass
+        current_head = self.head.value
+        # Deletes the current head node
+        self.head.delete()
+        return current_head
 
     def add_to_tail(self, value):
         self.tail.insert_after(value)
-        # not a complete solution
-        pass
 
     def remove_from_tail(self):
-        pass
+        current_tail = self.tail.value
+        self.tail.delete()
+        ## Deletes Tail Node
+        return current_tail
 
     def move_to_front(self, node):
         value = node.value
@@ -85,12 +89,18 @@ class DoublyLinkedList:
         self.add_to_head(value)
 
     def move_to_end(self, node):
-            # similar to move to front
-        pass
+        # deletes node, and then adds it to the end or tail
+        value = node.value
+        node.delete()
+        self.add_to_tail(value)
 
     def delete(self, node):
-        pass
-
+        # Unlinks the two nodes essentially deleting it
+        next_node = node.next
+        prev_node = node.prev
+        prev_node.next = next_node
+        next_node.prev = prev_node
+        
     def get_max(self):
         if self.head == None:
             return None

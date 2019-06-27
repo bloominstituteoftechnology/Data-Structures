@@ -66,7 +66,7 @@ class DoublyLinkedList:
 
   def add_to_tail(self, value):
     node = ListNode(value)
-    self.tail.insert_after(node)
+    self.tail.next = node
 
   def remove_from_tail(self):
     temp = self.tail
@@ -85,10 +85,11 @@ class DoublyLinkedList:
     self.add_to_tail(temp)
 
   def delete(self, node):
-    if self.prev:
+    if node.prev:
       self.prev.next = self.next
-    if self.next:
+    if node.next:
       self.next.prev = self.prev
+    del node
     
   def get_max(self):
     # while self.head == None:
@@ -105,10 +106,10 @@ class DoublyLinkedList:
     if self.head == None:
       return None
     else:
-      cur_max = self.head.value
+      cur_max = self.head
       cur_node = self.head
       while cur_node.next:
         cur_node = cur_node.next
-        if cur_node.value > cur_max:
+        if cur_node.value > cur_max.value:
           cur_max = cur_node.value
     return cur_max

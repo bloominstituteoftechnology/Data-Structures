@@ -4,48 +4,44 @@ class BinarySearchTree:
         self.left = None
         self.right = None
 
+    def insert(self, value):
+        if value < self.value:
+          #search the left side for node placement
+            if not self.left:
+                self.left = BinarySearchTree(value)
+            else:
+                self.left.insert(value)
+        elif value > self.value:
+          #search the right side 
+            if not self.right:
+                self.right = BinarySearchTree(value)
+            else:
+                self.right.insert(value)
 
-def insert(self, value):
-    # need a recursive function that movs along the tree and inserts a node where it belongs.
-    # if value less than parent go down left branch
-    if value < self.value:
-        if self.left != None:
-            self.left.insert(value)
-        else:
-            self.left = BinarySearchTree(value)
-
-    elif value > self.value:
-        # Same as before, but down the right branch for greater values
-        if self.right != None:
-            self.right.insert(value)
-        else:
-            self.right = BinarySearchTree(value)
-
-
-def contains(self, target):
-    # takes target value and checks tree to see if that value already exists.
-    if target < self.value:
-        if self.left == None:
+    def contains(self, target):
+      #search the tree to see if new node is already in tree
+        if target == self.value:
+            return True
+        elif self.right is None and self.left is None:
             return False
-        return self.left.contains(target)
+        else:
+            if self.left is not None:
+                if self.left.contains(target):
+                    return True
+            if self.right is not None:
+                if self.right.contains(target):
+                    return True
 
-    # if value is greater than parent check right
-    if target > self.value:
-        if self.right == None:
-            return False
-        return self.right.contains(target)
+    def get_max(self):
+      #Make sure the root node has the highest value
+        if self.right is None:
+            return self.value
+        else:
+            return self.right.get_max()
 
-
-def get_max(self):
-    if self.right:
-        return self.right.get_max()
-
-    return self.value
-
-
-def for_each(self, cb):
-    cb(self.value)
-    if self.left:
-        self.leftfor_each(cb)
-    if self.right:
-        self.right.for_each(cb)    
+    def for_each(self, cb):
+        cb(self.value)
+        if self.left:
+            self.left.for_each(cb)
+        if self.right:
+            self.right.for_each(cb)

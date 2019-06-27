@@ -79,9 +79,13 @@ class DoublyLinkedList:
     node.delete()
     self.add_to_head(temp)
 
+    # temp = self.value
+    # self.delete()
+    # self.add_to_head(temp)
+
   def move_to_end(self, node):
     temp = node
-    node.delete()
+    self.delete(node)
     self.add_to_tail(temp)
 
   def delete(self, node):

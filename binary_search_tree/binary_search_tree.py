@@ -18,8 +18,16 @@ class BinarySearchTree:
     pass
 
   def contains(self, target):
-    if self.value > target:
-      if self.left 
+    if self.value == target:
+      return True
+    elif self.value > target:
+      self.value = self.left.value
+      self.contains(target)
+    elif self.value < target:
+      self.value = self.right.value
+      self.contains(target)
+    else:
+      return False
     pass
 
   def get_max(self):

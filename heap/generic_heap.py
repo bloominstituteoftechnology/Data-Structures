@@ -4,7 +4,13 @@ class Heap:
     self.comparator = comparator
 
   def insert(self, value):
-    pass
+    # 1. Check last 
+    self[len(self)] = v
+    # 2. Find Index of last value
+    index = self.length-1
+    # 3.
+    while (i > 1 and self[parent(i)] < self(i))
+        (self[i], self[parent(i)])
 
   def delete(self):
     pass
@@ -16,7 +22,21 @@ class Heap:
     pass
 
   def _bubble_up(self, index):
-    pass
+      # 1. Check to see if the index is greater than zero
+        # 2. Grab parent index
+        # 3. Check if current value is greater than or less than parent value
+        #     a. If current is greater than
+        #     b. Swap
+        # 4. If current is lesser than parent
+        #     a. Leave it alone - break
+        while index > 0:
+            parent = (index - 1) // 2
+
+            if self.storage[index] > self.storage[parent]:
+                self.storage[index], self.storage[parent] = self.storage[parent], self.storage[index]
+                index = parent #Updating your new index
+            else:
+                break
 
   def _sift_down(self, index):
     pass

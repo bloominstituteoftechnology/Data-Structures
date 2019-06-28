@@ -3,7 +3,8 @@ class Heap:
     self.storage = []
 
   def insert(self, value):
-    pass
+    self.storage.append(value)
+    self._bubble_up(len(self.storage)-1)
 
   def delete(self):
     pass
@@ -19,7 +20,7 @@ class Heap:
     # 2. Get parent index
     # 3. If current value > parent: Swap
     # 4. Otherwise leave it & break
-
+    print(self.storage)
     while index > 0:
       parent = (index - 1) // 2
 
@@ -29,5 +30,18 @@ class Heap:
       else:
         break
 
+
+
   def _sift_down(self, index):
     pass
+
+
+heap = Heap()
+heap.insert(6)
+heap.insert(8)
+heap.insert(10)
+heap.insert(9)
+heap.insert(1)
+heap.insert(9)
+heap.insert(9)
+heap.insert(5)

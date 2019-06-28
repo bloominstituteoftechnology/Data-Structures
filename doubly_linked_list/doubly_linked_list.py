@@ -44,25 +44,107 @@ class DoublyLinkedList:
     return self.length
 
   def add_to_head(self, value):
-    pass
+
+    if self.head == None:
+      node = ListNode(value)
+      self.head = node
+      self.tail = node
+    else:
+      self.head.insert_before(value)
+      self.head = self.head.prev
+
+    self.length += 1
 
   def remove_from_head(self):
-    pass
+    if self.head is not None:
+      val = self.head.value
+
+      if self.head != self.tail:
+        self.head = self.head.next
+        self.head.prev.delete()
+      else:
+        self.head.delete()
+        self.head = None
+        self.tail = None
+
+      self.length -= 1
+      return val
 
   def add_to_tail(self, value):
-    pass
+    if self.tail == None:
+      node = ListNode(value)
+      self.head = node
+      self.tail = node
+    else:
+      self.tail.insert_after(value)
+      self.tail = self.tail.next
+
+    self.length += 1
 
   def remove_from_tail(self):
-    pass
+    if self.tail is not None:
+
+      val = self.tail.value
+
+      if self.tail != self.head:
+        self.tail = self.tail.prev
+        self.tail.next.delete()
+      else:
+        self.tail.delete()
+        self.head = None
+        self.tail = None
+
+      self.length -= 1
+      return val
 
   def move_to_front(self, node):
-    pass
+    # remove 'node'
+    # add 'node' to head
+    value = node.value # save the value first
+
+    if node is self.tail:
+      self.remove_from_tail()
+    else:
+      node.delete()
+      self.length -= 1
+    self.add_to_head(value)
+    
+
 
   def move_to_end(self, node):
-    pass
+    value = node.value
+
+    if node is self.head:
+      self.remove_from_head()
+    else:
+      node.delete()
+      self.length -= 1
+    self.add_to_tail(value)
 
   def delete(self, node):
-    pass
+    if node == self.head:
+      self.head = self.head.next
+
+    if node == self.tail:
+      self.tail = self.tail.prev
+
+    node.delete()
+    self.length -= 1
     
   def get_max(self):
-    pass
+    max = 0
+
+    if self.head is not None:
+      max = self.head.value
+      node = self.head
+
+      while node.next is not None:
+        if node.value > max:
+          max = node.value
+
+        node = node.next
+      
+      if node.value > max:
+        max = node.value
+
+    return max

@@ -53,4 +53,8 @@ class BinarySearchTree:
   def for_each(self, cb):
     if self.left is None and self.right is None:
       cb(self.value)
-    elif self.left or self.right is not None:
+    while self.left is not None and self.right is not None:
+      if self.left:
+        self.for_each(self.left, cb)
+      if self.right:
+        self.for_each(self.right, cb)

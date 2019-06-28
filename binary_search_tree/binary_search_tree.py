@@ -53,18 +53,10 @@ class BinarySearchTree:
 
 
   def for_each(self, cb):
-    # Initial node:
-    return self.value
+    if self.left:
+      self.left.for_each(cb)
+    cb(self.value)
+    if self.right:
+      self.right.for_each(cb)
     
 
-bst = BinarySearchTree(5)
-arr = []
-cb = lambda x: arr.append(x)
-
-bst.insert(1)
-bst.insert(2)
-bst.insert(3)
-bst.insert(4)
-bst.insert(6)
-
-print(bst.for_each(cb))

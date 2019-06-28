@@ -30,4 +30,16 @@ class Heap:
             self._bubble_up(index_of_parent)
 
     def _sift_down(self, index):
-        pass
+        index_left = index if 2 * index > self.size else 2 * index
+        index _right = index if 2 * index + 1 > self.size else 2 * index + 1
+
+        index_of_child = index_left if self.storage[index_left] > self.storage[index_right] else index_right
+
+        if index_of_child == index:
+            return
+
+        if self.storage[index_of_child] > self.storage[index]:
+            temp = self.storage[index]
+            self.storage[index] = self.storage[index_of_child]
+            self.storage[index_of_child] = temp
+            self._sift_down(index_of_child)

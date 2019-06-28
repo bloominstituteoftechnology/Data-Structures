@@ -12,7 +12,7 @@ class BinarySearchTree:
     # 4. Otherwise, repeat.
     # Base case: we've found an empty spot to park a value.
 
-    if value > self.value:
+    if value < self.value:
       # If value is less, we go left.
       # If there is no left child, we park the node here
       if self.left is None:

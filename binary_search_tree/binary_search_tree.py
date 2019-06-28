@@ -37,4 +37,14 @@ class BinarySearchTree:
       self.right.get_max()  
 
   def for_each(self, cb):
-    pass
+    cb(self.value)
+
+    if self.right is None and self.left is None:
+      return None
+    else:
+      if self.left is not None:
+        self.left.for_each(cb)
+      elif: self.right is not None:
+        self.right.for_each(cb) 
+    return     
+

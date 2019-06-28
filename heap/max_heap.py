@@ -3,7 +3,7 @@ class Heap:
     self.storage = []
 
   def insert(self, value):
-    pass
+    
 
   def delete(self):
     pass

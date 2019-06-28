@@ -10,13 +10,28 @@ class Heap:
         self._bubble_up(self.size)
 
     def delete(self):
-        pass
+        if self.size == 0:
+            return None
+
+        storage_top = self.storage[1]
+        storage_end = self.storage.pop()
+
+        self.size -= 1
+
+        if self.size == 0:
+            return storage_top
+
+        self.storage[1] = storage_end
+
+        self._sift_down(1)
+
+        return storage_top
 
     def get_priority(self):
         pass
 
     def get_size(self):
-        pass
+        return self.size
 
     def _bubble_up(self, index):
         index_of_parent = index//2
@@ -31,6 +46,7 @@ class Heap:
 
     def _sift_down(self, index):
         index_left = index if 2 * index > self.size else 2 * index
+
         index _right = index if 2 * index + 1 > self.size else 2 * index + 1
 
         index_of_child = index_left if self.storage[index_left] > self.storage[index_right] else index_right

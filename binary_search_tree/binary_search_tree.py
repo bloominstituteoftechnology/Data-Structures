@@ -42,7 +42,7 @@ class BinarySearchTree:
     if self.right is None:
       return self.value
 
-    while self.right.value:
+    while self.right.value is not None:
       if cur_val <= self.right.value:
         cur_val = self.right.value
         self.get_max(self.right)

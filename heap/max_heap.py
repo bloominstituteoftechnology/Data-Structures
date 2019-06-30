@@ -19,31 +19,29 @@ class Heap:
     return len(self.storage)
 
   def _bubble_up(self, index):
-    while (index - 1) // 2 >= 0:
-      if self.storage[index] < self.storage[index]:
-        self.storage[index], self.storage[(index - 1) // 2] = self.storage[(index - 1) // 2], self.storage[index]
-      
-      index = (index - 1) // 2
+    parent = (index - 1) // 2
+    while parent >= 0:
+      if self.storage[parent] < self.storage[index]:
+        self.storage[parent], self.storage[index] = self.storage[index], self.storage[parent]
+      else:
+        parent = (parent - 1) // 2
 
   def _sift_down(self, index):
     parent_index = index
     left_child = parent_index * 2 + 1
     right_child = parent_index * 2 + 2
 
-    if left_child:
-      maxIndex = left_child if self.storage[left_child] > self.storage[right_child] else right_child
-
-    while self.storage[parent_index] < self.storage[maxIndex]:
-      #swap parent and max child
-      temp = self.storage[parent_index]
-      self.storage[parent_index] = self.storage[maxIndex]
-      self.storage[maxIndex] = temp
-
-      #update index to max_childs index
-      parent_index = maxIndex
-      left_child = parent_index * 2 + 1
-      right_child = parent_index * 2 + 2
+    #while child is smaller
+    while left_child <= len(self.storage) - 1:
+      #if right child is valid
+      if right_child > len(self.storage) - 1 or self.storage[left_child] > self.storage[right_child]:
+        maxIndex = left_child
+      else:
+        maxIndex = right_child
 
       #check to see if left and right exist
       if self.storage[maxIndex] > self.storage[index]:
-        maxIndex = left_child if self.storage[left_child] > self.storage[right_child] else right_child
+        self.storage[maxIndex], self.storage[index] = self.storage[index], self.storage[maxIndex]
+      index = maxIndex
+      left_child = maxIndex * 2 + 1
+      right_child = maxIndex * 2 + 2

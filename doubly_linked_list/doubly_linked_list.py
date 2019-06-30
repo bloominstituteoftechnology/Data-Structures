@@ -45,23 +45,26 @@ class DoublyLinkedList:
 
   def add_to_head(self, value):
     current_head = self.head
-    if not current_head:
+    if current_head == None:
       self.head = ListNode(value)
+      self.tail = self.head
+      self.length = 1
     else:
       current_head.insert_before(value)
       self.head = current_head.prev
       self.length += 1
 
   def remove_from_head(self):
+    deleted = self.head.value
     if self.head == self.tail:
       self.head = None
       self.tail = None
       self.length = 0
     else:
-      current_head = self.head
-      self.head.delete()
+      self.head = self.head.next
+      self.head.prev.delete()
       self.length -= 1
-      return current_head.value
+    return deleted
 
   def add_to_tail(self, value):
     current_tail = self.tail
@@ -69,21 +72,23 @@ class DoublyLinkedList:
       node = ListNode(value)
       self.head = node
       self.tail = node
+      self.length = 1
     else:
       current_tail.insert_after(value)
       self.tail = current_tail.next
       self.length += 1
 
   def remove_from_tail(self):
+    deleted = self.tail.value
     if self.head == self.tail:
       self.head = None
       self.tail = None
       self.length = 0
     else:
-      current_tail = self.tail.prev
-      self.tail.delete()
+      self.tail = self.head.prev
+      self.tail.next.delete()
       self.length -= 1
-      return current_tail.value
+    return deleted
 
   def move_to_front(self, node):
     if self.head is not node:
@@ -124,24 +129,3 @@ class DoublyLinkedList:
         max = pointer.value
       pointer = pointer.next
     return max
-
-# node = ListNode(1)
-# dll = DoublyLinkedList(node)
-# # dll.add_to_tail(33)
-# print(dll.remove_from_tail())
-# print(dll.tail.value)
-# print(len(dll))
-
-node_1 = ListNode(3)
-node_2 = ListNode(4)
-node_3 = ListNode(5)
-
-node_1.next = node_2
-node_2.next = node_3
-node_2.prev = node_1
-node_3.prev = node_2
-
-node_2.delete()
-
-print(node_1.next.value) #node_3)
-print(node_3.prev.value) #node_1)

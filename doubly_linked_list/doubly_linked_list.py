@@ -50,13 +50,17 @@ class DoublyLinkedList:
     else:
       current_head.insert_before(value)
       self.head = current_head.prev
+      self.length += 1
 
   def remove_from_head(self):
-    if not self.head:
-      return None
+    if self.head == self.tail:
+      self.head = None
+      self.tail = None
+      self.length = 0
     else:
       current_head = self.head
       self.head.delete()
+      self.length -= 1
       return current_head.value
 
   def add_to_tail(self, value):
@@ -116,3 +120,9 @@ class DoublyLinkedList:
         max = pointer.value
       pointer = pointer.next
     return max
+
+# node = ListNode(1)
+# dll = DoublyLinkedList(node)
+# # dll.add_to_head(2)
+# print(dll.remove_from_head())
+# print(dll.tail.value)

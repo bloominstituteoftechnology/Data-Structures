@@ -72,6 +72,7 @@ class DoublyLinkedList:
     else:
       current_tail.insert_after(value)
       self.tail = current_tail.next
+      self.length += 1
 
   def remove_from_tail(self):
     if not self.tail:

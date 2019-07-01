@@ -23,12 +23,13 @@ class Heap:
     while parent >= 0:
       if self.storage[parent] < self.storage[index]:
         self.storage[parent], self.storage[index] = self.storage[index], self.storage[parent]
+      index = parent
       parent = (parent - 1) // 2
 
   def _sift_down(self, index):
-    parent_index = index
-    left_child = parent_index * 2 + 1
-    right_child = parent_index * 2 + 2
+    parent = index
+    left_child = parent * 2 + 1
+    right_child = parent * 2 + 2
 
     #while index is smaller than storage length
     while left_child <= len(self.storage) - 1:
@@ -39,20 +40,8 @@ class Heap:
         maxIndex = right_child
 
       #check to see if left and right exist
-      if self.storage[maxIndex] > self.storage[index]:
-        self.storage[maxIndex], self.storage[index] = self.storage[index], self.storage[maxIndex]
-      index = maxIndex
+      if self.storage[maxIndex] > self.storage[parent]:
+        self.storage[maxIndex], self.storage[parent] = self.storage[parent], self.storage[maxIndex]
+      parent = maxIndex
       left_child = maxIndex * 2 + 1
       right_child = maxIndex * 2 + 2
-
-heap = Heap()
-heap.insert(6)
-heap.insert(7)
-heap.insert(5)
-heap.insert(8)
-heap.insert(10)
-heap.insert(1)
-heap.insert(2)
-heap.insert(5)
-
-print(heap)

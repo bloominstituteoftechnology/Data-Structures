@@ -19,4 +19,18 @@ class Heap:
     pass
 
   def _sift_down(self, index):
-    pass
+    parent_index = index
+    left = parent_index * 2 +1
+    right = parent_index * 2 + 2
+
+    maxIndex = left if self.storage[left] > self.storage[right] else right
+
+    while self.storage[parent_index] < self.storage[maxIndex]:
+      temp = self.storage[parent_index]
+      self.storage[parent_index] = self.storage[maxIndex]
+      self.storage[maxIndex] = temp
+
+      parent_index = maxIndex
+      left = parent_index * 2 +1
+      right = parent_index * 2 + 2 
+

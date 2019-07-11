@@ -13,7 +13,7 @@ class ListNode:
     current_next = self.next
     self.next = ListNode(value, self, current_next)
     if current_next:
-      current_next.prev = self.next
+      current_next.prev = self.next # This is a comment. asdasd
 
   """Wrap the given value in a ListNode and insert it
   before this node. Note that this node could already
@@ -44,25 +44,76 @@ class DoublyLinkedList:
     return self.length
 
   def add_to_head(self, value):
-    pass
+    # Use node or self to target insert before fn and feed it a value.
+    node = ListNode(value)
+    # node.delete()
+    # self.head = value
+    if self.head == None:
+      self.head = node
+      self.tail = node
+    else:
+      self.head.insert_before(value)
+      # node.next = self.head
+      # self.head.prev = node
+      self.head = self.head.prev
+
+    self.length += 1
 
   def remove_from_head(self):
-    pass
+    temp = self.head
+    del self.head
+    return temp
 
   def add_to_tail(self, value):
-    pass
+    node = ListNode(value)
+    self.tail.next = node
 
   def remove_from_tail(self):
-    pass
+    temp = self.tail
+    self.prev.next = None
+    del self.tail
+    return temp
 
   def move_to_front(self, node):
-    pass
+    temp = node
+    node.delete()
+    self.add_to_head(temp)
+
+    # temp = self.value
+    # self.delete()
+    # self.add_to_head(temp)
 
   def move_to_end(self, node):
-    pass
+    temp = node
+    self.delete(node)
+    self.add_to_tail(temp)
 
   def delete(self, node):
-    pass
+    if node.prev:
+      self.prev.next = self.next
+    if node.next:
+      self.next.prev = self.prev
+    del node
     
   def get_max(self):
-    pass
+    # while self.head == None:
+    #   return None
+    # while self.head != None:
+    #   max_val = self.head.value
+    #   temp_node = self.head
+    #   if temp_node.next:
+    #     temp_node = temp_node.next
+    #   if temp_node.value > max_val:
+    #     max_val = temp_node.value
+    #
+    #   return max_val
+    if self.head == None:
+      return None
+    else:
+      cur_max = self.head
+      cur_node = self.head
+      while cur_node.next:
+        cur_node = cur_node.next
+        if cur_node.value > cur_max.value:
+          cur_max = cur_node.value
+    return cur_max

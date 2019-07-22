@@ -13,8 +13,6 @@ class Queue:
   
   def dequeue(self):
     if len(self.storage) > 0:
-#      i = self.storage[0]
-#      del self.storage[0]
       return self.storage.pop(0)
 
   def len(self):

@@ -44,25 +44,85 @@ class DoublyLinkedList:
     return self.length
 
   def add_to_head(self, value):
-    pass
+    if self.head == None:
+      self.head = ListNode(value)
+      self.tail = self.head
+    else:
+      self.head.insert_before(value)
+      self.head = self.head.prev
+    self.length += 1
 
   def remove_from_head(self):
-    pass
+    if self.head == None:
+      return None
+    elif self.head == self.tail:
+      self.tail = None
+    deleted_item = self.head
+    self.head.delete()
+    self.head = deleted_item.next
+    self.length -= 1
+    return deleted_item.value
+
 
   def add_to_tail(self, value):
-    pass
+    if self.tail == None:
+      self.head = ListNode(value)
+      self.tail = self.head
+    else:
+      self.tail.insert_after(value)
+      self.tail = self.tail.next
+    self.length += 1
 
   def remove_from_tail(self):
-    pass
+    if self.tail == None:
+      return None
+    elif self.tail == self.head:
+      self.head = None
+    removed_tail = self.tail
+    self.tail.delete()
+    self.tail = removed_tail.prev
+    self.length -= 1
+    return removed_tail.value
+
 
   def move_to_front(self, node):
-    pass
+    # remove node...ListNode delete() BUT need to save value first
+    value = node.value 
+    self.delete(node)
+    # add node to head... add_to_head
+    self.add_to_head(value)
+
 
   def move_to_end(self, node):
-    pass
+    value = node.value
+    self.add_to_tail(value)
+    self.delete(node)
+
 
   def delete(self, node):
-    pass
+    deleted_value = node.value
+    if self.head == node:
+      self.remove_from_head()
+    elif self.tail == node:
+      self.remove_from_tail()
+    else:
+      node.delete()
+      self.length -= 1
+      return deleted_value
+
     
   def get_max(self):
-    pass
+    # if the list empty, return None
+    if self.head == None:
+      return None
+    else:
+      curr_max = self.head.value
+      curr_node = self.head
+    #loop through nodes until reach tail
+    while curr_node.next != None:
+      curr_node = curr_node.next
+      #if we find a node > curr_max, update  curr_max
+      if curr_node.value > curr_max:
+        curr_max = curr_node.value
+
+    return curr_max

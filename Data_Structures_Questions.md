@@ -4,17 +4,35 @@ Answer the following questions for each of the data structures you implemented a
 
 1. What is the runtime complexity of `enqueue`?
 
+   Depends on a implementation.
+
+   With queue based on linked list it is **O(1)**. With queue based on an array
+   it may be **O(n)** when it needs to rewrite an entire array if there is no
+   space left. We can enhance our queue with the max length/size parameter to
+   prevent this.
+
 2. What is the runtime complexity of `dequeue`?
+
+   Depends on a implementation.
+
+   With queue based on linked list it is **O(1)**. With queue based on an array
+   it is **O(n)** as it needs to shift all elements by one position.
 
 3. What is the runtime complexity of `len`?
 
+   Depends on the implementation.
+
+   Can be **O(1)** with some additional memory (one variable) but can be
+   **O(n)** without storing that memory in the actual Queue object. Then the
+   method needs to traverse an entire queue that leads to **O(n)**.
+
 ## Binary Search Tree
 
-1. What is the runtime complexity of `insert`? 
+1. What is the runtime complexity of `insert`?
 
 2. What is the runtime complexity of `contains`?
 
-3. What is the runtime complexity of `get_max`? 
+3. What is the runtime complexity of `get_max`?
 
 ## Heap
 

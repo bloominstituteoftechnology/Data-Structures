@@ -14,7 +14,7 @@ class Queue:
         return self.out_stack.pop() if self.out_stack else False
 
     def len(self):
-        return len(self.out_stack)
+        return len(self.in_stack), len(self.out_stack)
 
 queue = Queue()
 
@@ -24,7 +24,7 @@ queue.enqueue(5)
 queue.enqueue(8)
 queue.enqueue(13)
 
-print(queue.len()) # will print 0 'cause out_stack not yet populated
+print(queue.len())
 
 print(queue.dequeue())
 

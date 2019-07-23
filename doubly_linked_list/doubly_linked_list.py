@@ -95,7 +95,10 @@ class DoublyLinkedList:
     pass
 
 ll = DoublyLinkedList()
+print(f"ll: {ll}") # should be empty
+ll.add_to_head(2) # should be 2
+ll.add_to_head(5) # should be 5,2
+ll.add_to_head(7) # should be 7,5,2
+ll.remove_from_head() # should be 5,2
+ll.add_to_tail(9) # should be 5,2,9
 print(f"ll: {ll}")
-ll.add_to_head(2)
-ll.add_to_head(5)
-ll.add_to_head(7)

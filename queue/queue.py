@@ -16,7 +16,7 @@ class Queue:
     if self.size == 0:
       return None
     else:
-      self.size-= 1
+      self.size -= 1
       return self.storage.pop()
 
   def len(self): # returns the number of items in the queue

@@ -52,7 +52,7 @@ class DoublyLinkedList:
   """Replaces the head of the list with a new value that is passed in."""
   def add_to_head(self, value):
     if self.length == 0:
-      self.head = ListNode(value, None, None)
+      self.head = ListNode(value)
       self.tail = self.head
       self.length = 1
     else:
@@ -66,13 +66,14 @@ class DoublyLinkedList:
 
   """Removes the head node and returns the value stored in it."""
   def add_to_tail(self, value):
-    # If len is 0:
-      # Add new ListNode and += length
-    # If len > 0: 
-      # Create new ListNode(value, None, list[0].head.next)
-      # Set list[0].head.prev = ListNode
-      # += length
-      pass
+    if self.length == 0:
+      self.tail = ListNode(value)
+      self.head = self.tail
+      self.length = 1
+    else:
+      self.tail.next = ListNode(value, self.tail, None)
+      self.tail = self.tail.next
+      self.length += 1
 
   """Removes the tail node and returns the value stored in it"""
   def remove_from_tail(self):
@@ -93,12 +94,3 @@ class DoublyLinkedList:
   """Returns the maximum value in the list."""
   def get_max(self):
     pass
-
-ll = DoublyLinkedList()
-print(f"ll: {ll}") # should be empty
-ll.add_to_head(2) # should be 2
-ll.add_to_head(5) # should be 5,2
-ll.add_to_head(7) # should be 7,5,2
-ll.remove_from_head() # should be 5,2
-ll.add_to_tail(9) # should be 5,2,9
-print(f"ll: {ll}")

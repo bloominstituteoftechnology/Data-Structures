@@ -44,25 +44,96 @@ class DoublyLinkedList:
     return self.length
 
   def add_to_head(self, value):
+    if self.head:
+      self.head.insert_before(value)
+      self.head = self.head.prev
+    else:
+      self.head = ListNode(value)
+      self.tail = self.head
+    self.length+=1
     pass
 
   def remove_from_head(self):
-    pass
+    if self.length>1:
+      head = self.head
+      temp = self.head.next
+      self.head.delete()
+      self.head = temp
+      self.length-=1
+    elif self.length==1:
+      head = self.head
+      self.head=None
+      self.tail=None
+      self.length -= 1
+
+    return head.value
 
   def add_to_tail(self, value):
+    if self.tail:
+      self.tail.insert_after(value)
+      self.tail = self.tail.next
+    else:
+      self.head = ListNode(value)
+      self.tail = self.head
+    self.length+=1
     pass
 
   def remove_from_tail(self):
-    pass
+    if self.length>1:
+      tail = self.tail
+      temp = self.tail.prev
+      self.tail.delete()
+      self.tail = temp
+      self.length-=1
+    elif self.length==1:
+      tail = self.tail
+      self.head=None
+      self.tail=None
+      self.length -= 1
+
+
+    return tail.value
 
   def move_to_front(self, node):
+    if self.length==1:
+      pass
+    if node is self.tail:
+      self.tail = node.prev
+    node.delete()
+    self.length-=1
+    self.add_to_head(node.value)
     pass
 
   def move_to_end(self, node):
+    if self.length==1:
+      pass
+    if node is self.head:
+      self.head=node.next
+
+    node.delete()
+    self.length -= 1
+    self.add_to_tail(node.value)
     pass
 
   def delete(self, node):
+    if node is self.head:
+      self.head = node.next
+    if node is self.tail:
+      self.tail=node.prev
+    node.delete()
+    self.length-=1
     pass
     
   def get_max(self):
-    pass
+    max = 0
+    if self.length:
+      current = self.head
+      max = current.value
+    while current.next:
+      if current.next.value > max :
+        max = current.next.value
+      current = current.next
+
+
+    return max
+

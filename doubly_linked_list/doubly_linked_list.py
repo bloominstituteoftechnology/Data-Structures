@@ -104,17 +104,49 @@ class DoublyLinkedList:
       return current_tail.value
 
   """Takes a reference to a node in the list and moves it to the front of the list, shifting all other list nodes down."""
-  def move_to_front(self, node):
-    pass
+  def move_to_head(self, node):
+    if node is self.head:
+      return node
+    if node is self.tail:
+      self.remove_from_tail()
+    else:
+      node.delete()
+      self.length -= 1
+    self.add_to_head(node.value)
+    
 
   """Takes a reference to a node in the list and moves it to the end of the list, shifting all other list nodes up."""
-  def move_to_end(self, node):
-    pass
+  def move_to_tail(self, node):
+    if node is self.tail:
+      return node
+    if node is self.head:
+      self.remove_from_head()
+    else:
+      node.delete()
+      self.length -= 1
+    self.add_to_tail(node.value)
 
   """Takes a reference to a node in the list and removes it from the list. The deleted node's `previous` and `next` pointers should point to each afterwards."""
   def delete(self, node):
-    pass
+    if self.head == self.tail:
+      self.remove_from_head()
+    elif node is self.head:
+      self.remove_from_head()
+    elif node is self.tail:
+      self.remove_from_tail()
+    else:
+      node.delete()
+      return node.value
+    
     
   """Returns the maximum value in the list."""
   def get_max(self):
-    pass
+    if not self.head:
+      return None
+    max_value = self.head.value
+    current = self.head
+    while current:
+      if current.value > max_value:
+        max_value = current.value
+      current = current.next
+    return max_value

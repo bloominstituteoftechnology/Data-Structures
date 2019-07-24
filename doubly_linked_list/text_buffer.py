@@ -8,7 +8,8 @@ class TextBuffer:
         # check if an init string is provided
         # if so, put the contents of the init string in self.contents
         if init:
-            pass
+            for char in init:
+                self.contents.add_to_tail(char)
 
     def __str__(self):
         # needs to return a string to print 
@@ -20,7 +21,7 @@ class TextBuffer:
         return s
 
     def append(self, string_to_add):
-        pass
+        
     
     def prepend(self, string_to_add):
         # reverse the incoming string to maintain correct 

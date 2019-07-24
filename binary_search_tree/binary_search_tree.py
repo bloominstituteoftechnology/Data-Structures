@@ -22,12 +22,12 @@ class BinarySearchTree:
   def contains(self, target):
       if target < self.target:
             if self.left is None:
-                return None, None
-            return self.left.lookup(target, self)
+                return None
+            return self.left.contains(target, self)
       elif target > self.target:
             if self.right is None:
-                return None, None
-            return self.right.lookup(target, self)
+                return None
+            return self.right.contains(target, self)
       else:
             return self
 

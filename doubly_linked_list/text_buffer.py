@@ -8,7 +8,9 @@ class TextBuffer:
         # check if an init string is provided
         # if so, put the contents of the init string in self.contents
         if init:
-            pass
+            for character in init:
+                print(f"Adding {character}")
+                self.contents.add_to_tail(character)
 
     def __str__(self):
         # needs to return a string to print 

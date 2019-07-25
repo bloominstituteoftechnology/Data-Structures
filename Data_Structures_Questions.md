@@ -12,13 +12,21 @@ O(n) in my current implementation. Lists are slow. Inserting or deleting element
 
 3. What is the runtime complexity of `len`?
 
+same as 2 and 3 since we're using a list
+
 ## Binary Search Tree
 
 1. What is the runtime complexity of `insert`?
 
+When inserting elements to the left of child, all previous elements much be traversed. This is O(n) in the worst case.
+
 2. What is the runtime complexity of `contains`?
 
+O(n)
+
 3. What is the runtime complexity of `get_max`?
+
+For a sorted and balanced binary tree one single path is traversed: complexity of O(log(n)).
 
 ## Heap
 

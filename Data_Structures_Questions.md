@@ -4,17 +4,29 @@ Answer the following questions for each of the data structures you implemented a
 
 1. What is the runtime complexity of `enqueue`?
 
+O(n) in my current implementation. Lists are slow. Inserting or deleting elements requires shifting all other elements by 1. Python's standard library dequeue object supports adding and removing elements from either end with O(1) runtime, so that's much faster.
+
 2. What is the runtime complexity of `dequeue`?
+
+O(n) in my current implementation. Lists are slow. Inserting or deleting elements requires shifting all other elements by 1. Python's standard library dequeue object supports adding and removing elements from either end with O(1) runtime, so that's much faster.
 
 3. What is the runtime complexity of `len`?
 
+same as 2 and 3 since we're using a list
+
 ## Binary Search Tree
 
-1. What is the runtime complexity of `insert`? 
+1. What is the runtime complexity of `insert`?
+
+When inserting elements to the left of child, all previous elements much be traversed. This is O(n) in the worst case.
 
 2. What is the runtime complexity of `contains`?
 
-3. What is the runtime complexity of `get_max`? 
+O(n)
+
+3. What is the runtime complexity of `get_max`?
+
+For a sorted and balanced binary tree one single path is traversed: complexity of O(log(n)).
 
 ## Heap
 

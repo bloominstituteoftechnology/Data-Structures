@@ -23,10 +23,11 @@ class AVLTree:
   Display the whole tree. Uses recursive def.
   """
   def display(self, level=0, pref=''):
+
     self.update_height()  # Update height before balancing
     self.update_balance()
-    
-    if self.node != None: 
+
+    if self.node != None:
       print ('-' * level * 2, pref, self.node.key,
         f'[{self.height}:{self.balance}]',
         'L' if self.height == 0 else ' ')
@@ -40,29 +41,59 @@ class AVLTree:
   in the tree
   """
   def update_height(self):
-    pass
+
+      if self.node:
+          return self.node.height
+
+      else:
+          return None
 
   """
   Updates the balance factor on the AVLTree class
   """
-  def update_balance(self):
-    pass
+  def update_balance(self, recursive=True):
+
+        if self.node:
+            if recursive:
+                if self.node.left:
+                    self.node.left.update_balance()
+                if self.node.right:
+                    self.node.right.update_balance()
+            self.balance = self.node.left.height - self.node.right.height
+
+        else:
+            self.balance = 0
+
 
   """
   Perform a left rotation, making the right child of this
   node the parent and making the old parent the left child
-  of the new parent. 
+  of the new parent.
   """
   def left_rotate(self):
-    pass
+
+        new_root = self.node.right.node
+        new_left_sub = new_root.left.node
+        old_root = self.node
+        self.node = new_root
+        old_root.right.node = new_left_sub
+        new_root.left.node = old_root
+
 
   """
   Perform a right rotation, making the left child of this
   node the parent and making the old parent the right child
-  of the new parent. 
+  of the new parent.
   """
   def right_rotate(self):
-    pass
+
+        new_root = self.node.left.node
+        new_left_sub = new_root.right.node
+        old_root = self.node
+        self.node = new_root
+        old_root.left.node = new_left_sub
+        new_root.right.node = old_root
+
 
   """
   Sets in motion the rebalancing logic to ensure the
@@ -70,12 +101,47 @@ class AVLTree:
   1 or -1
   """
   def rebalance(self):
-    pass
-    
+
+        self.update_height(recursive=False)
+        self.update_balance(False)
+
+        while self.balance < -1 or self.balance > 1:
+            if self.balance > 1:
+                if self.node.left.balance < 0:
+                    self.node.left.rotate_left()
+                    self.update_height()
+                    self.update_balance()
+                self.rotate_right()
+                self.update_height()
+                self.update_balance()
+
+            if self.balance < -1:
+                if self.node.right.balance > 0:
+                    self.node.right.rotate_right() # we're in case III
+                    self.update_height()
+                    self.update_balance()
+                self.rotate_left()
+                self.update_height()
+                self.update_balance()
+
   """
   Uses the same insertion logic as a binary search tree
   after the value is inserted, we need to check to see
   if we need to rebalance
   """
   def insert(self, key):
-    pass
+
+        n = Node(key)
+
+        if self.node == None:
+            self.node = n
+            self.node.left = AVLTree()
+            self.node.right = AVLTree()
+
+        elif key < self.node.key:
+            self.node.left.insert(key)
+
+        elif key > self.node.key:
+            self.node.right.insert(key)
+
+        self.rebalance()

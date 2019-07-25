@@ -16,8 +16,7 @@ class Heap:
       return self.storage.pop(0)
     ret = self.storage[0]
     self.storage[0] = self.storage.pop(self.get_size() - 1)
-    if self.get_size() > 1:     # only sift down if we have more than one item left
-      self._sift_down(0)
+    self._sift_down(0)
     return ret
 
   def get_max(self):
@@ -34,7 +33,7 @@ class Heap:
       index = (index-1) // 2
 
   def _get_bigger(self, x, y):
-    if x > y:
+    if x >= y:
       return 1
     else:
       return 2
@@ -42,6 +41,8 @@ class Heap:
   def _sift_down(self, index):
     # This is admittedly a horrendous kludge but it wotks and I don't feel like fixing it!
     limit = self.get_size() - 1
+    if limit == 0:
+      return
     if index*2 + 2 > limit:
       if index*2 + 1 == limit:
         if self.storage[index] < self.storage[index * 2 + 1]:

@@ -40,6 +40,7 @@ class Heap:
       return 2
 
   def _sift_down(self, index):
+    # This is admittedly a horrendous kludge but I don't feel like fixing it!
     limit = self.get_size() - 1
     if index*2 + 2 > limit:
       if index*2 + 1 == limit:

@@ -1,3 +1,24 @@
+
+'''
+maxHeap provides quickest O(1) access to largest value on the heap. Its 
+helper functions, insert, bubble_up, delete and sift_down, always maintained
+the largest value on the top of heap to be read.
+
+maxHeap is based on graph structure maintaining largest value on root node and 
+second largest values on second immediate tree level. 
+
+getMax - enable O(1) fastest access to largest value on the heap.
+
+insert and bubble_up- 
+    append new value to leaf node and
+    bubble_up to its appropriate value order.
+delete and sift_down- 
+    fetch and remove largest value on top of heap or root node.
+    Replace previous largest value in root node with presumably small 
+        leaf node value, so that sift_down function can rearrange the 
+        small leaf node down the tree to its appropriate level.
+
+'''
 class Heap:
   def __init__(self):
     self.storage = []

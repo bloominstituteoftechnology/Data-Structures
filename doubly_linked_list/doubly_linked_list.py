@@ -71,6 +71,8 @@ class DoublyLinkedList:
       else:
         self.head = None
       self.length -= 1
+      if self.length == 0:
+        self.tail = None
       return current_head.value
 
   """Wraps the given value in a ListNode and inserts it 
@@ -101,19 +103,28 @@ class DoublyLinkedList:
       else:
         self.tail = None
       self.length -= 1
+      if self.length == 0:
+        self.head = None
       return current_tail.value
 
   """Removes the input node from its current spot in the 
   List and inserts it as the new head node of the List."""
   def move_to_front(self, node):
     self.add_to_head(node.value)
+    self.length -= 1
     node.delete()
 
   """Removes the input node from its current spot in the 
   List and inserts it as the new tail node of the List."""
   def move_to_end(self, node):
-    self.add_to_tail(node.value)
-    node.delete()
+    if node.prev is not None:
+      node.prev.next = node.next
+    if node.next is not None:
+      node.next.prev = node.prev
+    original_tail = self.tail
+    self.tail = node
+    self.tail.prev = original_tail
+    original_tail.next = self.tail
 
   """Removes a node from the list and handles cases where
   the node was the head or the tail"""

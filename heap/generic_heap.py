@@ -16,6 +16,12 @@ class Heap:
     pass
 
   def _bubble_up(self, index):
+    while index>0:
+      parent = (index-1)//2
+      if self.storage[index]>self.storage[parent]:
+        self.storage[index],self.storage[parent] = self.storage[parent], self.storage[index]
+        index = parent
+
     pass
 
   def _sift_down(self, index):

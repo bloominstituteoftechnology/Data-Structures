@@ -42,13 +42,24 @@ class BinarySearchTree:
         return False
       else:
         return self.right.contains(target)
-    pass
 
   def get_max(self):
     # Keep going right until you find a node without a child to the right
-    pass
+    if not self:
+      return None
+    else:
+      if not self.right:
+        return self.value
+      else:
+        return self.right.get_max()
 
   def for_each(self, callback):
     # We need to traverse the tree similar to how the print works in the demo
     # For each value append it to the array
-    pass
+    
+    # Call the function
+    callback(self.value)
+    if self.left:
+      self.left.for_each(callback)
+    if self.right:
+      self.right.for_each(callback)

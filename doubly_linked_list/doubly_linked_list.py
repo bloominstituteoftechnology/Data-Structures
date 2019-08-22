@@ -113,16 +113,17 @@ class DoublyLinkedList:
     self.add_to_head(node.value)
     self.length -= 1
     node.delete()
-
   """Removes the input node from its current spot in the 
   List and inserts it as the new tail node of the List."""
   def move_to_end(self, node):
+    if node == self.head:
+      self.head = node.next
+    original_tail = self.tail
+    self.tail = node
     if node.prev is not None:
       node.prev.next = node.next
     if node.next is not None:
       node.next.prev = node.prev
-    original_tail = self.tail
-    self.tail = node
     self.tail.prev = original_tail
     original_tail.next = self.tail
 

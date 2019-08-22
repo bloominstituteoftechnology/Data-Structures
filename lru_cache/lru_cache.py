@@ -1,6 +1,11 @@
+from doubly_linked_list import DoublyLinkedList
+
 class LRUCache:
   def __init__(self, limit=10):
-    pass
+    self.limit = limit
+    self.size = 0
+    self.storage = dict()
+    self.order = DoublyLinkedList()
 
   """
   Retrieves the value associated with the given key. Also
@@ -23,4 +28,6 @@ class LRUCache:
   the newly-specified value. 
   """
   def set(self, key, value):
-    pass
+    # Add pair to cache an dmake it most recently used(head of DLL)
+    # If at max - remove oldest ( the one at the tail )
+    # If the key is already in cache, update the value

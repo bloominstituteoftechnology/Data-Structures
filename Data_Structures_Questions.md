@@ -3,14 +3,17 @@ Answer the following questions for each of the data structures you implemented a
 ## Queue
 
 1. What is the runtime complexity of `enqueue`?
+   its O(2) since it takes datatime to insert something into storage and add "1" to the size variable
 
 2. What is the runtime complexity of `dequeue`?
 
-3. What is the runtime complexity of `len`?
+    its O(3) since it checks to see if the length of the storage is greater then 0, reduces the size of the variable by one and removes the first item from storage
 
+3. What is the runtime complexity of `len`?
+    its O(1) since it just returns the length of the variable
 ## Binary Search Tree
 
-1. What is the runtime complexity of `insert`? 
+1. What is the runtime complexity of `insert`?
 
 2. What is the runtime complexity of `contains`?
 

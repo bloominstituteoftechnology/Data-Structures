@@ -1,8 +1,7 @@
 class BinarySearchTree:
   def __init__(self, value):
     self.value = value
-    self.left = None
-    self.right = None
+    self.left = self.right = None
 
   def insert(self, value):
     # //check if the new nodes value is less than
@@ -33,9 +32,13 @@ class BinarySearchTree:
       else:
         return False
 
-    
   def get_max(self):
-    pass
+    if self.right == None:
+      rnode = self.value
+    else:
+      rnode = self.right.get_max()
+    return max(self.value, rnode)
+
 
   def for_each(self, cb):
     pass

@@ -5,6 +5,7 @@ class QueueTests(unittest.TestCase):
   def setUp(self):
     self.q = Queue()
 
+
   def test_len_returns_0_for_empty_queue(self):
     self.assertEqual(self.q.len(), 0)
 

@@ -35,9 +35,10 @@ class BinarySearchTree:
   def get_max(self):
     if self.right == None:
       rnode = self.value
+      return rnode
     else:
       rnode = self.right.get_max()
-    return max(self.value, rnode)
+      return max(self.value, rnode)
 
 
   def for_each(self, cb):

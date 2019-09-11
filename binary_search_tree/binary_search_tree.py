@@ -71,4 +71,4 @@ class BinarySearchTree:
     if self.left:
       self.left.for_each(cb)
     if self.right:
-      self.right.for_each(cb)
+      self.right.for_each(cb) 

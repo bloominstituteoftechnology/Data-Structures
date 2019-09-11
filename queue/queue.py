@@ -3,13 +3,21 @@ class Queue:
     self.size = 0
     # what data structure should we
     # use to store queue elements?
-    self.storage = 
+    self.storage = []
 
   def enqueue(self, item):
-    pass
-  
+    self.storage.insert(0, item)
+    print("enqueue", self.storage)
+    return self.storage
+
   def dequeue(self):
-    pass
+    if len(self.storage) == 0:
+      return
+    else:
+      updatedList = self.storage.pop(-1)
+      return updatedList
 
   def len(self):
-    pass
+    return len(self.storage)
+
+print(Queue())

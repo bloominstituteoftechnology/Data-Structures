@@ -40,6 +40,14 @@ class BinarySearchTree:
       rnode = self.right.get_max()
       return max(self.value, rnode)
 
-
   def for_each(self, cb):
-    pass
+      cb(self.value)
+      if self.right: 
+        self.right.for_each(cb)
+
+      if self.left:
+        self.left.for_each(cb)
+
+    #DFT; go all the way down one branch then choose another
+    #BFT: Visit all the children, then the grandchildrens children and so on
+

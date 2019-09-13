@@ -8,15 +8,16 @@ class BinarySearchTree:
     # so first see if the root has a value if not then easy peasy insert the value
     if self.value == None:
           self.value == value
-    # if it doesn't then it's safe to assume that there is a tree although we don't know how far deep it goes and so we have to recursivly find and empty left or right and insert the node there
+    # if it does then it's safe to assume that there is a tree although we don't know how far deep it goes and so we have to recursivly find an empty left or right and insert the node there
     elif self.value == value:
           return value
+      # here we check to see if the value exists if it does we return it back
     else:
           # if the value is larger then the root
           if self.value < value:
-                # then we check to see if the right is empty if it is the assign that value
+                # then we check to see if the right is empty if it is, then assign that value
                 if self.right is None:
-                      self.right = BinarySearchTree(value)
+                      self.right = self.right.insert(value)
                 # if not then we have to continue down the tree and recall 'insert' with the value of the right side rather then the root
                 else:
                       self.right.insert(value)
@@ -24,7 +25,7 @@ class BinarySearchTree:
           else:
                 if self.value > value:
                       if self.left is None:
-                            self.left = BinarySearchTree(value)
+                            self.left = self.left.insert(value)
                       else:
                             self.left.insert(value)
     # pass
@@ -67,8 +68,45 @@ class BinarySearchTree:
 
   def for_each(self, cb):
     # pass
+      # here we dont' know really right from the start what this question is asking for but by looking at the test we can see that all it's checking is too see if it's in the arr and it's just mostly a callback function
     cb(self.value)
+      # this callback only works since the test is looking to append the value inot the test array
     if self.left:
       self.left.for_each(cb)
+      # so here we just callback the function after we insert it into hte array
     if self.right:
-      self.right.for_each(cb) 
+      self.right.for_each(cb)
+      # same as for the right we do the left
+
+
+
+# a = [[10, 50], [60, 120], [140, 210]]
+# b = [[0, 15], [60, 70]]
+# duration = 8
+# output: [60, 68]
+
+# def time_planner(a,b,duration):
+#       # takes duration
+#       # needs to find a common first number
+#       output = []
+#       i = 0
+#       for i in a:
+#             if a[i]-a[+1] < duration:
+#                   pass
+#             else:
+#                   return []
+
+#       i = 0
+#       for i in b:
+#             if b[i] - b[i+1] < duration:
+#                   pass
+#             else:
+#                   return []
+
+#       for r in a:
+#             if a[r] or a[r+1] == b[r] or b[r+1]:
+#                   output.append(a[0], a[0]+duration)
+#             else:
+#                   return []
+
+# time_planner(a,b,8)

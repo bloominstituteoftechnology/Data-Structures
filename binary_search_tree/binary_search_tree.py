@@ -1,3 +1,8 @@
+import sys
+sys.path.append('../queue_and_stack')
+from dll_queue import Queue
+from dll_stack import Stack
+
 class BinarySearchTree:
   def __init__(self, value):
     self.value = value

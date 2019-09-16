@@ -61,7 +61,9 @@ class DoublyLinkedList:
     self.length += 1
 
   def remove_from_tail(self):
-    pass
+    deleted_tail_value = self.tail.value
+    self.delete(self.tail)
+    return deleted_tail_value
 
   def move_to_front(self, node):
     pass

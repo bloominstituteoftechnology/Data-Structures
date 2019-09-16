@@ -72,4 +72,14 @@ class DoublyLinkedList:
     pass
 
   def delete(self, node):
-    pass
+    self.length -= 1
+    if node is self.head and node is self.tail:
+      self.head = None
+      self.tail = None
+    elif node is self.head:
+      self.head = node.next
+      node.delete()
+    elif node is self.tail:
+      self.tail = node.prev
+    else:
+      node.delete()

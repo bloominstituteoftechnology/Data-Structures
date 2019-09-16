@@ -11,7 +11,10 @@ class ListNode:
       current_next.prev = self.next
 
   def insert_before(self, value):
-    pass
+    current_prev = self.prev
+    self.prev = ListNode(value, current_prev, self)
+    if current_prev:
+      current_prev.next = self.prev
 
   def delete(self):
     pass

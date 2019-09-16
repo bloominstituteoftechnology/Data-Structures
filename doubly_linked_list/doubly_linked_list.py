@@ -44,7 +44,9 @@ class DoublyLinkedList:
     self.length += 1
 
   def remove_from_head(self):
-    pass
+    deleted_head_value = self.head.value
+    self.delete(self.head)
+    return deleted_head_value
 
   def add_to_tail(self, value):
     pass

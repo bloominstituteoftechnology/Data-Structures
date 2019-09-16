@@ -1,3 +1,8 @@
+import sys
+sys.path.append('../queue_and_stack')
+from dll_queue import Queue
+from dll_stack import Stack
+
 class BinarySearchTree:
   def __init__(self, value):
     #initialize left and right value to None
@@ -44,12 +49,7 @@ class BinarySearchTree:
     return False
 
   def get_max(self):
-    #traverse the tree that has the greatest nodes(right side)
-    # no point in doing anything if tree is empty
-    if not self:
-      return None
-    #check to see if have a right side:
-    if not self.right:
-      return self.value
-    return self.right.get_max()
+    pass
 
+  def for_each(self, cb):
+    pass

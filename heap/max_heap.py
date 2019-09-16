@@ -1,9 +1,6 @@
 class Heap:
   def __init__(self):
-    # storage starts with an unused 0 to make 
-    # integer division simpler later on
-    self.storage = [0]
-    self.size = 0
+    self.storage = []
 
   def insert(self, value):
     # append the value to self.storage

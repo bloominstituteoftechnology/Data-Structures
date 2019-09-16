@@ -28,6 +28,9 @@ class DoublyLinkedList:
     self.tail = node
     self.length = 1 if node is not None else 0
 
+  def __len__(self):
+    return self.length
+
   def add_to_head(self, value):
     pass
 

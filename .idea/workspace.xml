@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="17ba7dbc-bc50-40f0-a2dd-cdf43545724d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/queue_and_stack/doubly_linked_list.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doubly_linked_list/doubly_linked_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/doubly_linked_list/doubly_linked_list.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/queue_and_stack/dll_queue.py" beforeDir="false" afterPath="$PROJECT_DIR$/queue_and_stack/dll_queue.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/queue_and_stack/dll_stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/queue_and_stack/dll_stack.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,6 +25,12 @@
   <component name="ProjectId" id="1Qw57GQ3XFGVEBbFGsjeUeoZeD0" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/queue_and_stack" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\charles\PycharmProjects\Data-Structures\queue_and_stack" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -145,7 +154,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568721798569</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="reformat code to try to get rid of errors">
+      <created>1568722424157</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1568722424158</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -153,7 +169,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

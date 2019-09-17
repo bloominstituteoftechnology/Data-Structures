@@ -18,9 +18,9 @@ class Queue:
    def dequeue(self):
     if self.len() > 0:
         self.size -= 1
-        val = self.storage.tail.value
+        value = self.storage.tail.value
         self.storage.remove_from_tail()
-        return val
+        return value
     return None
 
 

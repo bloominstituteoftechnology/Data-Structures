@@ -88,7 +88,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568719285935</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add to tail is done">
+      <created>1568719851721</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1568719851721</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -106,6 +113,7 @@
     <MESSAGE value="initial commit" />
     <MESSAGE value="add to head function is done" />
     <MESSAGE value="remove from head is done" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove from head is done" />
+    <MESSAGE value="add to tail is done" />
+    <option name="LAST_COMMIT_MESSAGE" value="add to tail is done" />
   </component>
 </project>

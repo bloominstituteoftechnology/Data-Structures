@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="17ba7dbc-bc50-40f0-a2dd-cdf43545724d" name="Default Changelist" comment="" />
+    <list default="true" id="17ba7dbc-bc50-40f0-a2dd-cdf43545724d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/queue_and_stack/dll_stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/queue_and_stack/dll_stack.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +138,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568721533129</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="reformat code to try to get rid of errors">
+      <created>1568721798569</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1568721798569</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -158,6 +168,7 @@
     <MESSAGE value="function move to front is done" />
     <MESSAGE value="dll queue is done but I cant run it for some reason" />
     <MESSAGE value="dll stack is done" />
-    <option name="LAST_COMMIT_MESSAGE" value="dll stack is done" />
+    <MESSAGE value="reformat code to try to get rid of errors" />
+    <option name="LAST_COMMIT_MESSAGE" value="reformat code to try to get rid of errors" />
   </component>
 </project>

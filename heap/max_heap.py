@@ -33,18 +33,14 @@ class Heap:
     def delete(self):
 
         # swap the first and last elements
-        print('before', self.storage)
         temp = self.storage[0]
-        print('t', self.storage[0])
-        print('l', self.storage[len(self.storage)-1])
+
         self.storage[0] = self.storage[len(self.storage)-1]
-        print('t', self.storage[0])
-        print('l', self.storage[len(self.storage)-1])
+
         self.storage[len(self.storage)-1] = temp
-        print('t', self.storage[0])
-        print('l', self.storage[len(self.storage)-1])
+
         # remove the last element
-        self.storage.remove(self.storage[len(self.storage)-1])
+        del self.storage[len(self.storage)-1]
         # run a loop on the first element till its in the right spot
         found = False
         i = 0
@@ -77,15 +73,15 @@ class Heap:
     #     If the larger child's value is larger than the parent's value, the child element is swapped with the parent.
 
     def _sift_down(self, index):
-        print('b shift', self.storage)
+        # print('b shift', self.storage)
         left_i = (2*index) + 1
         right_i = (2*index) + 2
 
         left = True
         right = True
-        if left_i > len(self.storage):
+        if left_i > len(self.storage)-1:
             left = False
-        if right_i > len(self.storage):
+        if right_i > len(self.storage)-1:
             right = False
 
         if left or right:
@@ -107,8 +103,6 @@ class Heap:
             temp = self.storage[index]
             self.storage[index] = self.storage[child]
             self.storage[child] = temp
-            # current, child = child, current
-            # print(self.storage)
             return self._sift_down(child)
         else:
             return True
@@ -145,17 +139,17 @@ heap.insert(1)
 heap.insert(9)
 heap.insert(9)
 heap.insert(5)
-print(heap.storage)
-heap.delete()
-print(heap.storage)
-print(heap.get_max(), 9)
-heap.delete()
-print(heap.storage)
-print(heap.get_max(), 9)
-# heap.delete()
 # print(heap.storage)
-# print(heap.get_max(), 9)
-# heap.delete()
-# print(heap.get_max(), 8)
-# heap.delete()
-# print(heap.get_max(), 6)
+heap.delete()
+# print(heap.storage)
+print(heap.get_max(), 9)
+heap.delete()
+# print(heap.storage)
+print(heap.get_max(), 9)
+heap.delete()
+# print(heap.storage)
+print(heap.get_max(), 9)
+heap.delete()
+print(heap.get_max(), 8)
+heap.delete()
+print(heap.get_max(), 6)

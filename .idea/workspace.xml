@@ -4,7 +4,6 @@
     <list default="true" id="17ba7dbc-bc50-40f0-a2dd-cdf43545724d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lru_cache/lru_cache.py" beforeDir="false" afterPath="$PROJECT_DIR$/lru_cache/lru_cache.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/queue_and_stack/dll_queue.py" beforeDir="false" afterPath="$PROJECT_DIR$/queue_and_stack/dll_queue.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -173,7 +172,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568755754031</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="first part done">
+      <created>1568814684265</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1568814684265</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -199,6 +205,7 @@
     <MESSAGE value="dll queue is done but I cant run it for some reason" />
     <MESSAGE value="dll stack is done" />
     <MESSAGE value="reformat code to try to get rid of errors" />
-    <option name="LAST_COMMIT_MESSAGE" value="reformat code to try to get rid of errors" />
+    <MESSAGE value="first part done" />
+    <option name="LAST_COMMIT_MESSAGE" value="first part done" />
   </component>
 </project>

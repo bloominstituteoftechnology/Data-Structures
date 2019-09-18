@@ -9,10 +9,10 @@ class LRUCache:
   to every node stored in the cache.
   """
   def __init__(self, limit=10):
-    self.limit = limit
-    self.size = 0
-    self.list = DoublyLinkedList()
-    self.storage = {}
+    self.limit = limit #if limited is not passed, then the default is 10
+    self.size = 0 #current size
+    self.list = DoublyLinkedList() #instantiate DLL
+    self.storage = {} #instantiate dict
 
   def __repr__(self):
     return f"{self.list}"
@@ -24,11 +24,11 @@ class LRUCache:
   key-value pair doesn't exist in the cache. 
   """
   def get(self, key):
-    if key not in self.storage: 
+    if key not in self.storage:  #if the key doesn't exist in self.storage return None
       return None    
     else:
-      value = self.storage[key]
-      self.list.move_to_end(value)
+      value = self.storage[key] #value is set to the key of dict
+      self.list.move_to_end(value) #move the value to the end of the DLL
       return value.value[1]
 
 

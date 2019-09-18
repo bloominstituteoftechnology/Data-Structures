@@ -28,6 +28,8 @@ class BinarySearchTree:
     def for_each(self, cb):
         pass
 
+    # DAY 2 Project -----------------------
+
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print():
@@ -43,7 +45,7 @@ class BinarySearchTree:
     def dft_print(node):
         pass
 
-    # #######Stretch Goals#########
+    # STRETCH Goals -------------------------
     # Note: Research may be required
 
     # Print In-order recursive DFT

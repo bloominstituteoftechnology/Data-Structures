@@ -1,8 +1,12 @@
 class Node:
-  def __init__(self, value):
+  def __init__(self, value, key=None):
     self.value = value
     self.prev = None
     self.next = None
+    self.key = key
+  
+  def __str__(self):
+    print (f"{self.value}")
 
 
 class LRUCache():
@@ -24,6 +28,7 @@ class LRUCache():
     self.map = {}
     self.size = 0
 
+
   """
   Retrieves the value associated with the given key. Also
   needs to move the key-value pair to the end of the order
@@ -32,7 +37,12 @@ class LRUCache():
   key-value pair doesn't exist in the cache. 
   """
   def get(self, key):
-    pass
+    if key not in self.map:
+      return False
+    else:
+      node = self.map[key]
+      self.move_to_front(node)
+      return node.value
 
   """
   Adds the given key-value pair to the cache. The newly-
@@ -47,10 +57,22 @@ class LRUCache():
   def set(self, key, value):
     if key not in self.map:
       #insert
-      node = Node(value)
+      node = Node(value, key)
       self.move_to_front(node)
       self.map[key] = node
       self.size += 1
+
+      #comparing length of nodes against the capacity
+      if self.size > self.limit:
+        del self.map[self.tail.prev.key]
+        self.remove(self.tail.prev)
+        self.size -= 1
+
+    else:
+      node = self.map[key]
+      node.value = value
+      self.remove(node)
+      self.move_to_front(node)
 
   def move_to_front(self, node):
     #Head <--> Node1 <--> Node2 <--> Tail
@@ -61,3 +83,27 @@ class LRUCache():
     node.prev = self.head
     node.next = node_1
     node_1.prev = node
+
+  def remove(self, node):
+    #Head <--> Node1 <--> <--> Node To Delete <--> Node2 <--> Tail
+    #Head <--> Node1 <--> Node2 <--> Tail
+    node_1 = node.prev
+    node_2 = node.next
+
+    #Point two nodes to each other
+    node_1.next = node_2
+    node_2.prev = node_1
+    node.next = None
+    node.prev = None
+
+  def _print_cache(self):
+    if self.size != 0:
+      print (f"{self.head.value} {self.head.next.value} {self.tail.prev.value} {self.tail.value}")
+
+cache = LRUCache()
+cache.set(2, 2)
+cache.set(1, 3)
+
+cache._print_cache()
+print(cache.map)
+print(cache.get(2))

@@ -10,7 +10,7 @@ class LRUCache:
   """
   def __init__(self, limit=10):
     self.limit = limit
-    self.currentNum = 0
+    self.size = 0
     self.list = DoublyLinkedList()
     self.storage = {}
 
@@ -22,12 +22,12 @@ class LRUCache:
   key-value pair doesn't exist in the cache. 
   """
   def get(self, key):
-    if not key: 
+    if key not in self.storage: 
       return None    
     else:
       value = self.storage[key]
-      self.set(key, value)
-      return value
+      self.list.move_to_end(value)
+      return value.value[1]
 
 
   """
@@ -41,15 +41,26 @@ class LRUCache:
   the newly-specified value. 
   """
   def set(self, key, value):
-    self.currentNum += 1
+    # Add pair to the cache
+      # Mark as most recently used - put in the head of the DLL
+      # If at max capacity, dump oldest - remove from tail of DLL
+      # if already exists, overwrite value and update dict
 
-    if self.currentNum == self.limit:
-      #remove first key value pair
-      #add new key value pair to end
-      pass
-    if self.storage[key] == value:
-      for item in self.storage:
-        if item == key:
-          del self.storage[key]
+    if key in self.storage:
+      # make node 
+      node = self.storage[key]
+      node.value = (key, value) #tuple
+      # mark as most recently used. Put it at head of DLL
+      self.list.move_to_end(node)
+      return
+
       
-      self.storage[key] == value
+    if self.size == self.limit:
+      del self.storage[self.list.head.value[0]]
+      self.list.remove_from_head()
+      self.size -= 1
+    
+    self.list.add_to_tail((key, value))
+    self.storage[key] = self.list.tail
+    self.size += 1
+

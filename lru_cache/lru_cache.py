@@ -1,3 +1,10 @@
+class Node:
+  def __init__(self, value):
+    self.value = value
+    self.prev = None
+    self.next = None
+
+
 class LRUCache:
   """
   Our LRUCache class keeps track of the max number of nodes it
@@ -7,7 +14,15 @@ class LRUCache:
   to every node stored in the cache.
   """
   def __init__(self, limit=10):
-    pass
+    self.limit = limit
+    self.head = Node('Head')
+    self.tail = Node('Tail')
+    # Head --> Tail
+
+    self.head.next = self.tail
+    self.tail.prev = self.head
+    self.map = {}
+    self.size = 0
 
   """
   Retrieves the value associated with the given key. Also
@@ -30,4 +45,14 @@ class LRUCache:
   the newly-specified value. 
   """
   def set(self, key, value):
-    pass
+    if key not in self.map:
+      #insert
+      node = Node(value)
+      self.move_to_front(node)
+      self.map[key] = node
+      self.size += 1
+
+  def move_to_front(self, node):
+    #Head <--> Node1 <--> Node2 <--> Tail
+    #New Node
+    #Head <--> New Node <--> Node1 <--> Node2 <--> Tail

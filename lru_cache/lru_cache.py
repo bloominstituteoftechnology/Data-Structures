@@ -11,6 +11,10 @@ class LRUCache:
     """
 
     def __init__(self, limit=10):
+        # DLL to store order
+        # dict to store key value pairs
+        # current size
+        # limit
         self.max = limit
         self.size = 0
         self.list = DoublyLinkedList()
@@ -24,6 +28,10 @@ class LRUCache:
   """
 
     def get(self, key):
+        # pull the value out of the dict using the key
+        # update postition in the list
+        # or return none
+
         # check if list has any elements
         if not self.list.head and not self.list.tail:
             return None
@@ -56,6 +64,11 @@ class LRUCache:
         - add to linked list
         - 
         '''
+        # add pair to the cache - add to dict and add it  nodes/DLL
+        # Mark as most recently used - put in the head of the DLL
+        # if at max capacity, dump oldest - remove from tail of DLL
+        # if already exists, overwrite value - update dict
+
         current = self.find_node(key)
 
         if current:

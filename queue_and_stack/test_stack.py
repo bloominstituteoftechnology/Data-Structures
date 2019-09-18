@@ -23,7 +23,7 @@ class QueueTests(unittest.TestCase):
         self.s.push(16)
         self.s.push(18)
         self.assertEqual(self.s.len(), 9)
-    
+
     def test_empty_pop(self):
         self.assertIsNone(self.s.pop())
         self.assertEqual(self.s.len(), 0)
@@ -40,6 +40,7 @@ class QueueTests(unittest.TestCase):
         self.assertEqual(self.s.len(), 0)
         self.assertIsNone(self.s.pop())
         self.assertEqual(self.s.len(), 0)
+
 
 if __name__ == '__main__':
     unittest.main()

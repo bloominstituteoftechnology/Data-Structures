@@ -5,7 +5,7 @@ class Node:
     self.next = None
 
 
-class LRUCache:
+class LRUCache():
   """
   Our LRUCache class keeps track of the max number of nodes it
   can hold, the current number of nodes it is holding, a doubly-
@@ -56,3 +56,8 @@ class LRUCache:
     #Head <--> Node1 <--> Node2 <--> Tail
     #New Node
     #Head <--> New Node <--> Node1 <--> Node2 <--> Tail
+    node_1 = self.head.next
+    self.head.next = node
+    node.prev = self.head
+    node.next = node_1
+    node_1.prev = node

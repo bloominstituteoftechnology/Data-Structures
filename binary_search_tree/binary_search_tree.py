@@ -34,12 +34,12 @@ class BinarySearchTree:
         pass
 
     # Print the value of every node, starting with the given node,
-    # in a breadth first traversal
+    # in an iterative breadth first traversal
     def bft_print(node):
         pass
 
     # Print the value of every node, starting with the given node,
-    # in a depth first traversal
+    # in an iterative depth first traversal
     def dft_print(node):
         pass
 

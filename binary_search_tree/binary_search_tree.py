@@ -7,7 +7,9 @@ class BinarySearchTree:
   def __init__(self, value):
     #initialize left and right value to None
     self.value = value
+    #reference to node's left child
     self.left = None
+    #reference to node's right child
     self.right = None
 
   # Insert the given value into the tree
@@ -53,7 +55,21 @@ class BinarySearchTree:
 
   # Return the maximum value found in the tree
   def get_max(self):
-    pass
+    if not self:
+      return None
+
+    max_value = self.value
+
+    current = self
+
+    while current:
+      if current.value > max_value:
+        max_value = current.value
+      
+      current = current.right
+    return max_value
+
+
 
   # Call the function `cb` on the value of each node
   # You may use a recursive or iterative approach

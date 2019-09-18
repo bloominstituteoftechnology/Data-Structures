@@ -5,7 +5,7 @@ class StackTests(unittest.TestCase):
   def setUp(self):
     self.s = Stack()
 
-  def test_len_returns_0_for_empty_queue(self):
+  def test_len_returns_0_for_empty_stack(self):
     self.assertEqual(self.s.size, 0)
 
   def test_len_returns_correct_length_after_push(self):
@@ -31,11 +31,11 @@ class StackTests(unittest.TestCase):
     self.s.push(100)
     self.s.push(101)
     self.s.push(105)
-    self.assertEqual(self.s.pop(), 100)
+    self.assertEqual(self.s.pop(), 105)
     self.assertEqual(self.s.size, 2)
     self.assertEqual(self.s.pop(), 101)
     self.assertEqual(self.s.size, 1)
-    self.assertEqual(self.s.pop(), 105)
+    self.assertEqual(self.s.pop(), 100)
     self.assertEqual(self.s.size, 0)
     self.assertIsNone(self.s.pop())
     self.assertEqual(self.s.size, 0)

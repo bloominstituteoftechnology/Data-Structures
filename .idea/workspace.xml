@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="17ba7dbc-bc50-40f0-a2dd-cdf43545724d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/queue_and_stack/doubly_linked_list.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doubly_linked_list/doubly_linked_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/doubly_linked_list/doubly_linked_list.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lru_cache/lru_cache.py" beforeDir="false" afterPath="$PROJECT_DIR$/lru_cache/lru_cache.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/queue_and_stack/dll_queue.py" beforeDir="false" afterPath="$PROJECT_DIR$/queue_and_stack/dll_queue.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/queue_and_stack/dll_stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/queue_and_stack/dll_stack.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -161,7 +159,21 @@
       <option name="project" value="LOCAL" />
       <updated>1568722424158</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="reformat code to try to get rid of errors">
+      <created>1568755599390</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1568755599390</updated>
+    </task>
+    <task id="LOCAL-00012" summary="reformat code to try to get rid of errors">
+      <created>1568755754031</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1568755754031</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

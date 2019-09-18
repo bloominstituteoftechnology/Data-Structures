@@ -75,10 +75,10 @@ class BinarySearchTree:
   # You may use a recursive or iterative approach
   def r_for_each(self, cb):
     pass
-
+  
   # Print all the values in order from low to high
   # Hint:  Use a recursive, depth first traversal
-  def in_order_print()
+  def in_order_print():
     pass
 
   # Print the value of every node, starting with the given node,
@@ -103,3 +103,20 @@ class BinarySearchTree:
   def post_order_dft(self, node):
     pass
   
+b = BinarySearchTree(42)
+b.insert(100)
+print(b)
+b.insert(20)
+print(b)
+b.insert(-42)
+print(b)
+b.insert(56)
+print(b)
+
+def callback(num):
+  print(num)
+b.r_for_each(callback(5))
+
+
+
+

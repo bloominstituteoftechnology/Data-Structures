@@ -24,7 +24,7 @@ class BinarySearchTree:
 
   # Call the function `cb` on the value of each node
   # You may use a recursive or iterative approach
-  def r_for_each(self, cb):
+  def for_each(self, cb):
     pass
 
   # Print all the values in order from low to high
@@ -46,11 +46,11 @@ class BinarySearchTree:
   ########Stretch Goals#########
   # Note: Research may be required
 
-  # Print In-order DFT
+  # Print In-order recursive DFT
   def pre_order_dft(self, node):
       pass
 
-  # Print Post-order DFT
+  # Print Post-order recursive DFT
   def post_order_dft(self, node):
     pass
   

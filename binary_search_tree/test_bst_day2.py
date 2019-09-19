@@ -1,3 +1,10 @@
+import unittest
+import random
+import sys
+import io
+from binary_search_tree import BinarySearchTree
+
+
 def test_print_traversals(self):
     # WARNING:  Tests are for Print()
     # Debug calls to Print() in functions will cause failure

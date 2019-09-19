@@ -43,26 +43,24 @@ class LRUCache:
   the newly-specified value. 
   """
   def set(self, key, value):
-    # Add pair to the cache
-      # Mark as most recently used - put in the head of the DLL
-      # If at max capacity, dump oldest - remove from tail of DLL
-      # if already exists, overwrite value and update dict
 
-    if key in self.storage:
-      # make node 
-      node = self.storage[key]
-      node.value = (key, value) #tuple
+    if key in self.storage: #if the key exists in the dict
+      node = self.storage[key] #node references key
+      node.value = (key, value) #tuple with key and value in it
       # mark as most recently used. Put it at head of DLL
-      self.list.move_to_end(node)
+      self.list.move_to_front(node)
       return
 
       
     if self.size == self.limit:
-      del self.storage[self.list.head.value[0]]
-      self.list.remove_from_head()
+      print(self.storage, "1")
+      print(self.list)
+      del self.storage[self.list.tail.value[0]] #removes it from dict
+      self.list.remove_from_tail() #removes it from linked list
+      print(self.storage, "2")
       self.size -= 1
     
-    self.list.add_to_tail((key, value))
-    self.storage[key] = self.list.tail
+    self.list.add_to_head((key, value))
+    self.storage[key] = self.list.head
     self.size += 1
 

@@ -1,0 +1,1 @@
+print('current node', current_node)

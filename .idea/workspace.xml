@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="17ba7dbc-bc50-40f0-a2dd-cdf43545724d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lru_cache/doubly_linked_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/lru_cache/doubly_linked_list.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lru_cache/lru_cache.py" beforeDir="false" afterPath="$PROJECT_DIR$/lru_cache/lru_cache.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/queue_and_stack/doubly_linked_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/queue_and_stack/doubly_linked_list.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/binary_search_tree/binary_search_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/binary_search_tree/binary_search_tree.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,7 +14,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="charles_johnson" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -43,7 +41,21 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests in test_lru_cache.py">
+  <component name="RunManager" selected="Python tests.Unittests in test_binary_search_tree.py">
+    <configuration name="Unittests in test_binary_search_tree.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="Data-Structures" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/binary_search_tree" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/binary_search_tree/test_binary_search_tree.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
     <configuration name="Unittests in test_doubly_linked_list.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="Data-Structures" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -88,6 +100,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Unittests in test_binary_search_tree.py" />
         <item itemvalue="Python tests.Unittests in test_lru_cache.py" />
         <item itemvalue="Python tests.Unittests in test_queue.py" />
         <item itemvalue="Python tests.Unittests in test_doubly_linked_list.py" />
@@ -203,7 +216,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568816159973</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="lru is done but I cant test it">
+      <created>1568896248295</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1568896248295</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -231,6 +251,7 @@
     <MESSAGE value="reformat code to try to get rid of errors" />
     <MESSAGE value="first part done" />
     <MESSAGE value="second part done" />
-    <option name="LAST_COMMIT_MESSAGE" value="second part done" />
+    <MESSAGE value="lru is done but I cant test it" />
+    <option name="LAST_COMMIT_MESSAGE" value="lru is done but I cant test it" />
   </component>
 </project>

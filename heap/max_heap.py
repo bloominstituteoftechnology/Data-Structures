@@ -1,6 +1,6 @@
 class Heap:
-  def __init__(self):
-    self.storage = []
+    def __init__(self):
+        self.storage = []
 
   def insert(self, value):
     # append the value to self.storage

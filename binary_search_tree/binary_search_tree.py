@@ -104,7 +104,7 @@ class BinarySearchTree:
         queue.append(node)
 
     while len(queue) > 0:
-      print(queue[0].value)
+      print('val', queue[0].value)
       current_node = queue[0]
 
       if current_node.left_child:
@@ -150,6 +150,6 @@ print(tree.contains(40))
 
 print(tree.get_max())
 
-print(tree.bft_print(tree.root))
+tree.bft_print(tree.root)
 
  

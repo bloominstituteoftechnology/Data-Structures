@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="17ba7dbc-bc50-40f0-a2dd-cdf43545724d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/binary_search_tree/binary_search_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/binary_search_tree/binary_search_tree.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -223,7 +222,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568896248295</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="binary insert is done">
+      <created>1568896908053</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1568896908053</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -252,6 +258,7 @@
     <MESSAGE value="first part done" />
     <MESSAGE value="second part done" />
     <MESSAGE value="lru is done but I cant test it" />
-    <option name="LAST_COMMIT_MESSAGE" value="lru is done but I cant test it" />
+    <MESSAGE value="binary insert is done" />
+    <option name="LAST_COMMIT_MESSAGE" value="binary insert is done" />
   </component>
 </project>

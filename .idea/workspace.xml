@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="17ba7dbc-bc50-40f0-a2dd-cdf43545724d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="17ba7dbc-bc50-40f0-a2dd-cdf43545724d" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -229,7 +227,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568896908053</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="binary contain is done">
+      <created>1568907922412</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1568907922412</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -259,6 +264,7 @@
     <MESSAGE value="second part done" />
     <MESSAGE value="lru is done but I cant test it" />
     <MESSAGE value="binary insert is done" />
-    <option name="LAST_COMMIT_MESSAGE" value="binary insert is done" />
+    <MESSAGE value="binary contain is done" />
+    <option name="LAST_COMMIT_MESSAGE" value="binary contain is done" />
   </component>
 </project>

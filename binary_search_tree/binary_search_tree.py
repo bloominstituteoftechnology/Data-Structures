@@ -26,7 +26,7 @@ class BinarySearchTree:
           self.right.insert(value)
 
   def contains(self, target):
-    if self.value is None or self.value == target:
+    if self.value == target:
       return self.value
     elif self.value < target:
       if self.left is None:

@@ -14,9 +14,14 @@ Stretch Goals:
  * Heaps
 
 ## Tasks
-1. Implement each data structure, starting with the queue. Make sure you're in the approriate directory, then run `python3 test_[NAME OF DATA STRUCTURE].py` to run the tests for that data structure and check your progress. Get all the tests passing for each data structure.
-
-2. Open up the `Data_Structures_Questions.md` file, which asks you to evaluate the runtime complexity of each of the methods you implemented for each data structure. Add your answers to each of the questions in the file.
+* Day 1 In Class:  `doubly_linked_list`
+* Day 1 Homework:  `queue_and_stack`
+* Day 2 In Class:  No Starter.  Interview problems described below.
+* Day 2 Homework:  `lru_cache`
+* Day 3 In Class:  No Starter. Research and planning exercise below.
+* Day 3 Homework:  `binary_search_tree` part 1
+* Day 4 In Class:  No Starter. White-boarding exercise below.
+* Day 4 Homework: `binary_search_tree` part 2
 
  > NOTE: The quickest and easiest way to reliably import a file in Python is to just copy and paste the file you want to import into the same directory as the file that wants to import. This obviously isn't considered best practice, but it is the most reliable way to do it across all platforms.  If the import isn't working, feel free to try this method.
 

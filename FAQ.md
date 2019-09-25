@@ -23,10 +23,8 @@ A linked list is not as efficient for storage because each element requires a po
 
 Generally speaking, it's usually best to use an array unless you expect to frequently add and remove items from anywhere other than the end.  In that case, it's better to use a linked list.  
 
-
 #### I've always been able to add as much as I want to an Array and take things out from the beginning, end, or anywhere else.  It's never been a problem before, why are we bothering with all of this?
 We're looking under the hood!  High level languages like Python abstract away most of the inner workings of everything we do.  Most of the time this is a good thing and most of the time it doesn't matter.  However, we're professional engineers and sometimes we need to solve problems where the details can have a major impact on success or failure.  Think about your car.  Do you know exactly how much weight you can put in it?  Probably not, nor do you need to.  But if you find yourself needing to put a load of bags of concrete in the trunk it suddenly becomes very important.  As an engineer, you'll be expected to understand when the details do and do not matter.
-
 
 #### What are real-world use-cases for a LRU Cache?
 An LRU cache is an efficient type of caching system that keeps recently used items and when the cache becomes full, pushes out the least recently used item in the cache.  It can be used any time a subset of data is used frequently that needs to be pulled from a source with a long lookup time.  For example, cacheing the most frequently accessed items from a database on a remote server.
@@ -42,7 +40,6 @@ The first element added to a BST is the root of the tree. However, doing it this
 
 #### What is the difference between Breadth First and Depth First?
 In depth first, we pick one path at each branch and keep going forward until we hit a dead end, then  backtrack and take the first branch we find.  In breadth first, we go by layers, one row deeper each time.  This means that we jump around a bit.
-
 
 #### What is the difference between a Search and a Traversal?
 A search and a traversal are processed exactly the same.  The difference is that we stop a search when we find what we were looking for, or when all nodes have been visited without finding it.  In a traversal, we always keep going until we've visited every node.

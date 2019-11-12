@@ -1,3 +1,5 @@
+from doubly_linked_list import DoublyLinkedList
+
 class LRUCache:
     """
     Our LRUCache class keeps track of the max number of nodes it
@@ -7,7 +9,12 @@ class LRUCache:
     to every node stored in the cache.
     """
     def __init__(self, limit=10):
-        pass
+        
+        self.limit = limit
+        self.order = DoublyLinkedList()
+        self.current_nodes = 0
+        self.storage = dict()
+
 
     """
     Retrieves the value associated with the given key. Also
@@ -17,7 +24,23 @@ class LRUCache:
     key-value pair doesn't exist in the cache.
     """
     def get(self, key):
-        pass
+        # print(f'getting key {key}')
+        # print('current storage keys:')
+
+        # for index, item in self.storage.items():
+        #     print(index, item.value)
+        
+        if key in self.storage:
+            # print('key in storage')
+            node = self.storage[key]
+            self.order.move_to_front(node)
+            # print(f'value to return {node.value[1]}')
+            return node.value[1]
+        else:
+            return None
+
+
+
 
     """
     Adds the given key-value pair to the cache. The newly-
@@ -30,4 +53,39 @@ class LRUCache:
     the newly-specified value.
     """
     def set(self, key, value):
-        pass
+
+        # print(f'setting key {key}, value {value}')
+
+        #check for duplicate key-value
+        if key in self.storage:
+            # print('key in storage')
+            node = self.storage[key]
+            node.value = (key, value)
+            self.order.move_to_front(node)
+            return
+        
+        # if the cache is at the limit delete last element
+        if self.current_nodes == self.limit:
+            # print(f'deleting {self.order.tail.value}')
+            
+            del self.storage[self.order.tail.value[0]]
+            self.order.remove_from_tail()
+            self.current_nodes -= 1
+
+        #add a node to the cache
+        self.order.add_to_head((key, value))
+        self.storage[key] = self.order.head
+        self.current_nodes += 1
+        
+
+
+# test = LRUCache(3)
+
+# test.set('item1', 'a')
+# test.set('item2', 'b')
+# test.set('item3', 'c')
+
+# print(test.get('item1'), 'a')
+# test.set('item4', 'd')
+
+# print(test.get('item1'), 'a')

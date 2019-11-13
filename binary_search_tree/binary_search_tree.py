@@ -57,8 +57,27 @@ class BinarySearchTree:
     # You may use a recursive or iterative approach
     def for_each(self, cb):
         #visit each node one time
-        # so go all the way left (or right) and store the rights then apply all
-        pass
+        # iterative solution
+        # stack = Stack()
+        # stack.push(self)
+        # while stack.len():
+        #     current_node = stack.pop()
+        #     if current_node.right:
+        #         stack.push(current_node.right)
+        #     if current_node.left:
+        #         stack.push(current_node.left)
+        #     cb(current_node.value)
+
+        # recursive solution
+        if self.right:
+            self.right.for_each(cb)
+        if self.left:
+            self.left.for_each(cb)
+        return cb(self.value)
+
+
+
+        
 
     # DAY 2 Project -----------------------
 

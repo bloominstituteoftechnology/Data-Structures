@@ -20,9 +20,7 @@ class BinarySearchTree:
                 self.right = BinarySearchTree(value)
             else:
                 self.right.insert(value)
-
         else:
-
             if not self.left:
                 self.left = BinarySearchTree(value)
             else:

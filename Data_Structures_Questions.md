@@ -19,9 +19,14 @@ O(1)
 
 1. What is the runtime complexity of `insert`? 
 
+log(n)
+
 2. What is the runtime complexity of `contains`?
 
+log(n)
+
 3. What is the runtime complexity of `get_max`? 
+log(n)
 
 ## Heap
 

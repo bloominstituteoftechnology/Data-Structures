@@ -137,24 +137,3 @@ class DoublyLinkedList:
         return max_value
 
 
-
-class LinkedList:
-    def __init__(self, value):
-        self.value = value
-        self.next = None
-
-
-
-
-    def find_middle(self, head):
-
-        if not head or not head.next:
-            return head
-
-        fast_runner = head.next.next
-        slow_runner = head.next
-
-        while fast_runner:
-            fast_runner = fast_runner.next.next
-            slow_runner = slow_runner.next
-        return slow_runner

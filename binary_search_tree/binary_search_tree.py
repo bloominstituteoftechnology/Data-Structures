@@ -79,50 +79,18 @@ class BinarySearchTree:
         # return cb(self.value)
 
 
-
-        
-
     # DAY 2 Project -----------------------
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-               
-        # # iterative solution
-        # stack = Stack()
-        # current = self
-        
-        # # traverse all the way to the left
-        # while current.left:
-        #     if current.left:
-        #         stack.push(current)
-        #     current = current.left
-        
-        # while stack.len() > 0:
-        #     smallest = stack.pop()
-        #     if smallest.right:
-        #         stack.push(smallest.right)
-        #     print(smallest.value)
-            
-        # recursive solution
-        # call fnc on root
-        # if left call left
-        # if right call right
-        # # return print
-        # if self.left:
-        #     self.in_order_print(self.left)
-        # if self.right:
-        #     self.in_order_print(self.right)
-        # return print(self.value)
-        current = self
-        if current.left:
-            current.left.in_order_print(current.left)
-        if current.right:
-            current.right.in_order_print(current.right)
-        print(current.value)        
 
-
-        # pass
+        if self.left:
+            self.left.in_order_print(self.left)
+        print(self.value)
+        if self.right:
+            self.right.in_order_print(self.right)
+        
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal

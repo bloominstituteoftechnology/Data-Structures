@@ -12,21 +12,50 @@ class BinarySearchTree:
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
+        if value < self.value:
+            if self.left is None:
+                self.left = BinarySearchTree(value)
+            else:
+                self.left.insert(value)
+
+        elif value > self.value:
+            if self.right is None:
+                self.right = BinarySearchTree(value)
+            else:
+                self.right.insert(value)
+
 
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        if target == self.value:
+            return True
+        elif target < self.value:
+            try:
+                self.left.contains(target)
+            except:
+                return False
+        elif target > self.value:
+            try:
+                self.right.contains(target)
+            except:
+                return False
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
-
+        try:
+            return self.right.get_max()
+        except:
+            return self.value
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
     def for_each(self, cb):
-        pass
+        cb(self.value)
+        if self.right is not None:
+            self.right.for_each(cb)
+        if self.left is not None:
+            self.left.for_each(cb)
+
 
     # DAY 2 Project -----------------------
 
@@ -55,3 +84,5 @@ class BinarySearchTree:
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
         pass
+    def __repr__(self):
+        return (f'Value: {self.value}, right: {self.right}, left: {self.left}')

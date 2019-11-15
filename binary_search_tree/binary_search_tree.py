@@ -32,12 +32,12 @@ class BinarySearchTree:
             return True
         elif target < self.value:
             try:
-                self.left.contains(target)
+                return self.left.contains(target)
             except:
                 return False
         elif target > self.value:
             try:
-                self.right.contains(target)
+                return self.right.contains(target)
             except:
                 return False
 
@@ -62,17 +62,40 @@ class BinarySearchTree:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        if node.left is not None:
+            node.in_order_print(node.left)
+        print(node.value)
+        if node.right is not None:
+            node.in_order_print(node.right)
+
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+        q = Queue()
+        q.enqueue(node)
+        while q.size > 0:
+            n = q.dequeue()
+            print(n.value)
+            if n.left is not None:
+                q.enqueue(n.left)
+            if n.right is not None:
+                q.enqueue(n.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+        stack = Stack()
+        stack.push(node)
+        while stack.size >0:
+            p=stack.pop()
+            print(p.value)
+            if p.left is not None:
+                stack.push(p.left)
+            if p.right is not None:
+                stack.push(p.right)
+
+
 
     # STRETCH Goals -------------------------
     # Note: Research may be required
@@ -84,5 +107,3 @@ class BinarySearchTree:
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
         pass
-    def __repr__(self):
-        return (f'Value: {self.value}, right: {self.right}, left: {self.left}')

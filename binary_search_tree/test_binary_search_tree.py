@@ -88,6 +88,7 @@ class BinarySearchTreeTests(unittest.TestCase):
         output = sys.stdout.getvalue()
         self.assertEqual(output, "1\n8\n5\n7\n6\n3\n4\n2\n")
 
+    def test_stretch(self):
         sys.stdout = io.StringIO()
         self.bst.pre_order_dft(self.bst)
         output = sys.stdout.getvalue()

@@ -67,9 +67,13 @@ class DoublyLinkedList:
     current head's next node the new head of the List.
     Returns the value of the removed Node."""
     def remove_from_head(self):
+        if self.head is None:
+            return None
+        
         value = self.head.value
         self.delete(self.head)
-        return value
+        return value.value
+        
 
     """Wraps the given value in a ListNode and inserts it 
     as the new tail of the list. Don't forget to handle 
@@ -89,9 +93,11 @@ class DoublyLinkedList:
     current tail's previous node the new tail of the List.
     Returns the value of the removed Node."""
     def remove_from_tail(self):
+        if self.tail is None:
+            return None
         value = self.tail.value
         self.delete(self.tail)
-        return value
+        return value.value
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new head node of the List."""

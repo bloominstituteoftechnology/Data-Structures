@@ -33,6 +33,9 @@ class ListNode:
             self.prev.next = self.next
         if self.next:
             self.next.prev = self.prev
+    
+    def __str__(self):
+      return f"node's data: {self.value}"
 
 
 """Our doubly-linked list class. It holds references to
@@ -126,7 +129,7 @@ class DoublyLinkedList:
           self.head = node.next
           node.delete()
         elif self.tail is node:
-          self.tail = node.next
+          self.tail = node.prev
           node.delete()
         else:
           node.delete()
@@ -140,3 +143,6 @@ class DoublyLinkedList:
             max_value = current.value
           current = current.next
         return max_value
+
+    def __str__(self):
+      return f"LinkedList's head: {self.head}, and tail: {self.tail}"

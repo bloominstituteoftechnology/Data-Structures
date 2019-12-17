@@ -13,9 +13,10 @@ class LRUCache:
     to every node stored in the cache.
     """
     def __init__(self, limit=10):
-        self.size = 0
+        self.order = DoublyLinkedList()
         self.limit = limit
-        self.storage = DoublyLinkedList()
+        self.size = 0
+        self.storage = {}
 
     """
     Retrieves the value associated with the given key. Also
@@ -25,7 +26,14 @@ class LRUCache:
     key-value pair doesn't exist in the cache.
     """
     def get(self, key):
-        pass
+        # Pull value from dict by key
+        # update position in list or return None
+        if key in self.storage:
+            node = self.storage[key]
+            self.order.move_to_front(node)
+            return node.value[1]
+        else:
+            return None
 
     """
     Adds the given key-value pair to the cache. The newly-
@@ -38,4 +46,21 @@ class LRUCache:
     the newly-specified value.
     """
     def set(self, key, value):
-        pass
+        # Add pair to the cache - add to dict and to the DLL nodes
+        # Mark as most recently used - Put in head of DLL
+        # If at max capacity dump oldest - remove from DLL tail
+        # 1. If already exists, overwrite value - update dict
+        if key in self.storage:
+            node = self.storage[key]
+            node.value = (key, value)
+            self.order.move_to_front(node)
+            return
+
+        if self.size is self.limit:
+            del self.storage[self.order.tail.value[0]]
+            self.order.remove_from_tail()
+            self.size -= 1
+        self.order.add_to_head((key, value))
+        self.storage[key] = self.order.head
+        self.size += 1
+

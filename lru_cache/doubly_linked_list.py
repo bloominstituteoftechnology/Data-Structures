@@ -115,12 +115,12 @@ class DoublyLinkedList:
 
   def get_max(self):
     current = self.head
-      max_value = current.value
-      while current is not None:          
-        if current.value > max_value:
-          max_value = current.value
-        current = current.next
-      return max_value
+    max_value = current.value
+    while current is not None:          
+      if current.value > max_value:
+        max_value = current.value
+      current = current.next
+    return max_value
 
   def __str__(self):
     return f"LinkedList's head: {self.head}, and tail: {self.tail}"

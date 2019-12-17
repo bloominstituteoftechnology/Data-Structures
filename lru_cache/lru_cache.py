@@ -29,6 +29,9 @@ class LRUCache:
       value = self.storage[key].value
       del self.storage[key]
       self.storage[key] = value
+
+      # Move the item to the end of the DLL
+      self.cache.move_to_end(self.storage[key])
       return f"{self.storage[key]}, {self.storage[key].value}"
     """
     Adds the given key-value pair to the cache. The newly-
@@ -43,6 +46,8 @@ class LRUCache:
     def set(self, key, value):
       if self.length == self.limit:
         del self.storage.keys()[0]
+        self.cache.remove_from_head()
       # Will make a new key if it doesn't exist, and replace the value if the key does exist
       self.storage[key] = value
+      self.cache.add_to_head((key, value))
       self.length += 1

@@ -3,10 +3,13 @@ Answer the following questions for each of the data structures you implemented a
 ## Queue
 
 1. What is the runtime complexity of `enqueue`?
+  This should be O(1) since there is only ever 1 operation happening the input. 
 
 2. What is the runtime complexity of `dequeue`?
+  This should be O(1) since there is only ever 1 operation happening to remove an item. 
 
 3. What is the runtime complexity of `len`?
+  Since the length is being changed everytime something happens to the stack/queue, the runtime should be O(1) since it's just retrieving an int.
 
 ## Binary Search Tree
 

@@ -40,34 +40,87 @@ the list's head and tail nodes."""
 
 
 class DoublyLinkedList:
-    def __init__(self, node=None):
-        self.head = node
-        self.tail = node
-        self.length = 1 if node is not None else 0
+  def __init__(self, node=None):
+    self.head = node
+    self.tail = node
+    self.length = 1 if node is not None else 0
 
-    def __len__(self):
-        return self.length
+  def __len__(self):
+    return self.length
 
-    def add_to_head(self, value):
-        pass
+  def add_to_head(self, value):
+    new_node = ListNode(value, None, None)
+    self.length += 1
+    # If list is empty
+    if not self.head and not self.tail:
+      self.head = new_node
+      self.tail = new_node
+    else:
+      new_node.insert_after(self.head)
+      self.head = new_node
 
-    def remove_from_head(self):
-        pass
+  def remove_from_head(self):
+    value = self.head.value
+    self.delete(self.head)
+    return value
 
-    def add_to_tail(self, value):
-        pass
+  def add_to_tail(self, value):
+    new_node = ListNode(value, None, None)
+    self.length += 1
+    # If list is empty
+    if not self.head and not self.tail:
+      self.head = new_node
+      self.tail = new_node
+    else:
+      new_node.insert_before(self.tail)
+      self.tail = new_node
 
-    def remove_from_tail(self):
-        pass
+  def remove_from_tail(self):
+    value = self.tail.value
+    self.delete(self.tail)
+    return value
 
-    def move_to_front(self, node):
-        pass
 
-    def move_to_end(self, node):
-        pass
+  def move_to_front(self, node):
+    if node is self.head:
+      return
+    value = node.value
+    self.delete(node)
+    self.add_to_head(value)
 
-    def delete(self, node):
-        pass
 
-    def get_max(self):
-        pass
+  def move_to_end(self, node):
+    if node is self.tail:
+      return
+    value = node.value
+    self.delete(node)
+    self.add_to_tail(value)
+
+  def delete(self, node):
+    if not self.head and not self.tail:
+      # This shouldn't actually occur ever
+      return
+    self.length -= 1
+    if self.head == self.tail:
+      self.head = None
+      self.tail = None
+    elif self.head is node:
+      self.head = node.next
+      node.delete()
+    elif self.tail is node:
+      self.tail = node.prev
+      node.delete()
+    else:
+      node.delete()
+
+  def get_max(self):
+    current = self.head
+      max_value = current.value
+      while current is not None:          
+        if current.value > max_value:
+          max_value = current.value
+        current = current.next
+      return max_value
+
+  def __str__(self):
+    return f"LinkedList's head: {self.head}, and tail: {self.tail}"

@@ -1,4 +1,4 @@
-from doubly_linked_list import DoublyLinkedList
+from doubly_linked_list import *
 
 class LRUCache:
     """
@@ -11,9 +11,8 @@ class LRUCache:
     def __init__(self, limit=10):
       self.limit = limit
       self.length = 0
-      self.max_number = 0
+      self.cache = DoublyLinkedList()
       self.storage = {}
-      self.cache = DoublyLinkedList(None)
 
     """
     Retrieves the value associated with the given key. Also
@@ -26,13 +25,14 @@ class LRUCache:
       if key not in self.storage.keys():
         return None
       # Store the value, delete the key from the cache and then readd it as the newest(first) value 
-      value = self.storage[key].value
+      value = self.storage[key]
       del self.storage[key]
       self.storage[key] = value
-
+      
+      i = ListNode((key,value))
       # Move the item to the end of the DLL
-      self.cache.move_to_end(self.storage[key])
-      return f"{self.storage[key]}, {self.storage[key].value}"
+      self.cache.move_to_end(i)
+      return value
     """
     Adds the given key-value pair to the cache. The newly-
     added pair should be considered the most-recently used
@@ -45,9 +45,15 @@ class LRUCache:
     """
     def set(self, key, value):
       if self.length == self.limit:
-        del self.storage.keys()[0]
+        del self.storage[list(self.storage)[0]]
         self.cache.remove_from_head()
-      # Will make a new key if it doesn't exist, and replace the value if the key does exist
+      # Will rewrite the new key if it exist
+      if key in self.storage:
+        i = ListNode((key, self.storage[key]))
+        self.cache.delete(i)
+      # Will make a new key if it doesn't exist
       self.storage[key] = value
-      self.cache.add_to_head((key, value))
+      self.cache.add_to_tail({key: value})
       self.length += 1
+      print(self.cache)
+      print(self.storage, self.length) 

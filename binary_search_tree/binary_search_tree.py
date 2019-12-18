@@ -10,20 +10,61 @@ class BinarySearchTree:
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
+        """
+        if first element
+          place
+        if not first element
+          compare current with new
+            if less, move left
+            if greater, move right
+        """
+        if self.value is None:
+            self.value = value
+        else:
+            if self.value > value:
+                if self.left is None:
+                    self.left = value  # TODO: need to wrap in something
+                else:
+                    pass  # TODO: continue the search
+            elif self.value < value:
+                if self.right is None:
+                    self.right = value  # TODO: need to wrap in something
+                else:
+                    pass  # TODO: continue the search
 
     # Return True if the tree contains the value
     # False if it does not
+
     def contains(self, target):
-        pass
+        if self.value == target:
+            return True
+        else:
+            if self.value > target:
+                if self.left is None:
+                    return False
+                elif self.left == target:
+                    return True
+                else:
+                    pass  # TODO: continue the search
+            elif self.value < target:
+                if self.right is None:
+                    return False
+                elif self.right == target:
+                    return True
+                else:
+                    pass  # TODO: continue the search
 
     # Return the maximum value found in the tree
     def get_max(self):
+        # get right most value
         pass
 
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
     def for_each(self, cb):
+        # recursion might be better
+        # need to traverse both sides of tree
+        # hit a node, call cb, go to next
         pass
 
     # DAY 2 Project -----------------------
@@ -53,3 +94,11 @@ class BinarySearchTree:
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
         pass
+
+
+bst = BinarySearchTree(5)
+bst.insert(4)
+bst.insert(6)
+print(bst.value)
+print(bst.left)
+print(bst.right)

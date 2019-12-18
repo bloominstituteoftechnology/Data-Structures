@@ -1,5 +1,8 @@
 """Each ListNode holds a reference to its previous node
-as well as its next node in the List."""
+as well as its next node in the List.
+
+returns values for remove_from_head and remove_from_tail
+"""
 
 
 class ListNode:

@@ -1,6 +1,7 @@
+from doubly_linked_list import DoublyLinkedList
 import sys
 sys.path.append('../doubly_linked_list')
-from doubly_linked_list import DoublyLinkedList
+
 
 class LRUCache:
     """
@@ -10,6 +11,7 @@ class LRUCache:
     order, as well as a storage dict that provides fast access
     to every node stored in the cache.
     """
+
     def __init__(self, limit=10):
         self.max_amount = limit
         self.current_amount = 0
@@ -23,13 +25,14 @@ class LRUCache:
     Returns the value associated with the key or None if the
     key-value pair doesn't exist in the cache.
     """
+
     def get(self, key):
         if key in self.fast_access:
-          value = self.fast_access[key]
-          self.storage.move_to_front(value)
-          return value.value
+            value = self.fast_access[key]
+            self.storage.move_to_front(value)
+            return value.value
         else:
-          return None
+            return None
 
     """
     Adds the given key-value pair to the cache. The newly-
@@ -41,16 +44,15 @@ class LRUCache:
     want to overwrite the old value associated with the key with
     the newly-specified value.
     """
+
     def set(self, key, value):
         new_node = self.storage.add_to_head(value)
         if key in self.fast_access:
-          self.current_amount -= 1
+            self.current_amount -= 1
         self.fast_access[key] = new_node
         new_node.key = key
         if self.current_amount == self.max_amount:
-          value = self.storage.remove_from_tail()
-          self.fast_access.pop(value.key)
+            value = self.storage.remove_from_tail()
+            self.fast_access.pop(value.key)
         else:
-          self.current_amount += 1
-
-
+            self.current_amount += 1

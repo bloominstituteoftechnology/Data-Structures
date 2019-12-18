@@ -10,7 +10,6 @@ class LRUCache:
     """
     def __init__(self, limit=10):
       self.limit = limit
-      self.length = 0
       self.cache = DoublyLinkedList()
       self.storage = {}
 
@@ -46,13 +45,9 @@ class LRUCache:
       # Will rewrite the new key if it exist
       if key in self.storage:
         self.cache.delete(self.storage[key])
-        self.length -= 1
-      if self.length == self.limit:
+      if self.cache.length == self.limit:
         del self.storage[list(self.storage)[0]]
-        self.cache.remove_from_head()
+        self.cache.delete(self.storage[list(self.storage)[0]])
       # Will make a new key if it doesn't exist
       self.cache.add_to_tail({key: value})
       self.storage[key] = self.cache.tail
-      self.length += 1
-      print('check', self.cache)
-      # print(self.storage, self.length)

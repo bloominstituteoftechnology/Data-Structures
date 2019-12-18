@@ -14,8 +14,7 @@ class CacheTests(unittest.TestCase):
 
         self.cache.set('item2', 'z')
 
-        #self.assertEqual(self.cache.get('item1'), 'a')
-        self.assertEqual(self.cache.get('item1'), None) #TODO: Should be removed since it is the least recently used???
+        self.assertEqual(self.cache.get('item1'), 'a')
         self.assertEqual(self.cache.get('item2'), 'z')
         print("===========================================================================")
 

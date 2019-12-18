@@ -34,7 +34,7 @@ class ListNode:
         if self.next:
             self.next.prev = self.prev
     
-    def __str__(self):
+    def __repr__(self):
       return f"data: {self.value}"
 
 
@@ -125,5 +125,5 @@ class DoublyLinkedList:
       current = current.next
     return max_value
 
-  def __str__(self):
+  def __repr__(self):
     return f"LinkedList's head: {self.head}, and tail: {self.tail}"

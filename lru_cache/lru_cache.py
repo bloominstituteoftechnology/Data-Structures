@@ -29,10 +29,9 @@ class LRUCache:
       del self.storage[key]
       self.storage[key] = value
       
-      i = ListNode((key,value))
       # Move the item to the end of the DLL
-      self.cache.move_to_end(i)
-      return value
+      self.cache.move_to_end(self.storage[key])
+      return value.value[key]
     """
     Adds the given key-value pair to the cache. The newly-
     added pair should be considered the most-recently used
@@ -44,16 +43,16 @@ class LRUCache:
     the newly-specified value.
     """
     def set(self, key, value):
+      # Will rewrite the new key if it exist
+      if key in self.storage:
+        self.cache.delete(self.storage[key])
+        self.length -= 1
       if self.length == self.limit:
         del self.storage[list(self.storage)[0]]
         self.cache.remove_from_head()
-      # Will rewrite the new key if it exist
-      if key in self.storage:
-        i = ListNode((key, self.storage[key]))
-        self.cache.delete(i)
       # Will make a new key if it doesn't exist
-      self.storage[key] = value
       self.cache.add_to_tail({key: value})
+      self.storage[key] = self.cache.tail
       self.length += 1
-      print(self.cache)
-      print(self.storage, self.length) 
+      print('check', self.cache)
+      # print(self.storage, self.length)

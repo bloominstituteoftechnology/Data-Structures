@@ -41,7 +41,7 @@ class ListNode:
 """Our doubly-linked list class. It holds references to
 the list's head and tail nodes."""
 
-
+# Changed the doubly to use all of the ListNode methods and not just some like yesterdays class
 class DoublyLinkedList:
   def __init__(self, node=None):
     self.head = node

@@ -45,6 +45,7 @@ class LRUCache:
       # Will rewrite the new key if it exist
       if key in self.storage:
         self.cache.delete(self.storage[key])
+      # Delete an item first if there are too many
       if self.cache.length == self.limit:
         del self.storage[list(self.storage)[0]]
         self.cache.delete(self.storage[list(self.storage)[0]])

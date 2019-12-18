@@ -42,15 +42,6 @@ class LRUCache:
     the newly-specified value.
     """
     def set(self, key, value):
-        """
-        adds to head of storage
-        adds to hash table
-          if key exists = overwrite, current_amount does not increase
-        if current amount == max amount
-          remove from tail
-        else
-          current amount++
-        """
         new_node = self.storage.add_to_head(value)
         if key in self.fast_access:
           self.current_amount -= 1

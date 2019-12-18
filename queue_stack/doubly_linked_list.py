@@ -1,16 +1,15 @@
 """Each ListNode holds a reference to its previous node
 as well as its next node in the List.
 
-returns nodes for add_to_head, remove_from_head, add_to_tail, and remove_from_tail
+returns values for remove_from_head and remove_from_tail
 """
 
 
 class ListNode:
-    def __init__(self, value, prev=None, next=None, key=None):
+    def __init__(self, value, prev=None, next=None):
         self.value = value
         self.prev = prev
         self.next = next
-        self.key = key
 
     """Wrap the given value in a ListNode and insert it
     after this node. Note that this node could already
@@ -69,16 +68,15 @@ class DoublyLinkedList:
             new_node.next = self.head
             self.head.prev = new_node
             self.head = new_node
-        return new_node
 
     """Removes the List's current head node, making the
     current head's next node the new head of the List.
     Returns the value of the removed Node."""
 
     def remove_from_head(self):
-        node = self.head
+        value = self.head.value
         self.delete(self.head)
-        return node
+        return value
 
     """Wraps the given value in a ListNode and inserts it 
     as the new tail of the list. Don't forget to handle 
@@ -94,16 +92,15 @@ class DoublyLinkedList:
             new_node.prev = self.tail
             self.tail.next = new_node
             self.tail = new_node
-        return new_node
 
     """Removes the List's current tail node, making the 
     current tail's previous node the new tail of the List.
     Returns the value of the removed Node."""
 
     def remove_from_tail(self):
-        node = self.tail
+        value = self.tail.value
         self.delete(self.tail)
-        return node
+        return value
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new head node of the List."""

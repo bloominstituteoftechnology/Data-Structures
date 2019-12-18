@@ -178,13 +178,3 @@ class DoublyLinkedList:
                 max_value = current.value
             current = current.next
         return max_value
-
-
-node = ListNode(1)
-dll = DoublyLinkedList(node)
-print(dll)
-print(dll.length)
-dll.add_to_head(5)
-print(dll.length)
-dll.add_to_tail(10)
-print(dll.length)

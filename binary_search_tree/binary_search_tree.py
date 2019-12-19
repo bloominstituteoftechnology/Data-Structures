@@ -56,32 +56,68 @@ class BinarySearchTree:
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
     def for_each(self, cb):
-        if self.value is not None:
-            cb(self.value)
+        # if self.value is not None:
+        #     cb(self.value)
 
-        if self.right:
-            self.right.for_each(cb)
-        if self.left:
-            self.left.for_each(cb)
-        return
+        # if self.right:
+        #     self.right.for_each(cb)
+        # if self.left:
+        #     self.left.for_each(cb)
+        # return
+
+        # depth first traversal
+        stack = Stack()
+        stack.push(self)
+
+
 
     # DAY 2 Project -----------------------
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
 
-    def in_order_print(self, node):
-        pass
+    def in_order_print(self, node=None):
+        stack = Stack()
+
+        stack.push(self)
+        current_node = stack.pop()
+
+        if current_node.left:
+          #stack.push(current_node)
+          return self.left.in_order_print(current_node)
+
+        if current_node.right:
+          #stack.push(current_node)
+          return self.right.in_order_print(current_node)
+
+        if stack.size == 0:
+          return
+
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+        queue = Queue()
+        queue.enqueue(node)
+
+        while queue.size > 0:
+
+          current_node = queue.dequeue()
+          if current_node.left:
+            queue.enqueue(current_node.left)
+          if current_node.right:
+            queue.enqueue(current_node.right)
+
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+        stack = Stack()
+        stack.push(node)
+        while stack.size > 0:
+          current_node = stack.pop()
+
+        print(current_node)
 
     # STRETCH Goals -------------------------
     # Note: Research may be required
@@ -116,3 +152,7 @@ def printMe(x):
 
 
 print(bst.for_each(printMe))
+
+print("===")
+print(bst.in_order_print())
+print("===")

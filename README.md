@@ -1,3 +1,4 @@
+Michael Jenkins
 # Data Structures 
 
 Topics:

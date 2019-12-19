@@ -12,7 +12,18 @@ class BinarySearchTree:
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
+      # Create a new root using the given value and check against the current tree
+      new_leaf = BinarySearchTree(value)
+      # if the value is >= the current spot move to the right and add it to the right if the field is empty
+      if value >= self.value and self.right is None:
+        self.right = new_leaf
+      elif value >= self.value:
+        self.right.insert(value)
+      # if the value is < the current spot move to the left and add it to the left if the field is empty
+      elif value < self.value and self.left is None:
+        self.left = new_leaf
+      elif value < self.value:
+        self.left.insert(value)
 
     # Return True if the tree contains the value
     # False if it does not

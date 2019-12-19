@@ -57,25 +57,19 @@ class BinarySearchTree:
     # You may use a recursive or iterative approach
     def for_each(self, cb):
         if self.value is not None:
-          cb(self.value)
+            cb(self.value)
 
-        if not self.left:
-          return
-        else:
-          self.left.for_each(cb)
-        if not self.right:
-          return
-        else:
-          self.right.for_each(cb)
+        if self.right:
+            self.right.for_each(cb)
+        if self.left:
+            self.left.for_each(cb)
         return
-
-
-
 
     # DAY 2 Project -----------------------
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
+
     def in_order_print(self, node):
         pass
 
@@ -105,15 +99,20 @@ bst = BinarySearchTree(5)
 bst.insert(4)
 bst.insert(3)
 bst.insert(6)
+bst.insert(10)
 print(bst.value)  # 5
 print(bst.left.value)  # 4
 print(bst.left.left.value)  # 3
 print(bst.right.value)  # 6
+print(bst.right.right.value)  # 10
 print(bst.contains(4))  # T
 print(bst.contains(8))  # F
 print(bst.contains(5))  # T
+print(bst.contains(10))  # T
+
 
 def printMe(x):
-  print("PRINTME", x)
+    print("PRINTME", x)
+
 
 print(bst.for_each(printMe))

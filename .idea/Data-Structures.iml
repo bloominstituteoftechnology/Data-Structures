@@ -5,6 +5,7 @@
       <sourceFolder url="file://$MODULE_DIR$/doubly_linked_list" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/queue_and_stack" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/lru_cache" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/binary_search_tree" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.8 (Data-Structures)" jdkType="Python SDK" />

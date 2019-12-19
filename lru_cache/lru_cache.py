@@ -56,7 +56,7 @@ class LRUCache:
             self.order.move_to_front(node)
             return
 
-        if self.size is self.limit:
+        if self.size == self.limit:
             del self.storage[self.order.tail.value[0]]
             self.order.remove_from_tail()
             self.size -= 1

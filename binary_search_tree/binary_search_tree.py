@@ -5,32 +5,24 @@ from dll_stack import Stack
 class BinarySearchTree:
     def __init__(self, value):
         self.value = value
-        self.left = None
-        self.right = None
+        self.left = None  # left_LESS_subtree
+        self.right = None  # right_GREATER_EQUAL_subtree
 
     # Insert the given value into the tree
     def insert(self, value):
-        """
-        if first element
-          place
-        if not first element
-          compare current with new
-            if less, move left
-            if greater, move right
-        """
         if self.value is None:
-            self.value = value
+            self.value = BinarySearchTree(value)
         else:
             if self.value > value:
                 if self.left is None:
-                    self.left = value  # TODO: need to wrap in something
+                    self.left = BinarySearchTree(value)
                 else:
-                    pass  # TODO: continue the search
+                    self.left.insert(value)
             elif self.value < value:
                 if self.right is None:
-                    self.right = value  # TODO: need to wrap in something
+                    self.right = BinarySearchTree(value)
                 else:
-                    pass  # TODO: continue the search
+                    self.right.insert(value)
 
     # Return True if the tree contains the value
     # False if it does not
@@ -40,32 +32,45 @@ class BinarySearchTree:
             return True
         else:
             if self.value > target:
-                if self.left is None:
+                if not self.left or self.left.value is None:
                     return False
-                elif self.left == target:
+                elif self.left.value == target:
                     return True
                 else:
-                    pass  # TODO: continue the search
+                    return self.left.contains(target)
             elif self.value < target:
-                if self.right is None:
+                if not self.right or self.right.value is None:
                     return False
-                elif self.right == target:
+                elif self.right.value == target:
                     return True
                 else:
-                    pass  # TODO: continue the search
+                    return self.right.contains(target)
 
     # Return the maximum value found in the tree
     def get_max(self):
-        # get right most value
-        pass
+        if self.right is None:
+            return self.value
+        else:
+            return self.right.get_max()
 
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
     def for_each(self, cb):
-        # recursion might be better
-        # need to traverse both sides of tree
-        # hit a node, call cb, go to next
-        pass
+        if self.value is not None:
+          cb(self.value)
+
+        if not self.left:
+          return
+        else:
+          self.left.for_each(cb)
+        if not self.right:
+          return
+        else:
+          self.right.for_each(cb)
+        return
+
+
+
 
     # DAY 2 Project -----------------------
 
@@ -98,7 +103,17 @@ class BinarySearchTree:
 
 bst = BinarySearchTree(5)
 bst.insert(4)
+bst.insert(3)
 bst.insert(6)
-print(bst.value)
-print(bst.left)
-print(bst.right)
+print(bst.value)  # 5
+print(bst.left.value)  # 4
+print(bst.left.left.value)  # 3
+print(bst.right.value)  # 6
+print(bst.contains(4))  # T
+print(bst.contains(8))  # F
+print(bst.contains(5))  # T
+
+def printMe(x):
+  print("PRINTME", x)
+
+print(bst.for_each(printMe))

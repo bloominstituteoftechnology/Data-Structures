@@ -56,68 +56,92 @@ class BinarySearchTree:
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
     def for_each(self, cb):
-        # if self.value is not None:
-        #     cb(self.value)
 
-        # if self.right:
-        #     self.right.for_each(cb)
-        # if self.left:
-        #     self.left.for_each(cb)
-        # return
+        # depth first traversal - recursive
+        if self.value is not None:
+            cb(self.value)
 
-        # depth first traversal
-        stack = Stack()
-        stack.push(self)
+        if self.right:
+            self.right.for_each(cb)
+        if self.left:
+            self.left.for_each(cb)
+        return
 
+        # depth first traversal - iterative
+        # stack = Stack()
+        # stack.push(self)
 
+        # while stack.len() > 0:
+        #     current_node = stack.pop().value
+        #     cb(current_node.value)
+        #     if current_node.right:
+        #         stack.push(current_node.right)
+        #     if current_node.left:
+        #         stack.push(current_node.left)
 
     # DAY 2 Project -----------------------
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
 
-    def in_order_print(self, node=None):
-        stack = Stack()
-
-        stack.push(self)
-        current_node = stack.pop()
-
-        if current_node.left:
-          #stack.push(current_node)
-          return self.left.in_order_print(current_node)
-
-        if current_node.right:
-          #stack.push(current_node)
-          return self.right.in_order_print(current_node)
-
-        if stack.size == 0:
-          return
-
+    def in_order_print(self, node):
+        if node.left:
+            self.in_order_print(node.left)
+        print(node.value)
+        if node.right:
+            self.in_order_print(node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
+    """
+    Breadth First Traversal
+    Make a queue
+    Put root in the queue
+    While queue is not empty
+      pop out front of queue
+      DO THE THING!
+      if left:
+        add left to back of queue
+      if right:
+        add right to back of queue
+    """
+
     def bft_print(self, node):
         queue = Queue()
         queue.enqueue(node)
-
         while queue.size > 0:
-
-          current_node = queue.dequeue()
-          if current_node.left:
-            queue.enqueue(current_node.left)
-          if current_node.right:
-            queue.enqueue(current_node.right)
-
+            current_node = queue.dequeue().value
+            print(current_node.value)
+            if current_node.left:
+                queue.enqueue(current_node.left)
+            if current_node.right:
+                queue.enqueue(current_node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
+    """
+    Depth First Traversal
+    Make a stack
+    put root in stack
+      while stack not empty
+      pop root out of stack
+      DO THE THING!!!!
+      if left
+          add left to stack
+      if right
+          add right to stack
+    """
+
     def dft_print(self, node):
         stack = Stack()
         stack.push(node)
         while stack.size > 0:
-          current_node = stack.pop()
-
-        print(current_node)
+            current_node = stack.pop().value
+            print(current_node.value)
+            if current_node.left:
+                stack.push(current_node.left)
+            if current_node.right:
+                stack.push(current_node.right)
 
     # STRETCH Goals -------------------------
     # Note: Research may be required
@@ -131,20 +155,21 @@ class BinarySearchTree:
         pass
 
 
-bst = BinarySearchTree(5)
-bst.insert(4)
+bst = BinarySearchTree(8)
 bst.insert(3)
-bst.insert(6)
 bst.insert(10)
-print(bst.value)  # 5
-print(bst.left.value)  # 4
-print(bst.left.left.value)  # 3
-print(bst.right.value)  # 6
-print(bst.right.right.value)  # 10
-print(bst.contains(4))  # T
-print(bst.contains(8))  # F
-print(bst.contains(5))  # T
-print(bst.contains(10))  # T
+bst.insert(1)
+bst.insert(6)
+bst.insert(4)
+bst.insert(7)
+bst.insert(10)
+bst.insert(14)
+bst.insert(13)
+print(bst.value)  # 8
+print(bst.left.value)  # 3
+print(bst.right.value)  # 10
+
+print(bst.contains(8))  # T
 
 
 def printMe(x):
@@ -154,5 +179,13 @@ def printMe(x):
 print(bst.for_each(printMe))
 
 print("===")
-print(bst.in_order_print())
+print(bst.dft_print(bst))
+print("===")
+
+print("===")
+print(bst.bft_print(bst))
+print("===")
+
+print("===")
+print(bst.in_order_print(bst))
 print("===")

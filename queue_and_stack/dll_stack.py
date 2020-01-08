@@ -150,6 +150,12 @@ class DoublyLinkedList:
         return max_node
 
 
+# Stack adding values to top(head) and removing from the top(head)
+# Stack is Last In, First Out
+# Acces ONLY from Front or back which is good for array, SLL, or dll
+# Ex Can either add to front + remove from front or add to back + remove from back
+# If add to back and remove from back can use Array bcuz will be O(1)
+# For add to front + remove from front, use DLL. Can use DLL for add to back and remove from back but array might be easier
 class Stack:
     def __init__(self):
         self.size = 0

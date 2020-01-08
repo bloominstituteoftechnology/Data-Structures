@@ -151,6 +151,13 @@ class DoublyLinkedList:
 
 
 # Queue
+# Queue would be adding values to the  tail. Removing from the head. First In First OUt
+# Queue we add to back and remove from front. front [1,2,3,4,5] back
+# Dont want to use array for queue because removing from front is O(n)
+# Queue can use single linked list if we KNOW tail. If no tail then dont
+# Queue DLL is great. SLL can be cheaper for memory
+# enqueue add an item to back of queue
+# dequeue remove and return an item from the front of queue
 class Queue:
     def __init__(self):
         self.size = 0

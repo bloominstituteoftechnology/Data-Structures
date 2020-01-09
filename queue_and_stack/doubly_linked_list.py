@@ -145,6 +145,8 @@ class DoublyLinkedList:
             new_tail.next = None
         self.length -= 1
 
+        return old_tail.value
+
     """Removes the input node from its current spot in the 
     List and inserts it as the new head node of the List."""
     def move_to_front(self, node):
@@ -182,7 +184,6 @@ class DoublyLinkedList:
             self.head = value
             self.head.prev = None
             self.head.next = old_head
-        
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List."""
@@ -200,14 +201,14 @@ class DoublyLinkedList:
 
 dll = DoublyLinkedList()
 
-dll.add_to_head(3)
-dll.add_to_head(2)
-dll.add_to_head(1)
-dll.add_to_tail(4)
-dll.add_to_tail(5)
+dll.add_to_tail(1)
+dll.add_to_tail(2)
+dll.add_to_tail(3)
 
 print(dll)
 
-dll.move_to_front(2)
+dll.remove_from_tail()
+dll.remove_from_tail()
+dll.remove_from_tail()
 
 print(dll)

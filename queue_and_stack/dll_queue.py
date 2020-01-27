@@ -3,16 +3,18 @@ from doubly_linked_list import DoublyLinkedList
 
 class Queue:
     def __init__(self):
-        self.size = 0
         # Why is our DLL a good choice to store our elements?
-        # self.storage = ?
-        self.storage = None
+        # cuz data is in order and we don't need to access the middle
+        self.storage = DoublyLinkedList()
 
     def enqueue(self, value):
-        pass
+        self.storage.add_to_head(value)
+        return True
 
     def dequeue(self):
-        pass
+        if self.len() > 0:
+            return self.storage.remove_from_tail()
+        return None
 
     def len(self):
-        return
+        return len(self.storage)

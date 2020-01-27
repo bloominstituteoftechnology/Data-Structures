@@ -56,7 +56,14 @@ class DoublyLinkedList:
     the old head node's previous pointer accordingly."""
 
     def add_to_head(self, value):
-        pass
+        new_node = ListNode(value, None, self.head)
+        self.length += 1
+        if not self.head and not self.tail:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            self.head.prev = new_node
+            self.head = new_node
 
     """Removes the List's current head node, making the
     current head's next node the new head of the List.
@@ -66,11 +73,19 @@ class DoublyLinkedList:
         pass
 
     """Wraps the given value in a ListNode and inserts it 
-    as the new tail of the list. Don't forget to handle 
+    as the new tail of the list. Don't forget to handle
     the old tail node's next pointer accordingly."""
 
     def add_to_tail(self, value):
-        pass
+        newNode = ListNode(value, None, None)
+        self.length += 1
+        if not self.head and not self.tail:
+            self.head = newNode
+            self.tail = newNode
+        else:
+            self.tail.next = newNode
+            newNode.prev = self.tail
+            self.tail = newNode
 
     """Removes the List's current tail node, making the 
     current tail's previous node the new tail of the List.
@@ -95,7 +110,27 @@ class DoublyLinkedList:
     the node was the head or the tail"""
 
     def delete(self, node):
-        pass
+        self.length -= 1
+
+        # if empty
+        if not self.head and not self.tail:
+            # TODO: Error
+            return
+        # if head and tail
+        if self.head == self.tail and self.head == node:
+            self.head = None
+            self.tail = None
+        # if head
+        elif self.head == node:
+            self.head = self.head.next
+            node.delete()
+        # if tail
+        elif self.tail == node:
+            self.tail = self.tail.prev
+            node.delete()
+        # otherwise
+        else:
+            node.delete()
 
     """Returns the highest value currently in the list"""
 

@@ -10,7 +10,6 @@ class LRUCache:
     """
     def __init__(self, limit=10):
         self.limit = limit
-        self.count = 0
         self.keyStorage = {}
         self.ageStorage = DoublyLinkedList()
 
@@ -43,17 +42,16 @@ class LRUCache:
         old = self.keyStorage.get(key, None)
         if old:
             self.ageStorage.delete(old)
-            self.keyStorage[key] = None
-            self.count -= 1
+            self.keyStorage.pop(key, None)
 
-        if self.count >= self.limit:
+        if len(self.keyStorage) >= self.limit:
             tail = self.ageStorage.tail
             oldKey = tail.key
-            self.keyStorage[oldKey] = None
+            self.keyStorage.pop(oldKey, None)
             self.ageStorage.remove_from_tail()
 
         self.ageStorage.add_to_head(value, key)
         self.keyStorage[key] = self.ageStorage.head
 
-        if value:
-            self.count += 1
+    def __len__(self):
+        return len(self.keyStorage)

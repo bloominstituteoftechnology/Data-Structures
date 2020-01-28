@@ -105,4 +105,11 @@ class DoublyLinkedList:
             node.delete()
 
     def get_max(self):
-        pass
+        if not self.head:
+            return None
+        current = self.head
+        while current.value[0] is not key:
+            if current.next is None:
+                return None
+            current = current.next
+        return current 

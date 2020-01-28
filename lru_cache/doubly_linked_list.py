@@ -95,7 +95,6 @@ class DoublyLinkedList:
         self.length -= 1
         # If LL is empty
         if not self.head and not self.tail:
-            # TODO: Error handling
             return
         # If head and tail
         if self.head == self.tail:

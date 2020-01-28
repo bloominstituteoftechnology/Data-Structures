@@ -69,3 +69,60 @@ class SingleLinkedList:
 
         def add_to_head(self, value):
             new_node = Node(value)
+
+
+
+
+
+
+
+
+# RECURSION
+
+"""Reverse a string
+1. given string 'string'
+2. return the string but in reverse order
+"""
+
+
+# base case
+# new array?
+# while loop
+# while (what?)
+# "this is our string"
+# counter
+
+
+# string = "output"
+
+# 0
+# 0
+# 0
+# 0
+# 0
+# 0
+# 0
+# 0
+# 0
+# take the last letter of what we got passed and add it to the beginning
+# 'output'
+# ...
+# 'toutpu'
+
+
+def reverse(string):
+    if len(string) == 0:
+        return string
+    else:
+        print(string)
+        return reverse(string[1:]) + string[0]
+    # output = []
+    # while counter > 0:
+    #     output.append(string[counter -1])
+    #     print("".join(output))
+    #     counter -=1
+
+
+# a = str(input("Enter string: "))
+print(reverse("ab cde"))
+# print("".join(output))

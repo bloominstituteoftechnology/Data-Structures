@@ -25,3 +25,5 @@ class Queue:
 
     def len(self):
         return self.size
+
+print('Puto!!!!')

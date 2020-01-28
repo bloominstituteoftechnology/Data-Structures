@@ -13,19 +13,10 @@ class Stack:
         self.list.add_to_head(value)
 
     def pop(self):
-        # if self.size < 1:
-        #     return
+        if self.size < 1:
+            return
         self.size -= 1
-        self.list.remove_from_head()
+        return self.list.remove_from_head()
 
     def len(self):
         return self.size
-
-
-List1 = Stack()
-
-List1.push(1)
-List1.push(2)
-
-List1.pop()
-print(List1.len())

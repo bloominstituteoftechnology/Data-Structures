@@ -69,4 +69,5 @@ to be moved to the end.
 - Runtime is O(n) because we have to iterate through the list to find the item to delete.
 
     a. Compare the runtime of the doubly linked list's `delete` method with the worst-case runtime of the JS `Array.splice` method. Which method generally performs better?
-    -- Runtime of Array.splice is O(n), so both perform the same.
+    -- Runtime of Array.splice is O(n) because items have to be shifted for new items to be added, so both
+    perform the same.

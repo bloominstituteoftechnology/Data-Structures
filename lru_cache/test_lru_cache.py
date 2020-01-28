@@ -53,5 +53,6 @@ class CacheTests(unittest.TestCase):
         self.cache.set('e', "e")
         self.assertEqual(len(self.cache), 3)
 
+
 if __name__ == '__main__':
     unittest.main()

@@ -32,6 +32,15 @@ class BinarySearchTreeTests(unittest.TestCase):
         self.bst.insert(3)
         self.assertEqual(self.bst.get_max(), 300)
 
+    def testMinimumvalue(self):
+        self.assertEqual(self.bst.get_min(), 5)
+        self.bst.insert(30)
+        self.assertEqual(self.bst.get_min(), 5)
+        self.bst.insert(300)
+        self.bst.insert(3)
+        self.assertEqual(self.bst.get_min(), 3)
+
+
     def test_for_each(self):
         arr = []
         cb = lambda x: arr.append(x)

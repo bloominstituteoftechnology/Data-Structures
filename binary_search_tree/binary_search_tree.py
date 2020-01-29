@@ -11,16 +11,35 @@ class BinarySearchTree:
         self.right = None
 
     # Insert the given value into the tree
+
+
+
+    # if not child, on that side, insert else try again starting from the child on appropriate
     def insert(self, value):
-        pass
+    # compare root node  --  maybe while or recursive
+    # while...
+    # if lesser go to left child
+        if self.value < value:
+            self.value = self.left
+
+    # if greater go to right child
+        if self.value >= value:
+            self.value = self.right
+
 
     # Return True if the tree contains the value
     # False if it does not
+    # Find
+    # look at root, if root is it return
+    # if value si less tan node, go left and repeat
+    # if no left child, return none
+    # if value is >= node, go right and repate. if not right child return none
     def contains(self, target):
         pass
 
     # Return the maximum value found in the tree
     def get_max(self):
+        # go right until no more
         pass
 
     # Call the function `cb` on the value of each node
@@ -54,4 +73,7 @@ class BinarySearchTree:
 
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
+        pass
+
+    def deleteNode(self):
         pass

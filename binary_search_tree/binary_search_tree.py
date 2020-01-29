@@ -4,6 +4,7 @@
 # from dll_stack import Stack
 
 
+# Binary Search Tree - discards duplicate values
 class BinarySearchTree:
     def __init__(self, value):
         self.value = value
@@ -42,6 +43,13 @@ class BinarySearchTree:
         if self.right:
             theMax = self.right.get_max()
         return theMax
+
+    # Return the minimum value found in the tree
+    def get_min(self):
+        theMin = self.value
+        if self.left:
+            theMin = self.left.get_min()
+        return theMin
 
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach

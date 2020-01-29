@@ -22,11 +22,19 @@ class LRUCache:
     key-value pair doesn't exist in the cache.
     """
     def get(self, key):
-        if key in self.storagedict:
+        # O(1)
+        try:
             self.doublylinkedlist.move_to_front(self.storagedict[key])
             return self.storagedict[key].value
-        else:
+        except:
             return None
+
+        # O(n)
+        # if key in self.storagedict:
+        #     self.doublylinkedlist.move_to_front(self.storagedict[key])
+        #     return self.storagedict[key].value
+        # else:
+        #     return None
 
     """
     Adds the given key-value pair to the cache. The newly-

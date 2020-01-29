@@ -13,22 +13,22 @@ class BinarySearchTree:
     # Insert the given value into the tree
     def insert(self, value):
         # compare root node  --  maybe not true
-        while self.value != value:
+        # while self.value != value:
         # variable for value
 
         # current node too
-            current_node = None
+        current_node = None
         # if lesser go to left child
-            if self.value < value:
-                self.value = self.left
-
-
-        # if greater go to right child
-            if self.value >= value:
-                self.value = self.right
-        # if not child, on that side, insert else try again starting from the child on appropriate
-
+        if self.value < value:
+            self.left = BinarySearchTree(self.value)
+        else:
             self.value == value
+        # if greater go to right child
+        if self.value >= value:
+            self.right = BinarySearchTree(self.value)
+        # if not child, on that side, insert else try again starting from the child on appropriate
+        else:
+            self.left(value)
 
     # Return True if the tree contains the value
     # False if it does not
@@ -51,16 +51,24 @@ class BinarySearchTree:
             if self.right == None and self.left == None:
                 return False
 
-
+    print(contains(4,4))
     # Return the maximum value found in the tree
     def get_max(self):
-        # go right until no more
-        pass
+
+
+        x = 0
+        while self.right is not None:
+            x = self.right
+            return x
+        return x
 
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
     def for_each(self, cb):
-        pass
+        while self.right or self.left is not None:
+            cb(self.left)
+            cb(self.right)
+            cb(self.value)
 
     # DAY 2 Project -----------------------
 
@@ -71,16 +79,19 @@ class BinarySearchTree:
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
+    # use queue
     def bft_print(self, node):
         pass
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
+    # use stack
     def dft_print(self, node):
         pass
 
+
+
     # STRETCH Goals -------------------------
-    # Note: Research may be required
 
     # Print In-order recursive DFT
     def pre_order_dft(self, node):

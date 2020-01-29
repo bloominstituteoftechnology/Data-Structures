@@ -14,7 +14,7 @@ class LRUCache:
         self.limit = limit
         self.held = 0
         self.linked_list = DoublyLinkedList()
-        self.hash = {}
+        self.hash_ = {}
 
     """
     Retrieves the value associated with the given key. Also
@@ -48,20 +48,39 @@ class LRUCache:
 
     def set(self, key, value):
         # check to see if item exists in the list:
-
-        # access dict with key return false if it doesn't
-        # if it exists update the dict value
-        # go through linked list and update value in linked_list
+        if key in self.hash_:
+            # if it exists update the dict value
+            self.hash_[key] = value
+            print(self.hash_[key])
+            # go through linked list and update value in linked_list
+            current = self.linked_list.head
+            while current[key] != value:
+                current = current.next
+                if current[key] == value:
+                    current[key] = value
 
         # if it doesn't exist:
 
         # if limit is full:
+        else:
+            if self.held >= self.limit:
+                old_tail = self.linked_list.tail
+                self.linked_list.remove_from_tail()
+                if old_tail in self.hash_:
+                    del self.hash_[old_tail]
+    # delete capture the tail
+    # delete that tail
+    # delete that value from hash
+        self.linked_list.add_to_head({key: value})
+        self.hash_[key] = value
+    # full or not full add it to linked list
+    # add it to the head of the list
+    # add it to the head of the linked list and
+    # ad it to the hash as a key value pair
 
-        # delete capture the tail
-        # delete that tail
-        # delete that value from hash
 
-        # full or not full add it to linked list
-        # add it to the head of the list
-        # add it to the head of the linked list and
-        # ad it to the hash as a key value pair
+test = LRUCache()
+test.set("brandon", 37)
+print(test.linked_list.head.value)
+print(test.hash_)
+test.set("brandon", 38)

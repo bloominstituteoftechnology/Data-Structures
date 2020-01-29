@@ -7,7 +7,7 @@ class LRUCache:
         self.limit = limit
         self.size = 0
         self.order = DoublyLinkedList()
-        self.storage = dict()
+        self.storage = {}
 
     def get(self, key):
         if key in self.storage:

@@ -45,12 +45,13 @@ class LRUCache:
             node = self.storage[key]
             node.value = (key, value)
             self.dll.move_to_end(node)
-        else:
-            # If cache limit reached remove least recently used item
-            if self.length == self.limit:
-                del self.storage[self.dll.head.value[0]]
-                self.dll.remove_from_head()
-                self.length -= 1
+            return
+
+        # If cache limit reached remove least recently used item
+        if self.length == self.limit:
+            del self.storage[self.dll.head.value[0]]
+            self.dll.remove_from_head()
+            self.length -= 1
 
         # Add new item to cache
         self.dll.add_to_tail((key, value))

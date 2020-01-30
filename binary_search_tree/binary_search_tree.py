@@ -132,7 +132,6 @@ class BinarySearchTree:
         # if node has two children, find inorder successor, delete it, and copy its value here
         # if it has one child, move child in place of node
         # if has no children, delete
-        print(f"'deleting' {self.value}")
         if self.left is not None and self.right is not None:
             successor = self.__getInorderSuccessorNode()
             self.value = successor.value
@@ -157,7 +156,10 @@ class BinarySearchTree:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        node = self.__getMinNode()
+        while node:
+            print(node.value)
+            node = node.__getInorderSuccessorNode()
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal

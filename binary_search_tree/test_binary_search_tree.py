@@ -32,6 +32,37 @@ class BinarySearchTreeTests(unittest.TestCase):
         self.bst.insert(3)
         self.assertEqual(self.bst.get_max(), 300)
 
+    def test_delete(self):
+        # self.bst = BinarySearchTree(12)
+        self.bst = BinarySearchTree(50)
+        self.bst.insert(30)
+        self.bst.insert(70)
+        self.bst.insert(40)
+        self.bst.insert(20)
+        self.bst.insert(60)
+        self.bst.insert(80)
+        self.bst.insert(61)
+
+        self.bst.delete(20)
+        self.assertEqual(self.bst.contains(20), False)
+        self.assertEqual(self.bst.contains(30), True)
+        self.assertEqual(self.bst.contains(40), True)
+
+        self.bst.delete(30)
+        self.assertEqual(self.bst.contains(30), False)
+        self.assertEqual(self.bst.contains(40), True)
+
+        self.bst.delete(50)
+        self.assertEqual(self.bst.contains(20), False)
+        self.assertEqual(self.bst.contains(30), False)
+        self.assertEqual(self.bst.contains(50), False)
+
+        self.assertEqual(self.bst.contains(40), True)
+        self.assertEqual(self.bst.contains(60), True)
+        self.assertEqual(self.bst.contains(70), True)
+        self.assertEqual(self.bst.contains(80), True)
+        self.assertEqual(self.bst.contains(61), True)
+
     def testMinimumvalue(self):
         self.assertEqual(self.bst.get_min(), 5)
         self.bst.insert(30)

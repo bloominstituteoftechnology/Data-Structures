@@ -56,7 +56,6 @@ class BinarySearchTree:
             theMax = self.right.__getMaxNode()
         return theMax
 
-
     # Return the minimum value found in the tree
     def get_min(self):
         return self.__getMinNode().value
@@ -115,6 +114,43 @@ class BinarySearchTree:
             self.right.for_each(cb)
         if self.left:
             self.left.for_each(cb)
+
+    def delete(self, value, parent=None):
+        # find node if it exists
+        node = self
+        while node is not None and node.value != value:
+            if node.value > value:
+                node = node.left
+            else:
+                node = node.right
+        if node is None:
+            print("not found")
+            return
+        node.__deleteSelf()
+
+    def __deleteSelf(self):
+        # if node has two children, find inorder successor, delete it, and copy its value here
+        # if it has one child, move child in place of node
+        # if has no children, delete
+        print(f"'deleting' {self.value}")
+        if self.left is not None and self.right is not None:
+            successor = self.__getInorderSuccessorNode()
+            self.value = successor.value
+            successor.__deleteSelf()
+        elif self.left or self.right:
+            child = self.left or self.right
+            if self.parent.left == self:
+                self.parent.left = child
+            else:
+                self.parent.right = child
+            child.parent = self.parent
+        elif self.left is None and self.right is None:
+            parent = self.parent
+            if parent.left == self:
+                parent.left = None
+            else:
+                parent.right = None
+            self.parent = None
 
     # DAY 2 Project -----------------------
 

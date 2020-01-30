@@ -43,7 +43,7 @@ class BinarySearchTree:
                 # move left
                 # repeat
                 return self.left.contains(target)
-        elif (target >= self.value):
+        elif (target > self.value):
             if (self.right is None):
                 return False
             else:
@@ -73,24 +73,64 @@ class BinarySearchTree:
             self.right.for_each(cb)
         else:
             return
+        # This also works:
+        # cb(self.value)
+        # if self.left:
+        #   self.left.for_each(cb)
+        # if self.right:
+        #   self.right.for_each(cb)
         
 
     # DAY 2 Project -----------------------
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
-    def in_order_print(self, node):
-        pass
+    def in_order_print(self):
+        if self.left:
+            self.left.in_order_print()
+        print(self.value)
+        if self.right:
+            self.right.in_order_print()
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+        # Make a queue
+        q = Queue()
+        # Add root to queue
+        q.enqueue(node)
+        # while there is stuff in there
+        while (q.len() > 0):
+            # dequeue root and save in temp
+            temp = q.dequeue()
+            # DO THE THING!!!
+            print(temp.value)
+            # if temp.left add to queue
+            if (temp.left):
+                q.enqueue(temp.left)
+            # if temp.right add to queue
+            if (temp.right):
+                q.enqueue(temp.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+        # Make a stack
+        stack = Stack()
+        # Add root to stack
+        stack.push(node)
+        # while there is stuff in there
+        while (stack.len() > 0):
+            # pop root and save in temp
+            temp = stack.pop()
+            # DO THE THING!!!
+            print(temp.value)
+            # if temp.left add to stack
+            if (temp.left):
+                stack.push(temp.left)
+            # if temp.right add to stack
+            if (temp.right):
+                stack.push(temp.right)
 
     # STRETCH Goals -------------------------
     # Note: Research may be required

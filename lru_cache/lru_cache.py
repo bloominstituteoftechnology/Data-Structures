@@ -14,7 +14,7 @@ class LRUCache:
         self.limit = limit
         self.held = 0
         self.linked_list = DoublyLinkedList()
-        self.hash_ = {}
+        self.hash_ = dict()
 
     """
     Retrieves the value associated with the given key. Also
@@ -25,16 +25,11 @@ class LRUCache:
     """
 
     def get(self, key):
-        pass
-
-    # use hash to return quickly
-
-    # rotate through linked list find key value pair
-    # save it in temp
-    # delete from list
-    # move temp to head
-    # should always be enough room
-
+        if key in self.hash_:
+            self.linked_list.move_to_front(self.linked_list.tail)
+            return self.hash_[key]
+        else:
+            return None
     """
     Adds the given key-value pair to the cache. The newly-
     added pair should be considered the most-recently used
@@ -47,40 +42,13 @@ class LRUCache:
     """
 
     def set(self, key, value):
-        # check to see if item exists in the list:
+
         if key in self.hash_:
-            # if it exists update the dict value
             self.hash_[key] = value
-            print(self.hash_[key])
-            # go through linked list and update value in linked_list
-            current = self.linked_list.head
-            while current[key] != value:
-                current = current.next
-                if current[key] == value:
-                    current[key] = value
-
-        # if it doesn't exist:
-
-        # if limit is full:
-        else:
-            if self.held >= self.limit:
-                old_tail = self.linked_list.tail
-                self.linked_list.remove_from_tail()
-                if old_tail in self.hash_:
-                    del self.hash_[old_tail]
-    # delete capture the tail
-    # delete that tail
-    # delete that value from hash
-        self.linked_list.add_to_head({key: value})
+            return
+        if self.held >= self.limit:
+            del self.hash_[self.linked_list.tail.value]
+            self.linked_list.remove_from_tail()
+        self.linked_list.add_to_head(key)
         self.hash_[key] = value
-    # full or not full add it to linked list
-    # add it to the head of the list
-    # add it to the head of the linked list and
-    # ad it to the hash as a key value pair
-
-
-test = LRUCache()
-test.set("brandon", 37)
-print(test.linked_list.head.value)
-print(test.hash_)
-test.set("brandon", 38)
+        self.held += 1

@@ -6,23 +6,28 @@
 
 # Binary Search Tree - discards duplicate values
 class BinarySearchTree:
-    def __init__(self, value):
+    def __init__(self, value, parent=None):
         self.value = value
         self.left = None
         self.right = None
+        self.parent = parent
 
     # Insert the given value into the tree
     def insert(self, value):
+        newNode = None
         if value < self.value:
             if self.left:
-                self.left.insert(value)
+                newNode = self.left.insert(value)
             else:
-                self.left = BinarySearchTree(value)
+                newNode = BinarySearchTree(value, self)
+                self.left = newNode
         elif value > self.value:
             if self.right:
-                self.right.insert(value)
+                newNode = self.right.insert(value)
             else:
-                self.right = BinarySearchTree(value)
+                newNode = BinarySearchTree(value, self)
+                self.right = newNode
+        return newNode
 
     # Return True if the tree contains the value
     # False if it does not

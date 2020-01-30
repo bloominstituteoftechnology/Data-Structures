@@ -48,7 +48,7 @@ class BinarySearchTree:
     # STRETCH Goals -------------------------
     # Note: Research may be required
 
-    # Print In-order recursive DFT
+    # Print Pre-order recursive DFT
     def pre_order_dft(self, node):
         pass
 

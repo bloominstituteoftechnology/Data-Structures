@@ -56,6 +56,20 @@ class BinarySearchTree:
             theMin = self.left.get_min()
         return theMin
 
+    def getInorderSuccessor(self):
+        if self.right:
+            return self.right.get_min()
+        else:
+            current = self
+            parent = current.parent
+            while current is not None and parent is not None and current != parent.left:
+                parent = parent.parent
+                current = current.parent
+            if parent:
+                return parent.value
+            else:
+                return None
+    
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
     def for_each(self, cb):

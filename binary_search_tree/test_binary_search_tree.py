@@ -40,6 +40,24 @@ class BinarySearchTreeTests(unittest.TestCase):
         self.bst.insert(3)
         self.assertEqual(self.bst.get_min(), 3)
 
+    def testInorderSuccessor(self):
+
+        my20 = self.bst = BinarySearchTree(20)
+        my22 = self.bst.insert(22)
+        my8 = self.bst.insert(8)
+        my4 = self.bst.insert(4)
+        my12 = self.bst.insert(12)
+        my10 = self.bst.insert(10)
+        my14 = self.bst.insert(14)
+
+        self.assertEqual(my8.getInorderSuccessor(), 10)
+        self.assertEqual(my4.getInorderSuccessor(), 8)
+        self.assertEqual(my14.getInorderSuccessor(), 20)
+        self.assertEqual(my10.getInorderSuccessor(), 12)
+        self.assertEqual(my12.getInorderSuccessor(), 14)
+        self.assertEqual(my20.getInorderSuccessor(), 22)
+        self.assertEqual(my22.getInorderSuccessor(), None)
+
 
     def test_for_each(self):
         arr = []

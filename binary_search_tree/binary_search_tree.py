@@ -1,7 +1,7 @@
-# import sys
-# sys.path.append('../queue_and_stack')
-# from dll_queue import Queue
-# from dll_stack import Stack
+import sys
+sys.path.append('../queue_and_stack')
+from dll_queue import Queue
+from dll_stack import Stack
 
 
 # Binary Search Tree - discards duplicate values
@@ -171,7 +171,16 @@ class BinarySearchTree:
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+        theQueue = Queue()
+
+        currentNode = node
+        while currentNode:
+            print(currentNode.value)
+            if currentNode.left:
+                theQueue.enqueue(currentNode.left)
+            if currentNode.right:
+                theQueue.enqueue(currentNode.right)
+            currentNode = theQueue.dequeue()
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal

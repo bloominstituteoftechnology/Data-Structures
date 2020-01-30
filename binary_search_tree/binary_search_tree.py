@@ -124,7 +124,6 @@ class BinarySearchTree:
             else:
                 node = node.right
         if node is None:
-            print("not found")
             return
         node.__deleteSelf()
 
@@ -156,10 +155,18 @@ class BinarySearchTree:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
+        # cleaner, but requires additions like getting in order successor and utilizing nodes internally
         node = self.__getMinNode()
         while node:
             print(node.value)
             node = node.__getInorderSuccessorNode()
+
+        # # works, doesn't require the additions, but not as elegent- really quirky with parameter passing
+        # if node.left:
+        #     self.in_order_print(node.left)
+        # print(node.value)
+        # if node.right:
+        #     self.in_order_print(node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal

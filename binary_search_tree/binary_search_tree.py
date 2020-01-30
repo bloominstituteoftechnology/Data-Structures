@@ -48,18 +48,24 @@ class BinarySearchTree:
 
     # Return the maximum value found in the tree
     def get_max(self):
-        theMax = self.value
+        return self.__getMaxNode().value
+
+    def __getMaxNode(self):
+        theMax = self
         if self.right:
-            theMax = self.right.get_max()
+            theMax = self.right.__getMaxNode()
         return theMax
+
 
     # Return the minimum value found in the tree
     def get_min(self):
-        theMin = self.value
-        if self.left:
-            theMin = self.left.get_min()
-        return theMin
+        return self.__getMinNode().value
 
+    def __getMinNode(self):
+        theMin = self
+        if self.left:
+            theMin = self.left.__getMinNode()
+        return theMin
 
     # 2) If right sbtree of node is NULL, then succ is one of the ancestors. Do following.
     # Travel up using the parent pointer until you see a node which is the left child of its parent. The parent of such a node is the succ.

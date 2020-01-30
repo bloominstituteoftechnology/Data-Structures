@@ -56,6 +56,9 @@ class BinarySearchTree:
             theMin = self.left.get_min()
         return theMin
 
+
+    # 2) If right sbtree of node is NULL, then succ is one of the ancestors. Do following.
+    # Travel up using the parent pointer until you see a node which is the left child of its parent. The parent of such a node is the succ.
     def getInorderSuccessor(self):
         if self.right:
             return self.right.get_min()
@@ -69,7 +72,24 @@ class BinarySearchTree:
                 return parent.value
             else:
                 return None
-    
+
+    # 2) If left sbtree of node is NULL, then pred is one of the ancestors. Do following.
+    # Travel up using the parent pointer until you see a node which is the right child of its parent. The parent of such a node is the pred.
+    def getInorderPredecessor(self):
+        if self.left:
+            return self.left.get_max()
+        else:
+            current = self
+            parent = current.parent
+            while current is not None and parent is not None and current != parent.right:
+                parent = parent.parent
+                current = current.parent
+            if parent:
+                return parent.value
+            else:
+                return None
+
+
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
     def for_each(self, cb):

@@ -24,16 +24,14 @@ class LRUCache:
     key-value pair doesn't exist in the cache.
     """
     def get(self, key):
-        print(self.storage)
         if not key in self.storage:
-            print('None')
             return None
         
         recent_value = self.storage[key]
         del self.storage[key]
         self.storage[key] = recent_value
 
-        return self.storage[key].value
+        return self.storage[key]
 
         
 
@@ -51,20 +49,54 @@ class LRUCache:
         node = self.order.add_to_head(value)
 
         if key in self.storage:
-            self.storage[key] = node
+            self.storage[key] = node.value
 
         elif len(self.storage) >= self.limit:
             for i in self.storage:
                 del self.storage[i]
                 break
 
-            self.storage[key] = node
+            self.storage[key] = node.value
 
         else:
-            self.storage[key] = node
-        
+            self.storage[key] = node.value
 
-lru = LRUCache(2)
-lru.set('a', 'b')
-lru.set('d', 'c')
-lru.get('a')
+
+import time
+# def subsetA(arr):
+#     # Write your code here
+#     start = time.time()
+#     sort = sorted(arr) 
+#     checker = []
+#     second = []
+   
+#     for i in range(len(arr)-1, -1, -1):
+#         checker.append(sort[i])
+#         sort = sort[ :i]
+#         print(sort)
+#         if len(checker) > 1 and sum(checker) > sum(sort):
+#             break
+
+#     for i in range(len(checker) - 1, -1, -1):
+#         second.append(checker[i])
+#     end = time.time()
+#     print(end - start)
+#     return reversed(checker)
+
+
+def subsetA(arr):
+    # Write your code here
+    start = time.time()
+    sort = sorted(arr) 
+    checker = []
+    second = []
+   
+    for i in range(len(arr)-1, -1, -1):
+        checker.append(sort[i])
+        sort = sort[ :i]
+        if len(checker) > 1 and sum(checker) > sum(sort):
+            break
+    print(checker)
+    return reversed(checker)
+
+print(subsetA([2,1,5,3,4]))

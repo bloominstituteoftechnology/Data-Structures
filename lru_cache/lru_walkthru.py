@@ -2,12 +2,12 @@
 # sys.path.append('../doubly_linked_list')
 from doubly_linked_list import DoublyLinkedList
 
-class LRUCache:
+class lru:
     def __init__(self, limit):
         self.limit = limit
         self.size = 0
         self.order = DoublyLinkedList()
-        self.storage = {}
+        self.storage = dict()
 
     def get(self, key):
         if key in self.storage:

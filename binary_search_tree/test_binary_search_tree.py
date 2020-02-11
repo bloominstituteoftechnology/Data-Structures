@@ -37,6 +37,79 @@ class BinarySearchTreeTests(unittest.TestCase):
         self.bst.insert(3)
         self.assertEqual(self.bst.get_max(), 300)
 
+    def test_delete(self):
+        # self.bst = BinarySearchTree(12)
+        self.bst = BinarySearchTree(50)
+        self.bst.insert(30)
+        self.bst.insert(70)
+        self.bst.insert(40)
+        self.bst.insert(20)
+        self.bst.insert(60)
+        self.bst.insert(80)
+        self.bst.insert(61)
+
+        self.bst.delete(20)
+        self.assertEqual(self.bst.contains(20), False)
+        self.assertEqual(self.bst.contains(30), True)
+        self.assertEqual(self.bst.contains(40), True)
+
+        self.bst.delete(30)
+        self.assertEqual(self.bst.contains(30), False)
+        self.assertEqual(self.bst.contains(40), True)
+
+        self.bst.delete(50)
+        self.assertEqual(self.bst.contains(20), False)
+        self.assertEqual(self.bst.contains(30), False)
+        self.assertEqual(self.bst.contains(50), False)
+
+        self.assertEqual(self.bst.contains(40), True)
+        self.assertEqual(self.bst.contains(60), True)
+        self.assertEqual(self.bst.contains(70), True)
+        self.assertEqual(self.bst.contains(80), True)
+        self.assertEqual(self.bst.contains(61), True)
+
+    def testMinimumvalue(self):
+        self.assertEqual(self.bst.get_min(), 5)
+        self.bst.insert(30)
+        self.assertEqual(self.bst.get_min(), 5)
+        self.bst.insert(300)
+        self.bst.insert(3)
+        self.assertEqual(self.bst.get_min(), 3)
+
+    def testInorderSuccessor(self):
+        my20 = self.bst = BinarySearchTree(20)
+        my22 = self.bst.insert(22)
+        my8 = self.bst.insert(8)
+        my4 = self.bst.insert(4)
+        my12 = self.bst.insert(12)
+        my10 = self.bst.insert(10)
+        my14 = self.bst.insert(14)
+
+        self.assertEqual(my8.getInorderSuccessor(), 10)
+        self.assertEqual(my4.getInorderSuccessor(), 8)
+        self.assertEqual(my14.getInorderSuccessor(), 20)
+        self.assertEqual(my10.getInorderSuccessor(), 12)
+        self.assertEqual(my12.getInorderSuccessor(), 14)
+        self.assertEqual(my20.getInorderSuccessor(), 22)
+        self.assertEqual(my22.getInorderSuccessor(), None)
+
+    def testInorderPredecessor(self):
+        my20 = self.bst = BinarySearchTree(20)
+        my22 = self.bst.insert(22)
+        my8 = self.bst.insert(8)
+        my4 = self.bst.insert(4)
+        my12 = self.bst.insert(12)
+        my10 = self.bst.insert(10)
+        my14 = self.bst.insert(14)
+
+        self.assertEqual(my8.getInorderPredecessor(), 4)
+        self.assertEqual(my4.getInorderPredecessor(), None)
+        self.assertEqual(my14.getInorderPredecessor(), 12)
+        self.assertEqual(my10.getInorderPredecessor(), 8)
+        self.assertEqual(my12.getInorderPredecessor(), 10)
+        self.assertEqual(my20.getInorderPredecessor(), 14)
+        self.assertEqual(my22.getInorderPredecessor(), 20)
+
     def test_for_each(self):
         arr = []
         cb = lambda x: arr.append(x)
@@ -106,6 +179,7 @@ class BinarySearchTreeTests(unittest.TestCase):
         self.assertEqual(output, "2\n4\n3\n6\n7\n5\n8\n1\n")
 
         sys.stdout = stdout_  # Restore stdout
+
 
 if __name__ == '__main__':
     unittest.main()

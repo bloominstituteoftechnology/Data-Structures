@@ -71,4 +71,3 @@ class LinkedList:
         else: 
             # new head = old head's next Node 
             self.head = self.head.get_next()
-            

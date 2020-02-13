@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="PYTHON_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/doubly_linked_list" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/queue_and_stack" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lru_cache" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/binary_search_tree" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/venv" />
+    </content>
+    <orderEntry type="jdk" jdkName="Python 3.8 (Data-Structures)" jdkType="Python SDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="R User Library" level="project" />
+    <orderEntry type="library" name="R Skeletons" level="application" />
+  </component>
+</module>

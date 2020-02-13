@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="268bcace-17ca-46ef-b26d-5aa307e210b4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Data-Structures.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Data-Structures.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/avl_tree/avl_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/avl_tree/avl_tree.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/binary_search_tree/binary_search_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/binary_search_tree/binary_search_tree.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/binary_search_tree/test_binary_search_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/binary_search_tree/test_binary_search_tree.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lru_cache/lru_cache.py" beforeDir="false" afterPath="$PROJECT_DIR$/lru_cache/lru_cache.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/queue_and_stack/dll_queue.py" beforeDir="false" afterPath="$PROJECT_DIR$/queue_and_stack/dll_queue.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/queue_and_stack/dll_stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/queue_and_stack/dll_stack.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1V5CO9EVTxaqMpkgAffyOHKd0uu" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RunManager" selected="Python tests.Unittests in test_binary_search_tree.py">
+    <configuration name="binary_search_tree" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Data-Structures" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/binary_search_tree" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/binary_search_tree/binary_search_tree.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests for test_binary_search_tree.BinarySearchTreeTests.test_contains" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="Data-Structures" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/binary_search_tree" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_binary_search_tree.BinarySearchTreeTests.test_contains&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests for test_binary_search_tree.BinarySearchTreeTests.test_for_each" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="Data-Structures" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/binary_search_tree" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_binary_search_tree.BinarySearchTreeTests.test_for_each&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests for test_binary_search_tree.BinarySearchTreeTests.test_get_max" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="Data-Structures" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/binary_search_tree" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_binary_search_tree.BinarySearchTreeTests.test_get_max&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests in test_binary_search_tree.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="Data-Structures" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/binary_search_tree" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/binary_search_tree/test_binary_search_tree.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python tests.Unittests in test_binary_search_tree.py" />
+        <item itemvalue="Python tests.Unittests for test_binary_search_tree.BinarySearchTreeTests.test_for_each" />
+        <item itemvalue="Python.binary_search_tree" />
+        <item itemvalue="Python tests.Unittests for test_binary_search_tree.BinarySearchTreeTests.test_get_max" />
+        <item itemvalue="Python tests.Unittests for test_binary_search_tree.BinarySearchTreeTests.test_contains" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="268bcace-17ca-46ef-b26d-5aa307e210b4" name="Default Changelist" comment="" />
+      <created>1576464520657</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1576464520657</updated>
+      <workItem from="1576533537943" duration="3141000" />
+      <workItem from="1576599250713" duration="47124000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="93" y="93" width="1350" height="678" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1576613642624">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="93" y="93" width="1350" height="678" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1536.864/1920.0.1024.768@0.0.1536.864" timestamp="1576613642624" />
+    <state width="1493" height="194" key="GridCell.Tab.0.bottom" timestamp="1576798171955">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="194" key="GridCell.Tab.0.bottom/0.0.1536.864/1920.0.1024.768@0.0.1536.864" timestamp="1576798171955" />
+    <state width="490" height="285" key="GridCell.Tab.0.bottom/0.0.1536.864/1920.0.1024.768@1920.0.1024.768" timestamp="1576615090330" />
+    <state width="1493" height="194" key="GridCell.Tab.0.center" timestamp="1576798171954">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="194" key="GridCell.Tab.0.center/0.0.1536.864/1920.0.1024.768@0.0.1536.864" timestamp="1576798171954" />
+    <state width="490" height="285" key="GridCell.Tab.0.center/0.0.1536.864/1920.0.1024.768@1920.0.1024.768" timestamp="1576615090330" />
+    <state width="1493" height="194" key="GridCell.Tab.0.left" timestamp="1576798171954">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="194" key="GridCell.Tab.0.left/0.0.1536.864/1920.0.1024.768@0.0.1536.864" timestamp="1576798171954" />
+    <state width="490" height="285" key="GridCell.Tab.0.left/0.0.1536.864/1920.0.1024.768@1920.0.1024.768" timestamp="1576615090330" />
+    <state width="1493" height="194" key="GridCell.Tab.0.right" timestamp="1576798171955">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="194" key="GridCell.Tab.0.right/0.0.1536.864/1920.0.1024.768@0.0.1536.864" timestamp="1576798171955" />
+    <state width="490" height="285" key="GridCell.Tab.0.right/0.0.1536.864/1920.0.1024.768@1920.0.1024.768" timestamp="1576615090330" />
+    <state x="39" y="57" key="SettingsEditor" timestamp="1576599238074">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="39" y="57" key="SettingsEditor/0.0.1536.864/1920.0.1024.768@0.0.1536.864" timestamp="1576599238074" />
+    <state x="1946" y="51" key="SettingsEditor/0.0.1536.864/1920.0.1024.768@1920.0.1024.768" timestamp="1576533682497" />
+    <state x="578" y="348" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1576534422466">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="578" y="348" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.864/1920.0.1024.768@0.0.1536.864" timestamp="1576534422466" />
+    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1576612435376">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1536.864/1920.0.1024.768@0.0.1536.864" timestamp="1576612435376" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Data_Structures$Unittests_in_test_queue_py.coverage" NAME="Unittests in test_queue.py Coverage Results" MODIFIED="1576616855317" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/queue_and_stack" />
+    <SUITE FILE_PATH="coverage/Data_Structures$doubly_linked_list.coverage" NAME="doubly_linked_list Coverage Results" MODIFIED="1576534289246" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/doubly_linked_list" />
+    <SUITE FILE_PATH="coverage/Data_Structures$Unittests_for_test_lru_cache_CacheTests_test_cache_overwrite_appropriately.coverage" NAME="Unittests for test_lru_cache.CacheTests.test_cache_overwrite_appropriately Coverage Results" MODIFIED="1576612308467" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lru_cache" />
+    <SUITE FILE_PATH="coverage/Data_Structures$Unittests_in_test_lru_cache_py.coverage" NAME="Unittests in test_lru_cache.py Coverage Results" MODIFIED="1576690917996" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lru_cache" />
+    <SUITE FILE_PATH="coverage/Data_Structures$Unittests_for_test_binary_search_tree_BinarySearchTreeTests_test_contains.coverage" NAME="Unittests for test_binary_search_tree.BinarySearchTreeTests.test_contains Coverage Results" MODIFIED="1576776835097" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/binary_search_tree" />
+    <SUITE FILE_PATH="coverage/Data_Structures$Unittests_for_test_binary_search_tree_BinarySearchTreeTests_test_insert.coverage" NAME="Unittests for test_binary_search_tree.BinarySearchTreeTests.test_insert Coverage Results" MODIFIED="1576776559042" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/binary_search_tree" />
+    <SUITE FILE_PATH="coverage/Data_Structures$Unittests_for_test_binary_search_tree_BinarySearchTreeTests_test_print_traversals.coverage" NAME="Unittests for test_binary_search_tree.BinarySearchTreeTests.test_print_traversals Coverage Results" MODIFIED="1576773423258" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/binary_search_tree" />
+    <SUITE FILE_PATH="coverage/Data_Structures$lru_cache.coverage" NAME="lru_cache Coverage Results" MODIFIED="1576613630947" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lru_cache" />
+    <SUITE FILE_PATH="coverage/Data_Structures$Unittests_for_test_binary_search_tree_BinarySearchTreeTests_test_get_max.coverage" NAME="Unittests for test_binary_search_tree.BinarySearchTreeTests.test_get_max Coverage Results" MODIFIED="1576776947283" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/binary_search_tree" />
+    <SUITE FILE_PATH="coverage/Data_Structures$Unittests_in_test_stack_py.coverage" NAME="Unittests in test_stack.py Coverage Results" MODIFIED="1576534307719" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/queue_and_stack" />
+    <SUITE FILE_PATH="coverage/Data_Structures$Unittests_for_test_binary_search_tree_BinarySearchTreeTests_test_for_each.coverage" NAME="Unittests for test_binary_search_tree.BinarySearchTreeTests.test_for_each Coverage Results" MODIFIED="1576796439982" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/binary_search_tree" />
+    <SUITE FILE_PATH="coverage/Data_Structures$Unittests_in_test_binary_search_tree_py.coverage" NAME="Unittests in test_binary_search_tree.py Coverage Results" MODIFIED="1576798171946" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/binary_search_tree" />
+    <SUITE FILE_PATH="coverage/Data_Structures$binary_search_tree.coverage" NAME="binary_search_tree Coverage Results" MODIFIED="1576787351557" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/binary_search_tree" />
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

@@ -51,12 +51,31 @@ class BinarySearchTree:
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
     def for_each(self, cb):
+        # calling function on current node 
+        cb(self.value)
+
         # 1. Base case:
         # Left is None or Right is None 
+        if self.left is None and self.right:
+            # do nothing 
 
         # 2. Recurisvie case:
-        # GO LEFT or RIGHT
-        pass
+        if self.left:
+            self.left.for_each(cb)
+        if self.right:
+            self.right.for_each(cb)
+        
+        # 1. Base case:
+        # else both are None, stop recursion
+
+    def iter_for_each(self, cb):
+        if self is None:
+            # print msg, BST is empty
+            return
+
+        cb(self.value)
+        while 
+            # go left, go right
 
     # DAY 2 Project -----------------------
 

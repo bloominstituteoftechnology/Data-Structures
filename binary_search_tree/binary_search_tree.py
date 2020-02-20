@@ -74,7 +74,7 @@ class BinarySearchTree:
             return
 
         cb(self.value)
-        while 
+        while : # still nodes left 
             # go left, go right
 
     # DAY 2 Project -----------------------

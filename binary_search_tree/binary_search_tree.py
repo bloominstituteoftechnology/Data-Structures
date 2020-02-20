@@ -45,8 +45,12 @@ class BinarySearchTree:
 
     # Return the maximum value found in the tree
     def get_max(self):
+        cur = self
         # RIGHT as far as you can go 
-        pass
+        while cur.right is not None:
+            cur = cur.right
+        
+        return cur.value
 
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
@@ -74,8 +78,13 @@ class BinarySearchTree:
             return
 
         cb(self.value)
-        while : # still nodes left 
-            # go left, go right
+        # add left child to stack (if exists)
+        # add right child to stack (if exist)
+
+        while len(stack) > 0: # still nodes left 
+            # cb( top_of_stack)
+            # go left...if left child, push onto stack
+            # go right..if right child, push onto stack 
 
     # DAY 2 Project -----------------------
 

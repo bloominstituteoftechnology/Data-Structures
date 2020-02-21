@@ -61,14 +61,9 @@ class DoublyLinkedList:
     def add_to_head(self, value):
         new_node = ListNode(value, None, None)
         self.length += 1
-        # first node
         if not self.head and not self.tail:
             self.head = new_node
             self.tail = new_node
-        # new node prev will be None so it does not need to be changed
-        # new node next will be old head
-        # old head prev will be new node
-        # LL head reference changed to new node
         else:
             new_node.next = self.head
             self.head.prev = new_node
@@ -90,14 +85,9 @@ class DoublyLinkedList:
     def add_to_tail(self, value):
         new_node = ListNode(value, None, None)
         self.length += 1
-        # first node
         if not self.head and not self.tail:
             self.head = new_node
             self.tail = new_node
-        # new node next will be None so it does not need to be changed
-        # new node prev will be the old tail
-        # old tail next will be new node
-        # LL tail reference changed to new node
         else:
             new_node.prev = self.tail
             self.tail.next = new_node
@@ -137,42 +127,26 @@ class DoublyLinkedList:
 
     def delete(self, node):
         self.length -= 1
-        # if trying to delete when no nodes exist
         if not self.head and not self.tail:
             # TODO: shouldn't happen, but handle anyway
             return
-        # single node case
         if self.head == self.tail:
             self.head = None
             self.tail = None
-        # if deleting head
-        # get the next node reference from node being deleted
-        # change head reference to next node
-        # delete node
         elif self.head is node:
             self.head = node.next
             node.delete()
-        # if deleting tail
-        # get the prev node reference from node being deleted
-        # change tail reference to prev node
-        # delete node
         elif self.tail is node:
             self.tail = node.prev
             node.delete()
-        # no node case
-        # -?
         else:
             node.delete()
 
     """Returns the highest value currently in the list"""
 
     def get_max(self):
-        # start at head
         current = self.head
-        # get value
         max_value = current.value
-        # iterate through the nodes via their next reference
-        # compare max and current, keep track of max
         while current is not None:
             if current.value > max_value:
                 max_value = current.value

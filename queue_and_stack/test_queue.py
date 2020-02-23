@@ -1,6 +1,7 @@
 import unittest
 from dll_queue import Queue
 
+# Not allowed to use lists
 
 class QueueTests(unittest.TestCase):
     def setUp(self):

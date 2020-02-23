@@ -1,3 +1,9 @@
+
+# benefits of linked list and hash table to create an index, if you want to grab somethign from the middle you can. 
+
+# since python works as pass by reference
+# you can have two data structures pointing to the same data without a meaningful increase in overhead
+
 class LRUCache:
     """
     Our LRUCache class keeps track of the max number of nodes it

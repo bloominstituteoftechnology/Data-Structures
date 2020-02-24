@@ -1,7 +1,10 @@
+import os
 import sys
-sys.path.append('../doubly_linked_list')
-from doubly_linked_list import DoublyLinkedList
 
+dll_path = os.path.normpath(os.path.join(__file__, "../../doubly_linked_list"))
+sys.path.append(dll_path)
+
+from doubly_linked_list import DoublyLinkedList
 
 class Queue:
     def __init__(self):

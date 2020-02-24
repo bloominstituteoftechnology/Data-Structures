@@ -1,5 +1,9 @@
+import os
 import sys
-sys.path.append('../doubly_linked_list')
+
+dll_path = os.path.normpath(os.path.join(__file__, "../../doubly_linked_list"))
+sys.path.append(dll_path)
+
 from doubly_linked_list import DoublyLinkedList
 
 class Stack:

@@ -4,16 +4,34 @@ from doubly_linked_list import DoublyLinkedList
 
 
 class Queue:
-    def __init__(self):
+    def __init__(self, value=None):
         self.size = 0
+        self.queue = DoublyLinkedList(value)
         # Why is our DLL a good choice to store our elements?
         # self.storage = ?
 
     def enqueue(self, value):
-        pass
+        # pass
+        self.size += 1
+        self.queue.add_to_head(value)
+        """Adds to the back of the Queue"""
 
     def dequeue(self):
-        pass
+        
+        value = self.queue.remove_from_tail()
+        if not value==None:
+            print('this is the value ',value)
+            self.size -= 1
+            return value
+        else:
+            # print('this is the value when none ',value)
+            return value
+        
+
 
     def len(self):
-        pass
+        # pass
+        return self.size
+        """takes the length of the queue"""
+
+

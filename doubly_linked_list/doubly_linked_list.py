@@ -63,9 +63,10 @@ class DoublyLinkedList:
     current head's next node the new head of the List.
     Returns the value of the removed Node."""
     def remove_from_head(self):
-        self.length -= 1
-        self.head = self.head.next
-        self.head.prev.delete()
+        return_value = self.head.value
+        self.delete(self.head)
+        return return_value
+
 
     """Wraps the given value in a ListNode and inserts it 
     as the new tail of the list. Don't forget to handle 
@@ -82,24 +83,34 @@ class DoublyLinkedList:
     current tail's previous node the new tail of the List.
     Returns the value of the removed Node."""
     def remove_from_tail(self):
-        self.length -= 1
-        self.tail = self.tail.prev
-        self.tail.next.delete()
+        return_value = self.tail.value
+        self.delete(self.tail)
+        return return_value
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new head node of the List."""
     def move_to_front(self, node):
-        pass
+        self.delete(node)
+        self.add_to_head(node.value)
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List."""
     def move_to_end(self, node):
-        pass
+        self.delete(node)
+        self.add_to_tail(node.value)
 
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""
     def delete(self, node):
-        pass
+        if self.length:
+            self.length -= 1
+            if node == self.head:
+                self.head = node.next
+            if node == self.tail:
+                self.tail = node.prev
+            node.delete()
+        else:
+            raise Exception('Cannot delete from empty LinkedList')
         
     """Returns the highest value currently in the list"""
     def get_max(self):

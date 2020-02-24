@@ -51,7 +51,7 @@ class DoublyLinkedList:
     """Wraps the given value in a ListNode and inserts it 
     as the new head of the list. Don't forget to handle 
     the old head node's previous pointer accordingly."""
-    def add_to_head(self, value):  #  5 -> 7 -> 13 -> N  This is equivalent to push method ?
+    def add_to_head(self, value):  #  5 <- -> 7 <- -> 13 <- -> N  This is equivalent to push method ?
         #pass in the value to be added
         new_node = ListNode(value,None,None)
         self.length += 1
@@ -89,13 +89,23 @@ class DoublyLinkedList:
     """Removes the List's current tail node, making the 
     current tail's previous node the new tail of the List.
     Returns the value of the removed Node."""
-    def remove_from_tail(self):
-        pass
+    def remove_from_tail(self): # which method is this ? pop...
+        value = self.tail
+        self.delete(self.tail)
+        return value
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new head node of the List."""
     def move_to_front(self, node):
-        pass
+        if node is self.head:
+            return
+        value = node.value
+        if node is self.tail:
+            self.remove_from_tail()
+        else:
+            node.delete()
+            self.length -= 1
+        self.add_to_head(value)
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List."""

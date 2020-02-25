@@ -10,23 +10,20 @@ class Queue: # first in first out
         # self.storage = ?
         self.storage = DoublyLinkedList()
 
-    def enqueue(self, value):
-        pass
-    def is_empty(self):
-        return self.size == 0
-
-    def enqueue(self, value): #
+    def enqueue(self, value): # we add to head
+    # check the base case
         self.size += 1
-        return self.storage.add_to_head(value)
+        self.storage.add_to_head(value)
+
 
     def dequeue(self):
-        pass
-        if self.is_empty():
+
+        if self.size == 0:
             return
         else:
             self.size -= 1
             return self.storage.remove_from_tail()
 
     def len(self):
-        pass
+
         return self.size

@@ -11,7 +11,7 @@ class Stack:
 
     def push(self, value):
         self.size += 1
-        self.storage.add_to_tail()
+        self.storage.add_to_tail(value)
         return self.size
 
     def pop(self):

@@ -49,7 +49,7 @@ class LRUCache:
             self.storage[key] = value
         if self.size == self.limit:
             #remove it from oldest
-            del self.storage[0]
+            del list(self.storage.keys())[0]
             #remove it from DoublyLinkedList
             self.order.remove_from_head()
             #add new thing

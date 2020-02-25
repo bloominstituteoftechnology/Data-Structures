@@ -22,10 +22,14 @@ class LRUCache:
     key-value pair doesn't exist in the cache.
     """
     def get(self, key):
-        pass
-        
-
-
+        if key in self.storage: 
+            node = self.storage[key] #this is setting the node to the key in self.storage
+            self.order.move_to_end(node) #this is moving the node to the end of the cache
+            return node.value[1]#then returns the value of such key if it exists
+        else: 
+            return None # else it returns nothing...
+            
+    
     """
     Adds the given key-value pair to the cache. The newly-
     added pair should be considered the most-recently used
@@ -40,7 +44,20 @@ class LRUCache:
         # Create a node if key not found
         # Move node to front if key found 
         # If full remove last node from linked list AND dictionary 
-        pass
+        if key in self.storage: 
+            node = self.storage[key]
+            node.value = (key, value)
+            self.order.move_to_end(node)
+            return 
+        
+        if self.size == self.limit: 
+            del self.storage[self.order.head.value[0]]
+            self.order.remove_from_head()
+            self.size -= 1
+
+        self.order.add_to_tail((key, value))
+        self.storage[key] = self.order.tail
+        self.size += 1
        
 
 

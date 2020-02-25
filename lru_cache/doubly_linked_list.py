@@ -88,15 +88,16 @@ class DoublyLinkedList:
     current tail's previous node the new tail of the List.
     Returns the value of the removed Node."""
     def remove_from_tail(self):
+        key = self.tail.key
         value = self.tail.value
         self.delete(self.tail)
-        return value
+        return key, value
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new head node of the List."""
     def move_to_front(self, node):
         self.delete(node)
-        self.add_to_head(node.value)
+        self.add_to_head(node.key, node.value)
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List."""

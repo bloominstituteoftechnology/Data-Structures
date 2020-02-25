@@ -22,10 +22,16 @@ class LRUCache:
     def get(self, key):
         # if structure has value corresponding to key, return value
         if key in self.hash_table:
-            self.storage.add_to_head(key, self.hash_table[key])
-            return self.hash_table[key]
+            value = self.storage.head  # Starting Point
+
+            while value.key is not key:  # 'Loop' to find the correct match
+                value = value.next  # Call next while loops continues until case is matched
+
+            self.storage.move_to_front(value)  # Move node to the front
+            return value.value
         else:
             return None
+
 
 
 
@@ -40,16 +46,31 @@ class LRUCache:
     the newly-specified value.
     """
     def set(self, key, value):
+        # overwrite existing key value pair
+        if key in self.hash_table:
+            # update the value in the hash table
+            self.hash_table[key] = value
+            # look at the items in the DLL
+            dll_node = self.storage.head
+            # we have to find the node that has that same key in order to update it
+            while dll_node.key is not key:
+                # keep going
+                dll_node = dll_node.next
+            # update that node's value
+            dll_node.value = value
+
         # check length of cash vs limit
-        if self.storage.__len__() < self.limit:
+        elif self.storage.length < self.limit:
         # add to the head
-            self.hash_table[key] = value
             self.storage.add_to_head(key, value)
-           
+            self.hash_table[key] = value
+        
         else:
-            self.storage.remove_from_tail() 
-            self.hash_table[key] = value
+            key_to_remove, v = self.storage.remove_from_tail()
+            del self.hash_table[key_to_remove]
             self.storage.add_to_head(key, value)
+            self.hash_table[key] = value
+
 
         
 

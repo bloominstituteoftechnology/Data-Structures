@@ -6,10 +6,19 @@ import sys
 sys.path.append('../doubly_linked_list')
 from doubly_linked_list import ListNode
 
-l = [9,2,5,3,7,4,6,8,1]
 
-linkedlist = ListNode(l[0])
-for i in range(1, len(l)):
-    linkedlist.insert_after(l[i])
-print(linkedlist.next.value)
 
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+
+if __name__ == '__main__':
+    l = [9,2,5,3,7,4,6,8,1]
+    llist = ListNode(l[0])
+    for i in l:
+        llist.insert_after(i)
+    print(llist.value)
+
+
+#runtime to remove from head or tail O(1)

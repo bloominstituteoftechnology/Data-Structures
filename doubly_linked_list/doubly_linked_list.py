@@ -49,18 +49,28 @@ class DoublyLinkedList: # don't need a linked list class to have a linked list, 
     def __len__(self): # built in method, allows easy access
         return self.length
 
+    # we can also use len(my_linked_list)
+
     """Wraps the given value in a ListNode and inserts it 
     as the new head of the list. Don't forget to handle 
     the old head node's previous pointer accordingly."""
     def add_to_head(self, value): # a node is a piece of the list, the list is the whole thing
-        new_node = ListNode(value, None, None)
-        self.length += 1 
+        # we start here because it is a dependency chain
+        new_node = ListNode(value, None, None) # create a node
+        # update the previous head
+        # update the length
+        # edge cases - if there is no head
+        self.length += 1 # add to the data structure
         if not self.head and not self.tail: # if there is no head or tail the list is empty
+            # there is no list, therefore no tail
             self.head = new_node # new node is head and tail
             self.tail = new_node
-        else:
+        else: # if head and tail are not empty
+            # update current pointer to head before we loose it
             new_node.next = self.head # make this node the head
+            # self.head.prev, if is None before, assign it to new node
             self.head.prev = new_node # rearrange the pointers, this becoming new head
+            # update the previous head
             self.head = new_node
 
     """Removes the List's current head node, making the

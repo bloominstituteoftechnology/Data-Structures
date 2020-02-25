@@ -5,6 +5,7 @@ from doubly_linked_list import DoublyLinkedList
 
 """
 https://he-s3.s3.amazonaws.com/media/uploads/cf1e1c1.png
+Queue is a FIFO based data structure
 Enqueue: Insert the element from the tail
 Dequeue: Delete the element from the head 
 """

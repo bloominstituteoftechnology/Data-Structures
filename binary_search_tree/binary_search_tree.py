@@ -55,12 +55,31 @@ class BinarySearchTree:
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+            if self.right is None:
+                return self.value
+            else:
+                return self.right.get_max()
+         # base case
+        # if empty tree
+            # return none
+
+        # recursive case
+        # if there is no right value 
+            # return the root node value
+        # otherwise
+            # return get max of the right hand child
 
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
     def for_each(self, cb):
-        pass
+        cb(self.value)
+        if self.left is not None: 
+           return self.left.for_each(cb)
+        elif self.right is not None: 
+           return self.right.for_each(cb)
+        else:
+            return None
+        
 
     # DAY 2 Project -----------------------
 

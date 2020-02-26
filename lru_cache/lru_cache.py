@@ -47,18 +47,21 @@ class LRUCache:
     def set(self, key, value):
         if key in self.storage:
             self.storage[key] = value
+            self.order.move_to_end(self.storage[key])
+
         if self.size == self.limit:
             #remove it from oldest
-            del list(self.storage.keys())[0]
-            #del self.storage[self.order.head.value[0]]
-
+            #del list(self.storage.keys())[0]
+            #self.storage[self.order.remove_from_head()]
+            print(self.storage)
+            del self.storage[self.order.head.value[0]]
+            
             #remove it from DoublyLinkedList
             self.order.remove_from_head()
+            self.size -= 1
             #add new thing
-
 
         self.size += 1
         self.order.add_to_tail((key, value))
-        self.storage[key] = value 
-        
+        self.storage[key] = value
         print("key-value pair?", self.storage[key])    

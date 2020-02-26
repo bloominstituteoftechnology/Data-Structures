@@ -3,10 +3,10 @@ as well as its next node in the List."""
 
 
 class ListNode:
-    def __init__(self, value, prev=None, next=None):
+    def __init__(self, value, prev=None, next_=None):
         self.value = value
         self.prev = prev
-        self.next = next
+        self.next = next_
 
     """Wrap the given value in a ListNode and insert it
     after this node. Note that this node could already
@@ -107,7 +107,7 @@ class DoublyLinkedList:
     def move_to_end(self, node):
         # pass
         self.delete(node)
-        self.add_to_head(node.value)
+        self.add_to_tail(node.value)
 
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""
@@ -133,4 +133,25 @@ class DoublyLinkedList:
         
     """Returns the highest value currently in the list"""
     def get_max(self):
-        pass
+        # pass
+        highest_value = self.head.value
+        current_node = self.head.next
+        for node in range(self.length-1):
+            if current_node.value > highest_value:
+                highest_value = current_node.value
+            current_node = current_node.next
+        return highest_value
+
+
+# lis = DoublyLinkedList()
+# lis.add_to_head(1)
+# lis.add_to_tail(2)
+# lis.add_to_tail(20)
+# lis.add_to_tail(210)
+# lis.add_to_tail(2)
+# lis.add_to_tail(10)
+# # print(lis.head.next.value)
+# # print(lis.head.next.next.value)
+# # print(lis.head.next.value)
+# # print(lis.head.next.value)
+# print(lis.get_max())

@@ -36,6 +36,7 @@ from dll_stack import Stack
 # solvable without reference to paretn
 # binary search trees leverages boolean logic, cutting list in half is a binary search
 # big O is log base 2 because of computers being binary, partially because we're working in binary fashion
+# the worst case scenario is an unbalanced binary search tree. 
 
 
 class BinarySearchTree:

@@ -1,3 +1,7 @@
+import sys
+sys.path.append('../doubly_linked_list')
+from doubly_linked_list import DoublyLinkedList
+
 class LRUCache:
     """
     Our LRUCache class keeps track of the max number of nodes it
@@ -7,7 +11,10 @@ class LRUCache:
     to every node stored in the cache.
     """
     def __init__(self, limit=10):
-        pass
+        self.limit = limit
+        self.list = DoublyLinkedList()
+        self.storage = {}
+        self.length = 0
 
     """
     Retrieves the value associated with the given key. Also
@@ -16,8 +23,14 @@ class LRUCache:
     Returns the value associated with the key or None if the
     key-value pair doesn't exist in the cache.
     """
-    def get(self, key):
-        pass
+    def get(self, key):                         # passing in the key
+        if key in self.storage:                 # if it is in the storage, we move forward
+            node = self.storage[key]            # set the node to the self.storage[key]
+            self.list.move_to_end(node)         # move to the end using the DoublyLinkedList
+            return node.value[1]                # return the value of the node object
+
+        else:
+            return None
 
     """
     Adds the given key-value pair to the cache. The newly-
@@ -30,4 +43,17 @@ class LRUCache:
     the newly-specified value.
     """
     def set(self, key, value):
-        pass
+        if key in self.storage:                   # if key in storage
+            node = self.storage[key]              # set the node at the key
+            node.value = (key, value)             # the value of the node is equal to key and the value tuple
+            self.list.move_to_end(node)           # we move it to the end of the list bc it's most recently used
+            return
+
+        if self.length == self.limit:                   # however, if the list is full
+            del self.storage[self.list.head.value[0]]   # we delete the head because that is the least used item
+            self.list.remove_from_head()                # we perform the remove from head function
+            self.length -= 1
+
+        self.list.add_to_tail((key, value))             # this the main funciton of adding the value to tail
+        self.storage[key] = self.list.tail              # store the key from tail since we already added it
+        self.length += 1                                # increase the length by 1

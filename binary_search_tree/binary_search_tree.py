@@ -3,6 +3,40 @@ sys.path.append('../queue_and_stack')
 from dll_queue import Queue
 from dll_stack import Stack
 
+# insert value
+# if there is no node at root - contains/find
+# compare value to the root
+# if value is smaller
+    # look left if node exists repeat steps
+    # if no node exists, make new one with this value
+# if value is greater or equal
+    # look right if node exisits repeat steps
+    # if no node exists, make new one with this value
+
+
+# if no root
+# find value
+# if no node at root, return false
+# compare value to root
+# if smaller
+    # go left, look at node there
+# if greater or ==:
+    # go right
+
+# the root in the binary search tree is the first in. 
+# an unbalanced binary search tree can become a singly linked list. 
+# time complexity to find somethingin tree is log(n)
+
+# an avl tree is self-balancing. 
+
+# get max is furthest right 
+# if no right child, return value, otherwise go right
+
+# a node and a tree are basically the same thing
+# solvable without reference to paretn
+# binary search trees leverages boolean logic, cutting list in half is a binary search
+# big O is log base 2 because of computers being binary, partially because we're working in binary fashion
+
 
 class BinarySearchTree:
     def __init__(self, value):
@@ -118,3 +152,9 @@ class BinarySearchTree:
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
         pass
+
+
+class BinarySearchTree:
+    self.value = value 
+    self.left = left_subtree
+    self.right = right_subtree

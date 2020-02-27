@@ -74,7 +74,6 @@ class BinarySearchTree:
             return
 
         
-
     # DAY 2 Project -----------------------
 
     # Print all the values in order from low to high

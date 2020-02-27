@@ -52,11 +52,9 @@ class BinarySearchTree:
     def for_each(self, cb):
         cb(self.value)
         if not self.right==None:
-            self.for_each(cb)
-        elif self.left==None:
-            self.for_each(cb)
-        else:
-            return
+            self.right.for_each(cb)
+        if not self.left==None:
+            self.left.for_each(cb)
     # DAY 2 Project -----------------------
 
     # Print all the values in order from low to high

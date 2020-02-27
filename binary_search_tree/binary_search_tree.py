@@ -100,12 +100,21 @@ class BinarySearchTree:
             if temp.left:
                 q.enqueue(temp.left)
 
-        
-
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+        s = Stack()
+        s.push(node)
+
+        while s.len() is not 0:
+            temp = s.pop()
+            print(temp.value)
+
+            if temp.right:
+                s.push(temp.right)
+            if temp.left:
+                s.push(temp.left)
+
 
     # STRETCH Goals -------------------------
     # Note: Research may be required

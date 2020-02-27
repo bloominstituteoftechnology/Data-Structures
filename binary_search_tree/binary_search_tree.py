@@ -20,49 +20,52 @@ class BinarySearchTree:
             self.value = value
             return
         elif value < self.value:       # we are referring to the value passed in through insert
-            if self.left:
-                return self.left.insert(value)
-            else:
+            if not self.left:                     # if not there, then we add the value
                 self.left = BinarySearchTree(value)
-        elif value >= self.value:
-            if self.right:
-                return self.right.insert(value)
             else:
+                self.left.insert(value)
+
+        elif value >= self.value:        # if it is greater, we go to the right
+            if not self.right:
                 self.right = BinarySearchTree(value)
+            else:
+                self.right.insert(value)
 
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
         if type(target) is not int:
             raise ValueError("not an int")
-        if target == self.value:
+        if self.value == target:
             return True
         elif target < self.value:
-            if self.left:
+            if not self.left:
+                return False
+            else:
                 return self.left.contains(target)
-            else:
-                return False
+
         elif target > self.value:
-            if self.right:
-                return self.right.contains(target)
-            else:
+            if not self.right:
                 return False
+            else:
+                return self.right.contains(target)
 
     # Return the maximum value found in the tree
     def get_max(self):
         # recursion?
         # if no right child, return this value, otherwise go right
-        if self.right is None:
+        if not self.right:
             return self.value
         else:
             return self.right.get_max()
+    # if you are trying to find something/answer using recursion, you have to return it
 
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
     # traverse the tree. Go through each node and execute the function
 
     def for_each(self, cb):
-        pass
+
         print(self.value)
         cb(self.value)
         if self.left:

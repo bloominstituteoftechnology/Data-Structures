@@ -21,9 +21,6 @@ class Stack:
             popped_head = self.storage.remove_from_head()
             self.size -=1 
         return popped_head
-        
-    
-
 
     def len(self):
         return self.size

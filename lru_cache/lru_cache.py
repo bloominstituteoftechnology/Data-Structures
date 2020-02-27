@@ -24,14 +24,15 @@ class LRUCache:
     key-value pair doesn't exist in the cache.
     """
     def get(self, key):                         # passing in the key
-        if key in self.storage:                 # if it is in the storage, we move forward
-            node = self.storage[key]            # set the node to the self.storage[key]
-            self.list.move_to_end(node)         # move to the end using the DoublyLinkedList
-            return node.value[1]                # return the value of the node object
-
+    # if in storage
+        if key in self.storage:                         # if it is in the storage, we move forward
+            node = self.storage[key]                    # set the node to the self.storage[key], listnode object
+            self.list.move_to_end(self.storage[key])    # move to the end using the DoublyLinkedList
+            return node.value[1]                        # return the value of the node object
         else:
             return None
-
+# can create any kind of node that we want, we can give it any name that we want
+# list node was created specifically to be used in DoublyLinkedList
     """
     Adds the given key-value pair to the cache. The newly-
     added pair should be considered the most-recently used

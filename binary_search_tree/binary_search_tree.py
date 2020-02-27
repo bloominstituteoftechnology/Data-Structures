@@ -1,7 +1,7 @@
 import sys
 sys.path.append('../queue_and_stack')
-from dll_queue import Queue
-from dll_stack import Stack
+# from dll_queue import Queue
+# from dll_stack import Stack
 
 
 class BinarySearchTree:
@@ -74,11 +74,10 @@ class BinarySearchTree:
     def for_each(self, cb):
         cb(self.value)
         if self.left is not None: 
-           return self.left.for_each(cb)
-        elif self.right is not None: 
-           return self.right.for_each(cb)
-        else:
-            return None
+           self.left.for_each(cb)
+        if self.right is not None: 
+           self.right.for_each(cb)
+        
         
 
     # DAY 2 Project -----------------------

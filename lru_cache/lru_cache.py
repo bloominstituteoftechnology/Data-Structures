@@ -65,56 +65,98 @@ from doubly_linked_list import DoublyLinkedList
 
 # The doubly linked list is served as the value for our dictionary. 
 
-class Node:
-    def __init__(self, key, value):
-        self.key = key
-        self.value = value
-        self.prev = None
-        self.next = None
+# class Node:
+#     def __init__(self, key, value):
+#         self.key = key
+#         self.value = value
+#         self.prev = None
+#         self.next = None
 
-class LRUCache:
-    def __init__(self, capacity):
-        self.capacity = capacity
-        self.dict = dict()
-        self.head = Node(0, 0)
-        self.tail = Node(0, 0)
-        self.head.next = self.tail
-        self.tail.prev = self.head
+# class LRUCache:
+#     def __init__(self, capacity):
+#         self.capacity = capacity
+#         self.dict = dict()
+#         self.head = Node(0, 0)
+#         self.tail = Node(0, 0)
+#         self.head.next = self.tail
+#         self.tail.prev = self.head
 
-    def get(self, key): 
-        if key in self.dict: # if there is a key in the dictionary
-            node = self.dict[key]
-            self._remove(node) # we remove
-            self._add(node) # we add back in
-            return node.value
-        return -1 # if there is no key
+#     def get(self, key): 
+#         if key in self.dict: # if there is a key in the dictionary
+#             node = self.dict[key]
+#             self._remove(node) # we remove
+#             self._add(node) # we add back in
+#             return node.value
+#         return -1 # if there is no key
 
-    def put(self, key, value):
-        if key in self.dict: # to refresh it, we have to remove it
-            self._remove(self.dict[key])
-            node = Node(key, value)
-            self.add_to_tail(node) # add to linked list
-            self.dict[key] = node# make the dictionary value equal to node
-            if len(self.dict) > self.capacity:
-                node = self.head.next
-                self._remove(node)
-                del self.dict[node.key]
+#     def put(self, key, value):
+#         if key in self.dict: # to refresh it, we have to remove it
+#             self._remove(self.dict[key])
+#             node = Node(key, value)
+#             self.add_to_tail(node) # add to linked list
+#             self.dict[key] = node# make the dictionary value equal to node
+#             if len(self.dict) > self.capacity:
+#                 node = self.head.next
+#                 self._remove(node)
+#                 del self.dict[node.key]
 
-    def _remove(self, node):
-        prev = node.prev
-        next = node.next
-        prev.next = next
-        next.prev = prev
+#     def _remove(self, node):
+#         prev = node.prev
+#         next = node.next
+#         prev.next = next
+#         next.prev = prev
 
-    def _add(self, node):
-        prev = self.tail.prev
-        prev.next = node
-        self.tail.prev = node
-        node.prev = prev
-        node.next = self.tail
+#     def _add(self, node):
+#         prev = self.tail.prev
+#         prev.next = node
+#         self.tail.prev = node
+#         node.prev = prev
+#         node.next = self.tail
 
 
-# ---------
+# # ---------
+
+# class LRUCache:
+
+#     def __init__(self, limit=10):
+#         self.limit = limit
+#         self.size = 0
+#         self.storage = dict()
+#         self.order = DoublyLinkedList()
+
+#     def get(self, key):
+#         if self.key == None:
+#             return
+#         else:
+#             #retrieve value associated with given key
+#             node = self.storage[key]
+#             # move key value pair to end of order
+#             self.order.move_to_end(node)
+#             # returns the value associated with the key
+#             return node.value[1]
+
+
+#     def set(self, key, value):
+#         # The newly-added pair should be considered the 
+#         # most-recently used entry in the cache.
+#         if key in self.storage:
+#             node = self.storage[key]
+#             node.value = (key, value)
+#             self.order.move_to_end(node)
+#             return 
+#         # If the cache is already at max capacity before 
+#         # this entry is added
+#         elif self.limit == self.size:
+#             del self.storage[self.order.head.value[0]]
+#             # then the oldest entry in the cache needs to be 
+#             # removed to make room. 
+#             self.order.remove_from_head()
+#             self.size -= 1
+#         # add to the linked list the key and value
+#         self.order.add_to_tail(key, value)
+#         # add key and value to dictionary
+#         self.storage[key] = self.order.tail
+#         self.size += 1
 
 class LRUCache:
 
@@ -125,33 +167,47 @@ class LRUCache:
         self.order = DoublyLinkedList()
 
     def get(self, key):
-        if self.key == None:
-            return
-        else:
-            #retrieve value associated with given key
+        # If key is in storage
+        if key in self.storage:
+            # move key to end
             node = self.storage[key]
-            # move key value pair to end of order
             self.order.move_to_end(node)
-            # returns the value associated with the key
+            #return value
             return node.value[1]
+        # If key is not in storage, return none
+        else:
+            return None
+
 
 
     def set(self, key, value):
-        # The newly-added pair should be considered the 
-        # most-recently used entry in the cache.
+
+    # If cache is not empty:
+        # Check and see if the key is in the dictionary, if dictionary is empty key won't be there
         if key in self.storage:
-            node = self.storage[key]
+            # If key is in dict
+            node = self.storage[key] # grabbing the full node, if you store whole node in dictionary, you can grab it freely
+                # Overwrite the value
             node.value = (key, value)
+                # Move it to the end
             self.order.move_to_end(node)
-            return 
-        # If the cache is already at max capacity before 
-        # this entry is added
-        elif self.limit == self.size:
+            return
+
+    # If key is not in dict
+        # Check and see if cache is full
+        if self.size == self.limit: # we get rid of the least recently used one, less likely that it is needed soon, but dictionary - you grab from anywhere
+        # If cache is full
+            # Remove oldest entry from dictionary and Linked List
             del self.storage[self.order.head.value[0]]
-            # then the oldest entry in the cache needs to be 
-            # removed to make room. 
-            self.order.remove_from_head()
+            #delete from linked list
+            self.order.remove_from_head()# we arbitrarily decided that the head is the oldest entry
+            # Reduce the size
             self.size -= 1
-        self.order.add_to_tail(key, value)
-        self.storage[key] = self.order.tail
+
+            # If the cache is empty
+            # Add to the linked list (key and value)
+        self.order.add_to_tail((key, value))
+        # Add the key and value to the dictionary
+        self.storage[key] = self.order.tail # references is just a pointer, very low overhead, accessing data with different datatypes is efficient
+        # Increment size
         self.size += 1

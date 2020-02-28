@@ -51,14 +51,14 @@ class DoublyLinkedList:
     """Wraps the given value in a ListNode and inserts it 
     as the new head of the list."""
     def add_to_head(self, value):
-        newhead = ListNode(value)
+        new = ListNode(value)
         if not self.head:
-            self.head = newhead
-            self.tail = newhead
+            self.head = new
+            self.tail = new
         else:
-            newhead.next = self.head
-            self.head.prev = newhead
-            self.head = newhead
+            new.next = self.head
+            self.head.prev = new
+            self.head = new
         self.length += 1
 
     """Removes the List's current head node, making the
@@ -86,9 +86,9 @@ class DoublyLinkedList:
             self.head = new
             self.tail = new
         else:
-            newhead.prev = self.tail
-            self.tail.next = newhead
-            self.tail = newhead
+            new.prev = self.tail
+            self.tail.next = new
+            self.tail = new
         self.length += 1
 
     """Removes the List's current tail node, making the 

@@ -3,17 +3,40 @@ as well as its next node in the List."""
 
 
 class ListNode:
+    '''
+    this object represents a single node in the linked list.
+    it has a pointer to the next node and the previous node.
+    '''
     def __init__(self, value, prev=None, next=None):
+        # the value of the current node
         self.value = value
+        
+        # pointer to the node before it
         self.prev = prev
+
+        # pointer to the node after it
         self.next = next
 
     """Wrap the given value in a ListNode and insert it
     after this node. Note that this node could already
     have a next node it is point to."""
     def insert_after(self, value):
+        # current_next is a self.next placeholder so we can overwrite the self.next variable to the next node
+        # for example
+        #   [1]<->[2]<->[3]<->[none]
+        # we want to insert 4 after 2
+        # since 2.next points to 3 we save that pointer as current_next
+        # cur_nex = ->[3]
+        # then we insert the new node [4] after 2
+        # set prev = self, where self is the current node [2] (line 35)
+        # and next = current_next, which points to 3
+        # [1]<->[2]<->[4]<->[3]<->[None] 
         current_next = self.next
         self.next = ListNode(value, self, current_next)
+
+        # if current_next is None this wont be ran, meaning were at the tail
+        # otherwise were still in the middle somewhere, in this case [3], so we set this nodes previous
+        # pointer to the node that we just added. Which in this case is [4] 
         if current_next:
             current_next.prev = self.next
 
@@ -21,16 +44,28 @@ class ListNode:
     before this node. Note that this node could already
     have a previous node it is point to."""
     def insert_before(self, value):
-        current_prev = self.prev
-        self.prev = ListNode(value, current_prev, self)
-        if current_prev:
-            current_prev.next = self.prev
+        # saves the node before the 'current' node 
+        current_before_node = self.prev
+
+        # creates a new node with the desired value (listnode)
+        # the new node points (<-) to the node that came before
+        # the new node points (->) to the node that comes before it
+        # the current node points to the new node
+        self.prev = ListNode(value, current_before_node, self)
+
+        if current_before_node:
+            current_before_node.next = self.prev
 
     """Rearranges this ListNode's previous and next pointers
     accordingly, effectively deleting this ListNode."""
     def delete(self):
+        # if the current nodes before node is not None ([1]<->[2]<->[3])
+        # have the before node point to the node after the current node
         if self.prev:
             self.prev.next = self.next
+        
+        # if the current nodes after node is not None
+        # have the after nodes previous node point to the current nodes previous node
         if self.next:
             self.next.prev = self.prev
 

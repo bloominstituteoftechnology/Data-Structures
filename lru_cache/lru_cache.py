@@ -7,7 +7,7 @@ class LRUCache:
     to every node stored in the cache.
     """
     def __init__(self, limit=10):
-        pass
+        
 
     """
     Retrieves the value associated with the given key. Also

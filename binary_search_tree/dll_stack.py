@@ -1,23 +1,26 @@
 from doubly_linked_list import DoublyLinkedList as link
 
-
-class Queue:
+class Stack:
     def __init__(self):
         self.size = 0
         # Why is our DLL a good choice to store our elements?
         self.storage = link()
 
-    def enqueue(self, value):
-        self.storage.add_to_head(value)
+    def push(self, value):
+        self.storage.add_to_tail(value)
         self.size += 1
 
-    def dequeue(self):
-        value = self.storage.remove_from_tail()
+    def pop(self):
         self.size -= 1
-        return value
+        return self.storage.remove_from_tail()
+
 
     def len(self):
         return self.size
 
-
+    def isempty(self):
+        if self.size == 0:
+            return True
+        else:
+            return False
 

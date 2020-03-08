@@ -30,11 +30,6 @@ class LinkedList:
     else:
       self.tail.set_next(node)
       self.tail = node
-    # while (self.head.next_node) is not None:
-    #   self.head = self.head.next_node
-    #   self.head.next_node = node
-
-    
     
 
   def remove_head(self):
@@ -49,15 +44,6 @@ class LinkedList:
     cur_value = self.head.get_value()
     self.head = self.head.get_next()
     return cur_value
-    # if curr_node is not None:
-    #   self.head = curr_node.next_node
-    #   curr_node = None
-      
-    #   del(self.head)
-    #   self.head = new_head
-    # if self.tail is None:
-    #   self.tail = self.tail.next_node
-    
     
 
   def contains(self, value):

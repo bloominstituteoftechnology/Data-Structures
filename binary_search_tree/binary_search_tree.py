@@ -31,18 +31,13 @@ class BinarySearchTree:
       if curr_node.right is None:
         curr_node.right = curr_node
 
-
-
     pass
-
-  
 
   def contains(self, target):
     pass
 
   def get_max(self):
     pass
-
 
   def bft(self):
     queue = Queue

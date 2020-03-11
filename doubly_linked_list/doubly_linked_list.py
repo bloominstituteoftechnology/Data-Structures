@@ -48,11 +48,32 @@ class DoublyLinkedList:
     def __len__(self):
         return self.length
 
-    """Wraps the given value in a ListNode and inserts it 
-    as the new head of the list. Don't forget to handle 
+    def __str__(self):
+        if self.head is None and self.tail is None:
+            return "empty"
+        curr_node = self.head
+        output = ''
+        arrow = ' <-> '
+        output += f'({curr_node.value}){arrow}'
+        while curr_node.next is not None:
+            curr_node = curr_node.next
+            output += f'({curr_node.value}){arrow}'
+        return output[:-len(arrow)]
+
+    """Wraps the given value in a ListNode and inserts it
+    as the new head of the list. Don't forget to handle
     the old head node's previous pointer accordingly."""
     def add_to_head(self, value):
-        pass
+        new_node = ListNode(value)
+        if self.head is None and self.tail is None:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            curr_head = self.head
+            new_node.next = curr_head
+            curr_head.prev = new_node
+            self.head = new_node
+        self.length += 1
 
     """Removes the List's current head node, making the
     current head's next node the new head of the List.
@@ -60,8 +81,8 @@ class DoublyLinkedList:
     def remove_from_head(self):
         pass
 
-    """Wraps the given value in a ListNode and inserts it 
-    as the new tail of the list. Don't forget to handle 
+    """Wraps the given value in a ListNode and inserts it
+    as the new tail of the list. Don't forget to handle
     the old tail node's next pointer accordingly."""
     def add_to_tail(self, value):
         pass
@@ -86,7 +107,31 @@ class DoublyLinkedList:
     the node was the head or the tail"""
     def delete(self, node):
         pass
-        
+
     """Returns the highest value currently in the list"""
     def get_max(self):
-        pass
+        curr_node = self.head
+        if curr_node is None:
+            return
+        max_val = 0
+        while curr_node is not None:
+            if curr_node.value > max_val:
+                max_val = curr_node.value
+            curr_node = curr_node.next
+        return max_val
+
+
+node = ListNode(1)
+dll = DoublyLinkedList(node)
+print(dll)
+
+dll.add_to_head(5)
+print(dll)
+
+dll.add_to_head(10)
+print(dll)
+
+dll.add_to_head(6)
+print(dll)
+
+print(dll.get_max())

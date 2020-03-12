@@ -7,6 +7,7 @@ class ListNode:
         self.value = value
         self.prev = prev
         self.next = next
+        print(value)
 
     """Wrap the given value in a ListNode and insert it
     after this node. Note that this node could already

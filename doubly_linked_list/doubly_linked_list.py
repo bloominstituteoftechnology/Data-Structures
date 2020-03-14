@@ -1,7 +1,6 @@
 """Each ListNode holds a reference to its previous node
 as well as its next node in the List."""
 
-
 class ListNode:
     def __init__(self, value, prev=None, next=None):
         self.value = value
@@ -33,12 +32,11 @@ class ListNode:
             self.prev.next = self.next
         if self.next:
             self.next.prev = self.prev
+        self.value = None
 
 
 """Our doubly-linked list class. It holds references to
 the list's head and tail nodes."""
-
-
 class DoublyLinkedList:
     def __init__(self, node=None):
         self.head = node
@@ -69,44 +67,58 @@ class DoublyLinkedList:
             self.head = new_node
             self.tail = new_node
         else:
-            curr_head = self.head
-            new_node.next = curr_head
-            curr_head.prev = new_node
-            self.head = new_node
+            self.head.insert_before(value)
+            self.head = self.head.prev
         self.length += 1
 
     """Removes the List's current head node, making the
     current head's next node the new head of the List.
     Returns the value of the removed Node."""
     def remove_from_head(self):
-        pass
+        deleted_value = self.head.value
+        next_node = self.head.next
+        self.head.delete()
+        self.head = next_node
+        return deleted_value
 
     """Wraps the given value in a ListNode and inserts it
     as the new tail of the list. Don't forget to handle
     the old tail node's next pointer accordingly."""
     def add_to_tail(self, value):
-        pass
+        self.tail.insert_after(value)
+        self.tail = self.tail.next
 
-    """Removes the List's current tail node, making the 
+    """Removes the List's current tail node, making the
     current tail's previous node the new tail of the List.
     Returns the value of the removed Node."""
     def remove_from_tail(self):
-        pass
+        deleted_value = self.tail.value
+        prev_node = self.tail.prev
+        self.tail.delete()
+        self.tail = prev_node
+        return deleted_value
 
-    """Removes the input node from its current spot in the 
+    """Removes the input node from its current spot in the
     List and inserts it as the new head node of the List."""
     def move_to_front(self, node):
-        pass
+        # self.add_to_head(node.value)
+        # node.delete()
 
-    """Removes the input node from its current spot in the 
+    """Removes the input node from its current spot in the
     List and inserts it as the new tail node of the List."""
     def move_to_end(self, node):
-        pass
+        # new_tail = node
+        # node.delete()
+        # self.tail.insert_after(new_tail)
 
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""
     def delete(self, node):
-        pass
+        # if self.head == node:
+        #     self.head = node.next
+        # if self.tail == node:
+        #     self.tail = node.prev
+        # node.delete()
 
     """Returns the highest value currently in the list"""
     def get_max(self):
@@ -134,4 +146,24 @@ print(dll)
 dll.add_to_head(6)
 print(dll)
 
-print(dll.get_max())
+deleted = dll.remove_from_head()
+print(f'deleted: {deleted}')
+print(dll)
+
+dll.add_to_tail(23)
+
+print(dll)
+print(f'head: {dll.head.value}')
+print(f'tail: {dll.tail.value}')
+
+
+removed = dll.remove_from_tail()
+print(f'removed: {removed}')
+print(dll)
+print(f'head: {dll.head.value}')
+print(f'tail: {dll.tail.value}')
+
+dll.move_to_front(node)
+print(dll)
+print(f'head: {dll.head.value}')
+print(f'tail: {dll.tail.value}')

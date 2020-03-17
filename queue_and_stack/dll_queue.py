@@ -20,6 +20,8 @@ class Queue:
             # self.storage.remove_from_head()
             self.size -= 1
             return removed_val
+        elif self.size == 0:
+            return None
 
     def len(self):
         return self.storage.length

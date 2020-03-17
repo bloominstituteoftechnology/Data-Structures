@@ -1,7 +1,7 @@
-from dll_stack import Stack
-from dll_queue import Queue
-import sys
-sys.path.append('../queue_and_stack')
+# from dll_stack import Stack
+# from dll_queue import Queue
+# import sys
+# sys.path.append('../queue_and_stack')
 
 
 class BinarySearchTree:
@@ -14,26 +14,57 @@ class BinarySearchTree:
     def insert(self, value):
         # compare value to current node / if smaller go left / if bigger go right
         # if we reach a leaf , make the new node at that spot
-        pass
 
-    # Return True if the tree contains the value
-    # False if it does not
+        if value >= self.value:  # compares current value to current node
+            if self.right is not None:  # check to see if the right branch is empty
+                # recurse, runs the insert func again if right value is not empty,
+                self.right.insert(value)
+                # using that value as the new base value
+            else:
+                # sets value to the right as current value if the right value is empty
+                self.right = BinarySearchTree(value)
+
+        if value < self.value:
+            # please see above
+            if self.left is not None:
+                self.left.insert(value)
+            else:
+                self.left = BinarySearchTree(value)
+
+    # Check to see if the target value is included in the B_S_T
     def contains(self, target):
-        # compare value to current node value
-        # if smaller go left, if bigger go left
-        # if equal return true
+        if target == self.value:  # if target is the same as the value, no need to run full func
+            return True
 
-        # if smaller but we cant go left: return false, if bigger, cant go right return false
-        pass
+        if target >= self.value:  # is the target is greater than the current value move to the right
+            if self.right is not None:  # if the right is not none, recurse, run the function again
+                return self.right.contains(target)
+            else:  # if the right branch is empty return false
+                return False
+        if target < self.value:  # please see above
+            if self.left is not None:
+                return self.left.contains(target)
+            else:
+                return False
 
     # Return the maximum value found in the tree
-    def get_max(self):
-        pass
+    def get_max(self):  # literally just need to keep going right until you cant anymore,
+        if self.right is None:
+            return self.value
+        else:  # this recurses the function and keeps running if you can go right again
+            return self.right.get_max()
 
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
+
     def for_each(self, cb):
-        pass
+        cb(self.value)  # calls function on value of each
+        if self.left is not None:  # if the left branch contains a value move there and run again
+            self.left.for_each(cb)  # revurses through and runs again
+        if self.right is not None:  # please see above
+            self.right.for_each(cb)
+        else:
+            return None
 
     # DAY 2 Project -----------------------
 

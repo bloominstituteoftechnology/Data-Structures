@@ -2,9 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0cf111ef-9d3e-446a-a070-be535636fa6f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/doubly_linked_list/doubly_linked_list-guided.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doubly_linked_list/doubly_linked_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/doubly_linked_list/doubly_linked_list.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doubly_linked_list/test_doubly_linked_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/doubly_linked_list/test_doubly_linked_list.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guided_project/find_middle.py" beforeDir="false" afterPath="$PROJECT_DIR$/guided_project/find_middle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guided_project/reverse.py" beforeDir="false" afterPath="$PROJECT_DIR$/guided_project/reverse.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lru_cache/doubly_linked_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/lru_cache/doubly_linked_list.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lru_cache/lru_cache.py" beforeDir="false" afterPath="$PROJECT_DIR$/lru_cache/lru_cache.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lru_cache/test_lru_cache.py" beforeDir="false" afterPath="$PROJECT_DIR$/lru_cache/test_lru_cache.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/queue_and_stack/dll_queue.py" beforeDir="false" afterPath="$PROJECT_DIR$/queue_and_stack/dll_queue.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/queue_and_stack/dll_stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/queue_and_stack/dll_stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/queue_and_stack/test_queue.py" beforeDir="false" afterPath="$PROJECT_DIR$/queue_and_stack/test_queue.py" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,25 +29,6 @@
     <option name="height" value="1379" />
   </component>
   <component name="ProjectId" id="1YxbqxCvZdDR8Cgn14zldHrWThO" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Data-Structures" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Data-Structures" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
-  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -55,26 +45,38 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="prettierjs.PrettierConfiguration.Package" value="/usr/local/lib/node_modules/prettier" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/guided_project" />
       <recent name="$PROJECT_DIR$/doubly_linked_list" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager">
-    <configuration name="doubly_linked_list-guided" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python tests.Unittests in lru_cache">
+    <configuration name="dll_queue" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Data-Structures" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/queue_and_stack" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/queue_and_stack/dll_queue.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="doubly_linked_list" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Data-Structures" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -87,7 +89,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/doubly_linked_list/doubly_linked_list-guided.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/doubly_linked_list/doubly_linked_list.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -96,6 +98,67 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="lru_cache" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Data-Structures" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/lru_cache" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lru_cache/lru_cache.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests in lru_cache" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="Data-Structures" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/lru_cache" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/lru_cache&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests in test_doubly_linked_list.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="Data-Structures" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/doubly_linked_list" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/doubly_linked_list/test_doubly_linked_list.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python tests.Unittests in lru_cache" />
+        <item itemvalue="Python.lru_cache" />
+        <item itemvalue="Python.dll_queue" />
+        <item itemvalue="Python.doubly_linked_list" />
+        <item itemvalue="Python tests.Unittests in test_doubly_linked_list.py" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -109,55 +172,71 @@
       <updated>1583887386329</updated>
       <workItem from="1583887388436" duration="5636000" />
       <workItem from="1583978013319" duration="11000" />
+      <workItem from="1583978035933" duration="507000" />
+      <workItem from="1584050145321" duration="9044000" />
+      <workItem from="1584308404511" duration="17130000" />
+      <workItem from="1584569614862" duration="2290000" />
     </task>
     <servers />
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="2560" y="23" width="2560" height="1379" extended-state="6" />
-    <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24980268" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Quokka" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="RNConsole" />
-      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.3292978" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="2504" height="197" key="GridCell.Tab.0.bottom" timestamp="1583977666655">
+    <state x="743" y="328" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584058387252">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
-    <state width="2504" height="197" key="GridCell.Tab.0.bottom/2560.23.2560.1379/0.23.2560.1417@0.23.2560.1417" timestamp="1583977666655" />
-    <state width="2504" height="197" key="GridCell.Tab.0.center" timestamp="1583977666655">
+    <state x="743" y="328" key="#com.intellij.execution.impl.EditConfigurationsDialog/2560.23.2560.1379/0.23.2560.1417@0.23.2560.1417" timestamp="1584058387252" />
+    <state width="2506" height="314" key="GridCell.Tab.0.bottom" timestamp="1584413516772">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
-    <state width="2504" height="197" key="GridCell.Tab.0.center/2560.23.2560.1379/0.23.2560.1417@0.23.2560.1417" timestamp="1583977666655" />
-    <state width="2504" height="197" key="GridCell.Tab.0.left" timestamp="1583977666655">
+    <state width="2506" height="314" key="GridCell.Tab.0.bottom/2560.23.2560.1379/0.23.2560.1417@0.23.2560.1417" timestamp="1584413516772" />
+    <state width="2506" height="314" key="GridCell.Tab.0.center" timestamp="1584413516771">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
-    <state width="2504" height="197" key="GridCell.Tab.0.left/2560.23.2560.1379/0.23.2560.1417@0.23.2560.1417" timestamp="1583977666655" />
-    <state width="2504" height="197" key="GridCell.Tab.0.right" timestamp="1583977666655">
+    <state width="2506" height="314" key="GridCell.Tab.0.center/2560.23.2560.1379/0.23.2560.1417@0.23.2560.1417" timestamp="1584413516771" />
+    <state width="2506" height="314" key="GridCell.Tab.0.left" timestamp="1584413516771">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
-    <state width="2504" height="197" key="GridCell.Tab.0.right/2560.23.2560.1379/0.23.2560.1417@0.23.2560.1417" timestamp="1583977666655" />
+    <state width="2506" height="314" key="GridCell.Tab.0.left/2560.23.2560.1379/0.23.2560.1417@0.23.2560.1417" timestamp="1584413516771" />
+    <state width="2506" height="314" key="GridCell.Tab.0.right" timestamp="1584413516771">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state width="2506" height="314" key="GridCell.Tab.0.right/2560.23.2560.1379/0.23.2560.1417@0.23.2560.1417" timestamp="1584413516771" />
+    <state width="2506" height="278" key="GridCell.Tab.1.bottom" timestamp="1584413516729">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state width="2506" height="278" key="GridCell.Tab.1.bottom/2560.23.2560.1379/0.23.2560.1417@0.23.2560.1417" timestamp="1584413516729" />
+    <state width="2506" height="278" key="GridCell.Tab.1.center" timestamp="1584413516729">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state width="2506" height="278" key="GridCell.Tab.1.center/2560.23.2560.1379/0.23.2560.1417@0.23.2560.1417" timestamp="1584413516729" />
+    <state width="2506" height="278" key="GridCell.Tab.1.left" timestamp="1584413516728">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state width="2506" height="278" key="GridCell.Tab.1.left/2560.23.2560.1379/0.23.2560.1417@0.23.2560.1417" timestamp="1584413516728" />
+    <state width="2506" height="278" key="GridCell.Tab.1.right" timestamp="1584413516729">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state width="2506" height="278" key="GridCell.Tab.1.right/2560.23.2560.1379/0.23.2560.1417@0.23.2560.1417" timestamp="1584413516729" />
+    <state x="643" y="283" key="SettingsEditor" timestamp="1584317335568">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state x="643" y="283" key="SettingsEditor/2560.23.2560.1379/0.23.2560.1417@0.23.2560.1417" timestamp="1584317335568" />
+    <state x="801" y="265" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1584330175696">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state x="801" y="265" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/2560.23.2560.1379/0.23.2560.1417@0.23.2560.1417" timestamp="1584330175696" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Data_Structures$Unittests_for_test_doubly_linked_list_DoublyLinkedListTests.coverage" NAME="Unittests for test_doubly_linked_list.DoublyLinkedListTests Coverage Results" MODIFIED="1584057993481" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/doubly_linked_list" />
+    <SUITE FILE_PATH="coverage/Data_Structures$Unittests_in_test_doubly_linked_list_py.coverage" NAME="Unittests in test_doubly_linked_list.py Coverage Results" MODIFIED="1584314271285" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/doubly_linked_list" />
+    <SUITE FILE_PATH="coverage/Data_Structures$lru_cache.coverage" NAME="lru_cache Coverage Results" MODIFIED="1584321272525" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lru_cache" />
+    <SUITE FILE_PATH="coverage/Data_Structures$doubly_linked_list__1_.coverage" NAME="doubly_linked_list (1) Coverage Results" MODIFIED="1584056022975" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Downloads" />
+    <SUITE FILE_PATH="coverage/Data_Structures$find_middle.coverage" NAME="find_middle Coverage Results" MODIFIED="1584061634824" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/guided_project" />
+    <SUITE FILE_PATH="coverage/Data_Structures$reverse.coverage" NAME="reverse Coverage Results" MODIFIED="1584063530203" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/guided_project" />
+    <SUITE FILE_PATH="coverage/Data_Structures$dll_queue.coverage" NAME="dll_queue Coverage Results" MODIFIED="1584317110765" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/queue_and_stack" />
+    <SUITE FILE_PATH="coverage/Data_Structures$doubly_linked_list.coverage" NAME="doubly_linked_list Coverage Results" MODIFIED="1584316386838" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/doubly_linked_list" />
+    <SUITE FILE_PATH="coverage/Data_Structures$Unittests_in_lru_cache.coverage" NAME="Unittests in lru_cache Coverage Results" MODIFIED="1584326358691" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lru_cache" />
   </component>
 </project>

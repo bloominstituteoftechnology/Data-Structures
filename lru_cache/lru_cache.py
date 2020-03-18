@@ -1,3 +1,6 @@
+import sys
+from doubly_linked_list import DoublyLinkedList
+
 class LRUCache:
     """
     Our LRUCache class keeps track of the max number of nodes it
@@ -7,8 +10,19 @@ class LRUCache:
     to every node stored in the cache.
     """
     def __init__(self, limit=10):
-        pass
+        self.limit = limit
+        self.length = 0
+        self.ddl = DoublyLinkedList()
+        self.map = {}
 
+    def __str__(self):
+        if self.length:
+            return 'empty'
+        print(self.ddl)
+        output = ''
+        for key in self.map:
+            output += f'( {key}:{self.map[key]} )'
+        return output
     """
     Retrieves the value associated with the given key. Also
     needs to move the key-value pair to the end of the order
@@ -17,7 +31,14 @@ class LRUCache:
     key-value pair doesn't exist in the cache.
     """
     def get(self, key):
-        pass
+        # update items if used
+        # find the key in order structure, and move to front of
+        if key in self.map:  # node.value = (apple, 'is a fruit')
+            node = self.map[key]
+            self.ddl.move_to_front(node)
+            return node.value[1]
+        else:
+            return None
 
     """
     Adds the given key-value pair to the cache. The newly-
@@ -30,4 +51,20 @@ class LRUCache:
     the newly-specified value.
     """
     def set(self, key, value):
-        pass
+        # remove items that arn'et used
+        # key is not in strogage, and limit has not been hit yet
+        # add the key to the front of the order structures
+
+        if key in self.map: # item1
+            node = self.map[key]
+            node.value = (key, value)
+            self.ddl.move_to_front(node)
+            return
+        if self.length == self.limit:
+            del self.map[self.ddl.tail.value[0]]
+            self.ddl.remove_from_tail()
+            self.length -=1
+
+        self.ddl.add_to_head((key, value))
+        self.map[key] = self.ddl.head
+        self.length += 1

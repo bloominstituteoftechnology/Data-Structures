@@ -3,16 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="0cf111ef-9d3e-446a-a070-be535636fa6f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doubly_linked_list/doubly_linked_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/doubly_linked_list/doubly_linked_list.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doubly_linked_list/test_doubly_linked_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/doubly_linked_list/test_doubly_linked_list.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guided_project/find_middle.py" beforeDir="false" afterPath="$PROJECT_DIR$/guided_project/find_middle.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guided_project/reverse.py" beforeDir="false" afterPath="$PROJECT_DIR$/guided_project/reverse.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lru_cache/doubly_linked_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/lru_cache/doubly_linked_list.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lru_cache/lru_cache.py" beforeDir="false" afterPath="$PROJECT_DIR$/lru_cache/lru_cache.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lru_cache/test_lru_cache.py" beforeDir="false" afterPath="$PROJECT_DIR$/lru_cache/test_lru_cache.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/queue_and_stack/dll_queue.py" beforeDir="false" afterPath="$PROJECT_DIR$/queue_and_stack/dll_queue.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/queue_and_stack/dll_stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/queue_and_stack/dll_stack.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/queue_and_stack/test_queue.py" beforeDir="false" afterPath="$PROJECT_DIR$/queue_and_stack/test_queue.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/binary_search_tree/binary_search_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/binary_search_tree/binary_search_tree.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/binary_search_tree/test_binary_search_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/binary_search_tree/test_binary_search_tree.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,7 +167,7 @@
       <workItem from="1583978035933" duration="507000" />
       <workItem from="1584050145321" duration="9044000" />
       <workItem from="1584308404511" duration="17130000" />
-      <workItem from="1584569614862" duration="2290000" />
+      <workItem from="1584569614862" duration="9340000" />
     </task>
     <servers />
   </component>

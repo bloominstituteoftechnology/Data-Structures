@@ -6,7 +6,7 @@ from doubly_linked_list import DoublyLinkedList
 # (the name is pronounced "deck" and is short for "double-ended queue").
 #  Deques support thread-safe, memory efficient appends and pops from either
 #  side of the deque with approximately the same O(1) performance in either direction.
-#  self.storage = ?
+
 class Queue:
     def __init__(self):
         self.size = 0
@@ -16,7 +16,7 @@ class Queue:
         self.storage.add_to_tail(value)
         self.size += 1
         
-
+ 
     def dequeue(self):
         #check if the list is there
         if self.size == 0:

@@ -8,12 +8,6 @@ class ListNode:
         self.prev = prev
         self.next = next
 
-    def delete(self):
-        if self.prev:
-            self.prev.next = self.next
-        if self.next:
-            self.next.prev = self.prev
-
     # """Wrap the given value in a ListNode and insert it
     # after this node. Note that this node could already
     # have a next node it is point to."""
@@ -159,63 +153,34 @@ class DoublyLinkedList:
     List and inserts it as the new head node of the List."""
 
     def move_to_front(self, node):
-        if node is self.head:
-            return
-        node_value = node.value
-        self.delete(node)
-        self.add_to_head(node_value)
+        pass
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List."""
 
     def move_to_end(self, node):
-        if node is self.tail:
-            return
-        node_value = node.value
-        self.delete(node)
-        self.add_to_tail(node_value)
+        pass
 
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""
 
     def delete(self, node):
-        self.length -= 1
-        if self.head is None and self.tail is None:
-            return
-        if self.head == self.tail:
-            self.head = None
-            self.tail = None
-        elif self.head == node:
-            self.head = self.head.next
-            node.delete()
-        elif self.tail == node:
-            self.tail = self.tail.prev
-            node.delete()
-        else:
-            node.delete()
+        pass
 
     """Returns the highest value currently in the list"""
 
     def get_max(self):
-        if self.head is None:
-            return None
-        max_val = self.head.value
-        curr_val = self.head
-        while curr_val:
-            if curr_val.value > max_val:
-                max_val = curr_val.value
-            curr_val = curr_val.next
-        return max_val
+        pass
 
 
-# our_dll = DoublyLinkedList()
-# our_dll.add_to_head(5)
-# our_dll.add_to_head(3)
-# our_dll.add_to_tail(10)
-# our_dll.add_to_tail(1)
-# our_dll.add_to_head(12)
-# removed_val = our_dll.remove_from_head()
-# second_removed_val = our_dll.remove_from_tail()
-# print(our_dll)
-# print(removed_val)
-# print(second_removed_val)
+our_dll = DoublyLinkedList()
+our_dll.add_to_head(5)
+our_dll.add_to_head(3)
+our_dll.add_to_tail(10)
+our_dll.add_to_tail(1)
+our_dll.add_to_head(12)
+removed_val = our_dll.remove_from_head()
+second_removed_val = our_dll.remove_from_tail()
+print(our_dll)
+print(removed_val)
+print(second_removed_val)

@@ -1,5 +1,7 @@
 import unittest
 from dll_queue import Queue
+from doubly_linked_list import DoublyLinkedList, ListNode
+
 
 
 class QueueTests(unittest.TestCase):

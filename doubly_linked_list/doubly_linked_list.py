@@ -48,8 +48,12 @@ class DoublyLinkedList:
 		self.tail = node
 		self.length = 1 if node is not None else 0
 
-	def __len__(self):
-		return self.length
+	@classmethod
+	def from_iterable(cls, iterable):
+		instance = cls()
+		for value in iterable:
+			instance.append(value)
+		return instance
 
 	"""Wraps the given value in a ListNode and inserts it
 	as the new head of the list. Don't forget to handle
@@ -158,6 +162,8 @@ class DoublyLinkedList:
 		raise TypeError(f'{self.__class__.__name__} indices must be integers or slices, not float')
 
 	def _get_node_at_index(self, index):
+		# Future improvements:
+		# Iterate from the tail if key > len // 2
 		if not isinstance(index, int):
 			self._raise_typeerror
 		if abs(index) > self.length or index == self.length:
@@ -186,11 +192,20 @@ class DoublyLinkedList:
 			yield node.value
 			node = node.next_node
 
+	def __reversed__(self):
+		node = self.tail
+		for _ in range(self.length):
+			yield node.value
+			node = node.prev_node
+
 	def __str__(self):
 		return str(list(self))
 
 	def __repr__(self):
 		return list(self).__repr__()
+
+	def __len__(self):
+		return self.length
 
 	append = add_to_tail
 	pop = remove_from_tail

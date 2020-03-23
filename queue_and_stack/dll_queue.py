@@ -18,7 +18,7 @@ class Queue:
 
     # Deletes item/node from the front of the queue
     def dequeue(self):
-        # if there is only one item remove and return
+        # if there are no items in queue
         if not self.storage.head and not self.storage.tail:
             return
 

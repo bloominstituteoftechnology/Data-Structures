@@ -11,6 +11,7 @@ class ListNode:
     """Wrap the given value in a ListNode and insert it
     after this node. Note that this node could already
     have a next node it is point to."""
+    
     def insert_after(self, value):
         current_next = self.next
         self.next = ListNode(value, self, current_next)

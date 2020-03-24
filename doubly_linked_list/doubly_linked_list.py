@@ -58,7 +58,8 @@ class DoublyLinkedList:
     current head's next node the new head of the List.
     Returns the value of the removed Node."""
     def remove_from_head(self):
-        pass
+        value = self.head.value
+        self.delete(self.head)
 
     """Wraps the given value in a ListNode and inserts it 
     as the new tail of the list. Don't forget to handle 
@@ -75,18 +76,40 @@ class DoublyLinkedList:
     """Removes the input node from its current spot in the 
     List and inserts it as the new head node of the List."""
     def move_to_front(self, node):
-        pass
+        # if it is already the head just return
+        # if it is not grab the value in that node
+        # delete the node
+        # add the node value to the head
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List."""
     def move_to_end(self, node):
-        pass
+        # if it is already the tail just return
+        # if it is not grab the value in that node
+        # delete the node
+        # add the node value to the tail
 
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""
     def delete(self, node):
-        pass
+        # TODO: Catch errors if list is empty or node is not in list
+        # First pass we are assuming node is in the list
+        self.length -= 1 #Adjust the length of the list
+
+        # if node is head and tail
+        if self.head is self.tail:
+            self.head = None
+            self.tail = None
+        
         
     """Returns the highest value currently in the list"""
     def get_max(self):
-        pass
+        # We must loop through the entire list to find the biggest value
+        # TODO: Error checking
+        # If there is no list return
+        # Get the value of the head = max value to start
+        # Use a while loop to iterate
+        # Get the value and text
+        # When the tail is reached the current becomes nil and ends the while list
+        # Return the max value
+

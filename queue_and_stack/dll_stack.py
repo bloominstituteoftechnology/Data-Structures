@@ -7,6 +7,7 @@ class Stack:
         self.size = 0
         self.storage = DoublyLinkedList()
         # Why is our DLL a good choice to store our elements?
+        # only one sided stack either head or tail
         # self.storage = ?
 
     def push(self, value):

@@ -1,5 +1,5 @@
-import sys
-sys.path.append('../doubly_linked_list')
+
+from doubly_linked_list import ListNode
 from doubly_linked_list import DoublyLinkedList
 
 class LRUCache:
@@ -42,19 +42,19 @@ class LRUCache:
                 #then set the current node to it
                 currentNode = node
                 # then go to the next one 
-                node = node.next
+            node = node.next
                 # and once there no more node 
-                if node == None:
-                    # break for while statement
-                    break
+            if node == None:
+                # break for while statement
+                break
                 # if nothing else to check
-                if currentNode == None:
-                    return
+        if currentNode == None:
+            return
                 # then move the current node 
                 #to the front of the list
-                self.linkedList.add_to_head(currentNode)
+        self.linkedList.move_to_front(currentNode)
                 # and finally return
-                return 
+        return self.dict[key]
 
     """
     Adds the given key-value pair to the cache. The newly-
@@ -70,13 +70,12 @@ class LRUCache:
         # now after getting the key
         # add the value to the cache 
         # null check:
-        if self.get(key) is not None:
+        if self.get(key) != None:
             # then set the default key
             self.dict[key] = value
-            # also set it to linked list
-            self.linkedList.add_to_head(value)
+
             # # if cache is not full:
-        elif self.nodeCount is not self.nodeLimit:
+        elif self.nodeCount != self.nodeLimit:
             # incremnt it 
             self.nodeCount += 1
             # assign it the value for cache and dictionary
@@ -85,11 +84,11 @@ class LRUCache:
             self.linkedList.add_to_head(key)
         else:
             # declare item to remove the item from the tail
-            remove_the_item = self.linkedList.value
+            remove_the_item = self.linkedList.tail
             # then delete from tail of dictionary
             self.dict.pop(remove_the_item.value)
             # and also from tail of the list
-            self.linkedList.remove_from_tail(remove_the_item.value)
+            self.linkedList.delete(remove_the_item)
             # assign it the value for cache and dictionary
             self.dict[key] = value
             # and the linked list 

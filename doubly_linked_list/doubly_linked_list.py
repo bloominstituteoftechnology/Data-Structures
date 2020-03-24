@@ -37,6 +37,8 @@ class ListNode:
 		if self.next_node:
 			self.next_node.prev_node = self.prev_node
 
+	def __hash__(self):
+		return hash(value)
 
 """Our doubly-linked list class. It holds references to
 the list's head and tail nodes."""
@@ -155,6 +157,18 @@ class DoublyLinkedList:
 
 		return max_value
 
+	def get_node_by_value(self, value):
+		for index, node in enumerate(self._iter_nodes()):
+			if node.value == value:
+				return node
+		return None
+
+	def index(self, value):
+		for index, node_value in enumerate(self):
+			if node_value == value:
+				return index
+		return -1
+
 	def _raise_indexerror(self):
 		raise IndexError(f'{self.__class__.__name__} index out of range')
 
@@ -177,6 +191,12 @@ class DoublyLinkedList:
 			index -= 1
 		return node
 
+	def _iter_nodes(self):
+		node = self.head
+		for _ in range(self.length):
+			yield node
+			node = node.next_node
+
 	def __getitem__(self, index):
 		return self._get_node_at_index(index).value
 
@@ -187,10 +207,8 @@ class DoublyLinkedList:
 		self._get_node_at_index(index).delete()
 
 	def __iter__(self):
-		node = self.head
-		for _ in range(self.length):
+		for node in self._iter_nodes():
 			yield node.value
-			node = node.next_node
 
 	def __reversed__(self):
 		node = self.tail

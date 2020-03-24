@@ -66,6 +66,8 @@ class DoublyLinkedList:
     current head's next node the new head of the List.
     Returns the value of the removed Node."""
     def remove_from_head(self):
+        if self.head is None: 
+            return None
         value = self.head.value
         self.delete(self.head)
         return value
@@ -164,7 +166,7 @@ class Queue:
 
     def dequeue(self):
     # * `dequeue` should remove and return an item from the front of the queue.  
-        self.storage.remove_from_head() 
+       return self.storage.remove_from_head() 
 
     def len(self):
         return self.storage.length

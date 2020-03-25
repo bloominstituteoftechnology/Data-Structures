@@ -1,8 +1,10 @@
+#!/usr/bin/env python
+
 import unittest
 import random
 import sys
 import io
-from binary_search_tree import BinarySearchTree
+from binary_search_tree import BinarySearchTree, DuplicateKeyError
 
 
 class BinarySearchTreeTests(unittest.TestCase):
@@ -19,8 +21,8 @@ class BinarySearchTreeTests(unittest.TestCase):
 
 	def test_handle_dupe_insert(self):
 		self.bst2 = BinarySearchTree(1)
-		self.bst2.insert(1)
-		self.assertEqual(self.bst2.right.value, 1)
+		with self.assertRaises(DuplicateKeyError):
+			self.bst2.insert(1)
 
 	def test_contains(self):
 		self.bst.insert(2)
@@ -41,11 +43,11 @@ class BinarySearchTreeTests(unittest.TestCase):
 		arr = []
 		cb = lambda x: arr.append(x)
 
-		v1 = random.randint(1, 101)
-		v2 = random.randint(1, 101)
-		v3 = random.randint(1, 101)
-		v4 = random.randint(1, 101)
-		v5 = random.randint(1, 101)
+		v1 = 15
+		v2 = 241
+		v3 = 62
+		v4 = 70
+		v5 = 19
 
 		self.bst.insert(v1)
 		self.bst.insert(v2)
@@ -78,7 +80,7 @@ class BinarySearchTreeTests(unittest.TestCase):
 		self.bst.insert(4)
 		self.bst.insert(2)
 
-		self.bst.in_order_print(self.bst)
+		self.bst.in_order_print()
 
 		output = sys.stdout.getvalue()
 		self.assertEqual(output, "1\n2\n3\n4\n5\n6\n7\n8\n")
@@ -96,12 +98,12 @@ class BinarySearchTreeTests(unittest.TestCase):
 						output == "1\n8\n5\n3\n2\n4\n7\n6\n")
 
 		sys.stdout = io.StringIO()
-		self.bst.pre_order_dft(self.bst)
+		self.bst.pre_order_dft()
 		output = sys.stdout.getvalue()
 		self.assertEqual(output, "1\n8\n5\n3\n2\n4\n7\n6\n")
 
 		sys.stdout = io.StringIO()
-		self.bst.post_order_dft(self.bst)
+		self.bst.post_order_dft()
 		output = sys.stdout.getvalue()
 		self.assertEqual(output, "2\n4\n3\n6\n7\n5\n8\n1\n")
 

@@ -16,3 +16,5 @@ print(another)
 for item in reversed(another):
 	another.append(item)
 print(another)
+another[0] = Queue(another[:])
+print(another)

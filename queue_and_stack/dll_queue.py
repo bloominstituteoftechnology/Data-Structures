@@ -23,14 +23,15 @@ class Queue:
             print("Nothing s there!")
             return
         remove_value = self.storage.head.value
-        self.storage.remove_from_head()
         self.size -= 1
+        self.storage.remove_from_head()
+
         return remove_value
     # def dequeue(self):
     #     if self.size > 0:
-    #     self.storage.remove_from_head()
-    #     self.size -= 1
-    #     return
+    #         self.storage.remove_from_head()
+    #         self.size -= 1
+    #         return None
 
     def len(self):
         return self.size

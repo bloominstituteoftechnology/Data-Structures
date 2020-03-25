@@ -12,14 +12,12 @@ class LRUCache:
     """
     def __init__(self, limit=10):
         #node limit to limit ^
-        self.nodeLimit = limit
-        #start the count
-        self.nodeCount = 0
-        # start the dictionary
-        self.dict = dict()
-        # link the list
+        self.limit = limit
+        self.size = 0
+        self.dictionary = dict()
         self.linkedList = DoublyLinkedList()
-        
+
+
 
     """
     Retrieves the value associated with the given key. Also
@@ -29,32 +27,17 @@ class LRUCache:
     key-value pair doesn't exist in the cache.
     """
     def get(self, key):
-        # set current node to none 
-        currentNode = None
-        # point to the top of the linked list
-        node = self.linkedList.head
-        if node == None:
-            return
-        # while nothing in current node 
-        while currentNode == None:
-            # and there is a value in the node 
-            if node.value == key:
-                #then set the current node to it
-                currentNode = node
-                # then go to the next one 
-            node = node.next
-                # and once there no more node 
-            if node == None:
-                # break for while statement
-                break
-                # if nothing else to check
-        if currentNode == None:
-            return
-                # then move the current node 
-                #to the front of the list
-        self.linkedList.move_to_front(currentNode)
-                # and finally return
-        return self.dict[key]
+
+        """
+        Retreives a value from the cache (will always be positive) at
+        the key if the key exists in the cache, otherwise returns -1.
+                """
+        if key in self.dictionary:
+            node = self.dictionary[key]
+            self.linkedList.move_to_end(node)
+            return node.value[1]
+        else:
+            return None
 
     """
     Adds the given key-value pair to the cache. The newly-
@@ -67,31 +50,24 @@ class LRUCache:
     the newly-specified value.
     """
     def set(self, key, value):
-        # now after getting the key
-        # add the value to the cache 
-        # null check:
-        if self.get(key) != None:
-            # then set the default key
-            self.dict[key] = value
+        """
+        Inserts the value at the key or creates a new key:value entry
+        if key is not present. When the cache reaches its capacity, it
+        invalidates the least recently used item before inserting a new item.
+        """
 
-            # # if cache is not full:
-        elif self.nodeCount != self.nodeLimit:
-            # incremnt it 
-            self.nodeCount += 1
-            # assign it the value for cache and dictionary
-            self.dict[key] = value
-            # and the linked list 
-            self.linkedList.add_to_head(key)
-        else:
-            # declare item to remove the item from the tail
-            remove_the_item = self.linkedList.tail
-            # then delete from tail of dictionary
-            self.dict.pop(remove_the_item.value)
-            # and also from tail of the list
-            self.linkedList.delete(remove_the_item)
-            # assign it the value for cache and dictionary
-            self.dict[key] = value
-            # and the linked list 
-            self.linkedList.add_to_head(key)
-
+        if key in self.dictionary:
+            node = self.dictionary[key]
+            node.value = (key, value)
+            self.linkedList.move_to_end(node)
+            return
+        # if it reaches the limit then override the first item
+        if self.size == self.limit:
+            del self.dictionary[self.linkedList.head.value[0]]
+            self.linkedList.remove_from_head()
+            self.size -= 1
+        # and add new item to tail
+        self.linkedList.add_to_tail((key, value))
+        self.dictionary[key] = self.linkedList.tail
+        self.size += 1
             

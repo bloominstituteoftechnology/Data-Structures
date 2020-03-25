@@ -11,13 +11,13 @@ class LRUCache:
     """
 
     def __init__(self, limit=10):
-        self.storage = DoublyLinkedList()
+        self.order = DoublyLinkedList()
         self.limit = limit  # max number of nodes
-        self.cache = {}
+        self.storage_dictionary = {}
 
         # Tail - Head
-        # [4,2,3,1]
-        # [ {"item1": "a"}, {"item2": "b"}, {"item3": "c"} ]
+
+        # { "item1": "a", "item2": "b", "item3": "c" } - storage dictionary
         # most recently used - least recently used
         # FIFO - Queue
 
@@ -34,9 +34,11 @@ class LRUCache:
 
         # Also needs to move the key-value pair to the end of the order such that the pair is considered most-recently used.
         # Returns the value associated with the key or None if the key-value pair doesn't exist in the cache.
-        if key in self.cache:
-            node = self.cache[key]
-            self.storage.move_to_front(node)
+        if key in self.storage_dictionary:
+            # { "item1": "a", "item2": "b", "item3": "c" } - storage dictionary
+            node = self.storage_dictionary[key]
+            self.order.move_to_end(node)
+            # print(node.value)
             return node.value[1]
         else:
             return None
@@ -53,14 +55,14 @@ class LRUCache:
 	"""
 
     def set(self, key, value):
-        if key in self.cache:
-            node = self.cache[key]
+        if key in self.storage_dictionary:
+            node = self.storage_dictionary[key]
             node.value = (key, value)
-            return self.storage.move_to_front(node)
+            return self.order.move_to_end(node)
 
-        if len(self.storage) == self.limit:
-            del self.cache[self.storage.tail.value[0]]
-            self.storage.remove_from_tail()
+        if len(self.order) == self.limit:
+            del self.storage_dictionary[self.order.head.value[0]]
+            self.order.remove_from_tail()
 
-        self.storage.add_to_head((key, value))
-        self.cache[key] = self.storage.head
+        self.order.add_to_tail((key, value))
+        self.storage_dictionary[key] = self.order.tail

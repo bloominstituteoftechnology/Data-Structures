@@ -17,12 +17,12 @@ class Queue:
 
     def dequeue(self):
         # Check that there is something in the queue to remove
-         if self.size == 0:
+        if self.size == 0:
             print("The queue is empty")
             return
-        value = self.storage.head.value
-        self.storage.remove_from_head()
-        self.size -= 1
+        else:
+            self.storage.remove_from_head()
+            self.size -= 1
 
 
     def len(self):

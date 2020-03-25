@@ -10,18 +10,17 @@ class Stack:
         self.storage = DoublyLinkedList()
 
     def enqueue(self, value):
+        self.storage.add_to_head.value
         self.size += 1
-        self.storage.add_to_head(value)
 
     def dequeue(self):
-        self.size -= 1
-        value = self.storage.head.value
-        self.storage.remove_from_head(value)
-        return value
+        # Check that there is something in the queue to remove
+        if self.size == 0:
+            print("The stack is empty")
+            return
+        else:
+            self.storage.remove_from_tail()
+            self.size -= 1
 
     def len(self):
-        # return self.storage.__len__()
         return self.size
-
-
- 

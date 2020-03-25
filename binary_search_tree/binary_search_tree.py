@@ -38,7 +38,10 @@ class BinarySearchTree:
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        if target == None:
+            return False
+        if target == self.value:
+            return True
     
     # so compare
     # if node is none return false 
@@ -55,24 +58,46 @@ class BinarySearchTree:
     # else
     # if node.right
     # find on right node
-    
+        elif self.value > target:
+            if self.left:
+                return self.left.contains(target) 
+        elif self.value < target:
+            if self.right:
+                return self.right.contains(target)
+        return False
     
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+        
     
     # to get max follow the right to the end
+        if self.right == None:
+            return self.value
+        
     # if there is a right
     # get max on right
-    #else
+    #els
+        else:
+            return self.right.get_max()
     # return node.value
 
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
     def for_each(self, cb):
-        pass
-    
+        cb(self.value)
+
+        if self.left != None:
+            self.left.for_each(cb)
+
+        if self.right != None:
+            self.right.for_each(cb)
+
+#  executing the passed-in callback function on each tree node value. 
+#  There is a myriad of ways to perform tree traversal;
+#    in this case any of them should work. 
+
+
     
     
     

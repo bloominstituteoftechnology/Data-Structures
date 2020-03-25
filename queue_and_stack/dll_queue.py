@@ -12,9 +12,6 @@ from doubly_linked_list import DoublyLinkedList
 
 
 class Queue(DoublyLinkedList):
-	def __init__(self):
-		super().__init__()
-
 	enqueue = DoublyLinkedList.add_to_tail
 	__len__ = DoublyLinkedList.__len__
 	len = __len__

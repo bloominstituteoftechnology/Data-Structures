@@ -12,9 +12,6 @@ from doubly_linked_list import DoublyLinkedList
 
 
 class Stack(DoublyLinkedList):
-	def __init__(self):
-		super().__init__()
-
 	push = DoublyLinkedList.add_to_head
 	__len__ = DoublyLinkedList.__len__
 	len = __len__

@@ -1,4 +1,5 @@
 
+from itertools import islice
 
 """Each ListNode holds a reference to its previous node
 as well as its next node in the List."""
@@ -45,17 +46,12 @@ the list's head and tail nodes."""
 
 
 class DoublyLinkedList:
-	def __init__(self, node=None):
-		self.head = node
-		self.tail = node
-		self.length = 1 if node is not None else 0
-
-	@classmethod
-	def from_iterable(cls, iterable):
-		instance = cls()
-		for value in iterable:
-			instance.append(value)
-		return instance
+	def __init__(self, iterable=None):
+		self.head = None
+		self.tail = None
+		self.length = 0
+		if iterable is not None:
+			self.extend(iterable)
 
 	"""Wraps the given value in a ListNode and inserts it
 	as the new head of the list. Don't forget to handle
@@ -169,6 +165,11 @@ class DoublyLinkedList:
 				return index
 		return -1
 
+	def extend(self, iterable):
+		for value in iterable:
+			self.append(value)
+		return self
+
 	def _raise_indexerror(self):
 		raise IndexError(f'{self.__class__.__name__} index out of range')
 
@@ -198,7 +199,12 @@ class DoublyLinkedList:
 			node = node.next_node
 
 	def __getitem__(self, index):
-		return self._get_node_at_index(index).value
+		if isinstance(index, slice):
+			indices = index.indices(self.length)
+			return islice(self, *indices)
+
+		else:
+			return self._get_node_at_index(index).value
 
 	def __setitem__(self, index, value):
 		self._get_node_at_index(index).value = value

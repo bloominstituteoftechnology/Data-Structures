@@ -24,8 +24,8 @@ class LRUCache:
     """
     def get(self, key):
         if key in self.hash:
-            self.storage.move_to_front({key:value})
-            return self.storage
+            self.storage.move_to_front(self.hash[key])
+            return self.storage.head.value
         else:
             return None
         
@@ -41,13 +41,18 @@ class LRUCache:
     the newly-specified value.
     """
     def set(self, key, value):
+        
         if key in self.hash:
-            # do a get() and then keep size same
-            self.get()
-        if self.size <= 10:
-            self.storage.add_to_head({key:value})
+            self.storage.move_to_front(self.hash[key])
+            self.get(key)
+        if self.size < self.limit:
+            self.storage.add_to_head(ListNode(value))
             self.size += 1
-            self.hash[key] = value
-        if self.size > 10:
+            self.hash[key] = ListNode(value)
+        if self.size >= self.limit:
+            temp = {key:val for key, val in self.hash.items() if val.value != self.storage.tail.value.value}
+            self.hash = temp
+            del temp
             self.storage.remove_from_tail()
-            self.storage.add_to_head({key:value})
+            self.storage.add_to_head(ListNode(value))
+            self.hash[key] = ListNode(value)

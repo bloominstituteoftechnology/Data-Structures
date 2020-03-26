@@ -231,5 +231,13 @@ class DoublyLinkedList:
 	def __len__(self):
 		return self.length
 
+	def __eq__(self, other):
+		if len(self) != len(other):
+			return False
+		for self_value, other_value in zip(self, other):
+			if self_value != other_value:
+				return False
+		return True
+
 	append = add_to_tail
 	pop = remove_from_tail

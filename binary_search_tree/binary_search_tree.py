@@ -1,7 +1,7 @@
 import sys
 sys.path.append('../queue_and_stack')
-from dll_queue import Queue
-from dll_stack import Stack
+# from dll_queue import Queue
+# from dll_stack import Stack
 
 
 class BinarySearchTree:
@@ -14,11 +14,13 @@ class BinarySearchTree:
     def insert(self, value):
         if value < self.value:
             if self.left:
+                #recurse left
                 self.left.insert(value)
             else:
                 self.left = BinarySearchTree(value)
         else:
             if self.right:
+                #recurse right
                 self.right.insert(value)
             else:
                 self.right = BinarySearchTree(value)    
@@ -85,13 +87,17 @@ class BinarySearchTree:
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
     def for_each(self, cb):
+
         cb(self.value)
 
         if self.left != None:
             self.left.for_each(cb)
 
+
         if self.right != None:
             self.right.for_each(cb)
+        arr = [1,3,4,5,3,7,5,8,6,1]
+        print(cb(arr))
 
 #  executing the passed-in callback function on each tree node value. 
 #  There is a myriad of ways to perform tree traversal;
@@ -107,7 +113,11 @@ class BinarySearchTree:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        # if anything on left print left
+        if node.left is not None:
+            node.left.in_order_print(node.left)
+        if node.right is not None:
+            node.right.in_order_print(node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal

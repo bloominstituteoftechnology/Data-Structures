@@ -35,7 +35,7 @@ class LRUCache:
         if key in self.dictionary:
             node = self.dictionary[key]
             self.linkedList.move_to_end(node)
-            return node.value[1]
+            return node.value[1] #<<< tupples 
         else:
             return None
 
@@ -55,15 +55,21 @@ class LRUCache:
         if key is not present. When the cache reaches its capacity, it
         invalidates the least recently used item before inserting a new item.
         """
-
+        #if key already exists
         if key in self.dictionary:
+            # override the val
+            
             node = self.dictionary[key]
+            # and where its stored
             node.value = (key, value)
+            # then move the node to the tail
             self.linkedList.move_to_end(node)
+            #finally done
             return
         # if it reaches the limit then override the first item
         if self.size == self.limit:
-            del self.dictionary[self.linkedList.head.value[0]]
+            # delete the old one
+            del self.dictionary[self.linkedList.head.value[0]] #<<<[0] tupple
             self.linkedList.remove_from_head()
             self.size -= 1
         # and add new item to tail

@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import unittest
 from unittest.mock import MagicMock
 from max_heap import Heap

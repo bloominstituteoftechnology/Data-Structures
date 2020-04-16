@@ -1,5 +1,4 @@
 from doubly_linked_list import DoublyLinkedList
-from doubly_linked_list import ListNode
 
 class LRUCache:
     """
@@ -32,25 +31,6 @@ class LRUCache:
             return node.value[1]
         else:
             return None
-        # if key in self.storage:
-        #     item = (key, self.storage[key])
-        #     # print(self.dict[key])
-        # else:
-        #     return None
-        #
-        # node = self.order.head
-        # print("Node!", node)
-        #
-        # while node.value != item:
-        #     print("Compare", node.value, item)
-        #     node = node.next
-        #     print("new node!", node.value)
-        #     if node == None:
-        #         return
-        # # print(node.value)
-        # self.order.move_to_front(node)
-        #
-        # return self.storage[key]
 
     """
     Adds the given key-value pair to the cache. The newly-
@@ -76,22 +56,3 @@ class LRUCache:
         if len(self.order) > self.limit:
             node = self.order.remove_from_tail()
             del self.storage[node[0]]
-
-# cache = LRUCache(3)
-# cache.set('item1', 'a')
-# cache.set('item2', 'b')
-# cache.set('item3', 'c')
-# print(cache.order.head.value)
-# print(cache.order.head.value == ("item3", "c"))
-# # assertEqual(self.cache.get('item1'), 'a')
-# # cache.set('item4', 'd')
-# print("Size", cache.size)
-# print("self.storage.length", cache.order.length)
-#
-# self.assertEqual(self.cache.get('item1'), 'a')
-# self.assertEqual(self.cache.get('item3'), 'c')
-# self.assertEqual(self.cache.get('item4'), 'd')
-# self.assertIsNone(self.cache.get('item2'))
-# thing = cache.get("item2")
-# print(cache.dict)
-# print(thing)

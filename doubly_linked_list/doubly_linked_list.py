@@ -187,4 +187,4 @@ def find_mid_thing(ll):
             should_pop = False
     return potential_middles[0]
 
-print("Mid", find_mid_thing(my_thing))
+# print("Mid", find_mid_thing(my_thing))

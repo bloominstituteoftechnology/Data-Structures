@@ -146,3 +146,45 @@ class DoublyLinkedList:
                 max_value = current.value
             current = current.next
         return max_value
+
+linked_list = DoublyLinkedList()
+linked_list.add_to_head(1)
+linked_list.add_to_head(4)
+linked_list.add_to_head(42)
+linked_list.add_to_head(11)
+linked_list.add_to_head(9)
+linked_list.add_to_head(21)
+
+def find_middle(ll):
+    current_middle = None
+    potential_middle = element # This is a queue. Every time you add to it, you toggle your should_add flag and
+    # if it's true, pop the next element in the queue. Otherwise, just add it to the queue.
+    should_add = True
+    for element in ll:
+        if should_add:
+            current_middle = potential_middle
+            potential_middle = element
+            should_add = False
+        else:
+            potential_middle = element
+            should_add = True
+
+my_thing = [1, 4, 42, 11, 9, 21]
+
+def find_mid_thing(ll):
+    potential_middles = []
+    should_pop = None
+    for element in ll:
+        if should_pop:
+            should_pop = False
+            potential_middles.append(element)
+            potential_middles.pop(0)
+        elif should_pop == False:
+            should_pop = True
+            potential_middles.append(element)
+        else:
+            potential_middles.append(element)
+            should_pop = False
+    return potential_middles[0]
+
+print("Mid", find_mid_thing(my_thing))

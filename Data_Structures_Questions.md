@@ -4,17 +4,21 @@ Answer the following questions for each of the data structures you implemented a
 
 1. What is the runtime complexity of `enqueue`?
 
+   O(1) because a linked list does not require a contiguous block of memory.
+
 2. What is the runtime complexity of `dequeue`?
+
+   O(1) because a linked list does not require a contiguous block of memory.
 
 3. What is the runtime complexity of `len`?
 
 ## Binary Search Tree
 
-1. What is the runtime complexity of `insert`? 
+1. What is the runtime complexity of `insert`?
 
 2. What is the runtime complexity of `contains`?
 
-3. What is the runtime complexity of `get_max`? 
+3. What is the runtime complexity of `get_max`?
 
 ## Heap
 
@@ -51,3 +55,9 @@ Answer the following questions for each of the data structures you implemented a
 10. What is the runtime complexity of `DoublyLinkedList.delete`?
 
     a. Compare the runtime of the doubly linked list's `delete` method with the worst-case runtime of the JS `Array.splice` method. Which method generally performs better?
+
+---
+
+## For reference:
+
+- dictionaries give us constant access time

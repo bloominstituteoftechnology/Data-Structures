@@ -26,7 +26,6 @@ class QueueTests(unittest.TestCase):
 
     def test_empty_dequeue(self):
         self.assertIsNone(self.q.dequeue())
-        '''
         self.assertEqual(self.q.len(), 0)
 
     def test_dequeue_respects_order(self):
@@ -41,7 +40,6 @@ class QueueTests(unittest.TestCase):
         self.assertEqual(self.q.len(), 0)
         self.assertIsNone(self.q.dequeue())
         self.assertEqual(self.q.len(), 0)
-'''
 
 
 if __name__ == '__main__':

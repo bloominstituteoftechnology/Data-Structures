@@ -128,16 +128,21 @@ class DoublyLinkedList:
 
     def remove_from_tail(self):
         remove_node = self.tail
-        if self.tail.prev:
+        if self.tail and self.tail.prev:
             # In this case, the len(self.list) is > 1
             self.tail = self.tail.prev
             self.tail.next = None
-        else:
+            self.length -= 1
+            return remove_node.value
+        elif self.tail:
             # In this case, len(self.list) == 1, so taking away the tail empties the DLL.
             self.tail = None
             self.head = None
-        self.length -= 1
-        return remove_node.value
+            self.length -= 1
+            return remove_node.value
+        else:
+            # In this case, len(self.list) == 0, so nothing to return
+            return None
 
     """Removes the input node from its current spot in the
     List and inserts it as the new head node of the List."""

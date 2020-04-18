@@ -1,8 +1,9 @@
-# from doubly_linked_list import DoublyLinkedList
+
 # import sys
 # sys.path.append('../doubly_linked_list')
-from doubly_linked_list import ListNode
 from doubly_linked_list import DoublyLinkedList
+
+# FIFO (first in, first out)
 
 
 class Queue:
@@ -10,6 +11,7 @@ class Queue:
         self.size = 0
         # Why is our DLL a good choice to store our elements?
         # Pretty straight-forward to add to head & tail, and remove from head & tail.
+        # Doesn't need an up-front allocation of memory.
         # self.storage = ?
         self.storage = DoublyLinkedList()
 

@@ -1,18 +1,30 @@
-import sys
-sys.path.append('../doubly_linked_list')
 from doubly_linked_list import DoublyLinkedList
+# import sys
+# sys.path.append('../doubly_linked_list')
+
+# stack uses LIFO (last in, first out)
+# versus queue, which uses FIFO (first in, first out)
+
 
 class Stack:
     def __init__(self):
         self.size = 0
         # Why is our DLL a good choice to store our elements?
-        # self.storage = ?
+        # Pretty straight-forward to add to head & tail, and remove from head & tail.
+        # Doesn't need an up-front allocation of memory.
+        self.storage = DoublyLinkedList()
 
     def push(self, value):
-        pass
+        # add to tail
+        self.storage.add_to_tail(value)
+        self.size += 1
 
     def pop(self):
-        pass
+        # remove from tail
+        value = self.storage.remove_from_tail()
+        if self.len() > 0:
+            self.size -= 1
+        return value
 
     def len(self):
-        pass
+        return self.size

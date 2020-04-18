@@ -145,6 +145,7 @@ class DoublyLinkedList:
     def move_to_front(self, node):
         # Delete the node from the list
         node.delete()
+        self.length -= 1
         # Add it as the new head
         self.add_to_head(node.value)
 
@@ -153,9 +154,19 @@ class DoublyLinkedList:
 
     def move_to_end(self, node):
         # Delete the node from the list
+        if node == self.tail:
+            # In this case, no need to continue
+            return False
+        new_head = None
+        if self.length == 2:
+            # In this case, the tail will become the head
+            new_head = self.tail
         node.delete()
-        # Add it as the new tail
+        self.length -= 1
+        # Add node as the new tail
         self.add_to_tail(node.value)
+        if new_head:
+            self.head = new_head
 
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""

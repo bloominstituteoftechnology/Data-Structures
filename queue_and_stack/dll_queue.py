@@ -10,9 +10,13 @@ class Queue:
         # self.storage = ?
 
     def enqueue(self, value):
+        #check head and tail
+        #add to end of queue, (set as tail)
         pass
 
     def dequeue(self):
+        #set new head
+        #return old
         pass
 
     def len(self):

@@ -67,8 +67,6 @@ class BinarySearchTree:
             self.left.for_each(cb)
         elif self.right:
             self.right.for_each(cb)
-        else:
-            pass
 
     # DAY 2 Project -----------------------
 

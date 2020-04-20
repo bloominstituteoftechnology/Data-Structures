@@ -12,6 +12,7 @@ class Queue:
         # Why is our DLL a good choice to store our elements?
         # Pretty straight-forward to add to head & tail, and remove from head & tail.
         # Doesn't need an up-front allocation of memory.
+        # O(1) for both sides for a DLL.
         # self.storage = ?
         self.storage = DoublyLinkedList()
 

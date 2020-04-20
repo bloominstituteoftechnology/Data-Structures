@@ -12,6 +12,7 @@ class Stack:
         # Why is our DLL a good choice to store our elements?
         # Pretty straight-forward to add to head & tail, and remove from head & tail.
         # Doesn't need an up-front allocation of memory.
+        # But in this case, time complexity is the same, whether you use a DLL or an array. ??
         self.storage = DoublyLinkedList()
 
     def push(self, value):

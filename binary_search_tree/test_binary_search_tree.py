@@ -21,14 +21,19 @@ class BinarySearchTreeTests(unittest.TestCase):
         self.bst2 = BinarySearchTree(1)
         self.bst2.insert(1)
         self.assertEqual(self.bst2.right.value, 1)
-    '''
 
     def test_contains(self):
         self.bst.insert(2)
         self.bst.insert(3)
         self.bst.insert(7)
+        self.assertEqual(self.bst.left.right.value, 3)
+        self.assertEqual(self.bst.right.value, 7)
+        self.assertTrue(self.bst.contains(5))
+        self.assertTrue(self.bst.contains(3))
+        self.assertTrue(self.bst.contains(2))
         self.assertTrue(self.bst.contains(7))
         self.assertFalse(self.bst.contains(8))
+        '''
 
     def test_get_max(self):
         self.assertEqual(self.bst.get_max(), 5)

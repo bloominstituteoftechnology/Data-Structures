@@ -14,6 +14,7 @@ class LRUCache:
         self.limit = limit
         self.size = 0
         self.storage = DoublyLinkedList()
+        self.lookup = dict()
 
     """
     Retrieves the value associated with the given key. Also
@@ -24,7 +25,16 @@ class LRUCache:
     """
 
     def get(self, key):
-        pass
+        if self.lookup.get(key):
+            # Move the key-value pair to the DLL tail.
+            # 1. Take the node out of its prev place in DLL
+            self.lookup[key].delete()
+            # 2. Add it to DLL as new tail
+            self.storage.add_to_tail(self.lookup[key].value, key)
+            # Return the value associated with that key.
+            return self.lookup.get(key).value
+        else:
+            return None
 
     """
     Adds the given key-value pair to the cache. The newly-
@@ -38,4 +48,38 @@ class LRUCache:
     """
 
     def set(self, key, value):
-        pass
+        # if not self.lookup[key]:
+        if not self.lookup.get(key):
+            # In this case, not already in cache
+
+            if self.size == self.limit:
+                # In this case, the cache is at max capacity, so oldest value has to be evicted.
+                # Remove it from DLL storage
+                self.storage.head = self.storage.head.next
+                oldest = self.storage.remove_from_head()
+                # Remove it from dict
+                self.lookup.pop(oldest[0])
+
+            # Creates a new node and inserts it as new DLL tail
+            self.storage.add_to_tail(value, key)
+            # Add it to the dict
+            self.lookup[key] = self.storage.tail
+            # Increment the LRU cache size
+            self.size += 1
+
+        else:
+            # Update LRU cache with new value
+            self.lookup[key].value = value
+            # Move it to the tail
+            # 1. Take the node out of its prev place in DLL
+            self.lookup[key].delete()
+            # 2. Add it to DLL as new tail
+            self.storage.add_to_tail(value, key)
+
+
+my_cache = LRUCache(3)
+my_cache.set('item1', 'a')
+print(my_cache.get('item1'))
+print(my_cache.lookup['item1'].value)
+print(my_cache.limit)
+print(my_cache.size)

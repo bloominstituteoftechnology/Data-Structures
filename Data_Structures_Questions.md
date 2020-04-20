@@ -1,5 +1,14 @@
 Answer the following questions for each of the data structures you implemented as part of this project.
 
+| method    |    Array     |           DLL |
+| --------- | :----------: | ------------: |
+| append    |      1       |             1 |
+| print nth |      1       |             n |
+| add front |      n       |             1 |
+| del front |      n       |             1 |
+| del mid   |      n       | 1 (n to find) |
+| find      | n (or log n) |             n |
+
 ## Queue
 
 1. What is the runtime complexity of `enqueue`?

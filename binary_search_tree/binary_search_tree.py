@@ -59,15 +59,22 @@ class BinarySearchTree:
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
     def for_each(self, cb):
-        while self.left:
+        cb(self.value)
+        if self.left and self.right:
             self.left.for_each(cb)
-        while self.right:
             self.right.for_each(cb)
+        elif self.left:
+            self.left.for_each(cb)
+        elif self.right:
+            self.right.for_each(cb)
+        else:
+            pass
 
     # DAY 2 Project -----------------------
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
+
     def in_order_print(self, node):
         pass
 

@@ -1,3 +1,7 @@
+import sys
+sys.path.append('C:\\Users\\Dylan Nason\\Documents\\GitHub\\Data-Structures\\doubly_linked_list')
+from doubly_linked_list import DoublyLinkedList, ListNode
+
 class LRUCache:
     """
     Our LRUCache class keeps track of the max number of nodes it
@@ -7,8 +11,22 @@ class LRUCache:
     to every node stored in the cache.
     """
     def __init__(self, limit=10):
-        pass
+        self.max_cache = limit
+        self.curr_nodes = 0
+        self.storage = DoublyLinkedList()
+        self.storage_dict = {}
 
+    def __find_node(self, key):
+        node = self.storage.head
+        counter = 0
+        while(node.next and counter <= self.curr_nodes):
+            counter += 1
+            if(node.value == key):
+                break
+            else:
+                node = node.next
+        return node
+    
     """
     Retrieves the value associated with the given key. Also
     needs to move the key-value pair to the end of the order
@@ -17,7 +35,12 @@ class LRUCache:
     key-value pair doesn't exist in the cache.
     """
     def get(self, key):
-        pass
+        try:
+            value = self.storage_dict[key]
+            self.storage.move_to_front(self.__find_node(key))
+            return value
+        except KeyError as ke:
+            return None
 
     """
     Adds the given key-value pair to the cache. The newly-
@@ -30,4 +53,17 @@ class LRUCache:
     the newly-specified value.
     """
     def set(self, key, value):
-        pass
+        if key in self.storage_dict.keys():
+            self.storage_dict[key] = value
+            self.storage.move_to_front(self.__find_node(key))
+        elif self.curr_nodes < self.max_cache:
+            self.storage.add_to_head(key)
+            self.storage_dict[key] = value
+            self.curr_nodes += 1
+        else:
+            removed_key = self.storage.tail.value
+            del self.storage_dict[removed_key]
+            self.storage.remove_from_tail()
+            self.storage.add_to_head(key)
+            self.storage_dict[key] = value
+

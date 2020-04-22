@@ -16,7 +16,7 @@ class BinarySearchTreeTests(unittest.TestCase):
         self.bst.insert(6)
         self.assertEqual(self.bst.left.right.value, 3)
         self.assertEqual(self.bst.right.left.value, 6)
-        
+
     def test_handle_dupe_insert(self):
         self.bst2 = BinarySearchTree(1)
         self.bst2.insert(1)
@@ -56,7 +56,7 @@ class BinarySearchTreeTests(unittest.TestCase):
         self.bst.for_each(cb)
 
         self.assertTrue(5 in arr)
-        self.assertTrue(v1 in arr)
+        self.assertTrue(cb(v1) in arr)
         self.assertTrue(v2 in arr)
         self.assertTrue(v3 in arr)
         self.assertTrue(v4 in arr)

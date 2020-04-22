@@ -12,27 +12,69 @@ class BinarySearchTree:
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
-
+        if value < self.value:
+            if self.left:
+                self.left.insert(value)
+            else:
+                self.left = BinarySearchTree(value)
+                #self.left.right = self
+        else:
+            if self.right:
+                self.right.insert(value)
+            else:
+                self.right = BinarySearchTree(value)
+                #self.right.left = self
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        if target == self.value:
+            return True
+        if target < self.value:
+            if self.left:
+                return self.left.contains(target)
+            else:
+                return False
+        else: # target > self.value:
+            if self.right:
+                return self.right.contains(target)
+            else:
+                return False
 
     # Return the maximum value found in the tree
     def get_max(self):
         cur = self.right
+        if cur == None:
+            return self.value
         while cur != None:
-    
-            if self.right ==None:
-                return self.value
-            cur = self.right
+
+            if cur.right == None:
+                return cur.value
+            cur = cur.right
+        return cur.value
 
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
     def for_each(self, cb):
-        pass
-
+        # apply function to initial value
+        self.value = cb(self.value)
+        #go right, applying cb function  to all values
+        cur = self.right
+        while cur != None:
+            if cur.right:
+                cur.value = cb(cur.value)
+                cur = cur.right
+            else:
+                cur.value = cb(cur.value)
+                cur = None
+        #go left, applying cb function to all values
+        cur = self.left
+        while cur != None:
+            if cur.left:
+                cur.value = cb(cur.value)
+                cur = cur.left
+            else:
+                cur.value = cb(cur.value)
+                cur = None
     # DAY 2 Project -----------------------
 
     # Print all the values in order from low to high

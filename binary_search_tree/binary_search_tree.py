@@ -102,3 +102,15 @@ class BinarySearchTree:
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
         pass
+
+test = BinarySearchTree(5)
+x = lambda x:x *2
+test.for_each(x)
+print(test.contains(10))
+test.insert(7)
+test.insert(3)
+test.insert(200)
+test.for_each(x)
+print('Should be False: ', test.contains(10))
+print(test.contains(14))
+print(test.contains(400))

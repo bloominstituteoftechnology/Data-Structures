@@ -62,8 +62,8 @@ class LRUCache:
         #size is at limit
         if len(self.order) == self.limit:
             #evict the oldest one
-            index_of_odest = self.order.head.value[0]
-            del self.storage[index_of_odest]
+            index_of_oldest = self.order.head.value[0]
+            del self.storage[index_of_oldest]
             self.order.remove_from_head()
 
         #add to order

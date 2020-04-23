@@ -96,17 +96,60 @@ class BinarySearchTree:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
-
+        # if our node does not exist
+            # just return
+            if node is None:
+                return
+        # left case
+        # call in order print on left node
+            node.in_order_print(node.left)
+        # now print the nodes value
+            print(node.value)
+        # right case
+        # call in order print on the right node
+            node.in_order_print(node.right)
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+         # instantiate a queue
+        q = Queue()
+        # enqueue the starting node
+        q.enqueue(node)
+        # while the queue contains data
+        while q.len() >= 0:
+            # dequeue current node
+            current = q.dequeue()
+            # print the current value
+            print(current.value)
+            # check if left child exists
+            if current.left:
+                # enqueue left child
+                q.enqueue(current.left)
+            # check if a right child exists
+            if current.right:
+                # enqueue right child
+                q.enqueue(current.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+         # push the starting node
+        stack = Stack()
+        stack.push(node)
+        # while the stack contains data
+        while stack.len() > 0:
+            # pop current node
+            current = stack.pop()
+            # print the current value
+            print(current.value)
+            # check if left child exists
+            if current.left:
+                # push left child
+                stack.push(current.left)
+            # check if a right child exists
+            if current.right:
+                # push right child
+                stack.push(current.right)
 
     # STRETCH Goals -------------------------
     # Note: Research may be required

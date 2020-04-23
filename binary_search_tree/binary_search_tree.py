@@ -1,7 +1,7 @@
-import sys
-sys.path.append('../queue_and_stack')
-from dll_queue import Queue
-from dll_stack import Stack
+#import sys
+#sys.path.append('../queue_and_stack')
+#from dll_queue import Queue
+#from dll_stack import Stack
 
 
 class BinarySearchTree:
@@ -12,28 +12,54 @@ class BinarySearchTree:
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
+        if self.left is None and value < self.value:
+            self.left = BinarySearchTree(value)
+        elif self.right is None and value > self.value:
+            self.right = BinarySearchTree(value)
+        elif value < self.value:
+            self.left.insert(value)
+        elif value > self.value:
+            self.right.insert(value)
 
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        if self.value == target:
+            return True
+        if target < self.value:
+            if self.left is None:
+                return False
+            else:
+                return self.left.contains(target)
+        if target > self.value:
+            if self.right is None:
+                return False
+            else:
+                return self.right.contains(target)
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+        if self.right is None:
+            return self.value
+        else:
+            return self.right.get_max()
 
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
     def for_each(self, cb):
-        pass
+        cb(self.value)
+
+        if(self.right is not None):
+            self.right.for_each(cb)
+        if(self.left is not None):
+            self.left.for_each(cb)
 
     # DAY 2 Project -----------------------
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal

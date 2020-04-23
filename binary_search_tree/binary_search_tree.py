@@ -57,24 +57,31 @@ class BinarySearchTree:
     def for_each(self, cb):
         # apply function to initial value
         self.value = cb(self.value)
-        #go right, applying cb function  to all values
-        cur = self.right
-        while cur != None:
-            if cur.right:
-                cur.value = cb(cur.value)
-                cur = cur.right
-            else:
-                cur.value = cb(cur.value)
-                cur = None
-        #go left, applying cb function to all values
-        cur = self.left
-        while cur != None:
-            if cur.left:
-                cur.value = cb(cur.value)
-                cur = cur.left
-            else:
-                cur.value = cb(cur.value)
-                cur = None
+
+        if self.left:
+            self.right.for_each(cb)
+
+        if self.right:
+            self.right.for_each(cb)
+
+        # #go right, applying cb function  to all values
+        # cur = self.right
+        # while cur != None:
+        #     if cur.right:
+        #         cur.value = cb(cur.value)
+        #         cur = cur.right
+        #     else:
+        #         cur.value = cb(cur.value)
+        #         cur = None
+        # #go left, applying cb function to all values
+        # cur = self.left
+        # while cur != None:
+        #     if cur.left:
+        #         cur.value = cb(cur.value)
+        #         cur = cur.left
+        #     else:
+        #         cur.value = cb(cur.value)
+        #         cur = None
     # DAY 2 Project -----------------------
 
     # Print all the values in order from low to high
@@ -102,15 +109,3 @@ class BinarySearchTree:
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
         pass
-
-test = BinarySearchTree(5)
-x = lambda x:x *2
-test.for_each(x)
-print(test.contains(10))
-test.insert(7)
-test.insert(3)
-test.insert(200)
-test.for_each(x)
-print('Should be False: ', test.contains(10))
-print(test.contains(14))
-print(test.contains(400))

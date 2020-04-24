@@ -12,8 +12,6 @@ class BinarySearchTree:
 
     # Insert the given value into the tree
     def insert(self, value):
-        if(self.contains(value)):
-            return value
         if self.left is None and value < self.value:
             self.left = BinarySearchTree(value)
         elif self.right is None and value > self.value:

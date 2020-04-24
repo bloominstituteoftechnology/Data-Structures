@@ -12,6 +12,8 @@ class BinarySearchTree:
 
     # Insert the given value into the tree
     def insert(self, value):
+        if(self.contains(value)):
+            return value
         if self.left is None and value < self.value:
             self.left = BinarySearchTree(value)
         elif self.right is None and value > self.value:
@@ -58,13 +60,22 @@ class BinarySearchTree:
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
-    def in_order_print(self, node):
-        
+    def in_order_print(self, node=None):
+        if self.left:
+            self.left.in_order_print()
+        print(self.value)
+        if self.right:
+            self.right.in_order_print()
+
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
-    def bft_print(self, node):
-        pass
+    def bft_print(self, node=None):
+        print(self.value)
+        if self.left:
+            self.left.bft_print()
+        if self.right:
+            self.right.bft_print()
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal

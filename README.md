@@ -9,9 +9,8 @@ Topics:
  * Tree Traversal
 
 Stretch Goals:
- * Generic Heaps
- * AVL Trees
  * Heaps
+ * AVL Trees
 
 ## Tasks
 * Day 1 In Class:  `doubly_linked_list`

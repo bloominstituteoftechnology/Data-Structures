@@ -86,6 +86,7 @@ class BinarySearchTreeTests(unittest.TestCase):
         sys.stdout = io.StringIO()
         self.bst.bft_print(self.bst)
         output = sys.stdout.getvalue()
+        print(output)
         self.assertTrue(output == "1\n8\n5\n3\n7\n2\n4\n6\n" or
                         output == "1\n8\n5\n7\n3\n6\n4\n2\n")
 

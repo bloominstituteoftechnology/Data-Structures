@@ -13,22 +13,19 @@ Stretch Goals:
  * AVL Trees
 
 ## Tasks
-* Day 1 In Class:  `doubly_linked_list`
-* Day 1 Homework:  `queue_and_stack`
-* Day 2 In Class:  No Starter.  Interview problems described below.
-* Day 2 Homework:  `lru_cache`
-* Day 3 In Class:  No Starter. Research and planning exercise below.
-* Day 3 Homework:  `binary_search_tree` part 1
-* Day 4 In Class:  No Starter. White-boarding exercise below.
-* Day 4 Homework: `binary_search_tree` part 2
-
  > NOTE: The quickest and easiest way to reliably import a file in Python is to just copy and paste the file you want to import into the same directory as the file that wants to import. This obviously isn't considered best practice, but it is the most reliable way to do it across all platforms.  If the import isn't working, feel free to try this method.
 
+### Stacks
+* Should have the methods: `push`, `pop`, and `len`.
+   * `push` adds an item to the top of the stack.
+   * `pop` removes and returns the element at the top of the stack
+   * `len` returns the number of elements in the stack.
+
 ### Queues
- * Should have the methods: `enqueue`, `dequeue`, and `len`.
-   * `enqueue` should add an item to the back of the queue.
-   * `dequeue` should remove and return an item from the front of the queue.
-   * `len` returns the number of items in the queue.
+ * Has the methods: `enqueue`, `dequeue`, and `len`.
+   * `enqueue` adds an element to the back of the queue.
+   * `dequeue` removes and returns the element at the front of the queue.
+   * `len` returns the number of elements in the queue.
  
 ![Image of Queue](https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Data_Queue.svg/600px-Data_Queue.svg.png)
 
@@ -64,7 +61,6 @@ Here are you some things to think about with regards to optimizing your implemen
 
 ## Stretch Goals
 
-
 ### LRU Cache
 An LRU (Least Recently Used) cache is an in-memory storage structure that adheres to the [Least Recently Used](https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)) caching strategy. 
 
@@ -77,8 +73,6 @@ We'll also need a `get` operation that fetches a value given a key. When a key-v
 Note that the only way for entries to be removed from the cache is when one needs to be evicted to make room for a new one. Thus, there is no explicit `remove` method. 
 
 Given the above spec, try to get a working implementation that passes the tests. What data structure(s) might be good candidates with which to build our cache on top of? Hint: Since our cache is going to be storing key-value pairs, we might want to use a structure that is adept at handling those. 
-
-
 
 ### AVL Tree
 An AVL tree (Georgy Adelson-Velsky and Landis' tree, named after the inventors) is a self-balancing binary search tree. In an AVL tree, the heights of the two child subtrees of any node differ by at most one; if at any time they differ by more than one, rebalancing is done to restore this property.

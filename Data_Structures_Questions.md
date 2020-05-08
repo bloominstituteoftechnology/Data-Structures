@@ -1,5 +1,13 @@
 Answer the following questions for each of the data structures you implemented as part of this project.
 
+## Stack
+
+1. What is the runtime complexity of `push`?
+
+2. What is the runtime complexity of `pop`?
+
+3. What is the runtime complexity of `len`?
+
 ## Queue
 
 1. What is the runtime complexity of `enqueue`?

@@ -41,4 +41,3 @@ class Queue:
         else:
             return None
         
-print(Queue(enqueue))

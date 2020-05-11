@@ -23,4 +23,4 @@ class Stack:
         if self.size <= 0:
             return None
         self.size += -1
-        self.storage.pop()
+        return self.storage.pop()

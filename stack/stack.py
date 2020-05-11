@@ -15,6 +15,7 @@ import sys
 sys.path.append('../doubly_linked_list')
 from doubly_linked_list import DoublyLinkedList, ListNode
 
+# Linked List
 
 class Stack:
     def __init__(self):
@@ -31,6 +32,9 @@ class Stack:
         self.size -= 1
         return self.storage.remove_from_tail()
 
+
+# Arrays allow you to index and append.
+# Linked Lists are sequences using nodes to connect each value
 
 
 # Array Implementation

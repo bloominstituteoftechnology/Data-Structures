@@ -30,13 +30,13 @@ class Queue:
 
         else:
           return None 
+    
+# a = Queue()
 
-a = Queue()
+# a.enqueue(100)
 
-a.enqueue(100)
+# print(a.storage)
 
-print(a.storage)
+# a.dequeue()
 
-a.dequeue()
-
-print(a.storage)
+# print(a.storage)

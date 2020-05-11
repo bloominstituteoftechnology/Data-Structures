@@ -21,7 +21,10 @@ class Queue:
         return(len(self.storage))
 
     def enqueue(self, value):
-        self.storage.insert(value, 0)
+        self.storage.extend([value])
 
     def dequeue(self):
-        return self.storage.pop(-1)
+        if len(self.storage) == 0:
+            return None
+        else:
+            return self.storage.pop(0)

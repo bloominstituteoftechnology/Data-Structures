@@ -10,10 +10,11 @@ return elements in Last In First Out order.
 3. What is the difference between using an array vs. a linked list when 
    implementing a Stack?
 """
+from collections import deque 
 class Stack:
     def __init__(self):
         self.size = 0
-        self.storage = []
+        self.storage = deque()
 
     def __len__(self):
         return len(self.storage)

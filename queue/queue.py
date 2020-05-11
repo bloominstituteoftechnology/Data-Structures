@@ -13,10 +13,12 @@ return elements in First In First Out order.
 Stretch: What if you could only use instances of your Stack class to implement the Queue?
          What would that look like? How many Stacks would you need? Try it!
 """
+from collections import deque 
+
 class Queue:
     def __init__(self):
         self.size = 0
-        self.storage = []
+        self.storage = deque()
     
     def __len__(self):
         return len(self.storage)
@@ -26,7 +28,7 @@ class Queue:
 
     def dequeue(self):
         if self.storage:
-          return self.storage.pop(0)
+          return self.storage.popleft()
 
         else:
           return None 

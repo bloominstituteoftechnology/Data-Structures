@@ -10,18 +10,21 @@ return elements in First In First Out order.
 3. What is the difference between using an array vs. a linked list when 
    implementing a Queue?
 """
-import array as arr
+import sys
+sys.path.append('../doubly_linked_list')
+from doubly_linked_list import DoublyLinkedList
+
 
 class Queue:
     def __init__(self):
         self.size = 0
-        self.storage = arr.array('i', [])
+        self.storage = DoublyLinkedList()
     
     def __len__(self):
         return(len(self.storage))
 
     def enqueue(self, value):
-        self.storage.insert(value, 0)
+        self.storage.add_to_tail(value)
 
     def dequeue(self):
-        return self.storage.pop(-1)
+        return self.storage.remove_from_head()

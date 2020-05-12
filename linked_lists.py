@@ -1,54 +1,3 @@
-"""
-A queue is a data structure whose primary purpose is to store and
-return elements in First In First Out order. 
-
-1. Implement the Queue class using an array as the underlying storage structure.
-   Make sure the Queue tests pass.
-2. Re-implement the Queue class, this time using the linked list implementation
-   as the underlying storage structure.
-   Make sure the Queue tests pass.
-3. What is the difference between using an array vs. a linked list when 
-   implementing a Queue?
-   
-Stretch: What if you could only use instances of your Stack class to implement the Queue?
-         What would that look like? How many Stacks would you need? Try it!
-"""
-
-"""
-#first pass 
-class Queue:
-    def __init__(self):
-        self.size = 0
-        self.storage = []
-    
-    def __len__(self):
-        return self.size
-
-    def enqueue(self, value):
-        self.storage.insert(0, value)
-        self.size += 1
-
-    def dequeue(self):
-        #removes items from queue
-        self.size -= 1
-        return self.storage.pop()
-
-q = Queue()
-
-print(q.__len__())
-q.enqueue('puppies')
-q.enqueue('apples')
-q.enqueue('soccer ball')
-
-print(q.__len__())
-print(q.storage)
-
-q.dequeue()
-print(q.storage)
-
-"""
-
-#second pass 
 class Node:
   def __init__(self, value=None, next_node=None):
     # the value at this linked list node
@@ -66,6 +15,22 @@ class Node:
   def set_next(self, new_next):
     # set this node's next_node reference to the passed in node
     self.next_node = new_next
+
+#this is the hard way to make a linked list
+linked_list = Node(1)
+linked_list.next_node = Node(2)
+linked_list.next_node.next_node = Node(3)
+
+#another hard way to do this 
+
+ll = Node(1)
+ll_2 = Node(2)
+
+ll.set_next(ll_2)
+#and so on, and so forth
+
+#Right now, it is hard to act on the list as a whole,
+#so lets make this new class
 
 class LinkedList:
     def __init__(self):
@@ -132,36 +97,3 @@ class LinkedList:
       while current is not None:
         print(current.value)
         current = current.get_next
-
-
-class Queue(LinkedList):
-    def __init__(self):
-        self.size = 0
-        self.storage = LinkedList()
-
-    def __len__(self):
-        return self.size
-
-    def enqueue(self, value):
-        #adds items to queue
-        self.storage.add_to_end(value)
-        self.size += 1
-
-    def dequeue(self):
-        #removes items from queue
-        if self.size > 0:
-            self.size -= 1
-        else:
-            pass
-        return self.storage.remove_from_head()
-
-q = Queue()
-
-print(q.__len__())
-q.enqueue('puppies')
-q.enqueue('apples')
-q.enqueue('soccer ball')
-
-print(q.__len__())
-q.dequeue()
-print(q.__len__())

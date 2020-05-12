@@ -45,22 +45,31 @@ print(s.storage)
 
 #second pass 
 class Node:
-    def __init__(self, value=None, next_node=None):
-        self.value = value
-        self.next_node = next_node
-    def get_value(self):
-        return self.value
+  def __init__(self, value=None, next_node=None):
+    # the value at this linked list node
+    self.value = value
 
-    def get_next(self):
-        return self.next_node
+    # reference to the next node in the list
+    self.next_node = next_node
 
-    def set_next(self, new_next):
-        self.next_node = new_next
+  def get_value(self):
+    return self.value
+
+  def get_next(self):
+    return self.next_node
+
+  def set_next(self, new_next):
+    # set this node's next_node reference to the passed in node
+    self.next_node = new_next
 
 class LinkedList:
     def __init__(self):
-        self.head = None
+        self.head = None #first node in list
+        #because we can only look at the beginning, we have to cycle through the whole list to get to the end
+        self.tail = None
 
+    #now we can directly add nodes to the list, no traversing
+    #so now it is 0(1)
     def add_to_end(self, value):
         # what if the list is empty?
         # -- value is the actual value, not wrapped by node
@@ -68,24 +77,21 @@ class LinkedList:
 
         new_node = Node(value) # we should do this regardless if empty
 
-        if not self.head:
+        if not self.head and not self.tail:
             self.head = new_node
-            return self.head
-    
+            self.tail = new_node
+        
         # and not empty?
         else:
-            #we want to get to the last node in the list
-            #but we need to traverse the list to get there
+            #now we don't need to traverse the whole list
 
-            current = self.head
+            #set the current tail's next to the new node
+            self.tail.set_next(new_node)
+            #set self.tail to the new node
+            self.tail = new_node
 
-            while current.get_next() is not None:
-                #as long as we haven't reached the end of the list, keep going through it
-                current = current.get_next()
-                #we are now at the end of the list
-
-            return current.set_next(new_node) #now we can add the new node to the list
-
+    #we can directly remove this, no traversing
+    #O(1)
     def remove_from_head(self):
         #what if the list is empty?
         # -- nothing to remove
@@ -104,20 +110,24 @@ class LinkedList:
 
             return value
 
-    def remove_from_tail(self):
+    def add_to_head(self, value):
+      new_node = Node(value)
 
-        if not self.head:
-            return None
+      if not self.head and not self.tail:
+        self.head = new_node
+        self.tail = new_node
 
-        else:
-            current = self.head
+      else:
+        new_node.set_next(self.head)
+        self.head = new_node
 
-            while current.get_next() is not None:
-                #as long as we haven't reached the end of the list, keep going through it
-                current = current.get_next()
-                #we are now at the end of the list
-            current = None
-            return current #now we can remove the last item 
+    def print_ll_elements(self):
+      current = self.head
+
+      while current is not None:
+        print(current.value)
+        current = current.get_next
+
 
 
 
@@ -125,6 +135,7 @@ class LinkedList:
 class Stack(LinkedList):
     def __init__(self):
         self.size = 0
+        self.storage = LinkedList()
         self.head = None
 
     def __len__(self):
@@ -132,14 +143,14 @@ class Stack(LinkedList):
 
     def push(self, value):
         #add items
-        self.add_to_end(value)
+        self.storage.add_to_end(value)
         self.size += 1
 
     def pop(self):
         #remove items
-        if self.remove_from_head() is not None:
+        if self.storage.remove_from_tail() is not None:
             self.size -= 1
-        return self.remove_from_head()
+        return self.remove_from_tail()
 
 s = Stack()
 

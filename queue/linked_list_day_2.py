@@ -31,7 +31,7 @@ class LinkedList:
     def add_to_head(self, value):
         # always first check if empty
         new_node = Node(value)
-        if not self..head and not self.tail:
+        if not self.head and not self.tail:
             self.head = new_node
             self.tail = new_node 
         else:
@@ -55,7 +55,7 @@ class LinkedList:
             # the last node in the list 
             # we can get to the last node in the list by traversing it 
             # no more traversals since we now keep first and last
-            self.tail.set_next(new_node)
+            new_node.set_prev(self.tail)
             self.tail = new_node 
 
     # runs in O(1) since have access
@@ -82,10 +82,30 @@ class LinkedList:
             self.tail = self.tail.get_prev()
             return value 
 
-            
+    def print_ll_elements(self):
+        current = self.head
+
+        while current is not None:
+            print(current.value)
+            current = current.get_next()
+    
+    def print_ll_elements_reverse(self):
+        current = self.tail
+
+        while current is not None:
+            print(current.value)
+            current = current.get_prev()
+
 a = LinkedList()
 
-a.add_to_end(5)
-a.add_to_end(15)
-a.add_to_end(25)
-print(a.remove_from_head())
+a.add_to_head(5)
+a.add_to_head(15)
+a.add_to_head(25)
+a.print_ll_elements()
+
+
+a.add_to_tail(35)
+# print("Reverse Print")
+# a.print_ll_elements_reverse()
+
+a.print_ll_elements()

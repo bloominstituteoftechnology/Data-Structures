@@ -33,7 +33,10 @@ class ListNode:
             self.next.prev = self.prev
 
     def get_value(self):
-        return self.value 
+        return self.value
+
+    def __str__(self):
+        return  
 
 """Our doubly-linked list class. It holds references to
 the list's head and tail nodes."""
@@ -57,8 +60,9 @@ class DoublyLinkedList:
         else:
             new_node.insert_before(value)
             self.head = new_node
-            self.length += 1 
-
+        # increment length by one regardless 
+        self.length += 1 
+    
     """Removes the List's current head node, making the
     current head's next node the new head of the List.
     Returns the value of the removed Node."""
@@ -66,6 +70,15 @@ class DoublyLinkedList:
         # for empty LL
         if not self.head:
             return None 
+        # self.tail is a Node so can call .prev on it
+        # check if it's the end of the LL
+        # elif (self.tail == self.head):
+        elif self.head.prev == None: 
+            value = self.head.get_value()
+            self.tail = None 
+            self.head = None 
+            self.length -= 1
+            return value 
         else:
             # need to return this so store first
             value = self.head.get_value()
@@ -85,8 +98,8 @@ class DoublyLinkedList:
         else:
             new_node.insert_after(value)
             self.tail = new_node
-            self.length += 1 
-
+        # increment length by one regardless 
+        self.length += 1     
 
     """Removes the List's current tail node, making the 
     current tail's previous node the new tail of the List.
@@ -96,9 +109,15 @@ class DoublyLinkedList:
         if not self.tail:
             return None
         # single node case
-        elif self.next is None:
-            self.value = None 
-
+        # elif (self.tail == self.head):
+        # self.tail is a Node so can call .next on it
+        # check if it's the end of the LL
+        elif self.tail.next == None:
+            value = self.tail.get_value()
+            self.tail = None 
+            self.head = None 
+            self.length -= 1 
+            return value 
         # else 
         else:
             value = self.tail.get_value()
@@ -124,3 +143,16 @@ class DoublyLinkedList:
     """Returns the highest value currently in the list"""
     def get_max(self):
         pass
+
+    def __str__(self):
+        list_str = ''
+        curr = self.head
+        while curr is not None:
+            flags = ''
+            if curr is self.head:
+                flags += '[H]'
+            if curr is self.tail:
+                flags += '[T]'
+            list_str += f'{curr.prev} <-- {flags}{curr} --> {curr.next}\n'
+            curr = curr.next
+        return list_str

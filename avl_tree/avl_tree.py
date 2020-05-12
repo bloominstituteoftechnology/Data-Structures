@@ -40,13 +40,42 @@ class AVLTree:
     in the tree
     """
     def update_height(self):
-        pass
+        if self.node is None:
+            self.height = -1
+        else:
+            if self.node.left is None and self.node.right is None:
+                self.height = 0
+            elif self.node.right is None:
+                self.height = self.node.left.update_height() + 1
+            elif self.node.left is None:
+                self.height = self.node.right.update_height() + 1
+            else:
+                self.height = max(self.node.left.update_height(),
+                                  self.node.right.update_height()) + 1
+        return self.height
 
     """
     Updates the balance factor on the AVLTree class
     """
     def update_balance(self):
-        pass
+        if self.node is None or (self.node.left is None and 
+                                 self.node.right is None):
+            self.balance = 0
+        else:
+            # Update sub-tree balances.
+            if self.node.left:
+                self.node.left.update_balance()
+            if self.node.right:
+                self.node.right.update_balance()
+                
+            if self.node.right is None:
+                self.balance = - self.node.left.update_height() - 1
+            elif self.node.left is None:
+                self.balance = self.node.right.update_height() + 1
+            else:
+                self.balance = (self.node.right.update_height() -
+                                self.node.left.update_height())
+        return self.balance
 
     """
     Perform a left rotation, making the right child of this
@@ -54,7 +83,11 @@ class AVLTree:
     of the new parent. 
     """
     def left_rotate(self):
-        pass
+        original_parent = self.node
+        self.node = original_parent.right.node
+        original_parent.right = self.node.left
+        self.node.left = AVLTree(original_parent)
+        
 
     """
     Perform a right rotation, making the left child of this
@@ -62,7 +95,10 @@ class AVLTree:
     of the new parent. 
     """
     def right_rotate(self):
-        pass
+        original_parent = self.node
+        self.node = original_parent.left.node
+        original_parent.left = self.node.right
+        self.node.right = AVLTree(original_parent)
 
     """
     Sets in motion the rebalancing logic to ensure the
@@ -70,12 +106,44 @@ class AVLTree:
     1 or -1
     """
     def rebalance(self):
-        pass
+        self.update_height()
+        self.update_balance()
+        while abs(self.balance) > 1:
+            if self.balance < -1:
+                if self.node.left.balance > 0:
+                    self.node.left.left_rotate()
+                    self.update_height()
+                    self.update_balance()
+                self.right_rotate()
+                self.update_height()
+                self.update_balance()
+            elif self.balance > 1:
+                if self.node.right.balance < 0:  
+                     self.node.right.right_rotate()
+                     self.update_height()
+                     self.update_balance()
+                self.left_rotate()
+                self.update_height()
+                self.update_balance()
+
         
     """
     Uses the same insertion logic as a binary search tree
     after the value is inserted, we need to check to see
-    if we need to rebalance
+    if we need to rebalance.
     """
     def insert(self, key):
-        pass
+        if self.node is None:
+            self.node = Node(key)
+        else:
+            if key < self.node.key:
+                if self.node.left is None:
+                    self.node.left = AVLTree(Node(key))
+                else:
+                    self.node.left.insert(key)
+            else:
+                if self.node.right is None:
+                    self.node.right = AVLTree(Node(key))
+                else:
+                    self.node.right.insert(key)
+        self.rebalance()

@@ -103,9 +103,3 @@ a.add_to_head(15)
 a.add_to_head(25)
 a.print_ll_elements()
 
-
-a.add_to_tail(35)
-# print("Reverse Print")
-# a.print_ll_elements_reverse()
-
-a.print_ll_elements()

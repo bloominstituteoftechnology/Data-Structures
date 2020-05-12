@@ -51,6 +51,7 @@ class Node:
 class LinkedList:
     def __init__(self):
         self.head = None
+        self.tail = None
 
     def add_to_end(self, value):   
         new_node = Node(value)
@@ -62,6 +63,16 @@ class LinkedList:
                current = current.get_next()
            current.set_next(new_node)
 
+    def add_to_head(self, value):
+        new_node = Node(value)
+
+        if not self.head and not self.tail:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.set_next(self.head)
+            self.head = new_node
+            
     def remove_from_head(self):
         if not self.head:
             return None
@@ -69,7 +80,10 @@ class LinkedList:
             value = self.head.get_value()
             self.head = self.head.get_next()
             return value
+            
+  
 
+  
 # class Queue:
 #     def __init__(self):
 #         self.size = 0

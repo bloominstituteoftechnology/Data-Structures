@@ -26,4 +26,7 @@ class Queue:
         self.size += len(self.storage)
 
     def dequeue(self):
-        return self.storage.popleft()
+        if self.size < 0:
+            popped =self.storage.popleft()
+            self.size = len(self.storage)
+            return popped

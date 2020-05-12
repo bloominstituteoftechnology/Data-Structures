@@ -25,24 +25,26 @@ class LinkedList:
     def __init__(self):
         # first node in the list 
         self.head = None
+        self.tail = None 
 
+    # run time is now O(1) that we have tail and head     
     def add_to_end(self, value):
         # regardless of if the list is empty or not, we need to wrap the value in a Node 
         new_node = Node(value)
         # what if the list is empty? 
-        if not self.head:
+        if not self.head and not self.tail:
             self.head = new_node
+            self.tail = new_node
         # what if the list isn't empty?
         else:
             # what node do we want to add the new node to? 
             # the last node in the list 
             # we can get to the last node in the list by traversing it 
-            current = self.head 
-            while current.get_next() is not None:
-                current = current.get_next()
-            # we're at the end of the linked list 
-            current.set_next(new_node)
+            # no more traversals since we now keep first and last
+            self.tail.set_next(new_node)
+            self.tail = new_node 
 
+    # runs in O(1) since have access
     def remove_from_head(self):
         # what if the list is empty?
         if not self.head:

@@ -20,9 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a36c53e4-634f-4f4b-ba5c-7bb2915ce212" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/queue/linked_List.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/queue/queue.py" beforeDir="false" afterPath="$PROJECT_DIR$/queue/queue.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doubly_linked_list/doubly_linked_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/doubly_linked_list/doubly_linked_list.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +85,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589231377344</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="test now pass with linked_List.py implementation">
+      <created>1589231859672</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1589231859672</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -99,17 +105,19 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="All stack test are now passsing with newly added code" />
     <MESSAGE value="finished stack with linkList implementation" />
     <MESSAGE value="finished queue with array implamentation" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished queue with array implamentation" />
+    <MESSAGE value="test now pass with linked_List.py implementation" />
+    <option name="LAST_COMMIT_MESSAGE" value="test now pass with linked_List.py implementation" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="240" y="116" key="Vcs.Push.Dialog.v2" timestamp="1589231379685">
+    <state x="240" y="116" key="Vcs.Push.Dialog.v2" timestamp="1589231868369">
       <screen x="0" y="23" width="1280" height="732" />
     </state>
-    <state x="240" y="116" key="Vcs.Push.Dialog.v2/0.23.1280.732@0.23.1280.732" timestamp="1589231379685" />
+    <state x="240" y="116" key="Vcs.Push.Dialog.v2/0.23.1280.732@0.23.1280.732" timestamp="1589231868369" />
   </component>
 </project>

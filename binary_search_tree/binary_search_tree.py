@@ -60,27 +60,29 @@ class BSTNode:
     # Return the maximum value found in the tree
     def get_max(self):
         # for null case 
-        if not self.value:
+        if self.value is None:
             return None
-        max_value = self.right 
-        current = self.value 
-        while current:
-            if current > max_value 
-                max_value = current.value
-            current = current.right 
-        return max_value
-
+        # for size of one
+        elif self.right is None:
+            return self.value
+        else:
+            return self.right.get_max()
 
     # Call the function `fn` on the value of each node
-    def for_each(self, fn):
-        pass
+    def for_each(self):
+        # for null case
+        if self.left:
+            self.left.for_each()
+        print(self.value)
+        if self.right:
+            self.right.for_each()
 
     # Part 2 -----------------------
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        pass 
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal

@@ -69,12 +69,12 @@ class AVLTree:
                 self.node.right.update_balance()
                 
             if self.node.right is None:
-                self.balance = - self.node.left.update_height() - 1
+                self.balance = - self.node.left.height - 1
             elif self.node.left is None:
-                self.balance = self.node.right.update_height() + 1
+                self.balance = self.node.right.height + 1
             else:
-                self.balance = (self.node.right.update_height() -
-                                self.node.left.update_height())
+                self.balance = (self.node.right.height -
+                                self.node.left.height)
         return self.balance
 
     """

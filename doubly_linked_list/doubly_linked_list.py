@@ -56,6 +56,9 @@ class DoublyLinkedList:
             self.head = new_node
             self.tail = new_node
         else:
+            # need to do 3 things in this order
+            # link previous head to new node
+            # from its prev and new nodes' next
             new_node.next = self.head
             self.head.prev = new_node
             self.head = new_node
@@ -64,6 +67,7 @@ class DoublyLinkedList:
     current head's next node the new head of the List.
     Returns the value of the removed Node."""
     def remove_from_head(self):
+        # don't have to do if/else since deletes does regardless
         value = self.head.value
         self.delete(self.head)
         return value
@@ -78,15 +82,19 @@ class DoublyLinkedList:
             self.head = new_node
             self.tail = new_node
         else:
+            # need to do 3 things in this order
+            # link previous tail to new node
+            # from its next and new nodes' prev
+            # set tail to new node
             new_node.prev = self.tail
             self.tail.next = new_node
-            #new_node.insert_after(value)
             self.tail = new_node
 
     """Removes the List's current tail node, making the 
     current tail's previous node the new tail of the List.
     Returns the value of the removed Node."""
     def remove_from_tail(self):
+        # don't have to do if/else since deletes does regardless
         value = self.tail.value
         self.delete(self.tail)
         return value
@@ -112,6 +120,9 @@ class DoublyLinkedList:
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""
     def delete(self, node):
+        # fix to do nothing and not decrement length for if null 
+        if self.head is None and self.tail is None:
+            return 
         self.length -= 1
         # if head and tail 
         if self.head is self.tail:
@@ -131,7 +142,6 @@ class DoublyLinkedList:
     """Returns the highest value currently in the list"""
     def get_max(self):
         # loop through all nodes, looking for biggest value
-        # TODO: Error checking
         if not self.head:
             return None
         max_value = self.head.value

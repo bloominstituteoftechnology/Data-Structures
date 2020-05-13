@@ -58,6 +58,8 @@ class DoublyLinkedList:
             self.head = new_node
             self.tail = new_node
         else:
+            # set head to value wrapped in new node
+            new_node.next = self.head  
             new_node.insert_before(value)
             self.head = new_node
         # increment length by one regardless 
@@ -96,6 +98,7 @@ class DoublyLinkedList:
             self.head = new_node
             self.tail = new_node
         else:
+            new_node.prev = self.tail
             new_node.insert_after(value)
             self.tail = new_node
         # increment length by one regardless 

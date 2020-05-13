@@ -24,14 +24,14 @@ class BSTNode:
         if self.value is None:
             self.value = insert_value
         # if root is bigger than value, search left
-        elif self.value > insert_value:
+        elif insert_value < self.value:
             # if left child is empty, put there
             if self.left is None:
                 self.left = new_node
             else: 
                 self.left.insert(insert_value)
         # if root is less than value, search right 
-        elif self.value <= insert_value: 
+        elif insert_value >= self.value: 
             # if right child is empty, put there 
             if self.right is None:
                 self.right = new_node
@@ -69,20 +69,33 @@ class BSTNode:
             return self.right.get_max()
 
     # Call the function `fn` on the value of each node
-    def for_each(self):
-        # for null case
+    def for_each(self, fn):
+        # recursively call on each side while they have children
+        # and then do the print when they no longer do as base case 
         if self.left:
-            self.left.for_each()
-        print(self.value)
+            self.left.for_each(fn)
         if self.right:
-            self.right.for_each()
+            self.right.for_each(fn)
+        print(self.value)
+        return fn(self.value)
 
     # Part 2 -----------------------
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
+    def my_in_order_print(self, node):
+        if self.left:
+            self.left.in_order_print()
+        if self.right:
+            self.right.in_order_print()
+        print(self.value)
+
     def in_order_print(self, node):
-        pass 
+        result = []
+        if self.left:
+            pass
+        if self.right:
+            pass 
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
@@ -98,9 +111,21 @@ class BSTNode:
     # Note: Research may be required
 
     # Print Pre-order recursive DFT
+    # Go Root > Left > Right recursively
     def pre_order_dft(self, node):
-        pass
+        result = []
+        if node:
+            result.append(node.value)
+            result = result + self.pre_order_dft(node.left)
+            result = result + self.pre_order_dft(node.right)
+        return result
 
     # Print Post-order recursive DFT
+    # Go Left, Right, Root recursively 
     def post_order_dft(self, node):
-        pass
+        result = []
+        if node:
+            result = result + self.pre_order_dft(node.left)
+            result = result + self.pre_order_dft(node.right)
+            result.append(node.value)
+        return result 

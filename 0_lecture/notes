@@ -1,0 +1,45 @@
+Linked List
+
+store a list of values
+isolated nodes  
+(arrows are references)
+
+
+First element of node is head
+last element before the N is tail
+N is none
+number between head and tail is value
+
+		in contrast with arrays
+Pros:
+	Easier to insert into and delete from the middle of a linked list compared to an array..
+(WHY)
+
+Const:
+Not cache friendly 
+
+
+Pro - keep adding list to the end of the list. (unlike arrays with static amount of allocated memory)
+
+
+
+
+
+BIG 0 IS A MEASURE
+
+Time  != Big O   <-- hardware indpendent
+  ^
+  |
+Hardware dependent
+
+
+O(c) - constant - Best case scenario - doesnt scale at the result of the input 
+
+
+SIMPLIFYING BIG 0 notation
+
+O(c + n)  => O (c̶ + n) => O(n)
+
+
+STACKS -- Ordering properties
+Last In First Out - LIFO (stacking dishes)

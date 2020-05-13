@@ -128,10 +128,6 @@ class LinkedList:
         print(current.value)
         current = current.get_next
 
-
-
-
-
 class Stack(LinkedList):
     def __init__(self):
         self.size = 0
@@ -148,9 +144,8 @@ class Stack(LinkedList):
 
     def pop(self):
         #remove items
-        if self.storage.remove_from_tail() is not None:
-            self.size -= 1
-        return self.remove_from_tail()
+        self.size -= 1
+        return self.storage.remove_from_head()
 
 s = Stack()
 

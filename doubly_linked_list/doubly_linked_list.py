@@ -96,18 +96,35 @@ class DoublyLinkedList:
             current_tail.prev = self.tail
             self.length +=1
 
-            
-
     """Removes the List's current tail node, making the 
     current tail's previous node the new tail of the List.
     Returns the value of the removed Node."""
     def remove_from_tail(self):
-        pass
+        tail_value = self.prev
+        if tail_value is not None:
+            self.length -= 1
+            self.tail = tail_value.prev
+            self.prev = self.prev
+            self.next = None
+        else:
+            print('DLL is empty.')
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new head node of the List."""
     def move_to_front(self, node):
-        pass
+        node = ListNode(node)
+        if self.head != node:
+            print('headz', self.head)
+            print('next', self.next)
+            og_head = self.head
+            node.next = None
+            node.prev = None
+            og_head.prev = node
+            node.next = og_head
+            self.next = self.next.next
+            self.head = node
+        else:
+            print('This node is already the head.')
     #remove the node from linked list
     #set it as the head's previous node
     #set the node's next to be the head
@@ -157,6 +174,21 @@ print('head:', dll.head)
 print(' ')
 
 dll.add_to_head(22)
+print(dll.length)
+print('head:', dll.head)
+print(' ')
+
+dll.add_to_tail(53)
+print(dll.length)
+print('tail:', dll.tail)
+print(' ')
+
+dll.remove_from_tail()
+print(dll.length)
+print('tail:', dll.tail)
+print(' ')
+
+dll.move_to_front(53)
 print(dll.length)
 print('head:', dll.head)
 print(' ')

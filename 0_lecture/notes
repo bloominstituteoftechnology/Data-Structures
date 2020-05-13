@@ -41,5 +41,47 @@ SIMPLIFYING BIG 0 notation
 O(c + n)  => O (c̶ + n) => O(n)
 
 
-STACKS -- Ordering properties
-Last In First Out - LIFO (stacking dishes)
+***STACKS -- Ordering properties
+Last In First Out - LIFO (stacking dishes) -  vertical line
+QUEUE - vertical line - FIFO - First in First Out
+
+Implementation
+
+List is a superset of stack
+
+
+
+***LINKED LIST
+Array and Linked List store things in order.
+Array allow you to index to fetch particular elements
+
+LL ---> no index, they are like an anchor chain
+made up of nodes that are connected to another
+It flows in one direction
+
+[ ① -> ② -> ③-> N]
+   |
+   |  split list
+   |
+	----> ④ -> N          ① set_next(④)
+
+
+  H
+  |
+  |                         
+  v
+[ ① -> ② -> ③-> N]
+
+
+  		H
+  		|
+  		|
+  		v
+[ ① -> ② -> ③-> N]
+
+
+  		H
+  		|
+  		|
+  		v
+[ ①✕ -> ② -> ③-> N]

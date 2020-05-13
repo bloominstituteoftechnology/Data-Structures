@@ -10,12 +10,14 @@ This part of the project comprises two days:
    on the BSTNode class.
 """
 
+from typing import Optional
+
 class BSTNode:
     # A node has a value which is an int and two children which are nodes
     def __init__(self, value: int):
         self.value: int = value
-        self.left: BSTNode = None
-        self.right: BSTNode = None
+        self.left: Optional[BSTNode] = None
+        self.right: Optional[BSTNode] = None
 
     # Insert the given value into the tree
     def insert(self, insert_value: int):
@@ -40,7 +42,7 @@ class BSTNode:
 
     # Return True if the tree contains the value
     # False if it does not
-    def contains(self, target: int):
+    def contains(self, target: int) -> bool:
         # self will be the root
         # compare self to target 
         # case where we find it 
@@ -58,7 +60,7 @@ class BSTNode:
                 return False 
             return self.right.contains(target)
     # Return the maximum value found in the tree
-    def get_max(self):
+    def get_max(self) -> int:
         # for null case 
         if self.value is None:
             return None

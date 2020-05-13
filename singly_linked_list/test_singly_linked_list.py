@@ -1,5 +1,5 @@
 import unittest
-from singly_linked_list import LinkedList
+from linked_list_day_1 import LinkedList
 
 class LinkedListTests(unittest.TestCase):
     def setUp(self):

@@ -36,22 +36,20 @@ class Stack:
 
 #needs the import
 
-import importlib
+from . import singly_linked_list
 
-LinkedList = importlib.import_module()
+class LLStack:
+    def __init__(self):
+        self.size = 0
+        self.storage = singly_linked_list()
 
-# class LLStack:
-#     def __init__(self):
-#         self.size = 0
-#         self.storage = LinkedList()
+    def __len__(self):
+        return self.size
 
-#     def __len__(self):
-#         return self.size
+    def push(self, value):
+        self.size += 1
+        self.storage.add_to_head(value)
 
-#     def push(self, value):
-#         self.size += 1
-#         self.storage.add_to_head(value)
-
-#     def pop(self):
-#         self.size -= 1
-#         return self.storage.remove_from_head()
+    def pop(self):
+        self.size -= 1
+        return self.storage.remove_from_head()

@@ -78,6 +78,19 @@ class BinarySearchTree:
             # return node. value
             return self.value   
 
+    def  iter_get_max(self):
+        current_max = self.value
+
+        current = self
+        # traverse our structure
+        while current is not None:
+            if current.value> current_max:
+                current_max = current.value
+            # update our current_max variavle if we see a larger value
+            current = current.right
+        return current_max
+
+
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
         fn(self.value)
@@ -89,6 +102,23 @@ class BinarySearchTree:
         # pass this function to the right child
         if self.righ:
             self.right.for_each(fn) 
+    
+    
+    def iter_for_each(self, fn):
+        stack = []
+        
+        #add the root node
+        stack.append(self)
+
+        #loop so long as the stack still has elemnts
+        while len(stack) > 0:
+            current = stack.pop()
+            if current.right:
+                stack.append(currnet.right)
+            if current.left:
+                stack.append(current.left)
+            fn(current.value)
+    # Depth-First traversal
 
 
     # Part 2 -----------------------

@@ -95,10 +95,7 @@ class BSTNode:
     # helper function to compose print functions of various traversal methods, prints current node value 
     def print_node(self, node):
         print (node) 
-    # Part 2 -----------------------
-
   
-
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):

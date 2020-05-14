@@ -72,25 +72,25 @@ class BSTNode:
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-        # recursively call on each side while they have children
-        # and then do the print when they no longer do as base case 
+        # call function on itself and then recurse down in order 
+        fn(self.value)
         if self.left:
             self.left.for_each(fn)
         if self.right:
             self.right.for_each(fn)
-        print(self.value)
-        return fn(self.value)
+        
 
     # Part 2 -----------------------
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
-    def my_in_order_print(self, node):
-        if self.left:
+    def in_order_print(self, node):
+        if node.left:
             self.left.in_order_print()
-        if self.right:
+        print(node.value),
+        if node.right:
             self.right.in_order_print()
-        print(self.value)
+        
 
     def in_order_print(self, node):
         result = []

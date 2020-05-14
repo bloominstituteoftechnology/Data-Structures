@@ -126,7 +126,7 @@ class BSTNode:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        if node:
+        if node is not None:
             self.in_order_print(node.left)
             print(node.value)
             self.in_order_print(node.right)
@@ -167,7 +167,7 @@ class BSTNode:
         # loop so long as the stack still has elements
         while queue.size > 0:
             current = queue.dequeue()
-            if current:
+            if current is not None:
                 print(current.value)
             if current.left:
                 queue.enqueue(current.left)
@@ -177,7 +177,18 @@ class BSTNode:
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+        stack = Stack()
+        # add the root node
+        stack.push(self)
+        # loop so long as the stack still has elements
+        while len(stack) > 0:
+            current = stack.pop()
+            if current is not None:
+                print(current.value)
+            if current.right:
+                stack.push(current.right)
+            if current.left:
+                stack.push(current.left)
 
     # Stretch Goals -------------------------
     # Note: Research may be required

@@ -10,6 +10,9 @@ This part of the project comprises two days:
    on the BSTNode class.
 """
 from collections import deque
+from bst_queue import Queue
+from bst_stack import Stack
+
 
 class BSTNode:
     def __init__(self, value):
@@ -28,7 +31,7 @@ class BSTNode:
             else:
                 # insert the value on the left
                 self.left.insert(value)
-        else: # the value is greater than or equal to nodes value
+        else:  # the value is greater than or equal to nodes value
             # if right node is None
             if not self.right:
                 # create the new right node
@@ -73,7 +76,7 @@ class BSTNode:
         while current:
             if current.value > current_max:
                 current_max = current.value
-        # update our current_max variable if we see a larger value
+            # update our current_max variable if we see a larger value
             current = current.right
         return current_max
 
@@ -155,12 +158,21 @@ class BSTNode:
             # print out 8.
             # exit function
 
-
-
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+        queue = Queue()
+        # add the root node
+        queue.enqueue(node)
+        # loop so long as the stack still has elements
+        while queue.size > 0:
+            current = queue.dequeue()
+            if current:
+                print(current.value)
+            if current.left:
+                queue.enqueue(current.left)
+            if current.right:
+                queue.enqueue(current.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal

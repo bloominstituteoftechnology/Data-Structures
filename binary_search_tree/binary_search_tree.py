@@ -9,7 +9,7 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
-
+from collections import deque
 from typing import Optional
 
 class BSTNode:
@@ -84,7 +84,17 @@ class BSTNode:
         # add root node
         queue.append(self)
 
+        while len(queue) > 0:
+            current = queue.popleft()
+            if current.left:
+                queue.append(current.left)
+            if current.right:
+                queue.append(current.right)
+            fn(current.value)
 
+    # helper function to compose print functions of various traversal methods, prints current node value 
+    def print_node(self, node):
+        print (node) 
     # Part 2 -----------------------
 
   
@@ -92,12 +102,31 @@ class BSTNode:
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+        # functional composition instead of re-writing similar code (below)
+        self.breadth_first_for_each(self.print_node)
+
+        # alternative version 
+        # queue = deque()
+        # queue.append(self)
+
+        # while len(queue) > 0:
+        #     current = queue.popleft()
+        #     if current.left:
+        #         queue.append(current.left)
+        #     if current.right:
+        #         queue.append(current.right)
+        #     print(node.value)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+        # functional composition instead of re-writing almost identical to for each (below)
+        self.for_each(self.print_node)
+        # print(node.value)  
+        # if node.left:
+        #     self.left.pre_order_dft(node.left)
+        # if node.right:
+        #     self.right.pre_order_dft(node.right)
 
     """
         These 3 below are just the same function calls but with
@@ -114,46 +143,37 @@ class BSTNode:
         print(node.value)
         if node.right:
             self.right.in_order_print(node.right)
+
     # Print Pre-order recursive DFT
     # Go Root > Left > Right recursively
     def pre_order_dft(self, node):
-
-        print(node.value)
-        
+        print(node.value)  
         if node.left:
             self.left.pre_order_dft(node.left)
         if node.right:
             self.right.pre_order_dft(node.right)
-    #   alternative version below
+    # alternative version below that is less elegant but more resource efficient 
     #     result = []
     #     if node:
     #         result.append(node.value)
     #         result = result + self.pre_order_dft(node.left)
     #         result = result + self.pre_order_dft(node.right)
-    #    
-    #     return result
+    #     print(*result, sep='\n')
 
     # Print Post-order recursive DFT
     # Go Left, Right, Root recursively 
-    def post_order_dft(self, node):
-        
+    def post_order_dft(self, node):  
         if node.left:
             self.left.post_order_dft(node.left)
         if node.right:
             self.right.post_order_dft(node.right)
         print(node.value)
 
-        # result = []
-        # if node:
-        #     result = result + self.pre_order_dft(node.left)
-        #     result = result + self.pre_order_dft(node.right)
-        #     result.append(node.value)
-      #   # print("Post Order")
-      #   # print(result)
-      #   print(node.value)
+    #     result = []
+    #     if node:
+    #       result = result + self.pre_order_dft(node.left)
+    #       result = result + self.pre_order_dft(node.right)
+    #       result.append(node.value)
+      #   print(*result, sep='\n')
         
-      #   if node.right:
-      #       self.right.post_order_dft(node.right)
-      #   if node.left:
-      #       self.left.post_order_dft(node.left)
-      # # return result 
+   

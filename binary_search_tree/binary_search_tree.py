@@ -9,48 +9,35 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
-class BSTNode:
+class BinarySearchTree:
     def __init__(self, value):
         self.value = value
         self.left = None
         self.right = None
 
-    # Insert the given value into the tree
+    # def insert(self, value):
+    #     if value > self.value:
+    #         og_head = self.value
+    #         self.value = value
+    #         return self.insert(og_head)
+    #     else:
+    #         if value > self.right:
+    #             return self.right.insert(value)
+    #         if value < self.left:
+    #             return self.left.insert(value)
+    #         else:
+    #             return self.insert(value)
     def insert(self, value):
-        #if value is bigger than head it becomes the head
-        if value > self.value:
-            #I need to move the head down to the right,
-            #because the right side always has bigger values
-            og_head = self.value
-            self.value = value
-            return self.right.insert(og_head)
-
-        #if a value is smaller than the head
-        if value <= self.value:
-            #I need find whether the right value is bigger or smaller than given value
-            if value > self.right:
-                og_right = self.right
-                self.right = value
-                #now we have to find a new home for the displaced right value 
-                #by calling the function again
-                return self.insert(og_right)
-            #what if the value is smaller than the right?
-            if value <= self.right:
+        if value < self.value:
+            if not self.left:
+                self.left = BinarySearchTree(value)
+            else:
                 return self.left.insert(value)
-            #what if the value is smaller than the right?
-            if value <= self.left:
-                #we need to see if it is bigger than the next left
-                if value >= self.left.left:
-                    og_left = self.left
-                    self.left = value
-                    return self.insert(og_left)
-                else value <= self.left.left:
-                    return self.left.left.insert(value)
-
-            #what if the value is smaller than the left and right?
-            if (value <= self.right) and (value <= self.left):
-                pass
-
+        if value >= self.value:
+            if not self.right:
+                self.right = BinarySearchTree(value)
+            else:
+                return self.right.insert(value)
 
     # Return True if the tree contains the value
     # False if it does not
@@ -61,7 +48,7 @@ class BSTNode:
         #criteria for returning False:
         # we know we need to go in a direction, but we have reached the end, there is nothing there
         
-        if target == self.value
+        if target == self.value:
             return True
         if target < self.value:
             #go left if it is a BTSNode
@@ -81,9 +68,27 @@ class BSTNode:
         #confused
         current_max = self.value
 
+        if self.right: 
+            if current_max >= self.right.value:
+                return current_max
+            
+            if current_max < self.right.value:
+                current_max = self.right.value
+                return self.right.get_max()
+        else:
+            return current_max
+
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-        pass
+        self.value = fn(self.value)
+        while self.left:
+            self.left.value = fn(self.left.value)
+            return self.left.for_each(fn)
+        while self.right:
+            self.right.value = fn(self.right.value)
+            return self.right.for_each(fn)
+        else:
+            pass
 
     # Part 2 -----------------------
 

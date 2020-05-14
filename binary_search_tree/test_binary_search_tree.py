@@ -4,7 +4,6 @@ import sys
 import io
 from binary_search_tree import BSTNode
 
-
 class BinarySearchTreeTests(unittest.TestCase):
     def setUp(self):
         self.bst = BSTNode(5)

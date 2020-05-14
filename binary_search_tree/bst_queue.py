@@ -1,5 +1,5 @@
 from linked_List import LinkedList, Node
-
+from doubly_linked_list import DounlyLinkedList
 """
 A queue is a data structure whose primary purpose is to store and
 return elements in First In First Out order. 
@@ -11,7 +11,7 @@ return elements in First In First Out order.
    Make sure the Queue tests pass.
 3. What is the difference between using an array vs. a linked list when 
    implementing a Queue?
-   
+
 Stretch: What if you could only use instances of your Stack class to implement the Queue?
          What would that look like? How many Stacks would you need? Try it!
 """
@@ -20,7 +20,7 @@ Stretch: What if you could only use instances of your Stack class to implement t
 class Queue:
     def __init__(self):
         self.size = 0
-        self.storage = LinkedList()
+        self.storage = DounlyLinkedList()
 
     def __len__(self):
         return self.size
@@ -30,9 +30,8 @@ class Queue:
         self.storage.add_to_end(value)
         self.size += 1
 
-
     def dequeue(self):
-        #if len(self.storage) != 0:
+        # if len(self.storage) != 0:
         #    return self.storage.pop(0)
 
         if not self.storage.head:

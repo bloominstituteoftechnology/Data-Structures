@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a36c53e4-634f-4f4b-ba5c-7bb2915ce212" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/binary_search_tree/bst_queue.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/binary_search_tree/bst_stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/binary_search_tree/binary_search_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/binary_search_tree/binary_search_tree.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1bm6Is6RnFNylajzx3h45DSaecQ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a36c53e4-634f-4f4b-ba5c-7bb2915ce212" name="Default Changelist" comment="" />
+      <created>1589224844242</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1589224844242</updated>
+    </task>
+    <task id="LOCAL-00001" summary="All stack test are now passsing with newly added code">
+      <created>1589225482251</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1589225482251</updated>
+    </task>
+    <task id="LOCAL-00002" summary="finished stack with linkList implementation">
+      <created>1589230858313</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1589230858313</updated>
+    </task>
+    <task id="LOCAL-00003" summary="finished queue with array implamentation">
+      <created>1589231377344</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1589231377344</updated>
+    </task>
+    <task id="LOCAL-00004" summary="test now pass with linked_List.py implementation">
+      <created>1589231859672</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1589231859672</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Day 2 MVP">
+      <created>1589316009730</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1589316009730</updated>
+    </task>
+    <task id="LOCAL-00006" summary="forgot to push up last night">
+      <created>1589475618504</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1589475618504</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="All stack test are now passsing with newly added code" />
+    <MESSAGE value="finished stack with linkList implementation" />
+    <MESSAGE value="finished queue with array implamentation" />
+    <MESSAGE value="test now pass with linked_List.py implementation" />
+    <MESSAGE value="Day 2 MVP" />
+    <MESSAGE value="forgot to push up last night" />
+    <option name="LAST_COMMIT_MESSAGE" value="forgot to push up last night" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="240" y="117" key="Vcs.Push.Dialog.v2" timestamp="1589475620579">
+      <screen x="0" y="23" width="1280" height="733" />
+    </state>
+    <state x="240" y="116" key="Vcs.Push.Dialog.v2/0.23.1280.729@0.23.1280.729" timestamp="1589316012023" />
+    <state x="240" y="116" key="Vcs.Push.Dialog.v2/0.23.1280.732@0.23.1280.732" timestamp="1589231868369" />
+    <state x="240" y="117" key="Vcs.Push.Dialog.v2/0.23.1280.733@0.23.1280.733" timestamp="1589475620579" />
+  </component>
+</project>

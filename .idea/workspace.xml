@@ -20,10 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a36c53e4-634f-4f4b-ba5c-7bb2915ce212" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/binary_search_tree/bst_queue.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/binary_search_tree/bst_stack.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/binary_search_tree/binary_search_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/binary_search_tree/binary_search_tree.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/binary_search_tree/bst_queue.py" beforeDir="false" afterPath="$PROJECT_DIR$/binary_search_tree/bst_queue.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/binary_search_tree/bst_stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/binary_search_tree/bst_stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/binary_search_tree/test_binary_search_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/binary_search_tree/test_binary_search_tree.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +109,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589475618504</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="finished first 2 traversal methods">
+      <created>1589489846049</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1589489846049</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -130,14 +138,15 @@
     <MESSAGE value="test now pass with linked_List.py implementation" />
     <MESSAGE value="Day 2 MVP" />
     <MESSAGE value="forgot to push up last night" />
-    <option name="LAST_COMMIT_MESSAGE" value="forgot to push up last night" />
+    <MESSAGE value="finished first 2 traversal methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished first 2 traversal methods" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="240" y="117" key="Vcs.Push.Dialog.v2" timestamp="1589475620579">
-      <screen x="0" y="23" width="1280" height="733" />
+    <state x="240" y="116" key="Vcs.Push.Dialog.v2" timestamp="1589489848162">
+      <screen x="0" y="23" width="1280" height="732" />
     </state>
     <state x="240" y="116" key="Vcs.Push.Dialog.v2/0.23.1280.729@0.23.1280.729" timestamp="1589316012023" />
-    <state x="240" y="116" key="Vcs.Push.Dialog.v2/0.23.1280.732@0.23.1280.732" timestamp="1589231868369" />
+    <state x="240" y="116" key="Vcs.Push.Dialog.v2/0.23.1280.732@0.23.1280.732" timestamp="1589489848162" />
     <state x="240" y="117" key="Vcs.Push.Dialog.v2/0.23.1280.733@0.23.1280.733" timestamp="1589475620579" />
   </component>
 </project>

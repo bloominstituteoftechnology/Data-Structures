@@ -151,7 +151,18 @@ class BSTNode:
     # in an iterative depth first traversal
 
     def dft_print(self, node):
-        pass
+        stack = Stack()
+
+        stack.push(self)
+
+        while len(stack) > 0:
+            current = stack.pop()
+            if current is not None:
+                print(current.value)
+            if current.right:
+                stack.push(current.right)
+            if current.left:
+                stack.push(current.left)
 
     # Stretch Goals -------------------------
     # Note: Research may be required

@@ -133,6 +133,8 @@ class DoublyLinkedList:
     List and inserts it as the new head node of the List."""
 
     def move_to_front(self, node):
+        if node is self.head:
+            return
         # grab the value from the node passed in
         value = node.value
 
@@ -146,6 +148,8 @@ class DoublyLinkedList:
     List and inserts it as the new tail node of the List."""
 
     def move_to_end(self, node):
+        if node is self.tail:
+            return
         # grab the value from the node passed in
         value = node.value
 
@@ -168,20 +172,20 @@ class DoublyLinkedList:
 
         # if the head and tail are the same, we only have one node
         # remove it's references and it will be deleted.
-        if self.head == self.tail:
+        if self.head is self.tail:
             self.head = None
             self.tail = None
 
         # if the list's head is the same as the node passed in
         # set the head to the next node and remove references to the head
-        elif self.head == node:
-            self.head = self.head.next
+        elif self.head is node:
+            self.head = node.next
             node.delete()
 
         # if the list's tail is equal to the node passed in
         # set the tail equal to the previous node and remove references to the tail
-        elif self.tail == node:
-            self.tail = self.tail.prev
+        elif self.tail is node:
+            self.tail = node.prev
             node.delete()
 
         # else the node is somewhere in the middle, remove references to the node passed in

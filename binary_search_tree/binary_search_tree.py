@@ -19,7 +19,7 @@ class BinarySearchTree:
 
     # Insert the given value into the tree
     def insert(self, value):
-        # if new < node.value
+        # if new < node.value 
         if value < self.value:
             # if left doesnt exist
             if self.left is None:
@@ -27,7 +27,9 @@ class BinarySearchTree:
                 self.left = BinarySearchTree(value)
             # else:
             else:
-                #leftnode.insert value
+                # leftnode.insert value
+                # we can't creat here
+                # it will keep searching
                 self.left.insert(value)
         #if >=
         else:# value is greater than or equal to
@@ -49,9 +51,10 @@ class BinarySearchTree:
         # criteria for returning False: we know we need to go in one direction
         # but threr's nothing in the left or right direction
 
+
         if target == self.value:
             return True
-        if target < self.value:
+        if target < self.value: 
             # go left if left is a BSTNode
             if not self.left:
                 return False
@@ -64,12 +67,12 @@ class BinarySearchTree:
         
             
 
-    # Return the maximum value found in the tree
+    # Return the maximum value found in the tree1
     def get_max(self):
         # if there's a right:
         if self.right:
             #  get max on right
-            retrun self.right.get_max()
+            return self.right.get_max()
         # else:
         else:
             # return node. value
@@ -77,7 +80,16 @@ class BinarySearchTree:
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-        pass
+        fn(self.value)
+
+        # so here we need to call function if the nodes are there 
+        # pass this function tho the left child
+        if self.left:
+            self.left.for_each(fn)
+        # pass this function to the right child
+        if self.righ:
+            self.right.for_each(fn) 
+
 
     # Part 2 -----------------------
 

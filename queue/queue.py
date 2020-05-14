@@ -33,7 +33,7 @@ class Queue:
         self.storage.add_to_tail(value)
         self.size += 1
 
-    #remiving and return an item from the front of the queue
+    #remving and return an item from the front of the queue
     def dequeue(self):
         if self.size > 0:
             self.size -= 1

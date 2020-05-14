@@ -24,12 +24,12 @@ class Stack:
         return self.size
     # So here adding an element to the top of the stock
     def push(self, value):
-        if self.size == 0:
-            self.size += 1
-            self.storage.add_to_head(value)
-        else:
-            self.size +=1 
-            self.storage.add_to_tail(value)
+        # if self.size == 0:
+        self.size += 1
+        self.storage.add_to_tail(value)
+        # else:
+            # self.size +=1 
+            # self.storage.add_to_tail(value)
 
             
     # Here removing the element from the stack

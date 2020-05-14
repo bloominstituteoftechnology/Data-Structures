@@ -57,15 +57,31 @@ class DoublyLinkedList:
 
     def add_to_head(self, value):
         #create node
-        new_node = ListNode(value)
+        new_node = ListNode(value, None, None)
         self.length += 1
+        #also here we need to check if the list empty or not (head and tail)
         if not self.head and not self.tail:
             self.head = new_node
             self.tail = new_node
         else:
+            #  The new node becomes the head of our list
+            #  Set the current head's prev to the new node
             new_node.next = self.head
-            self.head.prev = new_node
+            #  set the new note's next to the current head
+            self.head.prev = dew_node
+            #  reassign self.head to point to the new node
             self.head = new_node
+        
+        
+        # new_node = ListNode(value)
+        # self.length += 1
+        # if not self.head and not self.tail:
+        #     self.head = new_node
+        #     self.tail = new_node
+        # else:
+        #     new_node.next = self.head
+        #     self.head.prev = new_node
+        #     self.head = new_node
 
     """Removes the List's current head node, making the
     current head's next node the new head of the List.

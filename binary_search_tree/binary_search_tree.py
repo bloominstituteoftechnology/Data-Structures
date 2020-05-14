@@ -93,7 +93,7 @@ class BSTNode:
         print(self.value)
 
     def in_order_print(self, node):
-        result: list = []
+        result = []
         if self.left:
             pass
         if self.right:
@@ -114,8 +114,8 @@ class BSTNode:
 
     # Print Pre-order recursive DFT
     # Go Root > Left > Right recursively
-    def pre_order_dft(self, node) -> list:
-        result: list = []
+    def pre_order_dft(self, node):
+        result = []
         if node:
             result.append(node.value)
             result = result + self.pre_order_dft(node.left)
@@ -124,8 +124,8 @@ class BSTNode:
 
     # Print Post-order recursive DFT
     # Go Left, Right, Root recursively 
-    def post_order_dft(self, node) -> list:
-        result: list = []
+    def post_order_dft(self, node):
+        result = []
         if node:
             result = result + self.pre_order_dft(node.left)
             result = result + self.pre_order_dft(node.right)

@@ -210,7 +210,7 @@ class BinarySearchTree:
 
         #loop for as long as the stack has elements
         while len(to_print) > 0:
-            current =  to_print.popleft()
+            current = to_print.popleft()
             #take it out to perform function
             #then get any children to do the same
             if current.right:
@@ -223,22 +223,15 @@ class BinarySearchTree:
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        print_list = deque()
+        #initialize stack
+        #push root to stack
 
-        #add the root node
-        print_list.append(self)
+        print(node.value)
 
-        #loop for as long as the stack has elements
-        while len(print_list) > 0:
-            current = print_list.popleft()
-            #take it out to perform function
-            #then get any children to do the same
-            if current.right:
-                 print_list.append(current.right)
-            if current.left:
-                 print_list.append(current.left)
-
-            print(current.value)
+        if node.right:
+            node.right.dft_print(node.right)
+        if node.left:
+            node.left.dft_print(node.left)
 
 
     # Stretch Goals -------------------------

@@ -2,7 +2,7 @@
 as well as its next node in the List."""
 
 
-class ListNode:
+class ListNode:  # Node class
     def __init__(self, value, prev=None, next=None):
         self.value = value
         self.prev = prev
@@ -56,7 +56,20 @@ class DoublyLinkedList:
     the old head node's previous pointer accordingly."""
 
     def add_to_head(self, value):
-        # Create a node
+        # Wrap give value in a ListNode
+        new_node = ListNode(value)
+        # Increase the lenght by 1
+        self.length += 1
+        # Handle if list has a head
+        if self.head:
+            new_node.next = self.head
+            self.head.prev = new_node
+            self.head = new_node
+        # Handle if list has no head
+        else:
+            self.head = new_node
+            self.tail = new_node
+
     """Removes the List's current head node, making the
     current head's next node the new head of the List.
     Returns the value of the removed Node."""

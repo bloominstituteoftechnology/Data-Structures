@@ -1,7 +1,3 @@
-import os
-
-print(os.path.realpath("doubly_linked_lists.py"))
-
 """Each ListNode holds a reference to its previous node
 as well as its next node in the List."""
 
@@ -162,10 +158,8 @@ class DoublyLinkedList:
         curr_node = self.head
 
         while True:
-
             if curr_node.value > max:
                 max = curr_node.value
-
             if curr_node.next == None:
                 break
             else:

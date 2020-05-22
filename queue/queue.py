@@ -1,3 +1,5 @@
+from doubly_linked_list import DoublyLinkedList
+
 """
 A queue is a data structure whose primary purpose is to store and
 return elements in First In First Out order. 
@@ -18,17 +20,36 @@ Stretch: What if you could only use instances of your Stack class to implement t
 class Queue:
     def __init__(self):
         self.size = 0
-        self.storage = []
+        self.storage = DoublyLinkedList()
 
     def __len__(self):
-        return len(self.storage)
+        return self.size
 
     def enqueue(self, value):
-        return self.storage.append(value)
+        self.size += 1
+        return self.storage.add_to_tail(value)
 
     def dequeue(self):
-        res = None
-        if len(self.storage):
-            res = self.storage[0]
-            self.storage = self.storage[1:]
+        res = self.storage.remove_from_head()
+        if type(res) is int:
+            self.size -= 1
         return res
+
+
+# class Queue:
+#     def __init__(self):
+#         self.size = 0
+#         self.storage = []
+
+#     def __len__(self):
+#         return len(self.storage)
+
+#     def enqueue(self, value):
+#         return self.storage.append(value)
+
+#     def dequeue(self):
+#         res = None
+#         if len(self.storage):
+#             res = self.storage[0]
+#             self.storage = self.storage[1:]
+#         return res

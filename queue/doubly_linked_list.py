@@ -79,7 +79,6 @@ class DoublyLinkedList:
     def remove_from_head(self):
         if self.head:
             value = self.head.value
-            print("remove from tail", value, "length", self.length)
             self.delete(self.head)
             return value
         else:
@@ -92,7 +91,6 @@ class DoublyLinkedList:
     def add_to_tail(self, value):
         new_node = ListNode(value)
         self.length += 1
-        print("add to tail", value, "length", self.length)
 
         if self.tail:
             self.tail.next = new_node
@@ -137,9 +135,7 @@ class DoublyLinkedList:
 
     def delete(self, node):
         if not self.head:
-            print("Cannot delete from an empty list")
             return
-
         self.length -= 1
 
         if self.head == self.tail:

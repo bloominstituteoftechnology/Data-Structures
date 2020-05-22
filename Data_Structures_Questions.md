@@ -3,10 +3,13 @@ Answer the following questions for each of the data structures you implemented a
 ## Stack
 
 1. What is the runtime complexity of `push`?
+ --> 0(1)
 
 2. What is the runtime complexity of `pop`?
+ --> 0(1)
 
 3. What is the runtime complexity of `len`?
+---> 0(1)
 
 ## Queue
 

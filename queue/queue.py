@@ -20,14 +20,19 @@ Stretch: What if you could only use instances of your Stack class to implement t
 class Queue:
     def __init__(self):
         self.size = 0
-        # self.storage = ?
         self.storage = DoublyLinkedList()
     
     def __len__(self):
-        return len(self.storage)
+        return self.size 
 
     def enqueue(self, value):
-        return self.storage.add_to_head(value)
+        self.storage.add_to_tail(value)
+        self.size += 1
 
     def dequeue(self):
-        return self.storage.remove_from_tail()
+        if self.size == 0:
+            return None
+        removed_value = self.storage.remove_from_head()
+        self.size -= 1
+
+        return removed_value

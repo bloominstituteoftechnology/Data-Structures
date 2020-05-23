@@ -82,7 +82,7 @@ class DoublyLinkedList:
     the old tail node's next pointer accordingly."""
 
     def add_to_tail(self, value):
-        # Wrap give value in a ListNode
+        # Wrap given value in a ListNode
         new_node = ListNode(value)
         # Increase the lenght by 1
         self.length += 1

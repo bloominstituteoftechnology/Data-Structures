@@ -96,3 +96,4 @@ class LinkedList:
                 checkingnode = checkingnode.next
             
             return maxvalue
+            

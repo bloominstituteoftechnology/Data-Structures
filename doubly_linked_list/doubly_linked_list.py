@@ -68,16 +68,20 @@ class DoublyLinkedList:
         # Handle if list has no head
         else:
             self.head = new_node
-            self.tail = new_node
+            self.tail = new_nodegit
 
     """Removes the List's current head node, making the
     current head's next node the new head of the List.
     Returns the value of the removed Node."""
 
-    def remove_from_head(self):
+    def remove_from_head(self):  # TODO: Ask TL about this tomorrow
         # Declare value
+        value = self.head.value
+        # Delete head node
+        self.delete(self.head)
+        # Return the value of the removed node
+        return value
 
-        # Return the value
     """Wraps the given value in a ListNode and inserts it 
     as the new tail of the list. Don't forget to handle 
     the old tail node's next pointer accordingly."""

@@ -109,14 +109,16 @@ class DoublyLinkedList:
     List and inserts it as the new head node of the List."""
 
     def move_to_front(self, node):
-        pass
+        # Delete
 
+        # Add to head
     """Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List."""
 
     def move_to_end(self, node):
-        pass
+        # Delete
 
+        # Add to tail
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""
 

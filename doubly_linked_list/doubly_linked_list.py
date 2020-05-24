@@ -68,7 +68,7 @@ class DoublyLinkedList:
         # Handle if list has no head
         else:
             self.head = new_node
-            self.tail = new_nodegit
+            self.tail = new_node
 
     """Removes the List's current head node, making the
     current head's next node the new head of the List.
@@ -120,16 +120,19 @@ class DoublyLinkedList:
         # Delete
         self.delete(node)
         node.next = self.head
-        self.head.prev = new_node
-        self.head = new_node
+        self.head.prev = node
+        self.head = node
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List."""
 
     def move_to_end(self, node):
         # Delete
+        self.delete(node)
+        node.prev = self.tail
+        self.tail.prev = node
+        self.tail = node
 
-        # Add to tail
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""
 

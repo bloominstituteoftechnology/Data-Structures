@@ -30,9 +30,10 @@ class Stack:
 
 
 my_stack = Stack()
+print('Length Result equals:', my_stack.__len__())
+my_stack.push(7)
+print('Pop result equals:', my_stack.pop())
 for i in range(10):
     my_stack.push(i)
-print("\n")
-print(my_stack.__len__())
-print(my_stack.size)
-my_stack.pop()
+print('Push result equals:', my_stack.size)
+

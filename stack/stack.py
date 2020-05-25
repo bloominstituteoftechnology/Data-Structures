@@ -12,10 +12,11 @@ return elements in Last In First Out order.
 """
 
 
+# Array Implement
 class Stack:
     def __init__(self):
         self.size = 0
-        self.stack = []
+        self.storage = []
 
     def __len__(self):
         return self.size
@@ -36,4 +37,3 @@ print('Pop result equals:', my_stack.pop())
 for i in range(10):
     my_stack.push(i)
 print('Push result equals:', my_stack.size)
-

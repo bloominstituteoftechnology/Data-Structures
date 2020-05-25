@@ -128,7 +128,7 @@ class DoublyLinkedList:
 
     """Checks for exisiting node, returns node if it exists, None if it doesn't"""
 
-    def contains(self, value):
+    def get_node(self, value):
         if self.head == self.tail:
             return self.head.value
 

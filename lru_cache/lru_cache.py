@@ -33,7 +33,7 @@ class LRUCache(OrderedDict):
         try:
             value = super().__getitem__(key)
             self.move_to_end(key)
-            existing_node = self.dllist.contains(value)
+            existing_node = self.dllist.get_node(value)
             self.dllist.move_to_front(existing_node)
             # return value
             return self.dllist.head.value
@@ -53,7 +53,7 @@ class LRUCache(OrderedDict):
 
     def set(self, key, value):
         if key in self:
-            existing_node = self.dllist.contains(self[key])
+            existing_node = self.dllist.get_node(self[key])
             self.move_to_end(key)
             self.dllist.delete(existing_node)
             self.dllist.add_to_head(value)

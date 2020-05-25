@@ -57,8 +57,8 @@ class DoublyLinkedList:
             self.head.prev = new_head
             self.head = new_head
 
-    """Removes the List's current head node, making the
-    current head's next node the new head of the List.
+    """Removes the list's current head node, making the
+    current head's next node the new head of the list.
     Returns the value of the removed Node."""
     def remove_from_head(self):
         if self.head is None:
@@ -85,8 +85,8 @@ class DoublyLinkedList:
             self.tail.next = new_tail
             self.tail = new_tail
 
-    """Removes the List's current tail node, making the 
-    current tail's previous node the new tail of the List.
+    """Removes the list's current tail node, making the 
+    current tail's previous node the new tail of the list.
     Returns the value of the removed Node."""
     def remove_from_tail(self):
         if self.tail is None:
@@ -102,19 +102,19 @@ class DoublyLinkedList:
             return value
 
     """Removes the input node from its current spot in the 
-    List and inserts it as the new head node of the List."""
+    List and inserts it as the new head node of the list."""
     def move_to_front(self, node):
         self.add_to_head(node.value)
         self.delete(node)
 
     """Removes the input node from its current spot in the 
-    List and inserts it as the new tail node of the List."""
+    list and inserts it as the new tail node of the list."""
     def move_to_end(self, node):
         self.add_to_tail(node.value)
         self.delete(node)
 
     """Removes a node from the list and handles cases where
-    the node was the head or the tail"""
+    the node was the head or the tail."""
     def delete(self, node):
         if node.prev is None:
             self.remove_from_head()

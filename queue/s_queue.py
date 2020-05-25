@@ -16,7 +16,6 @@ from array_stack import Stack
 
 class Queue:
     def __init__(self):
-        self.size = 0
         self.push_stack = Stack()
         self.pop_stack = Stack()
     

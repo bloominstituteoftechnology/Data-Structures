@@ -4,6 +4,7 @@ import sys
 import io
 from binary_search_tree import BSTNode
 
+
 class BinarySearchTreeTests(unittest.TestCase):
     def setUp(self):
         self.bst = BSTNode(5)
@@ -15,7 +16,7 @@ class BinarySearchTreeTests(unittest.TestCase):
         self.bst.insert(6)
         self.assertEqual(self.bst.left.right.value, 3)
         self.assertEqual(self.bst.right.left.value, 6)
-        
+
     def test_handle_dupe_insert(self):
         self.bst2 = BSTNode(1)
         self.bst2.insert(1)
@@ -38,7 +39,7 @@ class BinarySearchTreeTests(unittest.TestCase):
 
     def test_for_each(self):
         arr = []
-        cb = lambda x: arr.append(x)
+        def cb(x): return arr.append(x)
 
         v1 = random.randint(1, 101)
         v2 = random.randint(1, 101)
@@ -46,11 +47,13 @@ class BinarySearchTreeTests(unittest.TestCase):
         v4 = random.randint(1, 101)
         v5 = random.randint(1, 101)
 
+        self.bst.insert(5)
         self.bst.insert(v1)
         self.bst.insert(v2)
         self.bst.insert(v3)
         self.bst.insert(v4)
         self.bst.insert(v5)
+        print(arr)
 
         self.bst.for_each(cb)
 
@@ -105,6 +108,7 @@ class BinarySearchTreeTests(unittest.TestCase):
         self.assertEqual(output, "2\n4\n3\n6\n7\n5\n8\n1\n")
 
         sys.stdout = stdout_  # Restore stdout
+
 
 if __name__ == '__main__':
     unittest.main()

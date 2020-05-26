@@ -17,12 +17,20 @@ from doubly_linked_list import DoublyLinkedList
 class dll_Stack:
     def __init__(self):
         self.storage = DoublyLinkedList()
+        self.size = len(self.storage)
 
     def __len__(self):
-        return len(self.storage)
+        return self.size
 
     def push(self, value):
+        self.size +=1
         self.storage.add_to_head(value)
 
     def pop(self):
-        return self.storage.remove_from_head()
+        if self.size == 0:
+            print ('DLL is empty!')
+            return None
+        else:
+            pop_val =  self.storage.remove_from_head()
+            self.size -=1
+            return pop_val

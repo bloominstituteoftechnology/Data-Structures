@@ -1,3 +1,8 @@
+import sys
+sys.path.append('../doubly_linked_list')
+from doubly_linked_list import DoublyLinkedList
+
+
 class LRUCache:
     """
     Our LRUCache class keeps track of the max number of nodes it
@@ -7,7 +12,9 @@ class LRUCache:
     to every node stored in the cache.
     """
     def __init__(self, limit=10):
-        pass
+        self.limit=limit
+        self.storage={}
+        self.dll=DoublyLinkedList()
 
     """
     Retrieves the value associated with the given key. Also
@@ -17,7 +24,14 @@ class LRUCache:
     key-value pair doesn't exist in the cache.
     """
     def get(self, key):
-        pass
+        # if key is present in dict move the key val pair to front and 
+        # return the val corresponding to key
+        #else return None
+        if key in self.storage:
+            self.dll.move_to_front(self.storage[key])
+            return self.dll.head.value['value']
+        else:
+            return None
 
     """
     Adds the given key-value pair to the cache. The newly-
@@ -30,4 +44,18 @@ class LRUCache:
     the newly-specified value.
     """
     def set(self, key, value):
-        pass
+        # if key not present in dict create a node and add to front of dll and make the head point to it
+        # if key is present in dict move to head and make dll head point to it, overwrite its value to 
+        # the vakue set by argument
+        #if dll exceeds limit remove tail node and return its value.
+        if key not in self.storage:
+            self.dll.add_to_head({'key':key,'value':value})
+            self.storage[key]=self.dll.head
+        else:
+            self.dll.move_to_front(self.storage[key])
+            self.dll.head.value={'key':key,'value':value}
+            self.storage[key]=self.dll.head
+        
+        if len(self.storage)>self.limit:
+            self.storage.pop(self.dll.tail.value['key'])
+            

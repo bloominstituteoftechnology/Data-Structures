@@ -18,17 +18,17 @@ class SingleLink:
 
     # insertion method
     def insert(self, val):
-        newnode = ListNode(val)
+        new_node = ListNode(val)
         if self.head:
             current = self.head
             while current.next:
                 current = current.next
-            current.next = newnode
+            current.next = new_node
         else:
-            self.head = newnode
+            self.head = new_node
 
     # code a print method
-    def printLinkList(self):
+    def print_link_list(self):
         current = self.head
         while current:
             print(current.val)
@@ -42,4 +42,4 @@ LinkList = SingleLink()
 LinkList.insert(5)
 LinkList.insert(10)
 LinkList.insert(15)
-LinkList.printLinkList()
+LinkList.print_link_list()

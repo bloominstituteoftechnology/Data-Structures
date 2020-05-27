@@ -35,11 +35,15 @@ class ListNode:
 my_node = ListNode(12)
 my_node.insert_after(25)
 my_node.insert_after(100)
+
+# Making new node
+new_node = ListNode(100, my_node, None)
+
+
+
 my_node.value 
 my_node.prev
 my_node.next # This is pointing at a new node with a valuee of 100
-
-
 
 
 """Our doubly-linked list class. It holds references to

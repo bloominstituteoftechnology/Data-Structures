@@ -32,6 +32,15 @@ class ListNode:
         if self.next:
             self.next.prev = self.prev
 
+my_node = ListNode(12)
+my_node.insert_after(25)
+my_node.insert_after(100)
+my_node.value 
+my_node.prev
+my_node.next # This is pointing at a new node with a valuee of 100
+
+
+
 
 """Our doubly-linked list class. It holds references to
 the list's head and tail nodes."""

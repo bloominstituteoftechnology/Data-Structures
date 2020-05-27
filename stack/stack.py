@@ -11,7 +11,7 @@ return elements in Last In First Out order.
    implementing a Stack?
 """
 import sys
-sys.path.append('/../doubly_linked_list')
+sys.path.append('doubly_linked_list')
 
 from doubly_linked_list import DoublyLinkedList
 
@@ -26,7 +26,8 @@ class Stack:
 
     def push(self, value):
         self.size = self.size + 1
-        self.size.add_to_tail(value)
+        self.storage.add_to_tail(value)
+        
 
     def pop(self):
         self.size -= 1

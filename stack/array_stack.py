@@ -15,7 +15,6 @@ import array as arr
 
 class Stack:
     def __init__(self):
-        self.size = 0
         self.storage = arr.array('i', [])
 
     def __len__(self):

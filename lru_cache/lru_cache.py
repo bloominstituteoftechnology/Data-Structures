@@ -1,3 +1,8 @@
+# Import sys
+# Append path
+# decalare DLL
+
+
 class LRUCache:
     """
     Our LRUCache class keeps track of the max number of nodes it
@@ -6,9 +11,12 @@ class LRUCache:
     order, as well as a storage dict that provides fast access
     to every node stored in the cache.
     """
-    def __init__(self, limit=10):
-        pass
 
+    def __init__(self, limit=10):
+        # Keep track of the max number it holds
+        # Keep track of the current number it is holding
+        # Doubly linked list to hold the key, value entires
+        # Maintain dictionary
     """
     Retrieves the value associated with the given key. Also
     needs to move the key-value pair to the end of the order
@@ -16,6 +24,7 @@ class LRUCache:
     Returns the value associated with the key or None if the
     key-value pair doesn't exist in the cache.
     """
+
     def get(self, key):
         pass
 
@@ -29,5 +38,8 @@ class LRUCache:
     want to overwrite the old value associated with the key with
     the newly-specified value.
     """
+
     def set(self, key, value):
-        pass
+        # If key isn't stored, and we are not full, just add to cache
+        # If key is already stored, overwite old value
+        # Handle case where we are already full

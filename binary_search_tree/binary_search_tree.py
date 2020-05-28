@@ -18,13 +18,17 @@ class BSTNode:
     # Insert the given value into the tree
     def insert(self, value):
         if value < self.value:
+            # If there is no "left" value
             if self.left == None:
                 self.left = BSTNode(value)
+            # Start over at the "left" position
             else:
                 self.left.insert(value)
         else:
+            # If there is no "right" value
             if self.right == None:
                 self.right = BSTNode(value)
+            # Start over at the "right" position
             else:
                 self.right.insert(value)
 
@@ -34,20 +38,28 @@ class BSTNode:
         if target == self.value:
             return True
         elif target < self.value:
+            # If there's nothing at all to the left, this value
+            # does not exist in the tree
             if self.left == None:
                 return False
+            # Begin a recursive cycle to check the "left" nodes
             else:
                 return self.left.contains(target)
         else:
+            # If there's nothing at all to the right, this value
+            # does not exist in the tree
             if self.right == None:
                 return False
+            # Begin a recursive cycle to check the "right" nodes
             else:
                 return self.right.contains(target)
 
     # Return the maximum value found in the tree
     def get_max(self):
+        # There's no node to the right! Nothing is larger!
         if self.right == None:
             return self.value
+        # There's a node to the right! Let's keep looking!
         else:
             return self.right.get_max()
 

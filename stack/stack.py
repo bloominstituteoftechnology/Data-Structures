@@ -181,16 +181,17 @@ return elements in Last In First Out order.
 """
 
 
+# DLL Storage Structure
 class Stack:
     def __init__(self):
         self.size = 0
-        self.storage = DoublyLinkedList
-
-    def __len__(self):
-        pass
+        self.storage = DoublyLinkedList()
 
     def push(self, value):
-        pass
+        self.storage.add_to_head(value)
 
     def pop(self):
-        pass
+        return self.storage.remove_from_head()
+
+    def __len__(self):
+        return self.storage.length

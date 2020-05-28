@@ -9,6 +9,13 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+# import sys
+
+# sys.path.append("../stack")
+from stack import Stack
+
+# sys.path.append("../queue")
+from queue import Queue
 
 
 class BSTNode:
@@ -20,15 +27,15 @@ class BSTNode:
     # Insert the given value into the tree
     def insert(self, value):
         if value >= self.value:
-            if self.right is None:
-                self.right = BSTNode(value)
-            else:
+            if self.right:
                 self.right.insert(value)
-        else:
-            if self.left is None:
-                self.left = BSTNode(value)
             else:
+                self.right = BSTNode(value)
+        else:
+            if self.left:
                 self.left.insert(value)
+            else:
+                self.left = BSTNode(value)
 
     # Return True if the tree contains the value
     # False if it does not
@@ -70,25 +77,56 @@ class BSTNode:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        if node.left:
+            node.left.in_order_print(node.left)
+        print(node.value)
+        if node.right:
+            node.right.in_order_print(node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+        queue = Queue()
+        queue.enqueue(node)
+
+        while len(queue) != 0:
+            curr = queue.dequeue()
+            print(curr.value)
+            if curr.left:
+                queue.enqueue(curr.left)
+            if curr.right:
+                queue.enqueue(curr.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+
+        stack = Stack()
+        stack.push(node)
+
+        while len(stack) != 0:
+            curr = stack.pop()
+            print(curr.value)
+            if curr.left:
+                stack.push(curr.left)
+            if curr.right:
+                stack.push(curr.right)
 
     # Stretch Goals -------------------------
     # Note: Research may be required
 
     # Print Pre-order recursive DFT
     def pre_order_dft(self, node):
-        pass
+        print(node.value)
+        if node.left:
+            node.left.pre_order_dft(node.left)
+        if node.right:
+            node.right.pre_order_dft(node.right)
 
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
-        pass
+        if node.left:
+            node.left.post_order_dft(node.left)
+        if node.right:
+            node.right.post_order_dft(node.right)
+        print(node.value)

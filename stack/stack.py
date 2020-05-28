@@ -181,7 +181,7 @@ return elements in Last In First Out order.
 """
 
 
-# DLL Storage Structure
+""" DLL Storage Structure
 class Stack:
     def __init__(self):
         self.size = 0
@@ -195,3 +195,21 @@ class Stack:
 
     def __len__(self):
         return self.storage.length
+"""
+
+# Array Structure
+
+
+class Stack:
+    def __init__(self):
+        self.size = 0
+        self.storage = [1, 2, 3]
+
+    def push(self, value):
+        self.storage.append(value)
+
+    def pop(self):
+        return self.storage.pop()
+
+    # def __len__(self):
+    #    return self.storage.length

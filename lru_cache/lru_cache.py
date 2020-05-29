@@ -58,4 +58,3 @@ class LRUCache:
         
         if len(self.storage)>self.limit:
             self.storage.pop(self.dll.tail.value['key'])
-            

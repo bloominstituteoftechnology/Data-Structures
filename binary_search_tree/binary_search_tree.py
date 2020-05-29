@@ -82,11 +82,14 @@ class BinarySearchTree:
         if node.right is not None:
             self.in_order_print(node.right)
 
-    def bft_print(self, node):
+    def bft_print(self, node=None):
         """
         Print the value of every node, starting with the given node, in an
         iterative breadth first traversal.
         """
+        if node is None:
+            node = self
+        
         to_print = SimpleQueue()
         to_print.put(node)
         while to_print.qsize() != 0:
@@ -97,11 +100,14 @@ class BinarySearchTree:
             if node.right is not None:
                 to_print.put(node.right)
 
-    def dft_print(self, node):
+    def dft_print(self, node=None):
         """
         Print the value of every node, starting with the given node,
         in an iterative depth first traversal.
         """
+        if node is None:
+            node = self
+            
         retrace = LifoQueue()
         print(node.value)
         retrace.put(node)

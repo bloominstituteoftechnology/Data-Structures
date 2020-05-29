@@ -55,8 +55,9 @@ class LRUCache(OrderedDict):
         if key in self:
             existing_node = self.dllist.get_node(self[key])
             self.move_to_end(key)
-            self.dllist.delete(existing_node)
-            self.dllist.add_to_head(value)
+            # self.dllist.delete(existing_node)
+            # self.dllist.add_to_head(value)
+            self.dllist.move_to_front(existing_node)
 
         super().__setitem__(key, value)
         self.dllist.add_to_head(value)

@@ -50,7 +50,7 @@ class BSTNode:
 		   
     # Return the maximum value found in the tree  
     def get_max(self):
-        if self.right is not None:
+        while self.right is not None:
             return self.right.get_max()
         return self.value
         
@@ -70,15 +70,12 @@ class BSTNode:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        node = self.value
-
-        if self.left is not None:
-            self.left.in_order_print(node)
+        if node.left:
+            node.in_order_print(node.left)
+        print(node.value)
+        if node.right:
+            node.in_order_print(node.right)
         
-        print(node)
-        
-        if self.right is not None:
-            self.right.in_order_print(node) 
  
 
     # Print the value of every node, starting with the given node,
@@ -96,23 +93,18 @@ class BSTNode:
 
     # Print Pre-order recursive DFT
     def pre_order_dft(self, node):
-        node = self.value
-        print(node)
-
-        if self.left is not None:
-                self.left.pre_order_dft(node)
-
-        if self.right is not None:
-		        self.right.pre_order_dft(node)   
+        print(node.value)
+        if node.left:
+            node.pre_order_dft(node.left)
+        if node.right:
+            node.pre_order_dft(node.right)
+        
 
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
-        node = self.value
-
-        if self.left is not None:
-                self.left.pre_order_dft(node)
-
-        if self.right is not None:
-		        self.right.pre_order_dft(node)  
-
-        print(node)    
+        if node.left:
+            node.post_order_dft(node.left)
+        if node.right:
+            node.post_order_dft(node.right)
+        print(node.value)
+        

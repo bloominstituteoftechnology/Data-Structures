@@ -12,7 +12,7 @@ class Node:
         return self.next_node
 
     def set_next(self, new_next):
-        # set this node's next_node reference to the passed in nodes
+        # set this node's next_node reference to the passed in node
         self.next_node = new_next
 
 
@@ -85,4 +85,4 @@ class LinkedList:
             self.head = None
         value = current.get_value()
 
-        return value
+        return value 

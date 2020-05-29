@@ -1,50 +1,49 @@
-class LinkedList:
+class Node:
+    def __init__(self, value=None, next=None):
+        self.value = value
+        self.next = next 
 
-    def __init__(self, values=None):
+class LinkedList:
+    def __init__(self):
         self.head = None
         self.tail = None
-        if values is not None:
-            self.add_multiple(values)
 
-    def __iter__(self):
+
+    def add_to_head(self, value):
         current = self.head
         while current:
             yield current
             current = current.next
 
-    def __str__(self):
-        values = [str(x) for x in self]
-        return ' -> '.join(values)
 
-    def __len__(self):
-        result = 0
-        node = self.head
-        while node:
-            result += 1
-            node = node.next
-        return result
-
-    def add(self, value):
-        if self.head is None:
-            self.tail = self.head = LinkedListNode(value)
+    def add_to_tail(self, value):
+        new_node = Node(value, None)
+        if self.tail:
+            self.tail.next = new_node
         else:
-            self.tail.next = LinkedListNode(value)
-            self.tail = self.tail.next
-        return self.tail
+            self.head = new_node
+        self.tail = new_node
 
-    def add_to_beginning(self, value):
-        if self.head is None:
-            self.tail = self.head = LinkedListNode(value)
+    
+    def contains(self, value):
+        if value == self.value:
+            return True
         else:
-            self.head = LinkedListNode(value, self.head)
-        return self.head
+            return False 
 
-    def add_multiple(self, values):
-        for v in values:
-            self.add(v)
+    def remove_head(self):
+        value = self.head.value
+        self.delete(self.head)
+        return value
+        
+    def get_max(self):
+        max_value = self.head.value
+        current = self.head
 
-    def generate(self, n, min_value, max_value):
-        self.head = self.tail = None
-        for i in range(n):
-            self.add(randint(min_value, max_value))
-        return self
+        while current is not None:
+            if current.value > max_value:
+                max_value = current.value
+
+            current = current.next
+
+        return max_value

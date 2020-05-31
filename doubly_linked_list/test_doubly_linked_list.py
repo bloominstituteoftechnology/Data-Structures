@@ -122,21 +122,31 @@ class DoublyLinkedListTests(unittest.TestCase):
         self.assertEqual(len(self.dll), 3)
 
     def test_list_delete(self):
+        print("Start dll", self.dll)
+        print("self node", self.node, self.node.value)
         self.dll.delete(self.node)
+        print("Delete Node",self.dll)
+
         self.assertIsNone(self.dll.head)
         self.assertIsNone(self.dll.tail)
         self.assertEqual(len(self.dll), 0)
 
         self.dll.add_to_tail(1)
+        print("Add 1 to tail", self.dll)
         self.dll.add_to_head(9)
+        print("Add 9 to head", self.dll)
         self.dll.add_to_tail(6)
+        print("Add 6 to tail", self.dll)
 
         self.dll.delete(self.dll.head)
+        print("Delete head", self.dll)
+
         self.assertEqual(self.dll.head.value, 1)
         self.assertEqual(self.dll.tail.value, 6)
         self.assertEqual(len(self.dll), 2)
 
         self.dll.delete(self.dll.head)
+        print("Delete head", self.dll)
         self.assertEqual(self.dll.head.value, 6)
         self.assertEqual(self.dll.tail.value, 6)
         self.assertEqual(len(self.dll), 1)

@@ -1,9 +1,9 @@
 # Data Structures 
 
 Topics:
- * Linked Lists
- * Queues
- * Stacks
+ * Singly Linked Lists
+ * Queues and Stacks
+ * Doubly Linked Lists
  * Binary Search Trees
  * Related Code Challenge Problems
 

@@ -33,16 +33,34 @@ class LinkedList:
         old_head = self.head
         self.head = ListNode(value, old_head)
 
-    def append(self, value):
+    def add_to_tail(self, value):
         new_node = ListNode(value)
         if self.head is None:
             self.head = new_node
         else:
             self.tail.next_node = new_node
 
-    def remove_from_head(self):
+    def remove_head(self):
         if self.head is None:
             return None
         old_head = self.head
         self.head = old_head.next_node
         return old_head.value
+
+    def get_max(self):
+        current = self.head
+        if current is None:
+            return None
+        current_max = current.value
+        while current is not None:
+            current_max = max(current_max, current.value)
+            current = current.next_node
+        return current_max
+
+    def contains(self, value):
+        current = self.head
+        while current is not None:
+            if current.value == value:
+                return True
+            current = current.next_node
+        return False

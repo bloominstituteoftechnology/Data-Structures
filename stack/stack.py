@@ -28,7 +28,7 @@ class Stack:
         self.__storage.prepend(value)
 
     def pop(self):
-        return self.__storage.remove_from_head()
+        return self.__storage.remove_head()
 
     @property
     def size(self) -> int:

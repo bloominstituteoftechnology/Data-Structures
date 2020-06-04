@@ -32,10 +32,10 @@ class Queue:
         return len(self.__storage)
 
     def enqueue(self, value):
-        self.__storage.append(value)
+        self.__storage.add_to_tail(value)
 
     def dequeue(self):
         if len(self.__storage) > 0:
-            return self.__storage.remove_from_head()
+            return self.__storage.remove_head()
         else:
             return None

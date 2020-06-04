@@ -14,24 +14,21 @@ return elements in Last In First Out order.
 from sys import path
 
 path.append("../")
-# from singly_linked_list.singly_linked_list import LinkedList
+from singly_linked_list.singly_linked_list import LinkedList
 
 
 class Stack:
     def __init__(self):
-        self.__storage = []
+        self.__storage = LinkedList()
 
     def __len__(self):
         return self.size
 
     def push(self, value):
-        self.__storage.append(value)
+        self.__storage.prepend(value)
 
     def pop(self):
-        if len(self.__storage) > 0:
-            return self.__storage.pop()
-        else:
-            return None
+        return self.__storage.remove_from_head()
 
     @property
     def size(self) -> int:

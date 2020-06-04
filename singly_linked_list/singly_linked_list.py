@@ -36,9 +36,9 @@ class LinkedList:
     def append(self, value):
         self.tail.next_node = value
 
-    def remove_from_head(self) -> ListNode:
+    def remove_from_head(self):
         if self.head is None:
             return None
         old_head = self.head
         self.head = old_head.next_node
-        return old_head
+        return old_head.value

@@ -29,7 +29,7 @@ class LinkedList:
             node = node.next_node
         return count
 
-    def prepend(self, value):
+    def add_to_head(self, value):
         old_head = self.head
         self.head = ListNode(value, old_head)
 

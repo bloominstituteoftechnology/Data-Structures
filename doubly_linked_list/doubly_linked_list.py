@@ -52,23 +52,24 @@ class DoublyLinkedList:
 
     def add_to_head(self, value):
         """Wraps the given value in a ListNode and inserts it
-    as the new head of the list. Don't forget to handle
-    the old head node's previous pointer accordingly."""
-        new_head = ListNode(value)
-        old_head = self.head
-        self.head = new_head
-        new_head.next = old_head
+        as the new head of the list. Don't forget to handle
+        the old head node's previous pointer accordingly."""
+        if self.head is None:
+            self.head = ListNode(value)
+            self.tail = self.head
+            return
+        self.head.insert_before(value)
+        self.head = self.head.prev
         if self.tail is None:
-            self.tail = new_head
+            self.tail = self.head
 
     def remove_from_head(self):
         """Removes the List's current head node, making the
-    current head's next node the new head of the List.
-    Returns the value of the removed Node."""
+        current head's next node the new head of the List.
+        Returns the value of the removed Node."""
         if self.head is None:
             return None
-        new_head = self.head.next
-        old_head_value = self.head.value
+        new_head, old_head_value = self.head.next, self.head.value
         self.head.delete()
         self.head = new_head
         if self.head is None:
@@ -77,14 +78,16 @@ class DoublyLinkedList:
 
     def add_to_tail(self, value):
         """Wraps the given value in a ListNode and inserts it
-    as the new tail of the list. Don't forget to handle
-    the old tail node's next pointer accordingly."""
-        new_tail = ListNode(value)
-        old_tail = self.tail
-        self.tail = new_tail
-        new_tail.prev = old_tail
+        as the new tail of the list. Don't forget to handle
+        the old tail node's next pointer accordingly."""
+        if self.tail is None:
+            self.tail = ListNode(value)
+            self.head = self.tail
+            return
+        self.tail.insert_after(value)
+        self.tail = self.tail.next
         if self.head is None:
-            self.head = new_tail
+            self.head = self.tail
 
     def remove_from_tail(self):
         """Removes the List's current tail node, making the
@@ -92,8 +95,7 @@ class DoublyLinkedList:
     Returns the value of the removed Node."""
         if self.tail is None:
             return None
-        old_tail_value = self.tail.value
-        new_tail = self.tail.prev
+        old_tail_value, new_tail = self.tail.value, self.tail.prev
         self.tail.delete()
         self.tail = new_tail
         if self.tail is None:
@@ -102,19 +104,21 @@ class DoublyLinkedList:
 
     def move_to_front(self, node):
         """Removes the input node from its current spot in the
-    List and inserts it as the new head node of the List."""
+        List and inserts it as the new head node of the List."""
         self.delete(node)
         self.add_to_head(node.value)
 
     def move_to_end(self, node):
         """Removes the input node from its current spot in the
-    List and inserts it as the new tail node of the List."""
+        List and inserts it as the new tail node of the List."""
         self.delete(node)
         self.add_to_tail(node.value)
 
     def delete(self, node):
         """Removes a node from the list and handles cases where
-    the node was the head or the tail"""
+        the node was the head or the tail"""
+        if node is None:
+            return
         if self.tail == node:
             self.remove_from_tail()
         if self.head == node:
@@ -124,11 +128,19 @@ class DoublyLinkedList:
 
     def get_max(self):
         """Returns the highest value currently in the list"""
-        current = self.head
-        if current is None:
+        if self.head is None:
             return None
+        current = self.head
         current_max = current.value
         while current.next is not None:
             current_max = max(current_max, current.next.value)
             current = current.next
         return current_max
+
+    def contains(self, node):
+        """Returns True if node is in list, False if not"""
+        current = self.head
+        while current is not None:
+            if current == node:
+                return True
+        return False

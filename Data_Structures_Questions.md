@@ -2,27 +2,31 @@ Answer the following questions for each of the data structures you implemented a
 
 ## Stack
 
-1. What is the runtime complexity of `push`?
+1. What is the runtime complexity of `push` using a list?
 
-2. What is the runtime complexity of `pop`?
+2. What is the runtime complexity of `push` using a linked list?
 
-3. What is the runtime complexity of `len`?
+3. What is the runtime complexity of `pop` using a list?
+
+4. What is the runtime complexity of `pop` using a linked list?
+
+5. What is the runtime complexity of `len` using a list?
+
+6. What is the runtime complexity of `len` using a linked list?
 
 ## Queue
 
-1. What is the runtime complexity of `enqueue`?
+1. What is the runtime complexity of `enqueue` using a list?
 
-2. What is the runtime complexity of `dequeue`?
+2. What is the runtime complexity of `enqueue` using a linked list?
 
-3. What is the runtime complexity of `len`?
+3. What is the runtime complexity of `dequeue` using a list?
 
-## Binary Search Tree
+4. What is the runtime complexity of `dequeue` using a linked list?
 
-1. What is the runtime complexity of `insert`? 
+5. What is the runtime complexity of `len` using a list?
 
-2. What is the runtime complexity of `contains`?
-
-3. What is the runtime complexity of `get_max`? 
+6. What is the runtime complexity of `len` using a linked list?
 
 ## Doubly Linked List
 
@@ -47,6 +51,16 @@ Answer the following questions for each of the data structures you implemented a
 10. What is the runtime complexity of `DoublyLinkedList.delete`?
 
     a. Compare the runtime of the doubly linked list's `delete` method with the worst-case runtime of the JS `Array.splice` method. Which method generally performs better?
+
+## Binary Search Tree
+
+1. What is the runtime complexity of `insert`? 
+
+2. What is the runtime complexity of `contains`?
+
+3. What is the runtime complexity of `get_max`? 
+
+4. What is the runtime complexity of `for_each`?
     
 ## Heap
 

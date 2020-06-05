@@ -1,11 +1,13 @@
+from typing import Optional
+
 class Node:
-    def __init__(self, value, next = None):
+    def __init__(self, value):
         self.value = value
-        self.next = next
+        self.next: Optional[Node] = None
 
 
 class LinkedList:
-    def __init__(self, head: Node = None, tail: Node = None):
+    def __init__(self, head: Optional[Node] = None, tail: Optional[Node] = None):
         self.head = head
         self.tail = tail
 

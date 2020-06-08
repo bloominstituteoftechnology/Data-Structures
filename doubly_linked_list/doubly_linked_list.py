@@ -48,41 +48,209 @@ class DoublyLinkedList:
     as the new head of the list. Don't forget to handle 
     the old head node's previous pointer accordingly."""
     def add_to_head(self, value):
-        pass
+        new_node = ListNode(value, None, None)
+        if not self.head and not self.tail:
+            self.head = new_node
+            self.tail = new_node
+            self.length +=1
+        else:
+            new_node.next = self.head
+            self.head.prev = new_node
+            self.head = new_node
+            #this code did the job, it is just more complex than it needs to be
+            #it would be simpler just waiting until the end to set the head as the new node
+
+            #current_head = self.head
+            #self.head = new_node
+            #self.next = current_head
+            #current_head.prev = self.head
+            self.length +=1
 
     """Removes the List's current head node, making the
     current head's next node the new head of the List.
     Returns the value of the removed Node."""
     def remove_from_head(self):
-        pass
+        #class code
+        value = self.head.value
+        self.delete(self.head)
+        return value 
+        #since the delete function accounts for length it isn't needed here
+        
+        #this code is fine, but above is simpler because deletion is done in the function
+        # next_value = self.next
+        # if next_value is not None:
+        #     self.length -= 1
+        #     self.head = next_value
+        #     self.prev = None
+        #     self.next = next_value.next
+        # else:
+        #     print('DLL is empty.')
 
     """Wraps the given value in a ListNode and inserts it 
     as the new tail of the list. Don't forget to handle 
     the old tail node's next pointer accordingly."""
     def add_to_tail(self, value):
-        pass
+        new_node = ListNode(value)
+        if not self.head and not self.tail:
+            self.head = new_node
+            self.tail = new_node
+            self.length +=1
+        else:
+            new_node.prev = self.tail
+            self.tail.next = new_node
+            self.tail = new_node
+
+            # current_tail = self.tail
+            # self.tail = new_node
+            # self.prev = current_tail
+            # current_tail.next = self.tail
+            self.length +=1
 
     """Removes the List's current tail node, making the 
     current tail's previous node the new tail of the List.
     Returns the value of the removed Node."""
     def remove_from_tail(self):
-        pass
+        #class code 
+        value = self.tail.value
+        self.delete(self.tail)
+        return value
+        #similar to above, this is fine just better using methods we already have
+        # tail_value = self.prev
+        # if tail_value is not None:
+        #     self.length -= 1
+        #     self.tail = tail_value.prev
+        #     self.prev = self.prev
+        #     self.next = None
+        # else:
+        #     print('DLL is empty.')
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new head node of the List."""
+    
     def move_to_front(self, node):
-        pass
+        #class code 
+        if self.head is node:
+            return
+        value = node.value #have to be careful with this since other methods use raw value
+        if node is self.tail:
+            self.remove_from_tail()
+            self.add_to_head(value)
+        else:
+            node.delete()
+            self.length -= 1
+            self.add_to_head(value)
+
+        #node = ListNode(node)
+        # if self.head != node:
+        #     print('headz', self.head)
+        #     og_head = self.head
+        #     node.next = None
+        #     node.prev = None
+        #     og_head.prev = node
+        #     self.node.next = og_head
+        #     print('next', node.next)
+        #     self.next = self.next.next
+        #     self.head = node
+        # else:
+        #     print('This node is already the head.')
+
+    #remove the node from linked list
+    #set it as the head's previous node
+    #set the node's next to be the head
+    #set self.head to point to the moved node
+
+    #what if the node is already the head?
+    #what if the node is the tail?
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List."""
     def move_to_end(self, node):
-        pass
+        #unfinished lesson code
+        if node is self.tail:
+            return
+        value = node.value 
+        if node is self.head:
+            self.remove_from_head()
+            self.add_to_tail(value)
+        else:
+            node.delete()
+            self.length -= 1
+            self.add_to_tail(value)
 
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""
     def delete(self, node):
-        pass
+        if not self.head and not self.tail:
+            return None
+        self.length -= 1
+
+        if self.head is self.tail:
+            self.tail = None
+            self.head = None
+
+        elif node is self.head:
+            #is the node the head of the list? 
+            self.head = node.next
+            node.delete()
+        elif node is self.tail:
+            self.tail = node.prev
+            node.delete()
+        else:
+            node.delete()
+
         
     """Returns the highest value currently in the list"""
     def get_max(self):
-        pass
+        current_max = self.head.value
+        current = self.head.next
+        while current is not None:
+            if current.value > current_max:
+                current_max = current.value
+            current = current.next
+        return current_max
+
+
+dll = DoublyLinkedList()
+print(dll.length)
+print('head:', dll.head)
+print(' ')
+
+dll.add_to_head(7)
+print(dll.length)
+print('head:', dll.head)
+print(' ')
+
+dll.add_to_head(10)
+print(dll.length)
+print('head:', dll.head)
+print(' ')
+
+dll.add_to_head(3)
+print(dll.length)
+print('head:', dll.head)
+print(' ')
+
+dll.remove_from_head()
+print(dll.length)
+print('head:', dll.head)
+print(' ')
+
+dll.add_to_head(22)
+print(dll.length)
+print('head:', dll.head)
+print(' ')
+
+dll.add_to_tail(53)
+print(dll.length)
+print('tail:', dll.tail)
+print(' ')
+
+#dll.remove_from_tail()
+#print(dll.length)
+#print('tail:', dll.tail)
+#print(' ')
+
+dll.move_to_front(dll.tail)
+print(dll.length)
+print('head:', dll.head)
+print(' ')

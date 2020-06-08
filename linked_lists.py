@@ -1,49 +1,3 @@
-"""
-A stack is a data structure whose primary purpose is to store and
-return elements in Last In First Out order. 
-
-1. Implement the Stack class using an array as the underlying storage structure.
-   Make sure the Stack tests pass.
-2. Re-implement the Stack class, this time using the linked list implementation
-   as the underlying storage structure.
-   Make sure the Stack tests pass.
-3. What is the difference between using an array vs. a linked list when 
-   implementing a Stack?
-"""
-"""
-#first pass
-class Stack:
-    def __init__(self):
-        self.size = 0
-        self.storage = []
-
-    def __len__(self):
-        return self.size
-
-    def push(self, value):
-        #add items
-        self.storage.insert(0, value)
-        self.size += 1
-
-    def pop(self):
-        #remove items
-        self.size -= 1
-        return self.storage.pop(0)
-
-s = Stack()
-
-s.push('candy')
-s.push('scooter')
-s.push('fish')
-print(s.storage)
-print(s.size)
-
-s.pop()
-print(s.size)
-print(s.storage)
-"""
-
-#second pass 
 class Node:
   def __init__(self, value=None, next_node=None):
     # the value at this linked list node
@@ -61,6 +15,22 @@ class Node:
   def set_next(self, new_next):
     # set this node's next_node reference to the passed in node
     self.next_node = new_next
+
+#this is the hard way to make a linked list
+linked_list = Node(1)
+linked_list.next_node = Node(2)
+linked_list.next_node.next_node = Node(3)
+
+#another hard way to do this 
+
+ll = Node(1)
+ll_2 = Node(2)
+
+ll.set_next(ll_2)
+#and so on, and so forth
+
+#Right now, it is hard to act on the list as a whole,
+#so lets make this new class
 
 class LinkedList:
     def __init__(self):
@@ -127,33 +97,3 @@ class LinkedList:
       while current is not None:
         print(current.value)
         current = current.get_next
-
-class Stack(LinkedList):
-    def __init__(self):
-        self.size = 0
-        self.storage = LinkedList()
-        self.head = None
-
-    def __len__(self):
-        return self.size
-
-    def push(self, value):
-        #add items
-        self.storage.add_to_end(value)
-        self.size += 1
-
-    def pop(self):
-        #remove items
-        self.size -= 1
-        return self.storage.remove_from_head()
-
-s = Stack()
-
-s.push('candy')
-s.push('scooter')
-s.push('fish')
-
-print(s.__len__())
-
-s.pop()
-print(s.__len__())

@@ -201,3 +201,13 @@ class DoublyLinkedList:
             current_node = current_node.next
             
         return highest_value
+
+
+    """Returns the total amount of nodes in the list"""
+    def iterate_nodes(self):
+        total = 0
+        node = self.head
+        while node is not None:
+            total += 1
+            node = node.next
+        return total

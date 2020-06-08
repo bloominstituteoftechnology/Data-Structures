@@ -1,5 +1,5 @@
-from node import Node
-from linkedlist import LinkedList
+from singly_linked_list import Node
+from singly_linked_list import LinkedList
 
 
 """
@@ -53,4 +53,4 @@ class Queue:
         else:
             front = self.storage.remove_from_tail()
             self.size -= 1
-            return front
+            return front.value

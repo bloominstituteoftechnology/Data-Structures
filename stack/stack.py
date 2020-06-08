@@ -40,11 +40,12 @@ return elements in Last In First Out order.
 
 from singly_linked_list import LinkedList 
 
+
 class Stack():
     """Singly-linked list implementation of Stack data structure"""
 
     def __init__(self):
-        """Initialize array-based Stack class"""
+        """Initialize singly-linked list-based Stack class"""
 
         self.size = 0
         self.storage = LinkedList()

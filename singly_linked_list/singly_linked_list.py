@@ -1,10 +1,10 @@
 class Node:
-    def __init__(self, data):
-        self.data = data
+    def __init__(self, value):
+        self.value = value
         self.next = None
 
     def get_data(self):
-        return self.data
+        return self.value
 
     def get_next(self):
         return self.next
@@ -27,7 +27,7 @@ class LinkedList:
             self.tail.set_next(new_node)
             self.tail = new_node
     
-    def remove_from_head(self):
+    def remove_head(self):
         if not self.head:
             return None
         

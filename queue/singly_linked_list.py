@@ -21,6 +21,17 @@ class LinkedList:
         
         self.tail = new_Node
 
+    def add_to_head(self, value):
+        new_Node = ListNode(value, None)
+        # There is a head
+        if self.head:
+            new_Node.next = self.head
+        # There is no head
+        else:
+            self.tail = new_Node
+
+        self.head = new_Node
+
     def contains(self, content):
         if not self.head:
             print("Nothing to see here")
@@ -96,3 +107,4 @@ class LinkedList:
                 checkingnode = checkingnode.next
             
             return maxvalue
+            

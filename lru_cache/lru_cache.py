@@ -1,3 +1,6 @@
+from doubly_linked_list import ListNode
+from doubly_linked_list import DoublyLinkedList
+
 class LRUCache:
     """
     Our LRUCache class keeps track of the max number of nodes it
@@ -7,7 +10,10 @@ class LRUCache:
     to every node stored in the cache.
     """
     def __init__(self, limit=10):
-        pass
+        self.limit = limit
+        self.dll = DoublyLinkedList(None)
+        # self.size = self.dll.length
+        self.dic = {}
 
     """
     Retrieves the value associated with the given key. Also
@@ -17,7 +23,24 @@ class LRUCache:
     key-value pair doesn't exist in the cache.
     """
     def get(self, key):
-        pass
+        if key in self.dic.keys():
+            value = self.dic[key]
+            checkingnode = self.dll.head
+            while checkingnode is not None:
+                if checkingnode.key == key:
+                    self.dll.move_to_front(checkingnode)
+                        
+                checkingnode = checkingnode.next
+
+            self.dll.set_tail()
+            return value
+
+        else:
+            return None
+
+
+
+
 
     """
     Adds the given key-value pair to the cache. The newly-
@@ -30,4 +53,24 @@ class LRUCache:
     the newly-specified value.
     """
     def set(self, key, value):
-        pass
+        if key in self.dic.keys():
+            
+            self.dic.update({key:value})
+
+            checkingnode = self.dll.head
+            while checkingnode is not None:
+                if checkingnode.key == key:
+                    checkingnode.value = value
+                    
+                checkingnode = checkingnode.next
+
+        else:
+            if self.dll.length < self.limit:
+                self.dll.add_to_head(key, value)
+                self.dic.update({key:value})
+            else: 
+                # self.dll.delete(self.dll.tail)
+                self.dic.pop(self.dll.tail.key, None)
+                self.dll.remove_from_tail()
+                self.dll.add_to_head(key, value)
+                self.dic.update({key:value})

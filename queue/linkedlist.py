@@ -41,4 +41,4 @@ class LinkedList:
                 current = current.get_next()
             self.tail = previous
             previous.set_next(None)
-            return current.value
+            return current.get_value()

@@ -30,15 +30,25 @@ class LinkedList:
             self.tail = new_node            
 
     def remove_head(self):
-        self.length -= 1
         if not self.head:
             return None
+        self.length -= 1
         head_value = self.head.value
         if self.head == self.tail:
             self.head, self.tail = None, None
         else:
             self.head = self.head.next_node
         return head_value
+
+    def add_to_head(self, value):
+        self.length += 1
+        new_node = Node(value)
+        if self.head is None:
+            self.head, self.tail = new_node, new_node
+        else:
+            prev_head = self.head
+            self.head = new_node
+            self.head.set_next(prev_head)
 
     def contains(self, target):
         for i in self:

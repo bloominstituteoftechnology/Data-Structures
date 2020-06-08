@@ -1,3 +1,4 @@
+from singly_linked_list import LinkedList
 """
 A queue is a data structure whose primary purpose is to store and
 return elements in First In First Out order. 
@@ -13,16 +14,40 @@ return elements in First In First Out order.
 Stretch: What if you could only use instances of your Stack class to implement the Queue?
          What would that look like? How many Stacks would you need? Try it!
 """
+
+# array
 class Queue:
     def __init__(self):
         self.size = 0
-        # self.storage = ?
+        self.storage = []
+        self.length = 0
     
     def __len__(self):
-        pass
+        return self.length
 
     def enqueue(self, value):
-        pass
+        self.length += 1
+        self.storage.append(value)
 
     def dequeue(self):
-        pass
+        try:
+            removed = self.storage.pop(0)
+            self.length -= 1
+            return removed
+        except:
+            return None
+
+# linked list
+# class Queue:
+#     def __init__(self):
+#         self.size = 0
+#         self.storage = []
+    
+#     def __len__(self):
+#         pass
+
+#     def enqueue(self, value):
+#         pass
+
+#     def dequeue(self):
+#         pass

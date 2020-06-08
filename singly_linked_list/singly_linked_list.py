@@ -1,3 +1,4 @@
+
 class Node:
     def __init__(self, value=None, next_node=None):
         self.value = value
@@ -14,32 +15,30 @@ class Node:
 
 
 class LinkedList:
-    def __init__(self, head=None):
+    def __init__(self, head=None, tail=None):
         self.head = head
+        self.tail = tail
         self.length = 0
 
     def add_to_tail(self, value):
         self.length += 1
         new_node = Node(value)
         if not self.head:
-            self.head = new_node
+            self.head, self.tail = new_node, new_node
         else:
-            tail = self.find_tail()
-            tail.set_next(new_node)
+            self.tail.set_next(new_node)
+            self.tail = new_node            
 
     def remove_head(self):
         self.length -= 1
         if not self.head:
             return None
-        old_head = self.head
-        self.head = self.head.next_node
-        return old_head.value
-
-    def find_tail(self):
-        current_node = self.head
-        while current_node.next_node is not None:
-            current_node = current_node.next_node
-        return current_node
+        head_value = self.head.value
+        if self.head == self.tail:
+            self.head, self.tail = None, None
+        else:
+            self.head = self.head.next_node
+        return head_value
 
     def contains(self, target):
         for i in self:
@@ -57,7 +56,7 @@ class LinkedList:
             return None
         sorted_ll = sorted([i.value for i in self])
         return sorted_ll[-1]
-    
+
     def __iter__(self):
         current = self.head
         while current is not None:

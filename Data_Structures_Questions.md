@@ -6,7 +6,7 @@ Answer the following questions for each of the data structures you implemented a
 
 2. What is the runtime complexity of `pop`? O(1)
 
-3. What is the runtime complexity of `len`? O(n)
+3. What is the runtime complexity of `len`? O(1)
 
 ## Queue
 
@@ -14,7 +14,7 @@ Answer the following questions for each of the data structures you implemented a
 
 2. What is the runtime complexity of `dequeue`? O(1)
 
-3. What is the runtime complexity of `len`? O(n)
+3. What is the runtime complexity of `len`? O(1)
 
 ## Binary Search Tree
 
@@ -59,4 +59,4 @@ Answer the following questions for each of the data structures you implemented a
 10. What is the runtime complexity of `DoublyLinkedList.delete`? O(1)
 
     a. Compare the runtime of the doubly linked list's `delete` method with the worst-case runtime of the JS `Array.splice` method. Which method generally performs better?
-    I'm not familiar, but I'm guessing it's O(n), where if the first item is removed, every item has to be "moved down a slot" in memory in order.
+    I'm not familiar with Javascript, but I'm guessing it's O(n), where if the first item is removed, every item has to be "moved down a slot" in memory in order.

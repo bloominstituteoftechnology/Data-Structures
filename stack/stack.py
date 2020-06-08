@@ -29,3 +29,8 @@ class Stack:
             return value
         return None
 
+
+class Node:
+    def __init__(self, value, node = None):
+        self.next = node
+        self.value = value

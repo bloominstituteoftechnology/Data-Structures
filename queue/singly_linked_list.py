@@ -30,9 +30,9 @@ class LinkedList:
             self.tail = new_node            
 
     def remove_head(self):
-        self.length -= 1
         if not self.head:
             return None
+        self.length -= 1
         head_value = self.head.value
         if self.head == self.tail:
             self.head, self.tail = None, None

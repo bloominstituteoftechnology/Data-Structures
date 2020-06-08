@@ -22,6 +22,15 @@ class LinkedList:
         # reference to the tail of the list
         self.tail = None
 
+    def add_head(self, value):
+        new_node = Node(value)
+        if self.head:
+            new_node.next_node = self.head # move the current head to the next node
+            self.head = new_node # make the head the new node
+        else:
+            self.head = new_node
+            self.tail = new_node
+
     def add_to_tail(self, value):
         # wrap the input value in a node
         new_node = Node(value, None)
@@ -130,7 +139,7 @@ return elements in Last In First Out order.
 3. What is the difference between using an array vs. a linked list when 
    implementing a Stack?
 """
-# 1. Array
+# # 1. Array
 # class Stack:
 #     def __init__(self):
 #         self.size = 0
@@ -140,13 +149,13 @@ return elements in Last In First Out order.
 #         return len(self.storage)
 
 #     def push(self, value):
-#         self.storage.append(value)
+#         self.storage.insert(0, value)
 
 #     def pop(self):
 #         if self.storage == []:
 #             return None
 #         else:
-#             return self.storage.pop()
+#             return self.storage.pop(0)
 
 # 2. Linked List
 class Stack:
@@ -158,13 +167,14 @@ class Stack:
         return self.size
 
     def push(self, value):
-        self.storage.add_to_tail(value)
+        self.storage.add_head(value)
         self.size += 1 # once you "append", you have to update the count
 
     def pop(self):
-        if len(self) >= 1: # if length is greater than or equal to 1, 
-            self.size -= 1 # then you can minus 1 until you reach 0
-        return self.storage.remove_tail()
+        if len(self) == 0:
+            return 
+        self.size -= 1
+        return self.storage.remove_head()
 
 # 3. What is the difference between using an array vs. a linked list when implementing a Stack?
 # When using a stack, the difference is removing the head. 

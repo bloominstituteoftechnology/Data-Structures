@@ -42,7 +42,6 @@ class LinkedList:
     def remove_head(self):
         # What if we have no nodes?
         # What if we only have one node?
-        
         if self.head is None:
             return
         else :
@@ -51,7 +50,7 @@ class LinkedList:
             if self.tail == self.head:
                 self.tail = None
             self.head = self.head.next
-
+            
             return value
             
     def get_max(self):

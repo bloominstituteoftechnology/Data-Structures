@@ -31,8 +31,8 @@ class Queue:
 
     def dequeue(self):
         res = self.storage.remove_from_head()
-        if type(res) is int:
-            self.size -= 1
+        if type(res.value) is int:
+            self.size = self.size - 1
         return res
 
 

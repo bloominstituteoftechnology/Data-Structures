@@ -1,3 +1,6 @@
+from doubly_linked_list import *
+
+
 class Heap:
     def __init__(self, comparator):
         self.storage = []

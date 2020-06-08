@@ -1,7 +1,3 @@
-import os
-
-print(os.path.realpath("doubly_linked_lists.py"))
-
 """Each ListNode holds a reference to its previous node
 as well as its next node in the List."""
 
@@ -79,7 +75,6 @@ class DoublyLinkedList:
     def remove_from_head(self):
         if self.head:
             value = self.head.value
-            print("remove from tail", value, "length", self.length)
             self.delete(self.head)
             return value
         else:
@@ -92,7 +87,6 @@ class DoublyLinkedList:
     def add_to_tail(self, value):
         new_node = ListNode(value)
         self.length += 1
-        print("add to tail", value, "length", self.length)
 
         if self.tail:
             self.tail.next = new_node
@@ -132,14 +126,28 @@ class DoublyLinkedList:
         self.delete(node)
         self.add_to_tail(value)
 
+    """Checks for exisiting node, returns node if it exists, None if it doesn't"""
+
+    def get_node(self, value):
+        if self.head == self.tail:
+            return self.head.value
+
+        curr_node = self.head
+
+        while True:
+            if curr_node.value == value:
+                return curr_node
+            elif curr_node.next == None:
+                return None
+            else:
+                curr_node = curr_node.next
+
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""
 
     def delete(self, node):
         if not self.head:
-            print("Cannot delete from an empty list")
             return
-
         self.length -= 1
 
         if self.head == self.tail:
@@ -166,10 +174,8 @@ class DoublyLinkedList:
         curr_node = self.head
 
         while True:
-
             if curr_node.value > max:
                 max = curr_node.value
-
             if curr_node.next == None:
                 break
             else:

@@ -167,6 +167,6 @@ class Stack:
         return self.storage.remove_tail()
 
 # 3. What is the difference between using an array vs. a linked list when implementing a Stack?
-# Arrays hold objects in sequential memory locations, 
-# but a linked list holds objects where each element is linked to its next element.
-# (like a chain)
+# When using a stack, the difference is removing the head. 
+# An array can pop the element at the first instance, whereas in a linked list
+# other elements main be chained to the first element and therfore those elements will have to be updated

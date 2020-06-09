@@ -204,15 +204,15 @@ class Queue(LinkedList):
 
     def enqueue(self, value):
         #adds items to queue
-        self.storage.add_to_end(value)
         self.size += 1
-
+        self.storage.add_to_end(value)
+        
     def dequeue(self):
         #removes items from queue
-        if self.size > 0:
-            self.size -= 1
-        else:
-            pass
+        if not self.storage.head:
+            return None
+
+        self.size -= 1
         return self.storage.remove_from_head()
 
 q = Queue()

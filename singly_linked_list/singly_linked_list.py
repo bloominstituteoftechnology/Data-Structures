@@ -54,7 +54,7 @@ class LinkedList:
 
             return value
 
-    def remove_tail(self):
+    def remove_tail_2(self):
         # We have a pointer to the tail, the only problem is that 
         # if we just remove the tail, the node before it won't be updated to point to None
         # Thus, we need to iterate through all the nodes until we get to the node *before* the tail
@@ -87,6 +87,29 @@ class LinkedList:
         self.tail = current_node # move our tail pointer back one spot to the current node
         current_node.next = None # set current node's next to None
         return tail.value # finally, return the value of the tail
+
+    # Simplified version, grabbing value from self.tail first
+    def remove_tail(self):
+
+        if not self.tail:
+            return
+
+        tail_value = self.tail.value
+
+        if self.tail == self.head:
+            self.tail = None
+            self.head = None
+            return tail_value
+
+        current_node = self.head
+
+        while current_node.next != self.tail:
+            current_node = current_node.next
+
+        current_node.next = None
+        self.tail = current_node
+
+        return tail_value
          
     def get_max(self):
         max = None

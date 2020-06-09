@@ -91,7 +91,7 @@ class LinkedList:
     def contains(self, data):
         # an empty linked list can't contain what we're looking for 
         if not self.head:
-            return False​
+            return False
             
         # get a reference to the first Node in the linked list 
         # we update what this Node points to as we traverse the linked list 
@@ -108,19 +108,19 @@ class LinkedList:
             current = current.get_next()
         
         # we checked the whole linked list and didn't find the data
-        return False​
+        return False
 
     def get_max(self):
         if self.head is None:
             return None
-            ​
+        
         max_so_far = self.head.get_value()
 
         current = self.head.get_next()
-        ​
+        
         while current is not None:
             if current.get_value() > max_so_far:
                 max_so_far = current.get_value()
 
             current = current.get_next()
-​
+            

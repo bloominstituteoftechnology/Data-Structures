@@ -214,14 +214,22 @@ class LinkedList:
 class Stack:
     def __init__(self):
         self.size = 0
+        self.storage = LinkedList()
 
     def __len__(self):
-        pass
-    def push(self, value):
-        pass
-    def pop(self):
-        pass
+        return self.size
 
+    def push(self, value):
+        self.storage.add_to_end(value)
+        self.size += 1
+
+    def pop(self):
+        if not self.storage.head:
+            return None
+
+        self.size -= 1
+        return self.storage.remove_tail()
+        
 s = Stack()
 
 s.push('candy')

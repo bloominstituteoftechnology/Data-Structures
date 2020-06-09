@@ -1,5 +1,10 @@
 from singly_linked_list import Node
 from singly_linked_list import LinkedList
+
+# import sys
+# sys.path.append('./singly_linked_list')
+# from singly_linked_list import singly_linked_list
+
 """
 A stack is a data structure whose primary purpose is to store and
 return elements in Last In First Out order. 

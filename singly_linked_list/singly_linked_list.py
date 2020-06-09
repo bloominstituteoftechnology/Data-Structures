@@ -32,6 +32,9 @@ class LinkedList:
 
     def make_new_head(self, value):
         new_node = Node(value)
+        if not self.head:
+            self.head = new_node
+            self.tail = new_node
         previous_head = self.head
         self.head = new_node
         self.head.set_next(previous_head)
@@ -40,13 +43,9 @@ class LinkedList:
         if not self.head:
             return None
         if not self.head.get_next():
-            # get a reference to the head
             head = self.head
-            # delete the list's head reference
             self.head = None
-            # also make sure the tail reference doesn't refer to anything
             self.tail = None
-            # return the value
             return head.get_value()
         
         value = self.head.get_value()

@@ -75,6 +75,7 @@ class LinkedList:
 
         value = self.tail.get_value()
         self.tail = current
+        self.tail.set_next(None)
         return value
 
     def contains(self, value):

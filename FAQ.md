@@ -36,11 +36,10 @@ We can't access items in a linked list directly because linked lists are not ind
 A BST in the way that is being implemented for this Sprint is a bit too simple to see any real-world use-cases. There are many (more complex) variants of BSTs that do see production use. One very notable variant is the [B-tree](https://en.wikipedia.org/wiki/B-tree), which is a self-balancing ordered variant of the BST. B-trees play a critical role in database and file system indexing. Other notable variants include the AVL tree, which is a self-balancing BST and the prefix tree, which is specialized for handling text.
 
 #### How is the root element of a Binary Search Tree decided?
-The first element added to a BST is the root of the tree. However, doing it this way means that it's a very simple matter to end up with a lopsided BST. If we simply insert a monotonically ascending or descending sequence of values, then the tree would essentially flatten down to a linked list, and we'd lose all the benefits that a BST is supposed to confer. Self-balancing variants of the BST exist in order to alleviate this exact problem. 
+The first element added to a BST is the root of the tree. However, doing it this way means that it's a very simple matter to end up with a lopsided BST. If we simply insert a monotonically ascending or descending sequence of values, then the tree would essentially flatten down to a linked list, and we'd lose all the benefits that a BST is supposed to confer. Self-balancing variants of the BST exist in order to alleviate this exact problem.
 
 #### What is the difference between Breadth First and Depth First?
 In depth first, we pick one path at each branch and keep going forward until we hit a dead end, then  backtrack and take the first branch we find.  In breadth first, we go by layers, one row deeper each time.  This means that we jump around a bit.
 
 #### What is the difference between a Search and a Traversal?
 A search and a traversal are processed exactly the same.  The difference is that we stop a search when we find what we were looking for, or when all nodes have been visited without finding it.  In a traversal, we always keep going until we've visited every node.
-

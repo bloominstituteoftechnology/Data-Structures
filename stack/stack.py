@@ -64,5 +64,6 @@ class Stack:
 
             if self.length == 0:
                 self.content.tail == None
+                self.content.head == None
                 
             return popped.value

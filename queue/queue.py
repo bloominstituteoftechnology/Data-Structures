@@ -49,8 +49,9 @@ class Queue:
         self.size += 1
 
     def dequeue(self):
-        if len(self) >= 1: # if length is greater than or equal to 1, 
-            self.size -= 1 # then you can minus 1 until you reach 0
+        if self.size == 0:  
+            return None
+        self.size = -= 1
         return self.storage.remove_head()
 
 # 3. What is the difference between using an array vs. a linked list when implementing a Queue?

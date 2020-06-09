@@ -42,14 +42,14 @@ class Stack:
         return self.size
 
     def push(self, value):
-        self.storage.add_head(value)
+        self.storage.add_to_tail(value)
         self.size += 1 # once you "append", you have to update the count
 
     def pop(self):
-        if len(self) == 0:
-            return 
+        if self.size == 0:
+            return None
         self.size -= 1
-        return self.storage.remove_head()
+        return self.storage.remove_tail()
 
 # 3. What is the difference between using an array vs. a linked list when implementing a Stack?
 # When using a stack, the difference is removing the head. 

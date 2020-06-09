@@ -22,15 +22,6 @@ class LinkedList:
         # reference to the tail of the list
         self.tail = None
 
-    def add_head(self, value):
-        new_node = Node(value)
-        if self.head:
-            new_node.next_node = self.head # move the current head to the next node
-            self.head = new_node # make the head the new node
-        else:
-            self.head = new_node
-            self.tail = new_node
-
     def add_to_tail(self, value):
         # wrap the input value in a node
         new_node = Node(value, None)

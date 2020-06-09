@@ -51,7 +51,12 @@ class LinkedList:
             self.head = None
             self.tail = None
         else:
-            self.tail = self.tail.get_next()
+            current = self.head
+
+            while current.get_next() != self.tail:
+                current = current.get_next()
+                
+            self.tail = current
         
         return data
     

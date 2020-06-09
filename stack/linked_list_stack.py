@@ -45,6 +45,7 @@ class LinkedList:
             self.head = self.head.get_next()
             return value
 
+
     def remove_at_end(self):
         current = self.head
         if not current:
@@ -61,4 +62,4 @@ class LinkedList:
             self.head = None
         value = current.get_value()
 
-        return value
+        return value 

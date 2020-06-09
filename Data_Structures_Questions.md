@@ -29,6 +29,7 @@ O(1)*
 -Ο(1)
 6. What is the runtime complexity of `len` using a linked list?
 -Ο(1)
+
 ## Doubly Linked List
 
 1. What is the runtime complexity of `ListNode.insert_after`?

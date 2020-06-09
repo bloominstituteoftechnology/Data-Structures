@@ -1,3 +1,5 @@
+from typing import Optional
+
 """
 Binary search trees are a data structure that enforce an ordering over 
 the data they store. That ordering in turn makes it a lot more efficient 
@@ -12,36 +14,61 @@ This part of the project comprises two days:
 class BSTNode:
     def __init__(self, value):
         self.value = value
-        self.left = None
-        self.right = None
+        self.left: Optional[BSTNode] = None
+        self.right: Optional[BSTNode] = None
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
+        if value < self.value:
+            if self.left:
+                self.left.insert(value)
+            else:
+                self.left = BSTNode(value)
+        elif value >= self.value:
+            if self.right:
+                self.right.insert(value)
+            else:
+                self.right = BSTNode(value)
+        
 
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        if target < self.value:
+            return self.left.contains(target) if self.left else False
+        elif target > self.value:
+            return self.right.contains(target) if self.right else False
+        else:
+            return True
+
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+        return self.right.get_max() if self.right else self.value
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-        pass
+        fn(self.value)
+        if self.left:
+            self.left.for_each(fn)
+        if self.right:
+            self.right.for_each(fn)
 
     # Part 2 -----------------------
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        if self.left:
+            self.left.in_order_print(node)
+        print(self.value)
+        if self.right:
+            self.right.in_order_print(node)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
+        # Need to use a queue...
         pass
 
     # Print the value of every node, starting with the given node,

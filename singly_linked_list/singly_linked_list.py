@@ -80,7 +80,7 @@ class LinkedList:
 
         current_node = self.head # start with current node as the head
 
-        while current_node.next.next != None: # looking ahead
+        while current_node.next != self.tail: # looking ahead
             current_node = current_node.next # if next isn't tail, advance
         
         tail = current_node.next # now we know that the next node is the tail, grab a reference to it for returning

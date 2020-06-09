@@ -140,19 +140,18 @@ return elements in Last In First Out order.
 class Stack:
     def __init__(self):
         self.size = 0
-        self.storage = []
+        self.storage = LinkedList()
 
     def __len__(self):
-        if self.storage is None:
-            return None
-        else:
-            return len(self.storage)
+        return self.size
 
     def push(self, value):
-        self.storage.append(value)
+        self.storage.add_to_tail(value)
+        self.size += 1
 
     def pop(self):
-        if len(self.storage) == 0:
-            return None
+        if self.size > 0:
+            self.size -= 1
+            return self.storage.remove_tail()
         else:
-            return self.storage.pop()
+            return None

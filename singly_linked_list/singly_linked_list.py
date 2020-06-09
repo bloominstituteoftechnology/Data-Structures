@@ -66,6 +66,7 @@ class LinkedList:
             # `current` is now pointing at the Node right
             # before the tail Node
             self.tail = current
+            
         
         return data
 

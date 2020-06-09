@@ -10,23 +10,23 @@ return elements in Last In First Out order.
 3. What is the difference between using an array vs. a linked list when 
    implementing a Stack?
 """
-# class Stack:
-#     def __init__(self):
-#         self.size = 0
-#         self.storage = []
+class Stack:
+    def __init__(self):
+        self.size = 0
+        self.storage = []
 
-#     def __len__(self):
-#         return len(self.storage)
+    def __len__(self):
+        return len(self.storage)
 
-#     def push(self, value):
-#         self.storage.append(value)
-#         return self.storage
+    def push(self, value):
+        self.storage.append(value)
+        return self.storage
 
-#     def pop(self):
-#         if self.__len__() is 0:
-#             return None
-#         else:
-#             return self.storage.pop()
+    def pop(self):
+        if self.__len__() is 0:
+            return None
+        else:
+            return self.storage.pop()
 
 class Node:
     def __init__(self, value = None, next_node = None):
@@ -46,37 +46,37 @@ class Node:
         self.next_node = new_next
 
 
-class Stack:
-    def __init__(self):
-        self.head = None
-        self.size = 0
+# class Stack:
+#     def __init__(self):
+#         self.head = None
+#         self.size = 0
 
-    def __len__(self):
-        if self.size < 0:
-            self.size = 0
-        return self.size
+#     def __len__(self):
+#         if self.size < 0:
+#             self.size = 0
+#         return self.size
 
-    def push(self, value):
-        self.size += 1
-        new_node = Node(value)
-        if not self.head:
-            self.head = new_node
-        else:
-            current = self.head
-            while current.get_next() is not None:
-                current = current.get_next()
-            current.set_next(new_node)
-            # print(current.value, "inside push")
+#     def push(self, value):
+#         self.size += 1
+#         new_node = Node(value)
+#         if not self.head:
+#             self.head = new_node
+#         else:
+#             current = self.head
+#             while current.get_next() is not None:
+#                 current = current.get_next()
+#             current.set_next(new_node)
+#             # print(current.value, "inside push")
 
-    def pop(self):
-        print(self.size, "WHAT is the head")
-        self.size -= 1
-        if not self.head:
-            return None
-        else:
-            value = self.head.get_value()
-            self.head = self.head.get_next()
-            return value
+#     def pop(self):
+#         print(self.size, "WHAT is the head")
+#         self.size -= 1
+#         if not self.head:
+#             return None
+#         else:
+#             value = self.head.get_value()
+#             self.head = self.head.get_next()
+#             return value
 
 
 # b = Node()

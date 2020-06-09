@@ -1,4 +1,6 @@
 from typing import Optional
+from q import Q
+from stack import Stack
 
 """
 Binary search trees are a data structure that enforce an ordering over 
@@ -68,13 +70,50 @@ class BSTNode:
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        # Need to use a queue...
-        pass
+
+        # make queue to do breadth first
+        queue = Q()
+
+        # enqueue the first node
+        queue.enqueue(node)
+
+        # while there are nodes in queue:
+            # process the first node by first dequeuing
+            # then print the node's value (work first)
+            # then enqueue it's childeren
+
+        while len(queue) > 0:
+            next_node: BSTNode = queue.dequeue()
+            print(next_node.value)
+            if next_node.left:
+                queue.enqueue(next_node.left)
+            if next_node.right:
+                queue.enqueue(next_node.right)
+            
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+
+        # need to make a stack instead of queue to do depth first
+        stack = Stack()
+
+        # push first node
+        stack.push(node)
+
+        # while there are nodes on stack:
+            # process first node by first popping
+            # then print the node's value (work first)
+            # then push it's children
+        
+        while len(stack) > 0:
+            next_node: BSTNode = stack.pop()
+            print(next_node.value)
+            if next_node.left:
+                stack.push(next_node.left)
+            if next_node.right:
+                stack.push(next_node.right)
+
 
     # Stretch Goals -------------------------
     # Note: Research may be required

@@ -57,4 +57,4 @@ class LinkedList:
             self.head = None
         value = current.get_value()
 
-        return value)
+        return value

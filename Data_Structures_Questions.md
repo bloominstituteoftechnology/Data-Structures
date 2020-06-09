@@ -1,4 +1,4 @@
-Answer the following questions for each of the data structures you implemented as part of this project.
+## Answer the following questions for each of the data structures you implemented as part of this project.
 
 ## Stack
 

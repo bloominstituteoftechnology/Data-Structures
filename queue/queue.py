@@ -15,8 +15,10 @@ Stretch: What if you could only use instances of your Stack class to implement t
 """
 
 import sys
-sys.path.append('../singly_linked_list')
+
+sys.path.append("../singly_linked_list")
 from singly_linked_list import LinkedList
+
 
 class Queue:
     def __init__(self):
@@ -31,7 +33,7 @@ class Queue:
         self.size += 1
 
     def dequeue(self):
-        if self.size:
+        if self.size > 0:
             self.size -= 1
             return self.storage.remove_head()
         else:

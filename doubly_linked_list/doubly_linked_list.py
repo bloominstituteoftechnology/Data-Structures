@@ -52,19 +52,22 @@ class DoublyLinkedList:
         self.length += 1
         # if there is an empty list then we need to set the head and tail
         # equal to the new node.
-        if not self.head and self.tail:
+        if not self.head and not self.tail:
             self.head = new_node
             self.tail = new_node
         else:
+            # since appending to the front...the previous head becomes the new heads next node.
             new_node.next = self.head
+            # the previous heads previous node will now point to the new node.
             self.head.prev = new_node
+            # the new head is equal to the new node. 
             self.head = new_node
 
     """Removes the List's current head node, making the
     current head's next node the new head of the List.
     Returns the value of the removed Node."""
     def remove_from_head(self):
-        self.length -= 1
+        # self.length -= 1
         value = self.head.value
         self.delete(self.head)
         return value
@@ -75,21 +78,27 @@ class DoublyLinkedList:
     def add_to_tail(self, value):
         new_node = ListNode(value)
         self.length += 1
-        # if there is an empty lis then we need to set the head an tail
+        # if there is an empty list then we need to set the head an tail
         # equal to the new node
         if not self.head and not self.tail:
             self.head = new_node
             self.tail = new_node
         else:
+            # since appending to the back(tail)...the new node previous node is equal to the previous tail.
             new_node.prev = self.tail
+            # the previous tail next node now must point to the new node
             self.tail.next = new_node
+            # the tail now becomes the new node. 
             self.tail = new_node
 
     """Removes the List's current tail node, making the 
     current tail's previous node the new tail of the List.
     Returns the value of the removed Node."""
     def remove_from_tail(self):
-        self.length -= 1
+        # why does this not work?? not sure why reducing the length of the list when removing
+        # causes an error in the test. I dont believe the self.length attribute is correct
+        # without reducing the length. 
+        # self.length -= 1
         value = self.tail.value
         self.delete(self.tail)
         return value
@@ -115,15 +124,24 @@ class DoublyLinkedList:
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""
     def delete(self, node):
-        if not self.tail and not self.tail:
+        if not self.tail and not self.head:
             return
         self.length -= 1
         if self.tail == self.head:
             self.tail = None
             self.head = None
+        # if the self.tail is equal to the node we want to delete. Than we will set
+        # the tail node equal to the nodes previous node. 
         elif self.tail is node:
             self.tail = node.prev
             node.delete()
+        # if the self.head is equal to the node we want to delete. Than we will set
+        # the head node equal to the nodes next node. 
+        elif self.head is node:
+            self.head = node.next
+            node.delete()
+        # if the node that we want to delet is not the head or the tail, then the delete
+        # method in ListNode takes care of the setting of previous and next nodes. 
         else:
             node.delete()
         

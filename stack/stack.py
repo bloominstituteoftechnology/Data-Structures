@@ -12,57 +12,57 @@ return elements in Last In First Out order.
 
 Answer #3: Elements of an array don't have a built in reference to the next element in the list, while Linked List nodes do have a next property. Also, Linked Lists don't have the same helper methods as arrays.
 """
+
+# Array version
 class Stack:
-    # Array version
-    class Stack:
-        def __init__(self):
-            self.content = []
+    def __init__(self):
+        self.content = []
 
-        def __len__(self):
-            return len(self.content)
+    def __len__(self):
+        return len(self.content)
 
-        def push(self, value):
-            self.content.insert(0,value)
+    def push(self, value):
+        self.content.insert(0,value)
 
-        def pop(self):
-            if len(self.content) > 0:
-                return self.content.pop(0)
-            else:
-                return None
+    def pop(self):
+        if len(self.content) > 0:
+            return self.content.pop(0)
+        else:
+            return None
 
-    # Linked List data structure version
-    class Node:
-        def __init__(self, value, next_node):
-            self.value = value
-            self.next = next_node
+# Linked List data structure version
+class Node:
+    def __init__(self, value, next_node):
+        self.value = value
+        self.next = next_node
 
-    class LinkedList:
-        def __init__(self, head = None, tail = None):
-            self.head = head
-            self.tail = tail
+class LinkedList:
+    def __init__(self, head = None, tail = None):
+        self.head = head
+        self.tail = tail
 
-    class Stack:
-        def __init__(self):
-            self.length = 0
-            self.content = LinkedList()
+class Stack:
+    def __init__(self):
+        self.length = 0
+        self.content = LinkedList()
 
-        def __len__(self):
-            return self.length
+    def __len__(self):
+        return self.length
 
-        def push(self, data):
-            new_node = Node(data, self.content.head)
-            self.content.head = new_node
-            self.length += 1
-            if self.length == 1:
-                self.content.tail == self.content.head
+    def push(self, data):
+        new_node = Node(data, self.content.head)
+        self.content.head = new_node
+        self.length += 1
+        if self.length == 1:
+            self.content.tail == self.content.head
 
-        def pop(self):
-            if self.length > 0:
-                popped = self.content.head
-                self.content.head = self.content.head.next
-                self.length -= 1
+    def pop(self):
+        if self.length > 0:
+            popped = self.content.head
+            self.content.head = self.content.head.next
+            self.length -= 1
 
-                if self.length == 0:
-                    self.content.tail == None
-                    
-                return popped.value
+            if self.length == 0:
+                self.content.tail == None
+                
+            return popped.value

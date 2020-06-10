@@ -2,7 +2,7 @@ class Node:
     def __init__(self, value, next=None):
         self.value = value
         self.next_node = next
-
+    
     def get_value(self):
         return self.value
 
@@ -13,7 +13,7 @@ class Node:
         self.next_node = new_next
 
 
-class LinkedList:
+class singleLinkedList:
     def __init__(self):
         self.head = None
         self.tail = None
@@ -72,3 +72,7 @@ class LinkedList:
                 max_so_far = current.get_value()
             current = current.get_next()
         return max_so_far
+
+
+if __name__ == "__main__" and __package__ is None:
+    pass

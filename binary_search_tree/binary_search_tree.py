@@ -17,42 +17,20 @@ class BinarySearchTree:
         self.left = None
         self.right = None
 
-    # def insert(self, value):
-    #     if value > self.value:
-    #         og_head = self.value
-    #         self.value = value
-    #         return self.insert(og_head)
-    #     else:
-    #         if value > self.right:
-    #             return self.right.insert(value)
-    #         if value < self.left:
-    #             return self.left.insert(value)
-    #         else:
-    #             return self.insert(value)
     def insert(self, value):
-        # lesson code
-        # if value < self.value:
-        #     #we know we need to go left
-        #     #how do we know when to recurse again? or stop?
-        #     if not self.left:
-        #         # we can park our value here
-        #         self.left = BinarySearchTree(value)
-        #     else:
-        #         self.left.insert(value)
-        # else:
-        #     # we know we need to go right
-        #     if not self.right:
-        #         self.right = BinarySearchTree(value)
-        #     else:
-        #         self.right.insert(value)
-        # end lesson code
-
         if value < self.value:
+            #if the value is less than the current value (meaning it needs to go on the left)
+            #if there is nothing on the left, we can just plop it in there,
+            #it has reached the correct spot on the tree
             if not self.left:
                 self.left = BinarySearchTree(value)
+            #even though the value was less than the current value, if there is something
+            #already to the left, we need to use the insert function to see if that is greater
+            #or less than our value
             else:
                 return self.left.insert(value)
         if value >= self.value:
+            #rinse and repeat above notes 
             if not self.right:
                 self.right = BinarySearchTree(value)
             else:
@@ -70,15 +48,17 @@ class BinarySearchTree:
         if target == self.value:
             return True
         if target < self.value:
-            #go left if it is a BTSNode
+            #go left if target is smaller than the current value
             if not self.left:
                 #if we can't go left, then our value isn't here
                 return False
             return self.left.contains(target)
         else: 
-            #go right
+            #go right if target is larger than current
             if not self.right:
+                #if we have reached a point w/o a right node, the value isnt here
                 return False
+            #we have to keep checking the next value, intro recursion
             return self.right.contains(target)
 
     # Return the maximum value found in the tree
@@ -86,59 +66,54 @@ class BinarySearchTree:
         # lesson code
 
         #we just gotta keep going right
-        # if not self.right:
-        #     return self.value
-        # else:
-        #     return self.right.get_max()
+        if not self.right:
+            return self.value
+        else:
+            return self.right.get_max()
 
         # end lesson code
 
-        current_max = self.value
+        #this was more complicated than necessary because
+        #I just need to go right until it runs out, as the largest
+        #value will be furthest to the right
 
-        if self.right: 
-            if current_max >= self.right.value:
-                return current_max
+        # if self.right: 
+        #     if self.value >= self.right.value:
+        #         return self.value
             
-            if current_max < self.right.value:
-                current_max = self.right.value
-                return self.right.get_max()
-        else:
-            return current_max
+        #     if self.value < self.right.value:
+        #         return self.right.get_max()
+        # else:
+        #     return self.value
 
     def iterative_get_max(self):
         # 
         current_max = self.value
         # traverse the structure & update current max variable
-        current = self
 
-        while current:
-            if current.value > current_max:
-                current_max = current.value
-            current = current.right
+        while self:
+            if self.value > current_max:
+                current_max = self.value
+                #always go right bc the largest value always on the right
+                #then just go until it ends
+            self = self.right
 
         return current_max
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
         
-        # lesson code
+        #start by applying the function to the root
         fn(self.value)
-        #pass it to the left and right
-        if self.left:
-            self.left.for_each(fn)
-        if self.right:
-            self.right.for_each(fn)
-    #end lesson code
 
-        # self.value = fn(self.value)
-        # while self.left:
-        #     self.left.value = fn(self.left.value)
-        #     return self.left.for_each(fn)
-        # while self.right:
-        #     self.right.value = fn(self.right.value)
-        #     return self.right.for_each(fn)
-        # else:
-        #     pass
+        #is there a left?
+        if self.left:
+            #then call the function again
+            self.left.for_each(fn)
+        #is there a right?
+        if self.right:
+            #then call the function again
+            self.right.for_each(fn)
 
     def itertive_for_each(self, fn):
         stack = []
@@ -158,14 +133,16 @@ class BinarySearchTree:
 
             fn(current.value)
             
-            #Depth First traversal
-
+    #Depth First traversal
     def breadth_first_for_each(self, fn):
         #this does the same thing as the function above
         #but it is moving laterally across the tree rather than
         #going down the list with recursion and applying
         #it to the children and then going up 
 
+        #deque is a container similar to a list, appends/pops on both ends
+        #but it is faster/more efficient than a rehular list
+        #because python so smart
         queue = deque()
 
         #add the root node
@@ -174,8 +151,9 @@ class BinarySearchTree:
         #loop for as long as the stack has elements
         while len(queue) > 0:
             current = queue.popleft()
-            #take it out to perform function
-            #then get any children to do the same
+            #take out the furthest left value to apply the func to
+            #both/any children are added to the right
+            #this leads to nodes being handled in order, laterally
             if current.right:
                  queue.append(current.right)
             if current.left:
@@ -192,10 +170,16 @@ class BinarySearchTree:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-
         if node is None:
             return
         else:
+            #calling the left one first will make the recursion
+            #go all the way down the left side, until it is at the smallest value
+            #then it 'yoyos' back up, completing the unfinished nodes associated with the left
+            #so if the smallest value was one, then node.left would be completed,
+            #then the next value printed would be the node.value
+            #then node.right is called, so that its left values can be printed
+            #before printing the true right value
             self.in_order_print(node.left)
             print(node.value)
             self.in_order_print(node.right)
@@ -213,6 +197,7 @@ class BinarySearchTree:
             current = to_print.popleft()
             #take it out to perform function
             #then get any children to do the same
+            #same exact logic as breadth first function application above
             if current.right:
                  to_print.append(current.right)
             if current.left:
@@ -227,7 +212,7 @@ class BinarySearchTree:
         #push root to stack
 
         print(node.value)
-
+        #just print the root and go down
         if node.right:
             node.right.dft_print(node.right)
         if node.left:
@@ -257,4 +242,8 @@ bst.insert(2)
 def half(x):
     return x / 2
 
+print('Depth First Printing')
 bst.dft_print(bst)
+
+print('Breadth First Printing')
+bst.bft_print(bst)

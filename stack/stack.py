@@ -9,6 +9,8 @@ return elements in Last In First Out order.
    Make sure the Stack tests pass.
 3. What is the difference between using an array vs. a linked list when 
    implementing a Stack?
+   Mark: In Pyhton, stacks are very easy to implement in an array. Linked list 
+   is more involved and requires a lot more code. 
 """
 
 # 1. Implement the Stack class using an array as the underlying storage structure.

@@ -33,7 +33,6 @@ class BSTNode:
             else:
                 self.right = BSTNode(value)
 
-
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
@@ -72,7 +71,7 @@ class BSTNode:
     def bft_print(self, node=None):
         q = Queue()
         q.enqueue(self)
-        while q.length != 0:
+        while q.length > 0:
             n = q.dequeue()
             print(n.value)
             if n.left is not None:
@@ -85,15 +84,13 @@ class BSTNode:
     def dft_print(self, node=None):
         s = Stack()
         s.push(self)
-        while s.size != 0:
+        while s.size > 0:
             n = s.pop()
             print(n.value)
             if n.left is not None:
                 s.push(n.left)
             if n.right is not None:
                 s.push(n.right)
-
-
 
     # Stretch Goals -------------------------
     # Note: Research may be required

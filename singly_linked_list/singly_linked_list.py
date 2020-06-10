@@ -19,6 +19,7 @@ class LinkedList:
         self.length += 1
 
     def add_to_tail(self, value):
+        # print(f"LL: adding value {value} to tail")
         new_node = ListNode(value)
         if self.tail is None:
             self.head = new_node
@@ -31,10 +32,14 @@ class LinkedList:
     # O(1)
     def remove_head(self):
         if self.head is None:
+            # print("LL: returning None from head")
             return None
         old_head = self.head
         self.head = old_head.next_node
         self.length -= 1
+        # print(f"LL: returning old head value: '{old_head.value}'")
+        if self.head is None:
+            self.tail = None
         return old_head.value
 
     # O(n)
@@ -47,6 +52,7 @@ class LinkedList:
             n = n.next_node
         output = n.next_node.value
         self.tail = n
+        self.tail.next_node = None
         self.length -= 1
         return output
 

@@ -32,7 +32,10 @@ class Queue:
         return len(self.__storage)
 
     def enqueue(self, value):
+        # print(f"Q: enqueueing value '{value}' to queue")
         self.__storage.add_to_tail(value)
 
     def dequeue(self):
-        return self.__storage.remove_head()
+        output = self.__storage.remove_head()
+        # print(f"Q: dequeueing value '{output}' from queue")
+        return output

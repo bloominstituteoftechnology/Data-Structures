@@ -17,20 +17,59 @@ class BSTNode:
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
-
+        
+        if self.value is None: # check to see if is none
+            self.value = value # assign to new node if was none
+        elif value >= self.value: # else if value if equal or greater self.value place right
+            if self.right is None: # check to see if right node is none
+                self.right = BSTNode(value) # assign to right node if true
+            else:
+                self.right.insert(value) # else recursion and begin again one node down
+        else: # else place on the left
+            if self.left is None: # check to seel if left node is none
+                self.left = BSTNode(value) # assign to left node if true
+            else:
+                self.left.insert(value) # else recursion and begin again one node down
+        
+                
+            
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        # if base value is target, return true
+        if self.value == target:
+            return True
+        # if self.value is greater than target
+        if self.value > target:
+            if self.left is not None:
+                #recursively check down the left nodes
+                return self.left.contains(target)
+        elif self.value < target:
+            if self.right is not None:
+                # recursively check down the right nodes
+                return self.right.contains(target)
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+        # recurse until none
+        if not self.right:
+            return self.value
+        else:
+            # recursively move through the right nodes
+            return self.right.get_max()
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-        pass
+        # call fn on the value of the node
+        fn(self.value) 
+        # chech if left node exists
+        if self.left:
+            # move through the left nodes passing down fn
+            self.left.for_each(fn)
+        # check if right node exists
+        if self.right:
+            # move through the right nodes passing down fn
+            self.right.for_each(fn)
 
     # Part 2 -----------------------
 

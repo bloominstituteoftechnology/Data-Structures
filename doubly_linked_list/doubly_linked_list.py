@@ -114,13 +114,31 @@ class DoublyLinkedList:
             current_tail.next.prev = current_tail
             # reasigns point to new tail
             self.tail = current_tail.next
-            
+
 
     """Removes the List's current tail node, making the 
     current tail's previous node the new tail of the List.
     Returns the value of the removed Node."""
     def remove_from_tail(self):
-        pass
+        # try to remove from empty
+        if not self.head or not self.tail:
+            return None
+        elif self.length == 1:
+            return_value = self.head.value
+            self.head = None
+            self.tail = None
+            self.length -= 1
+            return return_value
+        else:
+            #store current tail
+            remove_value = self.tail
+            # Move tail pointer
+            self.tail = self.tail.prev
+            # set 2nd elem's pre poiinter to None
+            self.tail.next = None
+            # decrease length by 1
+            self.length -= 1
+            return remove_value
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new head node of the List."""

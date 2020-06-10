@@ -22,7 +22,9 @@ class Queue:
         return self.size
 
     def enqueue(self, value):
-        pass
+        self.storage.append(value)
+        self.size += 1
 
     def dequeue(self):
-        pass
+        self.storage.pop(0)
+        self.size -= 1

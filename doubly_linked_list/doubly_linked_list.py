@@ -162,13 +162,46 @@ class DoublyLinkedList:
     """Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List."""
     def move_to_end(self, node):
-        pass
+        # do nothing if only one element in list or node already at tail
+        if self.length == 1 or node is self.tail:
+            return
+        # deletes and changes prev and next pointers
+        node.delete()
+        # if node is head, move to next element
+        if not node.prev:
+            self.head = node.next
+        #  update tail pointer to point to new element
+        self.tail.next = node
+        # reassign as new tail
+        node.prev = self.tail
+        node.next = None
+        #update tail pointer
+        self.tail = node
 
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""
     def delete(self, node):
-        pass
+        #checks if head
+        if node is self.head:
+            current_next = self.head.next
+            self.head = current_next
+            #checks if tail
+        if node is self.tail:
+            current_prev = self.tail.prev
+            self.tail = current_prev
+        
+        node.delete()
+        self.length -= 1
         
     """Returns the highest value currently in the list"""
     def get_max(self):
-        pass
+        current_node = self.head
+        current_max = self.head.value
+        
+        while current_node.next:
+            current_node = current_node.next
+            #compares value and replaces if greater
+            if current_node.value > current_max:
+                current_max = current_node.value
+
+        return current_max

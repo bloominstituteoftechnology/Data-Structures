@@ -17,6 +17,19 @@ class BSTNode:
 
     # Insert the given value into the tree
     def insert(self, value):
+             # insert
+        # left case
+        # check if our value is less than root value
+            # move to the left and check if it is None
+                # insert node here set the self.left to the new node
+            # otherwise
+                # do an insert on the root's left node recursive call to the left node using self.left
+        # right case
+        # otherwise
+            # move to the right and check if it is None
+                # insert node here set the self.right to the new node
+            # otherwise
+                # do an insert on the root's right node recursive call to insert using self.right
         pass
 
     # Return True if the tree contains the value

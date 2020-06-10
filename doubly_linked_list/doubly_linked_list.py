@@ -44,11 +44,33 @@ class DoublyLinkedList:
     def __len__(self):
         return self.length
 
+    def __str__(self):
+
+        output = []
+        current_node = self.head
+
+        while current_node:
+            output.append(f"{current_node.prev} <- {current_node.value} -> {current_node.next}")
+            current_node = current_node.next
+
+        return "\n" + "\n".join(output) + "\n"
+
     """Wraps the given value in a ListNode and inserts it 
     as the new head of the list. Don't forget to handle 
     the old head node's previous pointer accordingly."""
     def add_to_head(self, value):
-        pass
+        new_head = ListNode(value)
+        self.length += 1
+        # DLL is emtpy
+        if not self.head and not self.tail:
+            #set node to pointer and old head
+            self.head = new_head
+            self.tail = new_head
+        else:
+            # new node existing head
+            new_head.next = self.head
+            self.head.prev = new_head
+            self.head = new_head
 
     """Removes the List's current head node, making the
     current head's next node the new head of the List.

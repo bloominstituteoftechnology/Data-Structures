@@ -118,7 +118,6 @@ class DoublyLinkedList:
         caboose_node.add_to_tail(wanna_be_caboose_node)
         # don't need to edit length because we are deleting -1 and adding +1
 
-
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""
     def delete(self, node):
@@ -140,4 +139,7 @@ class DoublyLinkedList:
 
     """Returns the highest value currently in the list"""
     def get_max(self):
-        pass
+        current_node = self.head # declare a starting point
+            while current_node.next is not None: # loop
+                current_node = current_node.next # keep going through the nodes as long as next != None
+            return self.value # should be the max? because it's the last node's value (tail)

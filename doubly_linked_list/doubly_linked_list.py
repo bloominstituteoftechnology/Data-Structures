@@ -105,12 +105,19 @@ class DoublyLinkedList:
     """Removes the input node from its current spot in the 
     List and inserts it as the new head node of the List."""
     def move_to_front(self, node):
-        pass
+        wanna_be_line_leader_node = node.delete
+        leader_node = self.head
+        leader_node.add_to_head(wanna_be_line_leader_node)
+        # don't need to edit length because we are deleting -1 and adding +1
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List."""
     def move_to_end(self, node):
-        pass
+        wanna_be_caboose_node = node.delete
+        caboose_node = self.tail
+        caboose_node.add_to_tail(wanna_be_caboose_node)
+        # don't need to edit length because we are deleting -1 and adding +1
+
 
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""

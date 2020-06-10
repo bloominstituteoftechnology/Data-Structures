@@ -4,7 +4,11 @@ class Heap:
         self.comparator = comparator
 
     def insert(self, value):
-        pass
+        if self.storage[-1] > value:
+            self.storage.append(value)
+        else:
+            self.storage[len(self.storage)].append(self.storage[-1])
+            self.storage[-1].append(value)
 
     def delete(self):
         pass

@@ -6,6 +6,7 @@ class ListNode:
         self.prev = prev
         self.next = next
 
+
     """Wrap the given value in a ListNode and insert it
     after this node. Note that this node could already
     have a next node it is point to."""
@@ -48,7 +49,19 @@ class DoublyLinkedList:
     as the new head of the list. Don't forget to handle 
     the old head node's previous pointer accordingly."""
     def add_to_head(self, value):
-        pass
+        # create a new_node
+        new_node = ListNode(value, None, None)
+        # check if the DLL is empty
+        if not self.head and not self.tail:
+            self.head = new_node
+            self.tail = new_node
+            self.length += 1
+
+        else:
+            new_node.next = self.head
+            self.head.prev = new_node
+            self.head = new_node
+            self.length = self.length + 1
 
     """Removes the List's current head node, making the
     current head's next node the new head of the List.

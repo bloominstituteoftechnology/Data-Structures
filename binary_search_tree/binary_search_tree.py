@@ -100,10 +100,6 @@ class BSTNode:
         if self.right is True:
             self.right.for_each(fn)
 
-
-
-        pass
-
     # Part 2 -----------------------
 
     # Print all the values in order from low to high

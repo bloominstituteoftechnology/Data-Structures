@@ -187,3 +187,5 @@ class DoublyLinkedList:
         while next:
             highest = next.value if next.value > highest else highest
             next = next.next
+
+        return highest

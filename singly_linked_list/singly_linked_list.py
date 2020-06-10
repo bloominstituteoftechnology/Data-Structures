@@ -53,14 +53,14 @@ class LinkedList:
         elif self.head.next is not None:
             ret = self.head.value
             self.head = self.head.next
-            count -= 1
+            self.count -= 1
             return ret
         else:
             # delete both markers if it is
             ret = self.head.value
             self.head = None
             self.tail = None
-            count -= 1
+            self.count -= 1
             return ret
     
     def get_max(self):

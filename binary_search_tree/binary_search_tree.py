@@ -55,14 +55,20 @@ class BSTNode:
         if not self.right:
             return self.value
         else:
+            # recursively move through the right nodes
             return self.right.get_max()
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-        fn(self.value)
+        # call fn on the value of the node
+        fn(self.value) 
+        # chech if left node exists
         if self.left:
+            # move through the left nodes passing down fn
             self.left.for_each(fn)
+        # check if right node exists
         if self.right:
+            # move through the right nodes passing down fn
             self.right.for_each(fn)
 
     # Part 2 -----------------------

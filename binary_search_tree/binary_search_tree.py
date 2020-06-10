@@ -65,17 +65,41 @@ class BSTNode:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        if node.left:
+            self.in_order_print(node.left)
+        print(node.value)
+        if node.right:
+            self.in_order_print(node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+        if node is None:
+            return
+        queue = list()
+        queue.append(node)
+        while len(queue) > 0:
+            print(queue[0].value)
+            current = queue.pop(0)
+            if current.left:
+                queue.append(current.left)
+            if current.right:
+                queue.append(current.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+        if node is None:
+            return
+        stack = list()
+        stack.append(node)
+        while len(stack) > 0:
+            print(stack[-1].value)
+            current = stack.pop()
+            if current.left:
+                stack.append(current.left)
+            if current.right:
+                stack.append(current.right)
 
     # Stretch Goals -------------------------
     # Note: Research may be required
@@ -88,11 +112,19 @@ class BSTNode:
     def post_order_dft(self, node):
         pass
 
-bst = BSTNode(5)
-bst.insert(2)
-bst.insert(3)
+bst = BSTNode(1)
+bst.insert(8)
+bst.insert(5)
 bst.insert(7)
+bst.insert(6)
+bst.insert(3)
+bst.insert(4)
+bst.insert(2)
+
 x = bst.contains(7)
 print(x)
 x = bst.contains(8)
 print(x)
+# bst.in_order_print(bst)
+# bst.bft_print(bst)
+bst.dft_print(bst)

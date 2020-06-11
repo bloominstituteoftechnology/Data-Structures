@@ -48,28 +48,42 @@ class DoublyLinkedList:
     as the new head of the list. Don't forget to handle 
     the old head node's previous pointer accordingly."""
     def add_to_head(self, value):
-        new_node = ListNode(value) # Wraps the given value in a ListNode
-        if not self.head: # if empty set the head and tail to the new_node
-            self.head = new_node
+        new_node = ListNode(value, None, None) # create a new node and set head and tail to None
+        self.length += 1 # go ahead and increase by 1
+        if not self.head and not self.tail: # if it's not the head or tail
+            self.head = new_node # set both the head and tail to the new node
             self.tail = new_node
-            self.length += 1 # length has increased by 1
-        else:
-            self.head = new_node # state that the new node will be the head
-            new_node.prev = None # state that the new node prev is None (nothing before the head)
-            new_node.next = self.head # state that the new node next will be the current head
-            self.head = new_node # now that you've stated all that above, time travel forward, and behold the current head is now the new node!
-            self.length += 1 # increase the length by 1, because you have a new node as the head!
+        else: # otherwise 
+            new_node.next = self.head # declare that the new node next will point to the original head
+            self.head.prev = new_node # declare that the original head prev will point to the new node
+            self.head = new_node # now declare the head as the new node
+
+        # new_node = ListNode(value) # Wraps the given value in a ListNode
+        # if not self.head: # if empty set the head and tail to the new_node
+        #     self.head = new_node
+        #     self.tail = new_node
+        #     self.length += 1 # length has increased by 1
+        # else:
+        #     self.head = new_node # state that the new node will be the head
+        #     new_node.prev = None # state that the new node prev is None (nothing before the head)
+        #     new_node.next = self.head # state that the new node next will be the current head
+        #     self.head = new_node # now that you've stated all that above, time travel forward, and behold the current head is now the new node!
+        #     self.length += 1 # increase the length by 1, because you have a new node as the head!
 
     """Removes the List's current head node, making the
     current head's next node the new head of the List.
     Returns the value of the removed Node."""
     def remove_from_head(self):
-        if not self.head: # if empty set the head to None
-            self.head = None
-        else:
-            new_leader = self.head.next # state that the next in line for the throne will take over eventually
-            new_leader.prev = None # state that the new leader will not have anybody ruling above them
-            self.length -= 1 # coup
+        value = self.head.value # declare a varibale for the value of self.head
+        self.delete(self.head) # delete the head
+        return value # return the value of the node that you deleted
+
+        # if not self.head: # if empty set the head to None
+        #     self.head = None
+        # else:
+        #     new_leader = self.head.next # state that the next in line for the throne will take over eventually
+        #     new_leader.prev = None # state that the new leader will not have anybody ruling above them
+        #     self.length -= 1 # coup
 
     """Wraps the given value in a ListNode and inserts it 
     as the new tail of the list. Don't forget to handle 
@@ -137,10 +151,21 @@ class DoublyLinkedList:
     """Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List."""
     def move_to_end(self, node):
-        wanna_be_caboose_node = node.delete
-        caboose_node = self.tail
-        caboose_node.add_to_tail(wanna_be_caboose_node)
-        # don't need to edit length because we are deleting -1 and adding +1
+        if node is self.tail: # if the node is the tail
+            return # then don't do anthing, it's already at the end
+        value = node.value # make a variable to store node.value
+        if node is self.head: # if the node is at the front (head)
+            self.remove_from_head() # remove it from the head
+            self.add_to_tail(value) # and add the value as the tail
+        else:
+            node.delete() # delete the node...you will add the value later
+            self.length -= 1 # decrease by 1
+            self.add_to_tail(value) # add to the end (tail), no need to increase by 1 because the method does that for you
+
+        # wanna_be_caboose_node = node.delete
+        # caboose_node = self.tail
+        # caboose_node.add_to_tail(wanna_be_caboose_node)
+        # # don't need to edit length because we are deleting -1 and adding +1
 
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""

@@ -83,22 +83,17 @@ class BSTNode:
 
 
     # Return the maximum value found in the tree
-    def get_max(self):
-        # move to the right and check if it is not None return None
+      # base case
         # if tree is empty return None
         if not self:
-            # return None
             return None
-            # iterative approach
-            # while there is right child
+
+        # iterative approach
+        #while there is a right clild
         while self.right:
             # move to the child
             self = self.right
-            # return a self.value once there is no right child
-            # when return is inside the loop then it stops the loop to the first node 
-            # and the operation stops.
-            # when return is outside of the loop then loop continue the operation further down to the right side of the node
-            # until it reaches the end.
+        # once there is no right child return self.value
         return self.value
        
 
@@ -151,7 +146,7 @@ class BSTNode:
         # instantiate a queue
         q = Queue()
         # enqueue our starting node (self)
-        q.enqueue(self)
+        q.enqueue(node)
         # while the queue has data
         while len(node) > 0:
             # dequeue the current node

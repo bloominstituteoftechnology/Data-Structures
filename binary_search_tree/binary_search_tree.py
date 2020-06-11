@@ -9,6 +9,8 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+
+
 class BSTNode:
     def __init__(self, value):
         self.value = value
@@ -17,20 +19,61 @@ class BSTNode:
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
+        # compare the value to the root's value to determine which direction
+        # we're gonna go in
+        # if the value < root's value
+        if value < self.value:
+            # go left
+            # how do we go left?
+            # we have to check if there is another node on the left side
+            if self.left:
+                # then self.left is a Node
+                # now what?
+                self.left.insert(value)
+            else:
+                # then we can park the value here
+                self.left = BSTNode(value)
+        # else the value >= root's value
+        else:
+            # go right
+            # how do we go right?
+            # we have to check if there is another node on the right side
+            if self.right:
+                # then self.right is a Node
+                self.right.insert(value)
+            else:
+                self.right = BSTNode(value)
 
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        if self.value == target:
+            return True
+        if target < self.value:
+            if not self.left:
+                return False
+            else:
+                return self.left.contains(target)
+        else:
+            if not self.right:
+                return False
+            else:
+                return self.right.contains(target)
 
-    # Return the maximum value found in the tree
+            # Return the maximum value found in the tree
+
     def get_max(self):
-        pass
+        if not self.right:
+            return self.value
+        return self.right.get_max()
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-        pass
+        fn(self.value)
+        if self.left:
+            self.left.for_each(fn)
+            if self.right:
+                self.right.for_each(fn)
 
     # Part 2 -----------------------
 

@@ -1,3 +1,4 @@
+from queue import Queue
 """
 Binary search trees are a data structure that enforce an ordering over 
 the data they store. That ordering in turn makes it a lot more efficient 
@@ -9,6 +10,7 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+
 class BSTNode:
     def __init__(self, value):
         self.value = value
@@ -79,13 +81,21 @@ class BSTNode:
     def bft_print(self, node):
         # not using recursion!
         # use a queue
+        queue = Queue()
         # start queue with root node
-
-        # while loop that checks size of queue 
+        queue.enqueue(node)
+        # while loop that checks size of queue
         # until the queue is empty
+        while queue.size > 0:
             # pointer variable that updates 
             # at the beginning of each loop
-        pass
+            current_node = queue.dequeue()
+            print(current_node.value)
+
+            if current_node.left:
+                queue.enqueue(current_node.left)
+            if current_node.right:
+                queue.enqueue(current_node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal

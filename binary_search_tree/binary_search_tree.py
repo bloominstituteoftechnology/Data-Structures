@@ -29,7 +29,7 @@ class BinarySearchTree:
             #or less than our value
             else:
                 return self.left.insert(value)
-        if value >= self.value:
+        else:
             #rinse and repeat above notes 
             if not self.right:
                 self.right = BinarySearchTree(value)
@@ -224,11 +224,17 @@ class BinarySearchTree:
 
     # Print Pre-order recursive DFT
     def pre_order_dft(self, node):
-        pass
+        if node:
+            print(node.value)
+            node.pre_order_dft(node.left)
+            node.pre_order_dft(node.right)
 
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
-        pass
+        if node:
+            node.post_order_dft(node.left)
+            node.post_order_dft(node.right)
+            print(node.value)
 
 bst = BinarySearchTree(1)
 bst.insert(8)
@@ -247,3 +253,9 @@ bst.dft_print(bst)
 
 print('Breadth First Printing')
 bst.bft_print(bst)
+
+print('Pre-Order Depth First Printing')
+bst.pre_order_dft(bst)
+
+print('Post-Order Depth First Printing')
+bst.post_order_dft(bst)

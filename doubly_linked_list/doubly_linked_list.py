@@ -80,7 +80,7 @@ class DoublyLinkedList:
 
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""
-    def delete(self, node):
+    def remove_node(self, node):
         pass
         
     """Returns the highest value currently in the list"""

@@ -2,16 +2,21 @@
 Node class to keep track of
 the data internal to individual nodes
 """
+
+
 class Node:
     def __init__(self, key):
         self.key = key
         self.left = None
         self.right = None
 
+
 """
 A tree class to keep track of things like the
 balance factor and the rebalancing logic
 """
+
+
 class AVLTree:
     def __init__(self, node=None):
         self.node = node
@@ -26,13 +31,13 @@ class AVLTree:
         self.update_height()  # Update height before balancing
         self.update_balance()
 
-        if self.node != None: 
-            print ('-' * level * 2, pref, self.node.key,
-                   f'[{self.height}:{self.balance}]',
-                   'L' if self.height == 0 else ' ')
-            if self.node.left != None:
+        if self.node is not None:
+            print('-' * level * 2, pref, self.node.key,
+                  f'[{self.height}:{self.balance}]',
+                  'L' if self.height == 0 else ' ')
+            if self.node.left is not None:
                 self.node.left.display(level + 1, '<')
-            if self.node.right != None:
+            if self.node.right is not None:
                 self.node.right.display(level + 1, '>')
 
     """
@@ -51,7 +56,7 @@ class AVLTree:
     """
     Perform a left rotation, making the right child of this
     node the parent and making the old parent the left child
-    of the new parent. 
+    of the new parent.
     """
     def left_rotate(self):
         pass
@@ -59,7 +64,7 @@ class AVLTree:
     """
     Perform a right rotation, making the left child of this
     node the parent and making the old parent the right child
-    of the new parent. 
+    of the new parent.
     """
     def right_rotate(self):
         pass
@@ -71,7 +76,7 @@ class AVLTree:
     """
     def rebalance(self):
         pass
-        
+
     """
     Uses the same insertion logic as a binary search tree
     after the value is inserted, we need to check to see

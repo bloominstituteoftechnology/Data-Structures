@@ -79,13 +79,17 @@ class BSTNode:
 
     # Return the maximum value found in the tree
     def get_max(self):
-        # move to the right and check if it is not None
-        if self.right is not None:
-            # return the root value
-            return self.value
-            # otherwise
-        else:
-            # return a get_max to the root's right node
+        # move to the right and check if it is not None return None
+        # if tree is empty return None
+        if not self:
+            # return None
+            return None
+            # iterative approach
+            # while there ia right child
+        while self.right:
+            # move to the child
+            self = self.right
+            # return a self.value once there is no right child
             return self.right.get_max()
        
 
@@ -94,7 +98,7 @@ class BSTNode:
         # callback the function on the self.value
         fn(self.value)
         # check if it is true and use for_each to make recursive call in the self.left side 
-        if self.left is True:
+        if self.left:
             self.left.for_each(fn)
         # check if it is true and use for_each to make a recursive call in the self.right side
         if self.right is True:

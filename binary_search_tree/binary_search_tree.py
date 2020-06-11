@@ -1,4 +1,8 @@
+import sys
+sys.path.append('./stack')
 from stack import Stack
+sys.path.append('./my_queue')
+from my_queue import Queue
 
 """
 Binary search trees are a data structure that enforce an ordering over 
@@ -75,14 +79,15 @@ class BSTNode:
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        # do not use recursion, use a queue
-        # start queue wit root node
-
-        # while loop that checks size of queue
-            # pointer variable that updates at the beginning of each loop
-
-        
-
+        queue = Queue() # do not use recursion, use a queue
+        queue.enqueue(node) # start queue with root node
+        while queue.len > 0: # while loop that checks size of queue
+            node = queue.dequeue() # FIFO
+            print(node.value) # print the current node's value
+            if node.left is not None: # pointer variable that updates at the beginning of each loop
+                queue.enqueue(node.left) # push it on the queue, go through the loop again
+            if node.right is not None: # pointer variable that updates at the beginning of each loop
+                queue.enqueue(node.right) # push it on the queue, go through the loop again
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal

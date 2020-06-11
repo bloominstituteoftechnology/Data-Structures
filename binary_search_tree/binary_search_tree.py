@@ -1,3 +1,9 @@
+import sys
+# from queue import Queue
+# sys.path.append('../queue')
+# from stack import Stack
+# sys.path.append('../stack')
+
 """
 Binary search trees are a data structure that enforce an ordering over 
 the data they store. That ordering in turn makes it a lot more efficient 
@@ -52,50 +58,39 @@ class BSTNode:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        if self.left:
-            self.left.in_order_print(node)
-        print(self.value)
-        if self.right:
-            self.right.in_order_print(node)
+        current = node
+        if current.left:
+            self.in_order_print(current.left)
+        print(current.value)
+        if current.right:
+            self.in_order_print(current.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
-    
     def bft_print(self, node):
-        pass
-        
-        # enqueue the first node
-        # queue.enqueue(node)
-
-        # while there are nodes in queue:
-            # process the first node by first dequeuing
-            # then print the node's value (work first)
-            # then enqueue it's childeren
-
-        # while len(queue) > 0:
-        #     next_node: BSTNode = queue.dequeue()
-        #     print(next_node.value)
-        #     if next_node.left:
-        #         queue.enqueue(next_node.left)
-        #     if next_node.right:
-        #         queue.enqueue(next_node.right)
+        queue = Queue()
+        queue.enqueue(node)
+        while queue.__len__() > 0:
+            popped = queue.dequeue()
+            print(popped.value)
+            if popped.left:
+                queue.enqueue(popped.left)
+            if popped.right:
+                queue.enqueue(popped.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
-        
-        # stack = Stack()
-
-        # stack.push(node)
-              
-        # while len(stack) > 0:
-        #     next_node: BSTNode = stack.pop()
-        #     print(next_node.value)
-        #     if next_node.left:
-        #         stack.push(next_node.left)
-        #     if next_node.right:
-        #         stack.push(next_node.right)
+        current = node
+        stack = Stack()
+        stack.push(current)
+        while stack.__len__() > 0:
+            popped = stack.pop()
+            print(popped.value)
+            if popped.right:
+                stack.push(popped.right)
+            if popped.left:
+                stack.push(popped.left)
 
     # Stretch Goals -------------------------
     # Note: Research may be required

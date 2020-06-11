@@ -119,10 +119,20 @@ class DoublyLinkedList:
     """Removes the input node from its current spot in the 
     List and inserts it as the new head node of the List."""
     def move_to_front(self, node):
-        wanna_be_line_leader_node = node.delete
-        leader_node = self.head
-        leader_node.add_to_head(wanna_be_line_leader_node)
-        # don't need to edit length because we are deleting -1 and adding +1
+        if node is self.head: # if the node is the head
+            return # then don't do anthing, it's already at the front
+        value = node.value # make a variable to store node.value
+        if node is self.tail: # if the node is at the end (tail)
+            self.remove_from_tail() # remove it from the tail...you will add the value later
+        else: # otherwise
+            node.delete() # delete the node...you will add the value later
+            self.length -= 1 # decrease by 1
+        self.add_to_head(value) # add to the front (head), no need to increase by 1 because the method does that for you
+
+        # wanna_be_line_leader_node = node.delete
+        # leader_node = self.head
+        # leader_node.add_to_head(wanna_be_line_leader_node)
+        # # don't need to edit length because we are deleting -1 and adding +1
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List."""
@@ -168,7 +178,17 @@ class DoublyLinkedList:
 
     """Returns the highest value currently in the list"""
     def get_max(self):
-        current_node = self.head # declare a starting point
-        while current_node.next is not None: # loop
-            current_node = current_node.next # keep going through the nodes as long as next != None
-        return current_node.value # should be the max? because it's the last node's value (tail)
+        if not self.head: # if empty, return None
+            return None
+        max_value = self.head.value # declare a variable for max value, set it to the current head.value
+        original = self.head # declare a variable for the original head
+        while original: # loop through
+            if original.value > max_value: # if the original is greater than the max
+                max_value = original.value # then make the max the original value (since it's greater)
+            original = original.next # set the next 
+        return max_value # return the greatest value
+
+        # current_node = self.head # declare a starting point
+        # while current_node.next is not None: # loop
+        #     current_node = current_node.next # keep going through the nodes as long as next != None
+        # return current_node.value # should be the max? because it's the last node's value (tail)

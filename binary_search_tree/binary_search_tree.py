@@ -1,3 +1,6 @@
+from stack import Stack
+from linked_queue import Queue
+
 """
 Binary search trees are a data structure that enforce an ordering over 
 the data they store. That ordering in turn makes it a lot more efficient 
@@ -73,33 +76,59 @@ class BSTNode:
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
+    # def bft_print(self, node):
+    #     if node is None:
+    #         return
+    #     queue = list()
+    #     queue.append(node)
+    #     while len(queue) > 0:
+    #         print(queue[0].value)
+    #         current = queue.pop(0)
+    #         if current.left:
+    #             queue.append(current.left)
+    #         if current.right:
+    #             queue.append(current.right)
+
     def bft_print(self, node):
         if node is None:
             return
-        queue = list()
-        queue.append(node)
-        while len(queue) > 0:
-            print(queue[0].value)
-            current = queue.pop(0)
-            if current.left:
-                queue.append(current.left)
-            if current.right:
-                queue.append(current.right)
+        queue = Queue()
+        queue.enqueue(node)
+        while queue.__len__() > 0:
+            node = queue.dequeue()
+            print(node.value)
+            if node.left:
+                queue.enqueue(node.left)
+            if node.right:
+                queue.enqueue(node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
+    # def dft_print(self, node):
+    #     if node is None:
+    #         return
+    #     stack = list()
+    #     stack.append(node)
+    #     while len(stack) > 0:
+    #         print(stack[-1].value)
+    #         current = stack.pop()
+    #         if current.left:
+    #             stack.append(current.left)
+    #         if current.right:
+    #             stack.append(current.right)
+    
     def dft_print(self, node):
         if node is None:
             return
-        stack = list()
-        stack.append(node)
-        while len(stack) > 0:
-            print(stack[-1].value)
-            current = stack.pop()
-            if current.left:
-                stack.append(current.left)
-            if current.right:
-                stack.append(current.right)
+        stack = Stack()
+        stack.push(node)
+        while stack.__len__() > 0:
+            node = stack.pop()
+            print(node.value)
+            if node.left:
+                stack.push(node.left)
+            if node.right:
+                stack.push(node.right)
 
     # Stretch Goals -------------------------
     # Note: Research may be required
@@ -126,5 +155,5 @@ print(x)
 x = bst.contains(8)
 print(x)
 # bst.in_order_print(bst)
-# bst.bft_print(bst)
-bst.dft_print(bst)
+bst.bft_print(bst)
+# bst.dft_print(bst)

@@ -76,15 +76,17 @@ class BSTNode:
     # in an iterative breadth first traversal
     def bft_print(self, node):
         q = [node]
-
-        while len(q) > 0:
-            for thing in q:
-                print(thing.value)
-                q.remove(thing)
-                if thing.left:
-                    q.append(thing.left)
-                if thing.right:
-                    q.append(thing.right)
+        done = False
+        while not done:
+            # print("---------")
+            val = q[0]
+            print(val.value)
+            q.remove(val)
+            if val.left:
+                q.append(val.left)
+            if val.right:
+                q.append(val.right)
+            done = True if len(q) == 0 else False
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal

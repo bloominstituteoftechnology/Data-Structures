@@ -9,6 +9,11 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+import sys
+from queue import Queue
+from stack import Stack
+
+
 class BSTNode:
     def __init__(self, value):
         self.value = value
@@ -85,42 +90,101 @@ class BSTNode:
             # return None
             return None
             # iterative approach
-            # while there ia right child
+            # while there is right child
         while self.right:
             # move to the child
             self = self.right
             # return a self.value once there is no right child
-            return self.value
+            # when return is inside the loop then it stops the loop to the first node 
+            # and the operation stops.
+            # when return is outside of the loop then loop continue the operation further down to the right side of the node
+            # until it reaches the end.
+        return self.value
        
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
         # callback the function on the self.value
+        # cb function is a function passed into another function as an argument
+        # which is then invoked inside the outer function to complete some kind of action
         fn(self.value)
         # check if it is true and use for_each to make recursive call in the self.left side 
         if self.left:
             self.left.for_each(fn)
         # check if it is true and use for_each to make a recursive call in the self.right side
         if self.right is True:
-            self.right.for_each(fn)
+            return self.right.for_each(fn)
 
     # Part 2 -----------------------
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        # base case
+        # if our node does not exist
+        if not self:
+             # return None
+             return None
+      
+        # left case
+        # if left exists
+        if self.left:
+             # call in order print on self.left
+             self.left.in_order_print(self.left)
+        
+        # print the node value
+        print(self.value)
+
+        # right case
+        # if right exists
+        if self.right:
+             # call in order print on self.right
+             self.right.in_order_print(self.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+        # instantiate a queue
+        q = Queue()
+        # enqueue our starting node (self)
+        queue.enqueue(self)
+        # while the queue has data
+        while q.len() > 0:
+            # dequeue the current node
+            current_node = queue.dequeue()
+            # print the nodes value
+            print(current_node.value)
+            # check if a left child exists
+            if current_node.left:
+                # enqueue left child
+                queue.enqueue(current_node.left)
+            # check if right child exists
+            if current_node.right:
+                # enqueue right child
+                queue.enqueue(current_node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
-
+        # instantiate a stack
+        s = Stack()
+        # push our starting node (self)
+        s.push(node)
+        # while the stack has data
+        while stack.len() > 0:
+            # pop the current node
+            current_node = s.pop()
+            # print the nodes value
+            print(current_node.value)
+            # check if a left child exists
+            if current_node.left:
+                # push left child
+                s.push(current_node.left)
+            # check if right child exists
+            if current_node.right:
+                # push right child
+                s.push(current_node.right)
+  
     # Stretch Goals -------------------------
     # Note: Research may be required
 

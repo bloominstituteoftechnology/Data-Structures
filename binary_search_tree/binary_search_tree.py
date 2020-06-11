@@ -22,7 +22,7 @@ class BSTNode:
         # check if our value is less than root value
         if value < self.value:
             # move to the left and check if it is None
-            if self.left is None:
+            if not self.left:
                 # insert node here set the self.left to the new node
                self.left = BSTNode(value)
             # otherwise
@@ -56,26 +56,26 @@ class BSTNode:
         # check if our target is less than the root val (self.value)
         elif target < self.value:
             # check if there is no child to the left (self.left) is None
-            if self.left is None:
+            if not self.left :
                 # return False
                 return False
             # otherwise
             else:
                 # call contains on the left child (self.left)
-                self.left.contains(target)
+                return self.left.contains(target)
         
         # right case
         # otherwise
         else:
             # check if there is no child to the right (self.right) is None
-            if self.right is None:
+            if not self.right:
                 # return False
                 return False
             # otherwise
             else:
                 # call contains on the right child (self.right)
-                self.right.contains(target)
-        pass
+                return self.right.contains(target)
+
 
     # Return the maximum value found in the tree
     def get_max(self):

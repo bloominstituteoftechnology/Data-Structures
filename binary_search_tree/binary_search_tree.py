@@ -105,13 +105,13 @@ class BSTNode:
         if node is None:
             return
         print(node.value)
-        self.dft_print(node.left)
-        self.dft_print(node.right)
+        self.pre_order_dft(node.left)
+        self.pre_order_dft(node.right)
 
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
         if node is None:
             return
-        self.dft_print(node.left)
-        self.dft_print(node.right)
+        self.post_order_dft(node.left)
+        self.post_order_dft(node.right)
         print(node.value)

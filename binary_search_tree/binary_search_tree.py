@@ -1,3 +1,5 @@
+from stack import Stack
+
 """
 Binary search trees are a data structure that enforce an ordering over 
 the data they store. That ordering in turn makes it a lot more efficient 
@@ -73,22 +75,29 @@ class BSTNode:
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        print(node.value)
+        # do not use recursion, use a queue
+        # start queue wit root node
 
-        # 1, 8, 5, 3
+        # while loop that checks size of queue
+            # pointer variable that updates at the beginning of each loop
 
-        # if node.left is None and node.right is None:
-        #     return
-        # elif node.left is not None and node.right is None:
-        #     self.bft_print(node.left)
-        # elif node.left is None and node.right is not None:
-        #     self.bft_print(node.right)
+        
 
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+        stack = Stack() # use a stack
+        stack.push(node) # start your stack with your root node
+        while len(stack) > 0: # while loop that checks stack size
+            if node is None: # check to see if empty
+                return # get outta here
+            node = stack.pop # LIFO
+            print(node.value) # print the current node's value
+            if node.left: # pointer variable that updates at the beginning of each loop
+                stack.push(node.left) # push it on the stack, go through the loop again
+            if node.right: # pointer variable that updates at the beginning of each loop
+                stack.push(node.right) # push it on the stack, go through the loop again
 
     # Stretch Goals -------------------------
     # Note: Research may be required

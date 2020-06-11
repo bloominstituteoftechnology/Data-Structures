@@ -75,7 +75,8 @@ class BSTNode:
     # Print the value of every node, starting with the given node,
     # in an iterative **breadth** first traversal
     # use queue, 
-    # alternatively: can also implement with python's 'deque' collection
+    # can implement with python's 'deque' collection
+    # https://docs.python.org/2/library/collections.html#collections.deque
 
     def bft_print(self, node):
         queue = deque()
@@ -114,12 +115,22 @@ class BSTNode:
     # Note: Research may be required
     # same function calls just printing in different order
     
-    # Print Pre-order recursive DFT
+    ### still getting error on line 100 in test (?!)
+
+    # Print **Pre**-order recursive DFT
     # root > left > right 
     def pre_order_dft(self, node):
-        pass
+        print(node.value)
+        if node.left:
+            self.left.in_order_print(node.left)
+        if node.right:
+            self.right.in_order_print(node.right)
 
-    # Print Post-order recursive DFT
+    # Print **Post**-order recursive DFT
     # left > right > root
     def post_order_dft(self, node):
-        pass
+        if node.left:
+            self.left.in_order_print(node.left)
+        if node.right:
+            self.right.in_order_print(node.right)
+        print(node.value)

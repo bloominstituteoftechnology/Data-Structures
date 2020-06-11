@@ -56,19 +56,25 @@ class AVLTree:
             if self.node.right:
                 self.node.right.update_height()
                 right_height = self.node.right.height
-                
+               
             self.height = max(left_height, right_height) + 1
-
+        
+        self.update_balance()
 
     """
     Updates the balance factor on the AVLTree class
     """
     def update_balance(self):
-        self.balance = self.node.left.height - self.node.right.height
-        if self.node.left:
-            self.node.left.update_balance()
-        if self.node.right:
-            self.node.right.update_balance()
+        if not self.node:
+            self.balance = 0
+            return
+
+        left_height = self.node.left.height if self.node.left else -1
+        right_height = self.node.right.height if self.node.right else -1
+
+        self.balance = left_height - right_height
+
+        print(f"Balance of node with value {self.node.key} is {self.balance}")
 
     """
     Perform a left rotation, making the right child of this
@@ -76,10 +82,15 @@ class AVLTree:
     of the new parent. 
     """
     def left_rotate(self):
-        parent_node = self.node
-        self.node = self.node.right.node
-        parent_node.right.node = self.node.left.node
-        self.node.left.node = parent_node
+        parent_node = self.node # grab reference to parent node
+        self.node = self.node.right.node # make self node the right node (should exist since we are rotating left)
+
+        if self.node.left: # if self has a left child
+            parent_node.right.node = self.node.left.node # move self's left child to parent's right
+            self.node.left.node = parent_node # set self's left node to the parent node
+        else:
+            parent_node.right = None
+            self.node.left = AVLTree(parent_node) # otherwise make new AVL tree with the parent node 
 
     """
     Perform a right rotation, making the left child of this
@@ -89,8 +100,13 @@ class AVLTree:
     def right_rotate(self):
         parent_node = self.node
         self.node = self.node.left.node
-        parent_node.left.node = self.node.right.node
-        self.node.right.node = parent_node
+
+        if self.node.right:
+            parent_node.left.node = self.node.right.node
+            self.node.right.node = parent_node
+        else:
+            parent_node.right = None
+            self.node.right = AVLTree(parent_node) 
 
     """
     Sets in motion the rebalancing logic to ensure the
@@ -98,7 +114,25 @@ class AVLTree:
     1 or -1
     """
     def rebalance(self):
-        pass
+        self.update_height()
+
+        if self.balance > 1: # left heavy
+            print("Left heavy")
+            if self.node.left.balance < 0: # left child is right heavy
+                self.node.left.left_rotate()
+                print("Rotating left child to the left")
+            self.right_rotate()
+            print("Rotating right")
+            self.update_height()
+
+        elif self.balance < -1: # right heavy
+            print("Right heavy")
+            if self.node.right.balance > 0: # right child is left heavy
+                print("Rotating right child to the right")
+                self.node.right.right_rotate()
+            self.left_rotate()
+            print("Rotating left")
+            self.update_height()
         
     """
     Uses the same insertion logic as a binary search tree
@@ -106,4 +140,26 @@ class AVLTree:
     if we need to rebalance
     """
     def insert(self, key):
-        pass
+        # Decide where to put the key by drilling down recursively
+        # If key is less than self.node.key
+        # If self.left is None, self.left = new node with key
+        # Otherwise insert with self.left
+        # Do same for right side if equal or greater
+        # Then we need to balance. This will be called as we go up the tree on each level.
+
+        if not self.node:
+            self.node = Node(key)
+
+        elif key < self.node.key:
+            if self.node.left:
+                self.node.left.insert(key)
+            else:
+                self.node.left = AVLTree(Node(key))
+        
+        else:
+            if self.node.right:
+                self.node.right.insert(key)
+            else:
+                self.node.right = AVLTree(Node(key))
+        
+        self.rebalance()

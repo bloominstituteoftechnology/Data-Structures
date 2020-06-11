@@ -1,8 +1,8 @@
 import sys
 sys.path.append('./stack')
 from stack import Stack
-sys.path.append('./my_queue')
-from my_queue import Queue
+sys.path.append('./my_queue') # change name of file to my_queue because Python 3 already has a queue module
+from my_queue import Queue # Python finds that queue.py file before it finds your queue.py
 
 """
 Binary search trees are a data structure that enforce an ordering over 
@@ -68,20 +68,20 @@ class BSTNode:
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
-    def in_order_print(self, node):
-        if node.left is not None:
-            self.in_order_print(node.left)
-        print(node.value)
-        if node.right is not None:
-            self.in_order_print(node.right)
-        return
+    def in_order_print(self, node): # think, most left is next in line
+        if node.left is not None: # if left has a value
+            self.in_order_print(node.left) # do recursion on this left node
+        print(node.value) # once done recursing, print the value...proceed to the right side
+        if node.right is not None: # if right has a value
+            self.in_order_print(node.right) # do recursion on this right node
+        return # ya done
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
         queue = Queue() # do not use recursion, use a queue
         queue.enqueue(node) # start queue with root node
-        while queue.len > 0: # while loop that checks size of queue
+        while len(queue) > 0: # while loop that checks size of queue
             node = queue.dequeue() # FIFO
             print(node.value) # print the current node's value
             if node.left is not None: # pointer variable that updates at the beginning of each loop
@@ -97,11 +97,11 @@ class BSTNode:
         while len(stack) > 0: # while loop that checks stack size
             if node is None: # check to see if empty
                 return # get outta here
-            node = stack.pop # LIFO
+            node = stack.pop() # LIFO
             print(node.value) # print the current node's value
-            if node.left: # pointer variable that updates at the beginning of each loop
+            if node.left is not None: # pointer variable that updates at the beginning of each loop
                 stack.push(node.left) # push it on the stack, go through the loop again
-            if node.right: # pointer variable that updates at the beginning of each loop
+            if node.right is not None: # pointer variable that updates at the beginning of each loop
                 stack.push(node.right) # push it on the stack, go through the loop again
 
     # Stretch Goals -------------------------

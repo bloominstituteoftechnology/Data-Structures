@@ -9,6 +9,8 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+from queue import Queue
+
 class BSTNode:
     def __init__(self, value):
         self.value = value
@@ -20,7 +22,7 @@ class BSTNode:
         if self is None:
             self = BSTNode(value)
         else:
-            if value < self.value:    
+            if value < self.value:
                 if self.left:
                     self.left.insert(value)
                 else:
@@ -40,9 +42,7 @@ class BSTNode:
         # if value < self.value:
         #     self.left = BSTNode(value)
         # else:
-        #     self.right = BSTNode(value)
-
-                
+        #     self.right = BSTNode(value)               
 
     # Return True if the tree contains the value
     # False if it does not
@@ -61,13 +61,29 @@ class BSTNode:
                 return self.right.contains(target)
             else:
                 return False
-        
+
+        # if self.value == target:
+        #     return True
+        # if target < self.value:
+        #     if not self.left:
+        #         return False
+        #     else:
+        #         return self.left.contains(target)
+        # else:
+        #     if not self.right:
+        #         return False
+        #     else:
+        #         return self.right.contains(target)        
 
     # Return the maximum value found in the tree
     def get_max(self):        
         while self.right:
             self = self.right
         return self.value
+
+        # if not self.right:
+        #     return self.value
+        # return self.right.get_max()
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
@@ -82,7 +98,12 @@ class BSTNode:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        if node.left:
+            node.in_order_print(node.left)
+        print(node)
+        if node.right:
+            node.in_order_print(node.right)
+        print(node)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal

@@ -92,7 +92,6 @@ class BSTNode:
             # at the beginning of each loop
             current_node = queue.dequeue()
             print(current_node.value)
-
             if current_node.left:
                 queue.enqueue(current_node.left)
             if current_node.right:
@@ -106,7 +105,6 @@ class BSTNode:
         while stack.size > 0:
             current_node = stack.pop()
             print(current_node.value)
-
             if current_node.left:
                 stack.push(current_node.left)
             if current_node.right:

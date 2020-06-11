@@ -90,7 +90,7 @@ class BSTNode:
             # move to the child
             self = self.right
             # return a self.value once there is no right child
-            return self.right.get_max()
+            return self.value
        
 
     # Call the function `fn` on the value of each node

@@ -35,17 +35,22 @@ class LinkedList:
         if not self.head:
             self.head = new_node
             self.tail = new_node
-        previous_head = self.head
-        self.head = new_node
-        self.head.set_next(previous_head)
+        else:
+            previous_head = self.head
+            self.head = new_node
+            new_node.set_next(previous_head)
 
     def remove_head(self):
         if not self.head:
             return None
         if not self.head.get_next():
+            # get a reference to the head
             head = self.head
+            # delete the list's head reference
             self.head = None
+            # also make sure the tail reference doesn't refer to anything
             self.tail = None
+            # return the value
             return head.get_value()
         
         value = self.head.get_value()
@@ -55,6 +60,11 @@ class LinkedList:
     def remove_from_tail(self):
         if not self.head:
             return None
+        if self.head is self.tail:
+            node = self.head
+            self.head = None
+            self.tail = None
+            return node.get_value()
         else:
             previous = self.head
             current = self.head
@@ -62,8 +72,8 @@ class LinkedList:
                 previous = current
                 current = current.get_next()
             self.tail = previous
-            previous.set_next(None)
-            return current
+            self.tail.next_node = None
+            return current.get_value()
 
     def contains(self, value):
         if not self.head:
@@ -85,49 +95,3 @@ class LinkedList:
                 max_value = current.get_value()
             current = current.get_next()
         return max_value
-
-    def print_list(self):
-        current = self.head
-        while current:
-            print(current.value)
-            current = current.get_next()
-    
-    def reverse(self, current, previous):
-        self.tail = self.head
-        if current.get_next() is None:
-            self.head = current
-            current.next_node = previous
-            return
-        reverse_next = current.get_next()
-        current.next_node = previous
-        self.reverse(reverse_next, current)
-
-
-
-
-ll = LinkedList()
-ll.add_to_tail(1)
-ll.add_to_tail(2)
-ll.add_to_tail(3)
-ll.add_to_tail(4)
-ll.add_to_tail(5)
-ll.add_to_tail(6)
-ll.add_to_tail(5)
-ll.add_to_tail(7)
-
-
-
-ll.print_list()
-print(f"LL Head: {ll.head.value}")
-print(f"LL Tail: {ll.tail.value}")
-print("Seperator")
-ll.reverse(ll.head, None)
-ll.print_list()
-print(f"LL Head: {ll.head.value}")
-print(f"LL Tail: {ll.tail.value}")
-print("Seperator")
-ll.reverse(ll.head, None)
-ll.print_list()
-print(f"LL Head: {ll.head.value}")
-print(f"LL Tail: {ll.tail.value}")
-print("Seperator")

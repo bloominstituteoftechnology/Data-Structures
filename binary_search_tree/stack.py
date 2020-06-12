@@ -55,4 +55,4 @@ class Stack:
         else:
             top = self.storage.remove_from_tail()
             self.size -= 1
-            return top.value
+            return top

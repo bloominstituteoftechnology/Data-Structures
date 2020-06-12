@@ -53,4 +53,4 @@ class Queue:
         else:
             front = self.storage.remove_from_tail()
             self.size -= 1
-            return front.value
+            return front

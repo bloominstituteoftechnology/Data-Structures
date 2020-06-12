@@ -92,7 +92,6 @@ class BSTNode:
             # at the beginning of each loop
             current_node = queue.dequeue()
             print(current_node.value)
-
             if current_node.left:
                 queue.enqueue(current_node.left)
             if current_node.right:
@@ -106,7 +105,6 @@ class BSTNode:
         while stack.size > 0:
             current_node = stack.pop()
             print(current_node.value)
-
             if current_node.left:
                 stack.push(current_node.left)
             if current_node.right:
@@ -117,8 +115,18 @@ class BSTNode:
 
     # Print Pre-order recursive DFT
     def pre_order_dft(self, node):
-        pass
+        if node is None:
+            return
+        else:
+            print(node.value)
+            self.pre_order_dft(node.left)
+            self.pre_order_dft(node.right)
 
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
-        pass
+        if node is None:
+            return
+        else:
+            self.post_order_dft(node.left)
+            self.post_order_dft(node.right)
+            print(node.value)

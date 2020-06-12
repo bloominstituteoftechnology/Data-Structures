@@ -85,3 +85,49 @@ class LinkedList:
                 max_value = current.get_value()
             current = current.get_next()
         return max_value
+
+    def print_list(self):
+        current = self.head
+        while current:
+            print(current.value)
+            current = current.get_next()
+    
+    def reverse(self, current, previous):
+        self.tail = self.head
+        if current.get_next() is None:
+            self.head = current
+            current.next_node = previous
+            return
+        reverse_next = current.get_next()
+        current.next_node = previous
+        self.reverse(reverse_next, current)
+
+
+
+
+ll = LinkedList()
+ll.add_to_tail(1)
+ll.add_to_tail(2)
+ll.add_to_tail(3)
+ll.add_to_tail(4)
+ll.add_to_tail(5)
+ll.add_to_tail(6)
+ll.add_to_tail(5)
+ll.add_to_tail(7)
+
+
+
+ll.print_list()
+print(f"LL Head: {ll.head.value}")
+print(f"LL Tail: {ll.tail.value}")
+print("Seperator")
+ll.reverse(ll.head, None)
+ll.print_list()
+print(f"LL Head: {ll.head.value}")
+print(f"LL Tail: {ll.tail.value}")
+print("Seperator")
+ll.reverse(ll.head, None)
+ll.print_list()
+print(f"LL Head: {ll.head.value}")
+print(f"LL Tail: {ll.tail.value}")
+print("Seperator")

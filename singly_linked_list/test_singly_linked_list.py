@@ -1,9 +1,9 @@
 import unittest
-from singly_linked_list import LinkedList
+from singly_linked_list import singleLinkedList
 
 class LinkedListTests(unittest.TestCase):
     def setUp(self):
-        self.list = LinkedList()
+        self.list = singleLinkedList()
 
     def test_add_to_tail(self):
         self.list.add_to_tail(1)

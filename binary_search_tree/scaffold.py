@@ -1,5 +1,167 @@
-"""Each ListNode holds a reference to its previous node
-as well as its next node in the List."""
+#> Check <PASS>
+
+"""
+A queue is a data structure whose primary purpose is to store and
+return elements in First In First Out order. 
+
+1. Implement the Queue class using an array as the underlying storage structure.
+   Make sure the Queue tests pass.
+2. Re-implement the Queue class, this time using the linked list implementation
+   as the underlying storage structure.
+   Make sure the Queue tests pass.
+3. What is the difference between using an array vs. a linked list when 
+   implementing a Queue?
+   
+Stretch: What if you could only use instances of your Stack class to implement the Queue?
+         What would that look like? How many Stacks would you need? Try it!
+"""
+# from sys import path
+# path.append("../")
+
+class Queue:                                                               #<<<
+    def __init__(self):
+        self._stack = 0
+        self._storage = singleLinkedList()
+    
+    def __len__(self):
+        return self._stack
+
+    def enqueue(self, value):
+        self._storage.add_to_tail(value)
+        self._stack += 1
+
+    def dequeue(self):
+        if self.__len__() > 0:
+            self._stack -= 1
+            return self._storage.remove_head()
+        if self.__len__() <= 0:
+            return
+
+
+class Stack():                                                             #<<<
+    def __init__(self):
+        self._stack = 0
+        self._size = singleLinkedList()
+
+    def __len__(self):
+        return self._stack
+
+    def push(self, value):
+        self._size.add_to_tail(value)
+        self._stack += 1
+
+    def pop(self):
+        if self.__len__() < 1:
+            return None
+        else:
+            self._stack -= 1
+            return self._size.remove_tail()
+
+
+class Node():                                                              #<<<
+    def __init__(self, value, next=None):
+        self._value = value
+        self._next_node = next
+    
+    def get_value(self):
+        return self._value
+
+    def get_next(self):
+        return self._next_node
+
+    def set_next(self, new_next):
+        self._next_node = new_next
+
+    @property
+    def value(self):
+        return self._value
+    @property
+    def next_node(self):
+        return self._next_node
+
+    @value.setter
+    def value(self, x):
+        self._head = x
+    @next_node.setter
+    def next_node(self, x):
+        self._next_node = x
+
+
+class singleLinkedList():                                                  #<<<
+    def __init__(self):
+        self._head = None
+        self._tail = None
+
+    @property
+    def head(self):
+        return self._head
+    @property
+    def tail(self):
+        return self._tail
+
+    @head.setter
+    def value(self, x):
+        self._head = x
+    @tail.setter
+    def left(self, x):
+        self._tail = x
+
+    def add_to_tail(self, data):
+        new_node = Node(data)
+        if not self._head and not self._tail:
+            self._head = new_node
+            self._tail = new_node
+        else:
+            self._tail.set_next(new_node)
+            self._tail = new_node
+
+    def remove_tail(self):
+        if self._tail is None:
+            return None
+        data = self._tail.get_value()
+        if self._head is self._tail:
+            self._head = None
+            self._tail = None
+        else:
+            current = self._head
+            while current.get_next() != self._tail:
+                current = current.get_next()
+            self._tail = current
+        return data
+
+    def remove_head(self):
+        if self._head is None:
+            return None
+        data = self._head.get_value()
+        if self._head is self._tail:
+            self._head = None
+            self._tail = None
+        else:
+            self._head = self._head.get_next()
+        return data
+
+    def contains(self, data):
+        if not self._head:
+            return False
+        current = self._head 
+        while current is not None:
+            if current.get_value() == data:
+                return True
+            current = current.get_next()
+        return False
+
+    def get_max(self):
+        if self._head is None:
+            return None
+        max_so_far = self._head.get_value()
+        current = self._head.get_next()
+        while current is not None:
+            if current.get_value() > max_so_far:
+                max_so_far = current.get_value()
+            current = current.get_next()
+        return max_so_far
+
+
 class ListNode:                                                            #<<<
     def __init__(self, value, prev=None, next=None):
         self._value = value
@@ -178,5 +340,10 @@ class doubleLinkedList:                                                    #<<<
         return max_value
 
 
-if __name__ == "__main__": #>>> <PASS>
+if __name__ == "__main__":
     pass
+
+# import pkgutil
+# search_path = ['.'] # set to None to see all modules importable from sys.path
+# all_modules = [x[1] for x in pkgutil.iter_modules(path=search_path)]
+# print(all_modules)

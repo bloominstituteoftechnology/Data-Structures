@@ -1,4 +1,6 @@
-class LRUCache:
+import collections
+
+class LRUCache:                                                            #<<<
     """
     Our LRUCache class keeps track of the max number of nodes it
     can hold, the current number of nodes it is holding, a doubly-
@@ -7,7 +9,29 @@ class LRUCache:
     to every node stored in the cache.
     """
     def __init__(self, limit=10):
-        pass
+        self._limit = limit
+        self._size = 0
+        self._cache = collections.OrderedDict()
+
+    @property
+    def limit(self):
+        return self._limit
+    @property
+    def size(self):
+        return self._size
+    @property
+    def storage(self):
+        return self._storage
+
+    @limit.setter
+    def limit(self, x):
+        self._limit = x
+    @size.setter
+    def size(self, x):
+        self._size = x
+    @storage.setter
+    def storage(self, x):
+        self._storage = x
 
     """
     Retrieves the value associated with the given key. Also
@@ -17,7 +41,12 @@ class LRUCache:
     key-value pair doesn't exist in the cache.
     """
     def get(self, key):
-        pass
+        try:
+            value = self._cache.pop(key)
+            self._cache[key] = value
+            return value
+        except KeyError:
+            return None
 
     """
     Adds the given key-value pair to the cache. The newly-
@@ -30,4 +59,13 @@ class LRUCache:
     the newly-specified value.
     """
     def set(self, key, value):
-        pass
+        try:
+            self._cache.pop(key)
+        except KeyError:
+            if len(self._cache) >= self._limit:
+                self._cache.popitem(last=False)
+        self._cache[key] = value
+
+
+if __name__ == "__main__": #>>> <PASS>
+    pass

@@ -1,3 +1,5 @@
+#>>> Check <PASS>
+
 """
 A queue is a data structure whose primary purpose is to store and
 return elements in First In First Out order. 
@@ -13,16 +15,35 @@ return elements in First In First Out order.
 Stretch: What if you could only use instances of your Stack class to implement the Queue?
          What would that look like? How many Stacks would you need? Try it!
 """
-class Queue:
+from sys import path
+path.append("../")
+from singly_linked_list.singly_linked_list import singleLinkedList
+
+
+class Queue:                                                               #<<<
     def __init__(self):
-        self.size = 0
-        # self.storage = ?
+        self._stack = 0
+        self._storage = singleLinkedList()
     
     def __len__(self):
-        pass
+        return self._stack
 
     def enqueue(self, value):
-        pass
+        self._storage.add_to_tail(value)
+        self._stack += 1
 
     def dequeue(self):
-        pass
+        if self.__len__() > 0:
+            self._stack -= 1
+            return self._storage.remove_head()
+        if self.__len__() <= 0:
+            return
+
+
+if __name__ == "__main__":
+    pass
+
+# import pkgutil
+# search_path = ['.'] # set to None to see all modules importable from sys.path
+# all_modules = [x[1] for x in pkgutil.iter_modules(path=search_path)]
+# print(all_modules)

@@ -1,9 +1,11 @@
+#> Check TODO
+
 class Heap:
     def __init__(self):
         self.storage = []
 
     def insert(self, value):
-        pass
+            
 
     def delete(self):
         pass
@@ -19,3 +21,7 @@ class Heap:
 
     def _sift_down(self, index):
         pass
+
+
+if __name__ == "__main__":
+    pass

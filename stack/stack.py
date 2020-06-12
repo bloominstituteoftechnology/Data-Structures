@@ -13,13 +13,12 @@ return elements in Last In First Out order.
 from sys import path
 path.append("../")
 from singly_linked_list.singly_linked_list import singleLinkedList
-from doubly_linked_list.doubly_linked_list import doubleLinkedList
 
 
-class Stack:
+class Stack():                                                             #<<<
     def __init__(self):
         self._stack = 0
-        self._size = LinkedList()
+        self._size = singleLinkedList()
 
     def __len__(self):
         return self._stack
@@ -36,13 +35,10 @@ class Stack:
             return self._size.remove_tail()
 
 
-if __name__ == "__main__":
+if __name__ == "__main__": #>>> <PASS>
     pass
 
 # import pkgutil
 # search_path = ['../singly_linked_list'] # set to None to see all modules importable from sys.path
 # all_modules = [x[1] for x in pkgutil.iter_modules(path=search_path)]
 # print(all_modules)
-
-# Ran 4 tests in 0.000s
-# OK

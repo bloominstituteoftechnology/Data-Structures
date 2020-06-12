@@ -68,14 +68,12 @@ class BSTNode:
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
         if self.left:
-            self.in_order_print(self.left)
-        
-        return self.value 
+            self.left.in_order_print(None) # I don't understand why this parameter is here. 
+
+        print(self.value) 
 
         if self.right: 
-            self.in_order_print(self.right)
-
-        return self.value
+            self.right.in_order_print(None)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal

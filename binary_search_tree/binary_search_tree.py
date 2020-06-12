@@ -78,12 +78,26 @@ class BSTNode:
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+        print(self.value)
+
+        if self.left:
+            self.left.bft_print(None)
+
+        if self.right:
+            self.right.bft_print(None)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+        # output == "1\n8\n5\n3\n2\n4\n7\n6\n"
+
+        print(self.value)
+
+        if self.left:
+            self.left.dft_print(None) # I don't understand why this parameter is here. 
+
+        if self.right: 
+            self.right.dft_print(None)
 
     # Stretch Goals -------------------------
     # Note: Research may be required

@@ -23,3 +23,4 @@ class Stack:
 
     def pop(self):
         pass
+

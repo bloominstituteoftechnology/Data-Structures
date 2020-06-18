@@ -30,6 +30,6 @@ class Stack:
         if self.size == 0:
             return 
         else:
-             self.size =-1
+             self.size -=1
              return self.storage.remove_head()
             

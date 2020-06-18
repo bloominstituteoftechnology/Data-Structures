@@ -93,16 +93,16 @@ class LinkedList:
             self.tail = prev_node
 
 
-# mylist = LinkedList()
-# mylist.add_to_head(1)
-# mylist.add_to_head(7)
-# mylist.add_to_head(3)
-# mylist.add_to_head(4)
-# mylist.add_to_head(99)
-# # mylist.add_to_tail(2)
-# mylist.delete_last_node()
-# mylist.delete_last_node()
-# print(mylist.head.value, mylist.tail.value)
+mylist = LinkedList()
+mylist.add_to_head(1)
+mylist.add_to_head(7)
+mylist.add_to_head(3)
+mylist.add_to_head(4)
+mylist.add_to_head(99)
+# mylist.add_to_tail(2)
+mylist.delete_last_node()
+mylist.delete_last_node()
+print(mylist.head.value, mylist.tail.value)
 """
 A stack is a data structure whose primary purpose is to store and
 return elements in Last In First Out order.

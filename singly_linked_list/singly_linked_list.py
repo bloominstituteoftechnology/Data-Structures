@@ -31,11 +31,11 @@ class LinkedList:
         return None
 
     if not self.head.get_next():
-        head = self.head
-        self.head = None
-        self.tail = None
+      head = self.head
+      self.head = None
+      self.tail = None
 
-        return head.get_value()
+      return head.get_value()
 
     value = self.head.get_value()
     self.head = self.head.get_next()
@@ -57,6 +57,7 @@ class LinkedList:
 
     value = self.tail.get_value()
     self.tail = current
+    self.tail.set_next(None)
     return value
 
   def contains(self, value):

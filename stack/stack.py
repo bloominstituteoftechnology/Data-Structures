@@ -44,7 +44,7 @@ class Stack:
         # If the list is empty, set the head node and it's .next value to be the value
         if self.head is None:
             self.head = new_node
-            self.head.next = new_node
+            # self.head.next = new_node
             self.tail = new_node
         # Otherwise, if there are nodes, change the current tail's .next value from None to the value
         else:

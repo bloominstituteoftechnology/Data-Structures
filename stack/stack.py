@@ -10,6 +10,17 @@ class LinkedList:
         self.head = None  # Stores a node, that corresponds to our first node in the list
         self.tail = None  # stores a node that is the end of the list
 
+    def __str__(self):
+        output = ''
+        current_node = self.head  # create a tracker node variable
+        while current_node is not None:  # loop until its NONE
+
+            output += f'{current_node.value} -> '
+
+            # update the tracker node to the next node
+            current_node = current_node.next_node
+        return output
+
     def add_to_head(self, value):
         # create a node to add
         new_node = Node(value)
@@ -69,40 +80,43 @@ class LinkedList:
 
     def get_list_size(self):
         acc = 0
-        current_node = self.head
-        while current_node is not None:
+        current_item = self.head
+        # print('CURR INIT:', current_item.value)
+        if not current_item:
+            return acc
+
+        while current_item is not None:
             acc += 1
-            current_node = current_node.next_node
-        return acc
+            current_count = acc
+            current_item = current_item.next_node
+        return current_count
 
-    def delete_last_node(self):
-        last_node = self.head
+    # def delete_last_node(self):
 
-        while last_node.next_node is not None:
-            prev_node = last_node
-            # print('prev node:', prev_node.value)
-            last_node = last_node.next_node
-            # print('last node:', last_node.value)
+    #     last_node = self.head
 
-        if self.head.next_node is None:
-            self.head.next_node = None
-            self.tail = None
-            self.head = None
-        elif self.head.next_node is not None:
-            prev_node.next_node = None
-            self.tail = prev_node
+    #     while last_node.next_node is not None:
+    #         head_value = self.head
+    #         tail_value = self.tail
+    #         prev_node = last_node
+    #         # print('prev node:', prev_node.value)
+    #         last_node = last_node.next_node
+    #         # print('last node:', last_node.value)
+
+    #     if self.head.next_node is not None:
+    #         prev_node.next_node = None
+    #         self.tail = prev_node
+    #         # print('END RESULT:', head_value.value, tail_value.value)
+    #     elif not self.head.next_node:
+    #         head_value = None
+    #         tail_value = None
+    #         self.head = None
+    #         self.tail = None
+    #         # print('END RESULT:', head_value.value, tail_value.value)
+    #         return head_value and tail_value
 
 
-mylist = LinkedList()
-mylist.add_to_head(1)
-mylist.add_to_head(7)
-mylist.add_to_head(3)
-mylist.add_to_head(4)
-mylist.add_to_head(99)
-# mylist.add_to_tail(2)
-mylist.delete_last_node()
-mylist.delete_last_node()
-print(mylist.head.value, mylist.tail.value)
+# print(mylist.head.value, mylist.tail.value)
 """
 A stack is a data structure whose primary purpose is to store and
 return elements in Last In First Out order.
@@ -146,14 +160,19 @@ class Stack:
         self.storage = LinkedList()
 
     def __len__(self):
-        return self.storage.get_list_size()
+        return self.size
 
     def push(self, value):
-        return self.storage.add_to_tail(value)
+        self.size += 1
+        self.storage.add_to_head(value)
 
     def pop(self):
-        if self.storage.get_list_size() > 0:
-            return self.storage.delete_last_node()
+        # check if empty
+        if self.size == 0:
+            return None
+        # remove the first element in storage
+        self.size -= 1
+        node = self.storage.remove_head()
+        return node
 
-
-# _______________________________________________________________
+        # _______________________________________________________________

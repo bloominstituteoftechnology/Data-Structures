@@ -3,13 +3,16 @@ Answer the following questions for each of the data structures you implemented a
 ## Stack
 
 1. What is the runtime complexity of `push` using a list?
+    /* `O(1)` It is because we are performing a single operation. Also, nothing has to be shifted, we only change pointers to the new tail. */
 
 2. What is the runtime complexity of `push` using a linked list?
-
+    /* `O(1)` It is because we are performing a single operation. Also, we only change pointers to the new head when we link */
 3. What is the runtime complexity of `pop` using a list?
+    /* `O(1)` It is because we are performing a single operation while calling the `size` variable in order to track the length as the list grows */
+
 
 4. What is the runtime complexity of `pop` using a linked list?
-
+    /*
 5. What is the runtime complexity of `len` using a list?
 
 6. What is the runtime complexity of `len` using a linked list?

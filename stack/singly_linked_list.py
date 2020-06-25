@@ -10,13 +10,14 @@ class LinkedList:
     def __init__(self, head: Optional[Node] = None, tail: Optional[Node] = None):
         self.head = head
         self.tail = tail
-    
+
     def insert_at_head(self, value):
         node = Node(value)
         node.next = self.head
         self.head = node
         if self.tail is None:
             self.tail = node
+
 
     def add_to_tail(self, value):
         node = Node(value)
@@ -46,6 +47,7 @@ class LinkedList:
             return
         else :
             value = self.head.value
+
             if self.tail == self.head:
                 self.tail = None
             self.head = self.head.next

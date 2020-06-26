@@ -2,21 +2,28 @@ class Node:
     def __init__(self, value=None, next_node=None):
         self.value = value
         self.next_node = next_node
+    
+    def get_value(self):
+        return self.value
+
+    def get_next_node(self):
+        return self.next_node
+
+    def set_next_node(self, next_node):
+        self.next_node = next_node
 
 class LinkedList:
-    def __init__(self):
+    def __init__(self, value=None):
         self.head = None
-        self.tail = None
+        self.tail = Node(value)
 
     def add_to_tail(self, value):
         new_node = Node(value)
+        new_node.set_next_node(self.tail)
+        self.tail = new_node
 
-        if self.head is None and self.tail is None:
-            self.head = new_node
-            self.head = new_node
-        else:
-            self.tail.next_node = new_node
-            self.tail = new_node
+    def get_tail(self):
+        return self.tail
     
     def contains(self, value):
         if self.head is None:
@@ -45,13 +52,24 @@ class LinkedList:
         self.head = self.head.next_node
         return head_value
 
+    def stringify_list(self):
+        string_list = ""
+        current_node = self.get_tail()
+        while current_node:
+            if current_node.get_value() != None:
+                string_list += str(current_node.get_value()) + "\n"
+            current_node = current_node.get_next_node()
+        return string_list
 
-linked_list = LinkedList()
-
-linked_list.add_to_tail(1)
-print(linked_list.head.value)
-print(linked_list.tail.value)
+ll = LinkedList()
 
 
+ll.add_to_tail(1)
+ll.add_to_tail(2)
+ll.add_to_tail(5)
+ll.add_to_tail(10)
+
+
+print(ll.stringify_list())
 
 

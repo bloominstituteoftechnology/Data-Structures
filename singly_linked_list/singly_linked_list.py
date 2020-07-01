@@ -16,10 +16,6 @@ class Node:
         self.next = updated_next
 
 
-# node = Node(1)
-# node.set_next(Node(2))
-# node.get_next().set_next(Node(3))
-
 class LinkedList:
     def __init__(self):
         self.head = None
@@ -27,10 +23,10 @@ class LinkedList:
 
     def len(self):
         count = 0
-        current_node = self.storage.get_head()
+        current_node = self.get_head()
         while True:
             if current_node is None:
-                return 0
+                return count
             else:
                 count += 1
                 current_node = current_node.get_next()
@@ -104,3 +100,30 @@ class LinkedList:
                 current_node = current_node.get_next()
 
         return max
+
+    def remove_tail(self):
+        if self.head is None or self.tail is None:
+            return None
+        if self.head is self.tail:
+            value = self.head.get_value()
+            self.head = None
+            self.tail = None
+            return value
+
+        else:
+            current_node = self.head
+            tail = self.get_tail()
+            while True:
+                if current_node is None:
+                    break
+                next_node = current_node.get_next()
+                if next_node is tail:
+                    print('popped off!')
+                    self.tail = current_node
+                    current_node.set_next(None)
+                    break
+                else:
+                    next_node = current_node.get_next()
+                    print(f'{current_node}, {next_node}')
+                    current_node = next_node
+        return tail.get_value()

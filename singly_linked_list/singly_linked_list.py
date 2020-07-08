@@ -19,6 +19,16 @@ class LinkedList:
             self.tail.next = node
             self.tail = node
 
+    def add_to_head(self, value):
+        node = Node(value)
+
+        if self.head is None and self.tail is None:
+            self.head = node
+            self.tail = node
+        else:
+            node.next = self.head
+            self.head = node
+
     def remove_head(self):
         if self.head is None:
             return None

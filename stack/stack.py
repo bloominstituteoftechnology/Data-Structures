@@ -9,8 +9,10 @@ return elements in Last In First Out order.
    Make sure the Stack tests pass.
 3. What is the difference between using an array vs. a linked list when 
    implementing a Stack?
+   - Inserting adding a node to the LinkedList is O(1), whereas appending to an array is O(n), though it is amortized to be O(1)
 """
 from singly_linked_list.singly_linked_list import LinkedList
+
 
 class Stack:
     def __init__(self):

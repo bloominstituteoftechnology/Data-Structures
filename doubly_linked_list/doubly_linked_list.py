@@ -145,7 +145,38 @@ class DoublyLinkedList:
     the node was the head or the tail"""
 
     def delete(self, node):
-        pass
+        # if there is nothing
+        if self.head is None and self.tail is None:
+            return None
+        # if theres is one Node and matches
+        if self.head is self.tail:
+            if self.head.get_value() == node.get_value():
+                self.head = None
+                self.tail = None
+                self.length = 0
+                return node.get_value()
+            else:
+                return f"no such node"
+        # if there is many nodes and its a first match
+        current_node = self.head
+        next_node = current_node.next
+        if current_node.get_value() == node.get_value():
+            self.head = next_node
+            next_node.prev = None
+            self.length -= 1
+        # if there is many nodes and its in a middle somewhere
+        elif current_node.get_value() != node.get_value():
+            single_node = self.head.next
+            while single_node:
+                if single_node.get_value() == node.get_value():
+                    ahead_node = single_node.next
+                    behind_node = single_node.prev
+                    ahead_node.prev = behind_node
+                    behind_node.next = ahead_node
+                    single_node.pre = None
+                    single_node.next = None
+                    self.length -= 1
+                    return single_node.get_value()
 
     """Returns the highest value currently in the list"""
 

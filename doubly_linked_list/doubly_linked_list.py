@@ -54,8 +54,8 @@ class DoublyLinkedList:
     def __len__(self):
         return self.length
 
-    """Wraps the given value in a Node and inserts it 
-    as the new head of the list. Don't forget to handle 
+    """Wraps the given value in a Node and inserts it
+    as the new head of the list. Don't forget to handle
     the old head node's previous pointer accordingly."""
 
     def add_to_head(self, value):
@@ -94,8 +94,8 @@ class DoublyLinkedList:
             self.length -= 1
             return new_head_node
 
-    """Wraps the given value in a Node and inserts it 
-    as the new tail of the list. Don't forget to handle 
+    """Wraps the given value in a Node and inserts it
+    as the new tail of the list. Don't forget to handle
     the old tail node's next pointer accordingly."""
 
     def add_to_tail(self, value):
@@ -134,12 +134,79 @@ class DoublyLinkedList:
             return new_last_node.get_value()
 
     def move_to_front(self, node):
-        pass
-    """Removes the input node from its current spot in the 
-    List and inserts it as the new tail node of the List."""
+        # if there is nothing
+        if self.head is None and self.tail is None:
+            return None
+        # only one Node
+        if self.head is self.tail:
+            return f"this node is already at the front"
+
+        # two or more nodes
+        current_node = self.head
+        next_node = current_node.next
+        while next_node:
+            # only two nodes
+            if self.length == 2 and next_node.get_value() == node.get_value():
+                next_node.next = current_node
+                next_node.prev = None
+                current_node.prev = next_node
+                current_node.next = None
+                self.head = next_node
+                return next_node.get_value()
+
+                # more than two
+            elif self.length > 2 and next_node.get_value() == node.get_value():
+                ahead_node = next_node.next
+                behind_node = next_node.prev
+                ahead_node.prev = behind_node
+                behind_node.next = ahead_node
+                next_node.next = current_node
+                current_node.prev = next_node
+                self.head = next_node
+                return next_node.get_value()
 
     def move_to_end(self, node):
-        pass
+        # if there is nothing
+        if self.head is None and self.tail is None:
+            return None
+        # only one Node
+        if self.head is self.tail and self.head.get_value() == node.get_value():
+            return f"this is the only Node"
+
+        # two or more nodes
+        current_node = self.head
+        next_node = current_node.next
+        last_node = self.tail
+
+        # two nodes (last one)
+        if last_node.get_value() == node.get_value():
+            return f"Node {node.get_value()} is already at the last position"
+
+        # two nodes (first one)
+        if self.length == 2 and current_node.get_value() == node.get_value():
+            current_node.prev = last_node
+            current_node.next = None
+            last_node.next = current_node
+            last_node.pre = None
+            self.head = last_node
+            self.tail = current_node
+
+            return current_node.get_value()
+
+        # more than two
+        while next_node:
+            if next_node.get_value() == node.get_value():
+                ahead_node = next_node.next
+                behind_node = next_node.prev
+                ahead_node.prev = behind_node
+                behind_node.next = ahead_node
+                next_node.prev = last_node
+                next_node.next = None
+                last_node.next = next_node
+                self.tail = next_node
+                return next_node.get_value()
+
+            next_node = next_node.next
 
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""

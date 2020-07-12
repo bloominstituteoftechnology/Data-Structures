@@ -1,7 +1,7 @@
 """
-Binary search trees are a data structure that enforce an ordering over 
-the data they store. That ordering in turn makes it a lot more efficient 
-at searching for a particular piece of data in the tree. 
+Binary search trees are a data structure that enforce an ordering over
+the data they store. That ordering in turn makes it a lot more efficient
+at searching for a particular piece of data in the tree.
 
 This part of the project comprises two days:
 1. Implement the methods `insert`, `contains`, `get_max`, and `for_each`
@@ -9,6 +9,8 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+
+
 class BSTNode:
     def __init__(self, value):
         self.value = value
@@ -17,14 +19,38 @@ class BSTNode:
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
+        # if the value is bigger
+        if self.value > value:
+            # empty node
+            if self.left is None:
+                self.left = BSTNode(value)
+            # we have a node there already
+            else:
+                self.left.insert(value)
+
+        # if the value is smaller
+        else:
+            if self.right is None:
+                self.right = BSTNode(value)
+            else:
+                self.right.insert(value)
 
     # Return True if the tree contains the value
     # False if it does not
+
     def contains(self, target):
-        pass
+        node = self
+        while node is not None:
+            if target > node.value:
+                node = node.right
+            elif target < node.value:
+                node = node.left
+            else:
+                return True
+        return False
 
     # Return the maximum value found in the tree
+
     def get_max(self):
         pass
 

@@ -15,22 +15,63 @@ Stretch: What if you could only use instances of your Stack class to implement t
 """
 
 
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+
 class Queue:
     def __init__(self):
+        self.head = None
+        self.last = None
         self.size = 0
-        self.storage = []
 
     def __len__(self):
         return self.size
 
-    def enqueue(self, value):
+    def enqueue(self, data):
         self.size += 1
-        self.storage.append(value)
+        if self.last is None:
+            self.head = Node(data)
+            self.last = self.head
+        else:
+            self.last.next = Node(data)
+            self.last = self.last.next
 
     def dequeue(self):
-        if self.size == 0:
+        if self.head is None:
             return None
         else:
             self.size -= 1
-            return self.storage.pop(0)
+            to_return = self.head.data
+            self.head = self.head.next
+            return to_return
+
+
+queue = Queue()
+queue.enqueue(100)
+queue.enqueue(101)
+queue.enqueue(105)
+
+print(queue.dequeue())
+print(queue.dequeue())
+# class Queue:
+#     def __init__(self):
+#         self.size = 0
+#         self.storage = []
+#
+#     def __len__(self):
+#         return self.size
+#
+#     def enqueue(self, value):
+#         self.size += 1
+#         self.storage.append(value)
+#
+#     def dequeue(self):
+#         if self.size == 0:
+#             return None
+#         else:
+#             self.size -= 1
+#             return self.storage.pop(0)
 

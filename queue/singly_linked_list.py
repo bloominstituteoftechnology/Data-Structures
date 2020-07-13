@@ -9,7 +9,7 @@ class Node:
 
     def get_next(self):
         return self.next
-        
+
     def set_next(self, new_next):
         self.next = new_next
 
@@ -24,16 +24,15 @@ class LinkedList:
         new_node = Node(value)
         # if head and tail are empty
         if self.head is None and self.tail is None:
-            # have both head and tail referring to the single node 
-            self.head = new_node
-            # set the new node to be the tail 
-            self.tail = new_node
+                # have both head and tail referring to the single node 
+                self.head = new_node
+                # set the new node to be the tail 
+                self.tail = new_node
         else:
             # These steps assume that the head is already referring
             # to a Node 
-            current = self.head
-            # 2. set the new head's next to refer to the old Node 
-            new_node.set_next(current)
+            # 2. set the old head's next to refer to the new Node 
+            self.head.set_next(new_node)
             # 3. reassign self.head to refer to the new Node 
             self.head = new_node
 
@@ -81,14 +80,13 @@ class LinkedList:
         # iterate over our linked list 
         current = self.head 
 
-        while current.get_next() and current.get_next() is not self.tail:
+        while current.get_next() is not self.tail:
             current = current.get_next()
         # at this point, `current` is the node right before the tail 
         # set the tail to be None
         val = self.tail.get_value() 
         # move self.tail to the Node right before
         self.tail = current
-        self.tail.set_next(None)
 
         return val
 
@@ -127,9 +125,7 @@ class LinkedList:
 
         return max_value
 
-    def count(self):
-        pass
-        
+
 
 if __name__ == "__main__":
     ll = LinkedList()
@@ -137,6 +133,5 @@ if __name__ == "__main__":
     # ll.add_to_tail(3)
     # ll.remove_tail()
     # print(ll)
-
-    # breakpoint()
     
+    breakpoint()

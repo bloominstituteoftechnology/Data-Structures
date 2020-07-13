@@ -94,7 +94,7 @@ class QueueWithStack:
             popped = self.stacks1.pop()
         
             # Gotta push them all back to preserve order
-            while self.stack2.size > 0:
-                self.stack1.push(self.stack2.pop())
+            while self.stacks2.size > 0:
+                self.stacks1.push(self.stacks2.pop())
             self.size += -1
             return popped

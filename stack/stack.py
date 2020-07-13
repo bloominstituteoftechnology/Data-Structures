@@ -25,7 +25,7 @@ class Stack:
         self.size += 1
 
     def pop(self):
-        if len(self.storage) == 0:
+        if self.size == 0:
             return None
         self.size -= 1
         return self.storage.pop()

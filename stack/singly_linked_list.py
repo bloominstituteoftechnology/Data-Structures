@@ -3,22 +3,22 @@ class Node:
     def __init__(self, value):
         self.value = value
         self.next = None
-        
+
     def get_value(self):
         return self.value
-​
+
     def get_next(self):
         return self.next
-​
+
     def set_next(self, new_next):
         self.next = new_next
-​
+
 class LinkedList:
     """LinkedList class"""
     def __init__(self):
         self.head = None
         self.tail = None 
-​
+
     def add_to_tail(self, value):
         # 1. create the Node from the value 
         new_node = Node(value)
@@ -35,7 +35,7 @@ class LinkedList:
             self.tail.set_next(new_node)
             # 3. reassign self.tail to refer to the new Node 
             self.tail = new_node
-​
+
     def remove_head(self):
         # if we have an empty linked list 
         if self.head is None and self.tail is None:
@@ -54,7 +54,7 @@ class LinkedList:
         self.head = self.head.get_next()
 
         return val
-​
+
     def remove_tail(self):
         # if we have an empty linked list 
         if self.head is None and self.tail is None:
@@ -62,7 +62,7 @@ class LinkedList:
         # if we have a non-empty linked list 
         # iterate over our linked list 
         current = self.head 
-​
+
         while current.get_next() is not self.tail:
             current = current.get_next()
         # at this point, `current` is the node right before the tail 
@@ -72,11 +72,11 @@ class LinkedList:
         self.tail = current
 
         return val
-​
+
     def contains(self, value):
         if not self.head:
             return False
-    
+
         # get a reference to the node we're currently at; update this as we 
         # traverse the list
         current = self.head
@@ -89,7 +89,7 @@ class LinkedList:
             current = current.get_next()
         # if we've gotten here, then the target node isn't in our list
         return False
-​
+
     def get_max(self):
         if not self.head:
             return None
@@ -107,7 +107,7 @@ class LinkedList:
             current = current.get_next()
 
         return max_value
-
+        
 
 if __name__ == "__main__":
     ll = LinkedList()
@@ -115,3 +115,4 @@ if __name__ == "__main__":
     ll.add_to_tail(3)
     ll.remove_tail()
     print(ll)
+    

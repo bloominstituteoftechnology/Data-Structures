@@ -1,3 +1,5 @@
+from singly_linked_list import Node, LinkedList
+
 # Implement the Stack and Queue classes using built-in Python lists 
 # and the Node and LinkedList classes you created during the 
 # Module 1 Guided Project.
@@ -21,50 +23,50 @@ return elements in Last In First Out order.
 # pop removes and returns the element at the top of the stack
 # len returns the number of elements in the stack.
 
-# Using built-in python lists
-class Stack:
-    """Array implementation of Stack class"""
-    def __init__(self):
-        self.size = 0
-        self.storage = []
-
-    def __len__(self):
-        return self.size
-
-    def push(self, value):
-        """Adds an item to the top of the stack"""
-        self.storage = [value] + self.storage
-        self.size = len(self.storage)
-        return self.storage
-
-    def pop(self):
-        """Removes and returns the element at the top of the stack"""
-        # if empty
-        if self.size == 0:
-            return None
-        else:
-            top = self.storage[0]
-            self.storage.remove(top)
-            self.size = len(self.storage)
-            return top
-
-
-# # Using Node and LinkedList classes
+# # Using built-in python lists
 # class Stack:
+#     """Array implementation of Stack class"""
 #     def __init__(self):
 #         self.size = 0
-#         # self.storage = ?
+#         self.storage = []
 
 #     def __len__(self):
-#         pass
+#         return self.size
 
 #     def push(self, value):
-#         pass
+#         """Adds an item to the top of the stack"""
+#         self.storage = [value] + self.storage
+#         self.size = len(self.storage)
+#         return self.storage
 
 #     def pop(self):
-#         pass
+#         """Removes and returns the element at the top of the stack"""
+#         # if empty
+#         if self.size == 0:
+#             return None
+#         else:
+#             top = self.storage[0]
+#             self.storage.remove(top)
+#             self.size = len(self.storage)
+#             return top
+
+
+# Using Node and LinkedList classes
+class Stack:
+    def __init__(self):
+        self.size = 0
+        # self.storage = ?
+
+    def __len__(self):
+        pass
+
+    def push(self, value):
+        pass
+
+    def pop(self):
+        pass
 
 if __name__ == "__main__":
     my_stack = Stack()
 
-    breakpoint()
+    # breakpoint()

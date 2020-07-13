@@ -43,14 +43,16 @@ class LinkedList:
             return head.get_value()
 
         #set the head reference to the current head's next node in the list
-        self.head = self.head.get_next()
         value = self.head.get_value()
+        self.head = self.head.get_next()
+
         return value
 
     def remove_tail(self):
         # is there a head
         if not self.tail:
             return None
+
          # if head has no next, there is a single element in the linked list 
         if self.head is self.tail:
             value = self.tail.get_value()
@@ -62,7 +64,7 @@ class LinkedList:
 
         while current.get_next() is not self.tail:
             current = current.get_next()
-
+        
         value = self.tail.get_value()
         self.tail = current
         self.tail.set_next(None)          

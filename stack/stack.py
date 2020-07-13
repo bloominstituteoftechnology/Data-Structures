@@ -53,15 +53,17 @@ return elements in Last In First Out order.
 
 # Using Node and LinkedList classes
 class Stack:
+    """Object-oriented implementation of Stack class with Node and
+    LinkedList"""
     def __init__(self):
         self.size = 0
-        # self.storage = ?
+        self.storage = LinkedList()
 
     def __len__(self):
-        pass
+        return self.size
 
     def push(self, value):
-        pass
+        self.storage
 
     def pop(self):
         pass

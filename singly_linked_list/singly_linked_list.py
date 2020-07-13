@@ -65,6 +65,11 @@ class LinkedList:
             # set the list's tail reference to the new node
             self.tail = new_node
 
+    def add_to_head(self, value):
+        new_node = Node(value, None)
+
+        if self.head
+
     def remove_head(self):
         # return None if there is no head (i.e. the list is empty)
         if not self.head:
@@ -102,6 +107,7 @@ class LinkedList:
 
         value = self.tail.get_value()
         self.tail = current
+        self.tail.set_next(None)
         return value
 
     def contains(self, value):
@@ -145,3 +151,11 @@ class LinkedList:
             # update the current node to the next node in the list
             current = current.get_next()
         return max_value
+
+    def length(self):
+        current = self.head
+        count = 0
+        while current:
+            count = count + 1
+            current = current.next_node
+        return count

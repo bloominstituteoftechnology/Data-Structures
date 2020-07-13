@@ -1,7 +1,10 @@
 class Node:
-    def __init__(self, value, next=None):
+    def __init__(self, value, next = None):
         self.value = value
         self.next = next
+
+    def get_value(self):
+        return self.value
 
 
 class LinkedList:
@@ -9,7 +12,7 @@ class LinkedList:
         self.head = head
         self.tail = tail
 
-    def add_to_tail(self, value):
+    def add_to_tail(self, value : Node):
         node = Node(value)
         if self.head is None:
             self.head = node
@@ -30,7 +33,6 @@ class LinkedList:
         return False
 
     def remove_head(self):
-
 
         if self.head is None:
             return
@@ -56,3 +58,6 @@ class LinkedList:
             node = node.next
 
         return max
+
+linked_lists = LinkedList()
+linked_lists.head = Node("Nick")

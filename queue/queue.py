@@ -28,19 +28,27 @@ class Queue:
     """Array implementation of Queue class"""
     def __init__(self):
         self.size = 0
-        # self.storage = ?
+        self.storage = []
     
     def __len__(self):
         """Returns the number of elements in the queue"""
-        pass
+        return self.size
 
     def enqueue(self, value):
         """Adds an element to the back of the queue"""
-        pass
+        self.storage.append(value)
+        self.size = len(self.storage)
 
     def dequeue(self):
         """Removes and returns the element at the front of the queue"""
-        pass
+        # if empty
+        if self.size == 0:
+            return None
+        else:
+            front = self.storage[0]
+            self.storage.remove(front)
+            self.size = len(self.storage)
+            return front
 
 
 # # OOP implementation of Queue class

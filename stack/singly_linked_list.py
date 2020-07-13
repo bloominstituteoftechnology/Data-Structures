@@ -19,6 +19,24 @@ class LinkedList:
         self.head = None
         self.tail = None 
 
+    def add_to_head(self, value):
+        # create Node from the value
+        new_node = Node(value)
+        # if head and tail are empty
+        if self.head is None and self.tail is None:
+            # have both head and tail referring to the single node 
+            self.head = new_node
+            # set the new node to be the tail 
+            self.tail = new_node
+        else:
+            # These steps assume that the head is already referring
+            # to a Node 
+            current = self.head
+            # 2. set the new head's next to refer to the old Node 
+            new_node.set_next(current)
+            # 3. reassign self.head to refer to the new Node 
+            self.head = new_node
+
     def add_to_tail(self, value):
         # 1. create the Node from the value 
         new_node = Node(value)
@@ -120,5 +138,5 @@ if __name__ == "__main__":
     # ll.remove_tail()
     # print(ll)
 
-    breakpoint()
+    # breakpoint()
     

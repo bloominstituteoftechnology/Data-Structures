@@ -60,15 +60,29 @@ class Stack:
         self.storage = LinkedList()
 
     def __len__(self):
-        return self.size
+        count = 0
+        current = self.storage.head
+        # loop through to count "heads"
+        while current:
+            current = current.get_next()
+            count += 1
+        return count
 
     def push(self, value):
-        self.storage
+        """Adds an item to the top of the stack"""
+        self.storage.add_to_head(value)
 
     def pop(self):
-        pass
+        """Removes and returns the element at the top of the stack"""
+        # if empty
+        if self.size == 0:
+            return None
+        else:
+            top = self.storage.head
+            self.storage.remove_head()
+            return top
 
 if __name__ == "__main__":
     my_stack = Stack()
 
-    # breakpoint()
+    breakpoint()

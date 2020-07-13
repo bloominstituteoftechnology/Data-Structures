@@ -99,6 +99,7 @@ class LinkedList:
             current = current.get_next()
 
         value = self.tail.get_value()
+        self.tail.set_next(None)
         self.tail = current
         return value
 

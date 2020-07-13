@@ -16,18 +16,17 @@ class Node:
         self.value = value
         # reference to the next node in the list
         self.next_node = next_node
-​
+
     def get_value(self):
         return self.value
-​
+
     def get_next(self):
         return self.next_node
-​
+
     def set_next(self, new_next):
         # set this node's next_node reference to the passed in node
         self.next_node = new_next
-​
-​
+        
 class LinkedList:
     """
     Data:
@@ -47,7 +46,7 @@ class LinkedList:
         self.head = None
         # reference to the tail of the list
         self.tail = None
-​
+
     def add_to_tail(self, value):
         # wrap the input value in a node
         new_node = Node(value, None)
@@ -62,7 +61,7 @@ class LinkedList:
             self.tail.set_next(new_node)
             # set the list's tail reference to the new node
             self.tail = new_node
-​
+
     def remove_head(self):
         # return None if there is no head (i.e. the list is empty)
         if not self.head:
@@ -82,7 +81,7 @@ class LinkedList:
         # set the head reference to the current head's next node in the list
         self.head = self.head.get_next()
         return value
-​
+
     def remove_tail(self):
         if not self.head:
             return None
@@ -94,18 +93,19 @@ class LinkedList:
             return value
         
         current = self.head
-​
+
         while current.get_next() is not self.tail:
             current = current.get_next()
-​
+
         value = self.tail.get_value()
         self.tail = current
+        self.tail.set_next(None)
         return value
-​
+
     def contains(self, value):
         if not self.head:
             return False
-​
+
         # Recursive solution
         # def search(node):
         #   if node.get_value() == value:
@@ -126,7 +126,7 @@ class LinkedList:
             current = current.get_next()
         # if we've gotten here, then the target node isn't in our list
         return False
-​
+
     def get_max(self):
         if not self.head:
             return None

@@ -95,12 +95,13 @@ class LinkedList:
             # return the value
             return value.get_value()
         # otherwise if we have more than one element in our list
-        curent = self.head
+        current = self.head
         while current.get_next() is not self.tail:
             current = current.get_next()
 
         value = self.tail.get_value()
         self.tail = current
+        self.tail.next_node = None
         return value
 
     def contains(self, value):

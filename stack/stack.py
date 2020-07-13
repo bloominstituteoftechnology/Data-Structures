@@ -23,6 +23,7 @@ return elements in Last In First Out order.
 
 # Using built-in python lists
 class Stack:
+    """Array implementation of Stack class"""
     def __init__(self):
         self.size = 0
         self.storage = []
@@ -37,10 +38,13 @@ class Stack:
 
     def pop(self):
         """Removes and returns the element at the top of the stack"""
-        top = self.storage[0]
-        self.storage.remove(top)
-        new_top = self.storage[0]
-        return new_top
+        # if empty
+        if len(self.storage) == 0:
+            return None
+        else:
+            top = self.storage[0]
+            self.storage.remove(top)
+            return top
 
 
 # # Using Node and LinkedList classes
@@ -57,3 +61,8 @@ class Stack:
 
 #     def pop(self):
 #         pass
+
+if __name__ == "__main__":
+    my_stack = Stack()
+
+    breakpoint()

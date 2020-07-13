@@ -66,11 +66,19 @@ class Stack:
         while current:
             current = current.get_next()
             count += 1
+        self.size = count
         return count
 
     def push(self, value):
         """Adds an item to the top of the stack"""
         self.storage.add_to_head(value)
+        count = 0
+        current = self.storage.head
+        # loop through to count "heads"
+        while current:
+            current = current.get_next()
+            count += 1
+        self.size = count
 
     def pop(self):
         """Removes and returns the element at the top of the stack"""
@@ -78,9 +86,17 @@ class Stack:
         if self.size == 0:
             return None
         else:
-            top = self.storage.head
+            top = self.storage.head.get_value()
             self.storage.remove_head()
             return top
+
+        count = 0
+        current = self.storage.head
+        # loop through to count "heads"
+        while current:
+            current = current.get_next()
+            count += 1
+        self.size = count
 
 if __name__ == "__main__":
     my_stack = Stack()

@@ -12,10 +12,35 @@ return elements in Last In First Out order.
 """
 from linked_list import Node, LinkedList
 # Arrays
+# class Stack:
+#     def __init__(self, ls=[]):
+#         self.size = 0
+#         self.storage = ls
+
+#     def __len__(self):
+#         if self.size <= 0:
+#             return 0
+#         else:
+#             return self.size
+
+#     def push(self, value):
+#         self.size +=1
+#         return self.storage.append(value)
+
+#     def pop(self):
+#         if self.size == 0:
+#             return None
+#         else:
+#             self.size += -1
+#             return self.storage.pop(-1)
+
+
+# Linked Lists
 class Stack:
-    def __init__(self, ls=[]):
+    def __init__(self):
         self.size = 0
-        self.storage = ls
+        self.link = LinkedList()
+        self.top = None
 
     def __len__(self):
         if self.size <= 0:
@@ -25,13 +50,14 @@ class Stack:
 
     def push(self, value):
         self.size +=1
-        return self.storage.append(value)
+        self.link.add_to_tail(value)
+        self.top = self.link.tail
 
     def pop(self):
         if self.size == 0:
             return None
         else:
+            self.top = self.link.remove_tail()
             self.size += -1
-            return self.storage.pop(-1)
-
+            return self.top
 

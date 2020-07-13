@@ -29,21 +29,23 @@ class Stack:
         self.storage = []
 
     def __len__(self):
-        return len(self.storage)
+        return self.size
 
     def push(self, value):
         """Adds an item to the top of the stack"""
         self.storage = [value] + self.storage
+        self.size = len(self.storage)
         return self.storage
 
     def pop(self):
         """Removes and returns the element at the top of the stack"""
         # if empty
-        if len(self.storage) == 0:
+        if self.size == 0:
             return None
         else:
             top = self.storage[0]
             self.storage.remove(top)
+            self.size = len(self.storage)
             return top
 
 

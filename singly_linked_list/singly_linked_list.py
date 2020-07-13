@@ -40,10 +40,10 @@ class LinkedList:
 
     def add_to_tail(self, data):
         new_node = Node(value=data)
+        current = self.head
         if self.count == 0:
             self.head = new_node
         else:
-            current = self.head
             while current.next_node is not None:
                 current = current.next_node
             current.set_next(new_node)

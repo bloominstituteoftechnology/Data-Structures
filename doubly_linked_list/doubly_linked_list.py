@@ -116,6 +116,8 @@ class DoublyLinkedList:
         Removes the input node from its current spot in the
         List and inserts it as the new head node of the List.
         """
+        # inserts it as new head node of the List
+        # self.head = node
         pass
 
     def move_to_end(self, node):
@@ -130,7 +132,32 @@ class DoublyLinkedList:
         Deletes the input node from the List, preserving the
         order of the other elements of the List.
         """
-        pass
+        input_node = node
+        prev_node = input_node.prev
+        next_node = input_node.next
+
+        if self.length == 0:
+            return None
+        elif not self.tail.prev and not self.head.next:
+            self.head = None
+            self.tail = None
+            self.length -= 1
+        else:
+            if self.head:
+                self.remove_from_head()
+            elif self.tail:
+                self.remove_from_tail()
+            else:
+                # Reset prev_node's next
+                prev_node.next = next_node
+
+                # Reset next_node's previous
+                next_node.prev = prev_node
+
+                # Remove references
+                input_node.next = None
+                input_node.prev = None
+                self.length -= 1
 
     def get_max(self):
         """
@@ -144,5 +171,11 @@ if __name__ == "__main__":
     my_node = ListNode(1)
     my_list = DoublyLinkedList(my_node)
     # my_list.remove_from_head()
+
+    my_list.delete(my_list.head)
+    my_list.add_to_tail(1)
+    my_list.add_to_head(9)
+    my_list.add_to_tail(6)
+    my_list.delete(my_list.head)
     
     breakpoint()

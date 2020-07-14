@@ -6,9 +6,9 @@ as well as its next node in the List.
 """
 class ListNode:
     def __init__(self, value, prev=None, next_=None):
-        self.prev = prev
         self.value = value
-        self.next = next_
+        self.prev = prev
+        self.next_ = next_
             
 """
 Our doubly-linked list class. It holds references to 
@@ -19,6 +19,7 @@ class DoublyLinkedList:
         self.head = node
         self.tail = node
         self.length = 1 if node is not None else 0
+
 
     def __len__(self):
         return self.length
@@ -34,6 +35,10 @@ class DoublyLinkedList:
         self.head = new_node
         self.head.prev = None
         self.length += 1
+
+        if self.__len__() == 2:
+            self.head.next_ = self.tail
+            self.tail.prev = self.head
         
     """
     Removes the List's current head node, making the
@@ -41,7 +46,9 @@ class DoublyLinkedList:
     Returns the value of the removed Node.
     """
     def remove_from_head(self):
-        pass
+        next_node = self.head.next_
+        self.length -= 1
+        return next_node.value
             
     """
     Wraps the given value in a ListNode and inserts it 
@@ -54,6 +61,10 @@ class DoublyLinkedList:
         self.tail = new_node
         self.tail.next_ = None
         self.length += 1
+
+        if self.__len__() == 2:
+            self.head.next_ = self.tail
+            self.tail.prev = self.head
             
     """
     Removes the List's current tail node, making the 
@@ -61,7 +72,7 @@ class DoublyLinkedList:
     Returns the value of the removed Node.
     """
     def remove_from_tail(self):
-        pass
+        self.length -= 1
             
     """
     Removes the input node from its current spot in the 
@@ -82,10 +93,11 @@ class DoublyLinkedList:
     order of the other elements of the List.
     """
     def delete(self, node):
-        if self.prev:
-            self.prev.next_ = self.next_
-        elif self.next_:
-            self.next_.prev = self.prev
+        # if self.prev:
+        #     self.prev.next_ = self.next_
+        # elif self.next_:
+        #     self.next_.prev = self.prev
+        pass
 
     """
     Finds and returns the maximum value of all the nodes 
@@ -96,13 +108,13 @@ class DoublyLinkedList:
 
 
 if __name__ == "__main__":
-    dll = DoublyLinkedList()
-    dll.head = ListNode(1)
+    node = ListNode(1)
+    dll = DoublyLinkedList(node)
+    dll.add_to_tail(2)
 
-    print(dll.head.value)
+    print("Length", dll.length)
 
-    dll.add_to_head(10)
-    print(dll.head.value)
-    print(dll.head.prev)
-    print(dll.head.next_.value)
+    print("Head", dll.head.value)
+    print(dll.tail.prev.value, dll.head.next_.value)
+    print("Tail", dll.tail.value)
     

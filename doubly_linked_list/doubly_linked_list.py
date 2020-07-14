@@ -118,10 +118,21 @@ class DoublyLinkedList:
             return tail_to_delete.value
 
     def move_to_front(self, node):
-        pass
+        if node == self.head:
+            return
+        else:
+            temp = node.value
+            self.delete(node)
+            self.add_to_head(temp)
 
     def move_to_end(self, node):
-        pass
+        if node == self.tail:
+            return
+        else:
+            temp = node.value
+            self.delete(node)
+            self.add_to_tail(temp)
+
 
     def delete(self, node):
         if self.head == self.tail:

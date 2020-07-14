@@ -27,7 +27,15 @@ class DoublyLinkedList:
     the old head node's previous pointer accordingly.
     """
     def add_to_head(self, value):
-        pass
+        if self.head is None:
+            new_node = ListNode(value)
+            self.head = new_node
+            print("node inserted")
+            return
+        new_node = ListNode(value)
+        new_node.next = self.head
+        self.head.prev = new_node
+        self.head = new_node
         
     """
     Removes the List's current head node, making the
@@ -35,7 +43,14 @@ class DoublyLinkedList:
     Returns the value of the removed Node.
     """
     def remove_from_head(self):
-        pass
+        if self.head is None:
+            print("The list has no element to delete")
+            return 
+        if self.head.next is None:
+            self.head = None
+            return
+        self.head = self.head.next
+        self.head.prev = None
             
     """
     Wraps the given value in a ListNode and inserts it 
@@ -43,7 +58,16 @@ class DoublyLinkedList:
     the old tail node's next pointer accordingly.
     """
     def add_to_tail(self, value):
-        pass
+        if self.head is None:
+            new_node = ListNode(value)
+            self.head = new_node
+            return
+        n = self.head
+        while n.next is not None:
+            n = n.next
+        new_node = ListNode(value)
+        n.next = new_node
+        new_node.prev = n
             
     """
     Removes the List's current tail node, making the 
@@ -51,7 +75,16 @@ class DoublyLinkedList:
     Returns the value of the removed Node.
     """
     def remove_from_tail(self):
-        pass
+        if self.head is None:
+            print("The list has no element to delete")
+            return 
+        if self.head.next is None:
+            self.head = None
+            return
+        n = self.head
+        while n.next is not None:
+            n = n.next
+        n.prev.next = None
             
     """
     Removes the input node from its current spot in the 

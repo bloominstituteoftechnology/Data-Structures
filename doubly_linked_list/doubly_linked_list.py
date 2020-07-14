@@ -11,12 +11,16 @@ class ListNode:
         self.next_ = next_
 
     def get_value(self):
-        if str(type(self)) == "<class 'NoneType'>":
-            return None
+        return self.value
 
-        else:
-            return self.value
-            
+    def get_next_(self):
+        return self.next_
+
+    def set_next_(self, new_node):
+        self.next_ = new_node      
+
+    def set_prev(self, new_node):
+        self.prev = new_node      
 """
 Our doubly-linked list class. It holds references to 
 the list's head and tail nodes.
@@ -52,6 +56,9 @@ class DoublyLinkedList:
             new_node.next_ = ListNode(None)
             self.head = new_node
             self.tail = new_node
+
+        elif self.head == self.tail:
+            self.tail.set_prev(new_node)
         
     """
     Removes the List's current head node, making the
@@ -79,7 +86,7 @@ class DoublyLinkedList:
         new_node = ListNode(value)
         new_node.prev = self.tail
         self.tail = new_node
-        self.tail.next_ = None
+        self.tail.next_ = ListNode(None)
         self.length += 1
 
         if self.__len__() == 2:
@@ -91,6 +98,9 @@ class DoublyLinkedList:
             new_node.next_ = ListNode(None)
             self.head = new_node
             self.tail = new_node
+
+        elif self.head == self.tail:
+            self.head.set_next_(new_node)
             
     """
     Removes the List's current tail node, making the 
@@ -136,15 +146,34 @@ class DoublyLinkedList:
 if __name__ == "__main__":
     node = ListNode(15)
 
-    print(type(node.value))
-    print(str(type(node.value)))
+    # print(type(node.value))
+    # print(str(type(node.value)))
 
     dll = DoublyLinkedList(None)
     dll.add_to_tail(2)
-    # dll.add_to_tail(3)
+    dll.add_to_tail(3)
+    dll.add_to_tail(4)
+    dll.add_to_tail(5)
+    dll.add_to_tail(6)
 
     print("Length", dll.length)
 
     print("Head", dll.head.get_value())
-    print(dll.tail.prev.get_value(), dll.head.next_.get_value())
+    print(dll.head.next_.value, dll.head.next_.next_.value, dll.tail.prev.prev.value, dll.tail.prev.value)
+    print("Tail", dll.tail.get_value())
+
+    print("\n")
+
+    dll = DoublyLinkedList(None)
+
+    dll.add_to_head(2)
+    dll.add_to_head(3)
+    dll.add_to_head(4)
+    dll.add_to_head(5)
+    dll.add_to_head(6)
+
+    print("Length", dll.length)
+
+    print("Head", dll.head.get_value())
+    print(dll.head.next_.value, dll.head.next_.next_.value, dll.tail.prev.prev.value, dll.tail.prev.value)
     print("Tail", dll.tail.get_value())

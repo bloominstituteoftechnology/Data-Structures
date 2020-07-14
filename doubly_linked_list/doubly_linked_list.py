@@ -49,7 +49,24 @@ class DoublyLinkedList:
         current head's next node the new head of the List.
         Returns the value of the removed Node.
         """
-        pass
+        if self.length == 0:
+            return None
+        else:
+            if not self.head.next:
+                current_node = self.head
+                self.head = None
+                self.tail = None
+                self.length -= 1
+                return current_node.value
+            else:
+                current_node = self.head
+                new_head = current_node.next 
+                # Remove reference to old head from new head
+                new_head.prev = None
+                # Redefine new head as head node
+                self.head = new_head
+                self.length -= 1
+                return current_node.value
 
     def add_to_tail(self, value):
         """
@@ -97,7 +114,8 @@ class DoublyLinkedList:
 
 if __name__ == "__main__":
     
-    my_node = ListNode(5)
+    my_node = ListNode(1)
     my_list = DoublyLinkedList(my_node)
+    # my_list.remove_from_head()
     
     breakpoint()

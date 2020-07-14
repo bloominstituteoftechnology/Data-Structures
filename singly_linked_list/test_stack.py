@@ -35,12 +35,6 @@ class QueueTests(unittest.TestCase):
         self.stack.push(105)
         self.assertEqual(self.stack.pop(), 105)
         self.assertEqual(len(self.stack), 2)
-
-        # Not sure if it's my code in singly_linked_list/stack.py
-        # or Sean's Linked_List().remove_tail() function, but
-        # The LinkedList doesn't seem to be able to recognize
-        # that it's removing Node(101) and not Node(101).get_next()
-
         self.assertEqual(self.stack.pop(), 101)
         self.assertEqual(len(self.stack), 1)
         self.assertEqual(self.stack.pop(), 100)

@@ -11,6 +11,10 @@ return elements in First In First Out order.
    Make sure the Queue tests pass.
 3. What is the difference between using an array vs. a linked list when 
    implementing a Queue?
+
+   To be honest, I didn't actually do part one, because the LinkedList class we
+   built in class was better suited for the task than a Python list. The opposite
+   is true of stacks.
    
 Stretch: What if you could only use instances of your Stack class to implement the Queue?
          What would that look like? How many Stacks would you need? Try it!

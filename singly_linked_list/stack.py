@@ -12,6 +12,10 @@ return elements in Last In First Out order.
    Make sure the Stack tests pass.
 3. What is the difference between using an array vs. a linked list when 
    implementing a Stack?
+
+   Subjectively, the key differnce is that the latter is more difficult.
+   Python lists (arrays) were specifically designed to be able to implement
+   stacks, see https://docs.python.org/3.1/tutorial/datastructures.html#using-lists-as-stacks.
 """
 class Stack:
     def __init__(self):

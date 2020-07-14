@@ -17,7 +17,17 @@ class Node:
 class LinkedList:
     def __init__(self):
         self.head = None
-        self.tail = None 
+        self.tail = None
+
+    def __str__(self):
+        output = ""
+        current_node = self.head
+        while current_node is not None:
+            output += f"{current_node.value} -->"
+            current_node = current_node.get_next()
+            
+        return output
+        
 
     def add_to_tail(self, value):
         # 1. create the Node from the value 
@@ -124,8 +134,11 @@ class LinkedList:
             current = current.get_next()
         return max_value
 
-# ll = Node(1)
-# ll.set_next(Node(2))
-# ll.next.set_next(Node(3))
-# ll.next.next.set_next(Node(4))
-# ll.next.next.next.set_next(Node(5))
+
+if __name__ == "__main__":
+    ll = LinkedList()
+
+    for i in range(1, 6):
+        ll.add_to_tail(Node(2**i))
+
+    print(ll)

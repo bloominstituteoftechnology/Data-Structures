@@ -25,6 +25,6 @@ class Stack:
         if self.size <= 0:
             return 
         self.size -= 1
-        return self.storage.remove_tail()
+        return self.storage.remove_tail() 
 
 

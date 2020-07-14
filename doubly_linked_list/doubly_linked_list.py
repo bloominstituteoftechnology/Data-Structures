@@ -5,10 +5,10 @@ Each ListNode holds a reference to its previous node
 as well as its next node in the List.
 """
 class ListNode:
-    def __init__(self, value, prev=None, next_node=None):
+    def __init__(self, value, prev=None, next_=None):
         self.prev = prev
         self.value = value
-        self.next = next_node
+        self.next = next_
             
 """
 Our doubly-linked list class. It holds references to 
@@ -74,7 +74,10 @@ class DoublyLinkedList:
     order of the other elements of the List.
     """
     def delete(self, node):
-        pass
+        if self.prev:
+            self.prev.next_ = self.next_
+        elif self.next_:
+            self.next_.prev = self.prev
 
     """
     Finds and returns the maximum value of all the nodes 

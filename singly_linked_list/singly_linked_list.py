@@ -25,7 +25,7 @@ class LinkedList:
         while current_node is not None:
             output += f"{current_node.value} -->"
             current_node = current_node.get_next()
-            
+
         return output
         
 
@@ -92,13 +92,13 @@ class LinkedList:
         while current.get_next() and current.get_next() is not self.tail:
             current = current.get_next()
 
-            # at this point, `current` is the node right before the tail 
-            # set the tail to be None
-            value = self.tail.get_value()
-            self.tail = current
-            # remove new tail's reference to the old tail
-            self.tail.set_next(None)
-            return value
+        # at this point, `current` is the node right before the tail 
+        # set the tail to be None
+        value = self.tail.get_value()
+        self.tail = current
+        # remove new tail's reference to the old tail
+        self.tail.set_next(None)
+        return value
             
 
     def contains(self, value):

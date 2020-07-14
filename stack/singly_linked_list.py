@@ -22,9 +22,6 @@ class Node:
 
     def get_next(self):
         return self.next_node
-    
-    def set_head(self, new_head):
-        self.value = new
 
     def set_next(self, new_next):
         # set this node's next_node reference to the passed in node
@@ -65,27 +62,11 @@ class LinkedList:
             # set the list's tail reference to the new node
             self.tail = new_node
 
-    def add_to_head(self, value):
-        # wrap the input value in a node
-        new_node = Node(value, None)
-        # check if there is no head (i.e., the list is empty)
-        if not self.head:
-            # if the list is initially empty, set both head and tail to the new node
-            self.head = new_node
-            self.tail = new_node
-        # we have a non-empty list, add the new node to the head
-        else:
-            # set the current head's next reference to our new node
-            self.head.set_next(new_node)
-            # set the list's tail reference to the new node
-            self.head = new_node
-
     def remove_head(self):
         # return None if there is no head (i.e. the list is empty)
         if not self.head:
             return None
         # if head has no next, then we have a single element in our list
-        value = self.head.get_value()
         if not self.head.get_next():
             # get a reference to the head
             head = self.head
@@ -95,7 +76,8 @@ class LinkedList:
             self.tail = None
             # return the value
             return head.get_value()
-        # otherwise we have more than one in list
+        # otherwise we have more than one element in our list
+        value = self.head.get_value()
         # set the head reference to the current head's next node in the list
         self.head = self.head.get_next()
         return value

@@ -36,14 +36,7 @@ class ListNode:
         if curr_next:
             curr_next.prev = self.next
 
-  #Rearranges the pointer of prev and next to delete node
-    def delete(self):
-        if self.prev:
-            self.prev.next = self.next
-        if self.next:
-            self.next.prev =  self.prev
-        
-
+  
 
             
 """
@@ -81,19 +74,16 @@ class DoublyLinkedList:
     current head's next node the new head of the List.
     Returns the value of the removed Node.
     """
-    def remove_from_head(self, dele):
-        if self.head is None or dele is None:
-            return
-        
-        if self.head == dele:
-            self.head = dele.next
-        
-        if dele.next is not None:
-            dele.next.prev = dele.prev
-        
-        if dele.prev is not None:
-            dele.prev.next = dele.next
-            
+    def remove_from_head(self):
+        if(self.head):
+            current = self.head
+            if self.head is self.tail:
+                self.tail = None
+            self.head = current.next
+            self.length -= 1
+            return current.value
+
+
     """
     Wraps the given value in a ListNode and inserts it 
     as the new tail of the list. Don't forget to handle 

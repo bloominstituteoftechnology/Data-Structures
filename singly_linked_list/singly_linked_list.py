@@ -21,7 +21,7 @@ class LinkedList:
             self.tail.next = node
             self.tail = node
 
-    def contains(self, value) -> bool:
+    def contains(self, value):
 
         node = self.head
 
@@ -59,5 +59,16 @@ class LinkedList:
 
         return max
 
+
+
 linked_lists = LinkedList()
 linked_lists.head = Node("Nick")
+
+
+
+
+
+
+
+
+

@@ -31,7 +31,17 @@ class DoublyLinkedList:
         as the new head of the list. Don't forget to handle
         the old head node's previous pointer accordingly.
         """
-        pass
+        if self.length == 0:
+            new_node = ListNode(value)
+            self.head = new_node
+            self.tail = new_node
+            self.length += 1
+        else:
+            current_node = self.head
+            new_node = ListNode(value, next=current_node)
+            current_node.next = new_node
+            self.head = new_node
+            self.length += 1
 
     def remove_from_head(self):
         """
@@ -84,3 +94,10 @@ class DoublyLinkedList:
         in the List.
         """
         pass
+
+if __name__ == "__main__":
+    
+    my_node = ListNode(5)
+    my_list = DoublyLinkedList(my_node)
+    
+    breakpoint()

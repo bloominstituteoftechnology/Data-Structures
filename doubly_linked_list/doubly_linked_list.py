@@ -39,6 +39,12 @@ class DoublyLinkedList:
         if self.__len__() == 2:
             self.head.next_ = self.tail
             self.tail.prev = self.head
+
+        elif self.head is None or self.tail is None:
+            new_node.prev = None
+            new_node.next_ = None
+            self.head = new_node
+            self.tail = new_node
         
     """
     Removes the List's current head node, making the
@@ -46,9 +52,16 @@ class DoublyLinkedList:
     Returns the value of the removed Node.
     """
     def remove_from_head(self):
-        next_node = self.head.next_
-        self.length -= 1
-        return next_node.value
+        if self.head is None and self.tail is None:
+            return None
+
+        elif self.head is self.tail:
+            value = self.head.value
+            self.head = None
+            self.tail = None
+            self.length -= 1
+            return value
+    
             
     """
     Wraps the given value in a ListNode and inserts it 
@@ -65,6 +78,12 @@ class DoublyLinkedList:
         if self.__len__() == 2:
             self.head.next_ = self.tail
             self.tail.prev = self.head
+
+        elif self.head is None or self.tail is None:
+            new_node.prev = None
+            new_node.next_ = None
+            self.head = new_node
+            self.tail = new_node
             
     """
     Removes the List's current tail node, making the 
@@ -108,13 +127,13 @@ class DoublyLinkedList:
 
 
 if __name__ == "__main__":
-    node = ListNode(1)
-    dll = DoublyLinkedList(node)
+    # node = ListNode()
+    dll = DoublyLinkedList(None)
     dll.add_to_tail(2)
+    # dll.add_to_tail(3)
 
     print("Length", dll.length)
 
     print("Head", dll.head.value)
-    print(dll.tail.prev.value, dll.head.next_.value)
+    # print(dll.tail.prev.value, dll.head.next_.value)
     print("Tail", dll.tail.value)
-    

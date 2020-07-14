@@ -28,8 +28,8 @@ class AVLTree:
 
         if self.node != None: 
             print ('-' * level * 2, pref, self.node.key,
-                   f'[{self.height}:{self.balance}]',
-                   'L' if self.height == 0 else ' ')
+                f'[{self.height}:{self.balance}]',
+                'L' if self.height == 0 else ' ')
             if self.node.left != None:
                 self.node.left.display(level + 1, '<')
             if self.node.right != None:

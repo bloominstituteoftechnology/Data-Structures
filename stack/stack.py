@@ -35,7 +35,8 @@ return elements in Last In First Out order.
 
 #     def push(self, value):
 #         """Adds an item to the top of the stack"""
-#         self.storage = [value] + self.storage
+#         self.storage = [value] + self.storage # O(n)
+#         self.storage.append(value) # O(1)
 #         self.size = len(self.storage)
 #         return self.storage
 

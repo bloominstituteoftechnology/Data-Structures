@@ -134,18 +134,63 @@ class DoublyLinkedList:
     List and inserts it as the new tail node of the List.
     """
     def move_to_end(self, node):
-        pass
+        current = self.head
+        while current != node:
+            current = current.next
+        if current.prev:
+            before = current.prev
+            before.next = current.next
+            if node == self.tail:
+                self.tail = before
+        if current.next:
+            after = current.next
+            after.prev = current.prev
+            if node is self.head:
+                self.head = after
+        
+        prev_tail = self.tail
+        prev_tail.next = current
+        current.prev = prev_tail
+        current.next = None
+        self.tail = current 
 
     """
     Deletes the input node from the List, preserving the 
     order of the other elements of the List.
     """
     def delete(self, node):
-        pass
+        current = self.head
+        while current != node:
+            current = current.next
+        if node == self.head and node == self.tail:
+            self.head = None
+            self.tail = None
+        if current.prev:
+            before = current.prev
+            before.next = current.next
+            if node == self.tail:
+                self.tail = before
+        if current.next:
+            after = current.next
+            after.prev = current.prev
+            if node == self.head:
+                self.head = after
+        self.length -= 1
+
+    
+
 
     """
     Finds and returns the maximum value of all the nodes 
     in the List.
     """
     def get_max(self):
-        pass
+        current = self.head
+        item = 0
+        while current:
+            if current.value > item:
+                item = current.value
+            current = current.next
+        
+        return item
+

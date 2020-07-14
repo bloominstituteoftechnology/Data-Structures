@@ -77,18 +77,19 @@ class LinkedList:
         # we have to start at the head and move down the linked list 
         # until we get to the node right before the tail 
         # iterate over our linked list 
-        current = self.head 
+        current = self.head
 
-        # while current.get_next() is not self.tail:
-        #     current = current.get_next()
-        # # at this point, `current` is the node right before the tail 
-        # # set the tail to be None
-        # val = self.tail.get_value() 
-        # # move self.tail to the Node right before
-        # self.tail = current
-		# # remove new tail's reference to the old tail
-		# self.tail.next = None
-        # return val
+        while current.get_next() and current.get_next() is not self.tail:
+            current = current.get_next()
+
+            # at this point, `current` is the node right before the tail 
+            # set the tail to be None
+            value = self.tail.get_value()
+            self.tail = current
+            # remove new tail's reference to the old tail
+            self.tail.set_next(None)
+            return value
+            
 
     def contains(self, value):
         if not self.head:

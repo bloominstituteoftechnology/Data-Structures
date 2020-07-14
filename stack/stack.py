@@ -17,27 +17,17 @@ class Node:
 
 class Stack:
     def __init__(self):
-  
         # self.storage = []
-
- 
         self.size = 0
         self.head = None
         self.tail = None
 
     def __len__(self):
-   
         # return len(self.storage)
-
-   
         # Start at the head and add one to the count until you reach the tail (.next is None)
         return self.size
-
     def push(self, value):
-   
         # self.storage.append(value)
-
-    
         new_node = Node(value)
         # If the list is empty, set the head node and it's .next value to be the value
         if self.head is None:
@@ -52,14 +42,11 @@ class Stack:
         self.size += 1
 
     def pop(self):
-    
         # if len(self.storage) == 0:
         #     return None
         # else:
         #     value = self.storage.pop()
         #     return value
-        
-    
         if self.head is None:
             return None
         elif self.head.next is None:

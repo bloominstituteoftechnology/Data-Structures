@@ -61,34 +61,34 @@ class LinkedList:
         self.head = self.head.get_next()
         return val
 
-    # def remove_tail(self):
-    #     # if we have an empty linked list 
-    #     if self.head is None and self.tail is None:
-    #         return
-		
-	# 	# handle a single-element linked list
-	# 	if self.head is self.tail:
-	# 		value = self.head.get_value()
-	# 		self.head = None
-	# 		self.tail = None
-	# 		return value
-		
-    #     # if we have a non-empty linked list 
-    #     # we have to start at the head and move down the linked list 
-    #     # until we get to the node right before the tail 
-    #     # iterate over our linked list 
-    #     current = self.head 
+    def remove_tail(self):
+        # if we have an empty linked list 
+        if self.head is None and self.tail is None:
+            return
 
-    #     while current.get_next() is not self.tail:
-    #         current = current.get_next()
-    #     # at this point, `current` is the node right before the tail 
-    #     # set the tail to be None
-    #     val = self.tail.get_value() 
-    #     # move self.tail to the Node right before
-    #     self.tail = current
-	# 	# remove new tail's reference to the old tail
-	# 	self.tail.next = None
-    #     return val
+        # handle a single-element linked list
+        elif self.head is self.tail:
+            value = self.head.get_value()
+            self.head = None
+            self.tail = None
+            return value
+		
+        # if we have a non-empty linked list 
+        # we have to start at the head and move down the linked list 
+        # until we get to the node right before the tail 
+        # iterate over our linked list 
+        current = self.head 
+
+        # while current.get_next() is not self.tail:
+        #     current = current.get_next()
+        # # at this point, `current` is the node right before the tail 
+        # # set the tail to be None
+        # val = self.tail.get_value() 
+        # # move self.tail to the Node right before
+        # self.tail = current
+		# # remove new tail's reference to the old tail
+		# self.tail.next = None
+        # return val
 
     def contains(self, value):
         if not self.head:

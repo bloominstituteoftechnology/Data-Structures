@@ -10,6 +10,10 @@ class ListNode:
 
     def __str__(self):
         return f'{self.value}'
+
+    def delete(self, node):
+        self.prev.next = self.next
+        self.next.prev = self.prev
             
 """
 Our doubly-linked list class. It holds references to 
@@ -26,6 +30,10 @@ class DoublyLinkedList:
 
     def __len__(self):
         return self.length
+
+    def empty_list(self):
+        self.head = None
+        self.tail = None
     
     """
     Wraps the given value in a ListNode and inserts it 
@@ -33,7 +41,7 @@ class DoublyLinkedList:
     the old head node's previous pointer accordingly.
     """
     def add_to_head(self, value):
-        new_node = ListNode(value, None)
+        new_node = ListNode(value)
         self.length += 1
         if not self.head:
             self.head = new_node
@@ -55,8 +63,7 @@ class DoublyLinkedList:
         self.length -= 1
         if not self.head.next:
             head = self.head
-            self.head = None
-            self.tail = None
+            self.empty_list()
             return head.value
         value = self.head.value
         self.head = self.head.next
@@ -91,8 +98,7 @@ class DoublyLinkedList:
         self.length -= 1
         if self.head is self.tail:
             value = self.head.value
-            self.head = None
-            self.tail = None
+            self.empty_list()
             return value
 
         current = self.head
@@ -130,8 +136,7 @@ class DoublyLinkedList:
             return None
         self.length -= 1
         if self.head == self.tail:
-            self.head = None
-            self.tail = None
+            self.empty_list()
         elif self.head == node:
             self.head = self.head.next
             self.head.prev = None
@@ -139,8 +144,7 @@ class DoublyLinkedList:
             self.tail = node.prev
             self.tail.next = None
         else:
-            node.prev.next = node.next
-            node.next.prev = node.prev
+            node.delete(node)
 
     """
     Finds and returns the maximum value of all the nodes 
@@ -156,5 +160,3 @@ class DoublyLinkedList:
                 max_value = current.value
             current = current.next
         return max_value
-        
-        

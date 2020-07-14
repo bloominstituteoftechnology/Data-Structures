@@ -22,20 +22,6 @@ class ListNode:
         self.prev = prev
         self.value = value
         self.next = next
-    
-  #Wraps given value in a ListNode and insert it before this node.   
-    def insert_before(self, value):
-        curr_prev = self.prev
-        self.prev = ListNode(self, value, curr_prev)
-        if curr_prev:
-            curr_prev.next = self.prev
-#Wrap given value in ListNode & insert after this node. 
-    def insert_after(self, value):
-        curr_next = self.next
-        self.next = ListNode(self, value, curr_next)
-        if curr_next:
-            curr_next.prev = self.next
-
   
 
             
@@ -90,20 +76,20 @@ class DoublyLinkedList:
     the old tail node's next pointer accordingly.
     """
     def add_to_tail(self, value):
-        new_node = ListNode(value = value)
-        last = self.head
-        new_node.next = None
+        new_node = ListNode(value)
 
-        if self.head is None:
-            new_node.prev = None
+        if(self.head):
+            current = self.tail
+            while(current.next):
+                current = current.next
+            new_node.prev = current
+            current.next = new_node
+            self.tail = new_node
+            self.length += 1
+        else:
+            self.length += 1
             self.head = new_node
-            return
-        while (last.next is not None):
-            last = last.next
-        
-        last.next = new_node
-
-        new_node.prev = last
+            self.tail = new_node
             
     """
     Removes the List's current tail node, making the 
@@ -111,14 +97,37 @@ class DoublyLinkedList:
     Returns the value of the removed Node.
     """
     def remove_from_tail(self):
-        pass
+        curr_tail = self.tail
+        if curr_tail.prev:
+            self.tail = curr_tail.prev
+            new_tail = curr_tail.prev
+            new_tail.value = None
+        else:
+            self.tail = None
+            self.head = None
+        self.length -= 1
+        return curr_tail.value
             
     """
     Removes the input node from its current spot in the 
     List and inserts it as the new head node of the List.
     """
     def move_to_front(self, node):
-        pass
+        current = self.head
+        while current != node:
+            current = current.next
+        if current.prev:
+            before = current.prev
+            before.next = current.next
+        if current.next:
+            after = current.next
+            after.prev = current.prev
+
+        prev_head = self.head
+        prev_head.prev = current
+        current.next = prev_head
+        current.prev = None
+        self.head = current
         
     """
     Removes the input node from its current spot in the 

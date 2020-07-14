@@ -34,27 +34,22 @@ from singly_linked_list import LinkedList, Node
 
 ########    With the LinkedList and Node classes    ########
 
-# class Stack:
-#     _number_of_nodes = 0 # length
+class Stack:
+    def __init__(self):
+        self.size = 0
+        self.storage = LinkedList()
 
-#     def __init__(self):
-#         self.my_stack = LinkedList()
-        
-#     def __len__(self):
-#         return Stack._number_of_nodes
+    def __len__(self):
+        return self.size
 
-#     def push(self, value):
-#         self.my_stack.add_to_tail(value)
-#         Stack._number_of_nodes += 1
+    def push(self, value):
+        self.size = self.size + 1
+        self.storage.add_to_tail(value)
+        return None
 
-#     def pop(self):
-#         self.my_stack.remove_tail()
-#         Stack._number_of_nodes -= 1
-
-"""
-The tests are written in a way where I'm supposed to be storing the stack in a list to access length???
-I thought a class variable to track the number of instances that gets incremented when push and pop are called would work just as well...
-So far the computer science curriculum has been very underwhelming and disappointing. WAY too much starter code. forces me into a compliance
-mindset rather than a learning one. To make matters worse the material thus far has been so poorly taught that I'd be better of using other
-resources and not attending lecture at all...
-"""
+    def pop(self):
+        if self.size > 0:
+            self.size = self.size - 1
+            return self.storage.remove_tail()
+        else:
+            return None

@@ -207,3 +207,6 @@ class Queue:
         else:
             self.size -= 1
             return self.storage.remove_head()
+
+# Stack: No advantage with Linked List. 
+# Queue: Linked List has way more advantage. Don't use standard array.

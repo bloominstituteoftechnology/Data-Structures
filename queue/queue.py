@@ -13,11 +13,9 @@ return elements in First In First Out order.
 Stretch: What if you could only use instances of your Stack class to implement the Queue?
          What would that look like? How many Stacks would you need? Try it!
 """
-# import os, sys
-# currentdir = os.path.dirname(os.path.realpath("../singly_linked_list"))
-# parentdir = os.path.dirname(currentdir)
-# sys.path.append(parentdir)
-# from singly_linked_list import LinkedList
+import os, sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
+from singly_linked_list import LinkedList
 
 class Queue:
     def __init__(self):

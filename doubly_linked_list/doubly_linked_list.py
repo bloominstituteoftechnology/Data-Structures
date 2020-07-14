@@ -9,6 +9,13 @@ class ListNode:
         self.value = value
         self.prev = prev
         self.next_ = next_
+
+    def get_value(self):
+        if str(type(self)) == "<class 'NoneType'>":
+            return None
+
+        else:
+            return self.value
             
 """
 Our doubly-linked list class. It holds references to 
@@ -33,7 +40,7 @@ class DoublyLinkedList:
         new_node = ListNode(value)
         new_node.next_ = self.head
         self.head = new_node
-        self.head.prev = None
+        self.head.prev = ListNode(None)
         self.length += 1
 
         if self.__len__() == 2:
@@ -41,8 +48,8 @@ class DoublyLinkedList:
             self.tail.prev = self.head
 
         elif self.head is None or self.tail is None:
-            new_node.prev = None
-            new_node.next_ = None
+            new_node.prev = ListNode(None)
+            new_node.next_ = ListNode(None)
             self.head = new_node
             self.tail = new_node
         
@@ -80,8 +87,8 @@ class DoublyLinkedList:
             self.tail.prev = self.head
 
         elif self.head is None or self.tail is None:
-            new_node.prev = None
-            new_node.next_ = None
+            new_node.prev = ListNode(None)
+            new_node.next_ = ListNode(None)
             self.head = new_node
             self.tail = new_node
             
@@ -127,13 +134,17 @@ class DoublyLinkedList:
 
 
 if __name__ == "__main__":
-    # node = ListNode()
+    node = ListNode(15)
+
+    print(type(node.value))
+    print(str(type(node.value)))
+
     dll = DoublyLinkedList(None)
     dll.add_to_tail(2)
     # dll.add_to_tail(3)
 
     print("Length", dll.length)
 
-    print("Head", dll.head.value)
-    # print(dll.tail.prev.value, dll.head.next_.value)
-    print("Tail", dll.tail.value)
+    print("Head", dll.head.get_value())
+    print(dll.tail.prev.get_value(), dll.head.next_.get_value())
+    print("Tail", dll.tail.get_value())

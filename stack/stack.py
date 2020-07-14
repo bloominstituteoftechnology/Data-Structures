@@ -72,7 +72,7 @@ class Stack:
 
     def push(self, value):
         """Adds an item to the top of the stack"""
-        self.storage.add_to_head(value)
+        self.storage.add_to_head(value) #O(1)
         count = 0
         current = self.storage.head
         # loop through to count "heads"
@@ -88,7 +88,7 @@ class Stack:
             return None
         else:
             top = self.storage.head.get_value()
-            self.storage.remove_head()
+            self.storage.remove_head() #O(1)
             return top
 
         count = 0

@@ -30,11 +30,16 @@ class BinarySearchTreeTests(unittest.TestCase):
 
     def test_get_max(self):
         self.assertEqual(self.bst.get_max(), 5)
+        print("~~~PASS NICE JOB")
         self.bst.insert(30)
         self.assertEqual(self.bst.get_max(), 30)
+        print("~~~PASS NICE JOB")
+        #print(f'self value 1{self.value}')
         self.bst.insert(300)
+        #print(f'self value {self.value}')
         self.bst.insert(3)
         self.assertEqual(self.bst.get_max(), 300)
+        print("~~~PASS NICE JOB")
 
     def test_for_each(self):
         arr = []

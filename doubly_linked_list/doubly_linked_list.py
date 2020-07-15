@@ -239,4 +239,21 @@ class DoublyLinkedList:
     in the List.
     """
     def get_max(self):
-        pass
+        # check to see if empty
+        if not self.head:
+            return None
+        # create reference to largest value we've seen
+        max_value = self.head.value
+        # reference to current node as we traverse
+        current = self.head.next
+        # check to see if we're still at a valid list node
+        while current:
+            # compare current value to max value
+            if current.value > max_value:
+                # assign max to current
+                max_value = current.value
+            # iterate through current
+            current = current.next
+            # return max
+            
+        return max_value

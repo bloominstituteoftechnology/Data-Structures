@@ -247,34 +247,6 @@ class DoublyLinkedList:
             return n
         else:
             return self._delete(node.next, val)
-        # if self.length == 1:
-        #     self.head = None
-        #     self.tail = None
-        #     self.length = 0
-        #     return
-        # elif self.head is self.tail and self.head.value == val:
-        #     self.head = None
-        #     self.tail = None
-        #     self.length = 0
-        #     return
-        # elif not node:
-        #     return
-        # elif node.value is val:
-        #     if node is self.head:
-        #         self.head = None
-        #         self.tail = None
-        #         self.length = 0
-        #     else:
-        #         self.head = self.head.next
-        #         self.head.prev = None
-        #         self.length -= 1
-        # elif self.tail.value is val:
-        #     self.tail = self.tail.prev
-        #     self.tail.next = None
-        #     self.length -= 1
-        # else:
-        #     return self._delete(node.next, val)
-
     """
     Finds and returns the maximum value of all the nodes
     in the List.

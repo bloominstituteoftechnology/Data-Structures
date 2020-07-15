@@ -118,10 +118,22 @@ class DoublyLinkedList:
                 next.prev = new_node
             current_node = current_node.next
 
-            # Function to add before a given node:
+    # Function to add before a given node:
 
     def add_before_node(self, key, data):
-        pass
+        current_node = self.head
+        while current_node:
+            if current_node.next is None and current_node.data == key:
+                self.prepend(data)
+                return
+            elif current_node.data == key:
+                new_node = Node(data)
+                previous = current_node.prev
+                current_node.prev = new_node
+                new_node.prev = previous
+                new_node.next = current_node
+                previous.next = new_node
+            current_node = current_node.next
 
 
 double_linked_list = DoublyLinkedList()
@@ -140,6 +152,7 @@ double_linked_list.prepend(
 double_linked_list.display_list()
 
 double_linked_list.add_after_node(1, 11)
+double_linked_list.add_before_node(0, 33)
 
 double_linked_list.delete_node("A")
 

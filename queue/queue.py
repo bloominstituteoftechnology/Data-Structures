@@ -146,8 +146,8 @@ class Queue(LinkedList):
         super().__init__()
         self.size = 0
 
-    def __len__(self):
-        return self.size
+    def __len__(self)
+    return self.size
 
     def enqueue(self, value):
         self.size += 1

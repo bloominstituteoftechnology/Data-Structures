@@ -154,7 +154,7 @@ class DoublyLinkedList:
             if current_node is not None:
                 array.append(current_node.value)
                 current_node = current_node.next
-                if current_node == self.tail:
+                if current_node is self.tail:
                     array.append(current_node.value)
                     break
             else:

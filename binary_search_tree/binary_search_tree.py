@@ -1,7 +1,8 @@
+import random
 """
-Binary search trees are a data structure that enforce an ordering over 
-the data they store. That ordering in turn makes it a lot more efficient 
-at searching for a particular piece of data in the tree. 
+Binary search trees are a data structure that enforce an ordering over
+the data they store. That ordering in turn makes it a lot more efficient
+at searching for a particular piece of data in the tree.
 
 O(log n): halving with every single iteration
 
@@ -15,13 +16,14 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+
+
 class BSTNode:
     def __init__(self, value):
         self.value = value
         self.left = None
         self.right = None
 
-    
     def insert(self, value):
         """
         Insert the given value into the tree
@@ -30,9 +32,9 @@ class BSTNode:
         # if value < Node's value
         if value < self.value:
             # we need to go left
-            # if we see there is no left child,  
+            # if we see there is no left child,
             if self.left is None:
-                # then we can wrap the value in a BSTNode and 
+                # then we can wrap the value in a BSTNode and
                 # park it
                 self.left = BSTNode(value)
             # otherwise there is a child
@@ -43,8 +45,8 @@ class BSTNode:
         if value >= self.value:
             # we need to go right
             # if we see there is no right child,
-            if self.right is None:  
-                # then we can wrap the value in a BSTNode and 
+            if self.right is None:
+                # then we can wrap the value in a BSTNode and
                 # park it
                 self.right = BSTNode(value)
             # otherwise there is a child
@@ -81,8 +83,7 @@ class BSTNode:
                 else:
                     # call the right child's `contains` method
                     return self.right.contains(target)
-        
-    
+
     def get_max(self):
         """
         Return the maximum value found in the tree
@@ -100,10 +101,26 @@ class BSTNode:
                 max_val = self.right.value
                 # call the right child's `get_max` method
                 return self.right.get_max()
-                
-    # Call the function `fn` on the value of each node
+
     def for_each(self, fn):
-        pass
+        """
+        Call the function `fn` on the value of each node
+        """
+        # fn(root.value)
+        # Start with root (no children)
+        if self.left is None and self.right is None:
+            return fn(self.value)
+        else:
+            # Handle both sides when not None
+            if self.left is not None and self.right is not None:
+                return fn(self.value), self.left.for_each(
+                    fn), self.right.for_each(fn)
+            # Hande right side
+            if self.right is not None and self.left is None:
+                return fn(self.value), self.right.for_each(fn)
+            # Handle left sides
+            if self.left is not None and self.right is None:
+                return fn(self.value), self.left.for_each(fn)
 
     # Part 2 -----------------------
 
@@ -112,12 +129,12 @@ class BSTNode:
     def in_order_print(self, node):
         pass
 
-    # Print the value of every node, starting with the 
+    # Print the value of every node, starting with the
     # given node, in an iterative breadth first traversal
     def bft_print(self, node):
         pass
 
-    # Print the value of every node, starting with the 
+    # Print the value of every node, starting with the
     # given node, in an iterative depth first traversal
     def dft_print(self, node):
         pass
@@ -133,8 +150,8 @@ class BSTNode:
     def post_order_dft(self, node):
         pass
 
+
 if __name__ == "__main__":
-    
 
     print("---" * 5 + "INSERT TEST" + "---" * 5)
     root = BSTNode(5)
@@ -142,8 +159,8 @@ if __name__ == "__main__":
     root.insert(3)
     root.insert(7)
     root.insert(6)
-    print(root.left.right.value) #> 3
-    print(root.right.left.value) #> 6
+    print(root.left.right.value)  # > 3
+    print(root.right.left.value)  # > 6
 
     # breakpoint()
 
@@ -152,19 +169,54 @@ if __name__ == "__main__":
     root.insert(2)
     root.insert(3)
     root.insert(7)
-    print(root.contains(7)) #> True
-    print(root.contains(8)) #> False
+    print(root.contains(7))  # > True
+    print(root.contains(8))  # > False
 
     # breakpoint()
 
     print("---" * 5 + "GET_MAX TEST" + "---" * 5)
     root = BSTNode(5)
-    print(root.get_max()) #> 5
+    print(root.get_max())  # > 5
     root.insert(30)
-    print(root.get_max()) #> 30
+    print(root.get_max())  # > 30
     root.insert(300)
     root.insert(3)
-    print(root.get_max()) #> 300
+    print(root.get_max())  # > 300
     print("---" * 15)
 
     # breakpoint()
+
+    print("---" * 5 + "FOR_EACH TEST" + "---" * 5)
+    root = BSTNode(5)
+    arr = []
+    def cb(x): return arr.append(x)
+
+    v1 = random.randint(1, 101)
+    v2 = random.randint(1, 101)
+    v3 = random.randint(1, 101)
+    v4 = random.randint(1, 101)
+    v5 = random.randint(1, 101)
+
+    print("v1:", v1)
+    print("v2:", v2)
+    print("v3:", v3)
+    print("v4:", v4)
+    print("v5:", v5)
+
+    root.insert(v1)
+    root.insert(v2)
+    root.insert(v3)
+    root.insert(v4)
+    root.insert(v5)
+
+    root.for_each(cb)
+
+    # breakpoint()
+
+    print("5:", 5 in arr)
+    print("v1:", (v1 in arr))
+    print("v2:", (v2 in arr))
+    print("v3:", (v3 in arr))
+    print("v4:", (v4 in arr))
+    print("v5:", (v5 in arr))
+    print("---" * 15)

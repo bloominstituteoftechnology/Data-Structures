@@ -9,7 +9,11 @@ class ListNode:
         self.next = next
 
     def delete(self):
-        pass
+    """Rearranges previous and next pointers"""
+        if self.pref:
+            self.prev.next = self.next
+        if self.next:
+            self.next.prev = self.prev
             
 """
 Our doubly-linked list class. It holds references to 
@@ -56,25 +60,21 @@ class DoublyLinkedList:
     Returns the value of the removed Node.
     """
     def remove_from_head(self):
-        # store the value of head
+        
         current_head = self.head
-        # Check to see if there is a head. if not, return None.  
+    
         if not current_head:
             return None
         self.length -= 1
     
-        # if head.next is None
+        # DLL is empty
         if not self.head.next:
             self.head = None
             self.tail = None
-        # if head.next is Not None
-        # AKA: we have more than one item in the linked list
+        # DLL not empty
         else:
-            # set head.next's prev to None
             self.head.next.prev = None
-            # set head to head.next
             self.head = self.head.next
-        # return value
         return current_head.value
             
     """
@@ -83,23 +83,19 @@ class DoublyLinkedList:
     the old tail node's next pointer accordingly.
     """
     def add_to_tail(self, value):
-        # wrap input value in a ListNode
+        
         new_node = ListNode(value)
-        # increment DLL length attribute
         self.length += 1
 
-        # if DLL is empty
+        # DLL empty
         if not self.head:
             # set head and tail to new node instance
             self.head = new_node
             self.tail = new_node    
-        # if DLL is not empty
+        # DLL not empty
         else:
-            # set new node's prev to current tail
             new_node.prev = self.tail
-            # set tail's next to new node
             self.tail.next = new_node
-            # set tail to new node
             self.tail = new_node
             
     """
@@ -108,13 +104,13 @@ class DoublyLinkedList:
     Returns the value of the removed Node.
     """
     def remove_from_tail(self):
-        # if DLL.head is None: 
+        
+        current_tail = self.tail
+        self.length -= 1
+
+        # DLL empty
         if not self.head:
             return None
-        # decrement length
-        self.length -= 1
-        # get current tail
-        current_tail = self.tail
         
         # checkt to see if there are multiple items in DLL
         if not self.tail.prev:
@@ -133,7 +129,6 @@ class DoublyLinkedList:
     List and inserts it as the new head node of the List.
     """
     def move_to_front(self, node):
-        node = node
         # look to see if node is at the beginning already
         if not node.prev:
             return "Already in front"
@@ -171,7 +166,6 @@ class DoublyLinkedList:
     List and inserts it as the new tail node of the List.
     """
     def move_to_end(self, node):
-        node = node
         # look to see if it is already at the end already
         if not node.next:
             # if it is, return "at end"
@@ -208,7 +202,6 @@ class DoublyLinkedList:
     order of the other elements of the List.
     """
     def delete(self, node):
-        node = node
         self.length -= 1
         # if no other item in list:
         if (not node.next) and (not node.prev):

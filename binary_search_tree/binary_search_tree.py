@@ -42,7 +42,25 @@ class BSTNode:
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        # checking if empty list contains target
+        if self is None:
+            return False
+        # check if root node contains target
+        elif self.value == target:
+            return True
+            
+        boolean = False
+        # check in which direction the target flows (from the root)
+        if target < self.value:
+            if self.left is None:
+                return False
+            boolean = self.left.contains(target)
+
+        else:
+            if self.right is None:
+                return False
+            boolean = self.right.contains(target)
+        return boolean
 
     # Return the maximum value found in the tree
     def get_max(self):
@@ -79,3 +97,15 @@ class BSTNode:
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
         pass
+
+
+if __name__ == "__main__":
+    bst = BSTNode(5)
+
+    bst.insert(2)
+    bst.insert(3)
+    bst.insert(7)
+
+    print(bst.contains(7))
+    print(bst.contains(8))
+    

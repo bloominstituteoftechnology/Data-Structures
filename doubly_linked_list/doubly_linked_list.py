@@ -52,6 +52,7 @@ class DoublyLinkedList:
             new_node = ListNode(value)
             new_node.prev = None
             self.head = new_node
+            self.tail = new_node
             self.length += 1
         else:
             new_node = ListNode(value)
@@ -78,8 +79,11 @@ class DoublyLinkedList:
         # set head to None
         # set tail to None
         # return the value of the deleted head
-        head_value = self.head.value
-        self.delete(self.head)
+        if self.head is None:
+            return
+        else:
+            head_value = self.head.value
+            self.delete(self.head)
         return head_value
 
     """

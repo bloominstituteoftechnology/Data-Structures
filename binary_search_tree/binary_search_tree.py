@@ -82,10 +82,25 @@ class BSTNode:
                     # call the right child's `contains` method
                     return self.right.contains(target)
         
-    # Return the maximum value found in the tree
+    
     def get_max(self):
-        pass
-
+        """
+        Return the maximum value found in the tree
+        """
+        # Inspect root node
+        max_val = self.value
+        # Check for children
+        if self.right is None:
+            return max_val
+        else:
+            # Check if right child value is < Node value
+            if self.right.value < max_val:
+                return max_val
+            else:
+                max_val = self.right.value
+                # call the right child's `get_max` method
+                return self.right.get_max()
+                
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
         pass
@@ -120,8 +135,9 @@ class BSTNode:
 
 if __name__ == "__main__":
     
-    root = BSTNode(5)
 
+    print("---" * 5 + "INSERT TEST" + "---" * 5)
+    root = BSTNode(5)
     root.insert(2)
     root.insert(3)
     root.insert(7)
@@ -131,10 +147,24 @@ if __name__ == "__main__":
 
     # breakpoint()
 
+    print("---" * 5 + "CONTAINS TEST" + "---" * 5)
+    root = BSTNode(5)
     root.insert(2)
     root.insert(3)
     root.insert(7)
     print(root.contains(7)) #> True
     print(root.contains(8)) #> False
+
+    # breakpoint()
+
+    print("---" * 5 + "GET_MAX TEST" + "---" * 5)
+    root = BSTNode(5)
+    print(root.get_max()) #> 5
+    root.insert(30)
+    print(root.get_max()) #> 30
+    root.insert(300)
+    root.insert(3)
+    print(root.get_max()) #> 300
+    print("---" * 15)
 
     # breakpoint()

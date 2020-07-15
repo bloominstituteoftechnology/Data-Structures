@@ -23,6 +23,7 @@ class Node:
     def set_next(self, new_next):
         # set this node's next_node reference to the passed in node
         self.next_node = new_next
+        
 class LinkedList:
     """
     Data:
@@ -129,6 +130,17 @@ class LinkedList:
             # update the current node to the next node in the list
             current = current.get_next()
         return max_value
+    def reverse_ll(self):
+      current = self.head
+      previous = None
+      next_node = None
+      while current is not None:
+          next_node = current.get_next()
+          current.set_next = previous
+          previous = current
+          current = next_node
+      self.head, self.tail = self.tail, self.head
+      return self
 
 
 '''

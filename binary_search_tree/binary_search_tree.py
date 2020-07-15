@@ -61,29 +61,59 @@ class BSTNode:
         ## forget about the left subtree
         ## iterate through the nodes using a loop construct
         
-        max_value = self.value
-        print(f'max value {max_value}')
-        if self.right == None:
-            print(f"right node{self.right}")
-            print(f"MAX VALUE: {max_value}")
-            #max_value = self.value
-            print("PASSSSSS")
-            final_max_value = self.value
-            print(f"FINAL MAX VALUE: {max_value}")
-            return final_max_value
+        # max_value = self.value
+        # #print(f'max value {max_value}')
+        # if self.right == None:
+        #     # print(f"right node{self.right}")
+        #     # print(f"MAX VALUE: {max_value}")
+        #     # #max_value = self.value
+        #     # print("PASSSSSS")
+        #     final_max_value = self.value
+        #     #print(f"FINAL MAX VALUE: {max_value}")
+        #     return final_max_value
             
-        elif self.right.value > max_value:
-            print(f'right node value: {self.right.value}')
-            max_value = self.right.value
-            print(f'new max value: {self.right.value}')
-            self.right.get_max()
-        #print(f'final returned max value {final_max_value}')
-        #return final_max_value
+        # elif self.right.value > max_value:
+        #     #print(f'right node value: {self.right.value}')
+        #     max_value = self.right.value
+        #     #print(f'new max value: {self.right.value}')
+        #     v = self.right.get_max()
+        #     return v
+        # #print(f'final returned max value {final_max_value}')
+        # #return final_max_value
+        #----------
+
+        if self.right == None:
+            return self.value
+        
+        return self.right.get_max()
+
+
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
         ## recursive solution
-        pass
+        #print(self.value)
+        #print(self.left)
+        #print(self.right.value)
+        fn(self.value)
+
+        #current _value = self.value
+        print(f'self value: {self.value}')
+
+        ### THE LEFT TREE
+        if self.left == None:
+            print("Pass on the left")
+        else:
+            print(f'left node: {self.left.value}')
+            self.left.for_each(fn)
+
+
+        if self.right == None:
+            print("Pass on the right")
+        else: 
+            print(f'right node: {self.right.value}')
+            self.right.for_each(fn)
+
 
 
 

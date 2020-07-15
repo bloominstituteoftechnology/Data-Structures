@@ -29,7 +29,7 @@ class DoublyLinkedList:
     def add_to_head(self, value):
         new_node = ListNode(value)
         if self.head and self.tail:
-            new_node = self.head
+            new_node.next = self.head
             self.head.prev = new_node
             self.head = new_node
         else:
@@ -63,8 +63,8 @@ class DoublyLinkedList:
     def add_to_tail(self, value):
         new_node = ListNode(value)
         if self.tail and self.head:
-            new_node = self.tail
-            self.tail.prev = new_node
+            new_node.prev = self.tail
+            self.tail.next = new_node
             self.tail = new_node
         else:
             self.tail = new_node
@@ -117,7 +117,15 @@ class DoublyLinkedList:
     order of the other elements of the List.
     """
     def delete(self, node):
-        pass
+        if self.head == self.tail:
+            self.head = None
+            self.tail = None
+        elif node == self.tail:
+            self.tail.prev
+        elif node == self.head:
+            self.head.next
+
+        self.length -= 1
 
     """
     Finds and returns the maximum value of all the nodes 

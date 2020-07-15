@@ -120,7 +120,7 @@ class DoublyLinkedList:
         if not self.tail.prev:
             self.head = None
             self.tail = None
-            return current_tail
+            return current_tail.value
         else:
             # set current tail prev to None
             self.tail.prev.next = None
@@ -208,14 +208,30 @@ class DoublyLinkedList:
     order of the other elements of the List.
     """
     def delete(self, node):
-        pass
+        node = node
+        self.length -= 1
         # if no other item in list:
+        if (not node.next) and (not node.prev):
             # set tail to None
+            self.tail = None
             # set head to None
-            # delete node
-            # return None
-        # else: 
-            # 
+            self.head = None
+        # check to see if it's at the beginning
+        elif not node.prev:
+            # change node.next.prev = None
+            node.next.prev = None
+            # set head to node.next
+            self.head = node.next
+        # check to see if it's at the end
+        elif not node.next:
+            # change node.prev.next = None
+            node.prev.next = None
+            # set tail to node.prev
+            self.tail = node.prev
+        else: 
+            # set node's prev next to node's next
+            # set node's next prev node's prev
+            node.prev.next, node.next.prev = node.next, node.prev
 
 
     """

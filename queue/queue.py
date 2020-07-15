@@ -126,14 +126,20 @@ class Queue:
         self.storage = LinkedList()
     
     def __len__(self):
+        # returns the number of elements in the queue
         return self.size
 
     def enqueue(self, value):
+        # We increment it by 1
         self.size += 1
+        # This adds the element to the back of the queue
         return self.storage.add_to_tail(value)
 
     def dequeue(self):
+        # if the 'size' is greater than 1
         if self.size > 0:
+            # decrement the 'size' by 1
             self.size -= 1
+            # remove and return the element at the front of the queue
             return self.storage.remove_head()
         return None

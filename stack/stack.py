@@ -124,14 +124,20 @@ class Stack:
         self.storage = LinkedList()
 
     def __len__(self):
+        # returns the number of elements in the stack
         return self.size
 
     def push(self, value):
+        # increment the size by 1
         self.size += 1
+        # add the item to the top of the stack
         return self.storage.add_to_tail(value)
 
     def pop(self):
+        # if the size is greater than 0
         if self.size > 0:
+            # decrement by 1
             self.size -= 1
+            # removes and return the element at the top of the stack
             return self.storage.remove_tail()
         return None

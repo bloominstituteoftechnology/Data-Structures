@@ -78,7 +78,14 @@ class BSTNode:
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-        pass
+        # for cases with a single root node
+        fn(self.value)
+
+        if self.left:
+            self.left.for_each(fn)
+
+        if self.right:
+            self.right.for_each(fn)
 
     # Part 2 -----------------------
 
@@ -112,11 +119,4 @@ class BSTNode:
 if __name__ == "__main__":
     bst = BSTNode(5)
 
-    bst.insert(2)
-    bst.insert(3)
-    bst.insert(7)
-
-    print(bst.contains(7))
-    print(bst.contains(8))
-    
-    print(bst.get_max())
+    print(bst.for_each(lambda x: x + 1))

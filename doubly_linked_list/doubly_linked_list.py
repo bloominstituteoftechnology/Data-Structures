@@ -152,22 +152,55 @@ class DoublyLinkedList:
     List and inserts it as the new head node of the List.
     """
     def move_to_front(self, node):
+        #self.node = node
         if self.length == 0:
-            pass
+            return
+        if self.head == node:
+            return
         else: 
-            node.next.prev 
-            # node.next.prev, node.prev.next = node.prev.next, node.next.prev
-            # self.head.prev = node
-            # self.head = node
-            # node.prev = None
-            # node.next = self.head
+            next_node = node.next
+            previous_node = node.prev
+            if node == self.tail:
+                self.tail = previous_node
+            else:
+                next_node.prev = previous_node
+            previous_node.next = next_node
+            
+            self.head.prev = node
+            node.next = self.head
+            node.prev = None
+            self.head = node
         
     """
     Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List.
     """
     def move_to_end(self, node):
-        pass
+        # print("passed in node")
+        # print(node.value)
+        if self.length == 0:
+            return
+        if self.tail == node:
+            return
+        else: 
+            next_node = node.next
+            previous_node = node.prev
+            if node == self.head:
+                self.head = next_node
+            else:
+                previous_node.next = next_node
+            next_node.prev = previous_node
+
+            
+            # print(self.tail.value)
+            self.tail.next = node
+            node.prev = self.tail
+            node.next = None
+            self.tail = node
+            # print(self.tail.value)
+            # print(self.tail.next)
+            # print(self.tail.prev.value)
+        #pass
 
     """
     Deletes the input node from the List, preserving the 
@@ -176,10 +209,33 @@ class DoublyLinkedList:
     ### Start here
 
     def delete(self, node):
+        if self.length == 0:
+            return
+        previous_node = node.prev
+        next_node = node.next
+        if self.length == 1:
+            self.tail = None
+            self.head = None
+        elif self.tail == node:
+                previous_node.next = None
+                self.tail = previous_node
+        elif self.head == node:
+                next_node.prev = None
+                self.head = next_node
+        else:
+            previous_node.next = next_node
+            next_node.prev = previous_node
+        self.length -= 1
+        return
 
 
 
-        pass
+
+
+
+
+
+        #pass
 
     """
     Finds and returns the maximum value of all the nodes 

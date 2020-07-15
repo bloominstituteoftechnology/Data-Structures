@@ -21,21 +21,15 @@ class BSTNode:
 
         # if passed in value is less than self.value:
         if value < self.value:
-            # check to see if there is a child
-            # if not:
             if not self.left:
-                # assigng child to a new BSTNode
                 self.left = BSTNode(value)
-            # else:
+            else:
                 # repeat the process on left subtree
                 self.left.insert(value)
             
         # if pass in value is greater than or equal self.value:
         if value >= self.value:
-            # check to see if there is a child
-            # if not:
             if not self.right:
-                # Assign child to new BTSNode
                 self.right = BSTNode(value)
             else:
                 # repeat process on right subtree
@@ -46,19 +40,18 @@ class BSTNode:
     # False if it does not
     def contains(self, target):
         
-        # check to see if target is self.value
         if target == self.value:        
-            # return True
             return True
-        # check to see if value is less than self.value
+
         if target < self.value:
-            # check to see if t here is a child to the left
             if not self.left:
                 return False
             else:
-                # recurse that 
-                # the self that's passed in through the contains
-                # method is the left node 
+                # recurse that sh*t
+                # gotta return to give the second one
+                # a present. otherwise the bool values
+                # don't go anywhere. You need to return the
+                # returned
                 return self.left.contains(target)
         else:
             # if there is not a child to the roit
@@ -82,11 +75,14 @@ class BSTNode:
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
         
+        # call function on value
         fn(self.value)
 
         if self.left:
+            # recurse on all lefts
             self.left.for_each(fn)
         if self.right:
+            # recurse on all rights
             self.right.for_each(fn)
 
     # Part 2 -----------------------

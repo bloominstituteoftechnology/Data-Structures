@@ -61,16 +61,10 @@ class DoublyLinkedList:
                 # set head to None
                 # set tail to None
         # return the value
-        old_head = self.head
-        if self.head is not None:
-            self.head = self.head.next
-            self.tail = None
-        else:
-            self.head = None
-            self.tail = None
-        self.length += -1
-        return old_head.value
+        value = self.head.value
+        self.delete(self.head)
 
+        return value
     """
     Wraps the given value in a ListNode and inserts it 
     as the new tail of the list. Don't forget to handle 
@@ -149,7 +143,10 @@ class DoublyLinkedList:
     order of the other elements of the List.
     """
     def delete(self, node):
-        if self.length == 1:
+        if self.head is None:
+            return
+
+        elif self.length == 1:
             self.head = None
             self.tail = None
             self.length += -1

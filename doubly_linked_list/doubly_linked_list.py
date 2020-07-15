@@ -32,15 +32,18 @@ class DoublyLinkedList:
     the old head node's previous pointer accordingly.
     """
     def add_to_head(self, value):
+        # Create the Node from the value
         new_node = ListNode(value)
         self.length += 1
 
         if not self.head and not self.tail:
+            # have both head and tail refer to a single node
             self.head = new_node
             self.tail = new_node
         else:
             new_node.next = self.head
             self.head.prev = new_node
+            # reassign self.head to refer to the new node
             self.head = new_node
         
     """
@@ -50,6 +53,7 @@ class DoublyLinkedList:
     """
     def remove_from_head(self):
         value = self.head.value
+        # 
         self.delete(self.head)
         return value
             
@@ -59,15 +63,18 @@ class DoublyLinkedList:
     the old tail node's next pointer accordingly.
     """
     def add_to_tail(self, value):
+        # Create the Node from the value
         node = ListNode(value)
         self.length += 1
 
         if not self.head and not self.tail:
+            # have both head and tail refer to a single node
             self.head = node
             self.tail = node
         else:
             node.prev = self.tail
             self.tail.next = node
+            # reassign self.tail to refer to the new Node
             self.tail = node
             
     """
@@ -77,7 +84,9 @@ class DoublyLinkedList:
     """
     def remove_from_tail(self):
         value = self.tail.value
+        # Delete the current node
         self.delete(self.tail)
+        # return the value of the removed node
         return value
             
     """
@@ -86,7 +95,9 @@ class DoublyLinkedList:
     """
     def move_to_front(self, node):
         value = node.value
+        # Delete the node from its current spot
         self.delete(node)
+        # add the node to the head
         self.add_to_head(value)
         
     """
@@ -95,7 +106,9 @@ class DoublyLinkedList:
     """
     def move_to_end(self, node):
         value = node.value
+        # Delete the node
         self.delete(node)
+        # add the node to the tail
         self.add_to_tail(value)
 
     """

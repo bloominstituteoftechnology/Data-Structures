@@ -151,15 +151,15 @@ class DoublyLinkedList:
     """
     def get_max(self):
         if not self.head or not self.tail:
-            return
+            return None
 
         max_value = self.head.value
 
-        current = self.head.next_
+        current = self.head
         while current:
             if current.value > max_value:
                 max_value = current.value
-            current.next_
+            current = current.next_
         return max_value
 
     """
@@ -170,13 +170,13 @@ class DoublyLinkedList:
         if not self.head or not self.tail:
             return
 
-        min_value = self.head.value
+        min_value = self.head
 
         current = self.head.next_
         while current:
             if current.value < min_value:
                 min_value = current.value
-            current.next_
+            current = current.next_
         return min_value
 
 
@@ -188,5 +188,5 @@ if __name__ == "__main__":
     dll.add_to_tail(100)
 
     # This line breaks things...
-    # print(dll.get_max())
+    print(dll.get_max())
 

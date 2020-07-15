@@ -11,14 +11,7 @@ class ListNode:
         self.next_ = next_
 
     def get_value(self):
-        if type(self) == None:
-            return None
-
-        elif type(self) == ListNode:
-            return self.value
-
-        else:
-            return self
+        self.value
 
     def get_next_(self):
         return self.next_
@@ -35,7 +28,7 @@ class ListNode:
     def delete(self):
         if self.prev:
             self.prev.next_ = self.next_
-        if self.next_:
+        elif self.next_:
             self.next_.prev = self.prev
         
 """
@@ -136,10 +129,25 @@ class DoublyLinkedList:
     order of the other elements of the List.
     """
     def delete(self, node):
-        node.delete()
         self.length -= 1
-        return node.get_value()
-        
+        # deleting from empty list:
+        if self.head is None and self.tail is None:
+            return
+        # deleting from a single-node list:
+        elif self.head == self.tail and node == self.head:
+            self.head = None
+            self.tail = None
+        # deleting the head node, self.list >= 2
+        elif node == self.head:
+            self.head = node.next_
+            node.delete()
+        # deleting the tail node, self.list >= 2
+        elif node == self.tail:
+            self.tail = node.prev
+            node.delete()
+        # general case node
+        else:
+            node.delete()
 
     """
     Finds and returns the maximum value of all the nodes 
@@ -160,58 +168,4 @@ class DoublyLinkedList:
 
 
 
-if __name__ == "__main__":
-    node = ListNode(15)
-    
-    # print(type(node.value))
-    # print(str(type(node.value)))
-    
-    dll = DoublyLinkedList(None)
-    dll.add_to_tail(2)
 
-    dll.delete(ListNode(2))
-
-    print(dll.head.prev.value)
-    print(dll.head.value)
-    print(dll.tail.value)
-    print(dll.tail.next_.value)
-
-    dll.add_to_tail(3)
-    dll.add_to_tail(4)
-    dll.add_to_tail(5)
-    dll.add_to_tail(6)
-    dll.add_to_tail(7)
-
-    print("Length", dll.length)
-
-    print("Head", dll.head.get_value())
-
-    print(dll.head.next_.value,
-          dll.head.next_.next_.value,
-          dll.tail.prev.prev.value,
-          dll.tail.prev.prev.prev.value,
-          dll.tail.prev.value)
-
-    print("Tail", dll.tail.get_value())
-
-    print("\n")
-
-    dll = DoublyLinkedList(None)
-
-    dll.add_to_head(2)
-    dll.add_to_head(3)
-    dll.add_to_head(4)
-    dll.add_to_head(5)
-    dll.add_to_head(6)
-    dll.add_to_head(7)
-
-    print("Length", dll.length)
-
-    print("Head", dll.head.get_value())
-
-    print(dll.head.next_.next_.value,
-          dll.head.next_.next_.next_.value,
-          dll.tail.prev.prev.value,
-          dll.tail.prev.value)
-
-    print("Tail", dll.tail.get_value())

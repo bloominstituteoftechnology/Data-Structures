@@ -44,14 +44,21 @@ class DoublyLinkedList:
     Returns the value of the removed Node.
     """
     def remove_from_head(self):
+        # here if we don’t have head then it’s return none
         if self.head is None:
             return None
+        # current value is self.head
         current = self.head
+        # here we are looking for while loop which is current next if not equal to tail then current is going to keep going next.
         while current.next and current.next is not self.tail:
             current = current.next
-
+        # if found we get the tail value.
         value = self.tail.value
+        # current.next = none so we are deleting
         current.next = None
+        self.tail = current
+        # here we are making it to assign current which converted to None
+        # we return the value.
         return value
 
             
@@ -87,6 +94,7 @@ class DoublyLinkedList:
 
         value = self.head.value
         current.next = None
+        self.head = current
         return value
             
     """
@@ -121,10 +129,12 @@ class DoublyLinkedList:
             self.head = None
             self.tail = None
         elif node == self.tail:
+            # here we are leaving the node.
             self.tail.prev
         elif node == self.head:
+            # here we are also leaving the node.
             self.head.next
-
+        # by this length -1 we are decreasing a node from traverse.
         self.length -= 1
 
     """
@@ -132,4 +142,8 @@ class DoublyLinkedList:
     in the List.
     """
     def get_max(self):
-        pass
+        max_ = self.value
+        for item in max_:
+            if item > max_:
+                max_ = item
+        return max_

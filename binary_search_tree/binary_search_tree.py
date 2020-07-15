@@ -49,36 +49,42 @@ class BSTNode:
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        if target in self.value:
-            if target in self.left:
-                return True
-            elif target in self.right:
-                return True
-            else:
-                return False
-        else:
-            return False
+        if target < self.value:
+            if self.left:
+                return self.left.contains(target)
+        elif target > self.value:
+            if self.right:
+                return self.right.contains(target)
+        return self.value == target
 
 
     # Return the maximum value found in the tree
     def get_max(self):
-        max_ = self.value
-        for item in max_:
-            if item > max_:
-                max_ = item
-        return max_
-
+        maxValue = self.value
+        lMax = self.left.get_max()
+        rMax = self.right.get_max()
+        if lMax < maxValue:
+            maxValue = lMax
+        elif rMax > maxValue:
+            maxValue = rMax
+        return maxValue
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-        pass
+        # type: (object) -> object
+        temp = BSTNode()
+        for each in temp.value:
+            if each == temp.left:
+                temp.for_each(fn)
+            elif each == temp.right:
+                temp.for_each(fn)
 
     # Part 2 -----------------------
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal

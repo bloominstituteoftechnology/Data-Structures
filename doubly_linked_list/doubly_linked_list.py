@@ -191,7 +191,7 @@ class DoublyLinkedList:
     def delete(self, node):
         if self.head == node:
             self.remove_from_head()
-        elif self.tail ==node:
+        elif self.tail == node:
             self.remove_from_tail()
         else:
             node.delete()

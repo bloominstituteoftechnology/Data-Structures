@@ -113,11 +113,9 @@ class DoublyLinkedList:
     """
 
     def move_to_front(self, node):
-        print('move called', self.tail == node, self.length)
         if self.length == 1:
             return
         elif self.length == 2:
-            print('double matched')
             head = self.head
             tail = self.tail
             self.head = self.tail
@@ -129,7 +127,6 @@ class DoublyLinkedList:
 
             return
         elif self.tail == node:
-            print('its a tail match')
             new_tail = self.tail.prev
             tail = self.tail
             self.tail = new_tail
@@ -140,15 +137,12 @@ class DoublyLinkedList:
             self.head = tail
             return
         else:
-            print('returning here')
             return self._move_to_front(self.head, node)
 
     def _move_to_front(self, node, val):
-        print('nodeeeee', node)
         if not node:
             return
         elif node == val:
-            print('its match for sure 100')
             n = node
             node.prev.next = node.next
             node.next.prev = node.prev
@@ -166,7 +160,6 @@ class DoublyLinkedList:
     """
 
     def move_to_end(self, node):
-        print('this is self length in test ===> ', self.length)
         if self.tail.value == node:
             return
         elif self.length == 1:

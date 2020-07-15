@@ -122,4 +122,4 @@ class Stack:
             return None
         else:
             self.size -= 1
-            return self.storage.remove_head
+            return self.storage.remove_tail()

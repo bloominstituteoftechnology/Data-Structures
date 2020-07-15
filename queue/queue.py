@@ -46,6 +46,7 @@ class LinkedList:
     def __init__(self):
         self.head = None
         self.tail = None
+
     def add_to_tail(self, value):
         new_node = Node(value, None)
         
@@ -55,6 +56,7 @@ class LinkedList:
         else:
             self.tail.set_next(new_node)
             self.tail = new_node
+
     def remove_head(self):
         if not self.head:
             return None
@@ -123,6 +125,5 @@ class Queue(LinkedList):
     def dequeue(self):
         if self.size == 0:
             return None
-        else:
-            self.size -= 1
-            return self.storage.remove_head
+        self.size -= 1
+        return self.storage.remove_head()

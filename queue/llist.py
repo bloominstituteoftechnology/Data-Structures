@@ -77,22 +77,3 @@ class LinkedList:
             lst.append(curr)
             curr = curr.next
         print([f'{x}====>' for x in lst])
-
-
-ll = LinkedList()
-ll.add_to_tail(101)
-print(ll.head, ll.tail)
-ll.add_to_tail(300)
-ll.add_to_tail(10020202)
-print(ll.head, ll.tail)
-ll.add_to_tail(-102)
-# ll.remove_head()
-ll.print_list()
-ll.add_to_tail(1001)
-ll.print_list()
-ll.get_max()
-print(ll.contains(300))
-print(ll.contains(201))
-print(ll.tail)
-ll.remove_head()
-ll.print_list()

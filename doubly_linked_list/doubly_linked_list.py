@@ -126,7 +126,7 @@ class DoublyLinkedList:
     """
     def delete(self, node):
         self.length -= 1
-        # deleting from empty list:
+        # deleting from empty list --> do nothing:
         if self.head is None and self.tail is None:
             return
         # deleting from a single-node list:
@@ -141,7 +141,7 @@ class DoublyLinkedList:
         elif node == self.tail:
             self.tail = node.prev
             node.delete()
-        # general case node
+        # general case node --> delete
         else:
             node.delete()
 
@@ -149,19 +149,44 @@ class DoublyLinkedList:
     Finds and returns the maximum value of all the nodes 
     in the List.
     """
-    # def get_max(self):
-        # if not self.head or not self.tail:
-        #     return None
+    def get_max(self):
+        if not self.head or not self.tail:
+            return
 
-        # max_value = self.head.get_value()
+        max_value = self.head.value
 
-        # current = self.head.get_next_()
-        # while current:
-        #     if current.get_value() > max_value:
-        #         max_value = current.get_value
-        #     current.get_next_()
-        # return max_value
+        current = self.head.next_
+        while current:
+            if current.value > max_value:
+                max_value = current.value
+            current.next_
+        return max_value
+
+    """
+    Finds and returns the minimum value of all the nodes 
+    in the List.
+    """
+    def get_min(self):
+        if not self.head or not self.tail:
+            return
+
+        min_value = self.head.value
+
+        current = self.head.next_
+        while current:
+            if current.value < min_value:
+                min_value = current.value
+            current.next_
+        return min_value
 
 
+if __name__ == "__main__":
+    node = ListNode(1)
+    dll = DoublyLinkedList(node)
+    print(dll.get_max()) # --> 1, PASS
 
+    dll.add_to_tail(100)
+
+    # This line breaks things...
+    # print(dll.get_max())
 

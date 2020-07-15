@@ -2,7 +2,8 @@ import unittest
 import random
 import sys
 import io
-from binary_search_tree import BSTNode
+from DataStructures.binary_search_tree.binary_search_tree import BSTNode
+
 
 class BinarySearchTreeTests(unittest.TestCase):
     def setUp(self):
@@ -15,7 +16,7 @@ class BinarySearchTreeTests(unittest.TestCase):
         self.bst.insert(6)
         self.assertEqual(self.bst.left.right.value, 3)
         self.assertEqual(self.bst.right.left.value, 6)
-        
+
     def test_handle_dupe_insert(self):
         self.bst2 = BSTNode(1)
         self.bst2.insert(1)
@@ -105,6 +106,7 @@ class BinarySearchTreeTests(unittest.TestCase):
         self.assertEqual(output, "2\n4\n3\n6\n7\n5\n8\n1\n")
 
         sys.stdout = stdout_  # Restore stdout
+
 
 if __name__ == '__main__':
     unittest.main()

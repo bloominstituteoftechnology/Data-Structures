@@ -40,23 +40,23 @@ class Stack:
 
 # Stack class implemented with a Python linked list:
 
-# class Stack:
-#     def __init__(self):
-#         self.size = 0
-#         self.storage = LinkedList()
+class Stack:
+    def __init__(self):
+        self.size = 0
+        self.storage = LinkedList()
 
-#     def __len__(self):
-#         return self.storage.length()
+    def __len__(self):
+        return self.storage.length()
 
-#     def push(self, value):
-#         self.storage.add_to_tail(value)
-#         self.size = self.size + 1
+    def push(self, value):
+        self.storage.add_to_tail(value)
+        self.size = self.size + 1
 
-#     def pop(self):
-#         if self.size > 0:
-#             value = self.storage.tail.get_value()
-#             self.storage.remove_tail()
-#             self.size = self.size - 1
-#             return value
-#         else:
-#             return None
+    def pop(self):
+        if self.size > 0:
+            value = self.storage.tail.get_value()
+            self.storage.remove_tail()
+            self.size = self.size - 1
+            return value
+        else:
+            return None

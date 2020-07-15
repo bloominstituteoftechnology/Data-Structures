@@ -30,6 +30,31 @@ class Queue:
         return len(self.items)
 
 
+class Stack:
+    def __init__(self):
+        self.items = []
+
+    def push(self, item):
+        self.items.append(item)
+
+    def pop(self):
+        if not self.is_empty():
+            return self.items.pop()
+
+    def is_empty(self):
+        return len(self.items) == 0
+
+    def peek(self):
+        if not self.is_empty():
+            return self.items[-1]
+
+    def size(self):
+        return len(self.items)
+
+    def __len__(self):
+        return self.size()
+
+
 class BinaryTree:
     def __init__(self, root):
         self.root = Node(root)
@@ -46,6 +71,9 @@ class BinaryTree:
 
         elif traversal_type == 'levelorder':
             return self.levelorder_print(tree.root)
+
+        elif traversal_type == 'reverse_levelorder':
+            return self.reverse_levelorder_print(tree.root)
 
         else:
             print("""Traversal type " + str(traversal_type) + 
@@ -96,6 +124,56 @@ class BinaryTree:
 
         return traversal
 
+    def reverse_levelorder_print(self, start):
+        if start is None:
+            return
+
+        stack = Stack()
+        queue = Queue()
+        queue.enqueue(start)
+
+        traversal = ""
+
+        while len(queue) > 0:
+            node = queue.dequeue()
+            stack.push(node)
+
+            if node.right:
+                queue.enqueue(node.right)
+            if node.left:
+                queue.enqueue(node.left)
+
+        while len(stack) > 0:
+            node = stack.pop()
+            traversal += str(node.value) + "-"
+
+        return traversal
+
+    def size(self):
+        if self.root is None:
+            return 0
+
+        stack = Stack()
+        stack.push(self.root)
+
+        count = 1
+
+        while stack:
+            node = stack.pop()
+            if node.left:
+                count += 1
+                stack.push(node.left)
+            if node.right:
+                count += 1
+                stack.push(node.right)
+
+        return count
+
+    def size_(self, node):
+        if node is None:
+            return 0
+        return 1 + self.size_(node.left) + self.size_(node.right)
+
 
 tree = BinaryTree(1)
 tree.root.left = Node(2)
@@ -114,4 +192,10 @@ print("-"*50)
 print("Post-Order", tree.print_tree("postorder"))
 print("-"*50)
 print("Level-Order", tree.print_tree('levelorder'))
+print("-"*50)
+print("Reverse-Level-Order", tree.print_tree("reverse_levelorder"))
+print("-"*50)
+print("Size of Tree:", tree.size())
+print("-"*50)
+print("Recursive Size Method:", tree.size_(tree.root))
 print("-"*50)

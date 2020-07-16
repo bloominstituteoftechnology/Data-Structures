@@ -122,22 +122,102 @@ class BSTNode:
             if self.left is not None and self.right is None:
                 return fn(self.value), self.left.for_each(fn)
 
+    def iterative_depth_first_for_each(self, fn):
+        # DFT: LIFO
+        # we'll use a stack
+        stack = []
+        stack.append(self)
+
+        # so long as our stack has nodes in it
+        # there's more nodes to traverse
+        while len(stack) > 0:
+            # pop the top node from the stack
+            current = stack.pop()
+
+            # add the current node's right child first (for left to right
+            # order)
+            if current.right:
+                stack.append(current.right)
+
+            # add the current node's left child
+            if current.left:
+                stack.append(current.left)
+
+            # call the anonymous function
+            fn(current.value)
+
+
+    def iterative_breadth_first_for_each(self, fn):
+        from collections import deque
+        
+        # BFT: FIFO
+        # we'll use a queue to facilitate the ordering
+        queue = deque()
+        queue.append(self)
+
+        # continue to traverse so long as there are nodes
+        # in the queue
+        while len(queue) > 0:
+            current = queue.popleft()
+
+            if current.left:
+                queue.append(current.left)
+
+            if current.right:
+                queue.append(current.right)
+
+            fn(current.value)
+
+
+
     # Part 2 -----------------------
 
-    # Print all the values in order from low to high
-    # Hint:  Use a recursive, depth first traversal
+    
     def in_order_print(self, node):
-        pass
+        """
+        Print all the values in order from low to high
+        Hint:  Use a recursive, depth first traversal
+        """
+        # Use a stack to guide traversal        
+        stack = []
+        stack.append(self)
+
+        vals = set()
+
+        # so long as our stack has nodes in it
+        # there's more nodes to traverse
+        while len(stack) > 0:
+            # pop the top node from the stack
+            current = stack.pop()
+            vals.add(current.value)
+
+            # add the current node's right child first (for left to right
+            # order)
+            if current.right:
+                vals.add(current.right.value)
+                stack.append(current.right)
+
+            # add the current node's left child
+            if current.left:
+                vals.add(current.left.value)
+                stack.append(current.left)
+
+        # Need to print each value from low to high
+        for i in sorted(list(vals)):
+            print(i)
 
     # Print the value of every node, starting with the
     # given node, in an iterative breadth first traversal
+    # layers, FIFO
     def bft_print(self, node):
         pass
 
     # Print the value of every node, starting with the
     # given node, in an iterative depth first traversal
+    # LIFO
     def dft_print(self, node):
         pass
+
 
     # Stretch Goals -------------------------
     # Note: Research may be required
@@ -211,7 +291,7 @@ if __name__ == "__main__":
 
     root.for_each(cb)
 
-    # breakpoint()
+    breakpoint()
 
     print("5:", 5 in arr)
     print("v1:", (v1 in arr))

@@ -12,6 +12,7 @@ This part of the project comprises two days:
 class BSTNode:
     def __init__(self, value):
         self.value = value
+        self.parent = None
         self.left = None
         self.right = None
 
@@ -92,8 +93,22 @@ class BSTNode:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        arr = []
+        cb = lambda x: arr.append(x)
 
+        arr.append(self.value)
+
+        if self.left:
+            self.left.for_each(cb)
+
+        if self.right:
+            self.right.for_each(cb)
+
+        arr.sort()
+        for val in arr:
+            print(val)
+
+             
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
@@ -105,7 +120,6 @@ class BSTNode:
         pass
 
     # Stretch Goals -------------------------
-    # Note: Research may be required
 
     # Print Pre-order recursive DFT
     def pre_order_dft(self, node):
@@ -117,6 +131,13 @@ class BSTNode:
 
 
 if __name__ == "__main__":
-    bst = BSTNode(5)
+    bst = BSTNode(15)
+    bst.insert(8)
+    bst.insert(5)
+    bst.insert(7)
+    bst.insert(16)
+    bst.insert(3)
+    bst.insert(4)
+    bst.insert(2)
 
-    print(bst.for_each(lambda x: x + 1))
+    print(bst.in_order_print(bst))

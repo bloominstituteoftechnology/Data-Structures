@@ -146,10 +146,9 @@ class BSTNode:
             # call the anonymous function
             fn(current.value)
 
-
     def iterative_breadth_first_for_each(self, fn):
         from collections import deque
-        
+
         # BFT: FIFO
         # we'll use a queue to facilitate the ordering
         queue = deque()
@@ -168,17 +167,14 @@ class BSTNode:
 
             fn(current.value)
 
-
-
     # Part 2 -----------------------
 
-    
     def in_order_print(self, node):
         """
         Print all the values in order from low to high
         Hint:  Use a recursive, depth first traversal
         """
-        # Use a stack to guide traversal        
+        # Use a stack to guide traversal
         stack = []
         stack.append(self)
 
@@ -206,7 +202,6 @@ class BSTNode:
         for i in sorted(list(vals)):
             print(i)
 
-    
     def bft_print(self, node):
         from collections import deque
         """
@@ -214,7 +209,7 @@ class BSTNode:
         given node, in an iterative breadth first traversal.
         layers, FIFO
         """
-        # Use a queue to guide traversal        
+        # Use a queue to guide traversal
         queue = deque()
         queue.append(self)
 
@@ -231,12 +226,12 @@ class BSTNode:
 
             # add the current node's right child first (for left to right
             # order)
-            if current.right: # and current.left is None:
+            if current.right:  # and current.left is None:
                 vals.append(current.right.value)
                 queue.append(current.right)
 
             # add the current node's left child
-            if current.left: # and current.right is None:
+            if current.left:  # and current.right is None:
                 vals.append(current.left.value)
                 queue.append(current.left)
 
@@ -244,55 +239,49 @@ class BSTNode:
         for i in vals:
             print(i)
 
-
     def dft_print(self, node):
         """
         Print the value of every node, starting with the
         given node, in an iterative depth first traversal.
         LIFO
         """
-        # Use a stack to guide traversal        
+        # Use a stack to guide traversal
         stack = []
         stack.append(self)
 
         vals = []
-        vals.append(self.value)
+        # vals.append(self.value)
 
         # so long as our stack has nodes in it
         # there's more nodes to traverse
         while len(stack) > 0:
             # pop the top node from the stack
-            current = stack.pop(0)
-            print("Stack size:", len(stack))
-            print("Current:", current.value)
+            current = stack.pop()
 
             # check for children
 
             # add the current node's right child first (for left to right
             # order)
-            if current.right: # and current.left is None:
-                vals.append(current.right.value)
+            if current.right:  # and current.left is None:
+                # vals.append(current.right.value)
                 stack.append(current.right)
 
             # add the current node's left child
-            if current.left: # and current.right is None:
-                vals.append(current.left.value)
+            if current.left:  # and current.right is None:
+                # vals.append(current.left.value)
                 stack.append(current.left)
 
-            # # if both children exist
-            # if current.right and current.left:
-            #     vals.append(current.right.value)
-            #     stack.append(current.right)
+            vals.append(current.value)
 
         # Need to print each value
         for i in vals:
             print(i)
 
-
     # Stretch Goals -------------------------
     # Note: Research may be required
 
     # Print Pre-order recursive DFT
+
     def pre_order_dft(self, node):
         pass
 
@@ -382,4 +371,5 @@ if __name__ == "__main__":
     root.insert(2)
 
     # print("DFT Print:", root.dft_print(root))
-    breakpoint()
+    root.dft_print(root)
+    # breakpoint()

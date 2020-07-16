@@ -9,6 +9,10 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+
+from stack import Stack
+from queue import Queue
+
 class BSTNode:
     def __init__(self, value):
         self.value = value
@@ -39,9 +43,7 @@ class BSTNode:
 
         elif target >= self.value and self.right:
             return self.right.contains(target)
-
-        else:
-            return False
+        return
 
     # Return the maximum value found in the tree
     def get_max(self):
@@ -64,17 +66,37 @@ class BSTNode:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        if node:
+            self.in_order_print(node.left)
+            print(node.value)
+            self.in_order_print(node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+        q = Queue()
+        q.enqueue(node)
+        while q.__len__() > 0:
+            n = q.dequeue()
+            print(n.value)
+            if n.left:
+                q.enqueue(n.left)
+            if n.right:
+                q.enqueue(n.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+        s = Stack()
+        s.push(node)
+
+        while s.__len__() > 0:
+            n = s.pop()
+            print(n.value)
+            if n.left:
+                s.push(n.left)
+            if n.right:
+                s.push(n.right)
 
     # Stretch Goals -------------------------
     # Note: Research may be required

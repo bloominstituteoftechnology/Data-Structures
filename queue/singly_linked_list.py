@@ -66,9 +66,7 @@ class LinkedList:
             self.tail = new_node
 
     def add_to_head(self, value):
-        new_node = Node(value, None)
-
-        if self.head
+        pass
 
     def remove_head(self):
         # return None if there is no head (i.e. the list is empty)
@@ -85,9 +83,10 @@ class LinkedList:
             # return the value
             return head.get_value()
         # otherwise we have more than one element in our list
-        value = self.head.get_value()
-        # set the head reference to the current head's next node in the list
-        self.head = self.head.get_next()
+        else:
+            value = self.head.get_value()
+            # set the head reference to the current head's next node in the list
+            self.head = self.head.get_next()
         return value
 
     def remove_tail(self):

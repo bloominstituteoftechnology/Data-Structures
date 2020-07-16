@@ -206,17 +206,87 @@ class BSTNode:
         for i in sorted(list(vals)):
             print(i)
 
-    # Print the value of every node, starting with the
-    # given node, in an iterative breadth first traversal
-    # layers, FIFO
+    
     def bft_print(self, node):
-        pass
+        from collections import deque
+        """
+        Print the value of every node, starting with the
+        given node, in an iterative breadth first traversal.
+        layers, FIFO
+        """
+        # Use a queue to guide traversal        
+        queue = deque()
+        queue.append(self)
 
-    # Print the value of every node, starting with the
-    # given node, in an iterative depth first traversal
-    # LIFO
+        vals = []
+        vals.append(self.value)
+
+        # so long as our stack has nodes in it
+        # there's more nodes to traverse
+        while len(queue) > 0:
+            # pop the top node from the stack
+            current = queue.popleft()
+
+            # check for children
+
+            # add the current node's right child first (for left to right
+            # order)
+            if current.right: # and current.left is None:
+                vals.append(current.right.value)
+                queue.append(current.right)
+
+            # add the current node's left child
+            if current.left: # and current.right is None:
+                vals.append(current.left.value)
+                queue.append(current.left)
+
+        # Need to print each value
+        for i in vals:
+            print(i)
+
+
     def dft_print(self, node):
-        pass
+        """
+        Print the value of every node, starting with the
+        given node, in an iterative depth first traversal.
+        LIFO
+        """
+        # Use a stack to guide traversal        
+        stack = []
+        stack.append(self)
+
+        vals = []
+        vals.append(self.value)
+
+        # so long as our stack has nodes in it
+        # there's more nodes to traverse
+        while len(stack) > 0:
+            # pop the top node from the stack
+            current = stack.pop(0)
+            print("Stack size:", len(stack))
+            print("Current:", current.value)
+
+            # check for children
+
+            # add the current node's right child first (for left to right
+            # order)
+            if current.right: # and current.left is None:
+                vals.append(current.right.value)
+                stack.append(current.right)
+
+            # add the current node's left child
+            if current.left: # and current.right is None:
+                vals.append(current.left.value)
+                stack.append(current.left)
+
+            # # if both children exist
+            # if current.right and current.left:
+            #     vals.append(current.right.value)
+            #     stack.append(current.right)
+
+        # Need to print each value
+        for i in vals:
+            print(i)
 
 
     # Stretch Goals -------------------------
@@ -291,7 +361,7 @@ if __name__ == "__main__":
 
     root.for_each(cb)
 
-    breakpoint()
+    # breakpoint()
 
     print("5:", 5 in arr)
     print("v1:", (v1 in arr))
@@ -300,3 +370,16 @@ if __name__ == "__main__":
     print("v4:", (v4 in arr))
     print("v5:", (v5 in arr))
     print("---" * 15)
+
+    print("---" * 5 + "TRAVERSALS TEST" + "---" * 5)
+    root = BSTNode(1)
+    root.insert(8)
+    root.insert(5)
+    root.insert(7)
+    root.insert(6)
+    root.insert(3)
+    root.insert(4)
+    root.insert(2)
+
+    # print("DFT Print:", root.dft_print(root))
+    breakpoint()

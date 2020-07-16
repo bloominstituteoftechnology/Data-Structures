@@ -10,6 +10,9 @@ This part of the project comprises two days:
    on the BSTNode class.
 """
 import random
+from queue_stuff.queue import Queue
+from stack.stack import Stack
+
 class BSTNode:
     def __init__(self, value):
         self.value = value
@@ -59,13 +62,14 @@ class BSTNode:
 
     # Return the maximum value found in the tree
     def get_max(self):
-        # forget about the left subtree
-        # iterate through the nodes using a loop construct
+        # One liner because I can.
+        return self.value if self.right is None else self.right.get_max()
 
-        if self.right is not None:
-            return max(self.value, self.right.get_max())
-        else:
-            return self.value
+        # Non-one liner
+        # if self.right is not None:
+        #     return max(self.value, self.right.get_max())
+        # else:
+        #     return self.value
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
@@ -78,26 +82,78 @@ class BSTNode:
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
-    def in_order_print(self, node):
-        pass
+    def in_order_print(self):
+        # if the current node is None
+        # we know we've reached the end of a recursion
+        # (base case) we want to return
+        if self is None:
+            return
+        # check if we can "move left"
+        if self.left is not None:
+            self.left.in_order_print()
+
+        # visit the node by printing its value
+        print(self.value)
+        # check if we can "move right"
+        if self.right is not None:
+            self.right.in_order_print()
+
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+        # You should import the queue_stuff class from earlier in the
+        # week and use that class to implement this method
+        # Use a queue to form a "line" for the nodes to "get in"
+        q = Queue()
+        # start by placing the root in the queue_stuff
+        q.enqueue(node)
+        iteration = 0
+        while q.size > 0:
+            current_node = q.dequeue()
+            print(current_node.value)
+            if current_node.left:
+                q.enqueue(current_node.left)
+            if current_node.right:
+                q.enqueue(current_node.right)
 
-    # Print the value of every node, starting with the given node,
+
+        # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+        s = Stack()
+        s.push(node)
+
+        x_arr = []
+        while s.size > 0:
+            current_node = s.pop()
+            print(current_node.value)
+            x_arr.append(current_node.value)
+            if current_node.left:
+                s.push(current_node.left)
+            if current_node.right:
+                s.push(current_node.right)
+        # print("XARR", x_arr)
+
 
     # Stretch Goals -------------------------
     # Note: Research may be required
 
     # Print Pre-order recursive DFT
     def pre_order_dft(self, node):
-        pass
+        #Pre order prints when an element is first encountered.
+        print(node.value)
+        if node.left:
+            self.pre_order_dft(node.left)
+        if node.right:
+            self.pre_order_dft(node.right)
 
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
-        pass
+        #Post order prints when an element has no more children to process.
+        if node.left:
+            self.post_order_dft(node.left)
+        if node.right:
+            self.post_order_dft(node.right)
+
+        print(node.value)

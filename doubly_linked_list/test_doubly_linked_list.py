@@ -44,6 +44,7 @@ class DoublyLinkedListTests(unittest.TestCase):
         self.assertEqual(len(self.dll), 0)
 
     def test_list_add_to_tail(self):
+       # self.dll.add_to_tail(1)  ##
         self.assertEqual(self.dll.tail.value, 1)
         self.assertEqual(len(self.dll), 1)
 

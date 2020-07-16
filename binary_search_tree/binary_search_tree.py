@@ -69,6 +69,11 @@ class BSTNode:
             current = current.right
         return current.value
 
+    def get_max_(self):
+        if self.right is None:
+            return self.value
+        return self.right.get_max_()
+
     # Call the function `fn` on the value of each node
 
     def for_each(self, fn):

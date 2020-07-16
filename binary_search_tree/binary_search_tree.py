@@ -9,28 +9,63 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+
+
 class BSTNode:
     def __init__(self, value):
         self.value = value
         self.left = None
         self.right = None
 
-    # Insert the given value into the tree
+
     def insert(self, value):
-        pass
+        # Lower values left
+        if value < self.value:
+            if self.left:
+                self.left.insert(value)
+            else:
+                self.left = BSTNode(value)
+        # Higher values right
+        else:
+            if self.right:
+                self.right.insert(value)
+            else:
+                self.right = BSTNode(value)
 
-    # Return True if the tree contains the value
-    # False if it does not
+
     def contains(self, target):
-        pass
+        if target == self.value:
+            return True
+        # Check left if lower value
+        if target < self.value:
+            if self.left:
+                return left.contains(target)
+            else:
+                return False
+        # Check right if higher value
+        else:
+            if self.right:
+                return self.right.contains(target)
+            else:
+                return False
 
-    # Return the maximum value found in the tree
+
+
     def get_max(self):
-        pass
+        # Higher values are put to the right
+        if self.right:
+            return self.right.get_max()
+        else:
+            return self.value
 
-    # Call the function `fn` on the value of each node
+
     def for_each(self, fn):
-        pass
+        fn(self.value)
+        if self.left:
+            self.left.for_each(fn)
+        if self.right:
+            self.right.for_each(fn)
+
 
     # Part 2 -----------------------
 
@@ -38,16 +73,44 @@ class BSTNode:
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
         pass
+        # if the current node is None
+        # we know we've reached the end of a recursion
+        # (base case) we want to return
+        # check if we can "move left"
+        # visit the node by printing its value
+        # check if we can "move right
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
         pass
+        # You should import the queue class from earlier in the
+        # week and use that class to implement this method
+        # Use a queue to form a "line" 
+        # for the nodes to "get in"​
+        # start by placing the root in the queue​
+        # need a while loop to iterate
+        # what are we checking in the while statement?
+        # while length of queue is greater than 0
+            # dequeue item from front of queue
+            # print that item
+            # place current item's left node in queue if not None
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
         pass
+        # initialize an empty stack
+        # push the root node onto the stack​
+        # need a while loop to manager our iteration
+        # if stack is not empty enter the while loop
+            # pop top item off the stack
+            # print that item's value​
+            # if there is a right subtree
+                # push right item onto the stack                
+            # if there is a left subtree
+                # push left item onto the stack
+
 
     # Stretch Goals -------------------------
     # Note: Research may be required

@@ -1,6 +1,6 @@
 import unittest
-from doubly_linked_list import ListNode
-from doubly_linked_list import DoublyLinkedList
+from DataStructures.doubly_linked_list.doubly_linked_list import ListNode
+from DataStructures.doubly_linked_list.doubly_linked_list import DoublyLinkedList
 
 
 class DoublyLinkedListTests(unittest.TestCase):
@@ -13,7 +13,6 @@ class DoublyLinkedListTests(unittest.TestCase):
         self.assertIsNone(self.dll.head)
         self.assertIsNone(self.dll.tail)
         self.assertEqual(len(self.dll), 0)
-        print(len(self.dll))
         self.dll.add_to_tail(33)
         self.assertEqual(self.dll.head.value, 33)
         self.assertEqual(self.dll.tail.value, 33)

@@ -1,5 +1,5 @@
 import unittest
-from lru_cache import LRUCache
+from DataStructures.lru_cache.lru_cache import LRUCache
 
 
 class CacheTests(unittest.TestCase):

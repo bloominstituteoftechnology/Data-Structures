@@ -215,3 +215,14 @@ class DoublyLinkedList:
                 return current.value
         except AttributeError:
             return None
+
+    def search(self, value, start=False):
+        if self.head is None:
+            return None
+        if start is False:
+            current = self.head
+        else:
+            current = start
+        while value not in current.value:
+            current = current.next_node
+            return current

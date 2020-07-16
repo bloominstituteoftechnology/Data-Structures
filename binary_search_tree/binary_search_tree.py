@@ -1,3 +1,5 @@
+from collections import deque
+
 """
 Binary search trees are a data structure that enforce an ordering over 
 the data they store. That ordering in turn makes it a lot more efficient 
@@ -96,13 +98,13 @@ class BSTNode:
         arr = []
         cb = lambda x: arr.append(x)
 
-        arr.append(self.value)
+        cb(node.value)
 
-        if self.left:
-            self.left.for_each(cb)
+        if node.left:
+            node.left.for_each(cb)
 
-        if self.right:
-            self.right.for_each(cb)
+        if node.right:
+            node.right.for_each(cb)
 
         arr.sort()
         for val in arr:
@@ -112,7 +114,16 @@ class BSTNode:
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+        # Create Queue with initial node inside
+        queue = deque([])
+        queue.append(node)
+
+        while len(queue) > 0:
+            current_node = queue[0]
+            queue.popleft()
+            print(current_node.value)
+
+            
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
@@ -131,13 +142,19 @@ class BSTNode:
 
 
 if __name__ == "__main__":
-    bst = BSTNode(15)
+    bst = BSTNode(1)
     bst.insert(8)
     bst.insert(5)
     bst.insert(7)
-    bst.insert(16)
+    bst.insert(6)
     bst.insert(3)
     bst.insert(4)
     bst.insert(2)
 
-    print(bst.in_order_print(bst))
+    bst.in_order_print(bst)
+
+    print("\n")
+
+    bst.bft_print(bst)
+
+    

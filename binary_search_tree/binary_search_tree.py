@@ -79,6 +79,19 @@ class BSTNode:
 
         return max_value
 
+    # Return the minimum value found in tree
+    def get_min(self):
+        # Get to bottom left node
+        min_value = self.value
+        # checking if tree root value or
+            # self.left is empty
+        if self.left is None:
+            return self.value
+        else:
+            max_value = self.left.get_min()
+
+        return min_value  
+
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
@@ -166,8 +179,14 @@ class BSTNode:
 
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
-        pass
+        if node.left:
+            self.post_order_dft(node.left)
 
+        if node.right:
+            self.post_order_dft(node.right)
+            
+        print(node.value)
+        
 
 if __name__ == "__main__":
     bst = BSTNode(1)
@@ -179,10 +198,13 @@ if __name__ == "__main__":
     bst.insert(4)
     bst.insert(2)
 
+    print("In Order Print")
     bst.in_order_print(bst)
-    print("\n")
+    print("\nBreadth First Print")
     bst.bft_print(bst)
-    print("\n")
+    print("\nDepth First Print")
     bst.dft_print(bst)
-    print("\n")
+    print("\nPre Order Print")
     bst.pre_order_dft(bst)
+    print("\nPost Order Print")
+    bst.post_order_dft(bst)

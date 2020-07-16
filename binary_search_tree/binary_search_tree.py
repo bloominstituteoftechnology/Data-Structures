@@ -97,8 +97,8 @@ class BSTNode:
         current = self
 
         # loop down to find the rightmost leaf
-        while (current.right):
-            current = current.right
+        while current.right:
+            return  current.right.get_max()
         return current.value
 
 
@@ -209,6 +209,7 @@ bnt = BSTNode(20)
 bnt.insert(3)
 bnt.insert(3232)
 bnt.insert(4232)
+print(bnt.get_max())
 arr = []
 cb = lambda x: arr.append(x * 5)
 bnt.for_each(cb)
@@ -222,5 +223,5 @@ bst.insert(6)
 bst.insert(3)
 bst.insert(4)
 bst.insert(2)
-
+bst.post_order_dft(bst)
 

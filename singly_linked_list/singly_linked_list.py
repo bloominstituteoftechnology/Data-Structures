@@ -63,8 +63,8 @@ class LinkedList:
 
 linked_lists = LinkedList()
 linked_lists.head = Node("Nick")
-
-
+linked_lists.add_to_tail("Hello")
+linked_lists.add_to_tail("Hello")
 
 
 

@@ -55,12 +55,17 @@ class BSTNode:
         else:
             return self.right.get_max()
 
+    # Iterative version for contrast
+        # current = self
+        # while current.right is not None:
+        #     current = current.right
+        # return current.value
+
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
         # value is not optional, would need to check for nil otherwise.
-        # 5.for_each(fn)
         fn(self.value)
-        if self.left is not None:
+        if self.left is not None: # check left side.
             self.left.for_each(fn)  # work through left side of nodes and append values.
         if self.right is not None:  # check right side as we work through the stack.
             self.right.for_each(fn)  # append values to test array if value is not none.
@@ -75,7 +80,7 @@ class BSTNode:
     #     while len(stack)>0:
     #         # pop off the stack
     #         current_node = stack.pop()
-    #         # add its childmen to the stack
+    #         # add its children to the stack
     #         # add right child first and then left child
     #         # to ensure left is popped off first
     #         if current_node.right:

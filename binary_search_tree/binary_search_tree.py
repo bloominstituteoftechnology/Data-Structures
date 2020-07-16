@@ -120,8 +120,15 @@ class BSTNode:
 
         while len(queue) > 0:
             current_node = queue[0]
-            queue.popleft()
             print(current_node.value)
+
+            if current_node.left:
+                queue.append(current_node.left)
+
+            if current_node.right:
+                queue.append(current_node.right)
+
+            queue.popleft()
 
             
 

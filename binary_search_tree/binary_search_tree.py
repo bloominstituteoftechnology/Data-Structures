@@ -44,18 +44,19 @@ class BSTNode:
         if self.value == target:
             return True
         # Case 2: if target is less than self.value
-        if target < self.value:
+        found = False
+        if self.value >= target:
             # if self.left is None, it isn't in the tree
             if self.left is None:
                 return False
-            else:
-                return self.left.contains(target)
+            found = self.left.contains(target)
         # Case 3: otherwise
-        else:
+        if self.value < target:
             if self.right is None:
                 return False
-            else:
-                return self.right.contains(target)
+            found = self.right.contains(target)
+
+        return found
 
     # Return the maximum value found in the tree
     def get_max(self):

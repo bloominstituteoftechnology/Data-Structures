@@ -44,7 +44,9 @@ class BSTNode:
         if self.value == target:
             return True
         # Case 2: if target is less than self.value
+
         found = False
+
         if self.value >= target:
             # if self.left is None, it isn't in the tree
             if self.left is None:

@@ -98,20 +98,22 @@ class BSTNode:
         fn(self.value)
 
         #current _value = self.value
-        print(f'self value: {self.value}')
+        #print(f'self value: {self.value}')
 
         ### THE LEFT TREE
         if self.left == None:
-            print("Pass on the left")
+            pass
+        #print("Pass on the left")
         else:
-            print(f'left node: {self.left.value}')
+            #print(f'left node: {self.left.value}')
             self.left.for_each(fn)
 
 
         if self.right == None:
-            print("Pass on the right")
+            pass
+            #print("Pass on the right")
         else: 
-            print(f'right node: {self.right.value}')
+            #print(f'right node: {self.right.value}')
             self.right.for_each(fn)
 
 
@@ -124,25 +126,129 @@ class BSTNode:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+       
+        if self is None:
+            return
+
+        # check if we can move left
+        if self.left is not None:
+            self.left.in_order_print(node)
+
+        #visit the OG node by printing its value
+        print(self.value)
+
+        # check if we can move right
+
+        if self.right is not None:
+            self.right.in_order_print(node)
+
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+        #use a queue to form a line for the nodes to get in
+        #start by placing the root in the queue
+        queue = Queue()
+        queue.enqueue(node)
+    
+        # need a while loop to iterate
+        # in while statement, check length of queue
+        #while length of queue is > 0
+        while (queue.size()) > 0:
+    
+            #dequeue item from front of queue
+            #print item
+            current_item = queue.dequeue()
+            print(current_item.value)
+
+            #place current item's left node in queue if not None
+            if current_item.left is not None:
+                queue.enqueue(current_item.left)
+            #place current item's right node in queue if not None
+            if current_item.right is not None:
+                queue.enqueue(current_item.right)
+
+
+
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+        # initialize an empty stack
+        stack = Stack()
+        # push the root node onto the stack
+        stack.push(node)
+
+        # need a while loop to manager our iteration
+        # if stack is not empty enter the while loop
+        while (stack.size()) > 0:
+            # pop top item off the stack
+            top_item = stack.pop()
+            # print that item's value
+            
+            print(top_item.value)
+
+
+            # if there is a right subtree
+                # push right item onto the stack
+            if top_item.right is not None:
+                stack.push(top_item.right)
+            # if there is a left subtree
+                # push left item onto the stack
+            if top_item.left is not None:
+                stack.push(top_item.left)
 
     # Stretch Goals -------------------------
     # Note: Research may be required
 
     # Print Pre-order recursive DFT
     def pre_order_dft(self, node):
+        #current-left-right
         pass
 
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
         pass
+
+
+## Queue
+class Queue:
+    def __init__(self):
+        self.storage = []
+    
+    def __len__(self):
+        return len(self.storage)
+        #pass
+
+    def size(self):
+        return len(self.storage)
+
+    def enqueue(self, value):
+        
+        return self.storage.insert(0, value)
+        #pass
+
+    def dequeue(self):
+        if len(self.storage) >= 1:
+            return self.storage.pop(-1)
+
+class Stack:
+    def __init__(self):
+        #self.size = 0
+        ## array is the underlying data structure
+        self.storage = []
+
+    def __len__(self):
+        return (len(self.storage))
+       #pass
+
+    def size(self):
+        return len(self.storage)
+
+    def push(self, value):
+        return self.storage.append(value)
+        #pass
+
+    def pop(self):
+        if len(self.storage) >= 1:
+            return self.storage.pop()

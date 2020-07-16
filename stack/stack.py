@@ -1,6 +1,11 @@
 # from singly_linked_list import LinkedList
-from llist import LinkedList
-from llist import Node
+#!/usr/bin/env python3
+import os
+import sys
+sys.path.append(f'{os.getcwd()}/singly_linked_list')
+from singly_linked_list import LinkedList, Node
+
+
 """
 A stack is a data structure whose primary purpose is to store and
 return elements in Last In First Out order.
@@ -49,11 +54,11 @@ class Stack(LinkedList):
             return head.value
 
 
-# stack = Stack()
-# stack.push(101)
-# stack.push(102)
-# stack.push(105)
-# stack.print_list()
-# print(len(stack))
-# stack.pop()
-# stack.print_list()
+stack = Stack()
+stack.push(101)
+stack.push(102)
+stack.push(105)
+stack.print_list()
+print(len(stack))
+stack.pop()
+stack.print_list()

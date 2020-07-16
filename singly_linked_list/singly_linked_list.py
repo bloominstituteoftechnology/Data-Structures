@@ -12,14 +12,18 @@ class LinkedList:
         self.head = None
         self.tail = None
 
-    # def add_to_tail(self, value):
-    #     if self.head is None:
-    #         self.head = Node(value)
-    #     curr = self.head
-    #     while curr.next:
-    #         print(curr.next)
-    #         curr = curr.next
-    #     curr.next = Node(value)
+    def reverse(self):
+        return self._reverse(self.head)
+
+    def _reverse(self, node, prev=None):
+        if not node:
+            self.head = prev
+            return
+        else:
+            n = node.next
+            node.next = prev
+            print(n, node, node.next)
+            return self._reverse(n, node)
 
     def add_to_tail(self, val):
         new_node = Node(val)
@@ -94,5 +98,10 @@ ll.get_max()
 print(ll.contains(300))
 print(ll.contains(201))
 print(ll.tail)
-ll.remove_head()
+ll.reverse()
 ll.print_list()
+
+
+def joke_problem(self, lst):
+    for l in lst:
+        print(l)

@@ -124,7 +124,6 @@ class DoublyLinkedList:
             head.prev = self.head
             head.next = None
             self.tail = head
-
             return
         elif self.tail == node:
             new_tail = self.tail.prev
@@ -174,7 +173,6 @@ class DoublyLinkedList:
             self.tail.next = None
             return
         elif self.head == node:
-            print(self.head.next, 'treway')
             next = self.head.next
             head = self.head
             self.head = next
@@ -257,6 +255,22 @@ class DoublyLinkedList:
             m = m if m > node.value else node.value
             return self._get_max(node.next, m)
 
+    def reverse(self):
+        return self._reverse(self.head)
+
+    def _reverse(self, node):
+        if not node.next:
+            self.head = node
+            self.head.next = node.prev
+            self.head.prev = None
+            return
+        else:
+            n = node.next
+            print('n', n)
+            node.next = node.prev
+            node.prev = n
+            return self._reverse(n)
+
     def print_list(self):
         lst = []
         curr = self.head
@@ -284,5 +298,7 @@ lst.move_to_front(lst.tail)
 print(lst.head.next, 'head next')
 # lst.delete(10)
 # lst.delete(69)
+lst.print_list()
+lst.reverse()
 lst.print_list()
 print(len(lst))

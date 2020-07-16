@@ -129,13 +129,26 @@ class BSTNode:
                 queue.append(current_node.right)
 
             queue.popleft()
-
             
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+        # Create Stack with initial node inside
+        stack = []
+        stack.append(node)
+
+        while len(stack) > 0:
+            current_node = stack[0]
+            print(current_node.value)
+
+            # if current_node.left:
+            #     stack.append(current_node.left)
+
+            # if current_node.right:
+            #     stack.append(current_node.right)
+
+            stack.pop()
 
     # Stretch Goals -------------------------
 
@@ -159,9 +172,9 @@ if __name__ == "__main__":
     bst.insert(2)
 
     bst.in_order_print(bst)
-
     print("\n")
-
     bst.bft_print(bst)
+    print("\n")
+    bst.dft_print(bst)
 
     

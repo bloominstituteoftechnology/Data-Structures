@@ -63,10 +63,6 @@ class LinkedList:
             # set the list's tail reference to the new node
             self.tail = new_node
 
-    def prepend(self, value):
-        new_node = Node(value, self.head)
-        self.head = new_node
-
     def remove_head(self):
         # return None if there is no head (i.e. the list is empty)
         if not self.head:
@@ -103,8 +99,8 @@ class LinkedList:
             current = current.get_next()
 
         value = self.tail.get_value()
-        self.tail = current
         self.tail.set_next(None)
+        self.tail = current
         return value
 
     def contains(self, value):

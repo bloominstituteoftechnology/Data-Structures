@@ -133,7 +133,6 @@ class DoublyLinkedList:
             self.delete(node)
             self.add_to_tail(temp)
 
-
     def delete(self, node):
         if self.head == self.tail:
             self.head = None
@@ -147,7 +146,6 @@ class DoublyLinkedList:
         else:
             node.delete()
         self.length -= 1
-
 
     def get_max(self):
         if self.head is None:

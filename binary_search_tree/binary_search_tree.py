@@ -1,4 +1,5 @@
 from collections import deque
+from itertools import filterfalse
 
 """
 Binary search trees are a data structure that enforce an ordering over 
@@ -139,22 +140,29 @@ class BSTNode:
         stack.append(node)
 
         while len(stack) > 0:
-            current_node = stack[0]
-            print(current_node.value)
+            current_node = stack[-1]
 
-            # if current_node.left:
-            #     stack.append(current_node.left)
+            print(stack.pop().value)
 
-            # if current_node.right:
-            #     stack.append(current_node.right)
+            if current_node.right:
+                stack.append(current_node.right)
 
-            stack.pop()
+            if current_node.left:
+                stack.append(current_node.left)
+
 
     # Stretch Goals -------------------------
 
     # Print Pre-order recursive DFT
     def pre_order_dft(self, node):
-        pass
+        print(node.value)
+
+        if node.left:
+            node.left.for_each(print)
+
+        if node.right:
+            node.right.for_each(print)
+
 
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
@@ -176,5 +184,5 @@ if __name__ == "__main__":
     bst.bft_print(bst)
     print("\n")
     bst.dft_print(bst)
-
-    
+    print("\n")
+    bst.pre_order_dft(bst)

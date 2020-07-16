@@ -1,7 +1,5 @@
-import sys
-sys.path.append('../queue')
 from queue import Queue
-
+from stack import Stack
 """
 Binary search trees are a data structure that enforce an ordering over 
 the data they store. That ordering in turn makes it a lot more efficient 
@@ -79,11 +77,6 @@ class BSTNode:
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
-    """
-    
-    REFER TO the QUEUE BINARY TREE TO AVOID Import ERROR
-
-    """
     def in_order_print(self, node):
         if node.left:
             self.in_order_print(node.left) # This should get all the way down left
@@ -98,13 +91,11 @@ class BSTNode:
         q = Queue()
         # for the nodes to get in
         # Start by placing root in queue
-        print(dir(q.queue))
-        q.queue.append(node)
-        print(q.queue.values)
+        q.enqueue(node)
         # Need a while loop to iterate, while len q>0
         while q.size > 0:
             # dequeue item from front of q
-            q.dequeue(node)
+            node = q.dequeue()
             # print it
             print(node.value)
             # place current.left node if not none
@@ -126,7 +117,7 @@ class BSTNode:
             # pop top item off
             node = s.pop()
             # Print value
-            print(node.value)
+            print(node)
             # if left, push
             if node.left:
                 s.push(node.left)

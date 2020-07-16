@@ -19,7 +19,6 @@ class BSTNode:
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
         # Case 1: Value is less than self.value
         if value < self.value:
             # If there is no left child, then insert value here

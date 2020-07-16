@@ -9,6 +9,12 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+# import sys
+# sys.path.append('../queue')
+# from queue import Queue
+# sys.path.append('../stack')
+# from stack import Stack
+
 class BSTNode:
     def __init__(self, value):
         self.value = value
@@ -61,31 +67,133 @@ class BSTNode:
             self.left.for_each(fn)
         if self.right:
             self.right.for_each(fn)
-
+            
     # Part 2 -----------------------
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        # if the current node is None
+        # we know we've reached the end of a recursion
+        # (base case) we want to return
+        if self is None:
+            return
+
+        # check if we can "move left"
+        if self.left is not None:
+            self.left.in_order_print(self)
+
+        # visit the node by printing its value
+        print(self.value)
+
+        # check if we can "move right"
+        if self.right is not None:
+            self.right.in_order_print(self)
+
+    def pre_order_dft(self, node):
+        # if the current node is None
+        # we know we've reached the end of a recursion
+        # (base case) we want to return
+        if self is None:
+            return
+
+        # visit the node by printing its value
+        print(self.value)
+
+        # check if we can "move left"
+        if self.left is not None:
+            self.left.pre_order_dft(self)
+
+        # check if we can "move right"
+        if self.right is not None:
+            self.right.pre_order_dft(self)
+
+    def post_order_dft(self, node):
+        # if the current node is None
+        # we know we've reached the end of a recursion
+        # (base case) we want to return
+        if self is None:
+            return
+
+        # check if we can "move left"
+        if self.left is not None:
+            self.left.post_order_dft(self)
+
+        # check if we can "move right"
+        if self.right is not None:
+            self.right.post_order_dft(self)
+
+        # visit the node by printing its value
+        print(self.value)
+        
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+        queue = Queue()
+        queue.enqueue(node)
+    
+        while queue.size > 0:
+            current_item = queue.dequeue()
+            print(current_item.value)
+
+            if current_item.left is not None:
+                queue.enqueue(current_item.left)
+
+            if current_item.right is not None:
+                queue.enqueue(current_item.right)
+
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+        stack = Stack()
+        stack.push(node)
 
-    # Stretch Goals -------------------------
-    # Note: Research may be required
+        while stack.__len__() > 0:
+            top_item = stack.pop()   
+            print(top_item.value)
 
-    # Print Pre-order recursive DFT
-    def pre_order_dft(self, node):
-        pass
+            if top_item.right is not None:
+                stack.push(top_item.right)
 
-    # Print Post-order recursive DFT
-    def post_order_dft(self, node):
-        pass
+            if top_item.left is not None:
+                stack.push(top_item.left)
+
+class Queue:
+    def __init__(self):
+        self.size = 0
+        self.storage = []
+
+    def __len__(self):
+        return self.size
+
+    def enqueue(self, value):
+        self.storage.append(value)
+        self.size += 1
+        return None
+
+    def dequeue(self):
+        if self.size != 0:
+            item = self.storage[0]
+            del self.storage[0]
+            self.size -= 1
+            return item
+        else:
+            return None
+
+class Stack:
+    def __init__(self):
+        self.stack = []
+
+    def __len__(self):
+        return len(self.stack)
+
+    def push(self, value):
+        self.stack.append(value)
+
+    def pop(self):
+        if len(self.stack) == 0:
+            return None
+        else:
+            return self.stack.pop()

@@ -175,8 +175,38 @@ class BSTNode:
 
     # Print Pre-order recursive DFT
     def pre_order_dft(self, node):
-        pass
+        # if the current node is None
+        # we know we've reached the end of a recursion
+        # (base case) we want to return
+        if self is None:
+            return
+
+        # visit the node by printing its value
+        print(self.value)
+
+        # check if we can "move left"
+        if self.left is not None:
+            self.left.pre_order_dft(self)
+
+        # check if we can "move right"
+        if self.right is not None:
+            self.right.pre_order_dft(self)
 
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
-        pass
+        # if the current node is None
+        # we know we've reached the end of a recursion
+        # (base case) we want to return
+        if self is None:
+            return
+
+        # check if we can "move left"
+        if self.left is not None:
+            self.left.post_order_dft(self)
+
+        # check if we can "move right"
+        if self.right is not None:
+            self.right.post_order_dft(self)
+
+        # visit the node by printing its value
+        print(self.value)

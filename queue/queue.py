@@ -52,7 +52,8 @@ class LinkedListQueue:
         self.size -= 1
         return self.storage.remove_head()
 
-class Queue:
+# stretch
+class StackQueue:
     def __init__(self):
         self.size = 0
         self.storage = Stack()

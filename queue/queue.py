@@ -31,11 +31,11 @@ class Queue:
         self.storage.append(value)
         self.size += 1
 
-    def dequeue(self):
+    def dequeue(self, position=0):
         if self.size == 0:
             return None
         else:
-            pop = self.storage.pop(0)
+            pop = self.storage.pop(position)
             self.size -= 1
             return pop
 

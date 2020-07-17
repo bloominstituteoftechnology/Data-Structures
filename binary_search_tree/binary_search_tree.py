@@ -167,47 +167,112 @@ class BSTNode:
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversals
+    # def bft_print(self, node):
+    #     #create a queue
+    #     #add the first node to the queue
+    #     #while queue is not empty
+    #         #remove the first node in queue
+    #         #print the removed node
+    #         #add all children into queue
+    #     que_class = Queue()
+    #     que_class.enqueue(node)
+    #     while que_class.size > 0:
+    #         head = que_class.dequeue()
+    #         print(head.value)
+            
+    #         if head.left != None:
+    #             que_class.enqueue(head.left)
+    #         if head.right != None:
+    #             que_class.enqueue(head.right)
+            
+
+
+    # # Print the value of every node, starting with the given node,
+    # # in an iterative depth first traversal
+    # def dft_print(self, node):
+    #     #create a stack fo nodes
+    #     #add the first node to the stack
+    #     #while the stack is not empty
+    #         #get the current the current node from the top of the stack
+    #         #print that node
+    #         #add all children to the stack, keep in mind order matters
+        
+    #     stack_class = Stack()
+    #     stack_class.push(node)
+    #     while stack_class.size > 0:
+    #         current = stack_class.pop()
+    #         if current.left is not None:
+    #             stack_class.push(current.left)
+    #         if current.right is not None:
+    #             stack_class.push(current.right)
+    #         print(current.value)
+           
     def bft_print(self, node):
-        #create a queue
-        #add the first node to the queue
-        #while queue is not empty
-            #remove the first node in queue
-            #print the removed node
-            #add all children into queue
+        # # create a node_queue
+        # node_queue = Queue()
+        # # add current node to queue
+        # node_queue.enqueue(node)
+        # # while queue is not empty
+        #
+        # while node_queue.size > 0:
+        #     # print(node_queue.size)
+        #     # pop node off queue
+        #     node = node_queue.dequeue()
+        #     # print(node_queue.size)
+        #     # print node
+        #     print(node.value)
+        #     # add its children
+        #     if node.left is not None:
+        #         node_queue.enqueue(node.left)
+        #         # print(node_queue.size)
+        #         # add left (if you can)
+        #     if node.right is not None:
+        #         # add right (if you can)
+        #         node_queue.enqueue(node.right)
+        #         # print(node_queue.size)
         que_class = Queue()
         que_class.enqueue(node)
-        while que_class.size > 0:
-            head = que_class.storage[0]
+        while que_class.__len__() > 0:
+            head = que_class.dequeue()#que_class.storage[0]
             print(head.value)
-            que_class.dequeue()
             if head.left != None:
                 que_class.enqueue(head.left)
             if head.right != None:
                 que_class.enqueue(head.right)
-            
-
-
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        #create a stack fo nodes
-        #add the first node to the stack
-        #while the stack is not empty
-            #get the current the current node from the top of the stack
-            #print that node
-            #add all children to the stack, keep in mind order matters
-        
+        # create a node_stack
+        # node_stack = Stack()
+        # # push the current node onto stack
+        # node_stack.push(node)
+        # # while we have items on the stack
+        # while node_stack.size > 0:
+        #     # print the current value and pop it off
+        #     node = node_stack.pop()
+        #     print(node.value)
+        #     # push the left value of current node if we can
+        #     if node.left is not None:
+        #         node_stack.push(node.left)
+        #     # push the right value of the current node if we can
+        #     if node.right is not None:
+        #         node_stack.push(node.right)
+    # def dft_print(self, node):
+        # create a stack fo nodes
+        # add the first node to the stack
+        # while the stack is not empty
+        # get the current the current node from the top of the stack
+        # print that node
+        # add all children to the stack, keep in mind order matters
         stack_class = Stack()
         stack_class.push(node)
-        while stack_class.size > 0:
+        while stack_class.__len__() > 0:
             current = stack_class.pop()
             print(current.value)
             if current.left is not None:
                 stack_class.push(current.left)
             if current.right is not None:
                 stack_class.push(current.right)
-           
-
     # Stretch Goals -------------------------
     # Note: Research may be required
 

@@ -1,3 +1,6 @@
+from queue.queue import Queue
+from stack.stack import Stack
+
 """
 Binary search trees are a data structure that enforce an ordering over 
 the data they store. That ordering in turn makes it a lot more efficient 
@@ -69,7 +72,7 @@ class BSTNode:
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
         if self.value != None:
-            fn(x = self.value)
+            fn(self.value)
             if self.left is not None and self.right is not None:
                 self.left.for_each(fn)
                 self.right.for_each(fn)
@@ -85,31 +88,105 @@ class BSTNode:
         else:
             return None
 
-
-    # Part 2 -----------------------
-
+# Part 2 -----------------------
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        # if the current node is None
+        # we know we've reached the end of a recursion
+        # (base case) we want to return
+        if self is None:
+            return
 
+        # check if we can "move left"
+        if self.left is not None:
+            self.left.in_order_print(node)
+
+        # visit the node by printing its value
+        print(self.value)
+
+        # check if we can "move right"
+        if self.right is not None:
+            self.right.in_order_print(node)
+        
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+        # if the current node is None
+        if self is None:
+            return
+        # Use a queue to form a "line" 
+        # for the nodes to "get in"
+        queue = Queue()
+        # start by placing the root in the queue
+        queue.enqueue(node)
+
+        # while length of queue is greater than 0
+        while queue.__len__() > 0:
+            # dequeue item from front of queue
+            n = queue.dequeue()
+            # print that item
+            print(n.value)
+
+            # place current item's left node in queue if not None
+            if n.left is not None:
+                queue.enqueue(n.left)
+            # place current item's right node in queue if not None
+            if n.right is not None:
+                queue.enqueue(n.right)
+            
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+        # if the current node is None
+        if self is None:
+            return
+        # initialize an empty stack
+        stack = Stack()
+        # push the root node onto the stack
+        stack.push(self.value)
+        # need a while loop to manager our iteration
+        # if stack is not empty enter the while loop
+        while stack.__len__() > 0:
+            # pop top item off the stack
+            value_to_print = stack.pop()
+            # print that item's value
+            print(value_to_print)
+            # if there is a right subtree
+            if self.right is not None:
+                # push right item onto the stack
+                self.right.dft_print(node)
+                
+            # if there is a left subtree
+            if self.left is not None:
+                # push left item onto the stack
+                self.left.dft_print(node)
 
-    # Stretch Goals -------------------------
-    # Note: Research may be required
+    def bft_print_high_to_low(self, node):
+        # if the current node is None
+        if self is None:
+            return
+        # You should import the queue class from earlier in the
+        # week and use that class to implement this method
+        # Use a queue to form a "line" 
+        # for the nodes to "get in"
+        queue = Queue()
+        # start by placing the root in the queue
+        queue.enqueue(self.value)
+        # need a while loop to iterate
+        # what are we checking in the while statement?
+        # while length of queue is greater than 0
+        while queue.__len__() > 0:
+            # place current item's right node in queue if not None
+            if self.right is not None:
+              self.right.bft_print(node)
 
-    # Print Pre-order recursive DFT
-    def pre_order_dft(self, node):
-        pass
+            # dequeue item from front of queue
+            value_to_print = queue.dequeue()
+            # print that item
+            print(value_to_print)
 
-    # Print Post-order recursive DFT
-    def post_order_dft(self, node):
-        pass
+            # place current item's left node in queue if not None
+            if self.left is not None:
+              self.left.bft_print(node)

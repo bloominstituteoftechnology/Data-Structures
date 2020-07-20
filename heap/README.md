@@ -1,4 +1,4 @@
-# Stretch Goal: Heaps
+# Stretch Goals: Heaps
 
 ## Max Heaps
 * Should have the methods `insert`, `delete`, `get_max`, `_bubble_up`, and `_sift_down`.

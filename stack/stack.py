@@ -28,6 +28,7 @@ class Stack:
             return self.storage.pop()
         return None
 
+# A linked list node to store a stack entry
 class Node:
     def __init__(self, value):
         self.value = value
@@ -48,7 +49,7 @@ class SinglyLinkedList:
         return count
     
     def __iter__(self):
-        """Makes linked liste iterable
+        """ Makes linked list iterable
         """
         node = llist.head
         while node:

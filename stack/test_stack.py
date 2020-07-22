@@ -9,6 +9,8 @@ class QueueTests(unittest.TestCase):
 
     def test_len_returns_0_for_empty_stack(self):
         self.assertEqual(len(self.stack), 0)
+        
+    def test_len_returns_0_for_empty_stack_linked_list(self):
         self.assertEqual(len(self.llist), 0)
 
     def test_len_returns_correct_length_after_push(self):
@@ -25,8 +27,8 @@ class QueueTests(unittest.TestCase):
         self.stack.push(16)
         self.stack.push(18)
         self.assertEqual(len(self.stack), 9)
-        
-        # Linked list
+    
+    def test_len_returns_correct_length_after_push_linked_list(self):
         self.assertEqual(len(self.llist), 0)
         self.llist.push(2)
         self.assertEqual(len(self.llist), 1)
@@ -44,8 +46,9 @@ class QueueTests(unittest.TestCase):
     def test_empty_pop(self):
         self.assertIsNone(self.stack.pop())
         self.assertEqual(len(self.stack), 0)
+
         
-        # Linked list
+    def test_empty_pop_linked_list(self):
         self.assertIsNone(self.llist.pop())
         self.assertEqual(len(self.llist), 0)
 
@@ -62,7 +65,7 @@ class QueueTests(unittest.TestCase):
         self.assertIsNone(self.stack.pop())
         self.assertEqual(len(self.stack), 0)
         
-        # Linked List
+    def test_pop_respects_order_linked_list(self):
         self.llist.push(100)
         self.llist.push(101)
         self.llist.push(105)
@@ -74,6 +77,6 @@ class QueueTests(unittest.TestCase):
         self.assertEqual(len(self.llist), 0)
         self.assertIsNone(self.llist.pop())
         self.assertEqual(len(self.llist), 0)
-        
+           
 if __name__ == '__main__':
     unittest.main()

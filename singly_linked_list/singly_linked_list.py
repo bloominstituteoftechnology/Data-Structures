@@ -55,7 +55,7 @@ class LinkedList:
             # the list is already empty
             return None
         
-        removed_value = self.head.value
+        removed_value = self.head.get_value()
         self.head = self.head.next
         if not self.head:
             # the list is now empty as the one and only item was removed
@@ -75,11 +75,24 @@ class LinkedList:
         
         prev.set_next(None)
         self.tail = prev
+        return curr
     
     def get_max(self):
         #TODO: Implement the get_max() method
-        return None
+        if not self.head:
+            return None
+        
+        curr = self.head
+        max_value = curr.get_value()
+        while curr != None:
+            max_value = max(max_value, curr.get_value())
+            curr = curr.get_next()
+        return max_value
     
-    def contains(self):
-        #TODO: Implement the contains() method
-        return None
+    def contains(self, value):
+        curr = self.head
+        while curr != None:
+            if curr.get_value() is value:
+                return True
+            curr = curr.get_next()
+        return False

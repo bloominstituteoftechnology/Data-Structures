@@ -58,14 +58,34 @@ class LinkedList:
             return value
 
     def remove_tail(self):
-        # Consider the same 3 cases we used in remove_head
-        pass
+        # empty LL
+        if self.head is None:
+            return None
+
+        # LL with 1 Node
+        elif self.head == self.tail:
+            value = self.head.get_value()
+            self.head = None
+            self.tail = None
+            return value
+
+        # LL with 2+ Nodes
+        current = self.head
+        while current.get_next() is not self.tail:
+            current = current.get_next()
+        value = self.tail.get_value()
+        self.tail = current
+        return value
             
-    def contains(self):
-        # 1. use a loop to iterate through the LL
-        # 2. check if the value of the current node is the value we are searching for
-        # 3. return True if we find it, False if we reach the end of the LL
-        pass
+    def contains(self, value):
+        if not self.head:
+            return False
+        current = self.head
+        while current:
+            if current.get_value() == value:
+                return True
+            current = current.get_next()
+        return False
 
     def get_max(self):
         if self.head is None:

@@ -30,9 +30,8 @@ class Stack:
             return self.storage.pop()
         return None
 
+
 # A linked list node to store a stack entry
-
-
 class Node:
 
     def __init__(self, value):
@@ -55,7 +54,7 @@ class SinglyLinkedList:
         return count
 
     def __iter__(self):
-        """ Makes linked list iterable
+        """ Makes linked list iterable.
         """
         node = llist.head
         while node:
@@ -63,7 +62,7 @@ class SinglyLinkedList:
             node = node.next
 
     def push(self, value):
-        """ Inserts a new node at the beginning of the linked list
+        """ Inserts a new node at the beginning of the linked list.
         """
         if self.head is None:
             self.head = Node(value)

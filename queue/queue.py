@@ -89,18 +89,18 @@ class QueueLinkedList:
             self.rear = None
 
 
-q = QueueLinkedList()
-q.enqueue(10)
-q.enqueue(20)
-q.dequeue()
-q.dequeue()
-q.enqueue(30)
-q.enqueue(40)
-q.enqueue(50)
-q.enqueue(60)
-q.enqueue(70)
-q.dequeue()
-
-print("Queue Length: " + str(len(q)))
-print("Queue Front: " + str(q.front.value))
-print("Queue Rear: " + str(q.rear.value))
+#q = QueueLinkedList()
+#q.enqueue(10)
+#q.enqueue(20)
+#q.dequeue()
+#q.dequeue()
+#q.enqueue(30)
+#q.enqueue(40)
+#q.enqueue(50)
+#q.enqueue(60)
+#q.enqueue(70)
+#q.dequeue()
+#
+#print("Queue Length: " + str(len(q)))
+#print("Queue Front: " + str(q.front.value))
+#print("Queue Rear: " + str(q.rear.value))

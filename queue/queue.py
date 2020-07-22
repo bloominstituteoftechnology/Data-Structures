@@ -14,6 +14,7 @@ Stretch: What if you could only use instances of your Stack class to implement t
          What would that look like? How many Stacks would you need? Try it!
 """
 class Queue:
+
     def __init__(self):
         self.size = 0
         self.storage = []
@@ -29,3 +30,72 @@ class Queue:
         if self.storage:
             return self.storage.pop()
         return None
+
+# A linked list node to store a stack entry
+class Node:
+
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+# A class representing singly linked lists implemented as a queue.
+# The front  node stores the front node of the linked list and
+# the rear node stores the last node of the linked list.
+
+class QueueLinkedList:
+    def __init__(self):
+        self.front = self.rear = None
+    
+    def __len__(self):
+        """ Counts the number of nodes in the linked list iteratively.
+        """
+        temp_value = self.front
+        count = 0
+        while(temp_value):
+            count +=1
+            temp_value = temp_value.next
+        return count
+        
+    def isEmpty(self):
+        """ Determines if linked list is empty.
+        """
+        return self.front == None
+    
+    def enqueue(self, value):
+        """ Adds an item to the queue.
+        """
+        temp_value = Node(value)
+        
+        if self.rear == None:
+            self.front = self.rear = temp_value
+            return
+        self.rear.next = temp_value
+        self.rear = temp_value
+
+    def dequeue(self):
+        """ Removes an item from the queue. It removes the front node and
+        moves `front` to the next node"""
+        if self.isEmpty():
+            return
+        temp_value = self.front
+        self.front = temp_value.next
+        
+        if(self.front == None):
+            self.rear = None
+
+q = QueueLinkedList() 
+q.enqueue(10) 
+q.enqueue(20) 
+q.dequeue() 
+q.dequeue() 
+q.enqueue(30) 
+q.enqueue(40) 
+q.enqueue(50)
+q.enqueue(60) 
+q.enqueue(70)  
+q.dequeue()
+
+print("Queue Length: " + str(len(q)))
+print("Queue Front: " + str(q.front.value)) 
+print("Queue Rear: " + str(q.rear.value)) 
+

@@ -64,4 +64,6 @@ class Queue:
             return self.storage.remove_head()
 
 
-# 3. #TODO: Answer question #3 above
+# 3. In terms of the implementation, both Queues are nearly identical with only the 
+# method names differing. In terms of performance, however, the array implementation
+# takes O(n) to dequeue an element, compared to O(1) for the linked list implementation.

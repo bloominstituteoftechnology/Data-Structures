@@ -24,7 +24,7 @@ Stretch: What if you could only use instances of your Stack class to implement t
 #         return self.size
 
 #     def enqueue(self, value):
-#         self.storage.insert(0, value)
+#         self.storage.append(value)
 #         self.size += 1
 
 #     def dequeue(self):
@@ -32,7 +32,7 @@ Stretch: What if you could only use instances of your Stack class to implement t
 #             return None
 #         else:
 #             self.size -= 1
-#             return self.storage.pop()
+#             return self.storage.pop(0)
 
 
 # 2. Queue (using a linked list)
@@ -53,9 +53,9 @@ class Queue:
     def dequeue(self):
         if self.size == 0:
             return None
-                
-        self.size -= 1
-        return self.storage.remove_head()
+        else:
+            self.size -= 1
+            return self.storage.remove_head()
 
 
 # 3. #TODO: Answer question #3 above

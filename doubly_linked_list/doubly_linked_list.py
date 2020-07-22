@@ -68,9 +68,10 @@ class DoublyLinkedList:
             new_tail = ListNode(value, self.tail, None)
             self.tail.next = new_tail
             self.tail = new_tail
+            self.length += 1
         else:
             self.add_to_head(value)
-        self.length += 1
+        
             
     """
     Removes the List's current tail node, making the 
@@ -99,6 +100,7 @@ class DoublyLinkedList:
         self.head.next = temp
         self.head.prev = None
         temp.prev = self.head
+        self.length += 1
         
     """
     Removes the input node from its current spot in the 
@@ -110,7 +112,7 @@ class DoublyLinkedList:
         node.prev = self.tail
         node.next = None
         self.tail = node
-
+        self.length += 1
         
     """
     Deletes the input node from the List, preserving the 
@@ -165,4 +167,12 @@ class DoublyLinkedList:
 # ll.delete(ll.head.next)
 
 # print(len(ll))
+node = ListNode(1)
 
+ll = DoublyLinkedList(node)
+
+ll.remove_from_tail()
+
+ll.add_to_tail(33)
+
+print(len(ll))

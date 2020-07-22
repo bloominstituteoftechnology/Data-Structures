@@ -14,22 +14,44 @@ Stretch: What if you could only use instances of your Stack class to implement t
          What would that look like? How many Stacks would you need? Try it!
 """
 # 1 #
+# class Queue:
+#     def __init__(self):
+#         self.size = 0
+#         self.storage = []
+    
+#     def __len__(self):
+#         return len(self.storage)
+
+#     def enqueue(self, value):
+#         self.storage.append(value) 
+
+#     def dequeue(self):
+#         if self.__len__() == 0:
+#             return None
+#         else:
+#             return self.storage.pop(0)
+
+# 2 #
+from singly_linked_list import LinkedList
 class Queue:
     def __init__(self):
         self.size = 0
-        self.storage = []
+        self.storage = LinkedList()
     
     def __len__(self):
-        return len(self.storage)
+        return self.size
 
     def enqueue(self, value):
-        self.storage.append(value) 
+        self.size += 1
+        self.storage.add_to_tail(value)
 
     def dequeue(self):
-        if self.__len__() == 0:
+        if self.size == 0:
             return None
         else:
-            return self.storage.pop(0)
+            self.size -= 1
+            return self.storage.remove_head()
 
-# 2 #
-
+''' 3
+Arrays don't need to explicitly keep track of the size of the queue while the LL needs to track the size property
+'''

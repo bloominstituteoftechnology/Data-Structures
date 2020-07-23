@@ -12,27 +12,27 @@ return elements in Last In First Out order.
 """
 
 # 1. Stack (using an array)
-class Stack:
-    def __init__(self):
-        self.size = 0
-        self.storage = []
+# class Stack:
+#     def __init__(self):
+#         self.size = 0
+#         self.storage = []
 
-    # len performance: O(1)
-    def __len__(self):
-        return self.size
+#     # len performance: O(1)
+#     def __len__(self):
+#         return self.size
 
-    # push performance: O(1)
-    def push(self, value):
-        self.storage.append(value)
-        self.size += 1
+#     # push performance: O(1)
+#     def push(self, value):
+#         self.storage.append(value)
+#         self.size += 1
 
-    # pop performance: O(1)
-    def pop(self):
-        if self.size == 0:
-            return None
-        else:
-            self.size -= 1
-            return self.storage.pop()
+#     # pop performance: O(1)
+#     def pop(self):
+#         if self.size == 0:
+#             return None
+#         else:
+#             self.size -= 1
+#             return self.storage.pop()
 
 
 # 2. Stack (using a linked list)

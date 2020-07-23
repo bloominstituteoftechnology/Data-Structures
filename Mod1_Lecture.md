@@ -22,3 +22,17 @@ class Node:
 
     value
     next
+O(n): Before we added 'tail' we had to start from the head and traverse all the way to the end of the linked list to add a new element.
+
+We added a 'tail': Add a new element onto the end of a linked list
+O(1): 1. Create the new node from the value
+      2. Set the old tail's next to point to the new node
+      3. Reassign self.tail to refer to the new node
+
+Stacks: Stack of Plates  add to top of stack and remove from top of stack as well.
+
+Last in First Out = Stacks exhibit this property
+
+Queues: Grocery Line - Enter on one end and Leave on the other end
+
+First in First Out Ordering

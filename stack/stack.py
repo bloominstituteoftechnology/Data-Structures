@@ -9,17 +9,33 @@ return elements in Last In First Out order.
    Make sure the Stack tests pass.
 3. What is the difference between using an array vs. a linked list when 
    implementing a Stack?
+
 """
+
 class Stack:
     def __init__(self):
         self.size = 0
-        # self.storage = ?
+        self.storage = []
 
     def __len__(self):
-        pass
+        '''
+        Returns the number of elements in the stack
+        '''
+        return len(self.storage)
 
     def push(self, value):
-        pass
+        '''
+        Adds a value to the top of the stack
+        '''
+        self.storage.insert(0, value)
 
     def pop(self):
-        pass
+        '''
+        removes and returns the element at the top of the stack
+        '''
+        if not self.storage:
+            return None
+
+        return self.storage.pop(0)
+
+        

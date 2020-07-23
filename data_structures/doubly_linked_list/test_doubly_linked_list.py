@@ -8,6 +8,7 @@ class DoublyLinkedListTests(unittest.TestCase):
         self.dll = DoublyLinkedList(self.node)
 
     def test_list_remove_from_tail(self):
+        #breakpoint()
         self.dll.remove_from_tail()
         self.assertIsNone(self.dll.head)
         self.assertIsNone(self.dll.tail)

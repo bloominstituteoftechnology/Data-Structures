@@ -12,7 +12,7 @@ return elements in Last In First Out order.
 """
 
 # doing the imports
-from singly_linked_list import singly_linked_list
+from data_structures.singly_linked_list.singly_linked_list import LinkedList 
 
 class Stack:
 
@@ -21,11 +21,11 @@ class Stack:
     #def __init__(self):
     #    self.size = 0
     #    self.storage = []
-
+#
     # implementation with a linked_list
     def __init__(self):
         self.size = 0
-        self.storage = singly_linked_list.LinkedList()
+        self.storage = LinkedList()
 
     
     # implementation with a list
@@ -34,9 +34,9 @@ class Stack:
     #    return len(self.storage)
 
     # implimentation with a singl linked list
-        def __len__(self):
+    def __len__(self):
         # using the length value that I have stored in my singly linked list
-            return self.storage.length
+        return self.size
     
     # implementation with a list
     #def push(self, value):
@@ -44,7 +44,6 @@ class Stack:
     #    # will put on the end of a list
     #    self.storage.append(value)
     #    self.size += 1
-
 
     def push(self, value):
         # putting the element on the top of the stack
@@ -60,7 +59,7 @@ class Stack:
     #    # removing from the top of the list
     #    self.size -= 1
     #    return self.storage.pop()
-#
+##
     def pop(self):
         # if there is no list then will return None
         if self.size == 0:
@@ -68,4 +67,4 @@ class Stack:
         # removing from the top of the list
         self.size -= 1
         return self.storage.remove_head()
-
+#

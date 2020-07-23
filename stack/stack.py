@@ -60,4 +60,10 @@ class Stack:
             self.size -= 1
             return self.storage.remove_head()
 
-# 3. #TODO: Answer question #3 above
+# 3. In terms of the implementation, both Stacks are nearly identical with only the 
+# method names differing. In terms of performance, the push and pop methods for both
+# implementation are O(1). Note that the LinkedList's remove_tail method has a 
+# performance of O(n). So in order for the LinkedList implementation to acheive a
+# performance of O(1), the Stack must be implemented so that 'head' of the LinkedList 
+# represents the 'top' of the Stack. This is different from the array implementation
+# where last index in the array represents the 'top' of the Stack.

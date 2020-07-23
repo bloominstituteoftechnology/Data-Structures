@@ -33,6 +33,7 @@ class LinkedList:
         nodes.append("None")
         return " -> ".join(nodes)
     
+    # add_to_head performance: O(1)
     def add_to_head(self, value):
         new_node = Node(value, self.head)
         self.head = new_node
@@ -40,6 +41,7 @@ class LinkedList:
             # set the new node as the tail if the list is currently empty
             self.tail = new_node
     
+    # add_to_tail performance: O(1)
     def add_to_tail(self, value):
         new_node = Node(value)
         if not self.head:
@@ -50,6 +52,7 @@ class LinkedList:
             self.tail.set_next(new_node)
             self.tail = new_node
 
+    # remove_head performance: O(1)
     def remove_head(self):
         if not self.head:
             # the list is already empty
@@ -62,6 +65,7 @@ class LinkedList:
             self.tail = None
         return removed_value
 
+    # remove_tail performance: O(n)
     def remove_tail(self):
         if not self.head:
             # the list is already empty
@@ -77,8 +81,8 @@ class LinkedList:
         self.tail = prev
         return curr
     
+    # get_max performance: O(n)
     def get_max(self):
-        #TODO: Implement the get_max() method
         if not self.head:
             return None
         
@@ -89,6 +93,7 @@ class LinkedList:
             curr = curr.get_next()
         return max_value
     
+    # contains performance: O(n)
     def contains(self, value):
         curr = self.head
         while curr != None:

@@ -72,3 +72,33 @@ from singly_linked_list import LinkedList
 # Stretch: Queue (using a stack)
 from stack import Stack
 
+class Queue:
+    def __init__(self):
+        self.size = 0
+        self.storage = Stack()
+        self.temp_storage = Stack()
+    
+    # len performance: O(1)
+    def __len__(self):
+        return self.size
+
+    # enqueue performance: O(1)
+    def enqueue(self, value):
+        self.storage.push(value)
+        self.size += 1
+
+    # dequeue performance: O(n)
+    def dequeue(self):
+        if self.size == 0:
+            return None
+
+        self.size -= 1
+
+        while len(self.storage) > 1:
+            self.temp_storage.push(self.storage.pop())
+        elem_popped = self.storage.pop()
+
+        while len(self.temp_storage) > 0:
+            self.storage.push(self.temp_storage.pop())
+        
+        return elem_popped

@@ -14,10 +14,10 @@ class Node:
         self.next_node = new_next
 
 class LinkedList:
-    def __init__(self, head, tail, length):
-        self.head = None
-        self.tail = None
-        self.length = 0
+    def __init__(self, head=None, tail=None, length=0):
+        self.head = head
+        self.tail = tail
+        self.length = length
 
     def add_to_head(self, value):
         new_node = Node(value, self.head)
@@ -30,14 +30,69 @@ class LinkedList:
         new_node = Node(value)
         if self.head is None and self.tail is None:
             self.head = new_node
-            self.tail = new_node
         else:
             self.tail.set_next(new_node)
             self.tail = new_node
+        self.tail = new_node
         self.length += 1
 
-    def remove_head(self, head):
-        pass
+    def remove_head(self):
+        # Empty Linked List
+        if self.head is None:
+            return None
+        # List with 1 node
+        elif self.head == self.tail:
+            value = self.head.get_value()
+            self.head = None
+            self.tail = None
+            self.length -= 1
+            return value
+        # List with 2+ nodes
+        else:
+            value = self.head.get_value()
+            self.head = self.head.get_next()
+            self.length -= 1
+            return value
 
     def remove_tail(self):
-        pass
+        # Empty LL
+        if self.tail is None:
+            return None
+        # LL with one value
+        elif self.tail == self.head:
+            value = self.tail.get_value()
+            self.tail = None
+            self.head = None
+            self.length -= 1
+            return value
+        # LL with 2 or more
+        else:
+            value = self.tail.get_value()
+            self.tail = self.tail.get_next()
+            self.length -= 1
+            return value
+
+    def contains(self, value):
+        current = self.head
+        found = False
+        while current and not found:
+            if current.value == value:
+                found = True
+            else:
+                current = current.get_next()
+        if not current:
+            return False
+        return True        
+
+    def get_max(self):
+        if self.head is None:
+            return None
+        # Iterate through all the elements
+        cur_node = self.head 
+        cur_max = self.head.get_value()
+        while cur_node is not None:
+            if cur_node.get_value() > cur_max:
+                cur_max = cur_node.get_value()
+            cur_node = cur_node.get_next()
+
+        return cur_max

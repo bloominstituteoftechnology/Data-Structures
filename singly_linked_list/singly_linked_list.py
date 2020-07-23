@@ -87,20 +87,50 @@ class LinkedList:
         # if we've gotten here, then the target node isn't in our list
         return False
 
-    def get_max(self):        
+    def get_max(self):   
+        # check for empty list     
         if not self.head:
             return None
         
+        # set initial values
         max_val = 0
         current = self.head
 
+        # iterrate through list
         while current:
             current_val = current.get_value()
 
+            # compare values and update max when greater value presented
             if max_val < current_val:
                 max_val = current_val
 
             current = current.get_next()
+
         return max_val
+
+    def remove_tail(self):
+        # check for empty list
+        if not self.tail:
+            return None
+        
+        # set intial values
+        current = self.head
+
+        # extract tail value
+        value = self.tail.get_value()
+
+        # iterrate through list
+        while current:
+            # check to see if we are on second to last node
+            if current.get_next() == self.tail:
+
+                # remove current tail and reassign to second to last node
+                current.set_next = None
+                self.tail = current
+                break
+        return value
+
+
+        
 
 

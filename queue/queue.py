@@ -10,10 +10,14 @@ return elements in First In First Out order.
 3. What is the difference between using an array vs. a linked list when 
    implementing a Queue?
    
+    Same answer as for stack. To truely do this with OOP principles of
+    abstraction and encapsulation, and implemented not extended via inheritance
+    I have to change the linked list class to surface this functionality
+
 Stretch: What if you could only use instances of your Stack class to implement the Queue?
          What would that look like? How many Stacks would you need? Try it!
 """
-class Queue:
+class ArrayQueue:
     def __init__(self):
         self.size = 0
         self.storage = []
@@ -29,3 +33,22 @@ class Queue:
             return None
         else:
             return self.storage.pop()
+
+from singly_linked_list import LinkedList
+
+class Queue:
+    def __init__(self):
+        self.size = 0
+        self.storage = LinkedList()
+    
+    def __len__(self):
+        return self.storage.get_count()
+
+    def enqueue(self, value):
+        self.storage.add_to_tail(value)
+
+    def dequeue(self):
+        if not self.storage:
+            return None
+        else:
+            return self.storage.remove_head()

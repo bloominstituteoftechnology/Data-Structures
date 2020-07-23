@@ -35,6 +35,8 @@ class LinkedList:
             self.tail = None 
         self.length -= 1
         return prev_head.value
+    def remove_tail(self):
+        pass
     def get_max(self):
         max_val = float("-inf")
         node = self.head

@@ -9,6 +9,23 @@ return elements in First In First Out order.
    Make sure the Queue tests pass.
 3. What is the difference between using an array vs. a linked list when 
    implementing a Queue?
+
+   ==========================================================================
+   ==========================================================================
+   ==========================================================================
+   ==========================================================================
+   ==========================================================================
+   ANSWER: Array is a list that has all elements next to each other in memory.
+   Linked list contains elements scattered wherever throughout memory that all
+   have pointers to the next element, making them more memory efficient than
+   arrays. As far as implementing a queue, I didn't notice any difference other
+   than having to build out enqueue, dequeue, contains, and get_max functions
+   on a linked list.
+   ==========================================================================
+   ==========================================================================
+   ==========================================================================
+   ==========================================================================
+   ==========================================================================
    
 Stretch: What if you could only use instances of your Stack class to implement the Queue?
          What would that look like? How many Stacks would you need? Try it!

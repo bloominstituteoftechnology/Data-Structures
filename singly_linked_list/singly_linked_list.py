@@ -60,10 +60,26 @@ class LinkedList:
             self.length -= 1
             return value
         
-    def remove_tail(self):
-        pass
-    
-    # def contains():
+     def remove_tail(self):
+        if self.tail is None:
+            return None
+        elif self.head == self.tail:
+            value = self.tail.get_value()
+            self.head = None
+            self.tail = None
+            self.length -= 1
+            return value
+        else:
+            value = self.tail.get_value()
+            return value
+
+    def contains(self, value):
+        cur_node = self.head
+        while cur_node:
+            if cur_node.get_value() == value:
+                return True
+            cur_node = cur_node.get_next()
+        return False
         
     def get_max(self):
         cur_node = self.head

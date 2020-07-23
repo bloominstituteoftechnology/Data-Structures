@@ -1,25 +1,4 @@
-
-"""
-A stack is a data structure whose primary purpose is to store and
-return elements in Last In First Out order. 
-
-1. Implement the Stack class using an array as the underlying storage structure.
-   Make sure the Stack tests pass.
-2. Re-implement the Stack class, this time using the linked list implementation
-   as the underlying storage structure.
-   Make sure the Stack tests pass.
-3. What is the difference between using an array vs. a linked list when 
-   implementing a Stack?
-   
-   In a array, each element is independent and
-   can be accessed using it's [index=value] .
-    
-   In a linked list, each node/element
-      points to the next, --> [] --> [] --> node
-"""
-# --------------------------------------------------------------------------------------------
-# add singlylinkedlist to file for testing 
-"""class Node:
+class Node:
     def __init__(self, value=None, next_node=None):
         # the value at this linked list node
         self.value = value
@@ -148,60 +127,3 @@ class LinkedList:
         return cur_max
         
  
-"""
-
-# --------------------------------------------------------------------------------------------
-
-
-from singlyLinkedList import LinkedList
-
-class Stack:
-# 1. Implement the Stack class using an array as the underlying storage structure.
-#    Make sure the Stack tests pass.
-    def __init__(self, storage):
-        self.size = 0
-        # data structure 
-        self.storage = []
-
-    def __len__(self):
-        # return  self.storage to len(self.storage)
-        return len(self.storage)
-
-    def push(self, value):
-        # append value to self.storage
-        return self.storage.append(value)
-
-    def pop(self):
-        # check to see if self.storage >= 1:
-        #  return self.storage.pop()
-        if len(self.storage) >= 1:
-            return self.storage.pop()
-
-
-class Stack:
-# 2. Re-implement the Stack class, this time using the linked list implementation
-#    as the underlying storage structure. Make sure the Stack tests pass.
-    def __init__(self, storage):
-        self.size = 0
-        # add imported LinkedList
-        self.storage = LinkedList()
-
-    def __len__(self):
-        # return self.size
-        return self.size
-        
-
-    def push(self, value):
-        # adjust self.size =+ 1
-        # func add_to_tail()
-        # return self.storage.add_to_tail(value)
-        self.size =+ 1
-        return self.storage.add_to_tail(value)
-
-    def pop(self):
-        # check self.size is "greater than or equal" to 1: self.size -= 1
-        # func remove_tail()
-        # return self.storage.remove_tail()
-        if self.size >= 1:
-            self.size -= 1
-        return self.storage.remove_tail()

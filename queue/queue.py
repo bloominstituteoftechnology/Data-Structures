@@ -41,29 +41,34 @@ Stretch: What if you could only use instances of your Stack class to implement t
 # 2. Queue (using a linked list)
 from singly_linked_list import LinkedList
 
-class Queue:
-    def __init__(self):
-        self.size = 0
-        self.storage = LinkedList()
+# class Queue:
+#     def __init__(self):
+#         self.size = 0
+#         self.storage = LinkedList()
     
-    # len performance: O(1)
-    def __len__(self):
-        return self.size
+#     # len performance: O(1)
+#     def __len__(self):
+#         return self.size
 
-    # enqueue performance: O(1)
-    def enqueue(self, value):
-        self.storage.add_to_tail(value)
-        self.size += 1
+#     # enqueue performance: O(1)
+#     def enqueue(self, value):
+#         self.storage.add_to_tail(value)
+#         self.size += 1
 
-    # dequeue performance: O(1)
-    def dequeue(self):
-        if self.size == 0:
-            return None
-        else:
-            self.size -= 1
-            return self.storage.remove_head()
+#     # dequeue performance: O(1)
+#     def dequeue(self):
+#         if self.size == 0:
+#             return None
+#         else:
+#             self.size -= 1
+#             return self.storage.remove_head()
 
 
 # 3. In terms of the implementation, both Queues are nearly identical with only the 
 # method names differing. In terms of performance, however, the array implementation
 # takes O(n) to dequeue an element, compared to O(1) for the linked list implementation.
+
+
+# Stretch: Queue (using a stack)
+from stack import Stack
+

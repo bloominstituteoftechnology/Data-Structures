@@ -21,13 +21,11 @@ class Node:
 class LinkedList:
     def __init__(self):
         # reference to the head of the list
-        self.head       = None
+        self.head = None
         # reference to the tail of the list
-        self.tail       = None
+        self.tail = None
         # reference to the length of the list
-        self.lgth       = 0
-        # reference a value dict
-        self.val_ocur   = {}
+        self.lgth = 0
 
     def add_to_tail(self, value):
         # wrap the input value in a node

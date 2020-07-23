@@ -50,7 +50,6 @@ Stack class with array storage structure.
 Stack class with list storage structure.
 '''
 
-
 class Stack:
     class Node:
         def __init__(self, element, _next):

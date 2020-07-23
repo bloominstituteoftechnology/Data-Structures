@@ -36,20 +36,28 @@ class Stack:
 
 
 # 2. Stack (using a linked list)
-# from singly_linked_list import LinkedList
+from singly_linked_list import LinkedList
 
-# class Stack:
-#     def __init__(self):
-#         self.size = 0
-#         # self.storage = ?
+class Stack:
+    def __init__(self):
+        self.size = 0
+        self.storage = LinkedList()
 
-#     def __len__(self):
-#         pass
+    # len performance: O(1)
+    def __len__(self):
+        return self.size
 
-#     def push(self, value):
-#         pass
+    # push performance: O(1)
+    def push(self, value):
+        self.storage.add_to_head(value)
+        self.size += 1
 
-#     def pop(self):
-#         pass
+    # pop performance: O(1)
+    def pop(self):
+        if self.size == 0:
+            return None
+        else:
+            self.size -= 1
+            return self.storage.remove_head()
 
 # 3. #TODO: Answer question #3 above

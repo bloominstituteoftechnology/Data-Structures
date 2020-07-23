@@ -50,8 +50,6 @@ Stack class with array storage structure.
 Stack class with list storage structure.
 '''
 
-class IsEmptyError(Exception):
-    pass
 
 class Stack:
     class Node:
@@ -67,7 +65,7 @@ class Stack:
         return self.size
     
     def is_empty(self):
-        return self.size == 0
+        return not self
     
     def push(self, element):
         self.head = self.Node(element, self.head)
@@ -75,15 +73,16 @@ class Stack:
         
     def pop(self):
         if self.is_empty():
-            raise IsEmptyError('This stack is empty, pop cannot be used.')
-        result = self.head.element
-        self.head = self.head._next
-        self.size -= 1
-        return result
+            return None
+        else:
+            result = self.head.element
+            self.head = self.head._next
+            self.size -= 1
+            return result
     
     def top(self):
         if self.is_empty():
-            raise IsEmptyError('This stack is empty, cannot retrieve any elements.')
+            return None
         return self.head.element
             
             

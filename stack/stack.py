@@ -12,14 +12,20 @@ return elements in Last In First Out order.
 """
 class Stack:
     def __init__(self):
-        self.size = 0
+        self.container = 0
         # self.storage = ?
+        
+    def is_empty(self):
+        return self.container() == 0
 
     def __len__(self):
-        pass
+        return len(self.container)
 
     def push(self, value):
-        pass
+        self.container.append(value)
 
     def pop(self):
-        pass
+        return self.container.pop()
+    
+    def show(self):
+        return self.container

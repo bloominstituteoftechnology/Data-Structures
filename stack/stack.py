@@ -9,6 +9,7 @@ return elements in Last In First Out order.
    Make sure the Stack tests pass.
 3. What is the difference between using an array vs. a linked list when 
    implementing a Stack?
+   -- Array has accessible info by index, and can be accessed; and has memory allocated in the stack section. Linked List points to the next node, so it is less accessible; and memory of a linked list gets allocated in the heap section. 
 """
 
 '''

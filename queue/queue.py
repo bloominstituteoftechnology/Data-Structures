@@ -13,16 +13,24 @@ return elements in First In First Out order.
 Stretch: What if you could only use instances of your Stack class to implement the Queue?
          What would that look like? How many Stacks would you need? Try it!
 """
+from array import *
+
 class Queue:
     def __init__(self):
         self.size = 0
-        # self.storage = ?
+        self.storage = array('b',[])
     
     def __len__(self):
-        pass
+        return len(self.storage)
 
     def enqueue(self, value):
-        pass
+        self.value = value
+        self.storage.append(value)
 
     def dequeue(self):
-        pass
+        if len(self.storage) < 1:
+          return None
+        else:
+          return self.storage.pop(0)
+
+#* ALL TESTS USING ARRAY AS STORAGE PASSED

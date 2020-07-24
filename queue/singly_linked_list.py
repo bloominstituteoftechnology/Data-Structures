@@ -35,9 +35,9 @@ class LinkedList:
 
     def add_to_tail(self, value):
         # wrap the input value in a node
-        new_node = Node(value)
+        new_node = Node(value, None)
         # check if there is no head (i.e., the list is empty)
-        if self.head is None and self.tail is None:
+        if not self.head:
             # if the list is initially empty, set both head and tail to the new node
             self.head = new_node
             self.tail = new_node

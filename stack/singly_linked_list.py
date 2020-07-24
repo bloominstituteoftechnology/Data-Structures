@@ -80,6 +80,7 @@ class LinkedList:
                 element = element.get_next()
             self.tail = element
             self.tail.set_next(None)
+            self.length -= 1
 
             return value
 

@@ -16,8 +16,8 @@ Stretch: What if you could only use instances of your Stack class to implement t
 
 import sys
 sys.path.extend(['singly_linked_list', 'stack'])
-from singly_linked_list import LinkedList
-from stack import Stack
+from singly_linked_list import LinkedList # pylint: disable=import-error
+from stack import Stack # pylint: disable=import-error
 
 # 1. Queue (using an array)
 # class Queue:

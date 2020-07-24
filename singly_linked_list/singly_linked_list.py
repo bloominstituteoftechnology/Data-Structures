@@ -67,15 +67,19 @@ class LinkedList:
             value = self.head.get_value()
             self.head = None
             self.tail = None
+            self.length -= 1
             return value
 
         # LL with 2+ Nodes
-        current = self.head
-        while current.get_next() is not self.tail:
-            current = current.get_next()
-        value = self.tail.get_value()
-        self.tail = current
-        return value
+        else:
+            current = self.head
+            while current.get_next() is not self.tail:
+                current = current.get_next()
+            value = self.tail.get_value()
+            current.set_next(None)
+            self.tail = current
+            self.length -= 1
+            return value
             
     def contains(self, value):
         if not self.head:

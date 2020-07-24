@@ -35,20 +35,28 @@ class ArrayStack:
 #     def __init__(self):
 #         self.size = 0
 #         self.items = LinkedList()
+# Data Structures HW/Data-Structures/singly_linked_list/singly_linked_list.py
+# /Users/lambdacatalina/Desktop/LAMBDA-SCHOOL/COMPUTER SCIENCE/Data Structures HW/Data-Structures/singly_linked_list/singly_linked_list.py
 
-class Stack:
+# import sys
+# sys.path.append('../singly_linked_list')
+from singly_linked_list import LinkedList
+
+class LinkedListStack:
     def __init__(self):
         self.size = 0
-        self.storage = []
+        self.storage = LinkedList()
 
     def __len__(self):
-        return len(self.storage)
+        return len(self.size)
 
     def push(self, value):
-        self.storage.append(value)
+        self.storage.add_to_head(value)
+        self.size += 1
+
 
     def pop(self): #remove last one
         if self.storage != []:
-            return self.storage.pop()
+            return self.storage.remove_head
         else:
             return None

@@ -80,6 +80,8 @@ class DoublyLinkedList:
     """
     def remove_from_tail(self):
         old_tail = self.tail
+        if old_tail == None:
+            return None
         new_tail = old_tail.prev
         if new_tail:
             new_tail.next = None

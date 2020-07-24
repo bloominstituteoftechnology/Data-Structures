@@ -53,7 +53,7 @@ class LinkedList:
             self.head = self.head.get_next()
             self.length -= 1
             return value
-
+            
     def remove_tail(self):
         # Empty LL
         if self.tail is None:
@@ -67,8 +67,12 @@ class LinkedList:
             return value
         # LL with 2 or more
         else:
+            cur_node = self.head
+            while cur_node.get_next() is not self.tail:
+                cur_node = cur_node.get_next()
             value = self.tail.get_value()
-            self.tail = self.tail.get_next()
+            cur_node.set_next(None)
+            self.tail = cur_node
             self.length -= 1
             return value
 
@@ -96,3 +100,13 @@ class LinkedList:
             cur_node = cur_node.get_next()
 
         return cur_max
+
+    def find_middle(self):
+        # Doing this in 1 pass without 'length' attribute
+        mid_point = self.head
+        end_point = self.head
+        while end_point is not None and end_point.get_next() is not None:
+            mid_point = mid_point.get_next()
+            end_point = end_point.get_next().get_next()
+        
+        return mid_point.value

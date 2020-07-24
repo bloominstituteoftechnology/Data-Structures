@@ -11,6 +11,10 @@ return elements in Last In First Out order.
    implementing a Stack?
 """
 
+import sys
+sys.path.append('singly_linked_list')
+from singly_linked_list import LinkedList
+
 # 1. Stack (using an array)
 # class Stack:
 #     def __init__(self):
@@ -36,8 +40,6 @@ return elements in Last In First Out order.
 
 
 # 2. Stack (using a linked list)
-from singly_linked_list import LinkedList
-
 class Stack:
     def __init__(self):
         self.size = 0

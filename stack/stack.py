@@ -92,3 +92,14 @@ s.push('two')
 s.push(3)
 s.push('four')
 print(s.top())
+
+
+# return all values in the list a -> b -> c -> d -> none
+def __str__(self):
+    output = ''
+    current_node = self.head # create tracker node variable
+    while current_node is not None: # loop until it's None
+        
+        output += f'{current_node.value} -> ' # (Custom syntax for specific list)
+        
+        current_node = current_node.next_node # update tracker node to the next node

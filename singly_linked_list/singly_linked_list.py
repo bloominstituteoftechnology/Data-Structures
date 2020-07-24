@@ -102,3 +102,26 @@ class LinkedList:
                 cur_max = cur_node.get_value()
             cur_node = cur_node.get_next()
         return cur_max
+
+    def find_middle(self):
+        # doing this in 1 pass, without using `length` attribute
+        mid_point = self.head
+        end_point = self.head
+        while end_point is not None and end_point.get_next() is not None:
+            mid_point = mid_point.get_next()
+            end_point = end_point.get_next().get_next()
+
+        return mid_point.value
+
+
+ll = LinkedList()
+ll.add_to_tail(1)
+ll.add_to_tail(2)
+ll.add_to_tail(3)
+ll.add_to_tail(4)
+ll.add_to_tail(5)
+ll.add_to_tail(6)
+ll.add_to_tail(7)
+ll.add_to_tail(8)
+ll.add_to_tail(9)
+print(ll.find_middle())

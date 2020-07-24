@@ -19,7 +19,7 @@ return elements in Last In First Out order.
 """
 # --------------------------------------------------------------------------------------------
 # add singlylinkedlist to file for testing 
-"""class Node:
+class Node:
     def __init__(self, value=None, next_node=None):
         # the value at this linked list node
         self.value = value
@@ -148,12 +148,12 @@ class LinkedList:
         return cur_max
         
  
-"""
+
 
 # --------------------------------------------------------------------------------------------
 
 
-from singlyLinkedList import LinkedList
+
 
 class Stack:
 # 1. Implement the Stack class using an array as the underlying storage structure.

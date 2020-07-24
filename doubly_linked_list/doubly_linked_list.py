@@ -7,6 +7,24 @@ class ListNode:
         self.prev = prev
         self.value = value
         self.next = next
+    
+    def __repr__(self):
+        return self.value
+
+    def get_value(self):
+        return self.value
+    
+    def get_next(self):
+        return self.next
+    
+    def get_prev(self):
+        return self.prev
+    
+    def set_next(self, new_next):
+        self.next = new_next
+    
+    def set_prev(self, new_prev):
+        self.prev = new_prev
             
 """
 Our doubly-linked list class. It holds references to 

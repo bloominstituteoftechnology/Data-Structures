@@ -30,7 +30,7 @@ from singly_linked_list.singly_linked_list import Node, LinkedList
 #         else:
 #             return self.storage.pop()
 
-
+# implementing Stack class, using linked list implementation
 class Stack:
     def __init__(self):
         self.size = 0

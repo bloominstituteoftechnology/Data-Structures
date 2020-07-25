@@ -129,18 +129,56 @@ class DoublyLinkedList:
     Deletes the input node from the List, preserving the 
     order of the other elements of the List.
     """
-    def delete(self, node):
-        if not self.head and not node:
-            return None
-        value = node.value
-    #    if self.head == node:
-    #        self.head = node.next
 
+    def delete(self, node):
+        value = node.value
+        if self.length == 0:
+            self.head = None
+            self.tail = None
+            return
+        if self.head == node:
+            self.head = node.next
         if node.prev:
             node.prev.next = node.next
         if node.next:
             node.next.prev = node.prev
         return value
+
+    """
+        current = self.head
+        while current:
+            if self.head == node:
+                # Case 1
+                if not current.next:
+                    self.head = None
+                    return
+                # Case 2
+                else:
+                    nxt = current.next
+                    current.next = None
+                    nxt.prev = None
+                    self.head = nxt
+                    return
+            elif current == node:
+                # Case 3
+                if current.next:
+                    nxt = current.next
+                    prev = current.prev
+                    prev.next = nxt
+                    nxt.prev = prev
+                    current.next = None
+                    current.prev = None
+                    return
+                # Case 4
+                else:
+                    prev = current.prev
+                    prev.next = None
+                    current.prev = None
+                    return
+            current = current.next
+    """
+
+
     """
     Finds and returns the maximum value of all the nodes 
     in the List.

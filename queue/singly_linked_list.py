@@ -59,7 +59,6 @@ class LinkedList:
         else:
             value = self.head.getValue()
             self.head = self.head.getNext()
-            print('new head', self.head.value)
             self.length -= 1
             return value
 

@@ -22,6 +22,16 @@ class LinkedList:
         self.head = None
         self.tail = None
 
+    def add_to_head(self, value):
+        new_node= Node(value)
+        # create Node from input
+        if not self.head and not self.tail:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.set_next(self.head)
+            self.head = new_node
+
     def add_to_tail(self, value):
         new_node = Node(value, None)
         if not self.head:
@@ -66,7 +76,7 @@ class LinkedList:
         # if there's only one thing in the list
         if not current.get_next():
             return current.get_value()
-        max = -30000
+        max = current.get_value()
         # mistake: was only comparing the first element and it wasn't moving
         # "current" to the next element
         while current is not None:

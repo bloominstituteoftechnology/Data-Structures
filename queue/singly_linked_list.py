@@ -88,9 +88,10 @@ class LinkedList:
         while cur_node is not None:
             if cur_node.get_value() == value:
                 return True
+            cur_node = cur_node.get_next()
+
         return False
-        cur_node = cur_node.get_next()
-    
+     
     
     def get_length(self):
         return self.length

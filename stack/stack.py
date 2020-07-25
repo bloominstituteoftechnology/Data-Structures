@@ -32,4 +32,4 @@ class Stack:
             return
         else:
             self.size -= 1
-            return self.storage.remove_from_tail
+            return self.storage.remove_tail()

@@ -53,7 +53,9 @@ class DoublyLinkedList:
         if not self.head:
             return
         value = self.head.value
-        self.head = self.head.next
+        temp = self.head
+        self.head = temp.next
+        self.delete(temp)
         self.length -= 1
         return value
             
@@ -82,7 +84,6 @@ class DoublyLinkedList:
         if not self.tail:
             return
         value = self.tail.value
-        self.tail.prev.next = self.head.prev
         self.tail = self.tail.prev
         self.length -= 1
         return value
@@ -113,7 +114,7 @@ class DoublyLinkedList:
         if node is self.head:
             self.remove_from_head()
         else:
-            node.delete()
+            self.delete(node)
             self.length -= 1
         self.add_to_tail(value)
 
@@ -123,14 +124,15 @@ class DoublyLinkedList:
     """
     def delete(self, node):
         if not self.head and not node:
-            return
+            return None
+        value = node.value
         if self.head == node:
             self.head = node.next
         if node.prev:
             node.prev.next = node.next
         if node.next:
-           node.next.prev = node.prev
-        return
+            node.next.prev = node.prev
+        return value
     """
     Finds and returns the maximum value of all the nodes 
     in the List.

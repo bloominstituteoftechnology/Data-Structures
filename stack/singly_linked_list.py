@@ -108,3 +108,14 @@ class LinkedList:
 
             return max_val
 
+
+    def find_middle(self):
+
+        mid_point = self.head
+        end_point = self.head
+        while end_point is not None and end_point.get_next() is not None:
+            mid_point = mid_point.get_next()
+            end_point = end_point.get_next().get_next()
+
+        return mid_point.value
+

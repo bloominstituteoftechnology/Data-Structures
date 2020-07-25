@@ -75,19 +75,21 @@ class Stack:
         '''
         Returns the number of elements in the stack
         '''
-        return self.storage.get_count()
+        return self.size
 
     def push(self, value):
         '''
         Adds a value to the top of the stack
         '''
         self.storage.add_to_head(value)
+        self.size += 1
 
     def pop(self):
         '''
         removes and returns the element at the top of the stack
         '''
-        if self.storage.get_count == 0:
+        if self.size == 0:
             return None
 
+        self.size -= 1
         return self.storage.remove_head()

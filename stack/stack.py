@@ -11,7 +11,7 @@ return elements in Last In First Out order.
    implementing a Stack?
 """
 
-class ArrayStack:
+class Stack:
     def __init__(self):
         self.size = 0
         self.storage = []

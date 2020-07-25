@@ -85,7 +85,7 @@ class DoublyLinkedList:
         if node is self.head:
             return
         value = node.value
-        if node id self.tail:
+        if node is self.tail:
             self.remove_from_tail()
         else:
             node.delete()

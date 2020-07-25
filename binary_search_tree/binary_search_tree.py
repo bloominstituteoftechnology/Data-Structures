@@ -86,6 +86,33 @@ class BSTNode:
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self):
+        left = self.left
+        l_prev = left
+        right = self.right
+        r_prev = right
+        print(self.value)
+        while left != None or right != None:
+            if left:
+                print(left.value)
+                if left.left != None:
+                    l_prev = left
+                    left = left.left
+                else:
+                    left = l_prev.right
+                    l_prev = left
+            if right:
+                print(right.value)
+                if right.left != None:
+                    r_prev = right
+                    right = right.left
+                else:
+                    right = r_prev.right
+                    r_prev = right
+
+      
+    # Print the value of every node, starting with the given node,
+    # in an iterative depth first traversal
+    def dft_print(self):
         node = self
         prev = node
         def traverse(node, prev):
@@ -99,11 +126,6 @@ class BSTNode:
                     prev = node
         traverse(node, prev)
         traverse(node.right, prev)
-      
-    # Print the value of every node, starting with the given node,
-    # in an iterative depth first traversal
-    def dft_print(self):
-        pass
 
     # Stretch Goals -------------------------
     # Note: Research may be required
@@ -137,8 +159,8 @@ bst.insert(14)
 bst.insert(13)
 
 # bst.in_order_print()
-bst.bft_print()
-# bst.dft_print()
+# bst.bft_print()
+bst.dft_print()
 
 # print("elegant methods")
 # print("pre order")

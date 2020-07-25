@@ -134,7 +134,6 @@ class DoublyLinkedList:
             self.tail = self.tail.prev
             node.delete()
         else:
-            print('else case:')
             self.length -= 1
             node.next = node.prev
             node.prev = node.next

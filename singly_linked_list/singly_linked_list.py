@@ -21,6 +21,9 @@ class LinkedList:
         self.tail = None
         self.length = 0
 
+    def get_length(self):
+        return self.length
+
     def add_to_head(self, value):
         new_node = Node(value, self.head)
         # add new_node to the self.head
@@ -105,3 +108,10 @@ class LinkedList:
             cur_node = cur_node.get_next()
         return cur_max
 
+    def find_middle(self):
+        mid_point = self.head
+        end_point = self.head
+        while end_point is not None and end_point.get_next() is not None:
+            mid_point = mid_point.get_next()
+            end_point = end_point.get_next().get_next()
+        return mid_point.value

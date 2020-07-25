@@ -1,9 +1,9 @@
 import unittest
-from stack import Stack
+from stack import ArrayStack
 
 class QueueTests(unittest.TestCase):
     def setUp(self):
-        self.stack = Stack()
+        self.stack = ArrayStack()
 
     def test_len_returns_0_for_empty_stack(self):
         self.assertEqual(len(self.stack), 0)

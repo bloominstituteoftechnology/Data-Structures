@@ -11,7 +11,7 @@ return elements in Last In First Out order.
 """
 
 # Implement a Stack using an array for the underlying storage
-class ArrayStack:
+class Stack:
     def __init__(self):
         self.storage = [] 
 
@@ -34,7 +34,7 @@ sys.path.append('../singly_linked_list')
 from singly_linked_list import LinkedList
 
 # Stack implementation using a Linked List
-class LLStack:
+class SinglyLinkedList:
     def __init__(self):
         self.size = 0
         self.storage = LinkedList()

@@ -14,7 +14,7 @@ Stretch: What if you could only use instances of your Stack class to implement t
 """
 
 # Implement a Queue using an array for the underlying storage
-class ArrayQueue:
+class Queue:
     def __init__(self):
         self.storage = []
 

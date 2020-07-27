@@ -138,7 +138,7 @@ class DoublyLinkedList:
     """
     Finds and returns the maximum value of all the nodes 
     in the List.
-    """
+    """ # RETEST NOT WORKING
     def get_max(self):
         if not self.head:
             return None

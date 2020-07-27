@@ -15,8 +15,8 @@ Stretch: What if you could only use instances of your Stack class to implement t
 """
 
 import sys
-sys.path.append('C:/Users/Rob/repos/Data-Structures/')
-from singly_linked_list.singly_linked_list import LinkedList
+sys.path.append('./singly_linked_list')
+from singly_linked_list import LinkedList
 
 class Queue:
     def __init__(self):
@@ -24,14 +24,15 @@ class Queue:
         self.storage = LinkedList()
     
     def __len__(self):
-        return self.storage.get_length()
+        return self.storage.length
 
     def enqueue(self, value):
         self.storage.add_to_tail(value)
-        self.size += 1
+        # self.storage.length += 1
 
     def dequeue(self):
-        value = self.storage.remove_head()
-        if value is not None:
-            self.size -= 1
-        return value
+        if self.storage.length > 0:
+            return self.storage.remove_head()
+            # self.storage.length -= 1
+        else:
+            return None

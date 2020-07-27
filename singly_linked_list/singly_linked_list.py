@@ -19,21 +19,24 @@ class LinkedList:
         self.head = None
         # reference to the tail of the list
         self.tail = None
+        self.count = 0
     
     def add_to_tail(self, value):
         # wrap the input value in a node
         new_node = Node(value, None)
         # check if there is no head (i.e., the list is empty)
-        if not self.head:
+        if self.head is None or self.tail is None:
             # if the list is initially empty, set both head and tail to the new node
             self.head = new_node
             self.tail = new_node
+            self.count = 1
         # if we have a non-empty list, add the new node to the tail
         else:
             # set the current tail's next reference to our new node
             self.tail.set_next(new_node)
             # set the list's tail reference to the new node
             self.tail = new_node
+            self.count += 1
     
     def remove_head(self):
         # return None if there is no head (i.e. the list is empty)
@@ -53,7 +56,29 @@ class LinkedList:
         value = self.head.get_value()
         # set the head reference to the current head's next node in the list
         self.head = self.head.get_next()
+        self.count -= 1
         return value
+    
+    def remove_tail(self):
+      # if we have a non-empty linked list
+      if self.head is None and self.tail is None:
+          return
+      # move self.tail to the Node right before
+      # we have to start at the head and move down the linked list
+      # until we get to the node right before the tail
+      # iterate over our linked list
+      current = self.head
+
+      while current.get_next() is not self.tail:
+          current = current.get_next()
+      # at this point, `current` is the node right before the tail
+      # set the tail to be None
+      val = self.tail.get_value()
+      self.tail = None
+      self.count -= 1
+      # move self.tail to the Node right before
+      self.tail = current
+      return val
     
     def contains(self, value):
         if not self.head:
@@ -70,3 +95,17 @@ class LinkedList:
             current = current.get_next()
         # if we've gotten here, then the target node isn't in our list
         return False
+    
+    def get_max(self):
+      if self.head == None:
+        return
+      else:
+        current = self.head
+        max = 0
+        
+        while current is not None:
+          if current.value > max:
+            max = current.value
+          else:
+            current = current.get_next()
+      return max

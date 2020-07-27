@@ -9,19 +9,29 @@ return elements in Last In First Out order.
    Make sure the Stack tests pass.
 3. What is the difference between using an array vs. a linked list when 
    implementing a Stack?
+
+   ANSWER:
+   With a linked list, it is a little trickier when implement normal array methods such as push/pop.
 """
+
+import sys
+sys.path.append('./singly_linked_list')
 from singly_linked_list import LinkedList
 
 class Stack:
     def __init__(self):
-        self.size = 0
-        # self.storage = ?
+        self.linked_list = LinkedList()
 
     def __len__(self):
-        pass
+        return self.linked_list.count
 
     def push(self, value):
-        pass
+        self.linked_list.add_to_tail(value)
 
     def pop(self):
-        pass
+        if self.linked_list.count > 1:
+          return self.linked_list.remove_tail()
+        elif self.linked_list.count == 1:
+          return self.linked_list.remove_head()
+        else:
+          pass

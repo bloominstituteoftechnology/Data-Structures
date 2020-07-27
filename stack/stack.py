@@ -12,7 +12,7 @@ return elements in Last In First Out order.
 """
 #  LIFO Order  
 # You can only push to add a new element to the top of the stack, pop to remove the element from the top, and peek at the top element without popping it off.
-class ArrayStack:
+class Stack:
     def __init__(self):
         self.storage = []
 

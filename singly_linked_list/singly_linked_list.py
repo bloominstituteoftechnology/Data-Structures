@@ -33,7 +33,7 @@ class LinkedList:
         if not self.head:
             return None
         # If head has no next...
-        if not self.head.next_node: # Or if self.head.next is None:
+        if not self.head.next_node: # Or if self.head.next_node is None:
             # Set head value reference
             head_value = self.head.value
             # Set head reference to None
@@ -46,22 +46,22 @@ class LinkedList:
         return head_value
     
     def contains(self, value):
-        if not self.head:
+        if not self.head: # Test if head is available
             return False
-        current_node = self.head
+        current_node = self.head # If not head, set head as current
         while current_node is not None:
-            if current_node.get_value() == value:
+            if current_node.get_value() == value: # Test for a value in the current node
                 return True
-            current_node = current_node.next_node
+            current_node = current_node.next_node # If exists, make the link to the next node
         return False
     
     def get_max(self):
         if not self.head:
             return None
         current = self.head
-        max_val = self.head.value
+        max_val = self.head.value # Set variable for making the head value the max value
         while current:
             if current.value > max_val:
-                max_val = current.value
+                max_val = current.value # Loop through the values to find the max value
             current = current.next_node
-        return max_val
+        return max_val # Return new max head value in the form of max_val

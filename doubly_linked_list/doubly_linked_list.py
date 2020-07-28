@@ -7,6 +7,13 @@ class ListNode:
         self.prev = prev
         self.value = value
         self.next = next
+
+
+    def delete(self):
+        if self.prev:
+            self.prev.next = self.next
+        if self.next:
+            self.next.prev = self.prev
             
 """
 Our doubly-linked list class. It holds references to 
@@ -49,24 +56,11 @@ class DoublyLinkedList:
     """
 
     def remove_from_head(self):
-        # check to see if anything is in head:
-        if not self.head: 
+        if self.head is None:
             return None
-        # subtract one from the list length
-        self.length -= 1
-        # if there is only one element in the list
-        if self.head == self.tail:
-            old_head = self.head
-            self.head = None
-            self.tail = None
-            return old_head 
-        # if there is more than one element in the list
-        else: 
-            old_head = self.head.value
-            self.next.prev = self.prev
-            self.head = self.next
-            return old_head
-
+        head_value = self.head.value
+        self.delete(self.head)
+        return head_value
 
     """
     Wraps the given value in a ListNode and inserts it 
@@ -83,9 +77,10 @@ class DoublyLinkedList:
             self.head == new_node
             self.tail == new_node 
         # if there one or more element on the list
-        self.tail.next = new_node 
-        new_node.prev = self.tail
-        self.tail = new_node 
+        else:
+            new_node.prev = self.tail
+            self.tail.next = new_node 
+            self.tail = new_node 
 
 
     """
@@ -93,45 +88,62 @@ class DoublyLinkedList:
     current tail's previous node the new tail of the List.
     Returns the value of the removed Node.
     """
-    def remove_from_tail(self):
-        # check if there is something on the list
-        if not self.head:
-            return None
-        # if there is something on the list then subtract one from len
-        self.length -= 1
-        # if there is just one element than return that
-        if self.head == self.tail:
-            value = self.tail.value
-            self.head = None
-            self.tail = None
-        # if there are more than one element 
-        value = self.tail
-        self.tail = self.tail.prev
-        self.tail.next = None
-        return value
 
+    def remove_from_tail(self):
+        if self.tail is None:
+            return None
+        tail_value = self.tail.value
+        self.delete(self.tail)
+        return tail_value
          
     """
     Removes the input node from its current spot in the 
     List and inserts it as the new head node of the List.
     """
     def move_to_front(self, node):
-        pass
+        # if the list is empty
+        if self.head is None: 
+            return None
+        value = node.value
+        self.delete(node)
+        self.add_to_head(value)
         
     """
     Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List.
     """
     def move_to_end(self, node):
-        pass
+        if self.head is None:
+            return None
+        if node is self.tail:
+            return 
+        value = node.value
+        self.delete(node)
+        self.add_to_tail(value)
 
     """
     Deletes the input node from the List, preserving the 
     order of the other elements of the List.
     """
     def delete(self, node):
-        pass
-
+        # check to see if the list is empty
+        if self.head is None and self.tail is None: 
+            return 
+        self.length -= 1
+        # if there is just one element in the list
+        if self.head == self.tail:
+            self.head = None
+            self.tail = None
+        # if the node is the head
+        elif self.head == node:
+            self.head = node.next
+            node.delete()
+        # if the node is tail
+        elif self.tail == node:
+            self.tail = node.prev
+            node.delete()
+        else: 
+            node.delete()
     """
     Finds and returns the maximum value of all the nodes 
     in the List.

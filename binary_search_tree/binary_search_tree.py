@@ -48,8 +48,6 @@ class BinarySearchTree:
         self.get_max(self.right)
         return cur_val
 
-
-
   def for_each(self, cb):
     if self.left is None and self.right is None:
       cb(self.value)

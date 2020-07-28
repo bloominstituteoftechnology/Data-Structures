@@ -17,9 +17,40 @@ class DoublyLinkedList:
         self.head = node
         self.tail = node
         self.length = 1 if node is not None else 0
+        # reference a value dict
+        self.val_occr   = {}
 
     def __len__(self):
         return self.length
+
+    """
+    occr_ctr_inc increments the number of instances of the 
+    passed in value
+    """
+    def occr_ctr_inc(self, val):
+        if not self.val_occr.has_key(val):
+            self.val_occr[val] = 1
+            return
+
+        self.val_occr[val] = self.val_occr[val] + 1
+        return
+
+    """
+    occr_ctr_dec decrements the number of instances of the 
+    passed in value
+    """
+    def occr_ctr_dec(self, val):
+        if not self.val_occr.has_key(val):
+            # error condition
+            print("error condition 1")
+            return
+
+        if self.val_occr[val] == 1:
+            del self.val_occr[val]
+            return
+
+        self.val_occr[val] = self.val_occr[val] - 1
+        return
     
     """
     Wraps the given value in a ListNode and inserts it 
@@ -31,6 +62,7 @@ class DoublyLinkedList:
         tmp_node = ListNode(value, None, None)
         # Increment the list length by 1
         self.length = self.length + 1
+        self.occr_ctr_inc(value)
 
         # Update node references to reflect a new "head" node
         if self.head == None and self.tail == None:
@@ -62,11 +94,13 @@ class DoublyLinkedList:
             self.head   = None
             self.tail   = None
             self.length = 0
+            self.occr_ctr_dec(ret_val)
             return ret_val
 
         # More than 1 node in list, adjust the head of the list, and return value
         self.head   = self.head.next
         self.length = self.length - 1
+        self.occr_ctr_dec(ret_val)
 
         return ret_val
             
@@ -85,13 +119,15 @@ class DoublyLinkedList:
             self.head   = tmp_node
             self.tail   = tmp_node
             self.length = 1
+            self.occr_ctr_inc(value)
             return
 
         # More than 1 node in list, adjust the tail of the list and the list's meta data
         self.tail.next  = tmp_node
         tmp_node.prev   = self.tail
         self.tail       = tmp_node
-        self.length = self.length + 1
+        self.length     = self.length + 1
+        self.occr_ctr_inc(value)
 
         return 
             
@@ -114,6 +150,7 @@ class DoublyLinkedList:
             self.head   = None
             self.tail   = None
             self.length = 0
+            self.occr_ctr_dec(tmp_val)
             return tmp_val
 
         # More than 1 node
@@ -122,6 +159,7 @@ class DoublyLinkedList:
         tmp_nx2lst.next = None
         self.tail       = tmp_nx2lst
         self.length     = self.length - 1
+        self.occr_ctr_dec(tmp_val)
         return tmp_val
               
     """
@@ -163,13 +201,30 @@ class DoublyLinkedList:
     """
     def move_to_end(self, node):
         tmp_node = node
-        # Is the node already at the end?
+        # Is the node already at the end (or the only element in the list)?
         if tmp_node.next == None:
             # Our node is already the head -> nothing to do
             return
 
-        # Determine the node before the node to be moved
-        tmp_b4 = tmp_node.prev
+        # Is the node at the head?
+        if self.head == tmp_node:
+            # node is at the head of the list
+            tmp_afr         = tmp_node.next
+            self.head       = tmp_afr
+            tmp_afr.prev    = None
+        else:
+            # Node is an interior element
+            tmp_b4          = tmp_node.prev 
+            tmp_afr         = tmp_node.next
+            tmp_b4.next     = tmp_afr
+            tmp_afr.prev    = tmp_b4
+
+        # Configure the last new tail and the list meta data
+        tmp_node.next   = None 
+        tmp_node.prev   = self.tail
+        self.tail.next  = tmp_node
+        self.tail       = tmp_node
+        return 
 
     """
     Deletes the input node from the List, preserving the 
@@ -189,6 +244,7 @@ class DoublyLinkedList:
             self.length = 0
             self.head   = None
             self.tail   = None
+            self.occr_ctr_dec(tmp_node.value)
             return
 
         # Is the node the first element in the list?
@@ -199,6 +255,7 @@ class DoublyLinkedList:
             self.head    = tmp_afr
             tmp_afr.prev = None
             self.length  = self.length - 1
+            self.occr_ctr_dec(tmp_node.value)
             return 
 
         # Is the node the last in the list?
@@ -209,6 +266,7 @@ class DoublyLinkedList:
             self.tail    = tmp_b4
             tmp_b4.next  = None
             self.length  = self.length - 1
+            self.occr_ctr_dec(tmp_node.value)
             return
 
         # Our node is an interior element
@@ -216,7 +274,8 @@ class DoublyLinkedList:
         tmp_afr         = tmp_node.next
         tmp_b4.next     = tmp_afr
         tmp_afr.prev    = tmp_b4
-        self.length  = self.length - 1
+        self.length     = self.length - 1
+        self.occr_ctr_dec(tmp_node.value)
         return
 
     """
@@ -224,4 +283,15 @@ class DoublyLinkedList:
     in the List.
     """
     def get_max(self):
-        pass
+        # Convert the occurrence dict to a list
+        if len(self.val_occr) == 0:
+            return None
+        
+        list_keys = list(self.val_occr.keys())
+        if len(list(list_keys)) == 0:
+            return None
+
+        print("list_keys is: ", type(list_keys))
+
+        list_srtd = sorted(list_keys, reverse=True)
+        return list_srtd[0]

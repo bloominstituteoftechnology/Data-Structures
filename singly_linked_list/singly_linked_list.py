@@ -103,6 +103,7 @@ class LinkedList:
             cur_node = cur_node.get_next()
         return cur_max
 
+    # interview question to find the middle value by only going through list one time
     def find_middle(self):
         # doing this in 1 pass, without using `length` attribute
         mid_point = self.head
@@ -112,6 +113,20 @@ class LinkedList:
             end_point = end_point.get_next().get_next()
 
         return mid_point.value
+
+    # interview question: How do you reverse a singly linked list without recursion? You may not store the list, or it's values, in another data structure.
+    def reverse_ll(self):
+        cur_node = self.head
+        next_node = cur_node.next
+        # head points to None
+        cur_node.set_next(None)
+        self.tail = cur_node
+        while next_node is not None:
+            prev_node = cur_node
+            cur_node = next_node
+            next_node = cur_node.get_next()
+            cur_node.set_next(prev_node)
+        self.head = cur_node
 
 
 ll = LinkedList()

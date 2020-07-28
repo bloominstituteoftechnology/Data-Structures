@@ -89,7 +89,15 @@ class DoublyLinkedList:
     the old tail node's next pointer accordingly.
     """
     def add_to_tail(self, value):
-        pass
+        new_node = ListNode(value, None, None)
+        self.length += 1
+        if not self.tail and not self.head:
+            self.tail = new_node
+            self.head = new_node
+        else:
+            new_node.prev = self.tail
+            self.tail.next = new_node
+            self.tail = new_node
             
     """
     Removes the List's current tail node, making the 
@@ -101,7 +109,7 @@ class DoublyLinkedList:
             return None
         tail_value = self.tail.value
         self.delete(self.tail)
-        return tail.value
+        return tail_value
     
     """
     Removes the input node from its current spot in the 
@@ -131,7 +139,7 @@ class DoublyLinkedList:
     """
     def delete(self, node):
         # if empty list, do nothing
-        if send.head is None and self.tail is None:
+        if self.head is None and self.tail is None:
             return
         # the list is only one node
         self.length -+ 1
@@ -139,15 +147,16 @@ class DoublyLinkedList:
             self.head = None
             self.tail = None
         # the node is the HEAD node (so make sure we handle the head pointer correctly
-        if self.head == node:
+        elif self.head == node:
             self.head = node.prev
             node.delete()
         # the node is the TAIL node (make sure tail is handled correctly)
-        if self.tail == node:
+        elif self.tail == node:
             self.tail = node.prev
             node.delete()
         # the node is just some node in the list
-        pass
+        else:
+            node.delete()
 
     """
     Finds and returns the maximum value of all the nodes 

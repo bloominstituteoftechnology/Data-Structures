@@ -17,7 +17,15 @@ class BSTNode:
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
+        cur_node = self.value
+        # Start at the root and lop until 'cur_node' is None
+            # If 'value' <= 'cur_node'
+                # if 'cur_node.left' is None
+                    # insert our value
+                # else
+                    # go left (update 'cur_node' to be 'cur_node.left')
+            # elif 'value' > 'cur_node'
+
 
     # Return True if the tree contains the value
     # False if it does not
@@ -63,7 +71,7 @@ class BSTNode:
 """
 This code is necessary for testing the `print` methods
 """
-bst = BinarySearchTree(1)
+bst = BSTNode(1)
 
 bst.insert(8)
 bst.insert(5)
@@ -76,10 +84,10 @@ bst.insert(2)
 bst.bft_print()
 bst.dft_print()
 
-print("elegant methods")
-print("pre order")
-bst.pre_order_dft()
-print("in order")
-bst.in_order_dft()
-print("post order")
-bst.post_order_dft()  
+# print("elegant methods")
+# print("pre order")
+# bst.pre_order_dft()
+# print("in order")
+# bst.in_order_dft()
+# print("post order")
+# bst.post_order_dft()  

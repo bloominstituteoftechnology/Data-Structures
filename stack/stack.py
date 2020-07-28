@@ -11,8 +11,8 @@ return elements in Last In First Out order.
    implementing a Stack?
 """
 import sys
-sys.path.append('C:/Users/Rob/repos/Data-Structures/')
-from singly_linked_list.singly_linked_list import LinkedList
+sys.path.append('./singly_linked_list')
+from singly_linked_list import LinkedList
 
 
 class Stack:

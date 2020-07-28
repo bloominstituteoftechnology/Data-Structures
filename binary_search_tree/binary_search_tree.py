@@ -40,7 +40,6 @@ class BSTNode:
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-
         if self.value == target:
             return True
         # Check if value is in the left node
@@ -50,7 +49,7 @@ class BSTNode:
                 return False
             else:
                 return self.left.contains(target)
-        # Check if valuie is in the right node
+        # Check if value is in the right node
         else:
             # not in tree
             if self.right is None:
@@ -62,14 +61,25 @@ class BSTNode:
     def get_max(self):
         current = self
         # loop down to find the rightmost leaf (max value)
-
         while current.right:
             current = current.right
         return current.value
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-        pass
+        fn(self.value)
+
+        # Left node
+        if self.left == None:
+            pass
+        else:
+            self.left.for_each(fn)
+
+        # Right node
+        if self.right == None:
+            pass
+        else:
+            self.right.for_each(fn)
 
     # Part 2 -----------------------
 

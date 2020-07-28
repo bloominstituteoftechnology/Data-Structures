@@ -7,17 +7,7 @@ class ListNode:
         self.prev = prev
         self.value = value
         self.next = next
-            
-    """
-    Optional `delete` method on `ListNode` to make subsequent
-    methods more DRY.
-    """
-    def delete(self):
-        if self.prev:
-            self.prev.next = self.next
-        if self.next:
-            self.next.prev = self.prev
-            
+
 """
 Our doubly-linked list class. It holds references to 
 the list's head and tail nodes.
@@ -27,7 +17,7 @@ class DoublyLinkedList:
         self.head = node
         self.tail = node
         self.length = 1 if node is not None else 0
-        
+
     def __len__(self):
         return self.length
     
@@ -94,8 +84,7 @@ class DoublyLinkedList:
         if node is self.tail:
             self.remove_from_tail()
         else:
-            node.delete()
-            self.length -= 1
+            self.delete(node)
         self.add_to_head(value)
         
     """
@@ -109,8 +98,7 @@ class DoublyLinkedList:
         if node is self.head: 
             self.remove_from_head() 
         else: 
-            node.delete() 
-            self.length += 1
+            self.delete(node)
         self.add_to_tail(value)
 
 
@@ -119,9 +107,22 @@ class DoublyLinkedList:
     order of the other elements of the List.
     """
     def delete(self, node):
-        pass 
-
-
+        if (node is self.head) and (node is self.tail):
+            self.head = None
+            self.tail = None
+            self.length -= 1
+        elif node is self.head:
+            self.head = self.head.next
+            self.head.prev = None
+            self.length -= 1
+        elif node is self.tail:
+            self.tail = self.tail.prev
+            self.tail.next = None
+            self.length -= 1
+        else:
+            node.prev.next = node.next
+            node.next.prev = node.prev
+            self.length -= 1
 
     """
     Finds and returns the maximum value of all the nodes 
@@ -135,5 +136,5 @@ class DoublyLinkedList:
         while current: 
             if current.value > max_val: 
                 max_val = current.value 
-            current = current.next_node  
+            current = current.next  
         return max_val

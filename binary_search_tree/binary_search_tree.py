@@ -9,6 +9,9 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+
+from binary_search_tree_displayer import BSTDisplayer # pylint: disable=import-error
+
 class BSTNode:
     def __init__(self, value):
         self.value = value
@@ -88,6 +91,7 @@ class BSTNode:
 This code is necessary for testing the `print` methods
 """
 bst = BSTNode(1)
+bst_displayer = BSTDisplayer(bst)
 
 bst.insert(8)
 bst.insert(5)
@@ -96,6 +100,8 @@ bst.insert(6)
 bst.insert(3)
 bst.insert(4)
 bst.insert(2)
+
+bst_displayer.display()
 
 # bst.bft_print()
 # bst.dft_print()

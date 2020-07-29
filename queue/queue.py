@@ -59,15 +59,9 @@ class LinkedList:
         self.head = None
         self.tail = None
         self.length = 0
-
-    def add_to_head(self, value):
-        # create new node && add a value
-        # send new node to current "head" self.head
-        new_node = Node(value, self.head)
-        self.head = new_node
-        if self.length == 0:    # if self.head is None and self.tail is None
-            self.tail = new_node
-        self.length += 1
+        
+    def get_length(self):
+        return self.length    
 
     def add_to_tail(self, value):
         new_node = Node(value)
@@ -78,25 +72,7 @@ class LinkedList:
         self.tail = new_node
         self.length += 1
 
-    def remove_head(self):
-        # empty linkedlist
-        if self.head is None:
-            return None
-
-        # list with 1 Node
-        elif self.head == self.tail:
-            value = self.head.get_value()
-            self.head = None
-            self.tail = None
-            self.length -= 1
-            return value
-
-        # list with 2+ Nodes
-        else:
-            value = self.head.get_value()
-            self.head = self.head.get_next()
-            self.length -= 1
-            return value
+ 
 
     def remove_tail(self):
         # (2+ node) if tail == None ; return None
@@ -122,47 +98,26 @@ class LinkedList:
             return value
         
         
-
-    def contains(self, value):
-        # if self.head is None: return False
-        # set current_node to self.head
-        # Traverse 
-        # while current_node is true loop through current_node.getValue() == value
-        # return true if current_node == value
-        # assign current_node = current_node.get_next()
-        # if current_node does not = value return false 
-        if self.head is None:
-            return False
-        current_node = self.head
-        while current_node:
-            if current_node.get_value() == value:
-                return True
-
-            current_node = current_node.get_next()
-        return False
-        
-            
-    
-    def get_max(self):
-        # iterate through all elements
-        # if self.head is None: return None
-        # set cur_max = self.head.get_value()
-        # set cur_node = self.head.get_next() 
-        # inner loop through to check  if cur_node > cur_max
-        # inner loop: while cur_node is true 
-        # inner loop: if cur_node.get_value() > cur_max:
-        # inner loop: if true assign cur_max = cur_node.get_value()
-        # point next node to next node cur_node = cur_node.get_next()
-        # return cur_max
+    def remove_head(self):
+        # empty linkedlist
         if self.head is None:
             return None
-        cur_max = self.head.get_value()
-        cur_node = self.head.get_next()
-        while cur_node:
-            if cur_node.get_value() > cur_max:
-                cur_max = cur_node.get_value()
-            cur_node = cur_node.get_next()
-        return cur_max
+
+        # list with 1 Node
+        elif self.head == self.tail:
+            value = self.head.get_value()
+            self.head = None
+            self.tail = None
+            self.length -= 1
+            return value
+
+        # list with 2+ Nodes
+        else:
+            value = self.head.get_value()
+            self.head = self.head.get_next()
+            self.length -= 1
+            return value    
+ 
         
 class Queue:
 # 2. Re-implement the Queue class, this time using the linked list implementation
@@ -173,14 +128,15 @@ class Queue:
         self.storage = LinkedList()
     
     def __len__(self):
-        return self.size
+        return self.storage.get_length()
 
     def enqueue(self, value):
-        # add to queue
+        # add to queue "tail"
         self.size =+ 1
         return self.storage.add_to_tail(value)
 
     def dequeue(self):
+        # remove from queue "head"
         if self.size >= 1:
             self.size -= 1
-        return self.storage.remove_tail()
+        return self.storage.remove_head()

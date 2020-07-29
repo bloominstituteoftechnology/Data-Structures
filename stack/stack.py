@@ -43,15 +43,6 @@ class LinkedList:
         self.tail = None
         self.length = 0
 
-    def add_to_head(self, value):
-        # create new node && add a value
-        # send new node to current "head" self.head
-        new_node = Node(value, self.head)
-        self.head = new_node
-        if self.length == 0:    # if self.head is None and self.tail is None
-            self.tail = new_node
-        self.length += 1
-
     def add_to_tail(self, value):
         new_node = Node(value)
         if self.head is None and self.tail is None:
@@ -61,25 +52,7 @@ class LinkedList:
         self.tail = new_node
         self.length += 1
 
-    def remove_head(self):
-        # empty linkedlist
-        if self.head is None:
-            return None
-
-        # list with 1 Node
-        elif self.head == self.tail:
-            value = self.head.get_value()
-            self.head = None
-            self.tail = None
-            self.length -= 1
-            return value
-
-        # list with 2+ Nodes
-        else:
-            value = self.head.get_value()
-            self.head = self.head.get_next()
-            self.length -= 1
-            return value
+ 
 
     def remove_tail(self):
         # (2+ node) if tail == None ; return None
@@ -96,58 +69,15 @@ class LinkedList:
             self.head = None
             self.tail = None
             self.length -= 1
-            return value
+            
 
         else:
             value = self.tail.get_value()
-            self.tail = value.get_next()
+            self.tail = self.tail.get_next()
             self.length -= 1
             return value
-        
-        
-
-    def contains(self, value):
-        # if self.head is None: return False
-        # set current_node to self.head
-        # Traverse 
-        # while current_node is true loop through current_node.getValue() == value
-        # return true if current_node == value
-        # assign current_node = current_node.get_next()
-        # if current_node does not = value return false 
-        if self.head is None:
-            return False
-        current_node = self.head
-        while current_node:
-            if current_node.get_value() == value:
-                return True
-
-            current_node = current_node.get_next()
-        return False
-        
-            
-    
-    def get_max(self):
-        # iterate through all elements
-        # if self.head is None: return None
-        # set cur_max = self.head.get_value()
-        # set cur_node = self.head.get_next() 
-        # inner loop through to check  if cur_node > cur_max
-        # inner loop: while cur_node is true 
-        # inner loop: if cur_node.get_value() > cur_max:
-        # inner loop: if true assign cur_max = cur_node.get_value()
-        # point next node to next node cur_node = cur_node.get_next()
-        # return cur_max
-        if self.head is None:
-            return None
-        cur_max = self.head.get_value()
-        cur_node = self.head.get_next()
-        while cur_node:
-            if cur_node.get_value() > cur_max:
-                cur_max = cur_node.get_value()
-            cur_node = cur_node.get_next()
-        return cur_max
-        
  
+# create output table to test each node to try to find problem !! 
 
 
 # --------------------------------------------------------------------------------------------
@@ -155,33 +85,36 @@ class LinkedList:
 
 
 
-class Stack:
-# 1. Implement the Stack class using an array as the underlying storage structure.
-#    Make sure the Stack tests pass.
-    def __init__(self, storage):
-        self.size = 0
-        # data structure 
-        self.storage = []
+# class Stack:
+# # 1. Implement the Stack class using an array as the underlying storage structure.
+# #    Make sure the Stack tests pass.
+#     def __init__(self):
+#         self.size = 0
+#         # data structure 
+#         self.storage = []
 
-    def __len__(self):
-        # return  self.storage to len(self.storage)
-        return len(self.storage)
+#     def __len__(self):
+#         # return  self.storage to len(self.storage)
+#         return len(self.storage)
 
-    def push(self, value):
-        # append value to self.storage
-        return self.storage.append(value)
+#     def push(self, value):
+#         # append value to self.storage
+#         self.size += 1
+#         return self.storage.append(value)
 
-    def pop(self):
-        # check to see if self.storage >= 1:
-        #  return self.storage.pop()
-        if len(self.storage) >= 1:
-            return self.storage.pop()
+#     def pop(self):
+#         # check to see if self.storage >= 1:
+#         #  return self.storage.pop()
+#         if len(self.storage) >= 1:
+#             self.size -= 1
+#         return self.storage.pop()
+            
 
 
 class Stack:
 # 2. Re-implement the Stack class, this time using the linked list implementation
 #    as the underlying storage structure. Make sure the Stack tests pass.
-    def __init__(self, storage):
+    def __init__(self):
         self.size = 0
         # add imported LinkedList
         self.storage = LinkedList()
@@ -195,13 +128,14 @@ class Stack:
         # adjust self.size =+ 1
         # func add_to_tail()
         # return self.storage.add_to_tail(value)
-        self.size =+ 1
-        return self.storage.add_to_tail(value)
+        self.storage.add_to_tail(value)
+        self.size += 1
 
     def pop(self):
         # check self.size is "greater than or equal" to 1: self.size -= 1
         # func remove_tail()
         # return self.storage.remove_tail()
-        if self.size >= 1:
-            self.size -= 1
+        if self.size == 0:
+            return None
+        self.size -= 1
         return self.storage.remove_tail()

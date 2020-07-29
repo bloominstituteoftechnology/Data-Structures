@@ -68,10 +68,10 @@ class LinkedList:
         # adjust node length
         # return value
 
-        if self.tail is None:
+        if self.head is None:
             return None
 
-        elif self.tail == self.head:
+        elif self.head == self.tail:
             value = self.tail.get_value()
             self.head = None
             self.tail = None
@@ -79,8 +79,15 @@ class LinkedList:
             return value
 
         else:
-            value = self.tail.get_value()
-            self.tail = value.get_next()
+            # iterate through node using get_next() func
+            cur_node = self.head
+            # while the current node is not the current tail set current node to current node .get_next()
+            while cur_node.get_next() is not self.tail:
+                cur_node = cur_node.get_next()
+                # point the current node pointer to NONE (the end )
+            value = self.tail.get_value()    
+            cur_node.set_next(None)
+            self.tail = cur_node
             self.length -= 1
             return value
         
@@ -126,5 +133,13 @@ class LinkedList:
                 cur_max = cur_node.get_value()
             cur_node = cur_node.get_next()
         return cur_max
-        
- 
+    
+    
+    def find_middle(self):
+        # doing this in 1 pass , without using the 'length' attribute         
+        mid_pointer = self.head
+        end_pointer = self.head
+        while end_pointer is not None and end_pointer.get_next() is not None:
+            mid_pointer = mid_pointer.get_next()
+            end_pointer = end_pointer.get_next().get_next()
+        return mid_pointer.value

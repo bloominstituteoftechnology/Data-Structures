@@ -5,9 +5,9 @@ at searching for a particular piece of data in the tree.
 
 This part of the project comprises two days:
 1. Implement the methods `insert`, `contains`, `get_max`, and `for_each`
-   on the BSTNode class.
+   on the BSTNode class. DUE TUESDAY
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
-   on the BSTNode class.
+   on the BSTNode class. DUE THURSDAY
 """
 class BSTNode:
     def __init__(self, value):
@@ -17,15 +17,35 @@ class BSTNode:
 
     # Insert the given value into the tree
     def insert(self, value):
+        # start at root 
+        cur_node = self.value
+        # loop until cur_node is NONE
+            # if 'value' <= 'cur_node'
+                # if cur_node.left is NONE:
+                    # insert our value!
+                # else
+                    # go left (update 'cur_node' to be 'cur_node.left')
+            # elif 'value' > 'cur_node'
+                # if cur_node.right is NONE
+                    # insert our value 
+                # else
+                    # go right (update 'cur_node' to be 'cur_node.right')
         pass
 
     # Return True if the tree contains the value
     # False if it does not
+    # search something 
     def contains(self, target):
+        # if (compare) target_value to cur_value 
+            # == we return true 
+            # < we go left
+            # > we go right  
+            # if we cant go left/right return "false" 
         pass
 
     # Return the maximum value found in the tree
     def get_max(self):
+        # go right --> 
         pass
 
     # Call the function `fn` on the value of each node

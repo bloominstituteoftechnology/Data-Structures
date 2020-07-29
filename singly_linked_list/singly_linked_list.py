@@ -62,6 +62,24 @@ class LinkedList:
             #othewise go to the next node
             current_node= current_node.next_node
         return False
+    def get_max(self):
+        if self.head is None:
+            return None
+        else:
+            max_val =self.head.value
+            current_node = self.head
+            while current_node:
+                if current_node.value > max_val:
+                    max_val = current_node.value
+                current_node = current_node.next_node
+            return max_val
+        
+
+
+                
+
+
+
 
 linked_list = LinkedList()
 linked_list.add_to_head(0)

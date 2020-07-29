@@ -14,6 +14,7 @@ class BSTNode:
         self.value = value
         self.left = None
         self.right = None
+        self.count = 1
 
     # Insert the given value into the tree
     def insert(self, value):
@@ -57,24 +58,29 @@ class BSTNode:
         # start with the first node (or current)
         current = self
         # look at the right-side ONLY, b/c left side is smaller
-        if self.right is not None:
-            return self.value
-        else:
-            return self.right.get_max()
+        while current.right is not None:
+            current = current.right
+        return current.value
 
     # Call the function `fn` on the value of each node
     # go through all the nodes
     def for_each(self, fn):
-        fn(self)
-        pass
+        # run the function "fn", as if it's a "test" of the node
+        fn(self.value)
+        if self.left is not None:
+            print('for_each, left: ', self.left.value)
+            # applies the for_each method to the self.left node
+            self.left.for_each(fn)
+        if self.right is not None:
+            print('for_each, right: ', self.right.value)
+            # applies the for_each method to the self.right node
+            self.right.for_each(fn)
 
-    # Extra/not needed
+    # Extra/not needed for assignment
     def remove_node(self, target):
         # locate the node
         # if self.right -> replace node with self.right
         # if not self.right -> replace
-
-
         pass
 
     # Part 2 -----------------------
@@ -125,8 +131,8 @@ bst.dft_print()
 
 print("elegant methods")
 print("pre order")
-bst.pre_order_dft()
+# bst.pre_order_dft()
 print("in order")
-bst.in_order_dft()
+# bst.in_order_dft()
 print("post order")
-bst.post_order_dft()  
+# bst.post_order_dft()

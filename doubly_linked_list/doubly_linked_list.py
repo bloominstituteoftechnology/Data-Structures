@@ -33,7 +33,7 @@ class DoublyLinkedList:
     the old head node's previous pointer accordingly.
     """
     def add_to_head(self, value):
-        new_nose = ListNode(value, None, None)
+        new_node = ListNode(value, None, None)
         self.length += 1 
         if not self.head and not self.tail:
             self.head = new_node
@@ -50,7 +50,7 @@ class DoublyLinkedList:
     """
     def remove_from_head(self):
         value = self.head.value
-        self.delete(self.headd)
+        self.delete(self.head)
         return value
             
     """
@@ -75,7 +75,9 @@ class DoublyLinkedList:
     Returns the value of the removed Node.
     """
     def remove_from_tail(self):
-        pass
+        value = self.tail.value
+        self.delete(self.tail)
+        return value
             
     """
     Removes the input node from its current spot in the 
@@ -97,18 +99,68 @@ class DoublyLinkedList:
     List and inserts it as the new tail node of the List.
     """
     def move_to_end(self, node):
-        pass
+        if node is self. tail:
+            return 
+        value = node.value
+        if node is self.head:
+            self.remove_from_head()
+        else:
+            node.delete()
+            self.length +=1
+        self.add_to_tail(value)
 
     """
     Deletes the input node from the List, preserving the 
     order of the other elements of the List.
     """
     def delete(self, node):
-        pass
+        cur = self.head
+
+        while cur:
+            if cur.value == node and cur == self.head:
+                if not cur.next:
+                    cur = None
+                    self.head = None
+                    return
+
+                else:
+                    nxt = cur.next
+                    cur.next = None
+                    nxt.prev = None
+                    cur = None
+                    self.head = nxt
+                    return
+
+            elif cur.data == node:
+                if cur.next:
+                    nxt = cur.next
+                    prv = cur.prev
+                    prv.next = nxt
+                    nxt.prev = prv
+                    cur.next = None
+                    cur.prev = None
+                    cur = None
+                    return
+
+                else:
+                    prev = cur.prev
+                    prev.next = None
+                    cur.prev = None
+                    cur = None
+                    return
+            cur = cur.next
+
 
     """
     Finds and returns the maximum value of all the nodes 
     in the List.
     """
     def get_max(self):
-        pass
+        if self.head.next is None:
+            return self.head.value
+        else:
+            tail.max = self.head.next
+            if self.head.value < tail.max:
+                return self.value
+            else:
+                return tail_max

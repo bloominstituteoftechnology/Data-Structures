@@ -1,108 +1,141 @@
-class Node:
-  def __init__(self, value=None, next_node=None):
-    # the value at this linked list node
-    self.value = value
-    # reference to the next node in the list
-    self.next_node = next_node
-
-  def get_value(self):
-    return self.value
-
-  def get_next(self):
-    return self.next_node
-
-  def set_next(self, new_next):
-    # set this node's next_node reference to the passed in node
-    self.next_node = new_next
-
-class LinkedList:
-  def __init__(self):
-    # reference to the head of the list
-    self.head = None
-    # reference to the tail of the list
-    self.tail = None
-
-  def add_to_tail(self, value):
-    # wrap the input value in a node
-    new_node = Node(value, None)
-    # check if there is no head (i.e., the list is empty)
-    if not self.head:
-      # if the list is initially empty, set both head and tail to the new node
-      self.head = new_node
-      self.tail = new_node
-    # we have a non-empty list, add the new node to the tail
-    else:
-      # set the current tail's next reference to our new node
-      self.tail.set_next(new_node)
-      # set the list's tail reference to the new node
-      self.tail = new_node
-
-  def remove_head(self):
-    # return None if there is no head (i.e. the list is empty)
-    if not self.head:
-      return None
-    # if head has no next, then we have a single element in our list
-    if not self.head.get_next():
-      # get a reference to the head
-      head = self.head
-      # delete the list's head reference
-      self.head = None
-      # also make sure the tail reference doesn't refer to anything
-      self.tail = None
-      # return the value
-      return head.get_value()
-    # otherwise we have more than one element in our list
-    value = self.head.get_value()
-    # set the head reference to the current head's next node in the list
-    self.head = self.head.get_next()
-    return value
-
-  def contains(self, value):
-    if not self.head:
-      return False
-
-    # get a reference to the node we're currently at; update this as we traverse the list
-    current = self.head
-    # check to see if we're at a valid node 
-    while current:
-      # return True if the current value we're looking at matches our target value
-      if current.get_value() == value:
-        return True
-      # update our current node to the current node's next node
-      current = current.get_next()
-    # if we've gotten here, then the target node isn't in our list
-    return False
-
-
-
+  
 """
 A queue is a data structure whose primary purpose is to store and
 return elements in First In First Out order. 
-
 1. Implement the Queue class using an array as the underlying storage structure.
    Make sure the Queue tests pass.
 2. Re-implement the Queue class, this time using the linked list implementation
    as the underlying storage structure.
    Make sure the Queue tests pass.
 3. What is the difference between using an array vs. a linked list when 
-   implementing a Queue?
+   implementing a Queue? --- The popping of the element with a list is at the 
+   front of the list and when using a linked_list it is at the head.  With a list elements 
+   then need to be shifted down becuase the element zero was removed.
    
 Stretch: What if you could only use instances of your Stack class to implement the Queue?
          What would that look like? How many Stacks would you need? Try it!
 """
+class Node:
+    def __init__(self, value=None, next_node=None):
+        self.next_node = next_node
+        self.value = value
+
+
+
+# The linked list will use the nodes and then will make the linked list
+
+class LinkedList():
+    def __init__(self):
+        self.head = None 
+        self.tail = None
+        self.length = 0  
+
+    def add_to_tail(self, value):
+        new_node = Node(value=value)
+        if self.length == 0:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            self.tail.next_node = new_node
+            self.tail = new_node
+        self.length += 1
+
+
+    def add_to_head(self, value):
+        new_node = Node(value=value)
+        self.length += 1
+        if self.length == 0:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.next_node = self.head
+            self.head = new_node
+
+    def remove_head(self):
+        """
+            Function will return The head value.  If there is no value then 
+            it will return None
+        """
+        if self.length == 0:
+            return None
+        theValue = self.head.value
+        new_head = self.head.next_node
+        self.head = new_head
+        if self.length == 1:
+            self.tail = None
+        self.length -= 1
+
+        return theValue
+
+
+    def contains(self, searchValue):
+        if self.length == 0:
+            return False
+        else:
+            theNode = self.head 
+            
+            while theNode != None:
+                if theNode.value == searchValue:
+                    return True
+                else:
+                    theNode = theNode.next_node
+            return False
+
+    
+    def get_max(self):
+        
+        if self.length == 0:
+            return None
+        val = self.head.value
+        node = self.head
+        while True:
+            if node.value > val:
+                val = node.value
+          
+            node = node.next_node
+            if node == None:
+                return val
+           
 
 class Queue:
+    #  a list
+    #def __init__(self):
+    #    self.size = 0
+    #    self.storage = []
+#
+    #  a linked list
     def __init__(self):
         self.size = 0
         self.storage = LinkedList()
 
+    
     def __len__(self):
         return self.size
 
+    #  a list
+    #def enqueue(self, value):
+    #    self.storage.append(value)
+    #    # add to the size 
+    #    self.size += 1
+
+    #  a linked list
     def enqueue(self, value):
         self.storage.add_to_tail(value)
         self.size += 1
 
+        
+    # a list
+    #def dequeue(self):
+    #    if self.size == 0:
+    #        return None
+    #    self.size -= 1
+    #    return self.storage.pop(0)
+
+    #  a linked list
     def dequeue(self):
-        self.storage.remove_head()
+        if self.size == 0:
+            return None
         self.size -= 1
+        return self.storage.remove_head()
+
+

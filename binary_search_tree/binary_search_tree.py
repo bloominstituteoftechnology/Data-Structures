@@ -11,22 +11,51 @@ This part of the project comprises two days:
 """
 class BSTNode:
     def __init__(self, value):
+        # current node's value
         self.value = value
+
         self.left = None
         self.right = None
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
+        # check whether new node's value is less than current node's value
+        if value < self.value:
+            if not self.left:
+                self.left = BSTNode(value)
+            else:
+                self.left.insert(value)
+        # check whether new node's value is greater than or equal to curr node's val
+        elif value >= self.value:
+            if not self.right:
+                self.right = BSTNode(value)
+            else:
+                self.right.insert(value)
+
 
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        # check whether curr node matches target
+        if self.value == target:
+            return True
+        if target < self.value:
+            if not self.left:
+                return False
+            else:
+                return self.left.contains(target)
+        else:
+            if not self.right:
+                return False
+            else:
+                return self.right.contains(target)
 
     # Return the maximum value found in the tree
-    def get_max(self):
-        pass
+    def get_max(self ):
+        while self.right:
+            self = self.right
+        return self.value
+
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
@@ -63,7 +92,7 @@ class BSTNode:
 """
 This code is necessary for testing the `print` methods
 """
-bst = BinarySearchTree(1)
+bst = BSTNode(1)
 
 bst.insert(8)
 bst.insert(5)

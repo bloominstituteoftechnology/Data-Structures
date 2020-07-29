@@ -12,7 +12,7 @@ class DoublyLinkedListTests(unittest.TestCase):
         self.dll.remove_from_tail()
         self.assertIsNone(self.dll.head)
         self.assertIsNone(self.dll.tail)
-        self.assertEqual(len(self.dll), 0)
+        self.assertEqual(len(self.dll), 0)  # None is in the list so counting it as well
 
         self.dll.add_to_tail(33)
         self.assertEqual(self.dll.head.value, 33)
@@ -38,7 +38,7 @@ class DoublyLinkedListTests(unittest.TestCase):
         self.assertEqual(len(self.dll), 1)
         self.assertEqual(self.dll.remove_from_head(), 2)
         self.assertEqual(len(self.dll), 0)
-        
+
         self.dll.add_to_head(55)
         self.assertEqual(len(self.dll), 1)
         self.assertEqual(self.dll.remove_from_head(), 55)
@@ -126,6 +126,7 @@ class DoublyLinkedListTests(unittest.TestCase):
         self.assertEqual(self.dll.get_max(), 100)
         self.dll.add_to_tail(101)
         self.assertEqual(self.dll.get_max(), 101)
+
 
 if __name__ == '__main__':
     unittest.main()

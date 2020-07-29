@@ -58,19 +58,27 @@ class BSTNode:
             # going down the right side of the tree
             return self.right.contains(target)
 
+
+    # created an inner function so that I can pass in the node 
+    # into each of the functions
+    def get_max_recurs(self, node):
+        if node == None:
+            return
+        
+        val = node.__our_max(node.get_max_recurs(node.left), node.get_max_recurs(node.right))
+        return node.__our_max(val, node.value)
+        
     # Return the maximum value found in the tree
     def get_max(self):
         # using recursion to find the max
         # This means that I will need to traverse the whole tree
         # base case
-        val = None
-
-        if self == None:
-            return  # might need to change this 
-
-        theMax = self.__our_max(self.left.get_max(), self.right.get_max())
-
-        return max(theMax, self.value)
+        if self.value == None:
+            return None
+        #putting in the node
+        node = self
+        val = self.get_max_recurs(node)
+        return val
         
 
         
@@ -82,30 +90,52 @@ class BSTNode:
         if self == None:
             return
         # doing the left side of the tree first
-        self.for_each(fn)
+        if self.left != None:
+            self.left.for_each(fn)
 
         # running the funtion on the value of the node
         fn(self.value)
 
-        # going donw the right side
-        self.for_each(fn)
+        # going down the right side
+        if self.right != None:
+            self.right.for_each(fn)
 
     # Part 2 -----------------------
 
+
+    def in_order_print_recur(self, node):
+        """
+        This is the recursion function that will 
+        print in the order
+        """
+        if node == None:
+            return
+        
+        node.in_order_print_recur(node.left)
+        print(node.value)
+        node.in_order_print_recur(node.right)
+
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
-    def in_order_print(self):
-        # going through the list in recursion
-        if self == None:
-            return 
+    # making the in_order_print a wrapper that will 
+    # be able to either use the self as the 
+    # starting node or will use the node that
+    # is passed into the in_order_print funtion.
+    # calls the function in_order_print_recur(node)
+    def in_order_print(self, node=None):
+        # setting up to call the recursive function
+        if node == None:
+            node = self
+        # calling the recurs print function
+        self.in_order_print_recur(node)
 
-        self.left.in_order_print()
-        print(self.value)
-        self.right.in_order_print()
+        
+
+    
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
-    def bft_print(self):
+    def bft_print(self, theNode=None):
         # making it to implement a queue
         # using the implementation of the queue
         # that we have made to keep track of the nodes we visit
@@ -113,7 +143,12 @@ class BSTNode:
 
         thequeue = Queue()
         # adding everything to the queue
-        root = self
+        # checking to either use the self as the root or 
+        # the passed in node
+        if theNode == None:
+            theNode = self
+
+        root = theNode
         thequeue.enqueue(root)
 
         #looping through the queue
@@ -136,23 +171,78 @@ class BSTNode:
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
-    def dft_print(self):
+    def dft_print(self, node=None):
         # using a depth first traversal that is iterative
-        # importing and using the stack 
-        node = self
-        while node != None:
-            # doing an inner loop that will go into the left side
+        # importing and using the stack that we have created
+        visited = []
+        from data_structures.stack.stack import Stack
+        # checking to see where we will get the first node
+        if node == None:
+            node = self
+        #putting on to the stack the root node
+        my_stack = Stack()
+        my_stack.push(node)
+        # will then mark the node as visited
+        visited.append(node)
+        while my_stack.size > 0:
+            # will first pop the top node off the stack
+            currNode = my_stack.pop()
+            # will then add its children (neighbors if they are not in the visited list)
+            # on to the stack
+            if currNode.right is not None and currNode.right  not in visited:
+                my_stack.push(currNode.right)
+                visited.append(currNode.right)
+            # doing the same thing for the left side
+            if currNode.left is not None and currNode.left not in visited:
+                my_stack.push(currNode.left)
+                visited.append(currNode.left)
+            # will now do the printing of the value of the current node
+            print(currNode.value)
 
     # Stretch Goals -------------------------
     # Note: Research may be required
 
-    # Print Pre-order recursive DFT
-    def pre_order_dft(self):
-        pass
+    # making the inner pre_order_recus
+    # function
+    def pre_order_recurs(self, node):
+        # base case
+        if node == None:
+            return
+        print(node.value)
 
+        self.pre_order_recurs(node.left)
+        self.pre_order_recurs(node.right)
+
+    # Print Pre-order recursive DFT
+    def pre_order_dft(self, node=None):
+        # Tyring my preorder traversal of the binary tree
+        # visiting the root node and then will 
+        # go and viist the left subtree
+        # and then visit the right subtree
+        # checking to see if the node that is passed in is null or not
+        if node == None:
+            node = self
+        self.pre_order_recurs(node)
+
+
+    # This the inner funtion that is recursive and is called
+    # from the post_order_dft function
+    def post_order_dft_recurs(self, node):
+        # base case 
+        if node == None:
+            return
+        self.post_order_dft_recurs(node.left)
+        self.post_order_dft_recurs(node.right)
+
+        # Will now pring the node
+        print(node.value)
     # Print Post-order recursive DFT
-    def post_order_dft(self):
-        pass
+    # making this be a wrapper the the recursive function
+    def post_order_dft(self, node=None):
+        if node == None:
+            node = self
+        self.post_order_dft_recurs(node)
+        
 
     # This is a function that I created to do the comparison with a none 
     def __our_max(self, val1, val2):
@@ -183,6 +273,6 @@ print("elegant methods")
 print("pre order")
 bst.pre_order_dft()
 print("in order")
-bst.in_order_dft()
+bst.in_order_print()
 print("post order")
 bst.post_order_dft()  

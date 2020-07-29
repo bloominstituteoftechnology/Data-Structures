@@ -7,7 +7,13 @@ class ListNode:
         self.prev = prev
         self.value = value
         self.next = next
-            
+    def delete(self):
+        if self.prev:
+            self.prev.next = self.next
+        if self.next:
+            self.next.prev = self.prev
+
+
 """
 Our doubly-linked list class. It holds references to 
 the list's head and tail nodes.
@@ -50,21 +56,22 @@ class DoublyLinkedList:
     Returns the value of the removed Node.
     """
     def remove_from_head(self):
-        
+        # check empty
         if not self.head:
             return None
         
+        # decrement
         self.length -= 1
-
-        if not self.head.next:
+        
+        if self.head == self.tail:
             head = self.head.value
             self.head = None
-
+            self.tail = None
             return head
-        
+
+        # reassign head and return value
         head = self.head.value
         self.head = self.head.next
-        self.head.prev = None
 
         return head            
     """
@@ -94,19 +101,23 @@ class DoublyLinkedList:
     Returns the value of the removed Node.
     """
     def remove_from_tail(self):
+        # check empty
         if not self.tail:
             return None
         
+        # decrement length
         self.length -= 1
 
-        if not self.tail.prev:
+        # check if singular list
+        if self.tail == self.head:
             tail = self.tail.value
+            self.head = None
             self.tail = None
             return tail
         
+        # reassign and return value
         tail = self.tail.value
         self.tail = self.tail.prev
-        self.tail.next = None
 
         return tail
             
@@ -115,105 +126,57 @@ class DoublyLinkedList:
     List and inserts it as the new head node of the List.
     """
     def move_to_front(self, node):
-        # check if empty
-        if not self.head:
-            raise NameError(f'Node "{node.value}" is not found: Empty List')
-
-        # check for valid argument
-        if not isinstance(node, ListNode):
-            raise TypeError('Invalid Object Type. Expected: "ListNode"')
-
         # check if passed node is already the head
         if self.head == node:
             return 
 
-        # placeholder
-        current = self.head
-
-        while current:
-            if current == node:
-                # remove refrences to current and have them point to each other
-                next_node = current.next
-                prev_node = current.prev
-                next_node.prev = prev_node
-                prev_node.next = next_node 
-
-                add_to_head(node.value)
-                head_updated = True
-                break
-        # If head not updated, raise error
-        if not head_updated:
-            raise NameError(f'Node "{node.value}" is not found in list')
-                
-
-        
+        # delete passed node from list and add to head
+        self.delete(node)
+        self.add_to_head(node.value)   
     """
     Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List.
     """
     def move_to_end(self, node):
-        # check if empty
-        if not self.tail:
-            raise NameError(f'Node "{node.value}" is not found: Empty list')
-
-        # check for valid argument
-        if not isinstance(node, ListNode):
-            raise TypeError('Invalid Object Type. Expected: "ListNode"')
-
         # check if passed node is already the head
         if self.tail == node:
             return
 
-        # placeholder
-        current = self.head
-
-        while current:
-            if current == node:
-                # remove refrences to current and have them point to each other
-                next_node = current.next
-                prev_node = current.prev
-                next_node.prev = prev_node
-                prev_node.next = next_node 
-
-                add_to_tail(node.value)
-                tail_updated = True
-                break
-        # If tail not updated, raise error
-        if not tail_updated:
-            raise NameError(f'Node "{node.value}" is not found in list')
+        # delete passed node from list and add to tail
+        self.delete(node)
+        self.add_to_tail(node.value)   
 
     """
     Deletes the input node from the List, preserving the 
     order of the other elements of the List.
     """
     def delete(self, node):
-        # check if empty
-        if not self.head:
-            raise NameError(f'Node "{node.value}" is not found: Empty list')
+        #check legnth before decrement
+        if self.length > 0:
+            self.length -= 1
+        #check empty
+        if self.head is None:
+            return
+        #check singular list
+        elif self.head == self.tail == node:
+            self.head = None
+            self.tail = None
+        #check if passed node is head or tail
+        elif self.head == node:
+            self.head = self.head.next
+        elif self.tail == node:
+            self.tail = self.tail.prev
+        #otherwise search and destroy
+        else:
+            # placeholder to start at item 2
+            current = self.head.next
 
-        # check for valid argument
-        if not isinstance(node, ListNode):
-            raise TypeError('Invalid Object Type. Expected: "ListNode"')
-
-        # placeholder
-        current = self.head
-
-        while current:
-            if current == node:
-                # remove refrences to current and have them point to each other
-                next_node = current.next
-                prev_node = current.prev
-                next_node.prev = prev_node
-                prev_node.next = next_node 
-
-                current = None
-                node_deleted = True
-                break
-        # if node not deleted rasie error
-        if not node_deleted:
-            raise NameError(f'Node "{node.value}" is not found in list')
-
-
+            # traverse list
+            while current:
+                if current == node:
+                    current.delete()
+                    break
+                current = current.next
     """
     Finds and returns the maximum value of all the nodes 
     in the List.
@@ -229,12 +192,12 @@ class DoublyLinkedList:
 
         # iterrate through list
         while current:
-            current_val = current.get_value()
+            current_val = current.value
 
             # compare values and update max when greater value presented
             if max_val < current_val:
                 max_val = current_val
 
-            current = current.get_next()
+            current = current.next
 
         return max_val

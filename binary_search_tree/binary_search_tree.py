@@ -72,8 +72,7 @@ class BSTNode:
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
-    def in_order_print(self):
-        node = self
+    def in_order_print(self, node):
         def traverse(node):
             if node == None:
                 return
@@ -85,12 +84,12 @@ class BSTNode:
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
-    def bft_print(self):
-        left = self.left
+    def bft_print(self, node):
+        left = node.left
         l_prev = left
-        right = self.right
+        right = node.right
         r_prev = right
-        print(self.value)
+        print(node.value)
         while left != None or right != None:
             if left:
                 print(left.value)
@@ -132,24 +131,41 @@ class BSTNode:
 
     # Print Pre-order recursive DFT
     def pre_order_dft(self):
-        pass
+        node = self
+        def traverse(node):
+            if node == None:
+                return
+            print(node.value)
+            traverse(node.left)
+              
+            traverse(node.right)
+        traverse(node)
+            
 
     # Print Post-order recursive DFT
     def post_order_dft(self):
-        pass
+        node = self
+        def traverse(node):
+            if node == None:
+                return
+            traverse(node.left)              
+            traverse(node.right)
+            print(node.value)
+
+        traverse(node)
 
 """
 This code is necessary for testing the `print` methods
 """
-bst = BSTNode(8)
-# bst.insert(8)
-# bst.insert(5)
+# bst = BSTNode(5)
 # bst.insert(7)
-# bst.insert(6)
 # bst.insert(3)
 # bst.insert(2)
+# bst.insert(4)
 
+bst = BSTNode(8)
 bst.insert(3)
+bst.insert(2)
 bst.insert(1)
 bst.insert(6)
 bst.insert(4)
@@ -159,8 +175,8 @@ bst.insert(14)
 bst.insert(13)
 
 # bst.in_order_print()
-# bst.bft_print()
-bst.dft_print()
+bst.bft_print(bst)
+# bst.dft_print()
 
 # print("elegant methods")
 # print("pre order")

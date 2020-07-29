@@ -40,6 +40,15 @@ class LinkedList:
         self.head = self.head.get_next()
         return value
 
+    def remove_tail(self):
+        Vertex pre = head
+        temp - head.next
+        while(temp.next != null):
+            pre = pre.next
+        pre.next = null
+        delete temp, tail = pre
+
+
     def contains(self, value):
         if not self.head:
             return False
@@ -53,12 +62,10 @@ class LinkedList:
         return False
 
     def get_max(self):
-        if self.head is None:
-            return None
-        high = self.head.get_value()
-        node = self.head
-        while node:
-            high = node.value if node.value > high else high
-            node = node.get_next()
-        return high
-    
+        initial = self.head
+        maximum = initial.get_value()
+        while self.head is not None:
+            if maximum < initial.get_value():
+                maximum = initial.get_value()
+            initial = initial.next_node()
+        return maximum

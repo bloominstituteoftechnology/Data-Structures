@@ -133,8 +133,14 @@ class DoublyLinkedList:
             self.head = None
             self.tail = None
             return
-        if self.head == node:
-            self.head = node.next
+        #if self.head == node:
+         #   self.head = node.next
+        if self.head:
+            self.remove_from_head()
+            return
+        if self.tail:
+            self.remove_from_tail()
+            return
         if node.prev:
             node.prev.next = node.next
         if node.next:

@@ -295,7 +295,5 @@ class DoublyLinkedList:
         if len(list(list_keys)) == 0:
             return None
 
-        print("list_keys is: ", type(list_keys))
-
         list_srtd = sorted(list_keys, reverse=True)
         return list_srtd[0]

@@ -17,19 +17,64 @@ class BSTNode:
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
+        node = BSTNode(value)
+        if value < self.value:
+            # place to the left
+            if self.left is None:
+                self.left = node
+            else:
+                # recursion to apply insert on child
+                self.left.insert(value)
+        elif value >= self.value:
+            # place to the right
+            if self.right is None:
+                self.right = node
+            else:
+                # recursion to apply insert on child
+                self.right.insert(value)
 
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        if self.value == target:
+            return True
+        if target <= self.value:
+            # search the left branch
+            if self.left:
+                return self.left.contains(target)
+            else:
+                return False
+        elif target > self.value:
+            # search the right branch
+            if target > self.value:
+                if self.right:
+                    return self.right.contains(target)
+                else:
+                    return False
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+        # start with the first node (or current)
+        current = self
+        # look at the right-side ONLY, b/c left side is smaller
+        if self.right is not None:
+            return self.value
+        else:
+            return self.right.get_max()
 
     # Call the function `fn` on the value of each node
+    # go through all the nodes
     def for_each(self, fn):
+        fn(self)
+        pass
+
+    # Extra/not needed
+    def remove_node(self, target):
+        # locate the node
+        # if self.right -> replace node with self.right
+        # if not self.right -> replace
+
+
         pass
 
     # Part 2 -----------------------
@@ -60,10 +105,12 @@ class BSTNode:
     def post_order_dft(self):
         pass
 
+
+
 """
 This code is necessary for testing the `print` methods
 """
-bst = BinarySearchTree(1)
+bst = BSTNode(1)
 
 bst.insert(8)
 bst.insert(5)

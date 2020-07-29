@@ -30,7 +30,7 @@ class LinkedList:
         self.val_occr   = {}
 
     def occr_ctr_inc(self, val):
-        if not self.val_occr.has_key(val):
+        if val not in self.val_occr:
             self.val_occr[val] = 1
             return
 
@@ -38,7 +38,7 @@ class LinkedList:
         return
 
     def occr_ctr_dec(self, val):
-        if not self.val_occr.has_key(val):
+        if val not in self.val_occr:
             # error condition
             print("error condition 1")
             return

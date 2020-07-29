@@ -14,11 +14,16 @@ the list's head and tail nodes.
 """
 class DoublyLinkedList:
     def __init__(self, node=None):
-        self.head = node
-        self.tail = node
-        self.length = 1 if node is not None else 0
-        # reference a value dict
+        self.head       = node
+        self.tail       = node
+        self.length     = 0
         self.val_occr   = {}
+
+        # Was an initial node passed into the constructor?
+        if node is not None:
+            # We have an initial node -> update meta data
+            self.length = 1
+            self.occr_ctr_inc(node.value)
 
     def __len__(self):
         return self.length
@@ -28,7 +33,7 @@ class DoublyLinkedList:
     passed in value
     """
     def occr_ctr_inc(self, val):
-        if not self.val_occr.has_key(val):
+        if val not in self.val_occr:
             self.val_occr[val] = 1
             return
 
@@ -40,9 +45,8 @@ class DoublyLinkedList:
     passed in value
     """
     def occr_ctr_dec(self, val):
-        if not self.val_occr.has_key(val):
+        if val not in self.val_occr:
             # error condition
-            print("error condition 1")
             return
 
         if self.val_occr[val] == 1:
@@ -189,7 +193,7 @@ class DoublyLinkedList:
             tmp_atr.prev = tmp_b4
 
         # Position our node as the head
-        tmp_node.next = self.head.next
+        tmp_node.next = self.head
         tmp_node.prev = None
         self.head     = tmp_node
 
@@ -239,7 +243,7 @@ class DoublyLinkedList:
 
         # Is our node the only node in the list?
         tmp_node = node
-        if self.head = tmp_node and self.tail = tmp_node:
+        if self.head == tmp_node and self.tail == tmp_node:
             # Our node is the only element in the list -> remove it
             self.length = 0
             self.head   = None

@@ -9,7 +9,10 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
-
+import sys
+sys.path.extend(['queue', 'stack', 'binary_search_tree'])
+from queue import Queue # pylint: disable=import-error
+from stack import Stack # pylint: disable=import-error
 from binary_search_tree_displayer import BSTDisplayer # pylint: disable=import-error
 
 class BSTNode:
@@ -64,17 +67,39 @@ class BSTNode:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self):
-        pass
+        if not self:
+            return
+        if self.left:
+            self.left.in_order_print()
+        print(self.value)
+        if self.right:
+            self.right.in_order_print()
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
-    def bft_print(self):
-        pass
+    def bft_print(self, node):
+        queue = Queue()
+        queue.put(node)
+        while not queue.empty():
+            node = queue.get()
+            print(node.value)
+            if node.left:
+                queue.put(node.left)
+            if node.right:
+                queue.put(node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
-    def dft_print(self):
-        pass
+    def dft_print(self, node):
+        stack = Stack()
+        stack.push(node)
+        while not stack.isEmpty():
+            node = stack.pop()
+            print(node.value)
+            if node.right:
+                stack.push(node.right)
+            if node.left:
+                stack.push(node.left)
 
     # Stretch Goals -------------------------
     # Note: Research may be required

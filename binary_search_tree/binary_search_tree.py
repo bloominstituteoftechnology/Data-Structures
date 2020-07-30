@@ -60,6 +60,7 @@ class BSTNode:
 
     # Return the maximum value found in the tree
     def get_max(self):
+        """
         if self.right is None and self.left is None:
             return self.value
         current = self
@@ -67,16 +68,49 @@ class BSTNode:
              current = current.right
         return current.value
 
+    #U: Traverse BST to find global max
+    #1: Check your input --> is it None?
+        if not self:
+            return None
+    #2: declare max variable and give self.value
+        max = self.value
+        current = self
+    #3: iterate through the tree
+        while current:
+    #4: update max value
+            if current.value > max:
+                max = current.value
+    #5: move to the right
+            current = current.right
+        return max
+        """
+    # recursive solution
+    # base case: no right node
+    # recursive step: pass right subtree to get_max
+        if not self.right:
+            return self.value
+        return self.right.get_max()
+
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-        level_order = []
-
+        #U: apply fn to each node of tree
+        #1: check if empty
+        #2: apply fn to root
+        #3: call for_each on left and right subtree
+        if not self:
+            return
+        fn(self.value)
+        if self.left:
+            self.left.for_each(fn)
+        if self.right:
+            self.right.for_each(fn)
+        """  
         if self is None or self.fn == fn:
             return
         if self.fn < fn:
             return self.right.for_each(fn)
         return self.left.for_each(fn)
-
+        """
     # Part 2 -----------------------
 
     # Print all the values in order from low to high

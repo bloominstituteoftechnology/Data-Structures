@@ -44,27 +44,30 @@ from stack import Stack # pylint: disable=import-error
 
 
 # 2. Queue (using a linked list)
-# class Queue:
-#     def __init__(self):
-#         self.size = 0
-#         self.storage = LinkedList()
+class Queue:
+    def __init__(self):
+        self.size = 0
+        self.storage = LinkedList()
     
-#     # len performance: O(1)
-#     def __len__(self):
-#         return self.size
+    def isEmpty(self):
+        return self.size == 0
 
-#     # enqueue performance: O(1)
-#     def enqueue(self, value):
-#         self.storage.add_to_tail(value)
-#         self.size += 1
+    # len performance: O(1)
+    def __len__(self):
+        return self.size
 
-#     # dequeue performance: O(1)
-#     def dequeue(self):
-#         if self.size == 0:
-#             return None
-#         else:
-#             self.size -= 1
-#             return self.storage.remove_head()
+    # enqueue performance: O(1)
+    def enqueue(self, value):
+        self.storage.add_to_tail(value)
+        self.size += 1
+
+    # dequeue performance: O(1)
+    def dequeue(self):
+        if self.isEmpty() == 0:
+            return None
+        else:
+            self.size -= 1
+            return self.storage.remove_head()
 
 
 # 3. In terms of the implementation, both Queues are nearly identical with only the 
@@ -73,33 +76,33 @@ from stack import Stack # pylint: disable=import-error
 
 
 # Stretch: Queue (using a stack)
-class Queue:
-    def __init__(self):
-        self.size = 0
-        self.storage = Stack()
-        self.temp_storage = Stack()
+# class Queue:
+#     def __init__(self):
+#         self.size = 0
+#         self.storage = Stack()
+#         self.temp_storage = Stack()
     
-    # len performance: O(1)
-    def __len__(self):
-        return self.size
+#     # len performance: O(1)
+#     def __len__(self):
+#         return self.size
 
-    # enqueue performance: O(1)
-    def enqueue(self, value):
-        self.storage.push(value)
-        self.size += 1
+#     # enqueue performance: O(1)
+#     def enqueue(self, value):
+#         self.storage.push(value)
+#         self.size += 1
 
-    # dequeue performance: O(n)
-    def dequeue(self):
-        if self.size == 0:
-            return None
+#     # dequeue performance: O(n)
+#     def dequeue(self):
+#         if self.size == 0:
+#             return None
 
-        self.size -= 1
+#         self.size -= 1
 
-        while len(self.storage) > 1:
-            self.temp_storage.push(self.storage.pop())
-        elem_popped = self.storage.pop()
+#         while len(self.storage) > 1:
+#             self.temp_storage.push(self.storage.pop())
+#         elem_popped = self.storage.pop()
 
-        while len(self.temp_storage) > 0:
-            self.storage.push(self.temp_storage.pop())
+#         while len(self.temp_storage) > 0:
+#             self.storage.push(self.temp_storage.pop())
         
-        return elem_popped
+#         return elem_popped

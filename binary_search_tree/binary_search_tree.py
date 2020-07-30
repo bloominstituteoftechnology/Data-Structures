@@ -24,11 +24,11 @@ class BSTNode:
     # Insert the given value into the tree
     def insert(self, value):
         if value < self.value:
-            if not self.left:
+            if self.left is None:
                 self.left = BSTNode(value)
             else:
                 self.left.insert(value)
-        elif value > self.value:
+        elif value >= self.value:
             if not self.right:
                 self.right = BSTNode(value)
             else:
@@ -47,12 +47,9 @@ class BSTNode:
 
     # Return the maximum value found in the tree
     def get_max(self):
-        if self.right:
-            self.right.get_max()
-        elif self.left:
-            self.left.get_max()
-        else:
+        if self.right is None:
             return self.value
+        return self.right.get_max()
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
@@ -106,11 +103,23 @@ class BSTNode:
 
     # Print Pre-order recursive DFT
     def pre_order_dft(self):
-        pass
+        if not self:
+            return
+        print(self.value)
+        if self.left:
+            self.left.pre_order_dft()
+        if self.right:
+            self.right.pre_order_dft()
 
     # Print Post-order recursive DFT
     def post_order_dft(self):
-        pass
+        if not self:
+            return
+        if self.left:
+            self.left.post_order_dft()
+        if self.right:
+            self.right.post_order_dft()
+        print(self.value)
 
 """
 This code is necessary for testing the `print` methods
@@ -128,13 +137,13 @@ bst.insert(2)
 
 bst_displayer.display()
 
-# bst.bft_print()
-# bst.dft_print()
+bst.bft_print(bst)
+bst.dft_print(bst)
 
-# print("elegant methods")
-# print("pre order")
-# bst.pre_order_dft()
-# print("in order")
-# bst.in_order_dft()
-# print("post order")
-# bst.post_order_dft()  
+print("elegant methods")
+print("pre order")
+bst.pre_order_dft()
+print("in order")
+bst.in_order_print()
+print("post order")
+bst.post_order_dft()  

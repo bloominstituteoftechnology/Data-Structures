@@ -14,23 +14,95 @@ class BSTNode:
         self.value = value
         self.left = None
         self.right = None
+        self.count = 1
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
+        # Is the value less than the current node's value?
+        if value < self.value:
+            # insert to the left
+            if self.left == None:
+                # No "left" child, insert the new node here
+                self.left = BSTNode(value)
+                return
+            else:
+                # a "left" child exists, invoke the the child's insert method
+                self.insert(value)
+                return
+        
+        # Is the value equal to the current node's value?
+        if value == self.value:
+            # Increment the node's count
+            self.count = self.count + 1
+            return 
+
+        # Is the value greater than the current node's value?
+        if value > self.value:
+            # insert to the right
+            if self.right == None:
+                # No "right" child, insert the new node here
+                self.right = BSTNode(value) 
+            else: 
+                # a "left" child exists, invoke the the child's insert method
+                self.insert(value)
+        
+        return
 
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        # Is this the target node?
+        if self.value == target:
+            return True
+
+        # Not the target node, is the target less than the current node?
+        if target < self.value:
+            # Are there any "left" nodes to search?
+            if self.left == None:
+                # No more nodes to search -> the target is not found
+                return False
+
+            # A left node or sub-tree exists, return an invocation
+            #   of the contains method on the left child node
+            return self.left.contains(target)
+
+        # Not the target node, is the target greater than the current node?
+        if target > self.value:
+            # Are there any "right" nodes to search?
+            if self.right == None:
+                # No more nodes to search -> the target is not found
+                return False
+
+            # A right node or sub-tree exists, return an invocation
+            #   of the contains method on the right child node
+            return self.right.contains(target)
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+        # Does the node have a "right" child
+        #  (if so, that node value is greater than the current node)
+        if self.right == None:
+            # No right child, this node's value is the max value
+            return self.value
+
+        # A right node exists, return an invocation of the 
+        #   get_max method on the right child node
+        return self.right.get_max()
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-        pass
+        # Call the function on this node's value
+        fn(self.value)
+
+        # Does this node have a "left" child?
+        if self.left != None:
+            # A left child exists; invoke the for_each method on that child
+            self.left.for_each(fn)
+
+        # Does this node have a "right" child?
+        if self.right != None:
+            # A left child exists; invoke the for_each method on that child
+            self.right.for_each(fn)
 
     # Part 2 -----------------------
 
@@ -59,6 +131,8 @@ class BSTNode:
     # Print Post-order recursive DFT
     def post_order_dft(self):
         pass
+
+quit()
 
 """
 This code is necessary for testing the `print` methods

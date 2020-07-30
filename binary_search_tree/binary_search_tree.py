@@ -18,7 +18,7 @@ class BSTNode:
     # Insert the given value into the tree
     def insert(self, value):
         #check whether new nodes value is less than current nodes value
-        if value < self.value:
+        if value < self.value:  
             if not self.left:
                 self.left = BSTNode(value)
             else:
@@ -36,19 +36,24 @@ class BSTNode:
         #check wheather curr node matches target
         if self.value == target:
             return True
-        if target < self.value:
+        found = False
+        if self.value >= target:
             if not self.left:
                 return False
             else:
-                return self.left.contains(target)
-        else:
+                found = self.left.contains(target)
+        if self.value < target:
             if not self.right:
                 return False
-            else:
-                return self.right.contains(target)
+            found = self.right.contains(target)
+
+        return found
 
     # Return the maximum value found in the tree
     def get_max(self):
+        # The largest value will always be on the right of the current node
+        #  if we can go right lets find the largest number by calling get_max on the right subtree
+        #  of we cannot go right retrun the current value
         pass
 
     # Call the function `fn` on the value of each node

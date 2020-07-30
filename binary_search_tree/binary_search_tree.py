@@ -67,8 +67,47 @@ class BSTNode:
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
-    def bft_print(self):
-        pass
+    def bft_print(self, node):
+
+        #define function to iterate without repitition for each condition
+        def stack(n):
+            #empty containers
+            visited, s = [], [n]
+
+            while s:
+                n = s.pop()
+                visited.append(n)
+                #add right to stack first so that left pops first
+                s.extend(filter(None, [n.right, n.left]))
+            return visisted
+
+        #check for empty tree
+        if self.value is None:
+            return None
+        #if root is equal to node, traverse from here
+        elif self.value == node.value:
+            return stack(node)
+        #search for starting node and traverse from there
+        elif self.left is not None:
+            current = self.left
+            while current:
+                if current = node:
+                    return stack(node)
+                elif current.left is not None:
+                    current = current.Left
+                else:
+                    current = current.right
+        elif self.right is not None:
+            current = self.right
+            while current:
+                if current = node:
+                    return stack(node)
+                elif current.left is not None:
+                    current = current.Left
+                else:
+                    current = current.right        
+        else:
+            return None
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal

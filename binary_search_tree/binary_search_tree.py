@@ -36,29 +36,37 @@ class BSTNode:
         #check wheather curr node matches target
         if self.value == target:
             return True
-        found = False
         if self.value >= target:
             if not self.left:
                 return False
             else:
-                found = self.left.contains(target)
+                return = self.left.contains(target)
         if self.value < target:
             if not self.right:
                 return False
-            found = self.right.contains(target)
+            return = self.right.contains(target)
 
-        return found
 
     # Return the maximum value found in the tree
     def get_max(self):
         # The largest value will always be on the right of the current node
         #  if we can go right lets find the largest number by calling get_max on the right subtree
         #  of we cannot go right retrun the current value
-        pass
+        if self.right = None:
+            return self.value
+        max_val = self.right.get_max()
+        return max_val
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-        pass
+        # Call function on the current value fn(self.value)
+        fn(self.value)
+        # if you can go left, call for_each on the left tree 
+        if self.left:
+            self.left.for_each(fn)
+        #  if you can go right call for_each on the right tree
+        if self.right:
+            self.right.for_each(fn)
 
     # Part 2 -----------------------
 

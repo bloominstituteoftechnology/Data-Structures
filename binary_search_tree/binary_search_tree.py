@@ -1,3 +1,4 @@
+from collections import deque
 """
 Binary search trees are a data structure that enforce an ordering over 
 the data they store. That ordering in turn makes it a lot more efficient 
@@ -10,6 +11,7 @@ This part of the project comprises two days:
    on the BSTNode class.
 """
 
+
 class BSTNode:
     def __init__(self, value):
         self.value = value
@@ -18,7 +20,7 @@ class BSTNode:
 
     # Insert the given value into the tree
     def insert(self, value):
-                # check whether new node's value is less than current node's value
+        # check whether new node's value is less than current node's value
         if value < self.value:
             if not self.left:
                 self.left = BSTNode(value)
@@ -50,48 +52,123 @@ class BSTNode:
 
     # Return the maximum value found in the tree
     def get_max(self):
-        if self.right == None:
-            return self.value
-        else:
-            return self.right.get_max()
+        # U: traverse BST to find global max
+        # 1. check your input --> is there a node here?
+        # 2. declare max variable == self.value
+        # 3. iterate through tree until we hit Null
+        # 4, update max value
+        # 5. move to the right
 
+        # if not self:
+        #     return None
+        # max_value = self.value
+        # current = self
+        # while current:
+        #     if current.value > max_value:
+        #         max_value = current.value
+        #     current = current.right
+        # return max_value
+
+        # recursive solution................................
+        # base case: no right node available
+        # recursive step: move to the right to get_max
+
+        if not self.right:
+            return self.value
+        return self.right.get_max()
 
     # Call the function `fn` on the value of each node
-    def for_each(self, fn):
-        fn(self.value)
-        if self.right != None:
-            self.right.for_each(fn)
-        if self.left != None:
-            self.left.for_each(fn)
 
+    def for_each(self, fn):
+        if not self:
+            return
+        fn(self.value)
+        if self.right:
+            self.right.for_each(fn)
+        if self.left:
+            self.left.for_each(fn)
 
     # Part 2 -----------------------
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
+
     def in_order_print(self):
-        pass
+        if not self:
+            return
+        # left -> root -> right
+        if self.left:
+            self.left.in_order_print()
+        print(self.value)
+
+        if self.right:
+            self.right.in_order_print()
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self):
-        pass
+        # 1. define deque
+        # 2. add self to deque
+        # 3. iterate: while there are items in the deque
+        # 4. dequeue/pop from deque, point to result, and print
+        # 5. add left and right children to deque
+        qq = deque()
+        qq.append(self)
+        while len(qq) > 0:
+            current = qq.popleft()
+            print(current.value)
+            if current.left:
+                qq.append(current.left)
+            if current.right:
+                qq.append(current.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self):
-        pass
+        s = []
+        s.append(self)
+        while len(s) > 0:
+            current = s.pop()
+            print(current.value)
+            if current.left:
+                s.append(current.left)
+            if current.right:
+                s.append(current.right)
 
     # Stretch Goals -------------------------
     # Note: Research may be required
-
     # Print Pre-order recursive DFT
     def pre_order_dft(self):
-        pass
+        # 0. check input
+        # ROOT -> LEFT -> RIGHT
+        # 1. recurse to the left
+        # 2.  recures to the right
+        # 3. print self
+        if not self:
+            return
+        print(self.value)
+        if self.left:
+            self.left.pre_order_dft()
+            # print(self.left.value)
+        if self.right:
+            self.right.pre_order_dft()
+            # print(self.right.value)
 
     # Print Post-order recursive DFT
     def post_order_dft(self):
-        pass
+        # 0. check self
+        # left -> right -> root
+        # 1. recurse to the left
+        # 2. recurse to the right
+        # 3. print self
+        if not self:
+            return
+        if self.left:
+            self.left.post_order_dft()
+        if self.right:
+            self.right.post_order_dft()
+        print(self.value)
+
 
 """
 This code is necessary for testing the `print` methods
@@ -105,6 +182,15 @@ bst.insert(6)
 bst.insert(3)
 bst.insert(4)
 bst.insert(2)
+""" 
+            1
+              8
+            5   
+         3     7
+       2   4    6
+                
+"""
+
 
 bst.bft_print()
 bst.dft_print()
@@ -113,6 +199,6 @@ print("elegant methods")
 print("pre order")
 bst.pre_order_dft()
 print("in order")
-bst.in_order_dft()
+bst.in_order_print()
 print("post order")
-bst.post_order_dft()  
+bst.post_order_dft()

@@ -1,15 +1,19 @@
 class ListNode:
+    
     def __init__(self, value):
         self.value = value
         self.next = None
 
 class LinkedList:
+
     def __init__(self, value=None):
         self.head = ListNode(value) if value else None
         self.tail = None
         self.length = 1 if value else 0
+
     def __len__(self):
         return self.length
+
     def add_to_tail(self, value):
         node = ListNode(value)
         self.length += 1
@@ -19,6 +23,7 @@ class LinkedList:
             return
         self.tail.next = node
         self.tail = node
+
     def contains(self, value):
         node = self.head
         while node != None:
@@ -26,6 +31,7 @@ class LinkedList:
                 return True
             node = node.next
         return False
+
     def remove_head(self):
         if self.head == None:
             return None
@@ -35,6 +41,7 @@ class LinkedList:
             self.tail = None 
         self.length -= 1
         return prev_head.value
+
     def get_max(self):
         max_val = float("-inf")
         node = self.head

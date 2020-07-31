@@ -40,81 +40,77 @@ class AVLTree:
     in the tree
     """
     def update_height(self):
-        height = -1
-        node = self.node
+        height = 0
         def traverse(node, h):
             if node == None:
                 return h - 1
-            traverse(node.left, h + 1)
-            traverse(node.right, h + 1)
+            traverse(node.node.left, h + 1)
+            traverse(node.node.right, h + 1)
             self.height = max(self.height, h)
-        traverse(node, height)
+        traverse(self, height)
+        pass
 
     """
     Updates the balance factor on the AVLTree class
     """
     def update_balance(self):
-        node = self.node
-        def find_depth(node):
-            if not node:
-                return 0
-            stack = []
-            stack.append(node)
-            max_depth = 0
-            while len(stack) > 0:
-                if not node:
-                    node = stack.pop()
-                    node = node.right
-                    if node:
-                        stack.append(node)
-                else:
-                    max_depth = max(max_depth, len(stack) + 1)
-                    node = node.left
-                    if node:
-                        stack.append(node)
-            return max_depth
-        l = find_depth(node.left)
-        r = find_depth(node.right)
-        return l - r
-        
-
+        def find_depth(node, h):
+            if node == None:
+                return h - 1
+            l = find_depth(node.node.left, h + 1)
+            r = find_depth(node.node.right, l + 1)
+            return r
+        l = find_depth(self.node.left, 1)
+        r = find_depth(self.node.right, 1)
+        # print(self.node.key, l, r)
+        self.balance = l - r
     """
     Perform a left rotation, making the right child of this
     node the parent and making the old parent the left child
     of the new parent. 
     """
-    def left_rotate(self, node):
-        child = node.right
-        l_child = child.left
-        child.left = node
-        node.right = l_child
-        return child
+    def left_rotate(self):
+        p = self
+        c = self.node.right
+        c_l = c.node.left
 
+        p.node.right = c_l
+        p.node, c.node = c.node, p.node
+        p.node.left = c
     """
     Perform a right rotation, making the left child of this
     node the parent and making the old parent the right child
     of the new parent. 
     """
-    def right_rotate(self, node):
-        child = node.left
-        r_child = child.right
-        child.right = node
-        node.left = r_child
-        return child
-
+    def right_rotate(self):
+        p = self
+        c = self.node.left
+        c_r = c.node.right
+        
+        p.node.left = c_r
+        p.node, c.node = c.node, p.node
+        p.node.right = c
+        
+        
     """
     Sets in motion the rebalancing logic to ensure the
     tree is balanced such that the balance factor is
     1 or -1
     """
-    # go to the node before the swap and then swap the next node with the next next
+    # determine the type of rotation
     def rebalance(self):
-        i = 0
         if self.balance >= 2:
-            while i < self.balance - 1:
-                print(node.key)
-                
-
+            if self.node.left.balance < 0:
+                self.node.left.left_rotate()
+                self.right_rotate()
+            else:
+                self.right_rotate()
+        elif self.balance <= -2:
+            if self.node.right.balance > 0:
+                self.node.right.right_rotate()
+                self.left_rotate()
+            else:
+                self.left_rotate()
         
     """
     Uses the same insertion logic as a binary search tree
@@ -124,40 +120,54 @@ class AVLTree:
     def insert(self, key):
         new_node = Node(key)
         new = AVLTree(new_node)
-        node = self
         prev = node
         def traverse(node, prev, new):
             if new.node.key < node.node.key:
                 prev = node
-                node = node.left
+                node = node.node.left
                 if node == None:
-                    prev.left = new
+                    prev.node.left = new
                     return
                 traverse(node, prev, new)
+                node.update_balance()
+                # node.rebalance()
             else:
                 prev = node
-                node = node.right
+                node = node.node.right
                 if node == None:
-                    prev.right = new
+                    prev.node.right = new
                     return
                 traverse(node, prev, new)
-        traverse(node, prev, new)
-
-
+                node.update_balance()
+                # node.rebalance()
+        traverse(self, prev, new)
+        self.update_balance()
+        # self.rebalance()
+        
 # node = Node(8)
 node = Node(5)
 
 avl = AVLTree(node)
 
+
 avl.insert(3)
 avl.insert(4)
+avl.insert(2)
+avl.insert(1)
+
+# print(avl.balance)
+
 
 # node = avl.right_rotate(avl.node.right)
 # avl.node.right = node
 
-# print(avl.node.key)
-# print(avl.node.left.key)
-# print(avl.node.left.right.key)
+print(avl.display())
+
+# print(avl.balance)
+# print(avl.node.left.balance)
+# print(avl.node.left.node.right.balance)
+# print(avl.node.left.node.left.balance)
+# print(avl.node.left.node.left.node.left.balance)
 
 
 # avl.insert(3)

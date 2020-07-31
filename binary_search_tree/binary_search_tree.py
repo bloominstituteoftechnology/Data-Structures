@@ -1,3 +1,7 @@
+import os, sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from stack.stack import Stack
+
 """
 Binary search trees are a data structure that enforce an ordering over 
 the data they store. That ordering in turn makes it a lot more efficient 
@@ -85,53 +89,41 @@ class BSTNode:
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        left = node.left
-        l_prev = left
-        right = node.right
-        r_prev = right
-        print(node.value)
-        while left != None or right != None:
-            if left:
-                print(left.value)
-                if left.left != None:
-                    l_prev = left
-                    left = left.left
-                else:
-                    left = l_prev.right
-                    l_prev = left
-            if right:
-                print(right.value)
-                if right.left != None:
-                    r_prev = right
-                    right = right.left
-                else:
-                    right = r_prev.right
-                    r_prev = right
-
+        queue = []
+        queue.append([node, None])
+        while len(queue) > 0:
+            node = queue.pop(0)
+            if node[0]:
+                print(node[0].value)
+                queue.append([node[0].left, node[0].right])
+            if node[1]:
+                print(node[1].value)
+                queue.append([node[1].left, node[1].right])
+                
+            
       
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
-    def dft_print(self):
-        node = self
-        prev = node
-        def traverse(node, prev):
-            while node != None:
+    def dft_print(self, node):
+        stack = []
+        stack.append(node)
+        while len(stack) > 0:
+            if not node:
+                node = stack.pop()
+                node = node.right
+                if node:
+                    stack.append(node)
+            else:
                 print(node.value)
-                if node.left != None:
-                    prev = node
-                    node = node.left
-                else:
-                    node = prev.right
-                    prev = node
-        traverse(node, prev)
-        traverse(node.right, prev)
+                node = node.left
+                if node:
+                    stack.append(node)
 
     # Stretch Goals -------------------------
     # Note: Research may be required
 
     # Print Pre-order recursive DFT
-    def pre_order_dft(self):
-        node = self
+    def pre_order_dft(self, node):
         def traverse(node):
             if node == None:
                 return
@@ -143,8 +135,7 @@ class BSTNode:
             
 
     # Print Post-order recursive DFT
-    def post_order_dft(self):
-        node = self
+    def post_order_dft(self, node):
         def traverse(node):
             if node == None:
                 return

@@ -1,6 +1,6 @@
 import os, sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from doubly_linked_list.doubly_linked_list  import DoublyLinkedList
+from doubly_linked_list.doubly_linked_list import DoublyLinkedList
 """
 A stack is a data structure whose primary purpose is to store and
 return elements in Last In First Out order. 

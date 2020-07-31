@@ -177,4 +177,4 @@ ll.remove_from_tail()
 
 ll.add_to_tail(33)
 
-print(len(ll))
+# print(len(ll))

@@ -9,61 +9,150 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+from collections import deque
+
 class BSTNode:
     def __init__(self, value):
         self.value = value
+        # less than value
         self.left = None
+        # greater than value
         self.right = None
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
+        if self.value == value:
+            self.right = BSTNode(value)
+        elif value < self.value:
+            if self.left:
+                self.left.insert(value)
+            else:
+                self.left = BSTNode(value)
+        elif value > self.value:
+            if self.right:
+                self.right.insert(value)
+            else:
+                self.right = BSTNode(value)
 
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        if target == self.value:
+            return True
+        elif target < self.value:
+            if self.left:
+                return self.left.contains(target)
+            else:
+                return False
+        elif target > self.value:
+            if self.right:
+                return self.right.contains(target)
+            else:
+                return False
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+        if self.right:
+            return self.right.get_max()
+        else:
+            return self.value
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-        pass
+        self.value = fn(self.value)
+
+        if self.right:
+            self.right.for_each(fn)
+        if self.left:
+            self.left.for_each(fn)
 
     # Part 2 -----------------------
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
-    def in_order_print(self):
-        pass
+    def in_order_print(self, node = None):
+        '''
+        node = None is a hack to make a weird unit test work. It is ignored
+        and original unit tests should be adjusted.
+        '''
+
+        if self.left:
+            self.left.in_order_print()
+
+        print(self.value)
+
+        if self.right:
+            self.right.in_order_print()
+
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
-    def bft_print(self):
-        pass
+    def bft_print(self, node = None):
+        '''
+        node = None is a hack to make a weird unit test work. It is ignored
+        and original unit tests should be adjusted.
+        '''
+        d = deque()
+        d.append(self)
+
+        while len(d) > 0:
+            cur = d.popleft()
+            print(cur.value)
+            if cur.left:
+                d.append(cur.left)
+            if cur.right:
+                d.append(cur.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
-    def dft_print(self):
-        pass
+    def dft_print(self, node = None):
+        '''
+        node = None is a hack to make a weird unit test work. It is ignored
+        and original unit tests should be adjusted.
+        '''
+        a = []
+        a.append(self)
+
+        while len(a) > 0:
+            cur = a.pop()
+            print(cur.value)
+            if cur.left:
+                a.append(cur.left)
+            if cur.right:
+                a.append(cur.right)
 
     # Stretch Goals -------------------------
     # Note: Research may be required
 
     # Print Pre-order recursive DFT
-    def pre_order_dft(self):
+    def pre_order_dft(self, node = None):
+        '''
+        node = None is a hack to make a weird unit test work. It is ignored
+        and original unit tests should be adjusted.
+        '''
+        pass
+
+    def in_order_dft(self, node = None):
+        '''
+        node = None is a hack to make a weird unit test work. It is ignored
+        and original unit tests should be adjusted.
+        '''
         pass
 
     # Print Post-order recursive DFT
-    def post_order_dft(self):
+    def post_order_dft(self, node = None):
+        '''
+        node = None is a hack to make a weird unit test work. It is ignored
+        and original unit tests should be adjusted.
+        '''
         pass
 
 """
 This code is necessary for testing the `print` methods
 """
-bst = BinarySearchTree(1)
+# I think this is a mistake, not sure
+# bst = BinarySearchTree(1)
+bst = BSTNode(1)
 
 bst.insert(8)
 bst.insert(5)

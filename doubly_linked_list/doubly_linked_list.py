@@ -105,10 +105,8 @@ class DoublyLinkedList:
         value = node.value
         if node is self.tail:
             self.delete(self.tail)
-            # self.remove_from_tail
         else:
             self.delete(node)
-            # node.delete()
         self.add_to_head(value)
         
     """
@@ -121,22 +119,7 @@ class DoublyLinkedList:
         value = node.value
         self.delete(node)
         self.add_to_tail(value)
-        # if node is self.head:
-        #     self.remove_from_head
-        #     self.length -= 1
-        # else:
-        #     node.delete()
-        #     self.length -= 1
-        # self.add_to_tail(value)
-        
-        # if node is self.head:
-        #     self.remove_from_head
-        #     self.length -=1
-        #     self.add_to_tail(value)
-        # else:
-        #     node.delete()
-        #     self.length -=1
-        #     self.add_to_tail(value)
+      
 
     """
     Deletes the input node from the List, preserving the 

@@ -1,3 +1,5 @@
+from collections import deque
+from stack import Stack # pylint: disable=import-error
 """
 Binary search trees are a data structure that enforce an ordering over 
 the data they store. That ordering in turn makes it a lot more efficient 
@@ -65,18 +67,39 @@ class BSTNode:
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
-    def in_order_print(self):
-        pass
+    def in_order_print(self, node):
+        if node.left:
+            self.in_order_print(node.left)
+        print(node.value)
+        if node.right:
+            self.in_order_print(node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
-    def bft_print(self):
-        pass
+    def bft_print(self, node):
+        qq = deque()
+        qq.append(node)
 
+        while len(qq) > 0:
+            current = qq.popleft()
+            print(current.value)
+            if current.left:
+                qq.append(current.left)
+            if current.right:
+                qq.append(current.right)
+        
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
-    def dft_print(self):
-        pass
+    def dft_print(self, node):
+        stack = Stack()
+        stack.push(node)
+        while stack.size != 0:
+            node = stack.pop()
+            print(node.value)
+            if node.right:
+                stack.push(node.right)
+            if node.left:
+                stack.push(node.left)
 
     # Stretch Goals -------------------------
     # Note: Research may be required
@@ -92,23 +115,23 @@ class BSTNode:
 """
 This code is necessary for testing the `print` methods
 """
-# bst = BinarySearchTree(1)
+bst = BSTNode(1)
 
-# bst.insert(8)
-# bst.insert(5)
-# bst.insert(7)
-# bst.insert(6)
-# bst.insert(3)
-# bst.insert(4)
-# bst.insert(2)
+bst.insert(8)
+bst.insert(5)
+bst.insert(7)
+bst.insert(6)
+bst.insert(3)
+bst.insert(4)
+bst.insert(2)
 
-# bst.bft_print()
-# bst.dft_print()
+bst.bft_print(bst)
+bst.dft_print(bst)
 
-# print("elegant methods")
-# print("pre order")
-# bst.pre_order_dft()
-# print("in order")
-# bst.in_order_dft()
-# print("post order")
-# bst.post_order_dft()  
+print("elegant methods")
+print("pre order")
+bst.pre_order_dft()
+print("in order")
+bst.pre_order_dft()
+print("post order")
+bst.post_order_dft()  

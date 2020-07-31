@@ -126,6 +126,7 @@ class DoublyLinkedList:
             node.delete()
             self.length -= 1
         self.add_to_tail(value)
+        # had self.add_to_tail(value) so silly mistake like that
 
     """
     Deletes the input node from the List, preserving the 
@@ -136,7 +137,7 @@ class DoublyLinkedList:
         if not self.head:
             return
         # if there's one item in the list
-        if (self.head is node) & (self.tail is node):
+        elif (self.head is node) & (self.tail is node):
             self.head = None
             self.tail = None
             self.length -= 1
@@ -155,7 +156,10 @@ class DoublyLinkedList:
             node.prev.next = node.next
             node.next.prev = node.prev
             self.length -= 1
-
+        # Multiple if's means your code would go and check all the if conditions, where as in case of elif,
+        # if one if condition satisfies it would not check other conditions..
+        # SO BASICALLY: the elif makes the if statement STICK TOGETHER
+        # SO BASICALLY: the elif makes the if statement STICK TOGETHER
 
     """
     Finds and returns the maximum value of all the nodes 

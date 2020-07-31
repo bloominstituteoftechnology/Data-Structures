@@ -64,6 +64,8 @@ class DoublyLinkedList:
             return None
         value = self.head.value
         self.length -= 1
+        #self.delete(self.head)
+        #return value
         if self.head ==self.tail:
             self.head =None
             self.tail =None
@@ -102,7 +104,10 @@ class DoublyLinkedList:
     def remove_from_tail(self):
         if self.head == None:
             return None
-        self.length -= 1   
+        self.length -= 1 
+        #value =self.tail.value
+        # self.delete(self.tail)
+        # return value 
         #check if list has one node 
         if self.head == self.tail: 
             value = self.head.value    

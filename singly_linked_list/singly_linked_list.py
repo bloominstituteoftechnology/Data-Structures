@@ -115,3 +115,15 @@ class LinkedList:
             mid_point = mid_point.get_next()
             end_point = end_point.get_next().get_next()
         return mid_point.value
+
+    def reverse_ll(self):
+        cur_node = self.head
+        next_node = cur_node.next
+        cur_node.set_next(None)
+        self.tail = cur_node
+        while next_node is not None:
+            prev_node = cur_node
+            cur_node = next_node
+            next_node = cur_node.get_next()
+            cur_node.set_next(prev_node)
+        self.head = cur_node

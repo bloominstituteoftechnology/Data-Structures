@@ -1,6 +1,7 @@
 import unittest
 from queue import Queue
 
+
 class QueueTests(unittest.TestCase):
     def setUp(self):
         self.q = Queue()

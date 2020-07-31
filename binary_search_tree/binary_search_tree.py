@@ -1,3 +1,6 @@
+from queue import Queue
+from stack import Stack
+
 """
 Binary search trees are a data structure that enforce an ordering over 
 the data they store. That ordering in turn makes it a lot more efficient 
@@ -30,12 +33,12 @@ class BSTNode:
     
     # recursive approach
     def insert(self, value):
-        if value <= self.value:
+        if value < self.value:
             if self.left is None:
                 self.left = BSTNode(value)
             else:
                 self.left.insert(value)
-        elif value > self.value:
+        elif value >= self.value:
             if self.right is None:
                 self.right = BSTNode(value)
             else:
@@ -72,28 +75,75 @@ class BSTNode:
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
+        # recursive
         fn(self.value)
         if self.left is not None:
             self.left.for_each(fn)
         if self.right is not None:
             self.right.for_each(fn)
 
+        #iterative
+        # cur_node = self
+        # fn(cur_node.value)
+        # stack = # nodes you need to backtrack to
+        # while cur_node.left:
+        #     cur_node = cur_node.left
+        #     fn(cur_node.value)
+        #     # add node to the stack
+        # # pop off the stack
+        # # try to go right
+
+    # stretch
+    def delete(self, value):
+        # different cases
+        # if node at bottom level
+            # update parent left/right = none
+        # if node has only one child
+            # parent.left/right = node.left/right
+        # if node has two children
+            # 'larger' child becomes the parent of its sibling
+
+        pass
+
     # Part 2 -----------------------
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self):
-        pass
+        if self.left is not None:
+            self.left.in_order_print()
+        print(self.value)
+        if self.right is not None:
+            self.right.in_order_print()
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
+
     def bft_print(self):
-        pass
+        queue = Queue()
+
+        queue.enqueue(self)
+        while queue:
+            node = queue.dequeue()
+            print(node.value)
+            if node.left is not None:
+                queue.enqueue(node.left)
+            if node.right is not None:
+                queue.enqueue(node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self):
-        pass
+        stack = Stack()
+
+        stack.push(self)
+        while stack:
+            node = stack.pop()
+            print(node.value)
+            if node.left is not None:
+                stack.push(node.left)
+            if node.right is not None:
+                stack.push(node.right)
 
     # Stretch Goals -------------------------
     # Note: Research may be required

@@ -30,8 +30,18 @@ class BSTNode:
         
         # Is the value equal to the current node's value?
         if value == self.value:
-            # Increment the node's count
-            self.count = self.count + 1
+            # Does the current node have a "right" child
+            if self.right == None:
+                # No "right" child -> add this value as the current node's 
+                #   right child
+                self.right = BSTNode(value)
+            else:
+                # A current right child exists
+                tmp_node        = BSTNode(value)    # Create a node
+                tmp_node.right  = self.right        # Make the existing right node a child 
+                                                    #    of the new node
+                self.right      = tmp_node          # Make the new node the "right" child 
+                                                    #    of current node
 
         # Is the value greater than the current node's value?
         if value > self.value:
@@ -122,10 +132,57 @@ class BSTNode:
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self):
-        pass
+        map_lvl = {}        # Create a map to keep track of nodes by tree "level"
+        ctnu    = True      # Flag that drives processing    
+        lvl     = 1         # Current tree level being processed
+
+        # Assume this node is the root of our tree (or sub-tree)
+        map_lvl[lvl] = [self]
+
+        # Iterate across and down the tree while the ctnu flag is true
+        while ctnu:
+            lvl = lvl + 1               # Iterate on the next level
+            map_lvl[lvl] = []           # Initialize a node list for this level
+            ctnu = False                # Assume we're done after this iteration (unless noted)
+            
+            # Inspect the nodes of the last level (do they have children?)
+            for nde in map_lvl[lvl-1]:
+                # Do we have a "left" child?
+                if nde.left != None:
+                    map_lvl[lvl].append(nde.left)   # Yes, found a "left" child
+                    ctnu = True                     # Inspect another level after this
+
+                if nde.right != None:               
+                    map_lvl[lvl].append(nde.right)  # Yes, found a "right" child
+                    ctnu = True                     # Inspect another level after this
+
+        # Print out the nodes
+        keys_lst = list(map_lvl.keys())
+        keys_lst.sort()
+
+        # Iterate through the levels of the tree
+        for key in keys_map:
+            for nd in map_lvl[key]:
+                # Do we have a node? If yes, print
+                if nd != None:
+                    print(nd.value)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self):
         pass
+
+"""
+This code is necessary for testing the `print` methods
+"""
+bst = BSTNode(1)
+
+bst.insert(8)
+bst.insert(5)
+bst.insert(7)
+bst.insert(6)
+bst.insert(3)
+bst.insert(4)
+bst.insert(2)
+
 

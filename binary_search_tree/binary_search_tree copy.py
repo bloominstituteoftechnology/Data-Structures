@@ -145,8 +145,6 @@ class BSTNode:
     def post_order_dft(self):
         pass
 
-quit()
-
 """
 This code is necessary for testing the `print` methods
 """

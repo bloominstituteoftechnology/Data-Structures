@@ -7,7 +7,7 @@ class ListNode:
         self.prev = prev
         self.value = value
         self.next = next
- 
+
 """
 Our doubly-linked list class. It holds references to 
 the list's head and tail nodes.

@@ -126,7 +126,6 @@ class BSTNode:
         if self.right:
             self.right.in_order_print()
 
-
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self):
@@ -146,7 +145,6 @@ class BSTNode:
             if current.right:
                 qq.append(current.right)
 
-
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self):
@@ -159,7 +157,7 @@ class BSTNode:
             if current.right:
                 stack.append(current.right)
             if current.left:
-                stack.append(current.right)
+                stack.append(current.left)
     # Stretch Goals -------------------------
     # Note: Research may be required
 
@@ -170,9 +168,9 @@ class BSTNode:
         # root -> left -> right
         print(self.value)
         if self.left:
-            self.left.in_order_print()
+            self.left.pre_order_dft()
         if self.right:
-            self.right.in_order_print()
+            self.right.pre_order_dft()
 
     # Print Post-order recursive DFT
     def post_order_dft(self):
@@ -180,10 +178,21 @@ class BSTNode:
             return
         # left -> right -> root
         if self.left:
-            self.left.in_order_print()
+            self.left.post_order_dft()
         if self.right:
-            self.right.in_order_print()
+            self.right.post_order_dft()
         print(self.value)
+
+    def in_order_dft(self):
+        if not self:
+            return
+        # left -> root -> right
+        if self.left:
+            self.left.in_order_dft()
+        print(self.value)
+        if self.right:
+            self.right.in_order_dft()
+
 
 # This code is necessary for testing the `print` methods
 
@@ -206,4 +215,4 @@ bst.pre_order_dft()
 print("in order")
 bst.in_order_dft()
 print("post order")
-bst.post_order_dft()  
+bst.post_order_dft()

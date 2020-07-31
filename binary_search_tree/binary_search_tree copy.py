@@ -12,7 +12,7 @@ This part of the project comprises two days:
 class BSTNode:
     def __init__(self, value):
         self.value = value
-        self.left  = None
+        self.left = None
         self.right = None
         self.count = 1
 
@@ -24,24 +24,29 @@ class BSTNode:
             if self.left == None:
                 # No "left" child, insert the new node here
                 self.left = BSTNode(value)
+                return
             else:
                 # a "left" child exists, invoke the the child's insert method
-                self.left.insert(value)
+                self.insert(value)
+                return
         
         # Is the value equal to the current node's value?
         if value == self.value:
             # Increment the node's count
             self.count = self.count + 1
+            return 
 
         # Is the value greater than the current node's value?
         if value > self.value:
             # insert to the right
             if self.right == None:
                 # No "right" child, insert the new node here
-                self.right = BSTNode(value)
+                self.right = BSTNode(value) 
             else: 
-                # a "right" child exists, invoke the the child's insert method
-                self.right.insert(value)
+                # a "left" child exists, invoke the the child's insert method
+                self.insert(value)
+        
+        return
 
     # Return True if the tree contains the value
     # False if it does not
@@ -117,7 +122,7 @@ class BSTNode:
         if self.right != None:
             # A "right" child exists, invoke the in_order_print on
             #    the right child
-            self.right.in_order_print()
+            self.left.in_order_print()
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
@@ -129,3 +134,39 @@ class BSTNode:
     def dft_print(self):
         pass
 
+    # Stretch Goals -------------------------
+    # Note: Research may be required
+
+    # Print Pre-order recursive DFT
+    def pre_order_dft(self):
+        pass
+
+    # Print Post-order recursive DFT
+    def post_order_dft(self):
+        pass
+
+quit()
+
+"""
+This code is necessary for testing the `print` methods
+"""
+bst = BinarySearchTree(1)
+
+bst.insert(8)
+bst.insert(5)
+bst.insert(7)
+bst.insert(6)
+bst.insert(3)
+bst.insert(4)
+bst.insert(2)
+
+bst.bft_print()
+bst.dft_print()
+
+print("elegant methods")
+print("pre order")
+bst.pre_order_dft()
+print("in order")
+bst.in_order_dft()
+print("post order")
+bst.post_order_dft()  

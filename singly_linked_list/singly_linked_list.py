@@ -92,3 +92,17 @@ class LinkedList:
             self.head = self.head.get_next()
             # return the old_head's value
             return val
+
+    def contains(self, value):
+        # check if the list is empty
+        if self.head is None and self.tail is None:
+            return False
+
+        current_node = self.head
+        while current_node != None:
+            if current_node.get_value() == value:
+                return True
+            else:
+                current_node = current_node.get_next()
+
+        return False

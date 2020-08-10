@@ -26,6 +26,7 @@ class LinkedListTests(unittest.TestCase):
         self.list.add_to_tail(10)
         self.list.add_to_tail(20)
         self.assertEqual(self.list.remove_head(), 10)
+        print(f'\n head removed, new head is {self.list.head.value}')
         self.assertFalse(self.list.contains(10))
         self.assertEqual(self.list.remove_head(), 20)
         self.assertFalse(self.list.contains(20))

@@ -1,3 +1,5 @@
+# python3 stack/test_stack.py
+
 """
 A stack is a data structure whose primary purpose is to store and
 return elements in Last In First Out order. 
@@ -73,3 +75,5 @@ class Stack:
 3. What is the difference between using an array vs. a linked list when 
    implementing a Stack?
 """
+#    Using a Linked List when implementing a Stack instead of an array 
+#    reduces the run time of insertions and deletions from O (n) to O (1).

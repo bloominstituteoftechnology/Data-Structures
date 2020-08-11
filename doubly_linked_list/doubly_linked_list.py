@@ -131,7 +131,23 @@ class DoublyLinkedList:
     List and inserts it as the new tail node of the List.
     """
     def move_to_end(self, node):
-        pass
+        # if the node moving is the head
+        if node == self.tail:
+            return
+        elif node == self.head:
+            # resetting the head
+            self.head = node.next
+            self.head.prev = None
+        else:
+            # get the prev/next for the node to move
+            # set them to each others prev/next
+            node.prev.next = node.next
+            node.next.prev = node.prev
+
+        # move to the tail
+        self.tail.next = node
+        node.prev = self.tail
+        self.tail = node
 
     """
     Deletes the input node from the List, preserving the 

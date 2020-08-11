@@ -68,7 +68,17 @@ class DoublyLinkedList:
     the old tail node's next pointer accordingly.
     """
     def add_to_tail(self, value):
-        pass
+        # increase the length
+        self.length += 1
+        new_node = ListNode(value)
+        # an empty list
+        if self.head is None and self.tail is None:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            self.tail.next = new_node
+            new_node.prev = self.tail
+            self.tail = new_node
 
     """
     Removes the List's current tail node, making the 

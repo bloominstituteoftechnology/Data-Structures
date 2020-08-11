@@ -5,21 +5,17 @@ class Node:
         # reference to the next node in the linked list
         self.next_node = next_node
 
+    # method to get the value of the node
+    def get_value(self):
+        return self.value
 
-​
-   # method to get the value of the node
-  def get_value(self):
-       return self.value
-​
-  # method to get the node's `next_node`
-  def get_next(self):
-       return self.next_node
-​
-   # method to update the node's `next_node` to the input node
-  def set_next(self, new_next):
-       self.next_node = new_next
-​
-​
+    # method to get the node's `next_node`
+    def get_next(self):
+        return self.next_node
+
+    # method to update the node's `next_node` to the input node
+    def set_next(self, new_next):
+        self.next_node = new_next
 
 
 class LinkedList:
@@ -27,11 +23,9 @@ class LinkedList:
         self.head = None
         self.tail = None
 
-
-​
-  def add_to_tail(self, value):
-       # wrap the value in a Node
-       new_node = Node(value)
+    def add_to_tail(self, value):
+        # wrap the value in a Node
+        new_node = Node(value)
         # check if the Linked List is empty
         if self.head is None and self.tail is None:
             # set head and tail to the new node
@@ -43,10 +37,10 @@ class LinkedList:
             self.tail.set_next(new_node)
             # update `self.tail` to point the new node we just added
             self.tail = new_node
-​
-  def remove_tail(self):
-       # check if the linked list is empty
-       if self.head is None and self.tail is None:
+
+    def remove_tail(self):
+        # check if the linked list is empty
+        if self.head is None and self.tail is None:
             return None
 
         # check if the linked list has only one node
@@ -56,34 +50,34 @@ class LinkedList:
             self.head = None
             self.tail = None
             return val
-​
-       # otherwise, the linked list has more than one Node
-  else:
-           # store the last Node's value in a nother variable so we can return it
-       val = self.tail.get_value()
-        # we need to set `self.tail` to the second-to-last Node
-        # the only way we can do this, is by traversing the whole linked list
-        # from the beginning
 
-        # starting from the head, we'll traverse down to the second-to-last Node
-        # init another reference to keep track of where we are in the linked
-        # list as we're iterating
-        current = self.head
-​
-      # keep iterating until the node after `current` is the tail
-  while current.get_next() != self.tail:
-       # keep iterating
-       current = current.get_next()
-​
-  # set `self.tail` to `current`
-  self.tail = current
-   # set the new tail's `next_node` to None
-   self.tail.set_next(None)
-    return val
-​
-  def remove_head(self):
-    # check if the linked list empty
-       if self.head is None and self.tail is None:
+        # otherwise, the linked list has more than one Node
+        else:
+            # store the last Node's value in a nother variable so we can return it
+            val = self.tail.get_value()
+            # we need to set `self.tail` to the second-to-last Node
+            # the only way we can do this, is by traversing the whole linked list
+            # from the beginning
+
+            # starting from the head, we'll traverse down to the second-to-last Node
+            # init another reference to keep track of where we are in the linked
+            # list as we're iterating
+            current = self.head
+
+            # keep iterating until the node after `current` is the tail
+            while current.get_next() != self.tail:
+                # keep iterating
+                current = current.get_next()
+
+            # set `self.tail` to `current`
+            self.tail = current
+            # set the new tail's `next_node` to None
+            self.tail.set_next(None)
+            return val
+
+    def remove_head(self):
+        # check if the linked list empty
+        if self.head is None and self.tail is None:
             return None
         # check if there is only one linked list node
         if self.head == self.tail:

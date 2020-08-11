@@ -1,3 +1,5 @@
+# python3 doubly_linked_list/test_doubly_linked_list.py -v
+
 """
 Each ListNode holds a reference to its previous node
 as well as its next node in the List.
@@ -56,22 +58,9 @@ class DoublyLinkedList:
     """
     def remove_from_head(self):
         # store the value of the head
-        value =self.head.value
-        # decrement the length of the DLL
-        #self.length -= 1
+        value = self.head.value
         # delete the head
         self.delete(self.head)
-        # # if head.next is not None
-        # if self.head.next is not None:
-        #     # set head.next's prev to None
-        #     self.head.next.previous = None
-        #     # set head to head.next
-        #     self.head = self.head.next
-        # # else (if head.next is None)
-        # else:
-        #     # set head, tail to None
-        #     self.head = self.tail = None
-        # # return the value
         return value
       
     """
@@ -106,23 +95,8 @@ class DoublyLinkedList:
     def remove_from_tail(self):
         # store the value of the tail
         value = self.tail.value
-        # decrement the length of the DLL
-        #self.length -= 1
         # delete the tail
         self.delete(self.tail)
-        # # if tail.prev is not None
-        # if self.tail.previous != None:
-        #     # set tail.prev's next to None
-        #     self.tail.prevoius.next = None
-        #     # set tail to tail.prev
-        #     self.tail = self.tail.previous
-        # # else (if tail.prev is None)
-        # else:
-        #     # set head to None
-        #     self.head = None
-        #     # set tail to None
-        #     self.tail = None
-        # # return the value          
         return value
 
     """

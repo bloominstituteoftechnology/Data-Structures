@@ -1,4 +1,4 @@
-# python3 stack/test_stack.py
+# python3 stack/test_stack.py -v
 
 """
 A stack is a data structure whose primary purpose is to store and

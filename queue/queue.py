@@ -1,4 +1,4 @@
-# python3 queue/test_queue.py
+# python3 queue/test_queue.py -v
 
 from singly_linked_list.singly_linked_list import Node, LinkedList
 from collections import deque
@@ -79,12 +79,22 @@ class Queue:
     def dequeue(self):
         if self.size < 1:
             return None
-        if self.one.size != 1:
+        if self.two.__len__() > 0:
+            self.size -=1
+            return self.two.pop()
+        else:
             while self.one.__len__() > 0:
                 self.two.push(self.one.pop())
             self.size -=1
             return self.two.pop()
-        else:
-            if self.two.__len__() > 0:
-                self.size -=1
-                return self.two.pop()
+
+
+        # if self.one.size != 1:
+        #     while self.one.__len__() > 0:
+        #         self.two.push(self.one.pop())
+        #     self.size -=1
+        #     return self.two.pop()
+        # else:
+        #     if self.two.__len__() > 0:
+        #         self.size -=1
+        #         return self.two.pop()

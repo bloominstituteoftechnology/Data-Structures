@@ -21,35 +21,11 @@ class Node:
 class LinkedList:
     def __init__(self):
         # reference to the head of the list
-        self.head       = None
+        self.head = None
         # reference to the tail of the list
-        self.tail       = None
+        self.tail = None
         # reference to the length of the list
-        self.lgth       = 0
-        # reference a value dict
-        self.val_occr   = {}
-
-    def occr_ctr_inc(self, val):
-        if val not in self.val_occr:
-            self.val_occr[val] = 1
-            return
-
-        self.val_occr[val] = self.val_occr[val] + 1
-        return
-
-    def occr_ctr_dec(self, val):
-        if val not in self.val_occr:
-            # error condition
-            print("error condition 1")
-            return
-
-        if self.val_occr[val] == 1:
-            del self.val_occr[val]
-            return
-
-        self.val_occr[val] = self.val_occr[val] - 1
-        return
-
+        self.lgth = 0
 
     def add_to_tail(self, value):
         # wrap the input value in a node
@@ -69,7 +45,6 @@ class LinkedList:
 
         # Increment the length of the list
         self.lgth = self.lgth + 1
-        self.occr_ctr_inc(value)
 
     def add_at_head(self, value):
         # wrap the input value in a node
@@ -91,7 +66,6 @@ class LinkedList:
 
         # Increment the length of the list
         self.lgth = self.lgth + 1
-        self.occr_ctr_inc(value)
 
     def remove_head(self):
         # return None if there is no head
@@ -112,7 +86,6 @@ class LinkedList:
             # just removed the single element so set length to zero
             self.lgth = 0
             # return the value
-            self.occr_ctr_dec(head.get_value())
             return head.get_value()
 
         # otherwise we have more than one element in our list
@@ -123,7 +96,6 @@ class LinkedList:
 
         # decrement the length of the list
         self.lgth = self.lgth - 1
-        self.occr_ctr_dec(value)
         return value
 
     def contains(self, value):
@@ -147,17 +119,3 @@ class LinkedList:
 
     def get_length(self):
         return self.lgth
-
-    def get_max(self):
-        # Convert the occurrence dict to a list
-        if len(self.val_occr) == 0:
-            return None
-        
-        list_keys = list(self.val_occr.keys())
-        if len(list(list_keys)) == 0:
-            return None
-
-        print("list_keys is: ", type(list_keys))
-
-        list_srtd = sorted(list_keys, reverse=True)
-        return list_srtd[0]

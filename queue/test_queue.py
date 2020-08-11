@@ -1,5 +1,5 @@
-import unittest
 from queue import Queue
+import unittest
 
 class QueueTests(unittest.TestCase):
     def setUp(self):

@@ -19,7 +19,7 @@ Stretch: What if you could only use instances of your Stack class to implement t
 # This implementation of the Queue class is built with an underlying
 # storage structure of an empty array
 
-# # it passes all tests
+# it passes all tests
 # class Queue:
 #     def __init__(self):
 #         self.size = 0

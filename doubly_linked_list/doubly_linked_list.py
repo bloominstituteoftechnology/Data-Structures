@@ -40,7 +40,7 @@ class DoublyLinkedList:
             old_head = self.head
             old_head.prev = new_node
             self.head = new_node
-            self.length += 1
+        self.length += 1
 
             
     
@@ -72,20 +72,19 @@ class DoublyLinkedList:
             #     self.head.prev = None
             # self.length -= 1
             # return values
-        if(self.head == None):    
-            return;    
+        if self.head is None:    
+            return   
+
+        value = self.head.value
+        self.length -= 1 
+
+        if self.head is not self.tail:
+            self.head = self.head.next  
+            self.head.prev = None    
         else:    
-               
-            if(self.head != self.tail):
-                value = self.head.value    
-                self.head = self.head.next;    
-                self.head.prev = None;    
-                self.length -= 1
-                return value
-            else:    
-                self.head = self.tail = None;  
-                self.length -= 1
-            
+            self.head = self.tail = None
+        return value
+        
     """
     Wraps the given value in a ListNode and inserts it 
     as the new tail of the list. Don't forget to handle 
@@ -101,7 +100,7 @@ class DoublyLinkedList:
             new_node.prev = self.tail
             self.tail.next = new_node
             self.tail = new_node
-            self.length += 1
+        self.length += 1
             
     """
     Removes the List's current tail node, making the 
@@ -109,13 +108,26 @@ class DoublyLinkedList:
     Returns the value of the removed Node.
     """
     def remove_from_tail(self):
-        values = self.tail.value
-        self.tail = self.tail.prev
-        if self.tail != None:
-            self.tail.next = None
-        self.length -= 1
         
+        if self.tail is None:
+            return
+
+        values = self.tail.value
+        self.length -= 1
+
+        if self.tail is not self.head:
+            self.tail = self.tail.prev
+            self.tail.next = None
+        else:
+            self.tail = self.head = None
         return values
+        
+        # self.tail = self.tail.prev
+        # if self.tail != None:
+        #     self.tail.next = None
+        # self.length -= 1
+        
+        # return values
             
     """
     Removes the input node from its current spot in the 
@@ -123,9 +135,9 @@ class DoublyLinkedList:
     """
     def move_to_front(self, node):
         if node == self.head:
-            return node
-        DoublyLinkedList.delete(node)
-        DoublyLinkedList.add_to_head(node)
+            return
+        self.delete(node)
+        self.add_to_head(node.value)
         
     """
     Removes the input node from its current spot in the 
@@ -133,11 +145,12 @@ class DoublyLinkedList:
     """
     def move_to_end(self, node):
         if node == self.tail:
-            return node
+            return
         #doesn't work because add to tail requres a value argument and delete wants a node
         #not sure how to work around that
-        DoublyLinkedList.add_to_tail(node)
-        DoublyLinkedList.delete(node)
+        self.delete(node)
+        self.add_to_tail(node.value)
+        
         
         
 
@@ -150,10 +163,22 @@ class DoublyLinkedList:
     order of the other elements of the List.
     """
     def delete(self, node):
-        node.prev.next = node.next
-        node.next.prev = node.prev
+        if self.head is None and self.tail is None:
+            return
+        elif self.head is self.tail:
+            self.head = None
+            self.tail = None
+        elif node is self.head:
+            self.head = self.head.next
+            self.head.prev = None
+        elif node is self.tail:
+            self.tail = self.tail.prev
+            self.tail.next = None
+        else:
+            node.prev.next = node.next
+            node.next.prev = node.prev
+        self.length -= 1
 
-        pass
         #need to make sure 4 no longer has arrows pointing at it
         #redirect arrows pointing at 4,
         #take arrow pointing from 4's previous, make it point to 4's next
@@ -170,4 +195,20 @@ class DoublyLinkedList:
     in the List.
     """
     def get_max(self):
-        pass
+        # if the list is empty, return None
+        if self.head is None and self.tail is None:
+            return
+        # keep track of the largest value we've seen so far
+        max_value = self.head.value
+        # traverse the entirety of the linked list
+        current = self.head.next
+        
+        while current is not None:
+         # if we see a value > the largest we've seen so far
+            if current.value > max_value:
+                max_value = current.value
+            # we update the largest value
+            current = current.next
+        return max_value
+    
+        # return the largest value

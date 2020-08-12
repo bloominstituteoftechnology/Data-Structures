@@ -139,7 +139,9 @@ class DoublyLinkedList:
             self.length -= 1
 
         else:
-            node.delete()
+            node.prev.next = node.next
+            node.next.prev = node.prev
+
             self.length -= 1
 
     """

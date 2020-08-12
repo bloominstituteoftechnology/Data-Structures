@@ -33,6 +33,7 @@ class Stack:
 '''
 2. Re-implement the Stack class, this time using the linked list implementation
    as the underlying storage structure.
+   Make sure the Stack tests pass.
 '''
 import sys
 sys.path.append('../singly_linked_list.py')
@@ -55,3 +56,10 @@ class Stack:
             return None
         self.size -= 1
         return self.storage.remove_tail()
+
+'''
+3. What is the difference between using an array vs. a linked list when 
+   implementing a Stack?
+
+   A: The methods you use to add and remove the elements are different. 
+'''

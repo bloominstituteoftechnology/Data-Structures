@@ -56,3 +56,10 @@ class Queue:
             return None
         self.size -= 1
         return self.storage.remove_head()
+
+'''
+3. What is the difference between using an array vs. a linked list when 
+   implementing a Queue?
+
+   A: The methods you use to add and remove the elements are different. 
+'''

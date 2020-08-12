@@ -30,6 +30,16 @@ class LinkedList:
         self.tail = None
     
     def add_to_tail(self, value):
+        new_node = Node(value)
+        # # check if there is no head
+        # if not self.head:
+        #     self.head = new_node
+        #     self.tail = new_node
+        # else: 
+        #     self.tail.set_next(new_node)
+        #     self.tail = new_node
+
+    #  how we did it in class
         # wrap the value in the node
         self.value = Node(value)
         # check if the linked list is empty
@@ -43,6 +53,45 @@ class LinkedList:
                 self.tail.set_next(new_node)
                 # update 'self.tail' to point to the new node we just added
                 self.tail = new_node
+
+    def remove_head(self):
+        # is there a head
+        if not self.head:
+            return None
+
+        # if head has no next, there is a single element in the linked list 
+        if not self.head.get_next():
+            head = self.head
+            self.head = None
+            self.tail = None
+
+            return head.get_value()
+
+        #set the head reference to the current head's next node in the list
+        value = self.head.get_value()
+        self.head = self.head.get_next()
+
+
+        return value
+
+    #     # Removing from the Head
+    # def remove_head(self):
+    #     # check if the linked list is empty
+    #     if self.head is None and self.tail is None:
+    #         return None
+    #     # check if there is only one linked list node
+    #     if self.head == self.tail:
+    #         val = self.head.get_value()
+    #         self.head = None
+    #         self.tail = None
+            
+    #     else:
+    #     # store the old heads value that we need to return
+    #         val = self.head.get_value()
+    #     # set 'self.head' to the old head's next node
+    #     self.head = self.head.get_next()
+    #     # return the old_heads value
+    #     return val
 
     def remove_tail(self):
         # check if the linked list is empty
@@ -81,45 +130,18 @@ class LinkedList:
         self.tail.set_next(None)
         return val
 
-    # Removing from the Head
-    def remove_head(self):
-        # check if the linked list is empty
-        if self.head is None and self.tail is None:
-            return None
-        # check if there is only one linked list node
-        if self.head == self.tail:
-            val = self.head.get_value()
-            self.head = None
-            self.tail = None
-            
-        else:
-        # store the old heads value that we need to return
-            val = self.head.get_value()
-        # set 'self.head' to the old head's next node
-        self.head = self.head.get_next()
-        # return the old_heads value
-        return val
 
+    def contains(self, value):
+        if not self.head:
+            return False
 
-
-
-
-
-
-
-
-# ll = LinkedList()
-# ll.add_to_tail(5)
-#   These are not the best ways to do this
-# #  ll is for the linked list
-# ll = Node(5)
-# ll.add_to_end(7)
-# ll.add_to_end(18)
-# ll.add_to_end(22)
-# ll.set_next(Node(7))
-# # we attached 7 to the 5
-# ll.next_node.set_next(Node(18))
-# # we attached the 18 to the 7
-# ll.next_node.next_node.set_next(Node(22))
-
-# ll.next_node.next_node.next_node.set_next(Node(3))
+        # get a reference to the node w're currently at; update this as we travers the linked list
+        current = self.head
+        # check to see if we're at a valid node
+        while current:
+            if current.get_value() == value:
+                return True
+        # update our current node to the current node's next node
+            current = current.get_next()
+        # if we've gotten here, then the target node isn't in our list
+        return False

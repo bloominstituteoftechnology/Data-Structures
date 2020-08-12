@@ -167,9 +167,11 @@ class DoublyLinkedList:
     in the List.
     """
     def get_max(self):
+        # if the list is empty return None
         if(self.head is None):    
-            print("List is empty");    
+            print("List is empty") 
         else:
+            # set a variable to use for list trasveral
             current = self.head
             #Initializing max to initial node data    
             maximum = self.head.value    
@@ -178,6 +180,8 @@ class DoublyLinkedList:
                 #Then replace value of max with current node's data    
                 if(maximum < current.value):    
                     maximum = current.value    
+                # set the current to the next node and run the above if
+                # statement
                 current = current.next
             print("Maximum value node in the list: "+ str(maximum)) 
             return maximum

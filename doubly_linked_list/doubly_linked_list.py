@@ -7,6 +7,10 @@ class ListNode:
         self.prev = prev
         self.value = value
         self.next = next
+
+    def delete(self):
+    	self.head = None
+    	self.tail = None
             
 """
 Our doubly-linked list class. It holds references to 

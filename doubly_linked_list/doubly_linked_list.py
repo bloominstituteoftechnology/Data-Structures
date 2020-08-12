@@ -3,10 +3,16 @@ Each ListNode holds a reference to its previous node
 as well as its next node in the List.
 """
 class ListNode:
-    def __init__(self, value, prev=None, next=None):
+    def __init__(self, value: int, prev=None, next=None):
         self.prev = prev
         self.value = value
         self.next = next
+
+    def delete(self):
+        if self.prev:
+            self.prev.next = self.next
+        if self.next:
+            self.next.prev = self.prev
             
 """
 Our doubly-linked list class. It holds references to 
@@ -91,6 +97,7 @@ class DoublyLinkedList:
         value = node.value
         self.delete(node)
         self.add_to_head(value)
+       
     """
     Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List.
@@ -114,27 +121,32 @@ class DoublyLinkedList:
             return
         # Check if there is only one item in the list
         if self.head == self.tail:
-            self.head = None
-            self.tail = None
+            node.delete()
         # Check if the node is the head node
         elif node == self.head:
             #Set the head node to the current head node's next node
             self.head = self.head.next
-            self.head = None
-            self.tail = None
+            node.delete()
         # Check if the node is the tail node
         elif node == self.tail:
             # Set the tail node to the current tail node's previous node
             self.tail = self.tail.prev
-            self.head = None
-            self.tail = None
+            node.delete()
         else:
-            self.head = None
-            self.tail = None
+            node.delete()
 
     """
     Finds and returns the maximum value of all the nodes 
     in the List.
     """
     def get_max(self):
-        pass
+        max = None
+        node = self.head
+
+        while node:
+            if not max:
+                max = node.value
+            elif node.value > max:
+                max = nod.value
+        return max
+

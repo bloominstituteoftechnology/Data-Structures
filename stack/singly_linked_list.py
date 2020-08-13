@@ -80,7 +80,7 @@ class LinkedList:
                 element = element.get_next()
             self.tail = element
             self.tail.set_next(None)
-            slef.length -= 1
+            self.length -= 1
 
             return value
 
@@ -107,6 +107,7 @@ class LinkedList:
                 element = element.get_next()
 
             return max_val
+
 
     def find_middle(self):
 

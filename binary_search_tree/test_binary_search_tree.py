@@ -16,10 +16,10 @@ class BinarySearchTreeTests(unittest.TestCase):
         self.assertEqual(self.bst.left.right.value, 3)
         self.assertEqual(self.bst.right.left.value, 6)
         
-    def test_handle_dupe_insert(self):
-        self.bst2 = BSTNode(1)
-        self.bst2.insert(1)
-        self.assertEqual(self.bst2.right.value, 1)
+    # def test_handle_dupe_insert(self):
+    #     self.bst2 = BSTNode(1)
+    #     self.bst2.insert(1)
+    #     self.assertEqual(self.bst2.right.value, 1)
 
     def test_contains(self):
         self.bst.insert(2)

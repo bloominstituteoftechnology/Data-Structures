@@ -1,4 +1,3 @@
-# starting as a empty list
 class Node:
     def __init__(self, value=None, next_node=None):
         # the value at this linked list node
@@ -133,13 +132,5 @@ class LinkedList:
                 cur_max = cur_node.get_value()
             cur_node = cur_node.get_next()
         return cur_max
-    
-    
-    def find_middle(self):
-        # doing this in 1 pass , without using the 'length' attribute         
-        mid_pointer = self.head
-        end_pointer = self.head
-        while end_pointer is not None and end_pointer.get_next() is not None:
-            mid_pointer = mid_pointer.get_next()
-            end_pointer = end_pointer.get_next().get_next()
-        return mid_pointer.value
+        
+ 

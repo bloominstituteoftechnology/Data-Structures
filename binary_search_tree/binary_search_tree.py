@@ -40,41 +40,143 @@ class BSTNode:
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        #iterative approach
-        while self != None:
-            if target > self.value:
-                self = self.right
-            elif target < self.value:
-                self = self.left
+        #recursive approach:
+        # base case: check self's vaslue to see if it matches target
+        if self.value == target:
+            return True
+        
+        # otherwise, we need to go either left or right
+        # compare the target against self's value
+        if target < self.value:
+            if not self.left: #if self.left is None:
+                return False
             else:
-                return True
-        return False        
+                return self.left.contains(target)
+            # base case: if there's no node here, then the target
+            # is not in the tree
+            # otherwise there is a node there, we can keep traversing
+            # call 'contains' on the left child
+        else:
+            if not self.right:
+                return False
+            else:
+                return self.right.contains(target)
+            
+            #base case: if there's no node here, then the target is not in the tree
+            #otherwise there's a node there
+            #call contains on the right child
+        
+        
+        #iterative approach
+        # while self != None:
+        #     if target > self.value:
+        #         self = self.right
+        #     elif target < self.value:
+        #         self = self.left
+        #     else:
+        #         return True
+        # return False        
    
     # Return the maximum value found in the tree
     def get_max(self):
-        while self.right != None:
-            self = self.right
-        return self.value
+        #recursive approach:
+        if self.right is not None:
+            return self.right.get_max()
+        else:
+            return self.value
+        #iterative approach:
+        # while self.right != None:
+        #     self = self.right
+        # return self.value
             
 
 
     # Call the function `fn` on the value of each node
     # This method doesn't return anything 
     def for_each(self, fn):
-        # if self.left != None:
+        #recursive approach: Depth First Traversal (left to right)
+        #last in first out Stack
+        # call fn on self.value
+        fn(self.value)
+        if self.left:
+            self.left.for_each(fn)
+        # check if self has a left child
+            # call for_each on the left child, passing in the fn
+        if self.right:
+            self.right.for_each(fn)
+        # check if self has a right child
+            # call for_each on the right child, passing in the fn
+
+    
+
+
+        # #iterative approach: Depth-first iterative
+        # #how do we achieve the same ordering that recursion gave us for free?
+        # # use a stack achieve the same ordering
+        stack = []
+        # add the root node to our stack
+        stack.append(self)
+
+        #continue popping from our stack so long as there are nodes in it
+        while len(stack) > 0:
+            current_node = stack.pop()
+
+            #check if this node has children
+            if current_node.right:
+                stack.append(current_node.right)
+            if current_node.left:
+                stack.append(current_node.left)
+            fn(current_node.value)
+
+        # Breadth-first Traversal: First in first out
+        from collections import deque
+        q = deque()
+        q.append(self)
+
+        while len(q) > 0:
+            current_node = q.popleft()
+            #check if this node has children
+            if current_node.left:
+                q.append(current_node.left)
+            if current_node.right:
+                q.append(current_node.right)
+            fn(current_node.value)
+
+
+
+
+
+        #my failed code:
+        # if self.left and self.right is not None:
+        #     fn(self.left.value)
+        #     fn(self.right.value)
+        #     self.left.for_each(fn)
+        #     self.right.for_each(fn)
+        # if self.right is None: 
+        #     if self.left is not None:
+        #         fn(self.left.value)
+        #         self.left.for_each(fn)
+        # if self.left is None: 
+        #     if self.right is not None:
+        #         fn(self.right.value)
+        #         self.right.for_each(fn)
+        
+               
+
+    
+    #r (self.left is None and self.right is not None) or (self.left is not None and self.right is None):
+        # if self.left:
         #     fn(self.left.value)
         #     self.left.for_each(fn)
-        # if self.right != None:
+        # if self.right:
         #     fn(self.right.value)
         #     self.right.for_each(fn)
         # if self.left == None and self.right == None:
         #     return
 
-        while self.left and self.right is not None:
-            fn(self.left.value)
-            fn(self.right.value)
-            self.left.for_each(fn)
-            self.right.for_each(fn)
+        # while self.left and self.right is not None:
+
+
 
 
         # while self != None:
@@ -112,17 +214,49 @@ class BSTNode:
     # Print all the values in order from low to high
     # Hint: Use a recursive, depth first traversal
     def in_order_print(self):
-        pass
+        
+        if self.left:
+            self.left.in_order_print()
+        if self.right:
+            self.right.in_order_print()
+        print(self.value)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self):
-        pass
+        from collections import deque
+        q = deque()
+        q.append(self)
+
+        while len(q) > 0:
+            current_node = q.popleft()
+            #check if this node has children
+            print(current_node.value)
+            if current_node.left:
+                q.append(current_node.left)
+            if current_node.right:
+                q.append(current_node.right)
+            
+            
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self):
-        pass
+        stack = []
+        # add the root node to our stack
+        stack.append(self)
+
+        #continue popping from our stack so long as there are nodes in it
+        while len(stack) > 0:
+            current_node = stack.pop()
+            print(current_node.value)
+            #check if this node has children
+            if current_node.right:
+                stack.append(current_node.right)
+            if current_node.left:
+                stack.append(current_node.left)
+             
+        
 
     # Stretch Goals -------------------------
     # Note: Research may be required

@@ -1,7 +1,7 @@
 """
-Binary search trees are a data structure that enforce an ordering over 
-the data they store. That ordering in turn makes it a lot more efficient 
-at searching for a particular piece of data in the tree. 
+Binary search trees are a data structure that enforce an ordering over
+the data they store. That ordering in turn makes it a lot more efficient
+at searching for a particular piece of data in the tree.
 
 This part of the project comprises two days:
 1. Implement the methods `insert`, `contains`, `get_max`, and `for_each`
@@ -17,22 +17,77 @@ class BSTNode:
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
+        # check if the value is less than the current node's value
+        if value < self.value:
+            # does the current node have a left child?
+            if self.left:
+                self.left.insert(value)
+            # otherwise, it doesn't have a left child
+            # we can park the new node here
+            else:
+                self.left = BSTNode(value)
+        # otherwise the value is greater or equal to the current node's value (right side)
+        else:
+            # does the current node have a right child?
+            if self.right:
+                # if it does,
+                self.right.insert(value)
+            # otherwise, it doesn't have a right child
+            # we can park the new node here
+            else:
+                self.right = BSTNode(value)
+
+
 
     # Return True if the tree contains the value
     # False if it does not
+    # wheter a number exists in a tree or not
     def contains(self, target):
-        pass
+        if self.value == target:
+            return True
+        # compare the target to curent value
+        # if I know that my current target is smaller you want to go left
+        # if I know that my current target is larger than root value, you want to go right 
+
+        if target < self.value:
+            # check left subtree
+            # if you can't go left, return False
+            if self.left is None:
+                return False
+            else:
+                return self.left.contains(target)
+
+        else:
+            # check if the right subtree contains target
+            if self.right is None:
+                return False
+            else:
+                return self.right.contains(target)
+
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+        # max value in tree will always be on the right
+        if not self.right:
+            return self.value
+        # call the get_max function on the right child
+        return self.right.get_max()
+
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-        pass
+        # call the fn on 'self.value'
+        fn(self.value)
+        # if this node has a left child
+        if self.left:
+            # pass the fn to it
+            self.left.for_each(fn)
+        # if this node has a right child
+        if self.right:
+            # pass the fn to it
+            self.right.for_each(fn)
 
-    # Part 2 -----------------------
+    # Part 2 ----------------------------------------------------- Tomorrows assignment
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
@@ -63,7 +118,7 @@ class BSTNode:
 """
 This code is necessary for testing the `print` methods
 """
-bst = BinarySearchTree(1)
+bst = BSTNode(1)
 
 bst.insert(8)
 bst.insert(5)
@@ -73,13 +128,13 @@ bst.insert(3)
 bst.insert(4)
 bst.insert(2)
 
-bst.bft_print()
-bst.dft_print()
-
-print("elegant methods")
-print("pre order")
-bst.pre_order_dft()
-print("in order")
-bst.in_order_dft()
-print("post order")
-bst.post_order_dft()  
+# bst.bft_print()
+# bst.dft_print()
+#
+# print("elegant methods")
+# print("pre order")
+# bst.pre_order_dft()
+# print("in order")
+# bst.in_order_dft()
+# print("post order")
+# bst.post_order_dft()

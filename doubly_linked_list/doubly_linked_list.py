@@ -40,6 +40,26 @@ class DoublyLinkedList:
 
         print(llstr)
 
+    def get_last_node(self):
+        itr = self.head
+        while itr.next:
+            itr = itr.next
+
+        return itr
+
+    def print_backward(self):
+        if self.head is None:
+            print("Linked list is empty")
+            return
+
+        last_node = self.get_last_node()
+        itr = last_node
+        llstr = ''
+        while itr:
+            llstr += str(itr.value) + '-->'
+            itr = itr.prev
+        print(llstr)
+
     """
     Wraps the given value in a ListNode and inserts it 
     as the new head of the list. Don't forget to handle 
@@ -140,21 +160,6 @@ class DoublyLinkedList:
 
         self.length -= 1
         return removed_value
-    """
-    Removes the input node from its current spot in the 
-    List and inserts it as the new head node of the List.
-    """
-
-    def move_to_front(self, node):
-        pass
-
-    """
-    Removes the input node from its current spot in the 
-    List and inserts it as the new tail node of the List.
-    """
-
-    def move_to_end(self, node):
-        pass
 
     """
     Deletes the input node from the List, preserving the 
@@ -162,7 +167,27 @@ class DoublyLinkedList:
     """
 
     def delete(self, node):
-        pass
+
+        itr = self.head
+        while itr:
+            if node == itr:
+                # check if node == head
+                if node == self.head:
+                    self.remove_from_head()
+                    break
+                # check if node == tail
+                elif node == self.tail:
+                    self.remove_from_tail()
+                    break
+                else:
+                    itr.prev.next = itr.next
+                    itr.next.prev = itr.prev
+                    itr.next = None
+                    itr.prev = None
+                    self.length -= 1
+                    break
+
+            itr = itr.next
 
     """
     Finds and returns the maximum value of all the nodes 
@@ -170,44 +195,80 @@ class DoublyLinkedList:
     """
 
     def get_max(self):
-        pass
+
+        max_value = 0
+
+        itr = self.head
+        while itr:
+            if itr.value > max_value:
+                max_value = itr.value
+            itr = itr.next
+
+        return max_value
+
+    """
+    Removes the input node from its current spot in the 
+    List and inserts it as the new head node of the List.
+    """
+
+    def move_to_front(self, node):
+
+        itr = self.head
+        new_node = ListNode(node)
+
+        while itr:
+            if node == itr.value:
+                if self.length <= 1:
+                    return
+                elif itr.next == None:
+                    self.remove_from_tail()
+                    self.add_to_head(new_node.value)
+                else:
+                    self.delete(node)
+                    self.add_to_head(new_node.value)
+
+            itr = itr.next
+
+    """
+    Removes the input node from its current spot in the 
+    List and inserts it as the new tail node of the List.
+    """
+
+    def move_to_end(self, node):
+
+        new_node = ListNode(node)
+        itr = self.head
+
+        while itr:
+            # if no elements exist it won't go through this if
+            if node == itr.value:
+                # if 1 element exists, do nothing OR if the element is the tail, do nothing
+                if self.length == 1 or itr.next == None:
+                    return
+                # if 2 elements exist, swap the two elements
+                elif self.length == 2:
+                    self.delete(itr)
+                    self.add_to_head(new_node.value)
+                else:
+                    self.delete(itr)
+                    self.add_to_tail(new_node.value)
+
+            itr = itr.next
 
 
 dll1 = DoublyLinkedList()
-# print(f'Length: {dll1.__len__()}')
-# dll1.add_to_head(1)
-# dll1.add_to_head(2)
-# dll1.add_to_head(3)
-# dll1.print()
-# print(f'Length: {dll1.__len__()}')
-# dll1.remove_from_head()
-# dll1.print()
-# print(f'Length: {dll1.__len__()}')
-# dll1.remove_from_head()
-# dll1.print()
-# print(f'Length: {dll1.__len__()}')
-# dll1.remove_from_head()
-# dll1.print()
-# print(f'Length: {dll1.__len__()}')
-
 dll1.add_to_tail(1)
-dll1.print()
 dll1.add_to_tail(2)
-dll1.print()
 dll1.add_to_tail(3)
+dll1.move_to_end(1)
 dll1.print()
-dll1.add_to_tail(4)
-dll1.print()
-dll1.add_to_tail(5)
-dll1.print()
+print(f'Head value: {dll1.head.value}')
+print(f'Tail value: {dll1.tail.value}')
 
-dll1.remove_from_tail()
-dll1.print()
-dll1.remove_from_tail()
-dll1.print()
-dll1.remove_from_tail()
-dll1.print()
-dll1.remove_from_tail()
-dll1.print()
-dll1.remove_from_tail()
-dll1.print()
+# dll1.add_to_tail(1)
+# dll1.add_to_tail(2)
+# dll1.add_to_tail(3)
+# dll1.move_to_front(3)
+# dll1.print()
+# print(f'Head value: {dll1.head.value}')
+# print(f'Tail value: {dll1.tail.value}')

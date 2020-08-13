@@ -1,3 +1,8 @@
+import sys
+sys.path.append('../doubly_linked_list/')
+from doubly_linked_list import DoublyLinkedList
+
+#Behaves like a doubly linked Queue list
 class LRUCache:
     """
     Our LRUCache class keeps track of the max number of nodes it
@@ -7,7 +12,13 @@ class LRUCache:
     to every node stored in the cache.
     """
     def __init__(self, limit=10):
-        pass
+        self.limit = limit
+        self.size = 0
+        self.head = None
+        self.tail = None
+        self.list = DoublyLinkedList()
+        self.storage = {}
+
 
     """
     Retrieves the value associated with the given key. Also
@@ -17,7 +28,13 @@ class LRUCache:
     key-value pair doesn't exist in the cache.
     """
     def get(self, key):
-        pass
+        # Size condition
+        if key not in self.storage.keys() or self.size == 0:
+            return
+        
+        self.list.move_to_front(self.storage[key])
+
+        return self.storage[key].value[1]
 
     """
     Adds the given key-value pair to the cache. The newly-
@@ -30,4 +47,16 @@ class LRUCache:
     the newly-specified value.
     """
     def set(self, key, value):
-        pass
+        if key in self.storage.keys():
+            self.storage[key].value[1] = value
+            self.list.move_to_front(self.storage[key])
+        else:
+            if self.size == self.limit:
+                #Delete tail node 
+                # How do I get rid of the node's key in the storage dict?
+                remove_key = self.list.remove_from_tail()[0] #this returns the value that was removed, should I make the stored values be {key:value} instead of value?
+                self.storage.pop(remove_key)
+                self.size -= 1
+            self.list.add_to_head([key,value])
+            self.storage[key] = self.list.head     
+        self.size += 1

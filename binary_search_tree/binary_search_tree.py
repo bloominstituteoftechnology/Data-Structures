@@ -71,6 +71,7 @@ class BSTNode:
     def bft_print(self, skip_print=True):
         if not skip_print:
             print(self.value)
+
         if self.left and self.right:
             print(self.left.value)
             print(self.right.value)

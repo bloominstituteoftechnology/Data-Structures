@@ -63,13 +63,14 @@ class BSTNode:
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
-    def in_order_print(self, node):
-        node.value
+    def in_order_print(self):
+        if self.left:
+            self.left.in_order_print()
 
-        if node.right:
-            node.right.dft_print()
-        if node.left:
-            node.left.dft.print()
+        print(self.value)
+
+        if self.right:
+            self.right.in_order_print()
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
@@ -91,7 +92,7 @@ class BSTNode:
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self):
-        return self.value
+        print(self.value)
 
         if self.right:
             self.right.dft_print()
@@ -101,22 +102,23 @@ class BSTNode:
     # Stretch Goals -------------------------
     # Note: Research may be required
 
-    # Print Pre-order recursive DFT
+    # # Print Pre-order recursive DFT
     def pre_order_print(self):
 
         # First return/print the value of the node.
-        return self.value
+        print(self.value)
 
-        # Check if there is a left lead, if so call call pre_order recursively on the leaf.
+        # Check if there is a left leaf, if so call call pre_order recursively on the leaf.
         if self.left:
             self.left.pre_order_print()
 
-        # Check if there is a right lead, if so call call pre_order recursively on the leaf.
+        # Check if there is a right leaf, if so call call pre_order recursively on the leaf.
         if self.right:
             self.right.pre_order_print()
 
-    # Print Post-order recursive DFT
+    # # Print Post-order recursive DFT
     def post_order_print(self):
+
         # First check if there is a left leaf, if so, recursively call post_order_print on left leaf
         if self.left:
             self.left.post_order_print()
@@ -124,7 +126,7 @@ class BSTNode:
         if self.right:
             self.right.post_order_print()
         # Return / print the value of self
-        return self.value
+        print(self.value)
 
 """
 This code is necessary for testing the `print` methods
@@ -146,6 +148,6 @@ print("elegant methods")
 print("pre order")
 bst.pre_order_print()
 print("in order")
-bst.in_order_print(bst)
+bst.in_order_print()
 print("post order")
 bst.post_order_print() 

@@ -10,7 +10,6 @@ This part of the project comprises two days:
    on the BSTNode class.
 """
 from stack import Stack
-
 class BSTNode:
     def __init__(self, value):
         self.value = value

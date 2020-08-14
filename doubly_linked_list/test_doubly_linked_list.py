@@ -121,11 +121,11 @@ class DoublyLinkedListTests(unittest.TestCase):
         self.assertEqual(self.dll.get_max(), 1)
         self.dll.add_to_tail(100)
         self.assertEqual(len(self.dll), 2)
-        # self.assertEqual(self.dll.get_max(), 100)
-        # self.dll.add_to_tail(55)
-        # self.assertEqual(self.dll.get_max(), 100)
-        # self.dll.add_to_tail(101)
-        # self.assertEqual(self.dll.get_max(), 101)
+        self.assertEqual(self.dll.get_max(), 100)
+        self.dll.add_to_tail(55)
+        self.assertEqual(self.dll.get_max(), 100)
+        self.dll.add_to_tail(101)
+        self.assertEqual(self.dll.get_max(), 101)
 
 if __name__ == '__main__':
     unittest.main()

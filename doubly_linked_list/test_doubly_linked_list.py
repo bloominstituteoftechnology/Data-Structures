@@ -87,6 +87,7 @@ class DoublyLinkedListTests(unittest.TestCase):
         self.assertEqual(self.dll.tail.value, 3)
 
         self.dll.move_to_front(self.dll.tail)
+        print(self.dll.head.value)
         self.assertEqual(self.dll.head.value, 3)
         self.assertEqual(self.dll.head.next.value, 1)
         self.assertEqual(len(self.dll), 2)

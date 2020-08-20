@@ -37,75 +37,71 @@ class LinkedList:
         self.tail = None
         
     def add_to_tail(self, value):
-        node = Node(value)
-        if self.head == None:
+        node = Node(value, None)
+        if not self.head:
             self.head = node
             self.tail = node
-            self.head.next = self.tail
-            return
-        # ! point curr tail to newNode
-        self.tail.next = node
-        self.tail = node
+        else:
+            self.tail.next = node
+            self.tail = node
         
 
-    def get_tail(self):
-        return self.tail
-    
     def contains(self, value):
-        if self.head is None:
+        if not self.head:
             return False
 
         current_node = self.head
 
-        while current_node is not None:
+        while current_node:
             if current_node.value == value:
                 return True
 
-            current_node = current_node.next
+            current_node = current_node.get_next_node()
         return False
 
     def remove_head(self):
         if not self.head:
             return None
         
-        if self.head.next is None:
-            head_value = self.head.value
+        if not self.head.get_next_node():
+            head = self.head
             self.head = None
             self.tail = None
-            return head_value
 
-        head_value = self.head.value
-        self.head = self.head.next
+            return head.get_value()
+
+        head_value = self.head.get_value()
+        self.head = self.head.get_next_node()
         return head_value
 
-    def stringify_list(self):
-        string_list = ""
-        current_node = self.get_tail()
-        while current_node:
-            if current_node.get_value() != None:
-                string_list += str(current_node.get_value()) + "\n"
-            current_node = current_node.get_next_node()
-        return string_list
 
 
     def remove_tail(self):
-        
-        """
-        remove the tail by deleting the previous nodes reference to it
-        prev.next = None
-        set the previous node to the tail
-        self.tail = prev
-        """
-        print(self.head.value)
-        if self.head == None:
-            
+        if not self.head:
             return None
-        value = self.tail.value
-        prev = node = self.head
-        while node.next != None:
-            prev = node
-            node = node.next
         
-        prev.next = None
-        self.tail = prev
+        if self.head is self.tail:
+            value = self.tail.get_value()
+            self.head = None
+            self.tail = None
+            return value
+
+        current_node = self.head
+        while current_node.get_next_node() is not self.tail:
+            current_node = current_node.get__next_node()
+
+        value = self.tail.get_value()
+        self.tail = current_node
         return value
+    
+    def get_max(self):
+        if not self.head:
+            return None
+
+        max_value = self.head.get_value()
+        current_node = self.head.get_next_node()
+
+        while current_node:
+            if current_node.get_value() > max_value:
+                max_value = current_node.get_value()
+        return max_value

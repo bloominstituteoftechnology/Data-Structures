@@ -1,15 +1,15 @@
 # Implement Node Class
 
 # class Node:
-#     def __init__(self, value, next_node=None):
+#     def __init__(self, value, next=None):
 #         self.value = value
-#         self.next_node = next_node
+#         self.next = next
     
-#     def set_next_node(self, next_node):
-#         self.next_node = next_node
+#     def set_next_node(self, next):
+#         self.next = next
 
 #     def get_next_node(self):
-#         return self.next_node
+#         return self.next
 
 #     def get_value(self):
 #         return self.value
@@ -18,28 +18,35 @@
 
 # class LinkedList:
 class Node:
-    def __init__(self, value=None, next_node=None):
+    def __init__(self, value=None, next=None):
         self.value = value
-        self.next_node = next_node
+        self.next = next
     
     def get_value(self):
         return self.value
 
     def get_next_node(self):
-        return self.next_node
+        return self.next
 
-    def set_next_node(self, next_node):
-        self.next_node = next_node
+    def set_next_node(self, next):
+        self.next = next
 
 class LinkedList:
-    def __init__(self, value=None):
+    def __init__(self):
         self.head = None
-        self.tail = Node(value)
-
+        self.tail = None
+        
     def add_to_tail(self, value):
-        new_node = Node(value)
-        new_node.set_next_node(self.tail)
-        self.tail = new_node
+        node = Node(value)
+        if self.head == None:
+            self.head = node
+            self.tail = node
+            self.head.next = self.tail
+            return
+        # ! point curr tail to newNode
+        self.tail.next = node
+        self.tail = node
+        
 
     def get_tail(self):
         return self.tail
@@ -54,21 +61,21 @@ class LinkedList:
             if current_node.value == value:
                 return True
 
-            current_node = current_node.next_node
+            current_node = current_node.next
         return False
 
     def remove_head(self):
         if not self.head:
             return None
         
-        if self.head.next_node is None:
+        if self.head.next is None:
             head_value = self.head.value
             self.head = None
             self.tail = None
             return head_value
 
-        head_value = self.head.next_node
-        self.head = self.head.next_node
+        head_value = self.head.value
+        self.head = self.head.next
         return head_value
 
     def stringify_list(self):
@@ -80,15 +87,25 @@ class LinkedList:
             current_node = current_node.get_next_node()
         return string_list
 
-ll = LinkedList()
 
-ll.add_to_tail(1)
-ll.add_to_tail(2)
-ll.add_to_tail(5)
-ll.add_to_tail(10)
-
-
-# print(ll.stringify_list())
-
-
-
+    def remove_tail(self):
+        
+        """
+        remove the tail by deleting the previous nodes reference to it
+        prev.next = None
+        set the previous node to the tail
+        self.tail = prev
+        """
+        print(self.head.value)
+        if self.head == None:
+            
+            return None
+        value = self.tail.value
+        prev = node = self.head
+        while node.next != None:
+            prev = node
+            node = node.next
+        
+        prev.next = None
+        self.tail = prev
+        return value

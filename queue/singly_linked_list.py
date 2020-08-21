@@ -7,12 +7,14 @@ class Node:
 
 
 class LinkedList:
-    def __init__(self):
+    def __init__(self, length=0):
         self.head = None
         self.tail = None
+        self.length = length
 
     def add_to_tail(self, value):
         newNode = Node(value, None)
+        self.length += 1
         if self.head is None:
             self.head = newNode
             self.tail = newNode
@@ -26,6 +28,7 @@ class LinkedList:
         if self.head is None:
             return None
         else:
+            self.length -= 1
             if self.head == self.tail:
                 oldHead = self.head
                 self.head = None
@@ -41,12 +44,14 @@ class LinkedList:
             return None
 
         elif self.head == self.tail:
+            self.length -= 1
             oldTail = self.tail
             self.head = None
             self.tail = None
             return oldTail.value
 
         else:
+            self.length -= 1
             current = self.head
             oldTail = self.tail
             while current.next is not self.tail:

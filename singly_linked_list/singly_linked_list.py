@@ -1,107 +1,57 @@
+
 class Node:
-    def __init__(self, value=None):
+    def __init__(self, value, next=None):
         self.value = value
-        self.next = None
-
-    def getValue(self):
-        return self.value
-
-    def getNext(self):
-        return self.next
-
-    def setNext(self, new_next):
-        self.next = new_next
+        self.next = next
 
 
 class LinkedList:
     def __init__(self):
         self.head = None
         self.tail = None
-        self.length = 0
 
-    def __len__(self):
-        return self.length
+    def add_to_tail(self, value):
+        newNode = Node(value, None)
+        if self.head is None:
+            self.head = newNode
+            self.tail = newNode
 
-    def __str__(self):
-        if self.length == 0:
-            return 'The Linked List is Empty!'
-        n = self.head
-        output = ''
-        output += f'({n.value})->'
-        while n is not None:
-            output += f'({n.value})->'
-            n = n.next
-        return output
-
-    def add_to_head(self, value):
-        new_node = Node(value)
-        self.head = new_node
-
-        if self.length == 0:  # if self.head is None and self.tail is None:
-            self.tail = new_node
-
-        self.length += 1
+        else:
+            oldTail = self.tail
+            oldTail.next = newNode
+            self.tail = newNode
 
     def remove_head(self):
         if self.head is None:
             return None
+        else:
+            if self.head == self.tail:
+                oldHead = self.head
+                self.head = None
+                self.tail = None
+                return oldHead.value
+            else:
+                currentHead = self.head
+                self.head = currentHead.next
+                return currentHead.value
+
+    def remove_tail(self):
+        if self.head == None:
+            return None
+
         elif self.head == self.tail:
-            value = self.head.getValue()
+            oldTail = self.tail
             self.head = None
             self.tail = None
-            self.length -= 1
-            return value
+            return oldTail.value
+
         else:
-            value = self.head.getValue()
-            self.head = self.head.getNext()
-            print('new head', self.head.value)
-            self.length -= 1
-            return value
+            current = self.head
+            oldTail = self.tail
+            while current.next is not self.tail:
+                current = current.next
 
-    def add_to_tail(self, value):
-        new_node = Node(value)
-
-        if self.length == 0:  # if self.tail is None and self.head is None:
-            self.head = new_node
-        else:
-            self.tail.setNext(new_node)
-
-        self.tail = new_node
-        self.length += 1
-
-    def contains(self, value):
-        if self.head is None:
-            return False
-        else:
-            l = 0
-            n = self.head
-            while l is not self.length:
-                print(f'\nn = {n.value}, l = {l}, and Length = {self.length}')
-                if n.value == value:
-                    return True
-                else:
-                    l += 1
-                    n = n.next
-            return False
-
-    def get_max(self):
-        if self.length == 0:
-            print('max is None')
-            return None
-        elif self.length == 1:
-            return self.head.value
-        else:
-            n = self.head
-            j = n.next
-            max = self.head.value
-            while n.next is not None:
-                print(f'j = {j.value}')
-                if j.value > n.value:
-                    max = j.value
-                elif n.value > j.value:
-                    max = n.value
-
-                n = n.next
-                j = n.next
-            print(f'max is {max}')
-            return max
+            removedValue = self.tail.value
+            self.tail = None
+            self.tail = current
+            return removedValue

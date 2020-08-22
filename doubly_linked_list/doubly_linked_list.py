@@ -7,7 +7,7 @@ class ListNode:
         self.prev = prev
         self.value = value
         self.next = next
-            
+    
 """
 Our doubly-linked list class. It holds references to 
 the list's head and tail nodes.
@@ -27,15 +27,45 @@ class DoublyLinkedList:
     the old head node's previous pointer accordingly.
     """
     def add_to_head(self, value):
-        pass
-        
+        new_node = ListNode(value)
+        # if there is no node
+            # create newnode instance 
+            # point both tail and head to newnode
+            # point next and prev to None
+
+        if self.length == 0:
+            self.head = new_node
+            self.tail = new_node
+        # if there is 1+ nodes
+                # point head to new node
+                # point new next node to old head
+                # point new prev to None
+                # Point old prev to new node
+        else:
+            new_node.next = self.head
+            self.head.prev = new_node
+            self.head = new_node
+        self.length += 1
     """
     Removes the List's current head node, making the
     current head's next node the new head of the List.
     Returns the value of the removed Node.
     """
     def remove_from_head(self):
-        pass
+        if self.length == 0:
+            return None
+        if self.length == 1:
+            self.head = None
+            self.tail = None
+        else: 
+            value = self.head.value
+            next_head = self.head.next
+            self.head = next_head
+            next_head.prev = None
+            self.length -= 1
+            return value
+    # Point head to next node
+    # Get rid of the prev of new head and point it to None
             
     """
     Wraps the given value in a ListNode and inserts it 
@@ -80,3 +110,19 @@ class DoublyLinkedList:
     """
     def get_max(self):
         pass
+
+
+
+dll = DoublyLinkedList()
+
+dll.add_to_head(1)
+dll.add_to_head(2)
+dll.add_to_head(3)
+print(f'{dll.head.value}')
+print(f"{dll.length}") 
+print(f'Deleted item {dll.remove_from_head()}')
+print(f'{dll.length}')
+print(f'{dll}')
+
+
+

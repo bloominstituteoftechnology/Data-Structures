@@ -12,19 +12,40 @@ return elements in Last In First Out order.
    With an array it will be given block memory because it is all essentially one chunk of data. With a linked list it will be individual nodes that point to the next so the the first node is the only neccessary one to store. 
 """
 import time
-from singly_linked_list.singly_linked_list import LinkedList
+# from singly_linked_list.singly_linked_list import LinkedList
+
 class Stack:
     def __init__(self):
         self.size = 0
-        self.storage = LinkedList()
+        self.storage = []
+
     def __len__(self):
         return len(self.storage)
+
     def push(self, value):
-        self.storage.add_to_head(value)
+        self.storage.insert(0, value)
+
     def pop(self):
         if len(self.storage) == 0:
             return None
-        return self.storage.remove_head()
+        return self.storage.pop(0)
+
+
+
+
+# class Stack:
+#     def __init__(self):
+#         self.size = 0
+#         self.storage = LinkedList()
+#     def __len__(self):
+#         return len(self.storage)
+#     def push(self, value):
+#         self.storage.add_to_head(value)
+#     def pop(self):
+#         if len(self.storage) == 0:
+#             return None
+#         return self.storage.remove_head()
+
 n = 100000
 stack = Stack()
 start = time.time()

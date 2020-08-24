@@ -11,16 +11,27 @@ return elements in Last In First Out order.
    implementing a Stack?
    With an array it will be given block memory because it is all essentially one chunk of data. With a linked list it will be individual nodes that point to the next so the the first node is the only neccessary one to store. 
 """
+import time
+from singly_linked_list import LinkedList
 class Stack:
     def __init__(self):
         self.size = 0
-        # self.storage = ?
-
+        self.storage = LinkedList()
     def __len__(self):
-        pass
-
+        return len(self.storage)
     def push(self, value):
-        pass
-
+        self.storage.add_to_head(value)
     def pop(self):
-        pass
+        if len(self.storage) == 0:
+            return None
+        return self.storage.remove_head()
+n = 100000
+stack = Stack()
+start = time.time()
+for i in range(n):
+    stack.push(i)
+print("Pushing (to front): ", time.time() - start)
+start = time.time()
+for i in range(n):
+    stack.pop()
+print("Popping (from front): ", time.time() - start)

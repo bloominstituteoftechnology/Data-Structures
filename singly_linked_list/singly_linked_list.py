@@ -76,5 +76,17 @@ class LinkedList:
             self.length = self.length - 1
             return current_tail.value
 
+    def add_to_head(self, value):
+        if self.head is None:
+            new_node = Node(value, None)
+            self.head = new_node
+            self.tail = new_node
+            self.length += 1
 
+        else:
+            new_node = Node(value, self.head)
+            self.head = new_node
+            self.length += 1
 
+    def remove_at_index(self, value):
+        pass

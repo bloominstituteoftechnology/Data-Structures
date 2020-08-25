@@ -166,7 +166,10 @@ class DoublyLinkedList:
             return value
         else:
             value = node.value
-            node.remove()
+            if node.next:
+                node.next.prev = node.prev
+            if node.prev:
+                node.prev.next = node.next
             return value
     """
     Finds and returns the maximum value of all the nodes 

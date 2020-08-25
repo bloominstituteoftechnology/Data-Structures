@@ -85,6 +85,7 @@ class BSTNode:
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal (DFT)
+    """ This is dft above is Pre-Order method """
     def dft_print(self):
         stack = []
         stack.append(self)
@@ -95,7 +96,6 @@ class BSTNode:
                 stack.append(current.right)
             if current.left:
                 stack.append(current.left)
-    """ This is dft above is Pre-Order method """
 
     # Stretch Goals -------------------------
     # Note: Research may be required

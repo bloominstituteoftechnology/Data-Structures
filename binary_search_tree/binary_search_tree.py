@@ -1,3 +1,4 @@
+
 """
 Binary search trees are a data structure that enforce an ordering over 
 the data they store. That ordering in turn makes it a lot more efficient 
@@ -60,51 +61,81 @@ class BSTNode:
     # Part 2 -----------------------
 
     # Print all the values in order from low to high
-    # Hint:  Use a recursive, depth first traversal
-    def in_order_print(self):
-        pass
+    # Hint:  Use a recursive, depth first traversal 
+    
+    def in_order_dft(self):
+        if self.left:
+            self.left.in_order_dft()
+        print(self.value)
+        if self.right:
+            self.right.in_order_dft()
 
     # Print the value of every node, starting with the given node,
-    # in an iterative breadth first traversal
+    # in an iterative breadth first traversal (BFT)
     def bft_print(self):
-        pass
+        queue = []
+        queue.append(self)
+        while len(queue):
+            current = queue.pop(0)
+            print(current.value)
+            if current.left:
+                queue.append(current.left)
+            if current.right:
+                queue.append(current.right)
 
     # Print the value of every node, starting with the given node,
-    # in an iterative depth first traversal
+    # in an iterative depth first traversal (DFT)
     def dft_print(self):
-        pass
+        stack = []
+        stack.append(self)
+        while len(stack):
+            current = stack.pop()
+            print(current.value) 
+            if current.right:
+                stack.append(current.right)
+            if current.left:
+                stack.append(current.left)
+    """ This is dft above is Pre-Order method """
 
     # Stretch Goals -------------------------
     # Note: Research may be required
 
     # Print Pre-order recursive DFT
     def pre_order_dft(self):
-        pass
+        print(self.value)
+        if self.left:
+            self.left.pre_order_dft()
+        if self.right:
+            self.right.pre_order_dft()
+    
 
     # Print Post-order recursive DFT
     def post_order_dft(self):
-        pass
+        if self.left:
+            self.left.post_order_dft()
+        if self.right:
+            self.right.post_order_dft()
+        print(self.value)
 
 """
 This code is necessary for testing the `print` methods
 """
-# bst = BSTNode(5)
+bst = BSTNode(5)
 
-# bst.insert(8)
-# bst.insert(5)
-# bst.insert(7)
-# bst.insert(6)
-# bst.insert(3)
-# bst.insert(4)
-# bst.insert(2)
-
-# bst.bft_print()
-# bst.dft_print()
-# print(f"{bst.right.value}")
-# print("elegant methods")
-# print("pre order")
-# bst.pre_order_dft()
-# print("in order") 
-# bst.in_order_dft()
-# print("post order")
-# bst.post_order_dft()  
+bst.insert(8)
+bst.insert(5)
+bst.insert(7)
+bst.insert(6)
+bst.insert(3)
+bst.insert(4)
+bst.insert(2)
+print("Breathe first Traversal")
+bst.bft_print()
+print("Depth first Traversal")
+bst.dft_print()
+print("pre order")
+bst.pre_order_dft()
+print("in order") 
+bst.in_order_dft() 
+print("post order")
+bst.post_order_dft()  

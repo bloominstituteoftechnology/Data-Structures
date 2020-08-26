@@ -89,15 +89,7 @@ class DoublyLinkedList:
         elif node is self.head:
             self.head = node.next
             node.delete()
-        # Check for empty pointers
-        # Get previous node = node.prev
-        # Set prev_node.next to node.next
-        # Next_node = node.next
-        # Set next_node.previous = previous_node
-        # Decrement length
-        # Set node.prev = None
-        # Set node.next = None
-        # Return node.value
+        
     """
     Finds and returns the maximum value of all the nodes 
     in the List.

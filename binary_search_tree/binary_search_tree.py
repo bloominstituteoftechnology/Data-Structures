@@ -2,6 +2,7 @@
 Binary search trees are a data structure that enforce an ordering over 
 the data they store. That ordering in turn makes it a lot more efficient 
 at searching for a particular piece of data in the tree. 
+
 This part of the project comprises two days:
 1. Implement the methods `insert`, `contains`, `get_max`, and `for_each`
    on the BSTNode class.
@@ -14,47 +15,128 @@ class BSTNode:
         self.left = None
         self.right = None
 
-    # Insert the given value into the tree
     def insert(self, value):
-        pass
+        if value < self.value:
+            if self.left is None:
+                self.left = BSTNode(value)
+            else:
+                self.left.insert(value)
+        else:
+            if self.right is None:
+                self.right = BSTNode(value)
+            else:
+                self.right.insert(value)
 
-    # Return True if the tree contains the value
-    # False if it does not
     def contains(self, target):
-        pass
+        if self.left is None and self.right is None:
+            if target == self.value:
+                return True
+            else:
+                return False
 
-    # Return the maximum value found in the tree
+        if target > self.value:
+            if self.right.contains(target):
+                return True
+            else:
+                return False
+        else:
+            if self.left.contains(target):
+                return True
+            else:
+                return False
+
     def get_max(self):
-        pass
+        if self.right is None:
+            return self.value
+        else:
+            current = self
+            value = self.value
+            
+            while current.right:
+                current = current.right
+                value = current.value
+            
+            return value
 
-    # Call the function `fn` on the value of each node
+
     def for_each(self, fn):
-        pass
+        # Breadth-first traversal to call function on every node
+        current = [self]
+        while current:
+            next_level = []
+            for node in current:
+                fn(node.value)
+                if node.left:
+                    next_level.append(node.left)
+                if node.right:
+                    next_level.append(node.right)
+
+            current = next_level  
 
     # Part 2 -----------------------
 
-    # Print all the values in order from low to high
-    # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        # In-Order goes Left > Root > Right
+        # Used to sort list by starting with smallest value and working up
+        if node is None:
+            return
 
-    # Print the value of every node, starting with the given node,
-    # in an iterative breadth first traversal
+        node.in_order_print(node.left)
+        print(node.value)
+        node.in_order_print(node.right)
+
     def bft_print(self, node):
-        pass
+        # Breadth-First Traversal goes through each node level by level
+        # Uses a queue and a pointer
+        if node is None:
+            return
 
-    # Print the value of every node, starting with the given node,
-    # in an iterative depth first traversal
+        current = [node]
+        while current:
+            next_level = []
+            for node in current:
+                print(node.value)
+                if node.left:
+                    next_level.append(node.left)
+                if node.right:
+                    next_level.append(node.right)
+
+            current = next_level  
+
     def dft_print(self, node):
-        pass
+        # Depth-First Traversal is iterative and goes through the left side first followed by the right, starts at designated node
+        # Uses a stack and a pointer
+        if node is None:
+            return
+        
+        current = [node]
+        while current:
+            curr_node = current.pop()
+            print(curr_node.value)
 
+            if curr_node.right:
+                current.append(curr_node.right)
+            if curr_node.left:
+                current.append(curr_node.left)
+        
     # Stretch Goals -------------------------
-    # Note: Research may be required
 
-    # Print Pre-order recursive DFT
     def pre_order_dft(self, node):
-        pass
+        # Pre-Order goes Root > Left > Right
+        # Used to create a copy of the tree by going from root, down the left, then down the right
+        if node is None:
+            return
+            
+        print(node.value)    
+        node.pre_order_dft(node.left)
+        node.pre_order_dft(node.right)
 
-    # Print Post-order recursive DFT
     def post_order_dft(self, node):
-        pass
+        # Post-Order goes Left > Right > Root
+        # Used to delete the tree by removing all child nodes and ending with the root
+        if node is None:
+            return
+            
+        node.post_order_dft(node.left)
+        node.post_order_dft(node.right)
+        print(node.value)

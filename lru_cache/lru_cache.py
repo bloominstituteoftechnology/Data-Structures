@@ -1,3 +1,6 @@
+from doubly_linked_list import DoublyLinkedList
+
+
 class LRUCache:
     """
     Our LRUCache class keeps track of the max number of nodes it
@@ -6,8 +9,16 @@ class LRUCache:
     order, as well as a storage dict that provides fast access
     to every node stored in the cache.
     """
+
     def __init__(self, limit=10):
-        pass
+        self.max = limit
+        self.cur = 0
+        # if cur == max, adding should remove LRU
+        self.storage = DoublyLinkedList()
+        # self.storage.head
+        # self.storage.tail
+        # self.storage.length
+        self.cache = {}
 
     """
     Retrieves the value associated with the given key. Also
@@ -16,8 +27,14 @@ class LRUCache:
     Returns the value associated with the key or None if the
     key-value pair doesn't exist in the cache.
     """
+
     def get(self, key):
-        pass
+        if key not in self.cache:
+            return None
+        else:
+            node = self.cache[key]
+            self.storage.move_to_front(node)
+            return node.value[1]
 
     """
     Adds the given key-value pair to the cache. The newly-
@@ -29,5 +46,24 @@ class LRUCache:
     want to overwrite the old value associated with the key with
     the newly-specified value.
     """
+
     def set(self, key, value):
-        pass
+        # add key/value pair to the cache
+        if key in self.cache:
+            self.cache[key].value[1] = value
+        else:
+            self.storage.add_to_head([key, value])
+            self.cache[key] = self.storage.head
+
+            self.cur += 1
+
+            if self.cur > self.max:
+                value = self.storage.remove_from_tail()
+                key = value[0]
+                del self.cache[key]
+
+                self.cur -= 1
+
+        # add to head of self.storage
+        # i need to remove from dll's tail
+        #   i need to remove the tail's node from the cache

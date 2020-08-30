@@ -23,6 +23,14 @@ class LinkedList:
         self.tail = None
         self.length = 0
 
+    def __str__(self):
+        output = ''
+        current_node = self.head
+        while current_node is not None:
+            output += f'{current_node.value} -> '
+            current_node = current_node.next_node
+        return output
+
     def add_to_head(self, value):
         new_node = Node(value)
         self.head = new_node
@@ -83,7 +91,7 @@ class LinkedList:
             self.tail = current
             self.length -= 1
             return value
-            
+
     def contains (self, value):
         if self.head is None:
             return False
@@ -94,3 +102,13 @@ class LinkedList:
                 return True
             current_node = current_node.next_node
         return False
+
+
+ll = LinkedList()
+
+ll.add_to_head(12)
+ll.add_to_tail(123)
+ll.add_to_tail(21)
+ll.add_to_tail(41)
+
+print(ll)

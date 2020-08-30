@@ -83,3 +83,14 @@ class LinkedList:
             self.tail = current
             self.length -= 1
             return value
+            
+    def contains (self, value):
+        if self.head is None:
+            return False
+        
+        current_node = self.head
+        while current_node is not None:
+            if current_node.value == value:
+                return True
+            current_node = current_node.next_node
+        return False

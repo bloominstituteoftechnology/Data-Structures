@@ -103,35 +103,3 @@ class Stack:
             removedValue = self.storage.remove_tail()
             self.size -= 1
             return removedValue
-
-
-            
-            
-
-    # def pop(self):
-    #     if len(self.storage) == 0:
-    #         return 
-    #     else:
-    #         lastInList = self.storage[-1]
-    #         del self.storage[-1]
-    #         return lastInList
-
-
-# class Stack:
-#     def __init__(self):
-#         self.size = 0
-#         self.storage = []
-
-#     def __len__(self):
-#         return len(self.storage)
-
-#     def push(self, value):
-#         self.storage.append(value)
-
-#     def pop(self):
-#         if len(self.storage) == 0:
-#             return 
-#         else:
-#             lastInList = self.storage[-1]
-#             del self.storage[-1]
-#             return lastInList

@@ -24,7 +24,7 @@ class LinkedList:
 
     # we have access to the end of the list, we can directly add new nodes to it.
     # O(1) run time
-    def add_to_end(self, value):
+    def add_to_tail(self, value):
         # regardless whether the list is empty or not, wrap value in a Node
         new_node = Node(value)
         # what if the list is empty?

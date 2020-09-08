@@ -99,7 +99,6 @@ class Stack:
         if self.size == 0:
             return
         else: 
-
             removedValue = self.storage.remove_tail()
             self.size -= 1
             return removedValue

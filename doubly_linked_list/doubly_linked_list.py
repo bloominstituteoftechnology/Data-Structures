@@ -30,11 +30,27 @@ class DoublyLinkedList:
     def add_to_head(self, value):
         # probably need to add conditional logic for 
         # when their is no head etc.
+        new_node = ListNode(value, None, None)
+        if self.tail == None and self.head == None:
+            self.head = new_node
+            self.tail = new_node
+            self.length += 1
+        elif self.head.next == None:
+            old_head = self.head
+            old_head.prev = new_node
+            new_node.next = old_head
+            self.head = new_node
+            self.tail = old_head
+            self.length += 1
+        
+        else: 
+            old_head = self.head
+            old_head.prev = new_node
+            new_node.next = old_head
+            self.head = new_node
+            self.length += 1
 
-        old_head = self.head
-        new_node = ListNode(value, None, old_head)
-        self.head = new_node
-        self.length += 1
+
         
     """
     Removes the List's current head node, making the
@@ -50,10 +66,27 @@ class DoublyLinkedList:
     the old tail node's next pointer accordingly.
     """
     def add_to_tail(self, value):
-        old_tail = self.tail
-        new_node = ListNode(value, old_tail, None)
-        self.tail = new_node
-        self.length += 1
+        new_node = ListNode(value, None, None)
+        if self.tail ==  None and self.head == None:
+            # create the new head.
+            self.head = new_node
+            self.tail = new_node
+            self.length += 1
+
+        elif self.head.next == None:
+            #add to the (head tail combonation) and set the new tail
+            new_node.prev = self.head
+            self.head.next = new_node
+            self.tail = new_node
+            self.length += 1
+
+        else:
+            old_tail = self.tail
+            self.tail = new_node
+            self.tail.prev = old_tail
+            old_tail.next = new_node
+            self.length += 1
+
         
             
     """
@@ -63,11 +96,23 @@ class DoublyLinkedList:
     """
     def remove_from_tail(self):
         # checks to see if it is the first element in the list
-        if self.tail.next == None and self.tail.prev == None:
+        if self.tail == None and self.head == None:
+            return
+
+        elif self.head.next == None:
+            # case where there is only one element in the linked list
+            old_head_tail = self.tail
             self.head = None
             self.tail = None
+            self.length = 0
+            return old_head_tail.value
 
-        # elif 
+        else:
+            old_tail = self.tail
+            self.tail = old_tail.prev
+            old_tail = None
+            self.length -= 1
+            return old_tail.value
         
 
 

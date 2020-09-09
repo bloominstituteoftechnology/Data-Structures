@@ -131,5 +131,9 @@ class DoublyLinkedListTests(unittest.TestCase):
         self.dll.add_to_tail(101)
         self.assertEqual(self.dll.get_max(), 101)
 
+'''
+python doubly_linked_list/test_doubly_linked_list.py
+'''
+
 if __name__ == '__main__':
     unittest.main()

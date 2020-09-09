@@ -37,5 +37,13 @@ class LinkedListTests(unittest.TestCase):
         self.assertIsNone(self.list.tail)
         self.assertIsNone(self.list.remove_tail())
 
+
+'''
+python singly_linked_list/test_singly_linked_list.py
+'''
+
+# ok cool this passes
+
+
 if __name__ == '__main__':
     unittest.main()

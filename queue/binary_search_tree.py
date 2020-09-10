@@ -11,7 +11,8 @@ This part of the project comprises two days:
 """
 
 # Test runs okay for first half.
-
+from queue import Queue
+from stack import Stack
 
 class BSTNode:
     def __init__(self, value):
@@ -23,7 +24,7 @@ class BSTNode:
     def insert(self, value):	    
         if value < self.value:	       
             if self.left:	          
-                self.left.insert(value)	                
+                self.left.insert(value)            
             else:	            
                 self.left = BSTNode(value)	                
         else:	        
@@ -70,17 +71,35 @@ class BSTNode:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self):
-        pass
+        if self.left:
+            self.left.in_order_print()
+        print(self.value)
+        if self.right:
+            self.right.in_order_print()
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self):
-        pass
+        q = []
+        q.append(self)
+        while len(q):
+            current = q.pop(0)
+            print(current.value)
+            if current.left:
+                q.append(current.left)
+            if current.right:
+                q.append(current.right)       
+        
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
+
     def dft_print(self):
-        pass
+        print(self.value)
+        if self.left:
+            self.left.dft_print()
+        if self.right:
+            self.right.dft_print()
 
     # Stretch Goals -------------------------
     # Note: Research may be required

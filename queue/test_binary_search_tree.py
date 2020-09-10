@@ -60,12 +60,12 @@ class BinarySearchTreeTests(unittest.TestCase):
         self.assertTrue(v3 in arr)
         self.assertTrue(v4 in arr)
         self.assertTrue(v5 in arr)
-'''
+
     def test_print_traversals(self):
         # WARNING:  Tests are for Print()
         # Debug calls to Print() in functions will cause failure
 
-        stdout_ = sys.stdout  # Keep previous value
+        #stdout_ = sys.stdout  # Keep previous value
         sys.stdout = io.StringIO()
 
         self.bst = BSTNode(1)
@@ -93,7 +93,7 @@ class BinarySearchTreeTests(unittest.TestCase):
         output = sys.stdout.getvalue()
         self.assertTrue(output == "1\n8\n5\n7\n6\n3\n4\n2\n" or
                         output == "1\n8\n5\n3\n2\n4\n7\n6\n")
-
+'''
         sys.stdout = io.StringIO()
         self.bst.pre_order_dft()
         output = sys.stdout.getvalue()
@@ -108,7 +108,7 @@ class BinarySearchTreeTests(unittest.TestCase):
 '''
 
 '''
-python binary_search_tree/test_binary_search_tree.py
+python queue/test_binary_search_tree.py
 '''
 
 if __name__ == '__main__':

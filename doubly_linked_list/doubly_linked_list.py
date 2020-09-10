@@ -66,12 +66,22 @@ class DoublyLinkedList:
     Returns the value of the removed Node.
     """
     def remove_from_head(self):
-        headValue = self.head.get_value()
-        newHead = self.head.get_next()
-        self.delete(self.head)
-        self.head = newHead
-        self.length -= 1
-        return headValue
+        if self.head:
+            headValue = self.head.get_value()
+            if self.length > 1:
+                newHead = self.head.get_next()
+                self.head.delete()
+                self.head = newHead
+                self.length -= 1
+                return headValue
+            else:
+                self.head.delete()
+                self.head = None
+                self.tail = None
+                self.length -= 1
+                return headValue
+        else:
+            return None
             
     """
     Wraps the given value in a ListNode and inserts it 
@@ -95,12 +105,22 @@ class DoublyLinkedList:
     Returns the value of the removed Node.
     """
     def remove_from_tail(self):
-        tailValue = self.tail.get_value()
-        newTail = self.tail.get_previous()
-        self.delete(self.tail)
-        self.tail = newTail
-        self.length -= 1
-        return tailValue
+        if self.tail:
+            tailValue = self.tail.get_value()
+            if self.length > 1:
+                newTail = self.tail.get_previous()
+                self.tail.delete()
+                self.tail = newTail
+                self.length -= 1
+                return tailValue
+            else:
+                self.tail.delete()
+                self.tail = None
+                self.head = None
+                self.length -= 1
+                return tailValue
+        else:
+            return None
 
             
     """
@@ -115,10 +135,7 @@ class DoublyLinkedList:
             self.remove_from_tail()
             self.add_to_head(value)
         else:    
-            nextNode = node.get_next()
-            previousNode = node.get_previous()
-            previousNode.next = nextNode
-            nextNode.prev = previousNode
+            self.delete(node)
             self.add_to_head(value)
         
     """
@@ -133,10 +150,7 @@ class DoublyLinkedList:
             self.remove_from_head()
             self.add_to_tail(value)
         else:
-            nextNode = node.get_next()
-            previousNode = node.get_previous()
-            previousNode.next = nextNode
-            nextNode.prev = previousNode
+            self.delete(node)
             self.add_to_tail(value)
 
     """
@@ -144,21 +158,20 @@ class DoublyLinkedList:
     order of the other elements of the List.
     """
     def delete(self, node):
-        if not self.head and not self.tail:
+        if self.length == 0:
             return
-
-        if self.head == self.tail:
+        elif self.length == 1:
             self.head = None
             self.tail = None
+            node.delete()
+            self.length -= 1
         elif self.head == node:
-            self.head = node.get_next()
-            node.delete()
+            self.remove_from_head()
         elif self.tail == node:
-            self.tail == node.get_previous()
-            node.delete()
+            self.remove_from_tail()
         else:
             node.delete()
-        self.length += 1
+            self.length -= 1
 
 
     """

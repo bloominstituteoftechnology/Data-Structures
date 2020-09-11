@@ -68,12 +68,10 @@ class BSTNode:
         
         # if the target is equal to the current node
         if target == self.value:
-            print(f"value is {self.value} equal to {target}")
             return True
 
         elif self.value > target:
             if self.left.value == target:
-                print("TRUE")
                 return True
             elif self.left is None:
                 return False
@@ -82,25 +80,53 @@ class BSTNode:
 
         elif self.value < target:
             if target == self.right.value:
-                print("IS TRUE")
                 return True
             elif self.right is None:
-                print("NIGGA")
                 return False
 
             elif self.right.value > target:
-                print("NIGGA")
                 return self.left.contains(target)
 
 
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+        
+        if not self.right:
+            return self.value
+        
+        # otherwise, call get max on the right side.
+        return self.right.get_max()
 
+        # # iterative       
+        # current_max = self.value
+        # # keep a 'current' pointer to keep track of where
+        # # we are in the tree
+        # current = self
+
+        # while current is not None:
+        #     if current.value > current_max:
+        #         current_max = current.value
+            
+        #     current = current.right
+        
+        # return current_max
+
+            
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-        pass
+        # call the anonymous function on 'self.value'
+        fn(self.value)
+
+        # if this node has a left child
+        if self.left:
+            # pass the anonymous function to it
+            self.left.for_each(fn)
+
+        # if this node has a right child
+        if self.right:
+            # pass the anonymous function to it
+            self.right.for_each(fn)
 
     # Part 2 -----------------------
 

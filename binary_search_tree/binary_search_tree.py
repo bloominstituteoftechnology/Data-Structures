@@ -224,11 +224,28 @@ class BSTNode:
 
     # Print Pre-order recursive DFT
     def pre_order_dft(self):
+
+        if self:
+            print(self.value)
+
+        if self.left:
+            self.left.pre_order_dft()
         
+        if self.right:
+            self.right.pre_order_dft()
 
     # Print Post-order recursive DFT
     def post_order_dft(self):
-        pass
+
+        if not self:
+            return
+        if self.left:
+            self.left.pre_order_dft()
+        
+        if self.right:
+            self.right.pre_order_dft()
+        print(self.value)
+
 
 """
 This code is necessary for testing the `print` methods
@@ -249,10 +266,10 @@ bst.dft_print()
 
 bst.in_order_print()
 
-# print("elegant methods")
-# print("pre order")
-# bst.pre_order_dft()
+print("elegant methods")
+print("pre order")
+bst.pre_order_dft()
 # print("in order")
 # bst.in_order_dft()
-# print("post order")
-# bst.post_order_dft()  
+print("post order")
+bst.post_order_dft()  

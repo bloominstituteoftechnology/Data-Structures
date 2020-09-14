@@ -240,10 +240,10 @@ class BSTNode:
         if not self:
             return
         if self.left:
-            self.left.pre_order_dft()
+            self.left.post_order_dft()
         
         if self.right:
-            self.right.pre_order_dft()
+            self.right.post_order_dft()
         print(self.value)
 
 

@@ -261,7 +261,6 @@ bst.insert(4)
 bst.insert(2)
 
 bst.bft_print()
-print("DFT NIGGA")
 bst.dft_print()
 
 bst.in_order_print()

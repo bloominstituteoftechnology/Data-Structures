@@ -71,15 +71,15 @@ class LinkedList:
             # the list is already empty
             return None
 
-    curr = self.head
-    prev = curr
-    while curr.get_next != None:
+        curr = self.head
         prev = curr
-        curr = curr.get_next()
+        while curr.get_next != None:
+            prev = curr
+            curr = curr.get_next()
 
-    prev.set_next(None)
-    self.tail = prev
-    return curr
+        prev.set_next(None)
+        self.tail = prev
+        return curr
 
 # get_max performance:
     def get_max(self):

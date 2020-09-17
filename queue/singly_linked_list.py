@@ -1,5 +1,5 @@
 class Node:
-    def __init__(self, value=None, next_node=None):
+    def __init__(self, value = None, next_node = None):
         self.value = value
         self.next_node = next_node
 
@@ -28,8 +28,6 @@ class LinkedList:
 
     def remove_head(self):
         if not self.head:
-            return None
-        if not self.head.get_next():
             head = self.head
             self.head = None
             self.tail = None
@@ -76,5 +74,5 @@ class LinkedList:
         while current:
             if current.get_value() > max_value:
                 max_value = current.get_value()
-            current = current.get_next()
-        return max_value
+            current = current.get_next()                 
+        return max_value 

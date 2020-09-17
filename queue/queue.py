@@ -16,6 +16,9 @@ Stretch: What if you could only use instances of your Stack class to implement t
 
 
 from singly_linked_list import LinkedList
+from stack import Stack
+enstack = Stack()
+destack = Stack()
 queue = LinkedList()
 arr = []
 
@@ -38,3 +41,25 @@ class Queue:
             return None
         self.size -=1
         return queue.remove_head()
+
+class StackQueue:
+    def __init__(self):
+        self.size = 0
+        self.enstorage = enstack
+        self.destorage = destack
+
+    def enqueue(self,value):
+        if destack.__len__() > 0:
+            while destack.len() > 0:
+                enstack.push(destack.pop())
+            enstack.push(value)
+        else:
+            enstack.push(value)
+        
+
+    def dequeue(self,value):
+        pass
+
+crap = StackQueue()
+
+crap.enqueue(2)

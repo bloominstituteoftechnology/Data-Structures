@@ -1,9 +1,9 @@
 # TODO a class that represents the individual elements in our LL
 
 class Node:
-    def __init__(self, value, next_node):
+    def __init__(self, value=None, next_node=None):
         self.value = value
-        self. next_node = next_node
+        self.next_node = next_node
 
     def get_value(self):
         return self.value
@@ -33,23 +33,68 @@ class LinkedList:
             self.head = new_node
 
     def add_to_tail(self, value):
-        # TODO
+        # create new Node
+        new_node = Node(value)
+        # 1 LL is empty
+        if self.head is None:
+            self.head = new_node
+            self.tail = new_node
+
+        # 2 LL is NOT empty
+        else:
+            self.tail.set_next_node(new_node)
+
+            self.tail = new_node
 
     def remove_head(self):
-        # cases to consider?
         # empty LinkedList
         if self.head is None:
             return None
         # else, return value of old head
-        # list with 2 or more elements - return value of the old head
         else:
-            self.head = self.head.get_next_node()
+            ret_value = self.head.get_value()
+            # list with 1 element
+            if self.head == self.tail:
+                self.head = None
+                self.tail = None
+            # list with 2 elements
+            else:
+                self.head = self.head.get_next_node()
+            return ret_value
+
 
     def remove_tail(self):
-        # TODO
+        if self.head is None and self.tail is None:
+            return None
+        if self.head == self.tail:
+            value = self.head.get_value()
+            self.head = None
+            self.tail = None
+            return value
+
+        else:
+            value = self.tail.get_value()
+            current_node = self.head
+
+            while current_node.get_next_node() != self.tail:
+                current_node = current_node.get_next_node()
+
+            self.tail = current_node
+            self.tail.set_next_node(None)
+            return value
+
+
+
+
 
     def contains(self, value):
-        # TODO:
+        cur_node = self.head
+        while cur_node is not None:
+            # if we find 'value'
+            if cur_node.get_value() == value():
+                return True
+        return False
 
     def get_max(self, value):
+        pass
         # TODO:

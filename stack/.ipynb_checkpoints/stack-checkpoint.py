@@ -14,12 +14,15 @@ return elements in Last In First Out order.
 
 class Stack:
     def __init__(self):
-        self.stack = []
         self.size = 0
+        self.stack = []
         # self.storage = ?
 
+    def __str__(self):
+        return f"{self.stack}"
+
     def __len__(self):
-        return self.size
+        return f"Length of stack: {self.size}"
 
     def push(self, value):
         self.size += 1
@@ -27,10 +30,7 @@ class Stack:
 
     def pop(self):
         self.size -= 1
-        # if not IndexError:
-        return self.stack.pop()
-        # else:
-        #     return None
+        return self.stack.pop(-1)
 
 
 if __name__ == '__main__':
@@ -38,5 +38,5 @@ if __name__ == '__main__':
     a.push(1)
     a.push(1)
     a.pop()
-    print(a.stack)
+    print(a)
     print(a.__len__())

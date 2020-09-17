@@ -3,30 +3,43 @@ Answer the following questions for each of the data structures you implemented a
 ## Stack
 
 1. What is the runtime complexity of `push` using a list?
+    This should be a constant time O(1). Since you are just adding to the beginning of the list.
 
 2. What is the runtime complexity of `push` using a linked list?
+    This should be a constant time O(1). Since you are just adding to the beginning of the list.
 
 3. What is the runtime complexity of `pop` using a list?
+    This should also be constant time O(1), because you are removing from the tail.
 
 4. What is the runtime complexity of `pop` using a linked list?
+    This should also be constant time O(1), because you are removing from the tail.
 
 5. What is the runtime complexity of `len` using a list?
+    The run time complexity of checking the len is linear time because it has to count each piece of the list
 
 6. What is the runtime complexity of `len` using a linked list?
+    The run time complexity of checking the len is linear time because it has to count each piece of the list
+
 
 ## Queue
 
 1. What is the runtime complexity of `enqueue` using a list?
+    This should be a constant time O(1). Since you are just adding to the end of the list.
 
 2. What is the runtime complexity of `enqueue` using a linked list?
+    This should be a constant time O(1). Since you are just adding to the end of the list.
 
 3. What is the runtime complexity of `dequeue` using a list?
+    This should be a constant time O(1). Since you are just removing from the beginning of the list.
 
 4. What is the runtime complexity of `dequeue` using a linked list?
+    This should be a constant time O(1). Since you are just removing from the beginning of the list.
 
 5. What is the runtime complexity of `len` using a list?
+    The run time complexity of checking the len is linear time because it has to count each piece of the list.
 
 6. What is the runtime complexity of `len` using a linked list?
+    The run time complexity of checking the len is linear time because it has to count each piece of the list
 
 ## Doubly Linked List
 
@@ -54,14 +67,14 @@ Answer the following questions for each of the data structures you implemented a
 
 ## Binary Search Tree
 
-1. What is the runtime complexity of `insert`? 
+1. What is the runtime complexity of `insert`?
 
 2. What is the runtime complexity of `contains`?
 
-3. What is the runtime complexity of `get_max`? 
+3. What is the runtime complexity of `get_max`?
 
 4. What is the runtime complexity of `for_each`?
-    
+
 ## Heap
 
 1. What is the runtime complexity of `_bubble_up`?

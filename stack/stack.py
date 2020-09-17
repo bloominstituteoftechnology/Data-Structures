@@ -64,6 +64,7 @@ class Stack:
             self.head = new_node
             self.size += 1
         else:
+            
             self.head = new_node
             self.head.set_next(current_node)
             self.size += 1

@@ -22,11 +22,14 @@ class ArrayStack:
 
     def push(self, value):
         self.storage.append(value)
+        self.size +=1
 
     def pop(self):
         if len(self.storage) == 0:
             return None
         return self.storage.pop()
+
+
 
 #Implementing Stack using Singly Linkedlist.
 import sys
@@ -49,3 +52,12 @@ class Stack:
             return None
         self.size -=1
         return self.storage.remove_head()
+# Stack().push(100)
+
+# print(Stack)
+
+
+
+
+
+

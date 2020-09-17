@@ -1,20 +1,20 @@
 #Node
 class Node:
-    def __init__(self, value=None, next=None):
+    def __init__(self, value=None, next_value=None):
         self.value= value
-        self.next = next
+        self.next_value = next_value
 
     def get_value(self):
         return self.value
 
     def get_next(self):
-        return self.next
+        return self.next_value
 
     def set_value(self, new_value):
         self.value = new_value
 
     def set_next(self, new_next):
-        self.next = new_next
+        self.next_value = new_next
 
 #Singly Linked List
 class LinkedList:

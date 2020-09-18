@@ -18,23 +18,23 @@ https://www.geeksforgeeks.org/queue-in-python/
 
 from singly_linked_list import LinkedList
 
-class Queue:
+class Queue(LinkedList):
     def __init__(self):
+        super().__init__()
         self.size = 0
-        self.storage = LinkedList()
 
     def __len__(self):
         return self.size
 
     def enqueue(self, value):
-        self.storage.add_to_tail(value)
+        self.add_to_tail(value)
         self.size += 1
 
     def dequeue(self):
         if self.size == 0:
             return None
         self.size -= 1
-        return self.storage.remove_head()
+        return self.remove_head()
 
 """
 Ran 4 tests in 0.000s

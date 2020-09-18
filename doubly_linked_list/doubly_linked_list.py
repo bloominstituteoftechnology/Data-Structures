@@ -115,21 +115,39 @@ class DoublyLinkedList:
     List and inserts it as the new head node of the List.
     """
     def move_to_front(self, node):
-        pass
+        new_head_node = node
+        self.add_to_head(new_head_node)
+        node.delete()
         
     """
     Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List.
     """
     def move_to_end(self, node):
-        pass
+        new_tail_node = node
+        self.add_to_tail(new_tail_node)
+        node.delete()
 
     """
     Deletes the input node from the List, preserving the 
     order of the other elements of the List.
     """
     def delete(self, node):
-        pass
+        node.delete()
+        self.length -= 1
+
+    def get_node_value(self, node):
+        return node.get_value()
+
+    def get_all_nodes(self):
+        if not self.head and not self.tail:
+            print("No nodes in List")  
+        else:
+            current_node = self.head
+            while current_node is not self.tail:
+                print(f"{current_node.get_value().value}")
+                current_node = current_node.next_node()
+            print(self.tail.get_value().value)
 
     """
     Finds and returns the maximum value of all the nodes 
@@ -140,11 +158,14 @@ class DoublyLinkedList:
 
 d = DoublyLinkedList()
 head = ListNode("head")
-tail = ListNode("tail")
+new_tail = ListNode("new tail")
+new_new_tail = ListNode("new new tail")
+tail = ListNode("tagil")
+new_head = ListNode("new head")
 
 d.add_to_head(head)
 d.add_to_tail(tail)
-print(d.__len__())
+d.add_to_tail(new_tail)
+d.add_to_head(new_head)
 
-print(d.delete(head))
-print(d.__len__())
+d.get_all_nodes()

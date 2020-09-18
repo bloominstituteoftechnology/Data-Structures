@@ -61,3 +61,4 @@ class LinkedList:
             value = self.head.get_value()
             self.head = self.head.get_next()
             return value
+

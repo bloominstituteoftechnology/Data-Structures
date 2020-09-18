@@ -54,8 +54,8 @@ class Node:
 
 class Queue:
     def __init__(self):
-        self.head = None
-        self.tail = None
+        self.rear = None
+        self.front = None
         self.size = 0
 
     def __len__(self):
@@ -63,21 +63,21 @@ class Queue:
 
     def enqueue(self, value):
         new_node = Node(value)
-        current_node = self.head
+        current_node = self.rear
     
-        if self.head is None and self.tail is None:
-            self.head = new_node
-            self.tail = new_node
+        if self.rear is None and self.front is None:
+            self.rear = new_node
+            self.front = new_node
             self.size += 1
             return
-        if self.head is not None and self.tail is None:
-            self.head = new_node
-            self.tail = current_node
+        if self.rear is not None and self.front is None:
+            self.rear = new_node
+            self.front = current_node
             self.size += 1
             return
         else:
-            self.head = new_node
-            self.head.set_next(current_node)
+            self.rear = new_node
+            self.rear.set_next(current_node)
             self.size += 1
             return
 
@@ -85,34 +85,32 @@ class Queue:
         if self.size == 0:
             return None
         if self.size == 1:
-            val = self.head.get_value()
-            self.head = None
+            val = self.rear.get_value()
+            self.rear = None
             self.size -= 1
             return val
         if self.size == 2:
-            cur_head = self.head
-            val = self.tail.get_value()
-            self.tail = cur_head
+            cur_rear = self.rear
+            val = self.front.get_value()
+            self.front = cur_rear
             self.size -= 1
             return val
         else:
-            val = self.tail.get_value()
-            cur_node = self.head
-            while cur_node.get_next() != self.tail:
+            val = self.front.get_value()
+            cur_node = self.rear
+            while cur_node.get_next() != self.front:
                 cur_node = cur_node.get_next()
-            self.tail = cur_node
-            self.tail.set_next(None)
+            self.front = cur_node
+            self.front.set_next(None)
             self.size -= 1
             return val
 
+
+
 q = Queue()
 
-print('len', len(q))
 q.enqueue(1)
-print('len', len(q))
 q.enqueue(2)
-print('len', len(q))
-q.dequeue()
-print('len', len(q))
-print(q.tail)
-            
+q.enqueue(3)
+
+print(q.rear)

@@ -3,8 +3,8 @@
  
 class Node:
     def __init__(self, value=None, next_node=None):
-         self.value = value
-         self.next_node = next_node
+        self.value = value
+        self.next_node = next_node
     
     def get_value(self):
         return self.value
@@ -69,28 +69,34 @@ class LinkedList:
 
     def remove_tail(self):
         # empty list
-        if self.tail is None:
+        # return None
+        if self.head is None:
             return None
-        # else, return value of the old tail
+        # list with 1 element
+        # save the value... update head and tail attr = None
+        # then return value
         elif self.head == self.tail:
-            value = self.tail.get_value()
+            ret_value = self.tail.get_value()
             self.head = None
             self.tail = None
-            return value
+            return ret_value
+        # list with +2 elements?
+        # save value of tail
+        # ref a temp node
+        # while node is not the tail
+        #     keep going
+        # update pointer of temp node (prev_tail) to None
+        # return value
         else:
-            # else set head to current
-            cur = self.head
-            # then while there are nodes afterward
-            while cur.get_next_node() != self.tail:
-                # change the current node to the next node, iterate
-                cur = cur.get_next_node()
-            # once the next node is none, set the current node to previous, and add none after it
-            value = self.tail.get_value()
-            cur.set_next_node(None)
-            # set that previous value to the new tail
-            self.tail = cur
-            # return the tail
-            return value
+            ret_value = self.tail.get_value()
+
+            cur_node = self.head
+            while cur_node.get_next_node() is not self.tail:
+                cur_node = cur_node.get_next_node()
+
+            cur_node.set_next_node(None)
+            self.tail = cur_node
+            return ret_value
 
     def contains(self, value):
         # loop through LL until pointer is None

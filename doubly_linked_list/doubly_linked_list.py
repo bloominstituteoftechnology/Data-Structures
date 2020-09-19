@@ -26,13 +26,9 @@ class ListNode:
     def delete(self):
         if self.prev:
             self.prev.next = self.next
-        else:
-            return None
 
         if self.next:
             self.next.prev = self.prev
-        else:
-            return None
 
 """
 Our doubly-linked list class. It holds references to 
@@ -62,10 +58,10 @@ class DoublyLinkedList:
         else:
             # set the new node's next to the current head
             new_node.set_next(self.head)
-            # set the head to the new node
-            self.head = new_node
             # set the head's previous pointer to the new node
             self.head.set_previous(new_node)
+            # set the head to the new node
+            self.head = new_node
         
     """
     Removes the List's current head node, making the
@@ -131,30 +127,35 @@ class DoublyLinkedList:
     order of the other elements of the List.
     """
     def delete(self, node):
-        # Check to see if list is empty
-        if self.head is None and self.tail is None:
-            return None
-            
-        # decrement by 1
+        node.delete()
         self.length -= 1
+        if node is self.head:
+            self.head = self.head.next
+        if node is self.tail:
+            self.tail = self.tail.prev
+        # # Check to see if list is empty
+        # if self.head is None and self.tail is None:
+        #     return None
+            
+        # # decrement by 1
+        # self.length -= 1
 
-        # Check to see if there is only one node 
-        if self.head == self.tail:
-            self.head = None
-            self.tail = None
-        # Check to see if it's the head node
-        elif node == self.head:
-            self.head = node.next
-            node.delete()
-        # Check to see if it's the tail node
-        elif node == self.tail:
-            self.tail = node.prev
-            node.delete()
-        else: 
-            node.delete()
+        # # Check to see if there is only one node 
+        # if self.head == self.tail:
+        #     self.head = None
+        #     self.tail = None
+        # # Check to see if it's the head node
+        # elif node == self.head:
+        #     self.head = node.next
+        #     node.delete()
+        # # Check to see if it's the tail node
+        # elif node == self.tail:
+        #     self.tail = node.prev
+        #     node.delete()
+        # else: 
+        #     node.delete()
 
         
-
     """
     Finds and returns the maximum value of all the nodes 
     in the List.

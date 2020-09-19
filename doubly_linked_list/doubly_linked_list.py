@@ -141,21 +141,94 @@ class DoublyLinkedList:
     List and inserts it as the new head node of the List.
     """
     def move_to_front(self, node):
-        pass
+        if self.head is None and self.tail is None:
+            return None
         
+        if self.head == self.tail:
+            return None
+
+        else:
+            switched_node = node
+            switched_node_prev_node = switched_node.get_prev()
+            switched_node_next_node = switched_node.get_next()
+
+            # switches node to head
+            old_head = self.head
+            old_head.set_prev(switched_node)
+            switched_node.set_next(old_head)
+            self.head = switched_node
+
+            # redefines pointers
+            if switched_node_next_node != None:
+                switched_node_next_node.set_prev(switched_node_prev_node)
+            else:
+                self.tail = switched_node_prev_node
+            if switched_node_prev_node != None:
+                switched_node_prev_node.set_next(switched_node_next_node)
     """
     Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List.
     """
     def move_to_end(self, node):
-        pass
+        if self.head is None and self.tail is None:
+            return None
+        
+        if self.head == self.tail:
+            return None
+
+        else:
+            switched_node = node
+            switched_node_prev_node = switched_node.get_prev()
+            switched_node_next_node = switched_node.get_next()
+
+            # moves the switched node 
+            self.tail.set_next(switched_node)
+            old_tail = self.tail
+            self.tail = switched_node
+            self.tail.set_prev(old_tail)
+            self.tail.set_next(None)
+
+            #moves old pointers
+            if switched_node_prev_node != None:
+                switched_node_prev_node.set_next(switched_node_next_node)
+            else:
+                self.head = switched_node_next_node
+            if switched_node_next_node != None:
+                switched_node_next_node.set_prev(switched_node_prev_node)
+
 
     """
     Deletes the input node from the List, preserving the 
     order of the other elements of the List.
     """
     def delete(self, node):
-        pass
+        deleted_node = node
+        deleted_node_prev_node = deleted_node.get_prev()
+        deleted_node_next_node = deleted_node.get_next()
+
+
+        if self.head == self.tail:
+            deleted_node = None
+            self.head = None
+            self.tail = None
+            self.length -= 1
+            return
+        if deleted_node_prev_node is None:
+            deleted_node = None
+            self.head = deleted_node_next_node
+            self.length -= 1
+            return
+        if deleted_node_next_node is None:
+            deleted_node = None
+            self.tail = deleted_node_prev_node
+            self.length -= 1
+            return
+        else:
+            deleted_node = None
+            deleted_node_prev_node.set_next(deleted_node_next_node)
+            deleted_node_next_node.set_prev(deleted_node_prev_node)
+            self.length -= 1
+            return
 
     """
     Finds and returns the maximum value of all the nodes 
@@ -169,8 +242,17 @@ class DoublyLinkedList:
 
 
 ll = DoublyLinkedList()
-ll.add_to_head(1)
-
-
-ll.remove_from_tail()
-print(ll.remove_from_tail())
+ll.add_to_tail(1)
+ll.add_to_head(9)
+ll.add_to_tail(6)
+print(ll.length)
+print(ll)
+ll.delete(ll.head.next)
+print(ll.length)
+print(ll)
+ll.delete(ll.head)
+print(ll.length)
+print(ll)
+ll.delete(ll.head)
+print(ll.length)
+print(ll)

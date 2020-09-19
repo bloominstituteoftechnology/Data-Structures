@@ -65,7 +65,7 @@ class DoublyLinkedListTests(unittest.TestCase):
         self.assertEqual(self.dll.head.next.value, 1)
         self.assertEqual(len(self.dll), 2)
 
-    """ def test_list_move_to_end(self):
+    def test_list_move_to_end(self):
         self.dll.add_to_head(40)
         self.assertEqual(self.dll.tail.value, 1)
         self.assertEqual(self.dll.head.value, 40)
@@ -95,7 +95,7 @@ class DoublyLinkedListTests(unittest.TestCase):
         self.dll.move_to_front(self.dll.head.next)
         self.assertEqual(self.dll.head.value, 3)
         self.assertEqual(self.dll.head.next.value, 29)
-        self.assertEqual(len(self.dll), 3)
+        self.assertEqual(len(self.dll), 3) 
 
     def test_list_delete(self):
         self.dll.delete(self.node)
@@ -120,9 +120,9 @@ class DoublyLinkedListTests(unittest.TestCase):
         self.dll.delete(self.dll.head)
         self.assertIsNone(self.dll.head)
         self.assertIsNone(self.dll.tail)
-        self.assertEqual(len(self.dll), 0)
+        self.assertEqual(len(self.dll), 0) 
 
-    def test_get_max(self):
+"""     def test_get_max(self):
         self.assertEqual(self.dll.get_max(), 1)
         self.dll.add_to_tail(100)
         self.assertEqual(self.dll.get_max(), 100)

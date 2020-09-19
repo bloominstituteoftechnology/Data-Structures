@@ -235,24 +235,19 @@ class DoublyLinkedList:
     in the List.
     """
     def get_max(self):
-        pass
+        max = 0
+        curr_node = self.head
+
+        while curr_node != None:
+            if curr_node.get_value() > max:
+                max = curr_node.get_value()
+                print(max)
+            curr_node = curr_node.get_next()
+        return max
+        
+
 
     def __str__(self):
         return f"head: {self.head}, tail: {self.tail}"
 
 
-ll = DoublyLinkedList()
-ll.add_to_tail(1)
-ll.add_to_head(9)
-ll.add_to_tail(6)
-print(ll.length)
-print(ll)
-ll.delete(ll.head.next)
-print(ll.length)
-print(ll)
-ll.delete(ll.head)
-print(ll.length)
-print(ll)
-ll.delete(ll.head)
-print(ll.length)
-print(ll)

@@ -132,9 +132,9 @@ class LinkedList:
             self.head = self.head.get_next()
             return value
 
-        def contains(self, value):
-            if not self.head:
-                return False
+    def contains(self, value):
+        if not self.head:
+            return False
   
         # get a reference to the node we're currently at; update this as we traverse the list
         current = self.head
@@ -143,7 +143,22 @@ class LinkedList:
         # return True if the current value we're looking at matches our target value
             if current.get_value() == value:
                 return True
+            else:
+
         # update our current node to the current node's next node
-        current = current.get_next()
+                current = current.get_next()
         # if we've gotten here, then the target node isn't in our list
         return False
+
+    def get_max(self):
+        if self.head is None:
+            return None
+        cur_node = self.head
+        cur_max = self.head.get_value()
+        while cur_node is not None:
+            if cur_node.get_value() > cur_max:
+                cur_max = cur_node.get_value()
+            cur_node = cur_node.get_next()
+        
+        return cur_max
+

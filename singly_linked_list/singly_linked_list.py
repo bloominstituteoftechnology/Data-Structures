@@ -83,6 +83,7 @@ class LinkedList:
         # right before self.tail
         val = current.get_next().get_value()
         self.tail = current
+        self.tail.set_next("None")
         return val
 
     def contains(self, value):

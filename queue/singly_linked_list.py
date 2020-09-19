@@ -6,7 +6,7 @@ class Node:
     def get_value(self):
         return self.value
 
-    def get_node(self):
+    def get_next(self):
         return self.next_node
 
     def set_next(self, new_next):
@@ -31,14 +31,14 @@ class LinkedList:
         if not self.head:
             return None
         # if head has no next...
-        if not self.head.get_next:
+        if not self.head.get_next():
             head = self.head
             # sety head reference to None
             self.head = None
             # set tail reference to None
             self.tail = None
             return head.get_value()
-        value = self.head.get_value
+        value = self.head.get_value()
         self.head = self.head.get_next()
         return value
 

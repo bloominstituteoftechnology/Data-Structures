@@ -32,7 +32,7 @@ import sys
 sys.path.append('../singly_linked_list')
 from singly_linked_list import LinkedList
 
-class LLStack: # with a linked list
+class Stack: # with a linked list
     def __init__(self):
         self.size = 0
         self.storage = LinkedList()
@@ -51,7 +51,7 @@ class LLStack: # with a linked list
         return self.storage.remove_head()  
 
 
-class Stack:
+class Stack2:
     def __init__(self):
         self.size = 0
         self.storage = []

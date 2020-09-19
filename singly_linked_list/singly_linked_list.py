@@ -12,6 +12,9 @@ class Node:
     def set_next(self, new_node):
         self.next_node = new_node
 
+    def __str__(self):
+        return f'{self.value}'
+
 class LinkedList:
     def __init__(self):
         self.head = None
@@ -62,3 +65,16 @@ class LinkedList:
             self.head = self.head.get_next()
             return value
 
+    def __str__(self):
+        return f'tail: {self.tail}, head: {self.head} '
+
+
+
+l = LinkedList()
+
+l.add_to_tail(1)
+l.add_to_tail(2)
+l.add_to_tail(3)
+
+
+print(l)

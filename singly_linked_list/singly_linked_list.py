@@ -1,5 +1,5 @@
 class Node:
-    def __init__(self, value, next_node=None):
+    def __init__(self, value=None, next_node=None):
         self.value = value
         self.next_node = next_node
 
@@ -9,53 +9,78 @@ class Node:
     def get_next(self):
         return self.next_node
 
-    def set_next(self, new_node):
-        self.next_node = new_node
+    def set_next(self, new_next):
+        self.next_node = new_next
 
 
 class LinkedList:
+    # two flags: head and tail
     def __init__(self):
         self.head = None
         self.tail = None
 
-    def add_to_tail(self, value):
-        new_node = Node(value)
-        if self.head is None and self.tail is None:
+    def add_to_head(self, value):
+        new_node= Node(value)
+        # create Node from input
+        if not self.head and not self.tail:
             self.head = new_node
             self.tail = new_node
         else:
+            new_node.set_next(self.head)
+            self.head = new_node
+
+    def add_to_tail(self, value):
+        new_node = Node(value, None)
+        if not self.head:
+            # if list is empty
+            self.head = new_node
+            self.tail = new_node
+        else:
+            # if not empty
             self.tail.set_next(new_node)
             self.tail = new_node
 
-    def remove_tail(self):
-        if self.head is None and self.tail is None:
-            return None
-        if self.head == self.tail:
-            value = self.tail.get_value()
-            self.head = None
-            self.tail = None
-            return value
-        else:
-            value = self.head.get_value()
-            current_node = self.head
-            while current_node.get_next() != self.tail:
-                current_node = current_node.get_next()
-            self.tail = current_node
-            self.tail.set_next(None)
-            return value
-
     def remove_head(self):
-        if self.head is None and self.tail is None:
+        if not self.head:
             return None
-        if self.head == self.tail:
-            value = self.head.get_value()
+        # if head has no next node
+        if not self.head.get_next():
+            head = self.head
+            # have to change both head and tail since they are both the same item
             self.head = None
             self.tail = None
-            return value
-        else:
-            value = self.head.get_value()
-            self.head = self.head.get_value()
-            return value
+            return head.get_value()
+        value = self.head.get_value()
+        self.head = self.head.get_next()
+        return value
+
+    def contains(self, value):
+        if not self.head:
+            return False
+        # get a reference to the node we're currently at; update this as we traverse this list
+        current = self.head
+        while current:
+            if current.get_value() == value:
+                return True
+            current = current.get_next()
+        return False
+
+    def get_max(self):
+        current = self.head
+        # if there's nothing in the list
+        if not current:
+            return None
+        # if there's only one thing in the list
+        if not current.get_next():
+            return current.get_value()
+        max = current.get_value()
+        # mistake: was only comparing the first element and it wasn't moving
+        # "current" to the next element
+        while current is not None:
+            if max < current.get_value():
+                max = current.get_value()
+            current = current.get_next()
+        return max
 
 
 if __name__ == "__main__":
@@ -65,4 +90,3 @@ if __name__ == "__main__":
     a.add_to_tail(1)
     a.add_to_tail(1)
     print(a.head)
-    a

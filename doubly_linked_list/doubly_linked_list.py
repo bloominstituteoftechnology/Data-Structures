@@ -91,7 +91,7 @@ class DoublyLinkedList:
     def add_to_tail(self, value):
         endNode = ListNode(value)
         if self.head and self.tail:
-            endNode.prev = self.head
+            endNode.prev = self.tail
             self.tail.next = endNode
             self.tail = endNode
         else:

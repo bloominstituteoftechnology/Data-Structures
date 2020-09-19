@@ -181,14 +181,14 @@ class DoublyLinkedList:
             switched_node_prev_node = switched_node.get_prev()
             switched_node_next_node = switched_node.get_next()
 
-            # moves the switched node 
+            # moves node to tail 
             self.tail.set_next(switched_node)
             old_tail = self.tail
             self.tail = switched_node
             self.tail.set_prev(old_tail)
             self.tail.set_next(None)
 
-            #moves old pointers
+            # moves pointers
             if switched_node_prev_node != None:
                 switched_node_prev_node.set_next(switched_node_next_node)
             else:
@@ -245,8 +245,6 @@ class DoublyLinkedList:
             curr_node = curr_node.get_next()
         return max
         
-
-
     def __str__(self):
         return f"head: {self.head}, tail: {self.tail}"
 

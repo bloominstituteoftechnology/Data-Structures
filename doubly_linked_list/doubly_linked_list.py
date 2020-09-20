@@ -20,6 +20,20 @@ class DoublyLinkedList:
 
     def __len__(self):
         return self.length
+
+    def __str__(self):
+        node_values = []
+        if self.head is None:
+            return f"< >, len: {len(self)}"
+        current_node = self.head
+        node_values.append(current_node.value)
+        while current_node.next is not None:
+            current_node = current_node.next
+            node_values.append(current_node.value)
+        output = "< "
+        output += ", ".join([str(node) for node in node_values])
+        output += f" >, len: {len(self)}"
+        return output
     
     """
     Wraps the given value in a ListNode and inserts it 

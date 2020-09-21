@@ -23,7 +23,7 @@ class Stack:
     def push(self, value):
         self.storage.add_to_tail(value)
         self.size+=1 
-        return value
+        
 
     def pop(self):
         if self.size == 0:

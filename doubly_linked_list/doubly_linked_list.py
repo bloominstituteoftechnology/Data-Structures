@@ -7,6 +7,7 @@ class ListNode:
         self.prev = prev
         self.value = value
         self.next = next
+
     def get_val(self):
         return self.value
 

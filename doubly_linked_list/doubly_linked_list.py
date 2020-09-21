@@ -127,6 +127,7 @@ class DoublyLinkedList:
             self.head = node
             self.tail = node
         else:
+            node.prev = None
             node.next = self.head
             self.head.prev = node
             self.head = node

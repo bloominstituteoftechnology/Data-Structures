@@ -14,7 +14,7 @@ class QueueTests(unittest.TestCase):
         self.assertEqual(len(self.stack), 1)
         self.stack.push(4)
         self.assertEqual(len(self.stack), 2)
-        self.stack.push(6)
+        self.stack.push(6)  
         self.stack.push(8)
         self.stack.push(10)
         self.stack.push(12)

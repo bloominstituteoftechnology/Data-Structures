@@ -13,16 +13,88 @@ return elements in First In First Out order.
 Stretch: What if you could only use instances of your Stack class to implement the Queue?
          What would that look like? How many Stacks would you need? Try it!
 """
+
+# THIS IS HOW A QUE WORK ADD TO THE TAIL AND REMOVE FROM THE HEAD
+
+
+##################################################################################
+################################# ARRAY STACK ####################################
+##################################################################################
+
+
 class Queue:
     def __init__(self):
         self.size = 0
-        # self.storage = ?
-    
+        self.storage = []
+
     def __len__(self):
-        pass
+        return len(self.storage)
 
     def enqueue(self, value):
-        pass
+        return self.storage.append(value)
 
     def dequeue(self):
-        pass
+        if len(self.storage) == 0:
+            return None
+        return self.storage.pop(0)
+
+
+##################################################################################
+################################# LINKLIST STACK #################################
+##################################################################################
+
+# import sys
+# sys.path.append('singly_linked_list/')
+# from singly_linked_list import LinkedList
+
+# class Queue:
+#     def __init__(self):
+#         self.size = 0
+#         self.storage = LinkedList()
+
+#     def __len__(self):
+#         return self.size
+
+#     def enqueue(self, value):
+#         self.storage.add_to_tail(value)
+#         self.size += 1
+
+#     def dequeue(self):
+#         if self.size == 0:
+#             return None
+#         self.size -= 1
+#         return self.storage.remove_head()
+
+
+##################################################################################
+################################# STRETCH STACK! #################################
+##################################################################################
+
+
+# import sys
+# sys.path.append('stack')
+# from stack import Stack
+
+# class Queue:
+#     def __init__(self):
+#         self.size1 = 0
+#         self.size2 = 0
+#         self.stack1 = Stack()
+#         self.stack2 = Stack()
+
+#     def __len__(self):
+#         return self.size1
+
+#     def enqueue(self, value):
+#         self.stack1.push(value)
+#         self.size1 += 1
+#         self.size2 += 1
+
+#     def dequeue(self):
+#         if self.size1 == 0:
+#             return None
+#         while self.size2 > 0:
+#             self.stack2.push(self.stack1.pop())
+#             self.size2 -= 1
+#         return self.stack2.pop()
+#         self.size1 -= 1

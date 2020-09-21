@@ -2,6 +2,11 @@
 
 
 ## initial commit
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#PULL REQUEST : 
+  https://github.com/LambdaSchool/Data-Structures/pull/706
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 
 
 Topics:

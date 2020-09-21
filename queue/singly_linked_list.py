@@ -74,10 +74,15 @@ class LinkedList:
                 current_node = self.head
                 while current_node is not None:
                     if current_node.get_next_node() == self.tail:
-                        self.tail = current_node
                         break
 
-        return ret_value
+                    current_node = current_node.get_next_node()
+
+                self.tail = current_node
+                self.tail.set_next_node(None)
+
+            print("outside value", ret_value)
+            return ret_value
 
     def contains(self, value):
         # Loop through LL until next pointer is none

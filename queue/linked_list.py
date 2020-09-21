@@ -1,104 +1,106 @@
 class Node:
-  def __init__(self, value=None, next_node=None, prev_node=None):
-    # the value at this linked list node
-    self.value = value
-    # reference to the next node in the list
-    self.next_node = next_node
-    self.prev_node = prev_node
-  def get_value(self):
-    return self.value
+    def __init__(self, value= None, next_node= None):
+        self.value = value
+        self.next_node = next_node
 
-  def get_next(self):
-    return self.next_node
-
-  def get_prev(self):
-    return self.prev_node
-    
-  def set_next(self, new_next):
-    # set this node's next_node reference to the passed in node
-    self.next_node = new_next
-
-  def set_prev(self, new_prev):
-    self.prev_node = new_prev 
-
+# manager of the nodes
 class LinkedList:
     def __init__(self):
-        # first node in the list 
-        self.head = None
-        self.tail = None 
+        self.head = None # Stores a node, the first node in list
+        self.tail = None # Stores a node that is at the end of the list
+    
+    # return all values in the list a --> b --> c --> d --> None
+    def __str__(self):
+        output = ''
 
-    # O(1) 
+        # will always need the 4 commented lines below to loop through linked lists
+        current_node = self.head # create a tracker node variable
+        while current_node is not None: # loop until it's None
+            output += f'{current_node.value} --> ' # working on current node
+            current_node = current_node.next_node  # update the tracker to next node
+        return output
+
+    # add to head
     def add_to_head(self, value):
-        # always first check if empty
+        # create node to add
         new_node = Node(value)
-        if not self.head and not self.tail:
-            self.head = new_node
-            self.tail = new_node 
-        else:
-            # we want to return the value at the current tail
-            new_node.set_next(self.head)
-            self.head = new_node
-            # remove value at the tail
-            # update
-
-    # run time is now O(1) that we have tail and head     
-    def add_to_tail(self, value):
-        # regardless of if the list is empty or not, we need to wrap the value in a Node 
-        new_node = Node(value)
-        # what if the list is empty? 
-        if not self.head and not self.tail:
+        # check if list is empty
+        if self.head is None and self.tail is None:
             self.head = new_node
             self.tail = new_node
-        # what if the list isn't empty?
         else:
-            # what node do we want to add the new node to? 
-            # the last node in the list 
-            # we can get to the last node in the list by traversing it 
-            # no more traversals since we now keep first and last
-            new_node.set_prev(self.tail)
-            self.tail = new_node 
+            # new_node should point to current head
+            new_node.next_node = self.head
+            # move head to new node
+            self.head = new_node
 
-    # runs in O(1) since have access
-    def remove_from_head(self):
-        # what if the list is empty?
+    # add to tail
+    def add_to_tail(self, value):
+        # create node to add
+        new_node = Node(value)
+        # check if list is empty
+        if self.head is None and self.tail is None:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            # point node at current tail to the new node
+            self.tail.next_node = new_node
+            # move tail to new node
+            self.tail = new_node
+
+    # remove value from head and return the value
+    def remove_head(self):
+        # if list is empty, return nothing, no deletion
         if not self.head:
             return None
-        # what if it isn't empty?
-        else:
-            # we want to return the value at the current head 
-            value = self.head.get_value()
-            # remove the value at the head 
-            # update self.head 
-            self.head = self.head.get_next()
-            return value
+        # if list has only one element, set head/tail to None
+        if self.head.next_node is None:
+            head_value = self.head.value
+            self.head = None
+            self.tail = None
+            return head_value
+        # if there are more elements in the list
+        head_value = self.head.value
+        self.head = self.head.next_node
+        return head_value
 
-    def remove_from_tail(self):
-        if not self.tail:
-            return None 
-        else:
-            # we want to remove and return value at current tail
-            value = self.tail.get_value()
-            # remove value at tail and update self.tail
-            self.tail = self.tail.get_prev()
-            return value 
 
-    def print_ll_elements(self):
-        current = self.head
+    # figure out if certain elements are in a list
+    def contains(self, value):
+        # if list is empty
+        if not self.head:
+            return False
+        # loop through nodes to find our node until we reach the tail
+        current_node = self.head
+        # 
+        while current_node is not None:
+            # is this the node we are looking for?
+            if current_node.value == value:
+                return True
+            # otherwise move to next node
+            current_node = current_node.next_node
+        return False
 
-        while current is not None:
-            print(current.value)
-            current = current.get_next()
-    
-    def print_ll_elements_reverse(self):
-        current = self.tail
+# try it all out
 
-        while current is not None:
-            print(current.value)
-            current = current.get_prev()
+linked_list = LinkedList()
+# add 0 to the list
+linked_list.add_to_head(0)
+# add 1 to the tail
+linked_list.add_to_tail(1)
 
-a = LinkedList()
+# list checks
+print(f'Does the Linked List contain 0? {linked_list.contains(0)}')
+print(f'Does the Linked List contain 1? {linked_list.contains(1)}')
+# check to make sure we can get a false
+print(f'Does the Linked List contain 3? {linked_list.contains(3)}')
 
-a.add_to_head(5)
-a.add_to_head(15)
-a.add_to_head(25)
-a.print_ll_elements()
+# add 2, then 5 to front
+linked_list.add_to_head(2)
+print(f'The start of the list is: {linked_list.head.value}')
+linked_list.add_to_head(5)
+print(f'The start of the list is: {linked_list.head.value}')
+# check that remove works
+linked_list.remove_head()
+print(f'The start of the list is: {linked_list.head.value}')
+print(linked_list)

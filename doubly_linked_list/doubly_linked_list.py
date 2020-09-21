@@ -45,20 +45,13 @@ class DoublyLinkedList:
     """
     def add_to_head(self, value):
         self.length += 1
-        # wrap the input value in a node
         new_node = ListNode(value)
-        # check if the linked list is empty
         if not self.head and not self.tail:
-            # if the list is initially empty, set both head and tail to the new node
             self.head = new_node
             self.tail = new_node
-        # we have a non-empty list, add the new node to the head 
         else:
-            # set the new node's `next` to refer to the current head
             new_node.next = self.head
-            # set the current head's `prev` to refer to the new_node
             self.head.prev = new_node
-            # set the list's head reference to the new node 
             self.head = new_node
         
     """
@@ -153,7 +146,6 @@ class DoublyLinkedList:
     order of the other elements of the List.
     """
     def delete(self, node):
-        print(f"before: {self}")
         # zero nodes:
         if self.head is None:
             return
@@ -179,7 +171,6 @@ class DoublyLinkedList:
                     node.next.prev = None
             else:
                 self.tail = node.prev
-        print(f"after:  {self}")
 
     """
     Finds and returns the maximum value of all the nodes 

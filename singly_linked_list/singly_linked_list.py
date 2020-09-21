@@ -25,6 +25,18 @@ class LinkedList:
         # create a new Node
         new_node = Node(value)
 
+        if self.head is not None:
+            print(f"head: {self.head.value} ", )
+        else:
+            print(f"head: {self.head} ", )
+
+        if self.tail is not None:
+            print(f"tail: {self.tail.value} ")
+        else:
+            print(f"tail: {self.tail} ")
+
+        print(f"newNode: value: {new_node.value} next: {new_node.next_node} ")
+
         if self.head is None:
             # update head & tail attributes
             self.head = new_node
@@ -68,10 +80,25 @@ class LinkedList:
             return ret_value
 
     def remove_tail(self):
-        # empty list
-        # list iwth 1 element
+        # empty lst?
+        if self.head is None:
+            return None
+
+        # list with 1 element
+        ret_value = self.tail.get_value()
+        if self.head == self.tail:
+            self.head = None
+            self.tail = None
+
         # list with +2 elements
-        pass
+        else:
+            cur_node = self.head
+            while cur_node.get_next_node() is not self.tail:
+                cur_node = cur_node.get_next_node()
+            cur_node.set_next_node(None)
+            self.tail = cur_node
+
+        return ret_value
 
     def contains(self, value):
         # loop through LL until next pointer is None
@@ -79,9 +106,34 @@ class LinkedList:
         while cur_node is not None:
             # if we find 'value'
             if cur_node.get_value() == value:
+                print(f"The node contains value {value} ")
                 return True
-        return False
+            cur_node = cur_node.next_node
+            # return False
 
     def get_max(self):
         # TODO time permitting
         pass
+
+    def printList(self):
+        if self.head is None:
+            return "list is empty"
+        currentNode = self.head
+        ret_value = []
+        while True:
+            if currentNode is None:
+                break
+            ret_value.append(currentNode.value)
+            currentNode = currentNode.next_node
+        return ret_value
+
+
+# Tests the List
+# myList = LinkedList()
+# myList.add_to_head(2)
+# myList.add_to_head(3)
+# myList.add_to_head(4)
+# myList.add_to_head(5)
+
+
+# print(f"myList: {myList.printList()} ")

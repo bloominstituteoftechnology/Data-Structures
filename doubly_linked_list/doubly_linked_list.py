@@ -18,9 +18,9 @@ class ListNode:
 
     def delete(self):
         if self.prev:
-            self.next.prev = self.prev
-        if self.next:
             self.prev.next = self.next
+        if self.next:
+            self.next.prev = self.prev
 
 """
 Our doubly-linked list class. It holds references to
@@ -74,7 +74,6 @@ class DoublyLinkedList:
     """
     def add_to_tail(self, value):
         new_node = ListNode(value)
-        self.length += 1
         if self.tail is None:
             self.head = new_node
             self.tail = new_node
@@ -82,6 +81,7 @@ class DoublyLinkedList:
             new_node.prev = self.tail
             self.tail.next = new_node
             self.tail = new_node
+        self.length += 1
 
     """
     Removes the List's current tail node, making the
@@ -98,13 +98,9 @@ class DoublyLinkedList:
     List and inserts it as the new head node of the List.
     """
     def move_to_front(self, node):
-        if node is self.head:
-            return
-        if node is self.tail:
-            self.remove_from_tail()
-        else:
-            self.delete(node)
-            self.add_to_head(node.value)
+        value = node.value
+        self.delete(node)
+        self.add_to_head(value)
 
     """
     Removes the input node from its current spot in the

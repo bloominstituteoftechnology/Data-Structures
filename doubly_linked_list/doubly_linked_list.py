@@ -59,7 +59,9 @@ class DoublyLinkedList:
     Returns the value of the removed Node.
     """
     def remove_from_head(self):
-        pass
+        value = self.head.value
+        self.delete(self.head)
+        return value
 
     """
     Wraps the given value in a ListNode and inserts it
@@ -82,7 +84,11 @@ class DoublyLinkedList:
     List and inserts it as the new head node of the List.
     """
     def move_to_front(self, node):
-        pass
+        if node is self.head:
+            return
+
+        self.delete(node)
+        self.add_to_head(node.value)
 
     """
     Removes the input node from its current spot in the
@@ -96,7 +102,20 @@ class DoublyLinkedList:
     order of the other elements of the List.
     """
     def delete(self, node):
-        pass
+        if self.head is None:
+            return None
+        elif self.head == self.tail:
+            self.head = None
+            self.tail = None
+        elif node is self.head:
+            self.head = node.next
+        elif node is self.tail:
+            self.tail = node.prev
+            node.delete()
+        else:
+            node.delete()
+
+        self.length -= 1
 
     """
     Finds and returns the maximum value of all the nodes

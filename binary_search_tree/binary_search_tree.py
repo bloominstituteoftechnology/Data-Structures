@@ -17,45 +17,81 @@ class BSTNode:
 
     # Insert the given value into the tree
     def insert(self, value):
-        
-        # check if the value is Less than the value of the current node's value 
+        # check if the value is Less than the value of the current node's value
+        if value < self.value: 
             # if there's no left child already there
+            if not self.left:
                 # add the new node to the left
+                left_node = BSTNode(value)
                 # create a BSTNode and encapsulate the value in it and then set it to the Left node
+                self.left = left_node
+                print(f"inserted {value} to the left")
             # otherwise recursively call insert on left node
+            else:
+                self.left.insert(value)
         # otherwise the value is Greater than or Equal to the value of the current node
+        elif value >= self.value:
             # if there's no right child already there
+            if not self.right:
                 # add the new node to the right
+                right_node = BSTNode(value)
                 # create a BSTNode and encapsulate the value in it and then set it to the Right node
+                self.right = right_node
+                print(f"inserted {value} to the right")
             # otherwise recursively call insert on right node
-        pass
+            else:
+                self.right.insert(value)
+        else:
+            print("Cannot insert value")
 
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
         # if the value of the current node matches the target
+        if target == self.value:
             # return True
-        # check if the target is Less than the value of the current node's value 
+            return True
+        # check if the target is Less than the value of the current node's value
+        elif target < self.value:
             # if there's no left child already there
+            if not self.left:
                 # return False
+                return False
             # otherwise
+            else:
                 # return a call of 'contains' on the Left child passing in the target value
+                self.left.contains(target)
         # otherwise the target is Greater than to the value of the current node
+        elif target > self.value:
             # if there's no Right child already there
+            if not self.right:
                 # return False
+                return False
             # otherwise
+            else:
                 # return a call of 'contains' on the Right child passing in the target value
-        pass
+                self.right.contains(target)
+        else:
+            print(f"Could not search tree for {target}")
+        
 
     # Return the maximum value found in the tree
     def get_max(self):
         # check for an empty Tree
+        if not self.left and not self.right:
             # return None
+            print("empty tree")
+            return None
 
         # ** EASY - Recursive **
         # check if there is no node to the Right
+        if not self.right:
             # if True return value
+            print(self.value)
+            return self.value
         # otherwise return a call to get_max on the Right child
+        else:
+            self.right.get_max()
 
         # ** ITERATIVE approach **
         # initialize the max value //self's value
@@ -69,6 +105,13 @@ class BSTNode:
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
+        # call the function passing in the current node's value
+
+        # if there is a node to the Left
+            # call the function on the Left value
+
+        # if there is a node to the Right
+            # call the function on the Right value
         pass
 
     # Part 2 -----------------------
@@ -102,23 +145,25 @@ class BSTNode:
 """
 This code is necessary for testing the `print` methods
 """
-bst = BSTNode(1)
+bst = BSTNode(4)
 
 bst.insert(8)
 bst.insert(5)
-bst.insert(7)
+bst.insert(74)
 bst.insert(6)
 bst.insert(3)
 bst.insert(4)
 bst.insert(2)
 
-bst.bft_print()
-bst.dft_print()
+print(bst.get_max())
 
-print("elegant methods")
-print("pre order")
-bst.pre_order_dft()
-print("in order")
-bst.in_order_dft()
-print("post order")
-bst.post_order_dft()  
+# bst.bft_print()
+# bst.dft_print()
+
+# print("elegant methods")
+# print("pre order")
+# bst.pre_order_dft()
+# print("in order")
+# bst.in_order_dft()
+# print("post order")
+# bst.post_order_dft()  

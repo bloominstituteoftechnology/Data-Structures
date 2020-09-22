@@ -49,25 +49,14 @@ class LinkedList:
                 self.head = self.head.get_next_node()
             return ret_value
     def remove_tail(self):
-        # when list is empty
         if self.head is None:
             return None
-        # List with one element
         if self.head == self.tail:
             val = self.head.get_value()
             self.head = None
             self.tail = None
             return val
-        # list with 2 elements
-        else:
-            ret_val= self.tail.get_value()
-
-            cur_node = self.head
-            while cur_node.next()is not self.tail:
-                cur_node = cur_node.get_next_node()
-            cur_node.set_next_node(None)
-            self.tail= cur_node
-        return ret_value
+            
     def contains(self, value):
         cur_node = self.head
         while cur_node is not None:
@@ -75,23 +64,34 @@ class LinkedList:
                 return True
         return False
     def get_max(self):
-        # TODO time permitting 
-        pass     
+        if self.head is None:
+            return
+        if self.head == self.tail:
+            return self.head.get_value()
+            # loop from head to tail
+        high = -sys.maxsize
+        current = self.head
+        while current:
+            if high < current.get_value():
+                high = current.get_value()
+                current = current.get_next()
+            else:
+                current = current.get_next()
+        return high    
     def remove_tail(self):
         if self.head is None:
             return None
-        ret_value = self.tail.get_value()
         if self.head == self.tail:
-   
+            val = self.head.get_value()
             self.head = None
             self.tail = None
-    return value
+            return val
 
-    else:
-        ret_value = self.tail.get_value()
-        cur_node = self.head
-        while cur_node.get_next() is not self.tail:
-            cur_node = cur_node.get_next_node()
-        cur_node.set_next_node(None)
-        self.tail = cur_node
-    return 
+        current = self.head
+        while current.get_next() != self.tail:
+            current = current.get_next()
+        # right before self.tail
+        val = current.get_next().get_value()
+        self.tail = current
+        self.tail.set_next("None")
+        return val

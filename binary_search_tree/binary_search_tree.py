@@ -60,7 +60,7 @@ class BSTNode:
             # otherwise
             else:
                 # return a call of 'contains' on the Left child passing in the target value
-                self.left.contains(target)
+                return self.left.contains(target)
         # otherwise the target is Greater than to the value of the current node
         elif target > self.value:
             # if there's no Right child already there
@@ -70,7 +70,7 @@ class BSTNode:
             # otherwise
             else:
                 # return a call of 'contains' on the Right child passing in the target value
-                self.right.contains(target)
+                return self.right.contains(target)
         else:
             print(f"Could not search tree for {target}")
         
@@ -78,7 +78,7 @@ class BSTNode:
     # Return the maximum value found in the tree
     def get_max(self):
         # check for an empty Tree
-        if not self.left and not self.right:
+        if not self.value:
             # return None
             print("empty tree")
             return None
@@ -87,11 +87,10 @@ class BSTNode:
         # check if there is no node to the Right
         if not self.right:
             # if True return value
-            print(self.value)
             return self.value
         # otherwise return a call to get_max on the Right child
         else:
-            self.right.get_max()
+            return self.right.get_max()
 
         # ** ITERATIVE approach **
         # initialize the max value //self's value
@@ -101,7 +100,6 @@ class BSTNode:
             # move onto the next right node
 
         # return max value
-        pass
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
@@ -149,11 +147,14 @@ bst = BSTNode(4)
 
 bst.insert(8)
 bst.insert(5)
-bst.insert(74)
+bst.insert(7)
 bst.insert(6)
 bst.insert(3)
 bst.insert(4)
 bst.insert(2)
+
+print(bst.contains(6))
+print(bst.contains(56))
 
 print(bst.get_max())
 

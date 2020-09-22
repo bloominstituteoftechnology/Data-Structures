@@ -19,7 +19,6 @@ class ListNode:
 Our doubly-linked list class. It holds references to 
 the list's head and tail nodes.
 """
-
 class DoublyLinkedList:
     def __init__(self, node=None):
         self.head = node
@@ -101,7 +100,7 @@ class DoublyLinkedList:
         # DLL not empty
         self.delete(self.tail)        
         return current_tail.value
-            
+
     """
     Removes the input node from its current spot in the 
     List and inserts it as the new head node of the List.
@@ -137,6 +136,7 @@ class DoublyLinkedList:
             node.prev = None
             # set head to node
             self.head = node
+            
         
     """
     Removes the input node from its current spot in the 
@@ -172,12 +172,13 @@ class DoublyLinkedList:
             node.next = None
             # set tail to node
             self.tail = node
+            
 
     """
     Deletes the input node from the List, preserving the 
     order of the other elements of the List.
     """
-     def delete(self, node):
+    def delete(self, node):
         self.length -= 1
         # if no other item in list:
         if (not node.next) and (not node.prev):
@@ -201,6 +202,13 @@ class DoublyLinkedList:
             # set node's prev next to node's next
             # set node's next prev node's prev
             node.prev.next, node.next.prev = node.next, node.prev
+
+        # TODO:
+            # if self.prev:
+            #     self.prev.next = self.next
+            # if self.next:
+            #     self.next.prev = self.prev
+
 
     """
     Finds and returns the maximum value of all the nodes 

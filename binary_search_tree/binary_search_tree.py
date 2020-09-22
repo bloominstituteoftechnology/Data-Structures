@@ -113,7 +113,7 @@ class BSTNode:
             # call the function on the Left value
             self.left.for_each(fn)
         # if there is a node to the Right
-        else:
+        if self.right:
             # call the function on the Right value
             self.right.for_each(fn)
         

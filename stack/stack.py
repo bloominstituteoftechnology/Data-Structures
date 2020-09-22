@@ -10,37 +10,40 @@ return elements in Last In First Out order.
 3. What is the difference between using an array vs. a linked list when 
    implementing a Stack?
 """
-from doubly_linked_list import DoublyLinkedList
-import sys
-sys.path.append('../doubly_linked_list')
+from singly_linked_list import Node, LinkedList
 
-class Stack:
+class ListStack:
     def __init__(self):
         self.size = 0
-        # self.storage = ?
-        self.storage = DoublyLinkedList()
+        self.storage = list()
 
     def __len__(self):
         return self.size
 
     def push(self, value):
-        # push means we are adding to the top/head of the DLL_Stack
-        # we need to increment/increase size by 1
+        self.storage.append(value)
         self.size += 1
-        # use add_to_head() to add the value in a new node
-        # to the top/head of the DLL_Stack
-        self.storage.add_to_head(value)
-
 
     def pop(self):
-        # In pop function, we are subtracting/removing from the top/head of the DLL_Stack
-        # if there is no node in storage
-        if self.storage.head == None:
-            # otherwise, return None
+        if self.size == 0:
             return None
+        self.size -= 1
+        return self.storage.pop()
 
-        else:
-            # we will need to decrement/decrease size by 1
-            self.size -= 1
-            # use the function remove_from_head() to delete the last node added onto the DLL_Stack
-            return self.storage.remove_from_head()
+class Stack:
+    def __init__(self):
+        self.size = 0
+        self.storage = LinkedList()
+    
+    def __len__(self):
+        return self.size
+    
+    def push(self, value):
+        self.storage.add_to_tail(value)
+        self.size += 1
+    
+    def pop(self):
+        if self.size == 0:
+            return None
+        self.size -= 1
+        return self.storage.remove_tail()

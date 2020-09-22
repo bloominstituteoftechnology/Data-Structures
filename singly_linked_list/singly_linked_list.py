@@ -69,24 +69,47 @@ class LinkedList:
                 return old_head
 
     def remove_tail(self):
-        # if we have a non empty linked list 
-        if self.tail is None and self.head is None:
-            return 
-        # we have to start at the head and move down the linked list 
-        #until we get to the node right before the tail 
-        #iterate over our linked list 
-        
-        current =self.head
+        # if we have an emoty list we dont have to remove anything 
+        if self.head is None :
+            return None
+        #else return value of the old head
+        else:
+            ret_value=self.tail.get_value()
 
-        while current.get_next_node()is not self.tail:
-            current=current.get_next_node()
-        
-        #at this point current is the node right before the tail 
-        #set the tail to be none 
-        val=self.tail.get_value()
-        self.tail=None
-        #move self.tail to the Node right before 
-        self.tail=current
-        return val
+        #if we have a list with one element 
+        if self.head==self.tail:
+           self.head=None
+           self.tail=None
 
+        #list with two elements 
+        else:
+             # if current.next node is not the tail 
+             # assign current to current.next.. then you set it to None making that the new tail 
+             # return the current value
+
+            cur_node=self.head
+            while cur_node.get_next_node()is not self.tail:
+                cur_node=cur_node.get_next_node()
+        # keep going 
+        #update pointer of temp node (prev_tail)None 
+            cur_node.set_next_node(None)
+            self.tail=cur_node
+        #return value 
+        return ret_value
+
+    def contains(self,value):
+        cur_node=self.head
+        while cur_node is not None:
+            # if value exists
+            if cur_node.get_value()==value:
+                return True
+        
+        return False
+
+
+
+
+
+
+        
 

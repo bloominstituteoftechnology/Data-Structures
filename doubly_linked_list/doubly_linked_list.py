@@ -8,6 +8,10 @@ class ListNode:
         self.value = value
         self.next = next
 
+    def get_value(self):
+        return self.value
+
+
     '''
     Uses pointers and rearranges to effectively delete a node.
     '''
@@ -69,7 +73,15 @@ class DoublyLinkedList:
     the old tail node's next pointer accordingly.
     """
     def add_to_tail(self, value):
-        pass
+        new_node = ListNode(value)
+        self.length += 1
+        if self.tail is None:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.prev = self.tail
+            self.tail.next = new_node
+            self.tail = new_node
 
     """
     Removes the List's current tail node, making the
@@ -77,7 +89,9 @@ class DoublyLinkedList:
     Returns the value of the removed Node.
     """
     def remove_from_tail(self):
-        pass
+        value = self.tail.value
+        self.delete(self.tail)
+        return value
 
     """
     Removes the input node from its current spot in the
@@ -86,9 +100,11 @@ class DoublyLinkedList:
     def move_to_front(self, node):
         if node is self.head:
             return
-
-        self.delete(node)
-        self.add_to_head(node.value)
+        if node is self.tail:
+            self.remove_from_tail()
+        else:
+            self.delete(node)
+            self.add_to_head(node.value)
 
     """
     Removes the input node from its current spot in the
@@ -104,7 +120,7 @@ class DoublyLinkedList:
     def delete(self, node):
         if self.head is None:
             return None
-        elif self.head == self.tail:
+        elif self.head is self.tail:
             self.head = None
             self.tail = None
         elif node is self.head:

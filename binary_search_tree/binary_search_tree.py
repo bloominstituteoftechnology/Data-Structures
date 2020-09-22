@@ -17,15 +17,54 @@ class BSTNode:
 
     # Insert the given value into the tree
     def insert(self, value):
+        
+        # check if the value is Less than the value of the current node's value 
+            # if there's no left child already there
+                # add the new node to the left
+                # create a BSTNode and encapsulate the value in it and then set it to the Left node
+            # otherwise recursively call insert on left node
+        # otherwise the value is Greater than or Equal to the value of the current node
+            # if there's no right child already there
+                # add the new node to the right
+                # create a BSTNode and encapsulate the value in it and then set it to the Right node
+            # otherwise recursively call insert on right node
         pass
 
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
+        # if the value of the current node matches the target
+            # return True
+        # check if the target is Less than the value of the current node's value 
+            # if there's no left child already there
+                # return False
+            # otherwise
+                # return a call of 'contains' on the Left child passing in the target value
+        # otherwise the target is Greater than to the value of the current node
+            # if there's no Right child already there
+                # return False
+            # otherwise
+                # return a call of 'contains' on the Right child passing in the target value
         pass
 
     # Return the maximum value found in the tree
     def get_max(self):
+        # check for an empty Tree
+            # return None
+
+        # ** EASY - Recursive **
+        # check if there is no node to the Right
+            # if True return value
+        # otherwise return a call to get_max on the Right child
+
+        # ** ITERATIVE approach **
+        # initialize the max value //self's value
+        # get a ref to the current node
+        # Loop while there is still a Node
+            # if the current value is greater than the max value, update the max value
+            # move onto the next right node
+
+        # return max value
         pass
 
     # Call the function `fn` on the value of each node

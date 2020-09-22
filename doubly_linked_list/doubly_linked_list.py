@@ -10,9 +10,9 @@ class ListNode:
 
     def delete(self):
         if self.prev:
-            self.next.prev = self.prev
-        if self.next:
             self.prev.next = self.next
+        if self.next:
+            self.next.prev = self.prev
             
 """
 Our doubly-linked list class. It holds references to 
@@ -53,23 +53,10 @@ class DoublyLinkedList:
     Returns the value of the removed Node.
     """
     def remove_from_head(self):
-        # empty list
-        if self.head is None and self.tail is None:
-            return None
-        else: 
-            # store head value before removal
-            value = self.head.value
-            #  with 1 element
-            if self.head == self.tail:
-                self.head = None
-                self.tail = None
-                self.length = 0
-                return value
-            self.head = self.head.next
-            if self.head:
-                self.head.prev = None
-            self.length -= 1
-            return value
+        # save value to return
+        value = self.head.value
+        self.delete(self.head)
+        return value
 
     """
     Wraps the given value in a ListNode and inserts it 
@@ -170,19 +157,16 @@ class DoublyLinkedList:
     """
     def get_max(self):
         # empty list
-        if not self.head:
-            return
-        # start with the head as the current value
-        current = self.head
-        # the current node is the max, for now
-        max = current.value
-        # while we can continue to iterate
-        while current:
-            # if the current node is greater than the max
-            if current.value > max:
-                # then this node becomes the new maximum!
-                max = current.value
-            # go to the next value (if it's None, the loop will end)
-            current = current.next
-        # once all values have been checked, return the max value
-        return max
+        if self.head is None:
+            return None
+        # keep track of current node
+        # keep track of max
+        cur_node = self.head
+        max_value = self.head.value
+        # loop through DLL
+        while cur_node: # same as saying is not none
+            # comparing with cur_max
+            if cur_node.value > max_value:
+                max_value = cur_node.value
+            cur_node = cur_node.next
+        return max_value

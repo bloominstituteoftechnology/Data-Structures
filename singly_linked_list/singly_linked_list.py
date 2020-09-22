@@ -83,10 +83,6 @@ class LinkedList:
             self.tail.set_next_node(None)
             return value
 
-
-
-
-
     def contains(self, value):
         cur_node = self.head
         while cur_node is not None:

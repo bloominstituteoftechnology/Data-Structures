@@ -17,6 +17,12 @@ class BSTNode:
 
     # Insert the given value into the tree
     def insert(self, value):
+        # check if value is int
+        value_type = type(value)
+        if value_type != int and value_type != float:
+            print(f"Error: Insert type is {value_type}")
+            print("type must be 'int'")
+            return
         # check if the value is Less than the value of the current node's value
         if value < self.value: 
             # if there's no left child already there
@@ -25,7 +31,6 @@ class BSTNode:
                 left_node = BSTNode(value)
                 # create a BSTNode and encapsulate the value in it and then set it to the Left node
                 self.left = left_node
-                print(f"inserted {value} to the left")
             # otherwise recursively call insert on left node
             else:
                 self.left.insert(value)
@@ -37,12 +42,10 @@ class BSTNode:
                 right_node = BSTNode(value)
                 # create a BSTNode and encapsulate the value in it and then set it to the Right node
                 self.right = right_node
-                print(f"inserted {value} to the right")
             # otherwise recursively call insert on right node
             else:
                 self.right.insert(value)
-        else:
-            print("Cannot insert value")
+            
 
     # Return True if the tree contains the value
     # False if it does not
@@ -104,13 +107,16 @@ class BSTNode:
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
         # call the function passing in the current node's value
-
+        fn(self.value)
         # if there is a node to the Left
+        if self.left:
             # call the function on the Left value
-
+            self.left.for_each(fn)
         # if there is a node to the Right
+        else:
             # call the function on the Right value
-        pass
+            self.right.for_each(fn)
+        
 
     # Part 2 -----------------------
 
@@ -151,7 +157,7 @@ bst.insert(7)
 bst.insert(6)
 bst.insert(3)
 bst.insert(4)
-bst.insert(2)
+bst.insert("2")
 
 print(bst.contains(6))
 print(bst.contains(56))

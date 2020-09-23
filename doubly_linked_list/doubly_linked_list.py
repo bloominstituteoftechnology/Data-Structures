@@ -167,10 +167,10 @@ class DoublyLinkedList1:
 
 
 class ListNode:
-    def __init__(self, value, next=None, prev=None):
-        self.next = next
-        self.prev = prev
+    def __init__(self, value, prev_node=None, next_node=None):
+        self.prev = prev_node
         self.value = value
+        self.next = next_node
 
     def delete(self):
         if self.prev:
@@ -224,6 +224,7 @@ class DoublyLinkedList:
     """
     def add_to_tail(self, value):
         new_node = ListNode(value)
+        self.length += 1
 
         if self.tail is None:
             self.tail = new_node
@@ -250,7 +251,7 @@ class DoublyLinkedList:
     def move_to_front(self, node):
         if node is self.head:
             return 
-        self.delete(node)
+        node.delete()
         self.add_to_head(node.value)
         
     """
@@ -260,7 +261,7 @@ class DoublyLinkedList:
     def move_to_end(self, node):
         if node is self.tail:
             return
-        self.delete(node)
+        node.delete()
         self.add_to_tail(node.value)
 
     """
@@ -273,11 +274,11 @@ class DoublyLinkedList:
         # DO need to update head, tail
         if self.head is None:
             return None
-        elif self.head == self.tail:
+        elif self.head is self.tail:
             self.head = None
             self.tail = None
         elif node is self.head: # list has 2 or more nodes
-            self.head = node.next_node # Update head attribute
+            self.head = node.next # Update head attribute
             node.delete() # deal with the prev and next pointers
         elif node is self.tail:
             self.tail = node.prev # the new tail is the node before it
@@ -291,12 +292,12 @@ class DoublyLinkedList:
     Finds and returns the maximum value of all the nodes 
     in the List.
     """
-    def get_max(self):
+    def get_max(self): # @ :15 of lecture
         if self.head is None:
             return None
         cur_node = self.head
         cur_max = self.head.value
-        while cur_node is not None:
+        while cur_node:
             if cur_node.value > cur_max:
                 cur_max = cur_node.value
             cur_node = cur_node.next

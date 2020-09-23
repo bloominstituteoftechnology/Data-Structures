@@ -16,13 +16,20 @@ class BSTNode:
     def __init__(self, value):
         # current nodes value
         self.value = value
-
         self.left = None
         self.right = None
 
     # Insert the given value into the tree
     def insert(self, value):
-        # check whether new node's value is less than current node's value
+        # check the new nodes value is less than current nodes value
+            # if there s not left child already here
+                # add the new node to the left
+                # create a BST node and encapsulate the value in it then set it to the left
+            # otherwise call insert on the left node
+        # otherwise (the new nodes value is greaterthan or equal to the current nodes value)
+            # if there is no right child already here
+                # add the new node to the right
+            # otherwise 
         if value < self.value:
             if not self.left:
                 self.left = BSTNode(value)
@@ -42,7 +49,7 @@ class BSTNode:
         if self.value == target:
             return True
         if target < self.value:
-            if not self/left:
+            if not self.left:
                 return False
             else:
                 return self.left.contains(target)
@@ -55,12 +62,26 @@ class BSTNode:
 
     # Return the maximum value found in the tree
     def get_max(self):
-        #U: traverse BST to find the global max
-        #1. check you input --> is there a node here
-        #2. declare max variable == self.value
-        #3. iterate through tree until we hit Null
-        #4. update max value
-        #5. move to the right
+        # check for empty tree
+            # return None
+
+# ------------------------------------------------
+        # recursive approach
+        # CHECK IF THERE IS NO NODE TO THE RIGHT
+            # return the nodes value
+        # return a call to get the dmax on the right child
+# -------------------------------------------------
+        # iterative approach
+
+        # initialize the max value
+
+        # get a ref to the current node
+        
+        # loop while there is still a current node
+            # if the current value is greater than the max, value update the max value 
+            # move on to the nedt right node
+
+        # return the max value
 
         if not self:
             return None
@@ -81,9 +102,13 @@ class BSTNode:
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-        #U: apply fn to each node of tree
-        #1. apply fn to root
-        #2. call for_each on left and right subtrees
+        # call the fucntion passing in the current nodes value
+
+        # if there is a node to the left
+            # call the function on the left value
+
+        # if there is a node on the right
+            # call the function on the right
 
         if not self:
             return

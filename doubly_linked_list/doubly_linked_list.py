@@ -10,9 +10,9 @@ class ListNode:
 
     def delete(self):
         if self.prev:
-            self.next.prev = self.prev
-        if self.next:
             self.prev.next = self.next
+        if self.next:
+            self.next.prev = self.prev
             
 """
 Our doubly-linked list class. It holds references to 
@@ -51,24 +51,10 @@ class DoublyLinkedList:
     Returns the value of the removed Node.
     """
     def remove_from_head(self):
-        # an empty list
-        if self.head is None:
-            return None
-        # a list of one element
-        elif self.head is self.tail:
-            current_val = self.head     # saves current head to return later
-            self.delete(self.head)      # deletes current head
-            self.add_to_head(self.tail) # sets tail to head
-            self.length = 0
-            return current_val.value
-        # a list of 2+ elements
-        else:
-            current_node = self.head          # saves current head to return later
-            temp_node = self.head.next        # saves node after head for assigment
-            self.head = temp_node             # adds node after previous head
-            self.length -= 1                  # updates the length
-            return current_val.value
-            
+        value = self.head.value
+        self.delete(self.head)
+        return value
+        
     """
     Wraps the given value in a ListNode and inserts it 
     as the new tail of the list. Don't forget to handle 
@@ -80,6 +66,11 @@ class DoublyLinkedList:
             self.head = new_node
             self.tail = new_node
         elif self.tail == self.head: # single item list
+            new_node.prev = self.tail
+            self.tail.next = new_node
+            self.head = self.tail
+            self.tail = new_node
+        else: # list with multiple items
             new_node.prev = self.tail
             self.tail.next = new_node
             self.tail = new_node
@@ -136,10 +127,10 @@ class DoublyLinkedList:
             self.head = None
             self.tail = None
         elif node is self.head: # list with two+ values and removing the head
-            self.head = node.next
+            self.head = self.head.next
             node.delete()
         elif node is self.tail: # list with 2+ values and removing the tail
-            self.tail = node.prev
+            self.tail = self.tail.prev
             node.delete()
         else: # list with 2+ values and removing from somewhere in the middle
             node.delete()
@@ -150,10 +141,12 @@ class DoublyLinkedList:
     in the List.
     """
     def get_max(self):
-        max = self.head
-        temp = self.head.next
+        max = None
+        temp = None
+        temp = max = self.head
 
-        while temp.value != None:
+        while temp is not None:
             if temp.value > max.value:
                 max = temp
-        return max
+            temp = temp.next
+        return max.value

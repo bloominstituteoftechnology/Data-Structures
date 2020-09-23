@@ -125,7 +125,27 @@ class DoublyLinkedList:
     """
 
     def move_to_end(self, node):
-        pass
+        if self.length == 0 or self.length == 1 or node == self.tail:
+            return
+        else:
+            head = self.head
+            tail = self.tail
+            if node != head:
+                tail.next = node
+                node.prev = tail
+
+                prev = node.prev
+                next = node.next
+                prev.next = next
+                next.prev = prev
+
+            else:
+                self.head = head.next
+                tail.next = head
+                tail.prev = None
+                head.next = None
+                head.prev = tail
+            self.tail = node
 
     """
     Deletes the input node from the List, preserving the 

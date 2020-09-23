@@ -2,7 +2,6 @@
 Binary search trees are a data structure that enforce an ordering over 
 the data they store. That ordering in turn makes it a lot more efficient 
 at searching for a particular piece of data in the tree. 
-
 This part of the project comprises two days:
 1. Implement the methods `insert`, `contains`, `get_max`, and `for_each`
    on the BSTNode class.
@@ -15,22 +14,51 @@ class BSTNode:
         self.left = None
         self.right = None
 
-    # Insert the given value into the tree
     def insert(self, value):
-        pass
+        if value < self.value:
+            if not self.left:
+                self.left = BSTNode(value)
+            else:
+                self.left.insert(value)
+        else:
+            if not self.right:
+                self.right = BSTNode(value)
+            else:
+                self.right.insert(value)
 
-    # Return True if the tree contains the value
-    # False if it does not
-    def contains(self, target):
-        pass
+def contains(self, target):
+    if self.value == target:
+      return True
+    if target < self.value:
+      if not self.left:
+        return False
+      else:
+        return self.left.contains(target)
+    else:
+      if not self.right:
+        return False
+      else:
+        return self.right.contains(target)
 
-    # Return the maximum value found in the tree
-    def get_max(self):
-        pass
+def get_max(self):
+    if not self:
+      return None
+    else:
+      if not self.right:
+        return self.value
+      else:
+        return self.right.get_max()
 
-    # Call the function `fn` on the value of each node
-    def for_each(self, fn):
-        pass
+def for_each(self, callback):
+    # We need to traverse the tree similar to how the print works in the demo
+    # For each value append it to the array
+    
+    # Call the function
+    callback(self.value)
+    if self.left:
+      self.left.for_each(callback)
+    if self.right:
+      self.right.for_each(callback)
 
     # Part 2 -----------------------
 
@@ -82,4 +110,4 @@ bst.pre_order_dft()
 print("in order")
 bst.in_order_dft()
 print("post order")
-bst.post_order_dft()  
+bst.post_order_dft() 

@@ -34,7 +34,7 @@ class AVLTree:
                 self.node.left.display(level + 1, '<')
             if self.node.right != None:
                 self.node.right.display(level + 1, '>')
-
+                
     """
     Computes the maximum number of levels there are
     in the tree

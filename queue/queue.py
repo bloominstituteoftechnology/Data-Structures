@@ -42,24 +42,24 @@ class Queue:
         self.size -=1
         return queue.remove_head()
 
-class StackQueue:
-    def __init__(self):
-        self.size = 0
-        self.enstorage = enstack
-        self.destorage = destack
+# class StackQueue:
+#     def __init__(self):
+#         self.size = 0
+#         self.enstorage = enstack
+#         self.destorage = destack
 
-    def enqueue(self,value):
-        if destack.__len__() > 0:
-            while destack.len() > 0:
-                enstack.push(destack.pop())
-            enstack.push(value)
-        else:
-            enstack.push(value)
+#     def enqueue(self,value):
+#         if destack.__len__() > 0:
+#             while destack.len() > 0:
+#                 enstack.push(destack.pop())
+#             enstack.push(value)
+#         else:
+#             enstack.push(value)
         
 
-    def dequeue(self,value):
-        pass
+#     def dequeue(self,value):
+#         pass
 
-crap = StackQueue()
+# crap = StackQueue()
 
-crap.enqueue(2)
+# crap.enqueue(2)

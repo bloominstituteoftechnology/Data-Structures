@@ -187,15 +187,3 @@ class DoublyLinkedList:
                 max_value = current_node.get_value()
             current_node = current_node.next_node()
         return max_value
-        
-
-d = DoublyLinkedList()
-head = ListNode(3)
-tail = ListNode(5)
-
-new_head = ListNode(9)
-
-d.add_to_head(head)
-d.add_to_head(new_head)
-d.add_to_tail(tail)
-print(d.get_max())

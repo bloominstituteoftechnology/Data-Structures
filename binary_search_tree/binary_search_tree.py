@@ -11,7 +11,7 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
-class BSTNode:
+class BSTNode_1:
     def __init__(self, value):
         self.value = value # current nodes value
         self.left = None # if node is smaller than current node
@@ -157,18 +157,43 @@ Redo code from flex
 
 class BSTNode:
     def __init__(self, value):
-        self.value = value
+        self.value = value # this is the parent value if the tree
         self.left = None
         self.right = None
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
+        # Left case
+        if value < self.value:
+            if not self.left:
+                self.left = BSTNode(value) # BSTNode(value) is the value that is being passed in
+            else:
+                self.left.insert(value) # recursive function
+        # Right case
+        else:
+            if not self.right:
+                self.right = BSTNode(value)
+            else:
+                self.right.insert(value)
 
-    # Return True if the tree contains the value
-    # False if it does not
-    def contains(self, target):
-        pass
+    def contains(self, target): # Finding a target value
+        # Base case (target value is found)
+        if self.value == target:
+            return True
+        # Left case
+        if target < self.value:
+            # Check if there is a left child
+            if not self.left:
+                return False
+            # otherwise
+            else:
+                self.left.contains(target)
+                # Right child
+        else:
+            if not self.right:
+                return False
+            else:
+                self.right.contains(target)
 
     # Return the maximum value found in the tree
     def get_max(self):

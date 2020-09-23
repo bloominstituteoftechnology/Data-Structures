@@ -52,7 +52,9 @@ class DoublyLinkedList:
 
     def remove_from_head(self):
         temp = self.head
-        if self.length == 1:
+        if self.length == 0:
+            temp = ListNode(None)
+        elif self.length == 1:
             self.head = None
             self.tail = None
             self.length = 0
@@ -87,7 +89,18 @@ class DoublyLinkedList:
     """
 
     def remove_from_tail(self):
-        pass
+        if self.length == 0:
+            temp = ListNode(None)
+        elif self.length == 1:
+            temp = self.tail
+            self.head = None
+            self.tail = None
+        else:
+            temp = self.tail
+            self.tail = temp.prev
+            self.tail.next = None
+        self.length -= 1
+        return temp.value
 
     """
     Removes the input node from its current spot in the 

@@ -62,8 +62,9 @@ class LinkedList:
         else:
             old_head=self.head.get_value()
             if self.head==self.tail:
-                self.head==None
-                self.tail==None
+                self.head=None
+                self.tail=None
+                return old_head
             else:
                 self.head=self.head.get_next_node()
                 return old_head

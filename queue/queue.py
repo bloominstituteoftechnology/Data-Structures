@@ -35,5 +35,3 @@ class Queue:
             return value
         return None
 
-new_queue = Queue()
-print(f"{new_queue.enqueue(13)}")

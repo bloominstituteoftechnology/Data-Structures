@@ -27,6 +27,12 @@ class Node:
         """
         self.next_node = new_next
 
+    def set_prev(self, new_prev):
+    """
+    Method to update the node's "next_node" to the new_next
+    """
+    self.prev_node = new_prev
+
     
 
 

@@ -3,7 +3,7 @@ from singly_linked_list import LinkedList
 
 class LinkedListTests(unittest.TestCase):
     def setUp(self):
-        self.list = LinkedList()
+        self.list = LinkedList(None,None)
 
     def test_add_to_tail(self):
         self.list.add_to_tail(1)

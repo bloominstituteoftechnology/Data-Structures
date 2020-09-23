@@ -100,7 +100,13 @@ class BSTNode:
     # Depth First Traversal --------------------------------
     # Print Pre-order recursive DFT
     def pre_order_dft(self):
-        
+        if not self:
+            return
+        print(self.value)
+        if self.left:
+            self.left.pre_order_dft()
+            if self.right:
+                self.right.pre_order_dft()
 
     # Print Post-order recursive DFT
     def post_order_dft(self):

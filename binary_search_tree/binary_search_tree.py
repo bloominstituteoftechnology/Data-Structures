@@ -20,7 +20,7 @@ class BSTNode:
         # check if the new nodes value is less than the current nodes value
         if value < self.value:
             # if there is no left child already here
-            if self.left != None:
+            if self.left == None:
                 # add the new node to the left
                 # create a BSTNode and encapsulate the value in it then set it to the left
                 self.left = BSTNode(value)
@@ -30,7 +30,7 @@ class BSTNode:
         # otherwise (the new nodes value is greaterthan or equal to the current node value)
         else:
             # if there is no right child already here
-            if self.right != None:
+            if self.right == None:
                 # add the new node to the right
                 # create a BSTNode and encapsulate the value in it then set it to the right
                 self.right = BSTNode(value)
@@ -70,9 +70,9 @@ class BSTNode:
     # Return the maximum value found in the tree
     def get_max(self):
         # check for an empty tree
-        if self.right == None and self.left == None:
-            # return None
-            return None
+        if self.right == None:
+            # return self
+            return self.value
 
         # ----------------------------------------------
         # recursive approach
@@ -104,13 +104,17 @@ class BSTNode:
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
         # call the function passing in the current nodes value
-
+        fn(self.value)
         # if there is a node to the left
+        if self.left != None:
             # call the function on the left value
+            self.left.for_each(fn)
         
         # if there is a node to the right
+        if self.right != None:
             # call the function on the right node
-        pass
+            self.right.for_each(fn)
+        
 
     # Part 2 -----------------------
 

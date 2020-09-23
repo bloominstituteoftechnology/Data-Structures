@@ -11,7 +11,66 @@ This part of the project comprises two days:
 """
 
 import sys
-sys.path.extend(["queue", "stack", "binary_search_tree"])
+sys.path.extend(['queue', 'stack', 'binary_search_tree', 'binary_search_tree_displayer'])
+from queue import Queue
+from stack import Stack
+# from binary_search_tree_displayer import BSTNodeDisplayer
+
+class BSTDisplayer:
+    def __init__(self, bst):
+        self.bst = bst
+    
+    def display(self):
+        lines, *_ = self._display_aux(self.bst)
+        for line in lines:
+            print(line)
+
+    def _display_aux(self, bst_node):
+        """Returns list of strings, width, height, and horizontal coordinate of the root."""
+        # No child.
+        if bst_node.right is None and bst_node.left is None:
+            line = '%s' % bst_node.value
+            width = len(line)
+            height = 1
+            middle = width // 2
+            return [line], width, height, middle
+
+        # Only left child.
+        if bst_node.right is None:
+            lines, n, p, x = self._display_aux(bst_node.left)
+            s = '%s' % bst_node.value
+            u = len(s)
+            first_line = (x + 1) * ' ' + (n - x - 1) * '_' + s
+            second_line = x * ' ' + '/' + (n - x - 1 + u) * ' '
+            shifted_lines = [line + u * ' ' for line in lines]
+            return [first_line, second_line] + shifted_lines, n + u, p + 2, n + u // 2
+
+        # Only right child.
+        if bst_node.left is None:
+            lines, n, p, x = self._display_aux(bst_node.right)
+            s = '%s' % bst_node.value
+            u = len(s)
+            first_line = s + x * '_' + (n - x) * ' '
+            second_line = (u + x) * ' ' + '\\' + (n - x - 1) * ' '
+            shifted_lines = [u * ' ' + line for line in lines]
+            return [first_line, second_line] + shifted_lines, n + u, p + 2, u // 2
+
+        # Two children.
+        left, n, p, x = self._display_aux(bst_node.left)
+        right, m, q, y = self._display_aux(bst_node.right)
+        s = '%s' % bst_node.value
+        u = len(s)
+        first_line = (x + 1) * ' ' + (n - x - 1) * '_' + s + y * '_' + (m - y) * ' '
+        second_line = x * ' ' + '/' + (n - x - 1 + u + y) * ' ' + '\\' + (m - y - 1) * ' '
+        if p < q:
+            left += [n * ' '] * (q - p)
+        elif q < p:
+            right += [m * ' '] * (p - q)
+        zipped_lines = zip(left, right)
+        lines = [first_line, second_line] + [a + u * ' ' + b for a, b in zipped_lines]
+        return lines, n + m + u, max(p, q) + 2, n + u // 2
+
+# =================================================================
 
 class BSTNode:
     def __init__(self, value):
@@ -71,7 +130,7 @@ class BSTNode:
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
-    def bft_print(self):
+    def bft_print(self, node):
         queue = Queue()
         queue.put(node)
         while not queue.empty():
@@ -84,10 +143,10 @@ class BSTNode:
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
-    def dft_print(self):
+    def dft_print(self, node):
         stack = Stack()
         stack.push(node)
-        while not stack.is Empty():
+        while not stack.isEmpty():
             node = stack.pop()
             print(node.value)
             if node.right:
@@ -110,12 +169,19 @@ class BSTNode:
 
     # Print Post-order recursive DFT
     def post_order_dft(self):
-        pass
+        if not self:
+            return
+        if self.left:
+            self.left.post_order_dft()
+        if self.right:
+            self.right.post_order_dft()
+        print(self.value)
 
 """
 This code is necessary for testing the `print` methods
 """
 bst = BSTNode(1)
+bst_displayer = BSTDisplayer(bst)
 
 bst.insert(8)
 bst.insert(5)
@@ -125,13 +191,15 @@ bst.insert(3)
 bst.insert(4)
 bst.insert(2)
 
-bst.bft_print()
-bst.dft_print()
+bst_displayer.display()
+
+#bst.bft_print(bst)
+#bst.dft_print(bst)
 
 print("elegant methods")
 print("pre order")
 bst.pre_order_dft()
 print("in order")
-bst.in_order_dft()
+bst.in_order_print()
 print("post order")
 bst.post_order_dft()  

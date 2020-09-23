@@ -29,7 +29,7 @@ class BSTNode:
             # otherwise there is a child
             else:
                 # call the left's child's insert method
-                self.left.insert(value)
+                return self.left.insert(value)
         # otherwise value >= nodes value
         else:
             # go right
@@ -38,7 +38,7 @@ class BSTNode:
                 self.right = BSTNode(value)
             # otherwise there is a child
             else:
-                self.right.insert(value)
+                return self.right.insert(value)
             # call the left's child's insert method
 
         # Return True if the tree contains the value
@@ -47,38 +47,47 @@ class BSTNode:
         # base case
         # check root node against target
         # if target == root
-        if self.value == target:
+        if target == self.value:
             return True
         # return true
         # if the target >= root
         # go right
         if target >= self.value:
-            if self.right is None:
+            if not self.right:
                 return False
             else:
-                self.right.contains(target)
+                return self.right.contains(target)
                 # recursion
         # otherwise target < root
         # go left
         if target < self.value:
-            if self.left is None:
+            if not self.left:
                 return False
             else:
-                self.left.contains(target)
+                return self.left.contains(target)
                 # recursion
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+        # if right is true
+        if self.right:
+            return self.right.get_max()
+        else:
+            return self.value
 
     # Call the function `fn` on the value of each node
-    def for_each(self, fn):
-        pass
 
+    def for_each(self, func):
+        func(self.value)
+        if self.right:
+            self.right.for_each(func)
+        if self.left:
+            self.left.for_each(func)
     # Part 2 -----------------------
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
+
     def in_order_print(self):
         pass
 
@@ -107,23 +116,23 @@ class BSTNode:
 """
 This code is necessary for testing the `print` methods
 """
-bst = BSTNode(1)
+# bst = BSTNode(1)
 
-bst.insert(8)
-bst.insert(5)
-bst.insert(7)
-bst.insert(6)
-bst.insert(3)
-bst.insert(4)
-bst.insert(2)
+# bst.insert(8)
+# bst.insert(5)
+# bst.insert(7)
+# bst.insert(6)
+# bst.insert(3)
+# bst.insert(4)
+# bst.insert(2)
 
-bst.bft_print()
-bst.dft_print()
+# bst.bft_print()
+# bst.dft_print()
 
-print("elegant methods")
-print("pre order")
-bst.pre_order_dft()
-print("in order")
-# bst.in_order_dft()
-print("post order")
-bst.post_order_dft()
+# print("elegant methods")
+# print("pre order")
+# bst.pre_order_dft()
+# print("in order")
+# # bst.in_order_print()
+# print("post order")
+# bst.post_order_dft()

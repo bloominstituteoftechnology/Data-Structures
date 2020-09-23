@@ -108,7 +108,16 @@ class DoublyLinkedList:
     """
 
     def move_to_front(self, node):
-        pass
+        prev = node.prev
+        if (node.next != None):
+            next = node.next
+            prev.next = next
+            next.prev = prev
+
+        temp = self.head
+        self.head = node
+        node.next = temp
+        temp.prev = node
 
     """
     Removes the input node from its current spot in the 

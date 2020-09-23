@@ -1,6 +1,5 @@
 from collections import deque
 
-
 """
 Binary search trees are a data structure that enforce an ordering over 
 the data they store. That ordering in turn makes it a lot more efficient 
@@ -14,10 +13,9 @@ This part of the project comprises two days:
 """
 class BSTNode:
     def __init__(self, value):
-        # current nodes value
-        self.value = value
-        self.left = None
-        self.right = None
+        self.value = value # current nodes value
+        self.left = None # if node is smaller than current node
+        self.right = None # if node is larger than current node
 
     # Insert the given value into the tree
     def insert(self, value):

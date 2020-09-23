@@ -167,16 +167,16 @@ class DoublyLinkedList1:
 
 
 class ListNode:
-    def __init__(self, value, prev_node=None, next_node=None):
-        self.prev = prev_node
+    def __init__(self, value, prev=None, next=None):
+        self.prev = prev
         self.value = value
-        self.next = next_node
+        self.next = next
 
     def delete(self):
         if self.prev:
-            self.next.prev = self.prev
-        if self.next:
             self.prev.next = self.next
+        if self.next:
+            self.next.prev = self.prev
 
 class DoublyLinkedList:
     def __init__(self, node = None):
@@ -251,8 +251,13 @@ class DoublyLinkedList:
     def move_to_front(self, node):
         if node is self.head:
             return 
-        node.delete()
+        if node is self.tail:
+          self.remove_from_tail()
+        else:  
+            node.delete()
+            self.length -= 1
         self.add_to_head(node.value)
+
         
     """
     Removes the input node from its current spot in the 
@@ -261,7 +266,11 @@ class DoublyLinkedList:
     def move_to_end(self, node):
         if node is self.tail:
             return
-        node.delete()
+        if node is self.head:
+            self.remove_from_head()
+        else:
+            node.delete()
+            self.length -= 1
         self.add_to_tail(node.value)
 
     """

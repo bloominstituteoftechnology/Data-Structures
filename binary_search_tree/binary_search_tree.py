@@ -73,7 +73,9 @@ class BSTNode:
     # Return the maximum value found in the tree
     def get_max(self):
         # check for an empty tree
+        if self.value == None:
             # return None
+            return None
 
         # recursive approach (use more memory)
         # check if there is no node to the right

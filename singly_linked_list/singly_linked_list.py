@@ -100,6 +100,22 @@ class LinkedList:
             # return value
             return value
 
+    def add_to_head(self, value):
+        # wrap the input value in a node
+        new_node = Node(value)
+        # check if the linked list is empty
+        if not self.head and not self.tail:
+            # if the list is initially empty, set both head and tail to the new node
+            self.head = new_node
+            self.tail = new_node
+        # we have a non-empty list, add the new node to the head
+        else:
+            # set the new node's `next` to refer to the current head
+            new_node.set_next(self.head)
+            # set the list's head reference to the new node
+            self.head = new_node
+
+
 
     def remove_head(self):
         # check for empty list
@@ -125,8 +141,57 @@ class LinkedList:
             # return the value
             return value
 
+    def get_max(self):
+        if not self.head:
+            return None
+        # reference to the largest value we've seen so far
+        max_value = self.head.get_value()
+        # reference to our current node as we traverse the list
+        current = self.head.get_next()
+        # check to see if we're still at a valid list node
+        while current:
+            # check to see if the current value is greater than the max_value
+            if current.get_value() > max_value:
+                # if so, update our max_value variable
+                max_value = current.get_value()
+            # update the current node to the next node in the list
+            current = current.get_next()
+        return max_value
+
+    def printLL(self):
+        current = self.head
+        while(current):
+            print(current.value)
+            current = current.get_next()
+
+
+
 """
 Ran 3 tests in 0.000s
 
 OK
 """
+
+ll = LinkedList()
+# ll.add_to_head = Node(1)
+
+n1 = Node(1)
+n2 = Node(2)
+n3 = Node(3)
+n4 = Node(4)
+n5 = Node(5)
+n6 = Node(6)
+
+ll.add_to_tail(n1)
+ll.add_to_tail(n2)
+ll.add_to_tail(n3)
+ll.add_to_tail(n4)
+ll.add_to_tail(n5)
+ll.add_to_tail(n6)
+
+print(ll.printLL())
+
+print(ll.tail)
+
+print(ll.remove_tail)
+print(ll.remove_head)

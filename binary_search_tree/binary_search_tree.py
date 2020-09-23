@@ -59,7 +59,7 @@ class BSTNode:
             else:
                 # return a call of contains on the left child passing in the target value
                 self.left.contains(target)
-        # otherwise (the target is greater thanthe current nodes value)
+        # otherwise (the target is greater than the current nodes value)
         else:
             # if there is no right child already there
             if not self.right:

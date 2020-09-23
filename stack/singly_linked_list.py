@@ -65,7 +65,7 @@ class LinkedList:
 
     def len(self):
         return self.length
-
+        
     def view(self):
         list = []
         currentnode = self.head
@@ -75,20 +75,4 @@ class LinkedList:
         list.append(str(currentnode.data))
         return '-->'.join(list)
 
-LL = LinkedList(None,None)
-LL.add_to_head(2)
-LL.add_to_tail(4)
-LL.add_to_tail(6)
-print(LL.view())
-LL.remove_head()
-print(LL.view())
-LL.remove_head()
-print(LL.view())
-LL.add_to_tail(5)
-LL.add_to_tail(10)
-LL.add_to_tail(15)
-print(LL.view())
-LL.add_to_tail(6)
-print(LL.view())
-LL.add_to_tail(6)
-print(LL.view())
+    

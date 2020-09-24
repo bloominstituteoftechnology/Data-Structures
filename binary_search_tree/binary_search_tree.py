@@ -53,8 +53,7 @@ class BSTNode:
         if self.right is not None:
             return self.right.value
         else:
-            self.right.get_max()
-
+            return self.right.get_max()
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
@@ -111,8 +110,8 @@ bst.dft_print()
 
 print("elegant methods")
 print("pre order")
-# bst.pre_order_dft()
-# print("in order")
-# bst.in_order_dft()
-# print("post order")
-# bst.post_order_dft()  
+bst.pre_order_dft()
+print("in order")
+bst.in_order_dft()
+print("post order")
+bst.post_order_dft()  

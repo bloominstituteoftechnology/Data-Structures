@@ -41,7 +41,6 @@ class LinkedList:
         else:
 
             self.tail.set_next(new_node)
-
             self.tail = new_node
 
     def remove_tail(self):

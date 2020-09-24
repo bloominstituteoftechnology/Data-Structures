@@ -1,5 +1,3 @@
-
-# Node
 class Node:
     def __init__(self, value=None, next=None):
         self.value = value
@@ -70,20 +68,16 @@ class LinkedList:
         if not self.head:
             # the list is already empty
             return None
-        if self.head is self.tail:
-            value = self.head.get_value()
-            self.head = None
-            self.tail = None
-            return value
 
         curr = self.head
-
-        while curr.get_next() is not self.tail:
+        prev = curr
+        while curr.get_next() != None:
+            prev = curr
             curr = curr.get_next()
 
-        value = self.tail.get_value()
-        self.tail = curr
-        return value
+        prev.set_next(None)
+        self.tail = prev
+        return curr
 
 # get_max performance:
     def get_max(self):

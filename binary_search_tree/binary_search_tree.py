@@ -12,8 +12,8 @@ This part of the project comprises two days:
 
 import sys
 sys.path.extend(['queue', 'stack', 'binary_search_tree', 'binary_search_tree_displayer'])
-from queue import Queue
-from stack import Stack
+# from queue import Queue
+#from stack import Stack
 # from binary_search_tree_displayer import BSTNodeDisplayer
 
 class BSTDisplayer:
@@ -72,6 +72,155 @@ class BSTDisplayer:
 
 # =================================================================
 
+class Node:
+    def __init__(self, value=None, next=None):
+        self.value = value
+        self.next = next
+
+    def __repr__(self):
+        return self.value
+
+    def get_value(self):
+        return self.value
+
+    def get_next(self):
+        return self.next
+
+    def set_next(self, new_next):
+        self.next = new_next
+
+# Singly list
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+
+    def __repr__(self):
+        node = self.head
+        nodes = []
+        while node is not None:
+            nodes.append(node.data)
+            node = node.next
+        nodes.append("None")
+        return " -> ".join(nodes)
+
+# add_to_head performance:
+    def add_to_head(self, value):
+        new_node = Node(value, self.head)
+        self.head = new_node
+        if not self.tail:
+            # set the new node as the tail if the list is currently empty
+            self.tail = new_node
+
+# add_to_tail performance:
+    def add_to_tail(self, value):
+        new_node = Node(value)
+        if not self.head:
+            # set the new node as the head if the list is currently empty
+            self.head = new_node
+            self.tail = new_node
+        else:
+            self.tail.set_next(new_node)
+            self.tail = new_node
+
+# remove_head performance:
+    def remove_head(self):
+        if not self.head:
+            # the list is already empty
+            return None
+
+        removed_value = self.head.get_value()
+        self.head = self.head.next
+        if not self.head:
+            # the list is now empty as the one and only item was removed
+                self.tail = None
+        return removed_value
+
+# remove tail performance:
+    def remove_tail(self):
+        if not self.head:
+            # the list is already empty
+            return None
+
+        curr = self.head
+        prev = curr
+        while curr.get_next() != None:
+            prev = curr
+            curr = curr.get_next()
+
+        prev.set_next(None)
+        self.tail = prev
+        return curr
+
+# get_max performance:
+    def get_max(self):
+        if not self.head:
+            return None
+
+        curr = self.head
+        max_value = curr.get_value()
+        while curr != None:
+            max_value = max(max_value, curr.get_value())
+            curr = curr.get_next()
+        return max_value
+
+# contains performance:
+    def contains(self, value):
+        curr = self.head
+        while curr != None:
+            if curr.get_value() is value:
+                return True
+            curr = curr.get_next()
+        return False
+
+# # 2 Queue (using a linked list)
+class Queue:
+    def __init__(self):
+        self.size = 0
+        self.storage = LinkedList()
+    
+    def __len__(self):
+        return self.size
+
+    def enqueue(self, value):
+        self.storage.add_to_tail(value)
+        self.size += 1
+
+    def dequeue(self):
+        if self.size == 0:
+            return None
+        else:
+            self.size -= 1
+            return self.storage.remove_head()
+
+
+class Stack:
+    def __init__(self):
+        self.size = 0
+        self.storage = LinkedList()
+
+    def isEmpty(self):
+        return self.size == 0
+
+    # len performance: O(1)
+    def __len__(self):
+        return self.size
+
+    # push performance: O(1)
+    def push(self, value):
+        self.storage.add_to_head(value)
+        self.size += 1
+
+    # pop performance: O(1)
+    def pop(self):
+        if self.size == 0:
+            return None
+        else:
+            self.size -= 1
+            return self.storage.remove_head()
+
+
 class BSTNode:
     def __init__(self, value):
         self.value = value
@@ -80,9 +229,14 @@ class BSTNode:
 
     # Insert the given value into the tree
     def insert(self, value):
+        #check if the new node's value is less than the current node's value.
         if value < self.value:
+            #if there's no left child alredy here
             if self.left is None:
+                #add new node to the left
+                #create a BSTNode and encapsulate the value in it then set it to the left
                 self.left = BSTNode(value)
+                #otherwise call insert on the left node
             else:
                 self.left.insert(value)
         elif value >= self.value:
@@ -94,6 +248,7 @@ class BSTNode:
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
+        # if the value of the current node matches the target
         if target == self.value:
             return True
         elif target < self.value:
@@ -132,14 +287,14 @@ class BSTNode:
     # in an iterative breadth first traversal
     def bft_print(self, node):
         queue = Queue()
-        queue.put(node)
-        while not queue.empty():
-            node = queue.get()
+        queue.enqueue(node)
+        while queue.size > 0:
+            node = queue.dequeue()
             print(node.value)
             if node.left:
-                queue.put(node.left)
+                queue.enqueue(node.left)
             if node.right:
-                queue.put(node.right)
+                queue.enqueue(node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
@@ -164,8 +319,8 @@ class BSTNode:
         print(self.value)
         if self.left:
             self.left.pre_order_dft()
-            if self.right:
-                self.right.pre_order_dft()
+        if self.right:
+            self.right.pre_order_dft()
 
     # Print Post-order recursive DFT
     def post_order_dft(self):
@@ -193,8 +348,8 @@ bst.insert(2)
 
 bst_displayer.display()
 
-#bst.bft_print(bst)
-#bst.dft_print(bst)
+bst.bft_print(bst)
+bst.dft_print(bst)
 
 print("elegant methods")
 print("pre order")

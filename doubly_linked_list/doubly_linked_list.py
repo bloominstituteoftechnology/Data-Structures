@@ -49,7 +49,7 @@ class DoublyLinkedList:
 
     def add_node_to_head(self, node):
         self.length += 1
-        node.set_prev(None)
+        node.set_prev(None) 
         node.set_next(self.head)
         if self.head:
             self.head.set_prev(node)

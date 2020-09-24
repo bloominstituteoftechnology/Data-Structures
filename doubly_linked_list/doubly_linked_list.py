@@ -32,7 +32,7 @@ class DoublyLinkedList:
     def add_to_head(self, value):
         new_node = ListNode(value)
         
-        if self.length == 0:
+        if not self.tail and not self.head:
            
             self.head = new_node
             self.tail = new_node
@@ -109,7 +109,7 @@ class DoublyLinkedList:
            
             self.tail.prev.next = None
           
-            self.tail = tail.prev
+            self.tail = tail.prev 
        
         else:
           

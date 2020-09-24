@@ -11,16 +11,10 @@ class ListNode:
         self.next = next_node
 
     def delete(self):
-        if self.next is None:  # ASK ADAM ABOUT THESE TWO
-            self.prev.next = None
-            return
-        if self.prev is None:
-            self.next.prev = None
-            return
         if self.prev:
-            self.next.prev = self.prev
-        if self.next:
             self.prev.next = self.next
+        if self.next:
+            self.next.prev = self.prev
 
 
 """
@@ -166,11 +160,3 @@ class DoublyLinkedList:
             current_node = current_node.next
 
         return highest
-
-
-new_node = ListNode(1)
-dll = DoublyLinkedList(new_node)
-
-dll.add_to_tail(3)
-
-print(dll.tail.prev.value)

@@ -52,9 +52,7 @@ class Stack:
             return None
         self.size -=1
         return self.storage.remove_head()
-# Stack().push(100)
 
-# print(Stack)
 
 
 

@@ -113,13 +113,14 @@ class DoublyLinkedList:
     def move_to_end(self, node):
         if node is self.tail:
             return
+        value = node.value
         if node is self.head:
             self.remove_from_head()
         else:
             node.delete()
 
             self.length -= 1
-        self.add_to_tail(node.value)
+        self.add_to_tail(value)
 
 
     """

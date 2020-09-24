@@ -97,12 +97,18 @@ class BSTNode:
 
         # ** ITERATIVE approach **
         # initialize the max value //self's value
+        max_value = self.value
         # get a ref to the current node
+        current_node = self
         # Loop while there is still a Node
+        while current_node:
             # if the current value is greater than the max value, update the max value
+            if current_node.value > max_value:
+                max_value = current_node.value
             # move onto the next right node
-
+            current_node = self.right
         # return max value
+        return max_value
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
@@ -113,7 +119,7 @@ class BSTNode:
             # call the function on the Left value
             self.left.for_each(fn)
         # if there is a node to the Right
-        else:
+        if self.right:
             # call the function on the Right value
             self.right.for_each(fn)
         
@@ -132,12 +138,40 @@ class BSTNode:
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self):
-        pass
+        # uses Queues
+        # set current_node
+        current_node = self
+        # create queue and initialize with current_node
+        queue = [current_node]
+
+        # while there's data in the queue
+        while queue:
+            # dequeue from queue to the current_node
+            current_node = queue.pop(0)
+            print(current_node.value)
+            if current_node.left:
+                queue.append(current_node.left)
+            if current_node.right:
+                queue.append(current_node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self):
-        pass
+        # uses Stacks
+        # set current_node
+        current_node = self
+        # create queue and initialize with current_node
+        stack = [current_node]
+
+        # while there's data in the queue
+        while stack:
+            # pop from stack to the current_node
+            current_node = stack.pop()
+            print(current_node.value)
+            if current_node.left:
+                stack.append(current_node.left)
+            if current_node.right:
+                stack.append(current_node.right)
 
     # Stretch Goals -------------------------
     # Note: Research may be required
@@ -171,7 +205,9 @@ bst.insert(6)
 bst.insert(3)
 bst.insert(4)
 
+print("Breadth-first Traversal")
 bst.bft_print()
+print("Depth-first Traversal")
 bst.dft_print()
 
 print("elegant methods")

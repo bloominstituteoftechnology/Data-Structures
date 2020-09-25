@@ -97,27 +97,18 @@ class BSTNode:
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self): # use a queue
-        # create a queue
         queue = Queue()
-        # enqueue the first node (self)
         queue.enqueue(self)
 
-        # while there is data on the queue
         while len(queue) > 0:
-            # dequeue from queue on to current_node
             current_node = queue.dequeue()
             
-            # print the current_node's value
             print(current_node.value)
 
-            # if the current_node has a left child
             if current_node.left:
-                # enqueue the left child
                 queue.enqueue(current_node.left)
             
-            # if the current_node has a right child
             if current_node.right:
-                # enqueue the right child
                 queue.enqueue(current_node.right)
 
     # Print the value of every node, starting with the given node,
@@ -142,11 +133,25 @@ class BSTNode:
 
     # Print Pre-order recursive DFT
     def pre_order_dft(self):
-        pass
+
+        print(self.value)
+        
+        if self.left:
+            self.left.pre_order_dft()
+
+        if self.right:
+            self.right.pre_order_dft()
 
     # Print Post-order recursive DFT
     def post_order_dft(self):
-        pass
+
+        if self.left:
+            self.left.post_order_dft()
+
+        if self.right:
+            self.right.post_order_dft()
+
+        print(self.value)
 
 """
 This code is necessary for testing the `print` methods

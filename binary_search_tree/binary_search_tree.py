@@ -82,16 +82,36 @@ class BSTNode:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self):
+        # base case
+        # if no more nodes
+            # return
+        # if a left node
+            # call in_order_print on the left
+        # print value of current node (self.value)
+        # if a right node
+            # call in_order_print on the right
         pass
+
+    # just what it says on the tin
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
-    def bft_print(self):
+    def bft_print(self): # use a queue
+        # create a queue
+        # enqueue the first node (self)
+
+        # while there is data on the queue
+            # dequeue from queue on to current_node
+            #  
+
         pass
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
-    def dft_print(self):
+    def dft_print(self): # use a stack
+
+        # >> Download the guided project to get the notes for this and above
+
         pass
 
     # Stretch Goals -------------------------

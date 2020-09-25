@@ -72,37 +72,37 @@ class BSTNode:
 
     # Return the maximum value found in the tree
     def get_max(self):
-        # check for an empty tree
-        if self.right == None:
-            # return self
-            return self.value
+        # # check for an empty tree
+        # if self.right == None:
+        #     # return self
+        #     return self.value
 
         # ----------------------------------------------
         # recursive approach
         # check if there is no node to the right
-        # if self.right == None:
+        if self.right == None:
             # return the nodes value
-            # return self.value
+            return self.value
         # return a call to get max on the right child
-        # return self.right.get_max()
+        return self.right.get_max()
         # -----------------------------------------------
 
-        # iterative approach
+        # # iterative approach
 
-        # initialise the max value
-        max_value = self.value
+        # # initialise the max value
+        # max_value = self.value
 
-        # get a ref to the current node
-        current_node = self.right
-        # loop while there is still a current node
-        while current_node:
-            # if the current value is greater than the max value, update the max value
-            if self.value > max_value:
-                max_value = self.value
-            # move on to the next right node
-            current_node = self.right
-        # return the max value
-        return max_value
+        # # get a ref to the current node
+        # current_node = self.right
+        # # loop while there is still a current node
+        # while current_node:
+        #     # if the current value is greater than the max value, update the max value
+        #     if self.value > max_value:
+        #         max_value = self.value
+        #     # move on to the next right node
+        #     current_node = self.right
+        # # return the max value
+        # return max_value
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
@@ -204,6 +204,6 @@ print("elegant methods")
 print("pre order")
 bst.pre_order_dft()
 print("in order")
-# bst.in_order_dft()
+bst.in_order_print()
 print("post order")
 bst.post_order_dft()  

@@ -11,6 +11,8 @@ This part of the project comprises two days:
 """
 
 from collections import deque
+from queue import Queue
+from stack import Stack
 
 
 class BSTNode:
@@ -21,18 +23,28 @@ class BSTNode:
 
     # Insert the given value into the tree
     def insert(self, value):
+        # check for valid insert
         if not self:
             return
+        
+        # check if value to insert is a duplicate value, and if so inserts on the right
         if value is self.value:
             self.right = BSTNode(value)
+        
+        # check if value to insert is greater than current node value
         elif value < self.value:
+            # if there is no left value to the current node then add the node to be inserted to the left of the current node
             if not self.left:
                 self.left = BSTNode(value)
+            # if there is a left value to the current node, call insert method on node to the left
             else:
                 self.left.insert(value)
+        # check if the value to insert is greater than the current node value
         elif value > self.value:
+            # if there is no right value to the current node, then insert the new node at the current node's right
             if not self.right:
                 self.right = BSTNode(value)
+            # otherwise call insert method on the node to the right
             else:
                 self.right.insert(value)
 
@@ -40,33 +52,45 @@ class BSTNode:
     # False if it does not
 
     def contains(self, target):
+        # check if the current node value is the target value
         if self.value is target:
             return True
+        # if the target is greater than the current node value
         elif target > self.value:
+            # if there is no node to the right and the target is still larger, then there is no target value in the tree
             if not self.right:
                 return False
             else:
+                # if there is a node to the right, call contains method on the node to the right
                 return self.right.contains(target)
         else:
+            # otherwise move down the left side of the tree, and if there is no left node and target is still smaller, then there is no target in the tree
             if not self.left:
                 return False
             else:
+                # if there is a node to the left, then call contains method on the node to the left
                 return self.left.contains(target)
 
     # Return the maximum value found in the tree
     def get_max(self):
+        # base case to return the right most node in the tree
         if self.right is None:
             return self.value
         else:
+            # recursive call of get max on the node to the right of the current node
             return self.right.get_max()
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-
+        # function call onthe current node value
         fn(self.value)
+        # check for node to the right
         if self.right:
+            # call method on the node to the right
             self.right.for_each(fn)
+        # check for node to the left
         if self.left:
+            # call method on the node to the left
             self.left.for_each(fn)
 
     # Part 2 -----------------------
@@ -85,28 +109,51 @@ class BSTNode:
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self):
-        deq = deque()
-        deq.append(self)
-        while len(deq) > 0:
-            cur = deq.popleft()
+        
+        queue = Queue()
+        queue.enqueue(self)
+        while queue:
+            cur = queue.dequeue()
             print(cur.value)
             if cur.left:
-                deq.append(cur.left)
+                queue.enqueue(cur.left)
             if cur.right:
-                deq.append(cur.right)
+                queue.enqueue(cur.right)
+        
+        # deq = deque()
+        # deq.append(self)
+        # while len(deq) > 0:
+        #     cur = deq.popleft()
+        #     print(cur.value)
+        #     if cur.left:
+        #         deq.append(cur.left)
+        #     if cur.right:
+        #         deq.append(cur.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self):
-        arr = []
-        arr.append(self)
-        while len(arr) > 0:
-            cur = arr.pop()
+        stack = Stack()
+
+        stack.push(self)
+
+        while stack:
+            cur = stack.pop()
             print(cur.value)
             if cur.left:
-                arr.append(cur.left)
+                stack.push(cur.left)
             if cur.right:
-                arr.append(cur.right)
+                stack.push(cur.right)
+
+        # arr = []
+        # arr.append(self)
+        # while len(arr) > 0:
+        #     cur = arr.pop()
+        #     print(cur.value)
+        #     if cur.left:
+        #         arr.append(cur.left)
+        #     if cur.right:
+        #         arr.append(cur.right)
 
     # Stretch Goals -------------------------
     # Note: Research may be required
@@ -150,4 +197,4 @@ bst.pre_order_dft()
 print("in order")
 bst.in_order_print()
 print("post order")
-bst.post_order_dft()  
+bst.post_order_dft()

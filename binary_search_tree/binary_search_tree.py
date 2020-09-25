@@ -50,7 +50,7 @@ class BSTNode:
             # return True
             return True
         # check if the target is less than the current nodes value
-        elif self.value < target:
+        elif self.value > target:
             # if there is no left child already there
             if not self.left:
                 # return False

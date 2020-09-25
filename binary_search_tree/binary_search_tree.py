@@ -85,9 +85,12 @@ class BSTNode:
         # base case
         # if no more nodes
             # return
+
         # if a left node
             # call in_order_print on the left
+
         # print value of current node (self.value)
+
         # if a right node
             # call in_order_print on the right
         pass
@@ -101,16 +104,21 @@ class BSTNode:
         # enqueue the first node (self)
 
         # while there is data on the queue
-            # dequeue from queue on to current_node
-            #  
+            # dequeu from queue on to current_node
+            
+            # print the current_node's value
+
+            # if the current_node has a left child
+                # enqueue the left child
+            
+            # if the current_node has a right child
+                # enqueue the right child
 
         pass
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self): # use a stack
-
-        # >> Download the guided project to get the notes for this and above
 
         pass
 

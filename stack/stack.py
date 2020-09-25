@@ -39,38 +39,38 @@ from singly_linked_list import LinkedList, Node
 #         #     return None
 
 # Array version of stack
-# class Stack:
-#     def __init__(self):
-#         self.storage = []
-#         # self.storage = ?
-#
-#     def __len__(self):
-#         return len(self.storage)
-#
-#     def push(self, value):
-#         self.storage.append(value)
-#
-#     def pop(self):
-#         if len(self.storage) == 0:
-#             return None
-#         return self.storage.pop()
+class Stack:
+    def __init__(self):
+        self.storage = []
+        # self.storage = ?
+
+    def __len__(self):
+        return len(self.storage)
+
+    def push(self, value):
+        self.storage.append(value)
+
+    def pop(self):
+        if len(self.storage) == 0:
+            return None
+        return self.storage.pop()
 
 
 # Linked List Implementation
-class Stack(LinkedList):
-    def __init__(self):
-        super().__init__()
-        self.size = 0
-
-    def __len__(self):
-        return self.size
-
-    def push(self, value):
-        self.add_to_head(value)
-        self.size += 1
-
-    def pop(self):
-        if self.size == 0:
-            return None
-        self.size -= 1
-        return self.remove_head()
+# class Stack(LinkedList):
+#     def __init__(self):
+#         super().__init__()
+#         self.size = 0
+#
+#     def __len__(self):
+#         return self.size
+#
+#     def push(self, value):
+#         self.add_to_head(value)
+#         self.size += 1
+#
+#     def pop(self):
+#         if self.size == 0:
+#             return None
+#         self.size -= 1
+#         return self.remove_head()

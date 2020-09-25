@@ -9,6 +9,13 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+
+import sys
+sys.path.append('/home/ivan/Desktop/Lambda/CS/Data-Structures/binary_search_tree')
+from queue import Queue
+from stack import Stack
+
+
 class BSTNode:
     def __init__(self, value):
         self.value = value
@@ -73,12 +80,31 @@ class BSTNode:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self):
-        pass
+
+        if self.left:
+            self.left.in_order_print()
+        print(self.value)
+
+        if self.right:
+            self.right.in_order_print()
+        # print(self.value)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self):
-        pass
+        current_node = self
+        queue = current_node
+
+        while queue:
+            current_node = queue.pop(0)
+            print(current_node.value)
+
+            if current_node.left:
+                queue.append(current_node.left)
+
+            elif current_node.right:
+                queue.append(current_node.right)
+
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal

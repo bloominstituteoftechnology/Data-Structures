@@ -83,56 +83,119 @@ class BSTNode:
             self.right.for_each(func)
         if self.left:
             self.left.for_each(func)
+
+        # iterative for each
+        # stack = []
+        # stack.append(self)
+
+        # while len(stack) > 0:
+        #     current = stack.pop()
+        #     if current.right:
+        #         stack.append(current.right)
+        #     if current.left:
+        #         stack.append(current.left)
+
+        #     func(current.value)
     # Part 2 -----------------------
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
-
     def in_order_print(self):
-        pass
+        if self.left:
+            self.left.in_order_print()
+        print(self.value)
+        if self.right:
+            self.right.in_order_print()
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
+
     def bft_print(self):
-        pass
+        queue = []
+        queue.append(self)
+        while len(queue) > 0:
+            current = queue.pop()
+            if current.left:
+                queue.insert(0, current.left)
+            if current.right:
+                queue.insert(0, current.right)
+            print(current.value)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
+
     def dft_print(self):
-        pass
+        # create a stack to keep track of nodes we are processing
+        stack = []
+        stack.append(self)
+        while len(stack) > 0:
+            current = stack.pop()
 
-    # Stretch Goals -------------------------
-    # Note: Research may be required
+            if current.left:
+                stack.append(current.left)
 
-    # Print Pre-order recursive DFT
+            if current.right:
+                stack.append(current.right)
+            print(current.value)
+
+# Stretch Goals -------------------------
+#  # Note: Research may be required
+
+# Print Pre-order recursive DFT
+
     def pre_order_dft(self):
-        pass
+        # create a stack to keep track of nodes we are processing
+        stack = []
+        stack.append(self)
+        while len(stack) > 0:
+            current = stack.pop()
+            print(current.value)
+            if current.right:
+                stack.append(current.right)
+            if current.left:
+                stack.append(current.left)
 
     # Print Post-order recursive DFT
+
     def post_order_dft(self):
-        pass
+        stack = []
+        stack.append(self)
+        out = []
+        while len(stack) > 0:
+            current = stack.pop()
+            out.append(current)
+            if current.left:
+                stack.append(current.left)
+            if current.right:
+                stack.append(current.right)
+        while len(out) > 0:
+            curr_out = out.pop()
+            print(curr_out.value)
 
 
 """
 This code is necessary for testing the `print` methods
 """
-# bst = BSTNode(1)
+bst = BSTNode(1)
 
-# bst.insert(8)
-# bst.insert(5)
-# bst.insert(7)
-# bst.insert(6)
-# bst.insert(3)
-# bst.insert(4)
-# bst.insert(2)
+bst.insert(8)
+bst.insert(5)
+bst.insert(7)
+bst.insert(6)
+bst.insert(3)
+bst.insert(4)
+bst.insert(2)
 
-# bst.bft_print()
-# bst.dft_print()
 
-# print("elegant methods")
-# print("pre order")
-# bst.pre_order_dft()
-# print("in order")
-# # bst.in_order_print()
-# print("post order")
-# bst.post_order_dft()
+print("breadth first")
+bst.bft_print()
+print("depth first")
+bst.dft_print()
+
+print("elegant methods")
+print("pre order")
+bst.pre_order_dft()
+print("in order")
+bst.in_order_print()
+print("post order")
+bst.post_order_dft()

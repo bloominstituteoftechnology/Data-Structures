@@ -9,6 +9,9 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+import sys
+sys.path.append('queue/')
+from queue import Queue
 class BSTNode:
     def __init__(self, value):
         self.value = value
@@ -89,7 +92,36 @@ class BSTNode:
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self):
+        q = Queue()
+        visited = []
+        # print(dir(q))
+        
+        def rec(tree):
+            if tree.value not in visited:
+                q.enqueue(tree.value)
+                visited.append(tree.value)
+            if tree.left:
+                q.enqueue(tree.left.value)
+                visited.append(tree.left.value)
+            if tree.right:
+                q.enqueue(tree.right.value)
+                visited.append(tree.right.value)
+            if tree.left:
+                rec(tree.left)
+            if tree.right:
+                rec(tree.right)
+        rec(self)
+
+        string = ''
+        for x in range(q.__len__()):
+            
+            string += f'{q.dequeue()}\n'
+            # print(value)
+        
+        print(string)
+        return string
         pass
+        
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
@@ -120,8 +152,8 @@ bst.insert(3)
 bst.insert(4)
 bst.insert(2)
 
-bst.in_order_print()
-# bst.bft_print()
+# bst.in_order_print()
+bst.bft_print()
 # bst.dft_print()
 
 # print("elegant methods")
@@ -131,3 +163,8 @@ bst.in_order_print()
 # bst.in_order_dft()
 # print("post order")
 # bst.post_order_dft()  
+
+# test = Queue()
+# print(test.__len__())
+# print(test.enqueue(1))
+# print(test.__len__())

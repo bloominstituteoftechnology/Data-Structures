@@ -11,8 +11,9 @@ This part of the project comprises two days:
 """
 import sys
 
-sys.path.extend(['../queue', '../stack'])
-from queue import Queue
+sys.path.insert(1, '../queue')
+sys.path.insert(1, '../stack')
+from queue import QueueA
 from stack import Stack
 
 
@@ -122,19 +123,26 @@ class BSTNode:
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
-    def in_order_dft(self):
+    def in_order_print(self):
         # base case
         if self.left:
-            self.left.in_order_dft()
+            self.left.in_order_print()
         print(self.value)
         if self.right:
-            self.right.in_order_dft()
+            self.right.in_order_print()
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self):  # use a queue
-        queue = Queue()
-
+        queue = QueueA()
+        queue.enqueue(self)
+        while len(queue) > 0:
+            current = queue.dequeue()
+            print(current.value)
+        if current.left:
+            queue.enqueue(self.left)
+        if current.right:
+            queue.enqueue(self.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
@@ -166,13 +174,13 @@ bst.insert(3)
 bst.insert(4)
 bst.insert(2)
 
-# bst.bft_print()
+bst.bft_print()
 # bst.dft_print()
 #
 # print("elegant methods")
 # print("pre order")
 # bst.pre_order_dft()
-print("in order")
-bst.in_order_dft()
+# print("in order")
+# bst.in_order_print()
 # print("post order")
 # bst.post_order_dft()

@@ -11,6 +11,7 @@ This part of the project comprises two days:
 """
 
 from queue import Queue
+from stack import Stack
 
 class BSTNode:
     def __init__(self, value):
@@ -126,7 +127,7 @@ class BSTNode:
     def in_order_print(self):
          # base case
         # if there are no more nodes
-        if self.right == None and self.left == None:
+        if self is None:
             # return 
             return 
         
@@ -171,7 +172,27 @@ class BSTNode:
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self):
-        pass
+        # create a stack
+        new_stack = Stack()
+        # push the first node (self)
+        new_stack.push(self)
+
+        # while there is data on the stack
+        while new_stack:
+            # pop from stack on the current_node
+            current_node = new_stack.pop()
+            # print the current_node's value
+            print(current_node.value)
+
+            # if the current_node has a left child
+            if current_node.left:
+                # push the left child
+                new_stack.push(current_node.left)
+            
+            # if the current_node has a right child
+            if current_node.right:
+                # push the right child
+                new_stack.push(current_node.right)
 
     # Stretch Goals -------------------------
     # Note: Research may be required

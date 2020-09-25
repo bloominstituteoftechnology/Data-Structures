@@ -77,7 +77,12 @@ class BSTNode:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self):
-        pass
+        # Recursive - place your print statement in-between recursive calls
+        # that explore left and right subtrees
+
+
+        # Iterative - think  about the order in which we are adding nodes to
+        # the stack
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
@@ -87,7 +92,13 @@ class BSTNode:
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self):
-        pass
+        # create a stack to keep track of nodes we are processing
+        # push root into stack
+
+        # while something is still in stack (not done processing)
+            # use existing 'for_each()' as reference for traversal logic
+            # push when we START, pop when a node is DONE
+            # and don't forget to call 'print()'
 
     # Stretch Goals -------------------------
     # Note: Research may be required

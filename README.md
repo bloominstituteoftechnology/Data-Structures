@@ -1,5 +1,14 @@
 # Data Structures 
 
+
+## initial commit
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#PULL REQUEST : 
+  https://github.com/LambdaSchool/Data-Structures/pull/706
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
 Topics:
  * Singly Linked Lists
  * Queues and Stacks

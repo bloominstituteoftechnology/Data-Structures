@@ -1,3 +1,7 @@
+from queue import Queue
+from stack import Stack
+from linked_list import LinkedList
+
 """
 Binary search trees are a data structure that enforce an ordering over 
 the data they store. That ordering in turn makes it a lot more efficient 
@@ -26,67 +30,98 @@ class BSTNode:
             else:
                 self.right.insert(value)
 
-def contains(self, target):
-    if self.value == target:
-      return True
-    if target < self.value:
-      if not self.left:
-        return False
-      else:
-        return self.left.contains(target)
-    else:
-      if not self.right:
-        return False
-      else:
-        return self.right.contains(target)
+    def contains(self, target):
+        current = self
+        while current != None:
+            value = current.value
+            if value == target:
+                return True
+            elif value > target:
+                current = current.left
+            else:
+                current = current.right
 
-def get_max(self):
-    if not self:
-      return None
-    else:
-      if not self.right:
-        return self.value
-      else:
-        return self.right.get_max()
+    def get_max(self):
+        max_leaf = self
+        while max_leaf.right != None:
+            max_leaf = max_leaf.right
+        return max_leaf.value
 
-def for_each(self, callback):
-    # We need to traverse the tree similar to how the print works in the demo
-    # For each value append it to the array
-    
-    # Call the function
-    callback(self.value)
-    if self.left:
-      self.left.for_each(callback)
-    if self.right:
-      self.right.for_each(callback)
+    def for_each(self, fn):
+        fn(self.value)
+        if self.left != None:
+            self.left.for_each(fn)
+        if self.right != None:
+            self.right.for_each(fn)
 
     # Part 2 -----------------------
 
+
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
-    def in_order_print(self):
-        pass
+    def in_order_print(self, node=None):
+        if self.left:
+            self.left.in_order_print(self.left)
+        print(node)
+        if self.right:
+            self.right.in_order_print(self.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
+
     def bft_print(self):
-        pass
+        q = Queue()
+        q.enqueue(self)
+
+        while q.__len__() > 0:
+            current_node = q.dequeue()
+            if current_node.left:
+                q.enqueue(current_node.left)
+            if current_node.right:
+                q.enqueue(current_node.right)
+            print(current_node.value)
+        
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
+
     def dft_print(self):
-        pass
+        s = Stack()
+        s.push(self)
+
+        while s.__len__() > 0:
+            current_node = s.pop()
+            if current_node.left:
+                s.push(current_node.left)
+            if current_node.right:
+                s.push(current_node.right)
+            print(current_node.value)
+
 
     # Stretch Goals -------------------------
     # Note: Research may be required
 
     # Print Pre-order recursive DFT
-    def pre_order_dft(self):
-        pass
+    def pre_order_dft(self, node=None):
+        if node == None:
+            return
+        print(node.value)
+        if node.left != None:
+            node.left.pre_order_dft(node.left)
+        if node.right != None: 
+            node.right.pre_order_dft(node.right)
 
     # Print Post-order recursive DFT
-    def post_order_dft(self):
-        pass
+    def post_order_dft(self, node=None):
+        if node == None:
+            return
+        
+        if node.left != None:
+            node.left.post_order_dft(node.left)
+        if node.right != None:
+            node.right.post_order_dft(node.right)
+
+        print(node.value)
 
 """
 This code is necessary for testing the `print` methods
@@ -108,6 +143,6 @@ print("elegant methods")
 print("pre order")
 bst.pre_order_dft()
 print("in order")
-bst.in_order_dft()
+bst.in_order_print()
 print("post order")
 bst.post_order_dft() 

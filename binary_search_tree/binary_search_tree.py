@@ -9,6 +9,9 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+
+from queue import Queue
+
 class BSTNode:
     def __init__(self, value):
         self.value = value
@@ -121,12 +124,49 @@ class BSTNode:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self):
-        pass
+         # base case
+        # if there are no more nodes
+        if self.right == None and self.left == None:
+            # return 
+            return 
+        
+        # if there is a node to the left
+        if self.left:
+            # call in order print on the left
+            self.left.in_order_print()
+
+        # print the value of the current node (self.value)
+        print(self.value)
+
+        # if there is a node to the right
+        if self.right:
+            # call in order print on the right
+            self.right.in_order_print()
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self):
-        pass
+        # create a queue
+        new_queue = Queue()
+        # enqueue the first node (self)
+        new_queue.enqueue(self)
+
+        # while there is data on the queue
+        while new_queue:
+            # dequeue from queue on the current_node
+            current_node = new_queue.dequeue()
+            # print the current_node's value
+            print(current_node.value)
+
+            # if the current_node has a left child
+            if current_node.left:
+                # enqueue the left child
+                new_queue.enqueue(current_node.left)
+            
+            # if the current_node has a right child
+            if current_node.right:
+                # enqueue the right child
+                new_queue.enqueue(current_node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
@@ -164,6 +204,6 @@ print("elegant methods")
 print("pre order")
 bst.pre_order_dft()
 print("in order")
-bst.in_order_dft()
+# bst.in_order_dft()
 print("post order")
 bst.post_order_dft()  

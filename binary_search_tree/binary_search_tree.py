@@ -17,20 +17,58 @@ class BSTNode:
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
+        node = BSTNode(value)
+        while True:
+            if value < self.value:
+                if self.left is None:
+                    self.left = node
+                    return
+                else:
+                    self.left.insert(value)
+            elif value > self.value:
+                if self.right is None:
+                    self.right = node
+                    return
+                else:
+                    self.right.insert(value)
 
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        
+        while self is not None:
+            if self.value is target:
+                return True
+            if target < self.value:
+                if self.left:
+                    return self.left.contains(target)
+                else:
+                    False
+            elif target > self.value:
+                if self.right:
+                    return self.right.contains(target)
+                else:
+                    return False
+
+        return False
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+        
+        curr_node = self.value
+        while self is not None:
+            if self.value > curr_node:
+                curr_node = self.value
+            self = self.right
 
+        return curr_node
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-        pass
+        fn(self.value)
+        if self.left:
+            self.left.for_each(fn)
+        if self.right:
+            self.right.for_each(fn)
 
     # Part 2 -----------------------
 
@@ -64,7 +102,6 @@ class BSTNode:
 This code is necessary for testing the `print` methods
 """
 bst = BSTNode(1)
-
 bst.insert(8)
 bst.insert(5)
 bst.insert(7)
@@ -72,14 +109,12 @@ bst.insert(6)
 bst.insert(3)
 bst.insert(4)
 bst.insert(2)
-
 bst.bft_print()
 bst.dft_print()
-
 print("elegant methods")
 print("pre order")
 bst.pre_order_dft()
 print("in order")
-bst.in_order_dft()
+bst.in_order_print()
 print("post order")
 bst.post_order_dft()  

@@ -1,8 +1,10 @@
 import unittest
 from doubly_linked_list import ListNode
 from doubly_linked_list import DoublyLinkedList
-
+import os
+os.system("cls")
 class DoublyLinkedListTests(unittest.TestCase):
+
     def setUp(self):
         self.node = ListNode(1)
         self.dll = DoublyLinkedList(self.node)

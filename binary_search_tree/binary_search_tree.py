@@ -9,6 +9,8 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+
+
 class BSTNode:
     def __init__(self, value):
         self.value = value
@@ -17,18 +19,21 @@ class BSTNode:
 
     # Insert the given value into the tree
     def insert(self, value):
-    # RECURSIVE
-        # if value < root, go left
-            # if left child is None
-                # add here... left child = bstnode(value)
-            # else
-                self.left.insert(value) # recursive call
-
-        # if value >= root, go right (dupes go to the right)
-            # if right child is None
-                # add here
-            # else
-                self.right.insert(value) # recursive call
+        if (self.left is None) & (self.right is None): # Empty tree use case
+            if value >= self.value:
+                self.right = BSTNode(value)
+            else:
+                self.left = BSTNode(value)
+        elif (value < self.value): # value goes to left branch of root
+            if self.left is None:
+                self.left = BSTNode(value)
+            else:
+                self.left.insert(value)
+        else: # Value goes to the right branch of root
+            if self.right is None:
+                self.right = BSTNode(value)
+            else:
+                self.right.insert(value)
 
 """    # ITERATIVE - Need a loop
     # while not at bottom level of tree
@@ -40,30 +45,56 @@ class BSTNode:
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        # check if self.value is target
-            # if yes, return True
-            # if no...
-                # go left or right?
+        if self.value == target:
+            return True
+        elif target < self.value:
+            if self.left is None:
+                return False
+            else: return self.left.contains(target)
+        else:
+            if self.right is None:
+                return False
+            else:
+                return self.right.contains(target)
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+        # go right until you cannot anymore
+        # return value at far right
+        if self.right is None:
+            return self.value
+        else:
+            self.right.get_max()
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-        pass
+        # one side then the other - RECURSION
+        # fn(value)
+        if self.value != None:
+            fn(self.value)
+            if self.left is not None and self.right is not None:
+                self.left.for_each(fn)
+                self.right.for_each(fn)
+            elif self.right is not None:
+                self.right.for_each(fn)
+            elif self.left is not None:
+                self.left.for_each(fn)
+            elif self.left is None and self.right is None:
+                return None
+        else:
+            return None
 
     # Part 2 -----------------------
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self):
-        pass
+        
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self):
-        pass
+        
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal

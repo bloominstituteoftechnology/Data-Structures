@@ -28,9 +28,9 @@ class Stack:
         return self.storage.pop()  
 
 
-import sys
-sys.path.append('../singly_linked_list')
-from singly_linked_list import LinkedList
+# import sys
+# sys.path.append('../singly_linked_list')
+# from singly_linked_list import LinkedList
 
 class Stack_2: # with a linked list
     def __init__(self):

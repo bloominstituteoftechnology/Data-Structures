@@ -94,12 +94,12 @@ class BSTNode:
         fn(self.value)
 
         # if left is not none run for each on left
-        if self.left != None:
+        if self.left:
             # call function on left
             self.left.for_each(fn)
 
         # if right is not None run for each on right
-        if self.right != None:
+        if self.right:
             # call function on right
             self.right.for_each(fn)
 
@@ -156,7 +156,24 @@ class BSTNode:
     # in an iterative depth first traversal
 
     def dft_print(self):  # use a stack
-        pass
+        # instantiate stack
+        values = Stack()
+        # push starting node
+        values.push(self)
+        # while stack is NOT empty:
+        while values.size > 0:
+            # pop the node
+            # print node.value
+            self = values.pop()
+            print(self.value)
+            # if node.left:
+            # push left node
+            if self.left:
+                values.push(self.left)
+            # if node.right:
+                # push right node
+            if self.right:
+                values.push(self.right)
 
     # Stretch Goals -------------------------
     # Note: Research may be required
@@ -187,9 +204,9 @@ bst.bft_print()
 bst.dft_print()
 
 print("elegant methods")
-print("pre order")
-bst.pre_order_dft()
+# print("pre order")
+# bst.pre_order_dft()
 print("in order")
-# bst.in_order_dft()
+bst.in_order_print()
 # print("post order")
 # bst.post_order_dft()

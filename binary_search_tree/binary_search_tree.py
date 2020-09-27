@@ -1,4 +1,6 @@
 from collections import deque
+from queue import Queue
+from stack import Stack
 
 """
 Binary search trees are a data structure that enforce an ordering over 
@@ -247,15 +249,21 @@ class BSTNode:
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self): # in order they appear
         # base case
-        # if there are no more nodes
+        if self.left is None:
+            return False
+        # if there are no more node
             # return
         # if there is a node to the left
+        elif self.left:
+            self.left.in_order_print()
             # call in order print on the left
         # print the value of the current node
+        print(self.left.value)
         # if there is a mode to the right
+        if self.right:
             # call in order print on the right
-        pass
-
+            self.right.in_order_print()
+    
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     """
@@ -272,7 +280,23 @@ class BSTNode:
         enqueue the right
     """
     def bft_print(self): # use a queue
+
+
+        queue = Queue()
+        queue.enqueue()
+
+        while queue.size > 0:
+            current_node = queue.dequeue()
+            print(current_node.value)
+
+            if current_node.left:
+                queue.enqueue(current_node.left)
+            if current_node.right:
+                queue.enqueue(current_node.right)
+    
+
         # create a queue
+        #queue = []
         # enqueue the first node (self)
         
         # while there is data on the queue   
@@ -289,8 +313,12 @@ class BSTNode:
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self): # use a stack
+        stack = []
+        stack.append(self)
 
-        pass
+        while len(stack) > 0:
+            current_node = stack.pop()
+            print(current_node.value)
 
     # Stretch Goals -------------------------
     # Note: Research may be required
@@ -306,23 +334,23 @@ class BSTNode:
 """
 This code is necessary for testing the `print` methods
 """
-# bst = BinarySearchTree(1)
+bst = BSTNode(1)
 
-# bst.insert(8)
-# bst.insert(5)
-# bst.insert(7)
-# bst.insert(6)
-# bst.insert(3)
-# bst.insert(4)
-# bst.insert(2)
+bst.insert(8)
+bst.insert(5)
+bst.insert(7)
+bst.insert(6)
+bst.insert(3)
+bst.insert(4)
+bst.insert(2)
 
-# bst.bft_print()
-# bst.dft_print()
+bst.bft_print()
+bst.dft_print()
 
-# print("elegant methods")
-# print("pre order")
-# bst.pre_order_dft()
-# print("in order")
-# bst.in_order_dft()
-# print("post order")
-# bst.post_order_dft()  
+print("elegant methods")
+print("pre order")
+bst.pre_order_dft()
+print("in order")
+bst.in_order_dft()
+print("post order")
+bst.post_order_dft()  

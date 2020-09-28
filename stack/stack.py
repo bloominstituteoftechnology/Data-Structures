@@ -26,3 +26,4 @@ class Stack:
         if self.size > 0:
             self.size -= 1
             return self.storage.pop()
+# last in first out

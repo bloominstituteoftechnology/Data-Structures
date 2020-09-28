@@ -32,3 +32,4 @@ class Queue:
         else: 
             self.size -= 1
             return self.storage.pop()
+# first in first out

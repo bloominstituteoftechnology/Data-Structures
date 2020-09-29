@@ -147,7 +147,16 @@ class BSTNode:
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self):  # use a stack
-        pass
+        s = Stack()
+        s.push(self)
+
+        while len(s) > 0:
+            current = s.pop()
+            print(current.value)
+            if current.left:
+                s.push(current.left)
+            if current.right:
+                s.push(current.right)
 
     # Stretch Goals -------------------------
     # Note: Research may be required
@@ -174,8 +183,8 @@ bst.insert(3)
 bst.insert(4)
 bst.insert(2)
 
-bst.bft_print()
-# bst.dft_print()
+# bst.bft_print()
+bst.dft_print()
 #
 # print("elegant methods")
 # print("pre order")

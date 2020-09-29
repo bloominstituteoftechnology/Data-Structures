@@ -18,41 +18,41 @@ sys.path.append("../singly_linked_list")
 from singly_linked_list import LinkedList
 
 
-# class Queue:
-#     def __init__(self):
-#         self.storage = []
-#         # self.storage = ?
-#
-#     def __len__(self):
-#         return len(self.storage)
-#
-#     def enqueue(self, value):
-#         self.storage.append(value)
-#
-#     def dequeue(self):
-#         while len(self.storage) == 0:
-#             return None
-#         return self.storage.pop(0)
+class QueueA:
+    def __init__(self):
+        self.storage = []
+        # self.storage = ?
+
+    def __len__(self):
+        return len(self.storage)
+
+    def enqueue(self, value):
+        self.storage.append(value)
+
+    def dequeue(self):
+        while len(self.storage) == 0:
+            return None
+        return self.storage.pop(0)
 # Array
 
 # LinkedList Implementation of queue
-class Queue(LinkedList):
-    def __init__(self):
-        super().__init__()
-        self.size = 0
-
-    def __len__(self):
-        return self.size
-
-    def enqueue(self, item):
-        self.add_to_tail(item)
-        self.size += 1
-
-    def dequeue(self):
-        if self.size == 0:
-            return None
-        self.size -= 1
-        return self.remove_head()
+# class Queue(LinkedList):
+#     def __init__(self):
+#         super().__init__()
+#         self.size = 0
+#
+#     def __len__(self):
+#         return self.size
+#
+#     def enqueue(self, item):
+#         self.add_to_tail(item)
+#         self.size += 1
+#
+#     def dequeue(self):
+#         if self.size == 0:
+#             return None
+#         self.size -= 1
+#         return self.remove_head()
 
 if __name__ == "__main__":
     a = Queue()

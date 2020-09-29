@@ -9,9 +9,127 @@ This part of the project comprises two days:`
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+import sys
+sys.path.extend(['queue', 'stack', 'binary_search_tree'])
 
-from queue import Queue
-from stack import Stack
+class Node:
+    def __init__(self, value = None, next_node = None):
+        self.value = value
+        self.next_node = next_node
+
+    def get_value(self):
+        return self.value
+
+    def get_next(self):
+        return self.next_node
+
+    def set_next(self, new_next):
+        self.next_node = new_next
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+
+    def add_to_tail(self, value):
+        new_node = Node(value, None)
+        if not self.head:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            self.tail.set_next(new_node)
+            self.tail = new_node
+
+    def remove_head(self):
+        if not self.head:
+            head = self.head
+            self.head = None
+            self.tail = None
+            return head.get_value()
+        value = self.head.get_value()
+        self.head = self.head.get_next()
+        return value
+
+    def remove_tail(self):
+        if not self.head:
+            return None
+
+        if self.head is self.tail:
+            value = self.head.get_value()
+            self.head = None
+            self.tail = None
+            return value
+
+        current = self.head
+
+        while current.get_next() is not self.tail:
+            current = current.get_next()
+
+        value = self.tail.get_value()
+        self.tail = current
+        return value
+
+    def contains(self, value):
+        if not self.head:
+            return False
+
+        current = self.head
+        while current:
+            if current.get_value() == value:
+                return True
+            current = current.get_next()
+        return False
+
+    def get_max(self):
+        if not self.head:
+            return None
+        max_value = self.head.get_value()
+        current = self.head.get_next()
+        while current:
+            if current.get_value() > max_value:
+                max_value = current.get_value()
+            current = current.get_next()                 
+        return max_value 
+
+class Queue:
+    def __init__(self):
+        self.size = 0
+        self.storage = LinkedList()
+    
+    def __len__(self):
+        return self.size
+
+    def enqueue(self, value):
+        self.storage.add_to_tail(value)
+        self.size += 1
+
+
+    def dequeue(self):
+        if self.size == 0:
+            return None
+        self.size -= 1
+        return self.storage.remove_head()  
+
+class Stack:
+    def __init__(self):
+        self.size = 0
+        self.storage = LinkedList()
+
+    def __len__(self):
+        return self.size
+    
+    def push(self, value):
+        self.size += 1
+        self.storage.add_to_tail(value)
+
+    def isEmpty(self):
+        return self.size == 0
+
+    def pop(self):
+        if self.size == 0:
+            return None
+        self.size -= 1
+        return self.storage.remove_tail()
 
 class BSTNode:
     def __init__(self, value):
@@ -68,60 +186,63 @@ class BSTNode:
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
-    def in_order_print(self, node = None):
-        if node:
-            node.in_order_print(node.left)
-            print(node.value)
-            node.in_order_print(node.right)
+    def in_order_print(self):
+        if not self:
+            return
+        if self.left:
+            self.left.in_order_print()
+        print(self.value)
+        if self.right:
+            self.right.in_order_print()
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
-    def bft_print(self, node = None):
-        queue = Queue
-        if node:
-            queue.enqueue(node)
-        else:
-            queue.enqueue(self)
-
-        while len(queue) > 0:
-            current_node = queue.dequeue()
-
-            if current_node.left:
-                queue.enqueue(current_node.left)
-            if current_node.right:
-                queue.enqueue(current_node.right)
-
-            print(current_node.value)
+    def bft_print(self, node):
+        queue = Queue()
+        queue.enqueue(node)
+        while queue.size > 0:
+            node = queue.dequeue()
+            print(node.value)
+            if node.left:
+                queue.enqueue(node.left)
+            if node.right:
+                queue.enqueue(node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
-    def dft_print(self, node = None):
+    def dft_print(self, node):
         stack = Stack()
-        if node:
-            stack.push(node)
-        else:
-            stack.push(self)
-
-        while len(stack) > 0:
-            current_node = stack.pop()
-
-            if current_node.right:
-                stack.push(current_node.right)
-            if current_node.left:
-                stack.push(current_node.left)
-
-            print(current_node.value)
+        stack.push(node)
+        while not stack.isEmpty():
+            node = stack.pop()
+            print(node.value)
+            if node.right:
+                stack.push(node.right)
+            if node.left:
+                stack.push(node.left)
 
     # Stretch Goals -------------------------
     # Note: Research may be required
 
     # Print Pre-order recursive DFT
-    def pre_order_dft(self, node = None):
-        pass
+    def pre_order_dft(self):
+        if not self:
+            return
+        print(self.value)
+        if self.left:
+            self.left.pre_order_dft()
+        if self.right:
+            self.right.pre_order_dft()
 
     # Print Post-order recursive DFT
-    def post_order_dft(self, node = None):
-        pass
+    def post_order_dft(self):
+        if not self:
+            return
+        if self.left:
+            self.left.post_order_dft()
+        if self.right:
+            self.right.post_order_dft()
+        print(self.value)
 
 """
 This code is necessary for testing the `print` methods
@@ -135,9 +256,11 @@ bst.insert(6)
 bst.insert(3)
 bst.insert(4)
 bst.insert(2)
+print("bst,bft print")
+bst.bft_print(bst)
 
-bst.bft_print()
-bst.dft_print()
+print("bst.dft print")
+bst.dft_print(bst)
 
 print("elegant methods")
 print("pre order")

@@ -45,6 +45,9 @@ class Stack:
         self.size += 1
         self.storage.add_to_tail(value)
 
+    def isEmpty(self):
+        return self.size == 0
+
     def pop(self):
         if self.size == 0:
             return None

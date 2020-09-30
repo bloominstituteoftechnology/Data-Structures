@@ -129,11 +129,13 @@ class LinkedList:
 
 
 # Tests the List
-# myList = LinkedList()
-# myList.add_to_head(2)
-# myList.add_to_head(3)
-# myList.add_to_head(4)
-# myList.add_to_head(5)
+myList = LinkedList()
+myList.add_to_head(2)
+myList.add_to_head(3)
+myList.add_to_head(4)
+myList.add_to_head(5)
 
 
 # print(f"myList: {myList.printList()} ")
+for item in myList.printList():
+    print(item)

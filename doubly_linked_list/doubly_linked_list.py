@@ -12,10 +12,13 @@ class ListNode:
 
     def delete(self):
         if self.prev:
-            self.next.prev = self.prev
-        if self.next:
+            # self.next.prev = self.prev
             self.prev.next = self.next
-            
+        if self.next:
+            # self.prev.next = self.next
+            self.next.prev = self.prev
+
+
 """
 Our doubly-linked list class. It holds references to
 the list's head and tail nodes.
@@ -178,17 +181,25 @@ class DoublyLinkedList:
     """
 
     def get_max(self):
-        curNode = self.head
+        # curNode = self.head
 
-        valueList = []
+        # valueList = []
 
-        while True:
-            if curNode is None:
-                break
-            valueList.append(curNode.value)
-            curNode = curNode.next
-        return max(valueList)
-
+        # while True:
+        #     if curNode is None:
+        #         break
+        #     valueList.append(curNode.value)
+        #     curNode = curNode.next
+        # return max(valueList)
+        if self.head is None:
+            return None
+        cur_node = self.head
+        max_value = self.head.value
+        while cur_node:
+            if cur_node.value > max_value:
+                max_value = cur_node.value
+            cur_node = cur_node.next
+        return max_value
 
     def printList(self):
         if self.head is None:
@@ -202,12 +213,11 @@ class DoublyLinkedList:
             currentNode = currentNode.next
         return ret_value
 
-
 # # Test
 myList = DoublyLinkedList()
 myList.add_to_head(1)
 myList.add_to_head(2)
-myList.add_to_head(3)
+myList.add_to_head(33)
 myList.add_to_head(4)
 myList.add_to_head(5)
 myList.add_to_head(6)

@@ -9,6 +9,7 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+from queue import Queue
 
 
 class BSTNode:
@@ -36,8 +37,6 @@ class BSTNode:
     # False if it does not
 
     def contains(self, target):
-        print("target", target)
-        print("self.value", self.value)
 
         if self.value == target:
             print(f"Made it with {target}")
@@ -45,7 +44,6 @@ class BSTNode:
         elif target < self.value and self.left:
             self.left.contains(target)
         elif target > self.value and self.right:
-            print("hitting here?")
             self.right.contains(target)
 
         return False
@@ -105,22 +103,54 @@ class BSTNode:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self):
-        pass
+        # Recursive: place print statement in between recursive calls that explore left and right subtrees
+
+        if self.left:
+            self.left.in_order_print()
+        print(self.value)
+        if self.right:
+            self.right.in_order_print()
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
+
     def bft_print(self):
-        pass
+        q = Queue()
+        if self is None:
+            return
+        q.put(self)
+        while q.empty() is not True:
+            current = q.get()
+            print(current.value)
+            if current.left:
+
+                q.put(current.left)
+            if current.right:
+
+                q.put(current.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
+
     def dft_print(self):
-        pass
+        stack = []
+        stack.append(self)
+
+        while len(stack) is not 0:
+            current = stack.pop()
+            print(current.value)
+
+            if current.right:
+                stack.append(current.right)
+
+            if current.left:
+                stack.append(current.left)
 
     # Stretch Goals -------------------------
     # Note: Research may be required
 
     # Print Pre-order recursive DFT
+
     def pre_order_dft(self):
         pass
 
@@ -132,23 +162,15 @@ class BSTNode:
 """
 This code is necessary for testing the `print` methods
 """
-# bst = BSTNode(1)
+tree = BSTNode(1)
+tree.insert(8)
+tree.insert(5)
+tree.insert(7)
+tree.insert(6)
+tree.insert(3)
+tree.insert(4)
+tree.insert(2)
 
-# bst.insert(8)
-# bst.insert(5)
-# bst.insert(7)
-# bst.insert(6)
-# bst.insert(3)
-# bst.insert(4)
-# bst.insert(2)
-
-# bst.bft_print()
-# bst.dft_print()
-
-# print("elegant methods")
-# print("pre order")
-# bst.pre_order_dft()
-# print("in order")
-# bst.in_order_dft()
-# print("post order")
-# bst.post_order_dft()
+# tree.in_order_print()
+# tree.bft_print()
+tree.dft_print()

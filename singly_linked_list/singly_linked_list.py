@@ -11,47 +11,45 @@ class LinkedList:
 
     def add_to_tail(self, value):
         new_node = Node(value)
-
         if self.head is None:
             self.head = new_node
             self.tail = new_node
             return
-
         self.tail.next = new_node
         self.tail = new_node
 
     def add_to_head(self, value):
         new_node = Node(value)
-
         if self.head is None:
             self.head = new_node
             self.tail = new_node
 
-
+        self.head.next = self.head
+        self.head = new_node
 
     def remove_head(self):
         if self.head is None:
             return
+
         self.head = self.head.next
 
     def remove_tail(self):
-        if self.head is None:
+        if self.tail is None:
             return
+
+        if self.head == self.tail:
+            self.tail = None
+            self.tail = None
 
         if self.head.next is None:
             self.head = None
             self.tail = None
 
-        cursor = self.head
-        while cursor.next.next is None:
-            cursor = cursor.next
+        pointer = self.head
+        while pointer.next is not self.tail:
+            pointer = pointer.next
 
-        cursor.next = None
-
-
-
-
-
+        self.tail = pointer
 
 # arr = [1, 2, 3, 4]
 # Every Node is a List

@@ -23,9 +23,12 @@ class LinkedList:
         if self.head is None:
             self.head = new_node
             self.tail = new_node
+            return
 
         self.head.next = self.head
         self.head = new_node
+
+        #[0. 1, 2, 3, 4, 5, None]
 
     def remove_head(self):
         if self.head is None:

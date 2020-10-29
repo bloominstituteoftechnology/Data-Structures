@@ -113,7 +113,7 @@ class Queue:
         return len(self.size)
 
     def enqueue(self, value):
-        self.size.append(value)
+        self.size.append(value) 
 
     def dequeue(self):
         if len(self.size) < 1:

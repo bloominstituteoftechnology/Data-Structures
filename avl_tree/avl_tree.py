@@ -163,6 +163,6 @@ print ('Inserting data', data)
 for key in data: 
     tree.insert(key)
 print (f'lala {tree.inorder_traverse()}' )
-tree.display()
+
 
  

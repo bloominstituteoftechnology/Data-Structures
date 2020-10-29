@@ -9,6 +9,7 @@ class ListNode:
         self.prev = prev
         self.value = value
         self.next = next
+        
     def remove(self):
         if self.prev:
             self.prev.next = self.next
@@ -29,7 +30,13 @@ class DoublyLinkedList:
 
     def __len__(self):
         return self.length
-
+    def __str__(self):
+        current = self.head
+        output = ''
+        while current:
+            output += '{} <=> '.format(current.value)
+            current = current.next
+        return output
     """
     Wraps the given value in a ListNode and inserts it 
     as the new head of the list. Don't forget to handle 
@@ -186,32 +193,78 @@ class DoublyLinkedList:
                 current = current.next
             return maximum
 
+    def insert_item_after_index(self, value, index):
+        node = ListNode(value)
+        current = self.head
+        counter = 1
+        while current:
+            if counter == index:
+                if current.next:
+                    temp = current.next
+                    temp.prev = node
+                    current.next = node
+                    node.next = temp
+                    node.prev = current
+                else:
+                    current = self.tail
+                    self.tail = node
+                    current.next = node
+                    node.prev = current
+            if self.length < index:
+                print("Index is too high by {}".format(index-counter))
+            counter += 1
+            current = current.next
 
-# dll = DoublyLinkedList()
+    def insert_item_before_index(self, value, index):
+        node = ListNode(value)
+        current = self.head
+        counter = 1
+        if self.length < index:
+            print("Index is too high by {}".format(index-self.length))
+        while current:
+            if counter == index:
+                if current.prev:
+                    temp = current.prev
+                    temp.next = node
+                    current.prev = node
+                    node.prev = temp
+                    node.next = current
+                else:
+                    current = self.head
+                    self.head = node
+                    current.prev = node
+                    node.next = current
+            counter += 1
+            current = current.next
 
-# dll.add_to_head(1)
-# dll.add_to_head(2)
-# dll.add_to_head(3)
-# dll.add_to_tail(10)
-# dll.add_to_tail(12)
-# dll.add_to_tail(15)
-# dll.add_to_head(11)
-# dll.add_to_head(22)
-# dll.add_to_head(33)
-# dll.add_to_tail(104)
-# dll.add_to_tail(1212)
-# dll.add_to_tail(15121)
 
-# print(f'{dll.head.value} Initial head value')
-# print(f'{dll.tail.value} Initial tail value')
-# print(f"{dll.length} length")
-# print(f'Deleted item from head {dll.remove_from_head()}')
-# print(f'Deleted item from tail {dll.remove_from_tail()}')
-# print(f'Deleted item from any node {dll.delete(dll.head.next)}')
-# print(f'Moved item to the end {dll.move_to_end(dll.head)}')
-# print(f'Moved item to the front {dll.move_to_front(dll.tail)}')
-# print(f'{dll.length} length')
-# print(f'{dll.head.value} last head value')
-# print(f'{dll.tail.value} last tail value')
-# print(f'{dll.get_max()} max value')
+dll = DoublyLinkedList()
+
+dll.add_to_head(1)
+dll.add_to_head(2)
+dll.add_to_head(3)
+dll.add_to_tail(10)
+dll.add_to_tail(12)
+dll.add_to_tail(15)
+dll.add_to_head(11)
+dll.add_to_head(22)
+dll.add_to_head(33)
+dll.add_to_tail(104)
+dll.add_to_tail(1212)
+dll.add_to_tail(15121)
+dll.insert_item_before_index(290, 12)
+dll.insert_item_after_index(1232, 1)
+print(dll)
+print(f'{dll.head.value} Initial head value')
+print(f'{dll.tail.value} Initial tail value')
+print(f"{dll.length} length")
+print(f'Deleted item from head {dll.remove_from_head()}')
+print(f'Deleted item from tail {dll.remove_from_tail()}')
+print(f'Deleted item from any node {dll.delete(dll.head.next)}')
+print(f'Moved item to the end {dll.move_to_end(dll.head)}')
+print(f'Moved item to the front {dll.move_to_front(dll.tail)}')
+print(f'{dll.length} length')
+print(f'{dll.head.value} last head value')
+print(f'{dll.tail.value} last tail value')
+print(f'{dll.get_max()} max value')
 

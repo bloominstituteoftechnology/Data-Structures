@@ -84,20 +84,34 @@ class LinkedList:
         # LL with 2+ Nodes
         else:
             current = self.head
-            while current.get_next() is not self.tail:
-                current = current.get_next()
-            value = self.tail.get_value()
-            current.set_next(None)
+            while current.next_node is not self.tail:
+                current = current.next_node
+            value = self.tail.value
+            current.next_node = None
             self.tail = current
             self.length -= 1
             return value
+
+    def delete (self, value):
+        prev = None
+        current = self.head
+        while current:
+            if current.value == value:
+                if prev:
+                    prev.next_node = current.next_node
+                else:
+                    self.head = current.next_node
+                return True
+            prev = current
+            current = current.next_node
+        return False
 
     def contains (self, value):
         if self.head is None:
             return False
         
         current_node = self.head
-        while current_node is not None:
+        while current_node:
             if current_node.value == value:
                 return True
             current_node = current_node.next_node
@@ -107,8 +121,9 @@ class LinkedList:
 ll = LinkedList()
 
 ll.add_to_head(12)
+ll.add_to_tail(41)
 ll.add_to_tail(123)
 ll.add_to_tail(21)
-ll.add_to_tail(41)
-
+ll.delete(123)
+print(ll.contains(12))
 print(ll)

@@ -2,7 +2,7 @@ Answer the following questions for each of the data structures you implemented a
 
 ## Stack
 
-1. What is the runtime complexity of `push` using a list?
+1. What is the runtime complexity of `push` using a list? 
 
 2. What is the runtime complexity of `push` using a linked list?
 

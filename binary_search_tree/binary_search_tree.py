@@ -1,8 +1,7 @@
 """
-Binary search trees are a data structure that enforce an ordering over 
-the data they store. That ordering in turn makes it a lot more efficient 
-at searching for a particular piece of data in the tree. 
-
+Binary search trees are a data structure that enforce an ordering over
+the data they store. That ordering in turn makes it a lot more efficient
+at searching for a particular piece of data in the tree.
 This part of the project comprises two days:
 1. Implement the methods `insert`, `contains`, `get_max`, and `for_each`
    on the BSTNode class.
@@ -10,6 +9,7 @@ This part of the project comprises two days:
    on the BSTNode class.
 """
 from queue import Queue
+
 
 class BSTNode:
     def __init__(self, value):
@@ -19,37 +19,35 @@ class BSTNode:
 
     # Insert the given value into the tree
     def insert(self, value):
-        if (self.left is None) & (self.right is None): # Empty tree use case
+        # Empty tree use case
+        if (self.left is None) & (self.right is None):
             if value >= self.value:
                 self.right = BSTNode(value)
             else:
                 self.left = BSTNode(value)
-        elif (value < self.value): # value goes to left branch of root
+        elif (value < self.value):
+            # value goes to left branch of root
             if self.left is None:
                 self.left = BSTNode(value)
             else:
                 self.left.insert(value)
-        else: # Value goes to the right branch of root
+        else:
+            # Value goes to the right branch of root
             if self.right is None:
                 self.right = BSTNode(value)
             else:
                 self.right.insert(value)
-
-"""    # ITERATIVE - Need a loop
-    # while not at bottom level of tree
-        # if value < root, go left
-            # if left child is None
-                # add here
-"""
     # Return True if the tree contains the value
     # False if it does not
+
     def contains(self, target):
         if self.value == target:
             return True
         elif target < self.value:
             if self.left is None:
                 return False
-            else: return self.left.contains(target)
+            else:
+                return self.left.contains(target)
         else:
             if self.right is None:
                 return False
@@ -95,7 +93,7 @@ class BSTNode:
         q.enqueue(self)
 
         # while length of q is greater than 0
-        while q.size > 0: 
+        while q.size > 0:
             # pop off the top
             top = q.dequeue()
             # print it
@@ -131,7 +129,6 @@ class BSTNode:
             # push when we START, pop when a node is DONE
             # and don't forget to call print()
 
-
     # Stretch Goals -------------------------
     # Note: Research may be required
 
@@ -165,4 +162,4 @@ bst.pre_order_dft()
 print("in order")
 bst.in_order_dft()
 print("post order")
-bst.post_order_dft()  
+bst.post_order_dft()
